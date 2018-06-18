@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="17215" started-at="2018-06-18T12:26:15Z" finished-at="2018-06-18T12:26:33Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="17215" started-at="2018-06-18T12:26:15Z" finished-at="2018-06-18T12:26:33Z">
+      <class name="userLogin.MainTest">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:userLogin.MainTest@1057a39]" name="beforeSuit" is-config="true" duration-ms="140" started-at="2018-06-18T17:56:15Z" finished-at="2018-06-18T17:56:15Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuit -->
+        <test-method status="PASS" signature="start()[pri:0, instance:userLogin.MainTest@1057a39]" name="start" is-config="true" duration-ms="6677" started-at="2018-06-18T17:56:15Z" finished-at="2018-06-18T17:56:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- start -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:userLogin.MainTest@1057a39]" name="setup" is-config="true" duration-ms="12" started-at="2018-06-18T17:56:22Z" finished-at="2018-06-18T17:56:22Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void userLogin.MainTest.Login() throws java.io.IOException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="Login()[pri:0, instance:userLogin.MainTest@1057a39]" name="Login" duration-ms="1452" started-at="2018-06-18T17:56:22Z" finished-at="2018-06-18T17:56:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:userLogin.MainTest@1057a39]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-18T17:56:23Z" finished-at="2018-06-18T17:56:23Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Login status=SUCCESS method=MainTest.Login()[pri:0, instance:userLogin.MainTest@1057a39] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void userLogin.MainTest.Login() throws java.io.IOException]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="dataentry()[pri:0, instance:userLogin.MainTest@1057a39]" name="dataentry" duration-ms="9047" started-at="2018-06-18T17:56:23Z" finished-at="2018-06-18T17:56:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dataentry -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:userLogin.MainTest@1057a39]" name="setup" is-config="true" duration-ms="0" started-at="2018-06-18T17:56:23Z" finished-at="2018-06-18T17:56:23Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void userLogin.MainTest.dataentry() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:userLogin.MainTest@1057a39]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-18T17:56:33Z" finished-at="2018-06-18T17:56:33Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=dataentry status=SUCCESS method=MainTest.dataentry()[pri:0, instance:userLogin.MainTest@1057a39] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void userLogin.MainTest.dataentry() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:userLogin.MainTest@1057a39]" name="teardown" is-config="true" duration-ms="0" started-at="2018-06-18T17:56:33Z" finished-at="2018-06-18T17:56:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:userLogin.MainTest@1057a39]" name="afterSuite" is-config="true" duration-ms="265" started-at="2018-06-18T17:56:33Z" finished-at="2018-06-18T17:56:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- userLogin.MainTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
