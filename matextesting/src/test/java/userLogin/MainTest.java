@@ -66,7 +66,7 @@ public class MainTest {
 		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
 	}
 
-	@Test(priority = 2, enabled = false)
+	@Test(priority = 2, enabled = true, dependsOnMethods="Login")
 	public void caseregistration() throws InterruptedException, NoSuchElementException, TimeoutException {
 		candid = pages.Utill().candidateid();
 		candidateName = pages.Utill().candidateName();
@@ -74,7 +74,7 @@ public class MainTest {
 		Assert.assertEquals(re, "Registered Successfully.");
 	}
 
-	@Test(priority = 3, enabled = false)
+	@Test(priority = 3, enabled = true, dependsOnMethods="caseregistration")
 	public void aasignToDE() throws NoSuchElementException, InterruptedException, InvalidActivityException {
 		pages = new Pages(driver);
 		pages.CaseRegistration().navigateTo("Daily Activity", "Assign Cases");
@@ -83,7 +83,7 @@ public class MainTest {
 		System.out.println(MatrixRefNo);
 	}
 
-	@Test(priority = 4, enabled = true)
+	@Test(priority = 4, enabled = true, dependsOnMethods="aasignToDE")
 	public void dataentry() throws Exception {
 		pages = new Pages(driver);
 		pages.CaseRegistration().navigateTo("Daily Activity", "Data Entry");
