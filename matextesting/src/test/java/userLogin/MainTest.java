@@ -1,17 +1,11 @@
 package userLogin;
 
 import static org.junit.Assert.assertTrue;
-
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.concurrent.TimeoutException;
-
-import javax.activity.InvalidActivityException;
-
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -34,7 +28,7 @@ public class MainTest {
 	Pages pages;
 	int candid = 3015270;
 	String candidateName = "gopi";
-	String MatrixRefNo = "DEMOTAF046";
+	String MatrixRefNo = "DEMOTAF055";
 
 	@BeforeSuite
 	public void beforeSuit() {
@@ -64,20 +58,20 @@ public class MainTest {
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
 		pages.loginpage().Login("demotl", "pass@123");
-		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Deotl");
+		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
 	
 	}
 
-	@Test(priority = 2, enabled = false, dependsOnMethods="Login")
-	public void caseregistration() throws InterruptedException, NoSuchElementException, TimeoutException {
+	@Test(priority = 2, enabled = true, dependsOnMethods="Login")
+	public void caseregistration() throws Exception {
 		candid = pages.Utill().candidateid();
 		candidateName = pages.Utill().candidateName();
 		String re = pages.CaseRegistration().caseRegistration("Demo Testing - Test", candid, candidateName);
 		Assert.assertEquals(re, "Registered Successfully.");
 	}
 
-	@Test(priority = 3, enabled = false, dependsOnMethods="caseregistration")
-	public void aasignToDE() throws NoSuchElementException, InterruptedException, InvalidActivityException {
+	@Test(priority = 3, enabled = true, dependsOnMethods="caseregistration")
+	public void aasignToDE() throws Exception {
 		pages = new Pages(driver,logger);
 		pages.CaseRegistration().navigateTo("Daily Activity", "Assign Cases");
 		MatrixRefNo = pages.CaseRegistration().assignToDETM(candidateName, candid);
@@ -85,7 +79,7 @@ public class MainTest {
 		System.out.println(MatrixRefNo);
 	}
 
-	@Test(priority = 4, enabled = false, dependsOnMethods="aasignToDE")
+	@Test(priority = 4, enabled = true,dependsOnMethods="aasignToDE")
 	public void dataentry() throws Exception {
 		pages = new Pages(driver,logger);
 		pages.CaseRegistration().navigateTo("Daily Activity", "Data Entry");
@@ -97,50 +91,18 @@ public class MainTest {
 			driver.findElement(By.linkText(MatrixRefNo)).click();
 			pages.Wait().wait_until_loader_is_invisible();
 			 pages.DataEntryTM().Personal();
-			 logger.pass("personal records saved successfully");
-			
-			 logger.info("address check starting");
 			 pages.DataEntryTM().AddressCheck();
-			 logger.info("address check completed");
-			
-			 logger.info("Education check starting");
 			 pages.DataEntryTM().EducationCheck();
-			 logger.info("Education check completed");
-			
-			 logger.info("Employment check starting");
 			 pages.DataEntryTM().EmploymentCheck();
-			 logger.info("Employment check completed");
-			
-			 logger.info("Reference check starting");
 			 pages.DataEntryTM().ReeferenceCheck();
-			 logger.info("Reference check completed");
-			
-			 logger.info("Gap check starting");
 			 pages.DataEntryTM().GapCheck();
-			 logger.info("Gap check completed");
-			
-			 logger.info("Facis check starting");
 			 pages.DataEntryTM().FacisCheck();
-			 logger.info("Facis check completed");
-			
-			 logger.info("Credit check starting");
 			 pages.DataEntryTM().CreditCheck();
-			 logger.info("Credit check completed");
-			
-			 logger.info("BV check starting");
 			 pages.DataEntryTM().BvCheck();
-			 logger.info("BV check completed");
-			
-			 logger.info("IT check starting");
 			 pages.DataEntryTM().ItCheck();
-			 logger.info("IT check completed");
-			
-			 logger.info("PF check starting");
 			 pages.DataEntryTM().PfCheck();
-			 logger.info("PF check completed");
 			String t = pages.DataEntryTM().getlocator("de_submit");
 			pages.Utill().find(t).click();
-			//pages.Wait().wait_until_loader_is_invisible();
 			try {
 				System.out.println("try block");
 				Alert alert = driver.switchTo().alert();
@@ -163,8 +125,6 @@ public class MainTest {
 				assertTrue(true);
 			} catch (UnhandledAlertException e) {
 				System.out.println("UnhandledAlertException");
-				WebDriverWait w = new WebDriverWait(driver, 10);
-				w.until(ExpectedConditions.alertIsPresent());
 				Alert alert = driver.switchTo().alert();
 				t = alert.getText();
 				logger.info(t);
@@ -180,7 +140,25 @@ public class MainTest {
 			assertTrue("Matrix ref no not found", false);
 		}
 	}
-
+@Test(priority=5,enabled=true,dependsOnMethods="dataentry")
+public void assigncase() throws Exception {
+	Thread.sleep(6000);
+	driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/AssignerHome.aspx");
+	pages.Assignor().assign_Employment(MatrixRefNo);
+	pages.Assignor().assign_Reference(MatrixRefNo);
+	pages.Assignor().assign_Criminal(MatrixRefNo);
+	pages.Assignor().assign_DB(MatrixRefNo);
+	pages.Assignor().assign_Drug(MatrixRefNo);
+	pages.Assignor().assign_ID(MatrixRefNo);
+	pages.Assignor().assign_ID(MatrixRefNo);
+	pages.Assignor().assign_Court(MatrixRefNo);
+	pages.Assignor().assign_Facis(MatrixRefNo);
+	pages.Assignor().assign_Credit(MatrixRefNo);
+	pages.Assignor().assign_BV(MatrixRefNo);
+	pages.Assignor().assign_IT(MatrixRefNo);
+	pages.Assignor().assign_PF(MatrixRefNo);
+	assertTrue(true);
+}
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {

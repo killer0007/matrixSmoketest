@@ -127,6 +127,7 @@ public void click_element(String path) throws Exception {
 	public String GetTableCellValue(String id, int row, int col) throws InvalidActivityException {
 		try {
 			String re = find("//table[@id='" + id + "']/tbody/tr[" + row + "]/td[" + col + "]").getText();
+			logger.info("getting value from table  :"+re);
 			if (re.equals("")) {
 				throw new InvalidActivityException();
 			} else {
@@ -138,12 +139,13 @@ public void click_element(String path) throws Exception {
 		}
 	}
 
-	public String clickAlertbox() {
-		// Pages pages=new Pages(driver);
+	public String clickAlertbox() throws Exception {
 		WebDriverWait w = new WebDriverWait(driver, 60);
 		w.until(ExpectedConditions.presenceOfElementLocated(By.id("ok")));
-		String result = pages.Utill().find("//*[@class='m_content']").getText();
-		pages.Utill().find("ok").click();
+		//String result = pages.Utill().find("//*[@class='m_content']").getText();
+		String result=pages.Utill().get_text("//*[@class='m_content']");
+		pages.Utill().click_element("ok");
+		//pages.Utill().find("ok").click();
 		return result;
 	}
 }

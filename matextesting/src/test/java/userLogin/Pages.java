@@ -40,4 +40,8 @@ public class Pages {
 		DataEntryTM de = new DataEntryTM(driver,logger);
 		return de;
 	}
+	public Assignor Assignor() {
+		Assignor as=new Assignor(driver,logger);
+		return as;
+	}
 }

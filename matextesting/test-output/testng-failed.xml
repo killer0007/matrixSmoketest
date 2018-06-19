@@ -7,10 +7,14 @@
         <methods>
           <include name="beforeSuit"/>
           <include name="afterSuite"/>
+          <include name="dataentry"/>
           <include name="tearDown"/>
           <include name="teardown"/>
+          <include name="aasignToDE"/>
+          <include name="assigncase"/>
           <include name="setup"/>
           <include name="Login"/>
+          <include name="caseregistration"/>
           <include name="start"/>
         </methods>
       </class> <!-- userLogin.MainTest -->

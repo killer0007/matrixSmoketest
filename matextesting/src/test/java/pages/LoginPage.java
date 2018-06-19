@@ -19,19 +19,15 @@ public LoginPage(WebDriver driver,ExtentTest logger) {
 	pages=new Pages(driver,logger);
 }
 public void Login(String uname, String pass) throws Exception {
-	//pages=new Pages(driver);
-	//pages.Utill().find("//*[@id='txtUsername']").sendKeys(uname);
 	pages.Utill().input_text("//*[@id='txtUsername']", uname);
-	//pages.Utill().find("//*[@id='txtPassword']").sendKeys(pass);
 	pages.Utill().input_text("//*[@id='txtPassword']", pass);
-	//pages.Utill().find("btnLogin").click();
 	pages.Utill().click_element("btnLogin");
 }
-public void Logout() {
+public void Logout() throws Exception {
 	//pages=new Pages(driver);
-	pages.Utill().find("ctl00_btnLogout").click();
+	pages.Utill().click_element("ctl00_btnLogout");
 	WebDriverWait w=new WebDriverWait(driver, 10);
 	w.until(ExpectedConditions.presenceOfElementLocated(By.id("cOK")));
-	pages.Utill().find("cOK").click();
+	pages.Utill().click_element("cOK");
 }
 }
