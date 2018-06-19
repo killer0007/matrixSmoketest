@@ -6,9 +6,11 @@
       <class name="userLogin.MainTest">
         <methods>
           <include name="beforeSuit"/>
-          <include name="dataentry"/>
+          <include name="afterSuite"/>
           <include name="tearDown"/>
+          <include name="teardown"/>
           <include name="setup"/>
+          <include name="Login"/>
           <include name="start"/>
         </methods>
       </class> <!-- userLogin.MainTest -->

@@ -48,7 +48,7 @@ public class MainTest {
 		String chrome_path = System.getProperty("user.dir") + "\\src\\test\\resources\\driver\\chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", chrome_path);
 		driver = new ChromeDriver();
-		pages = new Pages(driver);
+		
 		driver.manage().window().maximize();
 		driver.get("http://192.168.2.16/MatexTesting");
 	}
@@ -57,16 +57,18 @@ public class MainTest {
 	public void setup(Method method) {
 		logger = extent.createTest(method.getName());
 		logger.pass(method.getName() + " Started");
+		pages = new Pages(driver,logger);
 		System.out.println("before method");
 	}
 
 	@Test(priority = 1, enabled = true)
-	public void Login() throws IOException {
+	public void Login() throws Exception {
 		pages.loginpage().Login("demotl", "pass@123");
-		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
+		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Deotl");
+	
 	}
 
-	@Test(priority = 2, enabled = true, dependsOnMethods="Login")
+	@Test(priority = 2, enabled = false, dependsOnMethods="Login")
 	public void caseregistration() throws InterruptedException, NoSuchElementException, TimeoutException {
 		candid = pages.Utill().candidateid();
 		candidateName = pages.Utill().candidateName();
@@ -74,18 +76,18 @@ public class MainTest {
 		Assert.assertEquals(re, "Registered Successfully.");
 	}
 
-	@Test(priority = 3, enabled = true, dependsOnMethods="caseregistration")
+	@Test(priority = 3, enabled = false, dependsOnMethods="caseregistration")
 	public void aasignToDE() throws NoSuchElementException, InterruptedException, InvalidActivityException {
-		pages = new Pages(driver);
+		pages = new Pages(driver,logger);
 		pages.CaseRegistration().navigateTo("Daily Activity", "Assign Cases");
 		MatrixRefNo = pages.CaseRegistration().assignToDETM(candidateName, candid);
 
 		System.out.println(MatrixRefNo);
 	}
 
-	@Test(priority = 4, enabled = true, dependsOnMethods="aasignToDE")
+	@Test(priority = 4, enabled = false, dependsOnMethods="aasignToDE")
 	public void dataentry() throws Exception {
-		pages = new Pages(driver);
+		pages = new Pages(driver,logger);
 		pages.CaseRegistration().navigateTo("Daily Activity", "Data Entry");
 		pages.Utill().find("ctl00_ContentPlaceHolder1_txtMatrixRefNo").sendKeys(MatrixRefNo);
 		pages.Utill().find("ctl00_ContentPlaceHolder1_butnSearch").click();

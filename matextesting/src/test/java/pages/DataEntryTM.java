@@ -18,15 +18,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.aventstack.extentreports.ExtentTest;
+
 import userLogin.Pages;
 
 public class DataEntryTM {
 	WebDriver driver;
 	protected final Pages pages;
+	ExtentTest logger;
 
-	public DataEntryTM(WebDriver driver) {
+	public DataEntryTM(WebDriver driver,ExtentTest logger) {
 		this.driver = driver;
-		pages = new Pages(driver);
+		this.logger=logger;
+		pages = new Pages(driver,logger);
 	}
 
 	public String getlocator(String key) throws FileNotFoundException, IOException {

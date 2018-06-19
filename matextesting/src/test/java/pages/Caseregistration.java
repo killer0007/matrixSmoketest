@@ -11,6 +11,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.aventstack.extentreports.ExtentTest;
+
 import userLogin.Pages;
 import environment.Wait;
 
@@ -18,9 +20,11 @@ public class Caseregistration {
 	WebDriver driver;
 	protected final Pages pages;
 	Wait wait;
-	public Caseregistration(WebDriver driver) {
+	ExtentTest logger;
+	public Caseregistration(WebDriver driver,ExtentTest logger) {
 		this.driver=driver;
-		pages = new Pages(driver);
+		this.logger=logger;
+		pages = new Pages(driver,logger);
 	}
 	public String caseRegistration(String clientName, int cadID, String cadName) throws InterruptedException, NoSuchElementException, TimeoutException {
 		

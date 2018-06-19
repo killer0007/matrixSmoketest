@@ -6,17 +6,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.net.UrlChecker.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.aventstack.extentreports.ExtentTest;
+
 import userLogin.Pages;
 
 
 public class Wait {
 	WebDriver driver;
 	WebDriverWait waitt;
+	ExtentTest logger;
 	protected final Pages pages;
 
-	public Wait(WebDriver driver) {
+	public Wait(WebDriver driver,ExtentTest logger) {
 		this.driver = driver;
-		pages=new Pages(driver);
+		this.logger=logger;
+		pages=new Pages(driver,logger);
 	}
 
 	public void visibilityOfElement(String ele) {
