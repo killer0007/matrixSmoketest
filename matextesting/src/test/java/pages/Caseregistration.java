@@ -9,8 +9,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
 
-import userLogin.Pages;
 import environment.Wait;
+import testCases.Pages;
 
 public class Caseregistration {
 	WebDriver driver;

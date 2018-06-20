@@ -16,7 +16,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
-import userLogin.Pages;
+
+import testCases.Pages;
 
 public class DataEntryTM {
 	WebDriver driver;
@@ -71,7 +72,7 @@ public class DataEntryTM {
 		pages.Utill().select_by_label(getlocator("pass_port"), getvalue("pass_port"));
 		pages.Utill().select_by_label(getlocator("pan_card"), getvalue("pan_card"));
 		pages.Utill().select_by_label(getlocator("drug"), getvalue("drug"));
-		if (getvalue("drug").equals("Yes")) {
+		if (getvalue("drug").equalsIgnoreCase("Yes")) {
 			pages.Utill().select_by_label(getlocator("drug_panel"), getvalue("drug_panel"));
 		}
 		pages.Utill().select_by_label(getlocator("db"), getvalue("db"));

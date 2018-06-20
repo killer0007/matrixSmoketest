@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
 
-import userLogin.Pages;
+import testCases.Pages;
 
 
 public class Wait {
@@ -77,6 +77,7 @@ public class Wait {
 	}
 	public void wait_until_loader_is_invisible() throws InterruptedException {
 		//Pages pages=new Pages(driver);
+		//System.out.println("Start time"+java.time.LocalTime.now());
 		String res;
 		try {
 			res = pages.Utill().find("ctl00_UpdateProgress1").getCssValue("display");
@@ -88,10 +89,13 @@ public class Wait {
 		Thread.sleep(200);
 		res=pages.Utill().find("ctl00_UpdateProgress1").getCssValue("display");
 		if(!(res.equals("block"))) {
+			//System.out.println("end time"+java.time.LocalTime.now());
 			break;
 		}
 		else {
+			//System.out.println(res);
 			continue;
+			
 		}
 	}
 	}

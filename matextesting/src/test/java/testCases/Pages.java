@@ -1,4 +1,4 @@
-package userLogin;
+package testCases;
 
 import org.openqa.selenium.WebDriver;
 
@@ -42,6 +42,11 @@ public class Pages {
 	}
 	public Assignor Assignor() {
 		Assignor as=new Assignor(driver,logger);
+		return as;
+	}
+	
+	public OperationTL OperationTL() {
+		OperationTL as=new OperationTL(driver,logger);
 		return as;
 	}
 }

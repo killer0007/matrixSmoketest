@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
 
-import userLogin.Pages;
+import testCases.Pages;
 
 public class LoginPage {
 	protected final WebDriver driver;

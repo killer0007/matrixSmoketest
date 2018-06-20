@@ -1,4 +1,4 @@
-package userLogin;
+package testCases;
 
 import java.io.IOException;
 import java.lang.reflect.Method;

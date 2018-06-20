@@ -1,14 +1,16 @@
-package userLogin;
+package testCases;
 
 import static org.junit.Assert.assertTrue;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -18,6 +20,8 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
+import environment.SendAttachmentInEmail;
 import environment.Utill;
 
 public class MainTest {
@@ -28,7 +32,7 @@ public class MainTest {
 	Pages pages;
 	int candid = 3015270;
 	String candidateName = "gopi";
-	String MatrixRefNo = "DEMOTAF055";
+	String MatrixRefNo = "DEMOTAF073";
 
 	@BeforeSuite
 	public void beforeSuit() {
@@ -41,8 +45,11 @@ public class MainTest {
 	public void start() throws IOException {
 		String chrome_path = System.getProperty("user.dir") + "\\src\\test\\resources\\driver\\chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", chrome_path);
+//		ChromeOptions chromoption = new ChromeOptions();
+//		chromoption.setHeadless(true);
 		driver = new ChromeDriver();
-		
+//		Dimension d = new Dimension(1382, 744);
+//		driver.manage().window().setSize(d);
 		driver.manage().window().maximize();
 		driver.get("http://192.168.2.16/MatexTesting");
 	}
@@ -51,7 +58,7 @@ public class MainTest {
 	public void setup(Method method) {
 		logger = extent.createTest(method.getName());
 		logger.pass(method.getName() + " Started");
-		pages = new Pages(driver,logger);
+		pages = new Pages(driver, logger);
 		System.out.println("before method");
 	}
 
@@ -59,10 +66,10 @@ public class MainTest {
 	public void Login() throws Exception {
 		pages.loginpage().Login("demotl", "pass@123");
 		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
-	
+
 	}
 
-	@Test(priority = 2, enabled = true, dependsOnMethods="Login")
+	@Test(priority = 2, enabled = false, dependsOnMethods = "Login")
 	public void caseregistration() throws Exception {
 		candid = pages.Utill().candidateid();
 		candidateName = pages.Utill().candidateName();
@@ -70,18 +77,18 @@ public class MainTest {
 		Assert.assertEquals(re, "Registered Successfully.");
 	}
 
-	@Test(priority = 3, enabled = true, dependsOnMethods="caseregistration")
+	@Test(priority = 3, enabled = false, dependsOnMethods = "caseregistration")
 	public void aasignToDE() throws Exception {
-		pages = new Pages(driver,logger);
+		pages = new Pages(driver, logger);
 		pages.CaseRegistration().navigateTo("Daily Activity", "Assign Cases");
 		MatrixRefNo = pages.CaseRegistration().assignToDETM(candidateName, candid);
 
 		System.out.println(MatrixRefNo);
 	}
 
-	@Test(priority = 4, enabled = true,dependsOnMethods="aasignToDE")
+	@Test(priority = 4, enabled = false, dependsOnMethods = "aasignToDE")
 	public void dataentry() throws Exception {
-		pages = new Pages(driver,logger);
+		pages = new Pages(driver, logger);
 		pages.CaseRegistration().navigateTo("Daily Activity", "Data Entry");
 		pages.Utill().find("ctl00_ContentPlaceHolder1_txtMatrixRefNo").sendKeys(MatrixRefNo);
 		pages.Utill().find("ctl00_ContentPlaceHolder1_butnSearch").click();
@@ -90,17 +97,17 @@ public class MainTest {
 		if (no.equals(MatrixRefNo)) {
 			driver.findElement(By.linkText(MatrixRefNo)).click();
 			pages.Wait().wait_until_loader_is_invisible();
-			 pages.DataEntryTM().Personal();
-			 pages.DataEntryTM().AddressCheck();
-			 pages.DataEntryTM().EducationCheck();
-			 pages.DataEntryTM().EmploymentCheck();
-			 pages.DataEntryTM().ReeferenceCheck();
-			 pages.DataEntryTM().GapCheck();
-			 pages.DataEntryTM().FacisCheck();
-			 pages.DataEntryTM().CreditCheck();
-			 pages.DataEntryTM().BvCheck();
-			 pages.DataEntryTM().ItCheck();
-			 pages.DataEntryTM().PfCheck();
+			pages.DataEntryTM().Personal();
+			pages.DataEntryTM().AddressCheck();
+			pages.DataEntryTM().EducationCheck();
+			pages.DataEntryTM().EmploymentCheck();
+			pages.DataEntryTM().ReeferenceCheck();
+			pages.DataEntryTM().GapCheck();
+			pages.DataEntryTM().FacisCheck();
+			pages.DataEntryTM().CreditCheck();
+			pages.DataEntryTM().BvCheck();
+			pages.DataEntryTM().ItCheck();
+			pages.DataEntryTM().PfCheck();
 			String t = pages.DataEntryTM().getlocator("de_submit");
 			pages.Utill().find(t).click();
 			try {
@@ -140,24 +147,36 @@ public class MainTest {
 			assertTrue("Matrix ref no not found", false);
 		}
 	}
-@Test(priority=5,enabled=true,dependsOnMethods="dataentry")
-public void assigncase() throws Exception {
-	Thread.sleep(6000);
-	driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/AssignerHome.aspx");
-	pages.Assignor().assign_Employment(MatrixRefNo);
-	pages.Assignor().assign_Reference(MatrixRefNo);
-	pages.Assignor().assign_Criminal(MatrixRefNo);
-	pages.Assignor().assign_DB(MatrixRefNo);
-	pages.Assignor().assign_Drug(MatrixRefNo);
-	pages.Assignor().assign_ID(MatrixRefNo);
-	pages.Assignor().assign_ID(MatrixRefNo);
-	pages.Assignor().assign_Court(MatrixRefNo);
-	pages.Assignor().assign_Facis(MatrixRefNo);
-	pages.Assignor().assign_Credit(MatrixRefNo);
-	pages.Assignor().assign_BV(MatrixRefNo);
-	pages.Assignor().assign_IT(MatrixRefNo);
-	pages.Assignor().assign_PF(MatrixRefNo);
-	assertTrue(true);
+
+	@Test(priority = 5, enabled = false, dependsOnMethods = "dataentry")
+	public void assigncase() throws Exception {
+		Thread.sleep(6000);
+		driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/AssignerHome.aspx");
+		pages.Assignor().assign_Employment(MatrixRefNo);
+		pages.Assignor().assign_Reference(MatrixRefNo);
+		pages.Assignor().assign_Criminal(MatrixRefNo);
+		pages.Assignor().assign_DB(MatrixRefNo);
+		pages.Assignor().assign_Drug(MatrixRefNo);
+		pages.Assignor().assign_ID(MatrixRefNo);
+		pages.Assignor().assign_ID(MatrixRefNo);
+		pages.Assignor().assign_Court(MatrixRefNo);
+		pages.Assignor().assign_Facis(MatrixRefNo);
+		pages.Assignor().assign_Credit(MatrixRefNo);
+		pages.Assignor().assign_BV(MatrixRefNo);
+		pages.Assignor().assign_IT(MatrixRefNo);
+		pages.Assignor().assign_PF(MatrixRefNo);
+		assertTrue(true);
+	}
+@Test(priority=6, enabled=true)
+public void OperationtmAssign() throws Exception {
+	//pages.OperationTL().Employementtl(MatrixRefNo);
+	//pages.OperationTL().Referencetl(MatrixRefNo);
+	//pages.OperationTL().Criminaltl(MatrixRefNo);
+	//pages.OperationTL().Dbtl(MatrixRefNo);
+	//pages.OperationTL().Drugtl(MatrixRefNo);
+	pages.OperationTL().Idtl(MatrixRefNo);
+	pages.OperationTL().Idtl(MatrixRefNo);
+	pages.OperationTL().Courttl(MatrixRefNo);
 }
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
@@ -180,6 +199,9 @@ public void assigncase() throws Exception {
 	@AfterSuite
 	public void afterSuite() {
 		extent.flush();
-		// driver.quit();
+		//driver.quit();
+//		SendAttachmentInEmail email = new SendAttachmentInEmail();
+//		email.sendhtmlemail();
+		 
 	}
 }
