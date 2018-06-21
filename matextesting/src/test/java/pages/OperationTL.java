@@ -12,7 +12,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 
+import environment.Utill;
 import testCases.Pages;
 
 public class OperationTL {
@@ -71,14 +73,17 @@ public class OperationTL {
 					continue;
 				}
 			}
-			if (b == 0 || (ss.equals(""))) {
+			if (b == 0) {
 				logger.fail("Employment check not assigned");
 			} else {
 				logger.pass("Employment " + ss);
 			}
 		} catch (Exception e) {
-
+			driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(e.toString(),
+					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
@@ -114,14 +119,20 @@ public class OperationTL {
 					continue;
 				}
 			}
-			if (b == 0 || (ss.equals(""))) {
+			if (b == 0) {
 				logger.fail("Reference check not assigned");
+				String temp = Utill.getScreenshot(driver);
+				logger.fail("Reference check not assigned",
+						MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 			} else {
 				logger.pass("Reference " + ss);
 			}
 		} catch (Exception e) {
-
+			driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(e.toString(),
+					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
@@ -157,14 +168,17 @@ public class OperationTL {
 					continue;
 				}
 			}
-			if (b == 0 || (ss.equals(""))) {
+			if (b == 0) {
 				logger.fail("Criminal check not assigned");
 			} else {
 				logger.pass("Criminal " + ss);
 			}
 		} catch (Exception e) {
-
+			driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(e.toString(),
+					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
@@ -200,14 +214,18 @@ public class OperationTL {
 					continue;
 				}
 			}
-			if (b == 0 || (ss.equals(""))) {
+			if (b == 0) {
 				logger.fail("DB check not assigned");
 			} else {
 				logger.pass("DB " + ss);
 			}
 		} catch (Exception e) {
+			driver.navigate().to(getlocator("home_page"));
 			System.out.println(e.toString());
 			logger.fail(e.toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(e.toString(),
+					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
@@ -243,14 +261,18 @@ public class OperationTL {
 					continue;
 				}
 			}
-			if (b == 0 || (ss.equals(""))) {
+			if (b == 0) {
 				logger.fail("Drug check not assigned");
 			} else {
 				logger.pass("Drug " + ss);
 			}
 		} catch (Exception e) {
+			driver.navigate().to(getlocator("home_page"));
 			System.out.println(e.toString());
 			logger.fail(e.toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(e.toString(),
+					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
@@ -286,14 +308,18 @@ public class OperationTL {
 					continue;
 				}
 			}
-			if (b == 0 || (ss.equals(""))) {
+			if (b == 0) {
 				logger.fail("ID check not assigned");
 			} else {
 				logger.pass("ID " + ss);
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
+			driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(e.toString(),
+					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
@@ -329,14 +355,18 @@ public class OperationTL {
 					continue;
 				}
 			}
-			if (b == 0 || (ss.equals(""))) {
+			if (b == 0) {
 				logger.fail("Court check not assigned");
 			} else {
 				logger.pass("Court " + ss);
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
+			driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(e.toString(),
+					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
@@ -394,14 +424,18 @@ public class OperationTL {
 					break;
 				}
 			}
-			if (b == 0 || (ss.equals(""))) {
+			if (b == 0) {
 				logger.fail(checkname + " check not assigned");
 			} else {
 				logger.pass(checkname + ss);
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
+			driver.navigate().to(getlocator("home_page"));
 			logger.fail(checkname+e.toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(checkname+e.toString(),
+					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 	}
 

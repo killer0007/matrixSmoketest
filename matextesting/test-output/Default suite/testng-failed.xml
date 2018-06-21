@@ -3,17 +3,23 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="testCases.MainTest">
+      <class name="testCases.MainTest2">
         <methods>
-          <include name="Operationtm"/>
-          <include name="tearDown"/>
-          <include name="teardown"/>
-          <include name="beforeSuit"/>
           <include name="setup"/>
+          <include name="assigncase"/>
           <include name="afterSuite"/>
+          <include name="teardown"/>
+          <include name="dataentry"/>
+          <include name="Operationtm"/>
           <include name="start"/>
+          <include name="beforeSuit"/>
+          <include name="OperationtmAssign"/>
+          <include name="Login"/>
+          <include name="caseregistration"/>
+          <include name="aasignToDE"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- testCases.MainTest -->
+      </class> <!-- testCases.MainTest2 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

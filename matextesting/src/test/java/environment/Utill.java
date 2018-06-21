@@ -10,11 +10,16 @@ import java.util.Random;
 import javax.activity.InvalidActivityException;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -104,14 +109,15 @@ public class Utill {
 		pages.Utill().input_text(path, file);
 	}
 public void click_element(String path) throws Exception {
-	try {
-		//	Clicking element 'xpath=.//*[@id='ok']'
-		logger.info("Clicking element '"+path+"'");
-		pages.Utill().find(path).click();
-	} catch (Exception e) {
-
-		throw new Exception(e.toString());
-	}
+	
+		try {
+			logger.info("Clicking element '"+path+"'");
+			pages.Utill().find(path).click();
+		} catch (StaleElementReferenceException e) {
+			Thread.sleep(1000);
+			pages.Utill().find(path).click();
+		}
+	
 }
 	public int candidateid() {
 		Random ran = new Random();
@@ -144,16 +150,51 @@ public void click_element(String path) throws Exception {
 public int Get_Matching_xpath_count(String path) {
 	return driver.findElements(By.xpath(path)).size();
 }
+public String handle_Alert() throws InterruptedException {
+	String text;
+
+	try {
+		Alert alert=driver.switchTo().alert();
+		text=alert.getText();
+		alert.accept();
+		logger.pass("education verification data entry completed");
+		return text;
+	} catch (NoAlertPresentException e) {
+		System.out.println("NoAlertPresentException");
+		WebDriverWait w = new WebDriverWait(driver, 10);
+		w.until(ExpectedConditions.alertIsPresent());
+		Alert alert = driver.switchTo().alert();
+		text = alert.getText();
+		alert.accept();
+		pages.Wait().wait_until_loader_is_invisible();
+		logger.pass("education verification data entry completed");
+		return text;
+}
+	catch (UnhandledAlertException e) {
+		System.out.println("UnhandledAlertException");
+		Alert alert = driver.switchTo().alert();
+		text = alert.getText();
+		alert.accept();
+		pages.Wait().wait_until_loader_is_invisible();
+		logger.pass("education verification data entry completed");
+		return text;
+}
+}
 public List<WebElement> Get_webelement_list(String path){
 	return driver.findElements(By.xpath(path));
 }
 	public String clickAlertbox() throws Exception {
-		WebDriverWait w = new WebDriverWait(driver, 60);
-		w.until(ExpectedConditions.presenceOfElementLocated(By.id("ok")));
-		//String result = pages.Utill().find("//*[@class='m_content']").getText();
-		String result=pages.Utill().get_text("//*[@class='m_content']");
-		pages.Utill().click_element("ok");
-		//pages.Utill().find("ok").click();
-		return result;
+		try {
+			WebDriverWait w = new WebDriverWait(driver, 60);
+			w.until(ExpectedConditions.presenceOfElementLocated(By.id("ok")));
+			String result=pages.Utill().get_text("//*[@class='m_content']");
+			pages.Utill().click_element("ok");
+			return result;
+		} catch (WebDriverException e) {
+			Thread.sleep(1000);
+			String result=pages.Utill().get_text("//*[@class='m_content']");
+			pages.Utill().click_element("ok");
+			return result;
+		}
 	}
 }
