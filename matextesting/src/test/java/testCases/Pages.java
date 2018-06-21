@@ -46,7 +46,12 @@ public class Pages {
 	}
 	
 	public OperationTL OperationTL() {
-		OperationTL as=new OperationTL(driver,logger);
-		return as;
+		OperationTL tl=new OperationTL(driver,logger);
+		return tl;
+	}
+	
+	public OperationTM OperationTM() {
+		OperationTM tm=new OperationTM(driver,logger);
+		return tm;
 	}
 }

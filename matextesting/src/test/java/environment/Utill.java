@@ -100,6 +100,9 @@ public class Utill {
 			throw new Exception(e.toString());
 		}
 	}
+	public void choose_file(String path, String file) throws Exception {
+		pages.Utill().input_text(path, file);
+	}
 public void click_element(String path) throws Exception {
 	try {
 		//	Clicking element 'xpath=.//*[@id='ok']'
@@ -138,7 +141,12 @@ public void click_element(String path) throws Exception {
 
 		}
 	}
-
+public int Get_Matching_xpath_count(String path) {
+	return driver.findElements(By.xpath(path)).size();
+}
+public List<WebElement> Get_webelement_list(String path){
+	return driver.findElements(By.xpath(path));
+}
 	public String clickAlertbox() throws Exception {
 		WebDriverWait w = new WebDriverWait(driver, 60);
 		w.until(ExpectedConditions.presenceOfElementLocated(By.id("ok")));

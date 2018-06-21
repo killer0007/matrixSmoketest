@@ -5,7 +5,7 @@
     <classes>
       <class name="testCases.MainTest">
         <methods>
-          <include name="OperationtmAssign"/>
+          <include name="Operationtm"/>
           <include name="tearDown"/>
           <include name="teardown"/>
           <include name="beforeSuit"/>

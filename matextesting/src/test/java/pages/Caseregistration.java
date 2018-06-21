@@ -32,8 +32,13 @@ public class Caseregistration {
 		pages.Utill().click_element(".//*[text()='"+clientName+"']");
 		Select sel = new Select(pages.Utill().find(xp + "_TypeofMedium"));
 		sel.selectByIndex(1);
-		sel = new Select(pages.Utill().find(xp + "_ddlSubGroup"));
-		sel.selectByIndex(1);
+		try {
+			sel = new Select(pages.Utill().find(xp + "_ddlSubGroup"));
+			sel.selectByIndex(1);
+		} catch (Exception e) {
+			
+			
+		}
 		pages.Utill().input_text(xp + "_Case_CandidateName", cadName);
 		pages.Utill().input_text(xp + "_Case_CandidateId", Integer.toString(cadID));
 		pages.Utill().input_text(xp + "_Case_EmployeeId", "43232");
@@ -66,6 +71,7 @@ public class Caseregistration {
 		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_ddlTM", "demotl");
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAssign");
 		pages.Wait().wait_until_loader_is_invisible();
+		Thread.sleep(1000);
 		String temp = pages.Utill().clickAlertbox();
 		System.out.println(temp);
 		

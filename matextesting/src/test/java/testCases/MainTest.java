@@ -32,11 +32,11 @@ public class MainTest {
 	Pages pages;
 	int candid = 3015270;
 	String candidateName = "gopi";
-	String MatrixRefNo = "DEMOTAF073";
+	String MatrixRefNo = "DEMOTAF140";
 
 	@BeforeSuite
 	public void beforeSuit() {
-		reporter = new ExtentHtmlReporter("./Reports/learn_automation2.html");
+		reporter = new ExtentHtmlReporter("./Reports/matex.html");
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
 	}
@@ -45,11 +45,11 @@ public class MainTest {
 	public void start() throws IOException {
 		String chrome_path = System.getProperty("user.dir") + "\\src\\test\\resources\\driver\\chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", chrome_path);
-//		ChromeOptions chromoption = new ChromeOptions();
-//		chromoption.setHeadless(true);
+//		 ChromeOptions chromoption = new ChromeOptions();
+//		 chromoption.setHeadless(true);
 		driver = new ChromeDriver();
-//		Dimension d = new Dimension(1382, 744);
-//		driver.manage().window().setSize(d);
+//		 Dimension d = new Dimension(1382, 744);
+//		 driver.manage().window().setSize(d);
 		driver.manage().window().maximize();
 		driver.get("http://192.168.2.16/MatexTesting");
 	}
@@ -167,17 +167,29 @@ public class MainTest {
 		pages.Assignor().assign_PF(MatrixRefNo);
 		assertTrue(true);
 	}
-@Test(priority=6, enabled=true)
-public void OperationtmAssign() throws Exception {
-	//pages.OperationTL().Employementtl(MatrixRefNo);
-	//pages.OperationTL().Referencetl(MatrixRefNo);
-	//pages.OperationTL().Criminaltl(MatrixRefNo);
-	//pages.OperationTL().Dbtl(MatrixRefNo);
-	//pages.OperationTL().Drugtl(MatrixRefNo);
-	pages.OperationTL().Idtl(MatrixRefNo);
-	pages.OperationTL().Idtl(MatrixRefNo);
-	pages.OperationTL().Courttl(MatrixRefNo);
-}
+
+	@Test(priority = 6, enabled = false, dependsOnMethods = "assigncase")
+	public void OperationtmAssign() throws Exception {
+		pages.OperationTL().Employementtl(MatrixRefNo);
+		pages.OperationTL().Referencetl(MatrixRefNo);
+		pages.OperationTL().Criminaltl(MatrixRefNo);
+		pages.OperationTL().Dbtl(MatrixRefNo);
+		pages.OperationTL().Drugtl(MatrixRefNo);
+		pages.OperationTL().Idtl(MatrixRefNo);
+		pages.OperationTL().Idtl(MatrixRefNo);
+		pages.OperationTL().Courttl(MatrixRefNo);
+		pages.OperationTL().Facistl(MatrixRefNo);
+		pages.OperationTL().Credittl(MatrixRefNo);
+		pages.OperationTL().BVtl(MatrixRefNo);
+		pages.OperationTL().ITtl(MatrixRefNo);
+		pages.OperationTL().PFtl(MatrixRefNo);
+
+	}
+	@Test(priority = 7, enabled = true)
+	public void Operationtm() throws Exception {
+		//spages.OperationTM().address(MatrixRefNo);
+		pages.OperationTM().Education("DEMOTAF073");
+	}
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
@@ -193,15 +205,15 @@ public void OperationtmAssign() throws Exception {
 	@AfterTest
 	public void teardown() {
 		// pages.loginpage().Logout();
-		// driver.close();
+		//driver.close();
 	}
 
 	@AfterSuite
 	public void afterSuite() {
 		extent.flush();
-		//driver.quit();
-//		SendAttachmentInEmail email = new SendAttachmentInEmail();
-//		email.sendhtmlemail();
-		 
+		// driver.quit();
+		// SendAttachmentInEmail email = new SendAttachmentInEmail();
+		// email.sendhtmlemail();
+
 	}
 }
