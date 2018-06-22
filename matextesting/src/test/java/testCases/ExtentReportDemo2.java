@@ -23,14 +23,11 @@ public class ExtentReportDemo2 {
 	ExtentReports extent;
 	ExtentTest logger;
 	WebDriver driver;
-
 	// This code will run before executing any testcase
 	@BeforeSuite
 	public void beforeSuit() {
 		ExtentHtmlReporter reporter = new ExtentHtmlReporter("./Reports/learn_automation2.html");
-
 		extent = new ExtentReports();
-		
 		extent.attachReporter(reporter);
 	}
 
@@ -42,7 +39,7 @@ public class ExtentReportDemo2 {
 	}
 
 	// Actual Test which will start the application and verify the title
-	@Test(enabled = true)
+	@Test(priority=1,enabled = true)
 	public void loginTest() throws IOException {
 		// logger = extent.createTest("LoginTest");
 		String chrome_path = System.getProperty("user.dir") + "\\src\\test\\resources\\driver\\chromedriver.exe";
@@ -55,7 +52,7 @@ public class ExtentReportDemo2 {
 
 	}
 
-	@Test(enabled = true)
+	@Test(priority=2,enabled = true, dependsOnMethods="loginTest")
 	public void testTwo() throws IOException {
 
 		driver.get("http://www.google.com");
@@ -65,7 +62,7 @@ public class ExtentReportDemo2 {
 		
 
 	}
-	@Test(enabled = true)
+	@Test(priority=3,enabled = true, dependsOnMethods="testTwo")
 	public void testThree() throws IOException {
 
 		driver.get("http://www.google.com");
@@ -78,16 +75,22 @@ public class ExtentReportDemo2 {
 
 	// This will run after testcase and it will capture screenshot and add in report
 	@AfterMethod(enabled = true)
-	public void tearDown(ITestResult result) throws IOException {
-
-		if (result.getStatus() == ITestResult.FAILURE) {
-			String temp = Utill.getScreenshot(driver);
+	public void tearDown(ITestResult result, Method method) throws IOException {
+		System.out.println("after method"+method.getName());
+		 if (result.getStatus() == ITestResult.FAILURE) {
+			 String temp = Utill.getScreenshot(driver);
 
 			logger.fail(result.getThrowable().getMessage(),
 					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-		}
+		 }
+	        else if (result.getStatus() == ITestResult.SKIP)
+	            logger.info(result.getThrowable().toString());
+	        else
+		 logger.pass(method.getName()+"Test passed");
+		 logger.pass(result.getThrowable().toString());
 
 	}
+	
 
 	@AfterSuite
 	public void afterSuite() {

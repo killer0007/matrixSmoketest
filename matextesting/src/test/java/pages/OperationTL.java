@@ -82,15 +82,18 @@ public class OperationTL {
 			driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(),
-					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
 
 	public void Referencetl(String no) throws Exception {
 		try {
-			pages.CaseRegistration().navigateTo("Dashboard", "Reference TL");
+			try {
+				pages.CaseRegistration().navigateTo("Dashboard", "Reference TL");
+			} catch (Exception e) {
+				driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/ReferenceTLHomepage.aspx");
+			}
 
 			w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("op_ref_outstanding"))));
 			pages.Utill().click_element(getlocator("op_ref_outstanding"));
@@ -131,8 +134,7 @@ public class OperationTL {
 			driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(),
-					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
@@ -177,8 +179,7 @@ public class OperationTL {
 			driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(),
-					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
@@ -224,8 +225,7 @@ public class OperationTL {
 			System.out.println(e.toString());
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(),
-					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
@@ -271,8 +271,7 @@ public class OperationTL {
 			System.out.println(e.toString());
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(),
-					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
@@ -318,8 +317,7 @@ public class OperationTL {
 			driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(),
-					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
@@ -365,8 +363,7 @@ public class OperationTL {
 			driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(),
-					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 
 	}
@@ -432,10 +429,9 @@ public class OperationTL {
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			driver.navigate().to(getlocator("home_page"));
-			logger.fail(checkname+e.toString());
+			logger.fail(checkname + e.toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(checkname+e.toString(),
-					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			logger.fail(checkname + e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 	}
 

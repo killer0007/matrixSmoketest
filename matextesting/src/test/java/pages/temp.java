@@ -8,6 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Dimension;
@@ -31,53 +33,50 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import atu.testrecorder.ATUTestRecorder;
 import environment.SendAttachmentInEmail;
 import testCases.*;
 
 public class temp {
+
+
 	WebDriver driver;
+	 ATUTestRecorder recorder;
 
-	@Test
-	public void getnextMonth() {
-		String chrome_path = System.getProperty("user.dir") + "\\src\\test\\resources\\driver\\chromedriver.exe";
-		System.setProperty("webdriver.chrome.driver", chrome_path);
-		ChromeOptions chromption = new ChromeOptions();
-		chromption.setHeadless(true);
-		driver = new ChromeDriver(chromption);
-		Dimension d = new Dimension(1382, 744);
-		driver.manage().window().setSize(d);
-		driver.manage().window().maximize();
-		driver.get("http://192.168.2.16/MatexTesting");
-		System.out.println(driver.getTitle());
-		 System.out.println(driver.manage().window().getSize()); //output: (1382, 744)
-		String path =getScreenshot(driver);
-		System.out.println(path);
-	}
-	@AfterTest
-	public void aftertest() {
-//		SendAttachmentInEmail email = new SendAttachmentInEmail();
-//		
-//		assertTrue(email.sendhtmlemail());
-	}
-	public static String getScreenshot(WebDriver driver) {
-		TakesScreenshot ts = (TakesScreenshot) driver;
+	 @BeforeTest
+	 public void setup() throws Exception {
+	  DateFormat dateFormat = new SimpleDateFormat("yy-MM-dd HH-mm-ss");
+	  Date date = new Date();
+	  //Created object of ATUTestRecorder
+	  //Provide path to store videos and file name format.
+	  recorder = new ATUTestRecorder("D:\\ScriptVideos\\","TestVideo-"+dateFormat.format(date),true);
+	  //To start video recording.
+	  recorder.start();  
+	  driver = new ChromeDriver();
+	  driver.manage().window().maximize();
+	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	  driver.get("http://google.com/");
+	 }
 
-		File src = ts.getScreenshotAs(OutputType.FILE);
+	 @Test
+	 public void getScrollStatus() throws Exception {  
+	  driver.manage().window().setSize(new Dimension(400,768));
+	  Thread.sleep(2000);  
+	  
+	  driver.manage().window().setSize(new Dimension(400,400));
+	  Thread.sleep(2000);
+	  
+	  driver.manage().window().setSize(new Dimension(1024,400));      
+	 } 
+	 
+	 @AfterTest
+	 public void Close() throws Exception {
+	  driver.quit();
+	  //To stop video recording.
+	  recorder.stop();;
+	 }
 
-		String path = System.getProperty("user.dir") + "/Screenshot/" + System.currentTimeMillis() + ".png";
-
-		File destination = new File(path);
-
-		try {
-			FileUtils.copyFile(src, destination);
-		} catch (IOException e) {
-			System.out.println("Capture Failed " + e.getMessage());
-		}
-
-		return path;
-	}
-
-	
 }

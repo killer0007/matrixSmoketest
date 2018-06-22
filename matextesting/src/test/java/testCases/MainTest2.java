@@ -20,7 +20,6 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-
 import environment.SendAttachmentInEmail;
 import environment.Utill;
 
@@ -32,7 +31,7 @@ public class MainTest2 {
 	Pages pages;
 	int candid = 3015270;
 	String candidateName = "gopi";
-	String MatrixRefNo = "DEMOTAF140";
+	String MatrixRefNo = "DEMOTAF181";
 
 	@BeforeSuite
 	public void beforeSuit() {
@@ -69,7 +68,7 @@ public class MainTest2 {
 
 	}
 
-	@Test(priority = 2, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 2, enabled = false, dependsOnMethods = "Login")
 	public void caseregistration() throws Exception {
 		candid = pages.Utill().candidateid();
 		candidateName = pages.Utill().candidateName();
@@ -77,7 +76,7 @@ public class MainTest2 {
 		Assert.assertEquals(re, "Registered Successfully.");
 	}
 
-	@Test(priority = 3, enabled = true, dependsOnMethods = "caseregistration")
+	@Test(priority = 3, enabled = false, dependsOnMethods = "caseregistration")
 	public void aasignToDE() throws Exception {
 		pages = new Pages(driver, logger);
 		pages.CaseRegistration().navigateTo("Daily Activity", "Assign Cases");
@@ -86,7 +85,7 @@ public class MainTest2 {
 		System.out.println(MatrixRefNo);
 	}
 
-	@Test(priority = 4, enabled = true, dependsOnMethods = "aasignToDE")
+	@Test(priority = 4, enabled = false, dependsOnMethods = "aasignToDE")
 	public void dataentry() throws Exception {
 		pages = new Pages(driver, logger);
 		pages.CaseRegistration().navigateTo("Daily Activity", "Data Entry");
@@ -148,7 +147,7 @@ public class MainTest2 {
 		}
 	}
 
-	@Test(priority = 5, enabled = true, dependsOnMethods = "dataentry")
+	@Test(priority = 5, enabled = false, dependsOnMethods = "dataentry")
 	public void assigncase() throws Exception {
 		Thread.sleep(6000);
 		driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/AssignerHome.aspx");
@@ -168,7 +167,7 @@ public class MainTest2 {
 		assertTrue(true);
 	}
 
-	@Test(priority = 6, enabled = true, dependsOnMethods = "assigncase")
+	@Test(priority = 6, enabled = false, dependsOnMethods = "assigncase")
 	public void OperationtmAssign() throws Exception {
 		pages.OperationTL().Employementtl(MatrixRefNo);
 		pages.OperationTL().Referencetl(MatrixRefNo);
@@ -185,13 +184,13 @@ public class MainTest2 {
 		pages.OperationTL().PFtl(MatrixRefNo);
 
 	}
-	@Test(priority = 7, enabled = true, dependsOnMethods="OperationtmAssign")
+	@Test(priority = 7, enabled = true)
 	public void Operationtm() throws Exception {
 		//pages.OperationTM().address(MatrixRefNo);
-		pages.OperationTM().Education(MatrixRefNo);
+		//pages.OperationTM().Education(MatrixRefNo);
 		
-		pages.OperationTM().Employment("MatrixRefNo");
-		//pages.OperationTM().temp();
+		pages.OperationTM().Employment(MatrixRefNo);
+		//pages.OperationTM().temp(MatrixRefNo);
 	}
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {

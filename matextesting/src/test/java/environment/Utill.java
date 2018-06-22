@@ -111,11 +111,16 @@ public class Utill {
 public void click_element(String path) throws Exception {
 	
 		try {
-			logger.info("Clicking element '"+path+"'");
+			
 			pages.Utill().find(path).click();
+			logger.info("Clicking element '"+path+"'");
 		} catch (StaleElementReferenceException e) {
 			Thread.sleep(1000);
 			pages.Utill().find(path).click();
+			logger.info("Clicking element '"+path+"'");
+		}
+		catch (Exception e) {
+			throw new Exception(e.toString());
 		}
 	
 }
@@ -166,7 +171,7 @@ public String handle_Alert() throws InterruptedException {
 		Alert alert = driver.switchTo().alert();
 		text = alert.getText();
 		alert.accept();
-		pages.Wait().wait_until_loader_is_invisible();
+		//pages.Wait().wait_until_loader_is_invisible();
 		logger.pass("education verification data entry completed");
 		return text;
 }
@@ -175,7 +180,7 @@ public String handle_Alert() throws InterruptedException {
 		Alert alert = driver.switchTo().alert();
 		text = alert.getText();
 		alert.accept();
-		pages.Wait().wait_until_loader_is_invisible();
+		//pages.Wait().wait_until_loader_is_invisible();
 		logger.pass("education verification data entry completed");
 		return text;
 }

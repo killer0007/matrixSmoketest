@@ -51,15 +51,12 @@ public class Caseregistration {
 	}
 	public void navigateTo(String header, String menu) throws Exception{
 		//pages = new Pages(driver);
-		try {
+	
 			WebDriverWait w=new WebDriverWait(driver, 50);
 			w.until(ExpectedConditions.elementToBeClickable(pages.Utill().find("//*[text()='"+header+"']")));
 			pages.Utill().click_element("//*[text()='"+header+"']");
 			pages.Utill().click_element("//*[text()='"+menu+"']");
-		} catch (WebDriverException e) {
-			
-			driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/AssignerHome.aspx");
-		}
+		
 	}
 	public String assignToDETM(String cadName,int cadId ) throws Exception {
 		//pages = new Pages(driver);

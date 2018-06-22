@@ -20,6 +20,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import environment.SendAttachmentInEmail;
 import environment.Utill;
@@ -37,6 +38,11 @@ public class MainTest {
 	@BeforeSuite
 	public void beforeSuit() {
 		reporter = new ExtentHtmlReporter("./Reports/matex.html");
+		reporter.config().setDocumentTitle("Matrix test report");
+		reporter.config().setReportName("test report");
+		
+		reporter.config().setTheme(Theme.DARK);
+		
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
 	}
@@ -45,11 +51,11 @@ public class MainTest {
 	public void start() throws IOException {
 		String chrome_path = System.getProperty("user.dir") + "\\src\\test\\resources\\driver\\chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", chrome_path);
-//		 ChromeOptions chromoption = new ChromeOptions();
-//		 chromoption.setHeadless(true);
-		driver = new ChromeDriver();
-//		 Dimension d = new Dimension(1382, 744);
-//		 driver.manage().window().setSize(d);
+		 ChromeOptions chromoption = new ChromeOptions();
+		 chromoption.setHeadless(true);
+		driver = new ChromeDriver(chromoption);
+		 Dimension d = new Dimension(1382, 744);
+		 driver.manage().window().setSize(d);
 		driver.manage().window().maximize();
 		driver.get("http://192.168.2.16/MatexTesting");
 	}
@@ -58,6 +64,7 @@ public class MainTest {
 	public void setup(Method method) {
 		logger = extent.createTest(method.getName());
 		logger.pass(method.getName() + " Started");
+		logger.assignAuthor("Gopinath");
 		pages = new Pages(driver, logger);
 		System.out.println("before method");
 	}
@@ -69,7 +76,7 @@ public class MainTest {
 
 	}
 
-	@Test(priority = 2, enabled = false, dependsOnMethods = "Login")
+	@Test(priority = 2, enabled = true, dependsOnMethods = "Login")
 	public void caseregistration() throws Exception {
 		candid = pages.Utill().candidateid();
 		candidateName = pages.Utill().candidateName();
@@ -77,16 +84,16 @@ public class MainTest {
 		Assert.assertEquals(re, "Registered Successfully.");
 	}
 
-	@Test(priority = 3, enabled = false, dependsOnMethods = "caseregistration")
+	@Test(priority = 3, enabled = true, dependsOnMethods = "caseregistration")
 	public void aasignToDE() throws Exception {
 		pages = new Pages(driver, logger);
 		pages.CaseRegistration().navigateTo("Daily Activity", "Assign Cases");
 		MatrixRefNo = pages.CaseRegistration().assignToDETM(candidateName, candid);
-
+logger.info(MatrixRefNo);
 		System.out.println(MatrixRefNo);
 	}
 
-	@Test(priority = 4, enabled = false, dependsOnMethods = "aasignToDE")
+	@Test(priority = 4, enabled = true, dependsOnMethods = "aasignToDE")
 	public void dataentry() throws Exception {
 		pages = new Pages(driver, logger);
 		pages.CaseRegistration().navigateTo("Daily Activity", "Data Entry");
@@ -148,11 +155,11 @@ public class MainTest {
 		}
 	}
 
-	@Test(priority = 5, enabled = false, dependsOnMethods = "dataentry")
+	@Test(priority = 5, enabled = true, dependsOnMethods = "dataentry")
 	public void assigncase() throws Exception {
 		Thread.sleep(6000);
 		driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/AssignerHome.aspx");
-		pages.Assignor().assign_Employment(MatrixRefNo);
+		//pages.Assignor().assign_Employment(MatrixRefNo);
 		pages.Assignor().assign_Reference(MatrixRefNo);
 		pages.Assignor().assign_Criminal(MatrixRefNo);
 		pages.Assignor().assign_DB(MatrixRefNo);
@@ -168,7 +175,7 @@ public class MainTest {
 		assertTrue(true);
 	}
 
-	@Test(priority = 6, enabled = false, dependsOnMethods = "assigncase")
+	@Test(priority = 6, enabled = true, dependsOnMethods = "assigncase")
 	public void OperationtmAssign() throws Exception {
 		pages.OperationTL().Employementtl(MatrixRefNo);
 		pages.OperationTL().Referencetl(MatrixRefNo);
@@ -185,16 +192,17 @@ public class MainTest {
 		pages.OperationTL().PFtl(MatrixRefNo);
 
 	}
-	@Test(priority = 7, enabled = true)
+
+	@Test(priority = 7, enabled = true, dependsOnMethods="OperationtmAssign")
 	public void Operationtm() throws Exception {
-		//pages.OperationTM().address(MatrixRefNo);
-		//pages.OperationTM().Education(MatrixRefNo);
-		
-		//pages.OperationTM().Employment("DEMOTAF058");
-		pages.OperationTM().temp();
+		pages.OperationTM().Education(MatrixRefNo);
+
+		pages.OperationTM().Employment(MatrixRefNo);
 	}
+
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
+		
 		if (result.getStatus() == ITestResult.FAILURE) {
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(result.getThrowable().getMessage(),
@@ -208,7 +216,7 @@ public class MainTest {
 	@AfterTest
 	public void teardown() {
 		// pages.loginpage().Logout();
-		//driver.close();
+		// driver.close();
 	}
 
 	@AfterSuite
