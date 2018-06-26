@@ -389,7 +389,7 @@ public class OperationTM {
 	}
 
 	public void Address(String no) throws Exception {
-//		try {
+		try {
 			driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/MobResidence.aspx");
 			driver.findElement(By.linkText(no)).click();
 			logger.log(Status.PASS, "Clicking element '"+no+"' by link text");
@@ -427,97 +427,16 @@ public class OperationTM {
 			pages.Utill().click_element(getlocator("vadd_green"));
 
 			pages.Utill().handle_Alert();
-//		} catch (Exception e) {
-			//System.out.println(e.toString());
-//			driver.navigate().to(getlocator("home_page"));
-//			//logger.fail(e.toString());
-//			logger.log(Status.FAIL, e.toString());
-//			String temp = Utill.getScreenshot(driver);
-//			logger.fail(driver.getTitle() + e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-//		}
-	}
-public void  temp() throws Exception {
-	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnOutStandingFW");
-	pages.Wait().wait_until_loader_is_invisible();
-		pages.Utill().click_element(getlocator("vemp_upda_normal"));
-		pages.Wait().wait_until_loader_is_invisible();
-		driver.findElement(By.id("ctl00_ContentPlaceHolder1_grdUpdation_ctl04_btnemp")).click();
-	Thread.sleep(3000);
-	String currentWindow = driver.getWindowHandle();
-	Set<String> handles = driver.getWindowHandles();
-	System.out.println(handles);
-	for (String e : handles) {
-		if (!(e.equals(currentWindow))) {
-			driver.switchTo().window(e);
-			break;
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			driver.navigate().to(getlocator("home_page"));
+			//logger.fail(e.toString());
+			logger.log(Status.FAIL, e.toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(driver.getTitle() + e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 	}
-	System.out.println(driver.getTitle());
-	WebDriverWait w=new WebDriverWait(driver, 100);
-	w.until(ExpectedConditions
-			.presenceOfElementLocated(By.id(getlocator("vCompany_Type"))));
-
-	pages.Utill().input_text((getlocator("Empl_CmpName")),
-			(getvalue("Empl_CmpName")));
-	w.until(ExpectedConditions.presenceOfElementLocated(
-			By.xpath("//*[text()='" + getvalue("Empl_CmpName") + "']")));
-	pages.Utill().click_element("//*[text()='" + getvalue("Empl_CmpName") + "']");
-	pages.Wait().wait_until_loader_is_invisible();
-	pages.Utill().input_text(getlocator("Empl_CmpAddr"), getvalue("Empl_CmpAddr"));
-	pages.Utill().input_text(getlocator("Empl_Position"),
-			getvalue("Empl_Position"));
-	pages.Utill().input_text(getlocator("Empl_Department"),
-			getvalue("Empl_Department"));
-	pages.Utill().input_text(getlocator("Empl_HOAddr"), getvalue("Empl_HOAddr"));
-	pages.Utill().input_text(getlocator("Empl_FromDt"), getvalue("Empl_FromDt"));
-	pages.Utill().input_text(getlocator("Empl_ToDt"), getvalue("Empl_ToDt"));
-	pages.Utill().input_text(getlocator("Empl_EmpCode"), getvalue("Empl_EmpCode"));
-
-	pages.Utill().select_by_label(getlocator("Empl_EmplType"),
-			getvalue("Empl_EmplType"));
-	pages.Utill().input_text(getlocator("Empl_LastSalary"),
-			getvalue("Empl_LastSalary"));
-
-	pages.Utill().select_by_label(getlocator("Empl_CurrencyType"),
-			getvalue("Empl_CurrencyType"));
-	pages.Utill().select_by_label(getlocator("Empl_SalType"),
-			getvalue("Empl_SalType"));
-
-	pages.Utill().input_text(getlocator("Empl_RepAuthName"),
-			getvalue("Empl_RepAuthName"));
-	pages.Utill().input_text(getlocator("Empl_RepAuthDesig"),
-			getvalue("Empl_RepAuthDesig"));
-	pages.Utill().input_text(getlocator("Empl_RepAuthMobile1"),
-			getvalue("Empl_RepAuthMobile1"));
-	pages.Utill().input_text(getlocator("Empl_RepAuthEmail"),
-			getvalue("Empl_RepAuthEmail"));
-	pages.Utill().input_text(getlocator("Empl_HRName"), getvalue("Empl_HRName"));
-	pages.Utill().input_text(getlocator("Empl_ReasonLeave"),
-			getvalue("Empl_ReasonLeave"));
-	pages.Utill().input_text(getlocator("Company_VerifierName"),
-			getvalue("Company_VerifierName"));
-	pages.Utill().input_text(getlocator("vemp_VerifierDesignation"),
-			getvalue("vemp_VerifierDesignation"));
-	pages.Utill().input_text(getlocator("vemp_VerifierContact"),
-			getvalue("vemp_VerifierContact"));
-	pages.Utill().input_text(getlocator("vemp_VerifierEmail"),
-			getvalue("vemp_VerifierEmail"));
-
-	pages.Utill().select_by_label(getlocator("vemp_ConfirmationMode"),
-			getvalue("vemp_ConfirmationMode"));
-	pages.Utill().select_by_label(getlocator("vemp_Typeofrevert"),
-			getvalue("vemp_Typeofrevert"));
-	pages.Utill().select_by_label(getlocator("vemp_VerificationSource"),
-			getvalue("vemp_VerificationSource"));
-	pages.Utill().input_text(getlocator("vemp_VerComments"),
-			getvalue("vemp_VerComments"));
-	pages.Utill().click_element(getlocator("vemp_date"));
-	w.until(ExpectedConditions
-			.presenceOfElementLocated(By.id(getlocator("vemp_today"))));
-	pages.Utill().click_element(getlocator("vemp_today"));
-	pages.Utill().click_element(getlocator("vemp_green"));
-
-	pages.Utill().handle_Alert();
-	driver.switchTo().window(currentWindow);
+public void  temp() throws Exception {
+	
 }
 }
