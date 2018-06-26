@@ -1,28 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="2" failed="1" total="3" passed="0">
+<testng-results skipped="0" failed="1" total="2" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="8032" started-at="2018-06-22T12:26:39Z" finished-at="2018-06-22T12:26:47Z">
+  <suite name="Default suite" duration-ms="98045" started-at="2018-06-26T13:52:33Z" finished-at="2018-06-26T13:54:11Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="8032" started-at="2018-06-22T12:26:39Z" finished-at="2018-06-22T12:26:47Z">
-      <class name="testCases.ExtentReportDemo2">
-        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:testCases.ExtentReportDemo2@1ee9faa]" name="beforeSuit" is-config="true" duration-ms="269" started-at="2018-06-22T17:56:39Z" finished-at="2018-06-22T17:56:39Z">
+    <test name="Default test" duration-ms="98045" started-at="2018-06-26T13:52:33Z" finished-at="2018-06-26T13:54:11Z">
+      <class name="testCases.MainTest2">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:testCases.MainTest2@70fda8]" name="beforeSuit" is-config="true" duration-ms="140" started-at="2018-06-26T19:22:33Z" finished-at="2018-06-26T19:22:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuit -->
-        <test-method status="FAIL" signature="loginTest()[pri:0, instance:testCases.ExtentReportDemo2@1ee9faa]" name="loginTest" duration-ms="7670" started-at="2018-06-22T17:56:39Z" finished-at="2018-06-22T17:56:47Z">
-          <exception class="java.lang.AssertionError">
+        <test-method status="PASS" signature="start()[pri:0, instance:testCases.MainTest2@70fda8]" name="start" is-config="true" duration-ms="6252" started-at="2018-06-26T19:22:33Z" finished-at="2018-06-26T19:22:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- start -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@70fda8]" name="setup" is-config="true" duration-ms="13" started-at="2018-06-26T19:22:39Z" finished-at="2018-06-26T19:22:39Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void testCases.MainTest2.Login() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="Login()[pri:0, instance:testCases.MainTest2@70fda8]" name="Login" duration-ms="1175" started-at="2018-06-26T19:22:39Z" finished-at="2018-06-26T19:22:40Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@70fda8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-26T19:22:40Z" finished-at="2018-06-26T19:22:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Login status=SUCCESS method=MainTest2.Login()[pri:0, instance:testCases.MainTest2@70fda8] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void testCases.MainTest2.Login() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="FAIL" signature="Operationtm()[pri:0, instance:testCases.MainTest2@70fda8]" name="Operationtm" duration-ms="90237" started-at="2018-06-26T19:22:40Z" finished-at="2018-06-26T19:24:10Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[expected [true] but found [false]]]>
+              <![CDATA[no such element: Unable to locate element: {"method":"link text","selector":"DEMOTAF140"}
+  (Session info: chrome=67.0.3396.87)
+  (Driver info: chromedriver=2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'KAD-I-002', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_151'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565498 (ea082db3280dd6..., userDataDir: C:\Users\ashwin\AppData\Loc...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.87, webStorageEnabled: true}
+Session ID: 26e647eaad92b58455d1685dee01baf6
+*** Element info: {Using=link text, value=DEMOTAF140}]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
-	at org.testng.Assert.fail(Assert.java:94)
-	at org.testng.Assert.failNotEquals(Assert.java:494)
-	at org.testng.Assert.assertTrue(Assert.java:42)
-	at org.testng.Assert.assertTrue(Assert.java:52)
-	at testCases.ExtentReportDemo2.loginTest(ExtentReportDemo2.java:50)
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"link text","selector":"DEMOTAF140"}
+  (Session info: chrome=67.0.3396.87)
+  (Driver info: chromedriver=2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'KAD-I-002', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_151'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565498 (ea082db3280dd6..., userDataDir: C:\Users\ashwin\AppData\Loc...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.87, webStorageEnabled: true}
+Session ID: 26e647eaad92b58455d1685dee01baf6
+*** Element info: {Using=link text, value=DEMOTAF140}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:317)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByLinkText(RemoteWebDriver.java:371)
+	at org.openqa.selenium.By$ByLinkText.findElement(By.java:220)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:309)
+	at pages.OperationTM.Address(OperationTM.java:394)
+	at testCases.MainTest2.Operationtm(MainTest2.java:195)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -49,50 +117,46 @@
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- loginTest -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.ExtentReportDemo2@1ee9faa]" name="setup" is-config="true" duration-ms="0" started-at="2018-06-22T17:56:39Z" finished-at="2018-06-22T17:56:39Z">
+        </test-method> <!-- Operationtm -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@70fda8]" name="setup" is-config="true" duration-ms="0" started-at="2018-06-26T19:22:40Z" finished-at="2018-06-26T19:22:40Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testCases.ExtentReportDemo2.loginTest() throws java.io.IOException]]>
+                <![CDATA[public void testCases.MainTest2.Operationtm() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.ExtentReportDemo2@1ee9faa]" name="tearDown" is-config="true" duration-ms="328" started-at="2018-06-22T17:56:47Z" finished-at="2018-06-22T17:56:47Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@70fda8]" name="tearDown" is-config="true" duration-ms="356" started-at="2018-06-26T19:24:10Z" finished-at="2018-06-26T19:24:11Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=loginTest status=FAILURE method=ExtentReportDemo2.loginTest()[pri:0, instance:testCases.ExtentReportDemo2@1ee9faa] output={null}]]]>
+                <![CDATA[[TestResult name=Operationtm status=FAILURE method=MainTest2.Operationtm()[pri:0, instance:testCases.MainTest2@70fda8] output={null}]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void testCases.ExtentReportDemo2.loginTest() throws java.io.IOException]]>
+                <![CDATA[public void testCases.MainTest2.Operationtm() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="SKIP" signature="testTwo()[pri:0, instance:testCases.ExtentReportDemo2@1ee9faa]" name="testTwo" duration-ms="16" started-at="2018-06-22T17:56:47Z" depends-on-methods="testCases.ExtentReportDemo2.loginTest" finished-at="2018-06-22T17:56:47Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:testCases.MainTest2@70fda8]" name="teardown" is-config="true" duration-ms="0" started-at="2018-06-26T19:24:11Z" finished-at="2018-06-26T19:24:11Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- testTwo -->
-        <test-method status="SKIP" signature="testThree()[pri:0, instance:testCases.ExtentReportDemo2@1ee9faa]" name="testThree" duration-ms="0" started-at="2018-06-22T17:56:47Z" depends-on-methods="testCases.ExtentReportDemo2.testTwo" finished-at="2018-06-22T17:56:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testThree -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:testCases.ExtentReportDemo2@1ee9faa]" name="afterSuite" is-config="true" duration-ms="883" started-at="2018-06-22T17:56:47Z" finished-at="2018-06-22T17:56:48Z">
+        </test-method> <!-- teardown -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:testCases.MainTest2@70fda8]" name="afterSuite" is-config="true" duration-ms="236" started-at="2018-06-26T19:24:11Z" finished-at="2018-06-26T19:24:11Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- testCases.ExtentReportDemo2 -->
+      </class> <!-- testCases.MainTest2 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

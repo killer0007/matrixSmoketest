@@ -159,7 +159,8 @@ logger.info(MatrixRefNo);
 	public void assigncase() throws Exception {
 		Thread.sleep(6000);
 		driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/AssignerHome.aspx");
-		//pages.Assignor().assign_Employment(MatrixRefNo);
+		pages.Assignor().assign_Address(MatrixRefNo);
+		pages.Assignor().assign_Employment(MatrixRefNo);
 		pages.Assignor().assign_Reference(MatrixRefNo);
 		pages.Assignor().assign_Criminal(MatrixRefNo);
 		pages.Assignor().assign_DB(MatrixRefNo);
@@ -177,6 +178,7 @@ logger.info(MatrixRefNo);
 
 	@Test(priority = 6, enabled = true, dependsOnMethods = "assigncase")
 	public void OperationtmAssign() throws Exception {
+		pages.OperationTL().Addresstl(MatrixRefNo);
 		pages.OperationTL().Employementtl(MatrixRefNo);
 		pages.OperationTL().Referencetl(MatrixRefNo);
 		pages.OperationTL().Criminaltl(MatrixRefNo);
@@ -196,8 +198,8 @@ logger.info(MatrixRefNo);
 	@Test(priority = 7, enabled = true, dependsOnMethods="OperationtmAssign")
 	public void Operationtm() throws Exception {
 		pages.OperationTM().Education(MatrixRefNo);
-
 		pages.OperationTM().Employment(MatrixRefNo);
+		pages.OperationTM().Address(MatrixRefNo);
 	}
 
 	@AfterMethod

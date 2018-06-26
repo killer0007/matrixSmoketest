@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
 
 import environment.Utill;
 import testCases.Pages;
@@ -46,12 +47,7 @@ public class OperationTM {
 		return pr.getProperty(key);
 	}
 
-	public void Address(String no) throws Exception {
-		pages.CaseRegistration().navigateTo("Dashboard", "Residence TM");
-		driver.findElement(By.linkText(no)).click();
-		pages.Wait().wait_until_loader_is_invisible();
-
-	}
+	
 
 	public void Education(String no) throws Exception {
 		try {
@@ -72,7 +68,7 @@ public class OperationTM {
 					w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("v_table"))));
 					int index = 0;
 					String ss = "";
-					int b=0;
+					int b = 0;
 					List<WebElement> table_list = driver
 							.findElements(By.xpath("//*[@id='" + getlocator("v_table") + "']/tbody/tr/td[8]/a"));
 					for (int i = 0; i < table_list.size(); i++) {
@@ -101,7 +97,7 @@ public class OperationTM {
 							pages.Wait().wait_until_loader_is_invisible();
 							ss = pages.Utill().clickAlertbox();
 							System.out.println(ss);
-b++;
+							b++;
 							break;
 						}
 					}
@@ -231,7 +227,7 @@ b++;
 					pages.Wait().wait_until_loader_is_invisible();
 					w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vemp_table"))));
 					int index = 0;
-					int b=0;
+					int b = 0;
 					String ss = "";
 					List<WebElement> table_list = driver
 							.findElements(By.xpath("//*[@id='" + getlocator("vemp_table") + "']/tbody/tr/td[8]/a"));
@@ -256,7 +252,7 @@ b++;
 							pages.Wait().wait_until_loader_is_invisible();
 							ss = pages.Utill().clickAlertbox();
 							System.out.println(ss);
-b++;
+							b++;
 							break;
 						}
 					}
@@ -366,7 +362,7 @@ b++;
 										pages.Utill().click_element(getlocator("vemp_green"));
 
 										pages.Utill().handle_Alert();
-										driver.switchTo().defaultContent();
+										driver.switchTo().window(currentWindow);
 										break;
 									}
 								}
@@ -388,84 +384,140 @@ b++;
 			driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(driver.getTitle()+e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			logger.fail(driver.getTitle() + e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 	}
 
-	public void temp(String no) throws Exception {
-		driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/EmploymentTMHomepage.aspx");
-		pages.Utill().click_element(getlocator("v_updation_out"));
-		pages.Wait().wait_until_loader_is_invisible();
+	public void Address(String no) throws Exception {
+//		try {
+			driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/MobResidence.aspx");
+			driver.findElement(By.linkText(no)).click();
+			logger.log(Status.PASS, "Clicking element '"+no+"' by link text");
+			pages.Utill().input_text(getlocator("vClientAddr_Address"), getvalue("vClientAddr_Address"));
+			pages.Utill().input_text(getlocator("vAddr_Pincode"), getvalue("vAddr_Pincode"));
+			w.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[text()='" + getvalue("vAddr_Pincode") + "']")));
+			pages.Utill().click_element("//*[text()='" + getvalue("vAddr_Pincode") + "']");
+			pages.Wait().wait_until_loader_is_invisible();
+			pages.Utill().select_by_label(getlocator("vAddr_ResiType"), getvalue("vAddr_ResiType"));
+			pages.Utill().input_text(getlocator("vAddr_Landmark"), getvalue("vAddr_Landmark"));
+			pages.Utill().input_text(getlocator("vAddr_FromDt"), getvalue("vAddr_FromDt"));
+			pages.Utill().input_text(getlocator("vAddr_ToDt"), getvalue("vAddr_ToDt"));
+			pages.Utill().input_text(getlocator("vAddr_StayPeriod"), getvalue("vAddr_StayPeriod"));
+			pages.Utill().input_text(getlocator("vAddr_PoliceSt"), getvalue("vAddr_PoliceSt"));
+			pages.Utill().input_text(getlocator("vAddr_Mobile1"), getvalue("vAddr_Mobile1"));
+			pages.Utill().select_by_label(getlocator("vAddr_LocType"), getvalue("vAddr_LocType"));
+			pages.Utill().input_text(getlocator("vAddr_Loc"), getvalue("vAddr_Loc"));
+			pages.Utill().input_text(getlocator("vAddr_Others"), getvalue("vAddr_Others"));
+			pages.Utill().input_text(getlocator("vAddr_AddrRespName"), getvalue("vAddr_AddrRespName"));
+			pages.Utill().input_text(getlocator("vAddr_AddrRelResp"), getvalue("vAddr_AddrRelResp"));
+			pages.Utill().input_text(getlocator("vAddr_NatureLoc"), getvalue("vAddr_NatureLoc"));
+			pages.Utill().input_text(getlocator("vAddr_LocVisitDt"), getvalue("vAddr_LocVisitDt"));
+			pages.Utill().select_by_label(getlocator("vAddressProofVerify"), getvalue("vAddressProofVerify"));
+			pages.Utill().input_text(getlocator("vAddr_VerifierName"), getvalue("vAddr_VerifierName"));
+			pages.Utill().input_text(getlocator("vAddr_VerifierDesignation"), getvalue("vAddr_VerifierDesignation"));
+			pages.Utill().input_text(getlocator("vAddr_VerifierContact"), getvalue("vAddr_VerifierContact"));
+			pages.Utill().input_text(getlocator("vAddr_VerifierEmail"), getvalue("vAddr_VerifierEmail"));
+			pages.Utill().select_by_label(getlocator("vAddr_Typeofrevert"), getvalue("vAddr_Typeofrevert"));
+			pages.Utill().input_text(getlocator("vAddr_VerComments"), getvalue("vAddr_VerComments"));
+			
+			pages.Utill().click_element(getlocator("vdd_vdate"));
+			w.until(ExpectedConditions
+					.presenceOfElementLocated(By.id(getlocator("vadd_Extender1_today"))));
+			pages.Utill().click_element(getlocator("vadd_Extender1_today"));
+			pages.Utill().click_element(getlocator("vadd_green"));
+
+			pages.Utill().handle_Alert();
+//		} catch (Exception e) {
+			//System.out.println(e.toString());
+//			driver.navigate().to(getlocator("home_page"));
+//			//logger.fail(e.toString());
+//			logger.log(Status.FAIL, e.toString());
+//			String temp = Utill.getScreenshot(driver);
+//			logger.fail(driver.getTitle() + e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+//		}
+	}
+public void  temp() throws Exception {
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnOutStandingFW");
+	pages.Wait().wait_until_loader_is_invisible();
 		pages.Utill().click_element(getlocator("vemp_upda_normal"));
 		pages.Wait().wait_until_loader_is_invisible();
-		w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vemp_upda_table"))));
-
-		List<WebElement> table_list = driver
-				.findElements(By.xpath("//*[@id='" + getlocator("vemp_upda_table") + "']/tbody/tr/td[8]"));
-		for (int i = 0; i < table_list.size(); i++) {
-			String n = table_list.get(i).getText();
-			if (n.equals(no)) {
-				int index = i + 2;
-				pages.Utill().click_element(
-						"//*[@id='" + getlocator("vemp_upda_table") + "']/tbody/tr[" + index + "]/td[2]/input");
-
-				Thread.sleep(1000);
-				String currentWindow = driver.getWindowHandle();
-				Set<String> handles = driver.getWindowHandles();
-				System.out.println(handles);
-				for (String e : handles) {
-					if (!(e.equals(currentWindow))) {
-						driver.switchTo().window(e);
-						break;
-					}
-				}
-				System.out.println(driver.getTitle());
-				w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vCompany_Type"))));
-
-				pages.Utill().input_text((getlocator("Empl_CmpName")), (getvalue("Empl_CmpName")));
-				w.until(ExpectedConditions
-						.presenceOfElementLocated(By.xpath("//*[text()='" + getvalue("Empl_CmpName") + "']")));
-				pages.Utill().click_element("//*[text()='" + getvalue("Empl_CmpName") + "']");
-				pages.Wait().wait_until_loader_is_invisible();
-				pages.Utill().input_text(getlocator("Empl_CmpAddr"), getvalue("Empl_CmpAddr"));
-				pages.Utill().input_text(getlocator("Empl_Position"), getvalue("Empl_Position"));
-				pages.Utill().input_text(getlocator("Empl_Department"), getvalue("Empl_Department"));
-				pages.Utill().input_text(getlocator("Empl_HOAddr"), getvalue("Empl_HOAddr"));
-				pages.Utill().input_text(getlocator("Empl_FromDt"), getvalue("Empl_FromDt"));
-				pages.Utill().input_text(getlocator("Empl_ToDt"), getvalue("Empl_ToDt"));
-				pages.Utill().input_text(getlocator("Empl_EmpCode"), getvalue("Empl_EmpCode"));
-
-				pages.Utill().select_by_label(getlocator("Empl_EmplType"), getvalue("Empl_EmplType"));
-				pages.Utill().input_text(getlocator("Empl_LastSalary"), getvalue("Empl_LastSalary"));
-
-				pages.Utill().select_by_label(getlocator("Empl_CurrencyType"), getvalue("Empl_CurrencyType"));
-				pages.Utill().select_by_label(getlocator("Empl_SalType"), getvalue("Empl_SalType"));
-
-				pages.Utill().input_text(getlocator("Empl_RepAuthName"), getvalue("Empl_RepAuthName"));
-				pages.Utill().input_text(getlocator("Empl_RepAuthDesig"), getvalue("Empl_RepAuthDesig"));
-				pages.Utill().input_text(getlocator("Empl_RepAuthMobile1"), getvalue("Empl_RepAuthMobile1"));
-				pages.Utill().input_text(getlocator("Empl_RepAuthEmail"), getvalue("Empl_RepAuthEmail"));
-				pages.Utill().input_text(getlocator("Empl_HRName"), getvalue("Empl_HRName"));
-				pages.Utill().input_text(getlocator("Empl_ReasonLeave"), getvalue("Empl_ReasonLeave"));
-				pages.Utill().input_text(getlocator("Company_VerifierName"), getvalue("Company_VerifierName"));
-				pages.Utill().input_text(getlocator("vemp_VerifierDesignation"), getvalue("vemp_VerifierDesignation"));
-				pages.Utill().input_text(getlocator("vemp_VerifierContact"), getvalue("vemp_VerifierContact"));
-				pages.Utill().input_text(getlocator("vemp_VerifierEmail"), getvalue("vemp_VerifierEmail"));
-
-				pages.Utill().select_by_label(getlocator("vemp_ConfirmationMode"), getvalue("vemp_ConfirmationMode"));
-				pages.Utill().select_by_label(getlocator("vemp_Typeofrevert"), getvalue("vemp_Typeofrevert"));
-				pages.Utill().select_by_label(getlocator("vemp_VerificationSource"),
-						getvalue("vemp_VerificationSource"));
-				pages.Utill().input_text(getlocator("vemp_VerComments"), getvalue("vemp_VerComments"));
-				pages.Utill().click_element(getlocator("vemp_date"));
-				w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vemp_today"))));
-				pages.Utill().click_element(getlocator("vemp_today"));
-				pages.Utill().click_element(getlocator("vemp_green"));
-
-				pages.Utill().handle_Alert();
-			}
-
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_grdUpdation_ctl04_btnemp")).click();
+	Thread.sleep(3000);
+	String currentWindow = driver.getWindowHandle();
+	Set<String> handles = driver.getWindowHandles();
+	System.out.println(handles);
+	for (String e : handles) {
+		if (!(e.equals(currentWindow))) {
+			driver.switchTo().window(e);
+			break;
 		}
 	}
+	System.out.println(driver.getTitle());
+	WebDriverWait w=new WebDriverWait(driver, 100);
+	w.until(ExpectedConditions
+			.presenceOfElementLocated(By.id(getlocator("vCompany_Type"))));
 
+	pages.Utill().input_text((getlocator("Empl_CmpName")),
+			(getvalue("Empl_CmpName")));
+	w.until(ExpectedConditions.presenceOfElementLocated(
+			By.xpath("//*[text()='" + getvalue("Empl_CmpName") + "']")));
+	pages.Utill().click_element("//*[text()='" + getvalue("Empl_CmpName") + "']");
+	pages.Wait().wait_until_loader_is_invisible();
+	pages.Utill().input_text(getlocator("Empl_CmpAddr"), getvalue("Empl_CmpAddr"));
+	pages.Utill().input_text(getlocator("Empl_Position"),
+			getvalue("Empl_Position"));
+	pages.Utill().input_text(getlocator("Empl_Department"),
+			getvalue("Empl_Department"));
+	pages.Utill().input_text(getlocator("Empl_HOAddr"), getvalue("Empl_HOAddr"));
+	pages.Utill().input_text(getlocator("Empl_FromDt"), getvalue("Empl_FromDt"));
+	pages.Utill().input_text(getlocator("Empl_ToDt"), getvalue("Empl_ToDt"));
+	pages.Utill().input_text(getlocator("Empl_EmpCode"), getvalue("Empl_EmpCode"));
+
+	pages.Utill().select_by_label(getlocator("Empl_EmplType"),
+			getvalue("Empl_EmplType"));
+	pages.Utill().input_text(getlocator("Empl_LastSalary"),
+			getvalue("Empl_LastSalary"));
+
+	pages.Utill().select_by_label(getlocator("Empl_CurrencyType"),
+			getvalue("Empl_CurrencyType"));
+	pages.Utill().select_by_label(getlocator("Empl_SalType"),
+			getvalue("Empl_SalType"));
+
+	pages.Utill().input_text(getlocator("Empl_RepAuthName"),
+			getvalue("Empl_RepAuthName"));
+	pages.Utill().input_text(getlocator("Empl_RepAuthDesig"),
+			getvalue("Empl_RepAuthDesig"));
+	pages.Utill().input_text(getlocator("Empl_RepAuthMobile1"),
+			getvalue("Empl_RepAuthMobile1"));
+	pages.Utill().input_text(getlocator("Empl_RepAuthEmail"),
+			getvalue("Empl_RepAuthEmail"));
+	pages.Utill().input_text(getlocator("Empl_HRName"), getvalue("Empl_HRName"));
+	pages.Utill().input_text(getlocator("Empl_ReasonLeave"),
+			getvalue("Empl_ReasonLeave"));
+	pages.Utill().input_text(getlocator("Company_VerifierName"),
+			getvalue("Company_VerifierName"));
+	pages.Utill().input_text(getlocator("vemp_VerifierDesignation"),
+			getvalue("vemp_VerifierDesignation"));
+	pages.Utill().input_text(getlocator("vemp_VerifierContact"),
+			getvalue("vemp_VerifierContact"));
+	pages.Utill().input_text(getlocator("vemp_VerifierEmail"),
+			getvalue("vemp_VerifierEmail"));
+
+	pages.Utill().select_by_label(getlocator("vemp_ConfirmationMode"),
+			getvalue("vemp_ConfirmationMode"));
+	pages.Utill().select_by_label(getlocator("vemp_Typeofrevert"),
+			getvalue("vemp_Typeofrevert"));
+	pages.Utill().select_by_label(getlocator("vemp_VerificationSource"),
+			getvalue("vemp_VerificationSource"));
+	pages.Utill().input_text(getlocator("vemp_VerComments"),
+			getvalue("vemp_VerComments"));
+	pages.Utill().click_element(getlocator("vemp_date"));
+	w.until(ExpectedConditions
+			.presenceOfElementLocated(By.id(getlocator("vemp_today"))));
+	pages.Utill().click_element(getlocator("vemp_today"));
+	pages.Utill().click_element(getlocator("vemp_green"));
+
+	pages.Utill().handle_Alert();
+	driver.switchTo().window(currentWindow);
+}
 }

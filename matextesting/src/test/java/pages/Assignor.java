@@ -229,7 +229,68 @@ public void assign_Reference(String refno) throws Exception {
 	}
 }
 public void assign_Address(String refno) throws Exception {
-	//
+	WebElement ele=pages.Utill().find(getlocator("ass_Address"));
+	int b=0;
+	String ss="";
+	if(ele.getText()!="0") {
+		ele.click();
+		logger.info("Clicking element '"+getlocator("ass_Address")+"'");
+		pages.Wait().wait_until_loader_is_invisible();
+		WebDriverWait wait = new WebDriverWait(driver, 20);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.id("ctl00_ContentPlaceHolder1_lbtnNormal")));
+		ele=pages.Utill().find("ctl00_ContentPlaceHolder1_lbtnNormal");
+		
+		if(!(ele.getText().equals("0"))) {
+			System.out.println("passing not equal to zero");
+			ele.click();
+			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
+			String table=".//*[@id='"+getlocator("ass_address_table")+"']/tbody/tr/td[3]/a";
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
+			List<WebElement> table_data=driver.findElements(By.xpath(table));
+			
+			for (int i = 0; i < table_data.size(); i++) {
+				String id=table_data.get(i).getText();
+				System.out.println("id is "+id);
+				if(id.equals(refno)) {
+					System.out.println("passing ref no condition"+i);
+					int k=i+2;
+					pages.Utill().click_element(".//*[@id='"+getlocator("ass_address_table")+"']/tbody/tr["+k+"]/td[1]/input[1]");
+					//pages.Utill().find("//*[text()='"+refno+"']/../../td[1]/input[1]").click();
+					pages.Utill().select_by_label(getlocator("ass_address_dd"), "demotl - Chennai");
+					//pages.Utill().click_element("ctl00_ContentPlaceHolder1_ing"+checkname+"Assign");
+					pages.Utill().click_element(getlocator("ass_address_assign"));
+					pages.Wait().wait_until_loader_is_invisible();
+					ss = pages.Utill().clickAlertbox();
+					System.out.println(ss);
+					b++;
+					break;
+				}
+				else {
+					continue;
+				}
+			}
+			if(b==0) {
+				logger.fail("matrix no not found for address check");
+				//return false;
+				
+			}
+			else {
+				logger.pass("Address "+ss);
+				//return true;
+			}
+		}
+		else {
+			logger.fail("no value on normal for address check");
+			System.out.println("no value on normal for address check");
+			//return false;
+		}
+		
+	}
+	else {
+		logger.fail("empty record for address check");
+		System.out.println("empty record for address check");
+		//return false;
+	}
 }
 public void assign_Criminal(String refno) throws Exception {
 	WebElement ele=pages.Utill().find(getlocator("ass_Criminal"));

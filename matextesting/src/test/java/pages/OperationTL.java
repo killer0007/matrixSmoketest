@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
 
 import environment.Utill;
 import testCases.Pages;
@@ -41,7 +42,34 @@ public class OperationTL {
 		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
 		return pr.getProperty(key);
 	}
+	public void Addresstl(String no) throws Exception {
+		try {
+			pages.CaseRegistration().navigateTo("Dashboard", "Residence TL");
+			pages.Utill().input_text(getlocator("op_add_refsearch"), no);
+			pages.Utill().click_element(getlocator("op_add_search"));
+			pages.Utill().select_by_label(getlocator("op_add_tmdd"), "demotl - Chennai");
+			pages.Utill().select_by_label(getlocator("op_add_fedd"), "test fe- Field Executive");
+			if (no.equals(pages.Utill().get_text("ctl00_ContentPlaceHolder1_grdteamleader_ctl02_btnMatrixRefNo"))) {
+				pages.Utill().click_element("ctl00_ContentPlaceHolder1_grdteamleader_ctl02_chkbox");
+				pages.Utill().click_element(getlocator("op_add_assign"));
+				String ss=pages.Utill().clickAlertbox();
+				logger.log(Status.PASS, "address"+ss);
+			}
+			else {
+				logger.log(Status.FAIL, "reference no not found for address check");
+			}
 
+		} catch (Exception e) {
+			driver.navigate().to(getlocator("home_page"));
+			//logger.fail(e.toString());
+			logger.log(Status.FAIL, e.toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+		}
+		finally {
+			driver.navigate().to(getlocator("home_page"));
+		}
+	}
 	public void Employementtl(String no) throws Exception {
 		try {
 			pages.CaseRegistration().navigateTo("Dashboard", "Prior TL");
@@ -400,10 +428,10 @@ public class OperationTL {
 			pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnOutstanding_OS");
 			pages.Wait().wait_until_loader_is_invisible();
 			int i = getindex(driver, ".//*[@id='ctl00_ContentPlaceHolder1_grdUnassigned']/tbody/tr[1]/th");
-			System.out.println("index is  " + i);
+			//System.out.println("index is  " + i);
 			List<WebElement> list = driver.findElements(
 					By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_grdUnassigned']/tbody/tr/td[" + i + "]"));
-			System.out.println(list.size());
+			//System.out.println(list.size());
 			int b = 0;
 			String ss = "";
 			for (int j = 0; j < list.size(); j++) {

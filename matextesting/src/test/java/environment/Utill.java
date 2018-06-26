@@ -26,6 +26,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 import testCases.Pages;
 
@@ -74,8 +75,10 @@ public class Utill {
 
 	public void input_text(String path, String text) throws Exception {
 		try {
-			logger.info("Typing text '"+text+"' into text field '"+path+"'.");
+			
 			pages.Utill().find(path).sendKeys(text);
+			logger.log(Status.PASS, "Typing text '"+text+"' into text field '"+path+"'.");
+			//logger.info();
 		} catch (Exception e) {
 			throw new Exception(e.toString());
 		}
@@ -85,7 +88,7 @@ public class Utill {
 		try {
 		
 					String msg=pages.Utill().find(path).getText();
-					logger.info("msg = "+msg+".");
+					logger.log(Status.PASS, "msg = "+msg+".");
 					return msg;
 		} catch (Exception e) {
 
@@ -97,9 +100,10 @@ public class Utill {
 	public void select_by_label(String path, String value) throws Exception {
 		try {
 			//	Selecting options from selection list 'xpath=.//*[@id='ddltype1']' by label Course Completion Certificate.Sele
-			logger.info("Selecting options from selection list '"+path+"' by label "+value+".");
+			
 			Select sel = new Select(pages.Utill().find(path));
 			sel.selectByVisibleText(value);
+			logger.log(Status.PASS, "Selecting options from selection list '"+path+"' by label "+value+".");
 		} catch (Exception e) {
 
 			throw new Exception(e.toString());
@@ -107,21 +111,20 @@ public class Utill {
 	}
 	public void choose_file(String path, String file) throws Exception {
 		pages.Utill().input_text(path, file);
+		logger.log(Status.PASS, "uploading file");
 	}
 public void click_element(String path) throws Exception {
 	
 		try {
 			
 			pages.Utill().find(path).click();
-			logger.info("Clicking element '"+path+"'");
+			logger.log(Status.PASS, "Clicking element '"+path+"'");
 		} catch (StaleElementReferenceException e) {
 			Thread.sleep(1000);
 			pages.Utill().find(path).click();
-			logger.info("Clicking element '"+path+"'");
+			logger.log(Status.PASS, "Clicking element '"+path+"'");
 		}
-		catch (Exception e) {
-			throw new Exception(e.toString());
-		}
+		
 	
 }
 	public int candidateid() {
@@ -141,10 +144,11 @@ public void click_element(String path) throws Exception {
 	public String GetTableCellValue(String id, int row, int col) throws InvalidActivityException {
 		try {
 			String re = find("//table[@id='" + id + "']/tbody/tr[" + row + "]/td[" + col + "]").getText();
-			logger.info("getting value from table  :"+re);
+			
 			if (re.equals("")) {
 				throw new InvalidActivityException();
 			} else {
+				logger.log(Status.PASS, "getting value from table  :"+re);
 				return re;
 			}
 		} catch (NoSuchElementException e) {
@@ -153,6 +157,7 @@ public void click_element(String path) throws Exception {
 		}
 	}
 public int Get_Matching_xpath_count(String path) {
+	logger.log(Status.PASS, "getting xpath count for "+path);
 	return driver.findElements(By.xpath(path)).size();
 }
 public String handle_Alert() throws InterruptedException {
@@ -162,7 +167,7 @@ public String handle_Alert() throws InterruptedException {
 		Alert alert=driver.switchTo().alert();
 		text=alert.getText();
 		alert.accept();
-		logger.pass("education verification data entry completed");
+		logger.log(Status.PASS, "education verification data entry completed");
 		return text;
 	} catch (NoAlertPresentException e) {
 		System.out.println("NoAlertPresentException");
@@ -172,7 +177,7 @@ public String handle_Alert() throws InterruptedException {
 		text = alert.getText();
 		alert.accept();
 		//pages.Wait().wait_until_loader_is_invisible();
-		logger.pass("education verification data entry completed");
+		logger.log(Status.PASS, "education verification data entry completed");
 		return text;
 }
 	catch (UnhandledAlertException e) {
@@ -181,7 +186,7 @@ public String handle_Alert() throws InterruptedException {
 		text = alert.getText();
 		alert.accept();
 		//pages.Wait().wait_until_loader_is_invisible();
-		logger.pass("education verification data entry completed");
+		logger.log(Status.PASS, "education verification data entry completed");
 		return text;
 }
 }
@@ -196,6 +201,8 @@ public List<WebElement> Get_webelement_list(String path){
 			pages.Utill().click_element("ok");
 			return result;
 		} catch (WebDriverException e) {
+			WebDriverWait w = new WebDriverWait(driver, 60);
+			w.until(ExpectedConditions.elementToBeClickable(pages.Utill().find("ok")));
 			Thread.sleep(1000);
 			String result=pages.Utill().get_text("//*[@class='m_content']");
 			pages.Utill().click_element("ok");

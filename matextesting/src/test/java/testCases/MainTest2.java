@@ -31,7 +31,7 @@ public class MainTest2 {
 	Pages pages;
 	int candid = 3015270;
 	String candidateName = "gopi";
-	String MatrixRefNo = "DEMOTAF181";
+	String MatrixRefNo = "DEMOTAF140";
 
 	@BeforeSuite
 	public void beforeSuit() {
@@ -151,6 +151,7 @@ public class MainTest2 {
 	public void assigncase() throws Exception {
 		Thread.sleep(6000);
 		driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/AssignerHome.aspx");
+		pages.Assignor().assign_Address(MatrixRefNo);
 		pages.Assignor().assign_Employment(MatrixRefNo);
 		pages.Assignor().assign_Reference(MatrixRefNo);
 		pages.Assignor().assign_Criminal(MatrixRefNo);
@@ -167,8 +168,9 @@ public class MainTest2 {
 		assertTrue(true);
 	}
 
-	@Test(priority = 6, enabled = false, dependsOnMethods = "assigncase")
+	@Test(priority = 6, enabled = false, dependsOnMethods = "Login")
 	public void OperationtmAssign() throws Exception {
+		pages.OperationTL().Addresstl(MatrixRefNo);
 		pages.OperationTL().Employementtl(MatrixRefNo);
 		pages.OperationTL().Referencetl(MatrixRefNo);
 		pages.OperationTL().Criminaltl(MatrixRefNo);
@@ -186,11 +188,11 @@ public class MainTest2 {
 	}
 	@Test(priority = 7, enabled = true)
 	public void Operationtm() throws Exception {
-		//pages.OperationTM().address(MatrixRefNo);
 		//pages.OperationTM().Education(MatrixRefNo);
+		driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/EmploymentTMHomepage.aspx");
 		
-		pages.OperationTM().Employment(MatrixRefNo);
-		//pages.OperationTM().temp(MatrixRefNo);
+		pages.OperationTM().temp();
+		pages.OperationTM().Address(MatrixRefNo);
 	}
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
