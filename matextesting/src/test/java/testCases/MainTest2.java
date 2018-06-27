@@ -189,10 +189,11 @@ public class MainTest2 {
 	@Test(priority = 7, enabled = true)
 	public void Operationtm() throws Exception {
 		//pages.OperationTM().Education(MatrixRefNo);
-		driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/EmploymentTMHomepage.aspx");
+		//driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/EmploymentTMHomepage.aspx");
 		
-		pages.OperationTM().temp();
-		pages.OperationTM().Address(MatrixRefNo);
+		//pages.OperationTM().temp();
+		//pages.OperationTM().Address(MatrixRefNo);
+		pages.OperationTM().temp("DEMOTAF279");
 	}
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {

@@ -195,11 +195,14 @@ logger.info(MatrixRefNo);
 
 	}
 
-	@Test(priority = 7, enabled = false, dependsOnMethods="OperationtmAssign")
+	@Test(priority = 7, enabled = true, dependsOnMethods="OperationtmAssign")
 	public void Operationtm() throws Exception {
 		pages.OperationTM().Education(MatrixRefNo);
 		pages.OperationTM().Employment(MatrixRefNo);
 		pages.OperationTM().Address(MatrixRefNo);
+		pages.OperationTM().Reference(MatrixRefNo);
+		pages.OperationTM().Criminal(MatrixRefNo);
+		
 	}
 
 	@AfterMethod
@@ -218,15 +221,15 @@ logger.info(MatrixRefNo);
 	@AfterTest
 	public void teardown() {
 		// pages.loginpage().Logout();
-		// driver.close();
+		 driver.close();
 	}
 
 	@AfterSuite
 	public void afterSuite() {
 		extent.flush();
 		// driver.quit();
-		// SendAttachmentInEmail email = new SendAttachmentInEmail();
-		// email.sendhtmlemail();
+		 SendAttachmentInEmail email = new SendAttachmentInEmail();
+		 email.sendhtmlemail();
 
 	}
 }

@@ -42,41 +42,13 @@ import testCases.*;
 
 public class temp {
 
+public static void main(String[] args) {
+	System.out.println(getcurrentdate());
+}
+public static String getcurrentdate() {
+	SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+	Date currentMonth = new Date();
+	return df.format(currentMonth).toString();
 
-	WebDriver driver;
-	 ATUTestRecorder recorder;
-
-	 @BeforeTest
-	 public void setup() throws Exception {
-	  DateFormat dateFormat = new SimpleDateFormat("yy-MM-dd HH-mm-ss");
-	  Date date = new Date();
-	  //Created object of ATUTestRecorder
-	  //Provide path to store videos and file name format.
-	  recorder = new ATUTestRecorder("D:\\ScriptVideos\\","TestVideo-"+dateFormat.format(date),true);
-	  //To start video recording.
-	  recorder.start();  
-	  driver = new ChromeDriver();
-	  driver.manage().window().maximize();
-	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	  driver.get("http://google.com/");
-	 }
-
-	 @Test
-	 public void getScrollStatus() throws Exception {  
-	  driver.manage().window().setSize(new Dimension(400,768));
-	  Thread.sleep(2000);  
-	  
-	  driver.manage().window().setSize(new Dimension(400,400));
-	  Thread.sleep(2000);
-	  
-	  driver.manage().window().setSize(new Dimension(1024,400));      
-	 } 
-	 
-	 @AfterTest
-	 public void Close() throws Exception {
-	  driver.quit();
-	  //To stop video recording.
-	  recorder.stop();;
-	 }
-
+}
 }

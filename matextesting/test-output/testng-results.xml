@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="6" passed="6">
+<testng-results skipped="0" failed="0" total="7" passed="7">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="355959" started-at="2018-06-27T05:08:34Z" finished-at="2018-06-27T05:14:30Z">
+  <suite name="Default suite" duration-ms="508186" started-at="2018-06-27T13:45:49Z" finished-at="2018-06-27T13:54:17Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="355959" started-at="2018-06-27T05:08:34Z" finished-at="2018-06-27T05:14:30Z">
+    <test name="Default test" duration-ms="508186" started-at="2018-06-27T13:45:49Z" finished-at="2018-06-27T13:54:17Z">
       <class name="testCases.MainTest">
-        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:testCases.MainTest@70fda8]" name="beforeSuit" is-config="true" duration-ms="150" started-at="2018-06-27T10:38:34Z" finished-at="2018-06-27T10:38:34Z">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:testCases.MainTest@70fda8]" name="beforeSuit" is-config="true" duration-ms="141" started-at="2018-06-27T19:15:49Z" finished-at="2018-06-27T19:15:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuit -->
-        <test-method status="PASS" signature="start()[pri:0, instance:testCases.MainTest@70fda8]" name="start" is-config="true" duration-ms="8217" started-at="2018-06-27T10:38:34Z" finished-at="2018-06-27T10:38:42Z">
+        <test-method status="PASS" signature="start()[pri:0, instance:testCases.MainTest@70fda8]" name="start" is-config="true" duration-ms="7427" started-at="2018-06-27T19:15:49Z" finished-at="2018-06-27T19:15:56Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- start -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="setup" is-config="true" duration-ms="25" started-at="2018-06-27T10:38:42Z" finished-at="2018-06-27T10:38:42Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="setup" is-config="true" duration-ms="11" started-at="2018-06-27T19:15:56Z" finished-at="2018-06-27T19:15:56Z">
           <params>
             <param index="0">
               <value>
@@ -26,11 +26,22 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="Login()[pri:0, instance:testCases.MainTest@70fda8]" name="Login" duration-ms="1707" started-at="2018-06-27T10:38:42Z" finished-at="2018-06-27T10:38:44Z">
+        <test-method status="PASS" signature="Login()[pri:0, instance:testCases.MainTest@70fda8]" name="Login" duration-ms="1015" started-at="2018-06-27T19:15:56Z" finished-at="2018-06-27T19:15:57Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-27T10:38:44Z" finished-at="2018-06-27T10:38:44Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="setup" is-config="true" duration-ms="0" started-at="2018-06-27T19:15:57Z" finished-at="2018-06-27T19:15:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void testCases.MainTest.caseregistration() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-27T19:15:57Z" finished-at="2018-06-27T19:15:57Z">
           <params>
             <param index="0">
               <value>
@@ -46,22 +57,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="setup" is-config="true" duration-ms="1" started-at="2018-06-27T10:38:44Z" finished-at="2018-06-27T10:38:44Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void testCases.MainTest.caseregistration() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="caseregistration()[pri:0, instance:testCases.MainTest@70fda8]" name="caseregistration" duration-ms="3979" started-at="2018-06-27T10:38:44Z" depends-on-methods="testCases.MainTest.Login" finished-at="2018-06-27T10:38:48Z">
+        <test-method status="PASS" signature="caseregistration()[pri:0, instance:testCases.MainTest@70fda8]" name="caseregistration" duration-ms="3703" started-at="2018-06-27T19:15:57Z" depends-on-methods="testCases.MainTest.Login" finished-at="2018-06-27T19:16:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- caseregistration -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-06-27T10:38:48Z" finished-at="2018-06-27T10:38:48Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-27T19:16:01Z" finished-at="2018-06-27T19:16:01Z">
           <params>
             <param index="0">
               <value>
@@ -77,11 +77,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="aasignToDE()[pri:0, instance:testCases.MainTest@70fda8]" name="aasignToDE" duration-ms="4528" started-at="2018-06-27T10:38:48Z" depends-on-methods="testCases.MainTest.caseregistration" finished-at="2018-06-27T10:38:52Z">
+        <test-method status="PASS" signature="aasignToDE()[pri:0, instance:testCases.MainTest@70fda8]" name="aasignToDE" duration-ms="3699" started-at="2018-06-27T19:16:01Z" depends-on-methods="testCases.MainTest.caseregistration" finished-at="2018-06-27T19:16:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- aasignToDE -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="setup" is-config="true" duration-ms="0" started-at="2018-06-27T10:38:48Z" finished-at="2018-06-27T10:38:48Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="setup" is-config="true" duration-ms="0" started-at="2018-06-27T19:16:01Z" finished-at="2018-06-27T19:16:01Z">
           <params>
             <param index="0">
               <value>
@@ -92,18 +92,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="setup" is-config="true" duration-ms="1" started-at="2018-06-27T10:38:52Z" finished-at="2018-06-27T10:38:52Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void testCases.MainTest.dataentry() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
+        <test-method status="PASS" signature="dataentry()[pri:0, instance:testCases.MainTest@70fda8]" name="dataentry" duration-ms="68110" started-at="2018-06-27T19:16:05Z" depends-on-methods="testCases.MainTest.aasignToDE" finished-at="2018-06-27T19:17:13Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-27T10:38:52Z" finished-at="2018-06-27T10:38:52Z">
+        </test-method> <!-- dataentry -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-27T19:16:05Z" finished-at="2018-06-27T19:16:05Z">
           <params>
             <param index="0">
               <value>
@@ -119,11 +112,18 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="dataentry()[pri:0, instance:testCases.MainTest@70fda8]" name="dataentry" duration-ms="71755" started-at="2018-06-27T10:38:52Z" depends-on-methods="testCases.MainTest.aasignToDE" finished-at="2018-06-27T10:40:04Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="setup" is-config="true" duration-ms="0" started-at="2018-06-27T19:16:05Z" finished-at="2018-06-27T19:16:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void testCases.MainTest.dataentry() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- dataentry -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-27T10:40:04Z" finished-at="2018-06-27T10:40:04Z">
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-27T19:17:13Z" finished-at="2018-06-27T19:17:13Z">
           <params>
             <param index="0">
               <value>
@@ -139,7 +139,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="setup" is-config="true" duration-ms="0" started-at="2018-06-27T10:40:04Z" finished-at="2018-06-27T10:40:04Z">
+        <test-method status="PASS" signature="assigncase()[pri:0, instance:testCases.MainTest@70fda8]" name="assigncase" duration-ms="75716" started-at="2018-06-27T19:17:13Z" depends-on-methods="testCases.MainTest.dataentry" finished-at="2018-06-27T19:18:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- assigncase -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="setup" is-config="true" duration-ms="0" started-at="2018-06-27T19:17:13Z" finished-at="2018-06-27T19:17:13Z">
           <params>
             <param index="0">
               <value>
@@ -150,11 +154,18 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="assigncase()[pri:0, instance:testCases.MainTest@70fda8]" name="assigncase" duration-ms="66223" started-at="2018-06-27T10:40:04Z" depends-on-methods="testCases.MainTest.dataentry" finished-at="2018-06-27T10:41:10Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="setup" is-config="true" duration-ms="0" started-at="2018-06-27T19:18:29Z" finished-at="2018-06-27T19:18:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void testCases.MainTest.OperationtmAssign() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- assigncase -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-27T10:41:10Z" finished-at="2018-06-27T10:41:10Z">
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-27T19:18:29Z" finished-at="2018-06-27T19:18:29Z">
           <params>
             <param index="0">
               <value>
@@ -170,22 +181,26 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="OperationtmAssign()[pri:0, instance:testCases.MainTest@70fda8]" name="OperationtmAssign" duration-ms="199467" started-at="2018-06-27T10:41:10Z" depends-on-methods="testCases.MainTest.assigncase" finished-at="2018-06-27T10:44:30Z">
+        <test-method status="PASS" signature="OperationtmAssign()[pri:0, instance:testCases.MainTest@70fda8]" name="OperationtmAssign" duration-ms="184296" started-at="2018-06-27T19:18:29Z" depends-on-methods="testCases.MainTest.assigncase" finished-at="2018-06-27T19:21:33Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- OperationtmAssign -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="setup" is-config="true" duration-ms="0" started-at="2018-06-27T10:41:10Z" finished-at="2018-06-27T10:41:10Z">
+        <test-method status="PASS" signature="Operationtm()[pri:0, instance:testCases.MainTest@70fda8]" name="Operationtm" duration-ms="164196" started-at="2018-06-27T19:21:33Z" depends-on-methods="testCases.MainTest.OperationtmAssign" finished-at="2018-06-27T19:24:17Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Operationtm -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="setup" is-config="true" duration-ms="0" started-at="2018-06-27T19:21:33Z" finished-at="2018-06-27T19:21:33Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testCases.MainTest.OperationtmAssign() throws java.lang.Exception]]>
+                <![CDATA[public void testCases.MainTest.Operationtm() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-06-27T10:44:30Z" finished-at="2018-06-27T10:44:30Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-27T19:21:33Z" finished-at="2018-06-27T19:21:33Z">
           <params>
             <param index="0">
               <value>
@@ -201,11 +216,27 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:testCases.MainTest@70fda8]" name="teardown" is-config="true" duration-ms="0" started-at="2018-06-27T10:44:30Z" finished-at="2018-06-27T10:44:30Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:testCases.MainTest@70fda8]" name="teardown" is-config="true" duration-ms="0" started-at="2018-06-27T19:24:17Z" finished-at="2018-06-27T19:24:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:testCases.MainTest@70fda8]" name="afterSuite" is-config="true" duration-ms="688" started-at="2018-06-27T10:44:30Z" finished-at="2018-06-27T10:44:31Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest@70fda8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-06-27T19:24:17Z" finished-at="2018-06-27T19:24:17Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Operationtm status=SUCCESS method=MainTest.Operationtm()[pri:0, instance:testCases.MainTest@70fda8] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void testCases.MainTest.Operationtm() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:testCases.MainTest@70fda8]" name="afterSuite" is-config="true" duration-ms="390" started-at="2018-06-27T19:24:17Z" finished-at="2018-06-27T19:24:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

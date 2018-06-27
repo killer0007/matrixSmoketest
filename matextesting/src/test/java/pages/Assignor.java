@@ -8,10 +8,12 @@ import java.util.List;
 import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 import testCases.Pages;
 
@@ -743,7 +745,12 @@ public void assign_IT(String refno) throws Exception {
 	int b=0;
 	String ss="";
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_IT")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);

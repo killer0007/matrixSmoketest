@@ -60,11 +60,13 @@ public class OperationTL {
 			}
 
 		} catch (Exception e) {
-			driver.navigate().to(getlocator("home_page"));
+			
 			//logger.fail(e.toString());
 			logger.log(Status.FAIL, e.toString());
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			
+			pages.Utill().GoTo(getlocator("home_page"));
 		}
 		finally {
 			driver.navigate().to(getlocator("home_page"));
@@ -107,10 +109,11 @@ public class OperationTL {
 				logger.pass("Employment " + ss);
 			}
 		} catch (Exception e) {
-			driver.navigate().to(getlocator("home_page"));
+			
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getlocator("home_page"));
 		}
 
 	}
@@ -159,10 +162,11 @@ public class OperationTL {
 				logger.pass("Reference " + ss);
 			}
 		} catch (Exception e) {
-			driver.navigate().to(getlocator("home_page"));
+			
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getlocator("home_page"));
 		}
 
 	}
@@ -204,10 +208,11 @@ public class OperationTL {
 				logger.pass("Criminal " + ss);
 			}
 		} catch (Exception e) {
-			driver.navigate().to(getlocator("home_page"));
+		
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getlocator("home_page"));
 		}
 
 	}
@@ -249,11 +254,12 @@ public class OperationTL {
 				logger.pass("DB " + ss);
 			}
 		} catch (Exception e) {
-			driver.navigate().to(getlocator("home_page"));
+		
 			System.out.println(e.toString());
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getlocator("home_page"));
 		}
 
 	}
@@ -295,11 +301,12 @@ public class OperationTL {
 				logger.pass("Drug " + ss);
 			}
 		} catch (Exception e) {
-			driver.navigate().to(getlocator("home_page"));
+			
 			System.out.println(e.toString());
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getlocator("home_page"));
 		}
 
 	}
@@ -342,10 +349,10 @@ public class OperationTL {
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getlocator("home_page"));
 		}
 
 	}
@@ -388,10 +395,11 @@ public class OperationTL {
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			driver.navigate().to(getlocator("home_page"));
+			
 			logger.fail(e.toString());
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getlocator("home_page"));
 		}
 
 	}
@@ -456,10 +464,11 @@ public class OperationTL {
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			driver.navigate().to(getlocator("home_page"));
+			
 			logger.fail(checkname + e.toString());
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(checkname + e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getlocator("home_page"));
 		}
 	}
 

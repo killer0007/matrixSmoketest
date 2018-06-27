@@ -2,8 +2,12 @@ package environment;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 
@@ -208,5 +212,15 @@ public List<WebElement> Get_webelement_list(String path){
 			pages.Utill().click_element("ok");
 			return result;
 		}
+	}
+	public void GoTo(String url) {
+		driver.navigate().to(url);
+		logger.log(Status.INFO, "navigating to "+url);
+	}
+	public String getcurrentdate() {
+		SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+		Date currentMonth = new Date();
+		return df.format(currentMonth).toString();
+
 	}
 }

@@ -27,7 +27,7 @@ public class SendAttachmentInEmail {
       String cc="gopinath.n@kadambatechnologies.com";
       // Sender's email ID needs to be mentioned
       String from = "test404mail@gmail.com";
-      String attachment="D:/gopi/git/matextesting/Reports/learn_automation2.html";
+      String attachment="D:/gopi/git/matextesting/Reports/matex.html";
       final String username = "test404mail@gmail.com";//change accordingly
       final String password = "guhanarun1";//change accordingly
 
