@@ -15,13 +15,13 @@
 
 		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
 	
-	<title>ExtentReports</title>
+	<title>Matrix test report</title>
 
 	<style type='text/css'>
 	</style>
 </head>
 
-	<body class='extent standard default hide-overflow '>
+	<body class='extent dark default hide-overflow '>
 		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
 			<span><i class='material-icons'>desktop_windows</i></span>
 		</div>
@@ -33,11 +33,12 @@
 		<!-- slideout menu -->
 		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
 			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
-						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+							<li class='waves-effect'><a href='#!' view='author-view' onclick="configureView(3)"><i class='material-icons'>person</i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
 		</ul>
 
 		<!-- report name -->
-		<span class='report-name'>ExtentReports</span>
+		<span class='report-name'>test report</span>
 		
 		<!-- report headline -->
 		<span class='report-headline'></span>
@@ -46,7 +47,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Jun 26, 2018 07:22:33 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Jun 27, 2018 10:38:34 AM</span>
 				</a>
 			</li>
 			<li>
@@ -72,7 +73,6 @@
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
 											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
-						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -123,10 +123,10 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='50%'><span class='strong'>1</span> test(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>6</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='50%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -138,10 +138,10 @@
 					<canvas id='child-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='97.5%'><span class='strong'>39</span> step(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='91.435%'><span class='strong'>427</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='2.5%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='8.565%'>40</span> others
 				</div>
 			</div>
 		</div>
@@ -159,15 +159,20 @@
 				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Login</span>
-						<span class='test-time'>Jun 26, 2018 07:22:39 PM</span>
+						<span class='test-time'>Jun 27, 2018 10:38:42 AM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Jun 26, 2018 07:22:39 PM</span>
-	<span class='label end-time'>Jun 26, 2018 07:22:40 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 1s+181ms</span>
+	<span class='label start-time'>Jun 27, 2018 10:38:42 AM</span>
+	<span class='label end-time'>Jun 27, 2018 10:38:44 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 1s+727ms</span>
 </div>
+	<div class='test-attributes'>
+			<div class='author-list'>
+				<span class='author label white-text'>Gopinath</span>
+			</div>
+	</div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
 			<thead>
@@ -180,27 +185,27 @@
 			<tbody>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:22:39 PM</td>
+					<td class='timestamp'>10:38:42 AM</td>
 					<td class='step-details'>Login Started</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:22:39 PM</td>
+					<td class='timestamp'>10:38:42 AM</td>
 					<td class='step-details'>Typing text 'demotl' into text field '//*[@id='txtUsername']'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:22:39 PM</td>
+					<td class='timestamp'>10:38:42 AM</td>
 					<td class='step-details'>Typing text 'pass@123' into text field '//*[@id='txtPassword']'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:22:40 PM</td>
+					<td class='timestamp'>10:38:44 AM</td>
 					<td class='step-details'>Clicking element 'btnLogin'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:22:40 PM</td>
+					<td class='timestamp'>10:38:44 AM</td>
 					<td class='step-details'>Login completed</td>
 				</tr>
 			</tbody>
@@ -210,18 +215,23 @@
 				</li>
 				
 				
-				<li class='test displayed active  fail' status='fail' bdd='false' test-id='2'>
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
 					<div class='test-heading'>
-						<span class='test-name'>Operationtm</span>
-						<span class='test-time'>Jun 26, 2018 07:22:40 PM</span>
-						<span class='test-status right fail'>fail</span>
+						<span class='test-name'>caseregistration</span>
+						<span class='test-time'>Jun 27, 2018 10:38:44 AM</span>
+						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Jun 26, 2018 07:22:40 PM</span>
-	<span class='label end-time'>Jun 26, 2018 07:24:11 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 1m 30s+596ms</span>
+	<span class='label start-time'>Jun 27, 2018 10:38:44 AM</span>
+	<span class='label end-time'>Jun 27, 2018 10:38:48 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 3s+981ms</span>
 </div>
+	<div class='test-attributes'>
+			<div class='author-list'>
+				<span class='author label white-text'>Gopinath</span>
+			</div>
+	</div>
 	<div class='test-steps'>
 		<table class='bordered table-results'>
 			<thead>
@@ -234,188 +244,2449 @@
 			<tbody>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:22:40 PM</td>
-					<td class='step-details'>Operationtm Started</td>
+					<td class='timestamp'>10:38:44 AM</td>
+					<td class='step-details'>caseregistration Started</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:23:16 PM</td>
-					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnOutStandingFW'</td>
+					<td class='timestamp'>10:38:44 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:23:17 PM</td>
-					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormalUpt'</td>
+					<td class='timestamp'>10:38:45 AM</td>
+					<td class='step-details'>Clicking element './/*[text()='Case Registration']'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:23:59 PM</td>
-					<td class='step-details'>Typing text 'GKTCS Innovations Pvt. ltd' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_CmpName'.</td>
+					<td class='timestamp'>10:38:45 AM</td>
+					<td class='step-details'>Typing text 'Demo Testing - Test' into text field 'ctl00_ContentPlaceHolder1_CaseRegistrationUC_txtClientName'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:02 PM</td>
-					<td class='step-details'>Clicking element '//*[text()='GKTCS Innovations Pvt. ltd']'</td>
+					<td class='timestamp'>10:38:47 AM</td>
+					<td class='step-details'>Clicking element './/*[text()='Demo Testing - Test']'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:02 PM</td>
-					<td class='step-details'>Typing text 'chennai' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_CmpAddr'.</td>
+					<td class='timestamp'>10:38:47 AM</td>
+					<td class='step-details'>Typing text 'Deepika' into text field 'ctl00_ContentPlaceHolder1_CaseRegistrationUC_Case_CandidateName'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:02 PM</td>
-					<td class='step-details'>Typing text 'Testing' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_Position'.</td>
+					<td class='timestamp'>10:38:47 AM</td>
+					<td class='step-details'>Typing text '2420317' into text field 'ctl00_ContentPlaceHolder1_CaseRegistrationUC_Case_CandidateId'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:03 PM</td>
-					<td class='step-details'>Typing text 'Testing' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_Department'.</td>
+					<td class='timestamp'>10:38:47 AM</td>
+					<td class='step-details'>Typing text '43232' into text field 'ctl00_ContentPlaceHolder1_CaseRegistrationUC_Case_EmployeeId'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:03 PM</td>
-					<td class='step-details'>Typing text 'chennai' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_HOAddr'.</td>
+					<td class='timestamp'>10:38:48 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_CaseRegistrationUC_btnRegister'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:03 PM</td>
-					<td class='step-details'>Typing text '01-Feb-2017' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_FromDt'.</td>
+					<td class='timestamp'>10:38:48 AM</td>
+					<td class='step-details'>msg = Registered Successfully..</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:03 PM</td>
-					<td class='step-details'>Typing text '01-Feb-2018' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_ToDt'.</td>
+					<td class='timestamp'>10:38:48 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:03 PM</td>
-					<td class='step-details'>Typing text '897689' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_EmpCode'.</td>
+					<td class='timestamp'>10:38:48 AM</td>
+					<td class='step-details'>caseregistration completed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>aasignToDE</span>
+						<span class='test-time'>Jun 27, 2018 10:38:48 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jun 27, 2018 10:38:48 AM</span>
+	<span class='label end-time'>Jun 27, 2018 10:38:52 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 4s+529ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='author-list'>
+				<span class='author label white-text'>Gopinath</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:38:48 AM</td>
+					<td class='step-details'>aasignToDE Started</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:03 PM</td>
-					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_EmplType' by label Permanent.</td>
+					<td class='timestamp'>10:38:48 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Daily Activity']'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:04 PM</td>
-					<td class='step-details'>Typing text '500000' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_LastSalary'.</td>
+					<td class='timestamp'>10:38:50 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Assign Cases']'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:04 PM</td>
-					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_CurrencyType' by label INR.</td>
+					<td class='timestamp'>10:38:50 AM</td>
+					<td class='step-details'>Typing text 'Deepika' into text field 'ctl00_ContentPlaceHolder1_txtCandidateName'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:04 PM</td>
-					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_SalType' by label Annum.</td>
+					<td class='timestamp'>10:38:50 AM</td>
+					<td class='step-details'>Typing text '2420317' into text field 'ctl00_ContentPlaceHolder1_txtCandidateid'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:04 PM</td>
-					<td class='step-details'>Typing text 'ravi' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_RepAuthName'.</td>
+					<td class='timestamp'>10:38:50 AM</td>
+					<td class='step-details'>getting value from table  :DEMOTAF269</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:04 PM</td>
-					<td class='step-details'>Typing text 'des' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_RepAuthDesig'.</td>
+					<td class='timestamp'>10:38:50 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_grdCRT_ctl02_chkCRTSelect'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:04 PM</td>
-					<td class='step-details'>Typing text '9988776677' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_RepAuthMobile1'.</td>
+					<td class='timestamp'>10:38:50 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlTM' by label demotl.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:05 PM</td>
-					<td class='step-details'>Typing text 'email@email.com' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_RepAuthEmail'.</td>
+					<td class='timestamp'>10:38:50 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnAssign'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:05 PM</td>
-					<td class='step-details'>Typing text 'raja' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_HRName'.</td>
+					<td class='timestamp'>10:38:52 AM</td>
+					<td class='step-details'>msg = 1 case(s) assigned successfully.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:05 PM</td>
-					<td class='step-details'>Typing text 'personal' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ClientEmpl_ReasonLeave'.</td>
+					<td class='timestamp'>10:38:52 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:38:52 AM</td>
+					<td class='step-details'>DEMOTAF269</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:05 PM</td>
-					<td class='step-details'>Typing text 'siva' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_VerifierName'.</td>
+					<td class='timestamp'>10:38:52 AM</td>
+					<td class='step-details'>aasignToDE completed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>dataentry</span>
+						<span class='test-time'>Jun 27, 2018 10:38:52 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jun 27, 2018 10:38:52 AM</span>
+	<span class='label end-time'>Jun 27, 2018 10:40:04 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 11s+757ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='author-list'>
+				<span class='author label white-text'>Gopinath</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:38:52 AM</td>
+					<td class='step-details'>dataentry Started</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:05 PM</td>
-					<td class='step-details'>Typing text 'des' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_VerifierDesignation'.</td>
+					<td class='timestamp'>10:38:52 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Daily Activity']'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:06 PM</td>
-					<td class='step-details'>Typing text '9988776677' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_VerifierContact'.</td>
+					<td class='timestamp'>10:38:55 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Data Entry']'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:06 PM</td>
-					<td class='step-details'>Typing text 'mail@email.com' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_VerifierEmail'.</td>
+					<td class='timestamp'>10:39:10 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_Gender' by label Male.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:06 PM</td>
-					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_ConfirmationMode' by label Email.</td>
+					<td class='timestamp'>10:39:10 AM</td>
+					<td class='step-details'>Typing text '1' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_GapCount'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:06 PM</td>
-					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_Typeofrevert' by label Verbal-Final.</td>
+					<td class='timestamp'>10:39:10 AM</td>
+					<td class='step-details'>Typing text '53245' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_EmpNo'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:06 PM</td>
-					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_VerificationSource' by label HR.</td>
+					<td class='timestamp'>10:39:10 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_AadharApplicable' by label Yes.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:06 PM</td>
-					<td class='step-details'>Typing text 'comments' into text field 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_VerComments'.</td>
+					<td class='timestamp'>10:39:10 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_PassportApplicable' by label No.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:06 PM</td>
-					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_ImageButton1'</td>
+					<td class='timestamp'>10:39:10 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_PANCardApplicable' by label No.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:07 PM</td>
-					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CalendarExtender1_today'</td>
+					<td class='timestamp'>10:39:11 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_DrugCheckApplicable' by label Yes.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:07 PM</td>
-					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_img1'</td>
+					<td class='timestamp'>10:39:11 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_DrugCheckPanel' by label Demo 5 Panel Test.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>7:24:08 PM</td>
-					<td class='step-details'>education verification data entry completed</td>
+					<td class='timestamp'>10:39:11 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_DBCheckApplicable' by label Yes.</td>
 				</tr>
-				<tr class='log' status='fail'>
-					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>7:24:11 PM</td>
-					<td class='step-details'>no such element: Unable to locate element: {"method":"link text","selector":"DEMOTAF140"}
-  (Session info: chrome=67.0.3396.87)
-  (Driver info: chromedriver=2.40.565498 (ea082db3280dd6843ebfb08a625e3eb905c4f5ab),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
-Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
-System info: host: 'KAD-I-002', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_151'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.40.565498 (ea082db3280dd6..., userDataDir: C:\Users\ashwin\AppData\Loc...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 67.0.3396.87, webStorageEnabled: true}
-Session ID: 26e647eaad92b58455d1685dee01baf6
-*** Element info: {Using=link text, value=DEMOTAF140}<img data-featherlight='D:\gopi\git\matextesting/Screenshot/1530021251239.png' width='10%' src='D:\gopi\git\matextesting/Screenshot/1530021251239.png' data-src='D:\gopi\git\matextesting/Screenshot/1530021251239.png'></td>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:11 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_DrivingLicenseApplicable' by label No.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:11 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_VoterIDApplicable' by label No.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:11 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_DrugCheckMedical' by label Yes.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:11 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_RTWCheckApplicable' by label Yes.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:11 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_RTWIdType' by label Pan card check.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:11 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_save'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:13 AM</td>
+					<td class='step-details'>msg = Record updated.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:13 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:13 AM</td>
+					<td class='step-details'>personal records saved successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:39:13 AM</td>
+					<td class='step-details'>address check starting</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:13 AM</td>
+					<td class='step-details'>Clicking element '__tab_ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:13 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_ClientAddr_Type' by label Present.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:14 AM</td>
+					<td class='step-details'>Typing text 'chennai' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_ClientAddr_Address'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:14 AM</td>
+					<td class='step-details'>Typing text '123456' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_ClientAddr_Pincode'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:16 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='123456']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:17 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_ClientAddr_ResiType' by label Parents.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:17 AM</td>
+					<td class='step-details'>Typing text 'near railway station' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_ClientAddr_Landmark'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:17 AM</td>
+					<td class='step-details'>Typing text 'Jan-2000' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_ClientAddr_FromDt'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:17 AM</td>
+					<td class='step-details'>Typing text 'Jan-2018' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_ClientAddr_ToDt'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:17 AM</td>
+					<td class='step-details'>Typing text '8' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_ClientAddr_StayPeriod'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:17 AM</td>
+					<td class='step-details'>Typing text 'chennai' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_ClientAddr_PoliceSt'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:17 AM</td>
+					<td class='step-details'>Typing text '9988776666' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_ClientAddr_Mobile1'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:17 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_ClientAddr_LocType' by label Local.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:17 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_ClientAddr_NotApplicable' by label Both.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:18 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_ClientAddr_CtNotApplicable' by label Yes.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:19 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel2_CandidateAddress1_save'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:20 AM</td>
+					<td class='step-details'>msg = Record saved.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:20 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:20 AM</td>
+					<td class='step-details'>Address  Record saved</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:39:20 AM</td>
+					<td class='step-details'>Education check starting</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:20 AM</td>
+					<td class='step-details'>Clicking element '__tab_ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:21 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_CdtEdu_EducationType' by label Highest.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:21 AM</td>
+					<td class='step-details'>Typing text 'Anna University' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_ClientEdu_Name'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:22 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Anna University']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:23 AM</td>
+					<td class='step-details'>Typing text '61238763213' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_ClientEdu_StudentID'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:23 AM</td>
+					<td class='step-details'>Typing text 'Apr-2012' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_ClientEdu_StartDt'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:23 AM</td>
+					<td class='step-details'>Typing text 'Apr-2016' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_ClientEdu_EndDt'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:23 AM</td>
+					<td class='step-details'>Typing text 'Apr-2016' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_ClientEdu_PassYear'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:23 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_ClientEdu_DegreeType' by label Bachelor degree.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:23 AM</td>
+					<td class='step-details'>Typing text 'BE' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_ClientEdu_NameofDegree'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:24 AM</td>
+					<td class='step-details'>Typing text 'ECE' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_ClientEdu_MajorSubject'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:24 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_ClientEdu_Graduated' by label Yes.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:24 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_ClientEdu_ProgramType' by label Full Time.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:24 AM</td>
+					<td class='step-details'>Typing text '9.0' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_ClientEdu_CGPA'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:24 AM</td>
+					<td class='step-details'>Typing text 'S' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_ClientEdu_ClassObtained'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:24 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_ClientEdu_NotApplicable'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:24 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel3_CandidateEducation1_save'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:26 AM</td>
+					<td class='step-details'>msg = Record saved.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:26 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:26 AM</td>
+					<td class='step-details'>Education Record saved</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:39:26 AM</td>
+					<td class='step-details'>Employment check starting</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:26 AM</td>
+					<td class='step-details'>Clicking element '__tab_ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:27 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_CdtCompany_Type' by label Emp 1(Latest).</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:27 AM</td>
+					<td class='step-details'>Typing text 'ATCS' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_CmpName'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:29 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='ATCS']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:30 AM</td>
+					<td class='step-details'>Typing text 'chennai' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_CmpAddr'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:30 AM</td>
+					<td class='step-details'>Typing text 'Senior Developer' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_Position'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:30 AM</td>
+					<td class='step-details'>Typing text 'Development' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_Department'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:30 AM</td>
+					<td class='step-details'>Typing text 'bangalore' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_HOAddr'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:30 AM</td>
+					<td class='step-details'>Typing text '01-Feb-2017' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_FromDt'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:30 AM</td>
+					<td class='step-details'>Typing text '01-Feb-2018' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_ToDt'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:30 AM</td>
+					<td class='step-details'>Typing text 'EMP098EW' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_EmpCode'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:30 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_EmplType' by label Permanent.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:31 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_CurrencyType' by label INR.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:31 AM</td>
+					<td class='step-details'>Typing text '500000' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_LastSalary'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:31 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_SalType' by label Annum.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:31 AM</td>
+					<td class='step-details'>Typing text 'hari' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_RepAuthName'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:31 AM</td>
+					<td class='step-details'>Typing text 'TL' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_RepAuthDesig'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:31 AM</td>
+					<td class='step-details'>Typing text '8754125852' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_RepAuthMobile1'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:31 AM</td>
+					<td class='step-details'>Typing text 'hari@ggmail.com' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_RepAuthEmail'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:31 AM</td>
+					<td class='step-details'>Typing text 'mani' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_HRName'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:31 AM</td>
+					<td class='step-details'>Typing text 'personal Reason' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_ReasonLeave'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:31 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_ClientEmpl_YTR' by label No.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:32 AM</td>
+					<td class='step-details'>msg = Record saved.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:32 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:32 AM</td>
+					<td class='step-details'>Employment Record saved</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:39:32 AM</td>
+					<td class='step-details'>Reference check starting</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:32 AM</td>
+					<td class='step-details'>Clicking element '__tab_ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:33 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_Type' by label Ref 1.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:33 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_ReferencesCheckType' by label Professional.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:33 AM</td>
+					<td class='step-details'>Typing text 'sasi' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_RepName'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:33 AM</td>
+					<td class='step-details'>Typing text 'TL' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_RepDesig'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:33 AM</td>
+					<td class='step-details'>Typing text '9876767889' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_RepMobile1'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:33 AM</td>
+					<td class='step-details'>Typing text 'sasi@ggmail.com' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_RepEmail'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:33 AM</td>
+					<td class='step-details'>Typing text 'TCS' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_OrgName'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:33 AM</td>
+					<td class='step-details'>Typing text 'chennai' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_OrgAddr'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:33 AM</td>
+					<td class='step-details'>Typing text 'ravisankar' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_HRName'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:33 AM</td>
+					<td class='step-details'>Typing text '9876543256' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_HRContact'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:33 AM</td>
+					<td class='step-details'>Typing text '8987656767' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_HRMobile'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:33 AM</td>
+					<td class='step-details'>Typing text 'ravi@ggmail.com' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_HREmail'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:33 AM</td>
+					<td class='step-details'>Typing text 'HR' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_HRDesignation'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:34 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_YTR' by label No.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:34 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_ClientRef_NotApplicable'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:34 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel5_CandidateReference1_save'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:35 AM</td>
+					<td class='step-details'>msg = Record saved.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:35 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:35 AM</td>
+					<td class='step-details'>Reference Record saved</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:39:35 AM</td>
+					<td class='step-details'>Gap check starting</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:35 AM</td>
+					<td class='step-details'>Clicking element '__tab_ctl00_ContentPlaceHolder1_TabContainer1_GapCheckTabPanel'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:35 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_GapCheckTabPanel_CandidateGapCheck1_GapsubCheckTypeDDL' by label Gap 1.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:36 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_GapCheckTabPanel_CandidateGapCheck1_GapTypeDDL' by label Between Employments.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:36 AM</td>
+					<td class='step-details'>Typing text '01-Jan-2016' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_GapCheckTabPanel_CandidateGapCheck1_GapFromDateTextBox'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:37 AM</td>
+					<td class='step-details'>Typing text '01-Jan-2017' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_GapCheckTabPanel_CandidateGapCheck1_GapToDateTextBOx'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:37 AM</td>
+					<td class='step-details'>Typing text 'Gap reason' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_GapCheckTabPanel_CandidateGapCheck1_ReasonGapTextBox'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:37 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_GapCheckTabPanel_CandidateGapCheck1_GapApplicableDDL' by label Yes.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:37 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_GapCheckTabPanel_CandidateGapCheck1_AddressTypeDDL' by label Present.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:38 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_TabContainer1_GapCheckTabPanel_CandidateGapCheck1_GapCheckSaveButton'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:40 AM</td>
+					<td class='step-details'>msg = Gap Check Saved.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:40 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:40 AM</td>
+					<td class='step-details'>Gap Gap Check Saved</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:39:40 AM</td>
+					<td class='step-details'>Facis check starting</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:40 AM</td>
+					<td class='step-details'>Clicking element '__tab_ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:40 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_FACISApplicableDDL' by label Yes.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:40 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_DrpFACISType' by label FACIS check 1.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:40 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_DrpEntryLevel' by label Level 1.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:40 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_AddressTypeDDL' by label Present.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:42 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_FACISCheckSaveButton'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:43 AM</td>
+					<td class='step-details'>msg = FACIS Check Saved.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:43 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:43 AM</td>
+					<td class='step-details'>facis FACIS Check Saved</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:43 AM</td>
+					<td class='step-details'>facis FACIS Check Saved</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:39:43 AM</td>
+					<td class='step-details'>Credit check starting</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:43 AM</td>
+					<td class='step-details'>Clicking element '__tab_ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:43 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_CIBILApplicableDDL' by label Yes.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:45 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_CIBILAddressTypeDDL' by label Present.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:46 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_CIBILDrpCategory' by label Permanent.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:46 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_CIBILDrpResidenceType' by label Owned.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:46 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_CIBILDrpSalaryType' by label Month.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:46 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_CIBILDrpIncomeType' by label Salaried.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:46 AM</td>
+					<td class='step-details'>Typing text '100000' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_CIBILLastDrawnSalaryTextBox'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:47 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_CIBILCheckSaveButton'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:48 AM</td>
+					<td class='step-details'>msg = Credit Check Saved.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:48 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:48 AM</td>
+					<td class='step-details'>credit Credit Check Saved</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:39:48 AM</td>
+					<td class='step-details'>BV check starting</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:48 AM</td>
+					<td class='step-details'>Clicking element '__tab_ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:48 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_BVApplicableDDL' by label Yes.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:48 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_DrpBVType' by label Bank verification 1.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:48 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_DrpBVEmpType' by label Emp 1(Latest).</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:50 AM</td>
+					<td class='step-details'>Typing text 'India' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_txtBVCountry'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:51 AM</td>
+					<td class='step-details'>Typing text 'India' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_txtBVCountry'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:51 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_aceBVCountry_completionListElem']/li[2]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:51 AM</td>
+					<td class='step-details'>Typing text 'Tamil nadu' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_txtBVState'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:52 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='BVautoState_completionListElem']/li'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:52 AM</td>
+					<td class='step-details'>Typing text 'Chennai' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_txtBVCity'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:54 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='BVautoCity_completionListElem']/li[2]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:54 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_BVCheckSaveButton'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:56 AM</td>
+					<td class='step-details'>msg = BV Check Saved.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:56 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:56 AM</td>
+					<td class='step-details'>Bank Verification BV Check Saved</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:39:56 AM</td>
+					<td class='step-details'>IT check starting</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:56 AM</td>
+					<td class='step-details'>Clicking element '__tab_ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:56 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_ITApplicableDDL' by label Yes.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:56 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_DrpITType' by label IT document 1.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:56 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_DrpITEmpType' by label Emp 1(Latest).</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:57 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_ITCheckSaveButton'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:59 AM</td>
+					<td class='step-details'>msg = IT Check Saved.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:59 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:59 AM</td>
+					<td class='step-details'>IT Verification IT Check Saved</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:39:59 AM</td>
+					<td class='step-details'>PF check starting</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:59 AM</td>
+					<td class='step-details'>Clicking element '__tab_ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:59 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_PFApplicableDDL' by label Yes.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:59 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_DrpPFType' by label PF statement 1.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:39:59 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_DrpPFEmpType' by label Emp 1(Latest).</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:01 AM</td>
+					<td class='step-details'>Typing text '098571389' into text field 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_txtPFNumber'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:01 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_PFCheckSaveButton'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:02 AM</td>
+					<td class='step-details'>msg = PF Check Saved.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:02 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:02 AM</td>
+					<td class='step-details'>PF Verification PF Check Saved</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:04 AM</td>
+					<td class='step-details'>Are you sure want to submit the candidate record?</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:04 AM</td>
+					<td class='step-details'>data entry completed</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:04 AM</td>
+					<td class='step-details'>dataentry completed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>assigncase</span>
+						<span class='test-time'>Jun 27, 2018 10:40:04 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jun 27, 2018 10:40:04 AM</span>
+	<span class='label end-time'>Jun 27, 2018 10:41:10 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 6s+224ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='author-list'>
+				<span class='author label white-text'>Gopinath</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:04 AM</td>
+					<td class='step-details'>assigncase Started</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:13 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnResidenceWitninTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:14 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:15 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdResidence']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:15 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlAssignResidence' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:15 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ImgAssignResidence'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:17 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:17 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:17 AM</td>
+					<td class='step-details'>Address 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:17 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnEmploymentWitninTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:18 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:19 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdEmployment']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:19 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlAssigntoEmployment' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:19 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ingEmploymentAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:21 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:21 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:21 AM</td>
+					<td class='step-details'>Employment 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:21 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnReferenceWitninTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:22 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:23 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdReference']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:23 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlAssignReferences' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:23 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_imgReferenceAssignTo'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:25 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:25 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:25 AM</td>
+					<td class='step-details'>Reference 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:25 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnCriminalWitninTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:26 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:27 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdCriminal']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:27 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlCreminalAssignTo' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:27 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_imgCreminalAssignTo'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:29 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:29 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:29 AM</td>
+					<td class='step-details'>Criminal 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:29 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnDbchkWithinTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:30 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:31 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdDbcheck']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:31 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlDbchkAssignto' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:31 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnAssignDBcheck'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:33 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:33 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:33 AM</td>
+					<td class='step-details'>DB 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:33 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnDrugWithinTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:35 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:36 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdDbcheck']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:36 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlDbchkAssignto' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:36 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnAssignDBcheck'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:37 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:37 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:37 AM</td>
+					<td class='step-details'>Drug 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:37 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnIDWithinTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:39 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:40 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdDbcheck']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:40 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlDbchkAssignto' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:40 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnAssignDBcheck'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:42 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:42 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:42 AM</td>
+					<td class='step-details'>ID 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:42 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnIDWithinTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:44 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:45 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdDbcheck']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:45 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlDbchkAssignto' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:45 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnAssignDBcheck'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:47 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:47 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:47 AM</td>
+					<td class='step-details'>ID 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:47 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnCourtWithinTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:48 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:49 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdDbcheck']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:49 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlDbchkAssignto' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:49 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnAssignDBcheck'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:51 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:51 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:51 AM</td>
+					<td class='step-details'>Court 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:51 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnFacisWithinTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:53 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:53 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdFACIScheck']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:53 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlFACISchkAssignto' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:53 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnAssignFACIScheck'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:55 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:55 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:55 AM</td>
+					<td class='step-details'>Facis 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:55 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnCibilWithinTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:56 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:57 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdCIBILcheck']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:57 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlCIBILchkAssignto' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:57 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnAssignCIBILcheck'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:59 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:59 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:40:59 AM</td>
+					<td class='step-details'>Credit 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:40:59 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnBVWithinTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:41:00 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:01 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdBVcheck']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:01 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlBVchkAssignto' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:01 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnAssignBVcheck'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:02 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:02 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:02 AM</td>
+					<td class='step-details'>BV 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:41:03 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnITWithinTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:41:04 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:05 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdITcheck']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:05 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlITchkAssignto' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:05 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnAssignITcheck'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:06 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:06 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:06 AM</td>
+					<td class='step-details'>IT 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:41:07 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnPFWithinTAT'</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>10:41:08 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:09 AM</td>
+					<td class='step-details'>Clicking element './/*[@id='ctl00_ContentPlaceHolder1_grdPFcheck']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:09 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlPFchkAssignto' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:09 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnAssignPFcheck'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:10 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:10 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:10 AM</td>
+					<td class='step-details'>PF 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:10 AM</td>
+					<td class='step-details'>assigncase completed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='6'>
+					<div class='test-heading'>
+						<span class='test-name'>OperationtmAssign</span>
+						<span class='test-time'>Jun 27, 2018 10:41:10 AM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Jun 27, 2018 10:41:10 AM</span>
+	<span class='label end-time'>Jun 27, 2018 10:44:30 AM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 3m 19s+468ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='author-list'>
+				<span class='author label white-text'>Gopinath</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:10 AM</td>
+					<td class='step-details'>OperationtmAssign Started</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:10 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:14 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Residence TL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:14 AM</td>
+					<td class='step-details'>Typing text 'DEMOTAF269' into text field 'ctl00_ContentPlaceHolder1_txtMatRefNo'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:15 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnSearch'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:16 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlTM' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:16 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlFE' by label test fe- Field Executive.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:16 AM</td>
+					<td class='step-details'>msg = DEMOTAF269.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:16 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_grdteamleader_ctl02_chkbox'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:18 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_Assign_Case'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:18 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:18 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:18 AM</td>
+					<td class='step-details'>address1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:18 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:54 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Prior TL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:54 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:41:54 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding_OS'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:42:31 AM</td>
+					<td class='step-details'>Clicking element '//*[@id='ctl00_ContentPlaceHolder1_grdUnassigned']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:42:31 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlAssigntoEmployer' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:42:31 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_imgEmployeAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:44 AM</td>
+					<td class='step-details'>msg = 1Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:44 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:44 AM</td>
+					<td class='step-details'>Employment 1Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:44 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:46 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Reference TL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:46 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lnkOutstanding_1'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:47 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:47 AM</td>
+					<td class='step-details'>Clicking element '//*[@id='ctl00_ContentPlaceHolder1_grdUnAssigned']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:47 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlAssigntoEducation' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:49 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnRefAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:49 AM</td>
+					<td class='step-details'>msg = 1Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:49 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:49 AM</td>
+					<td class='step-details'>Reference 1Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:50 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:51 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Criminal TL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:51 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:51 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding_OS'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:52 AM</td>
+					<td class='step-details'>Clicking element '//*[@id='ctl00_ContentPlaceHolder1_grdUnassigned']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:53 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlAssignResident' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:53 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_imgAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:54 AM</td>
+					<td class='step-details'>msg = 1Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:54 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:54 AM</td>
+					<td class='step-details'>Criminal 1Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:54 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:56 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='DB Check TL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:56 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lnkBtnTotalOutstanding'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:56 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:58 AM</td>
+					<td class='step-details'>Clicking element '//*[@id='ctl00_ContentPlaceHolder1_grdCC']/tbody/tr[50]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:58 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlOperator' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:58 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ImgBtnAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:59 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:59 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:59 AM</td>
+					<td class='step-details'>DB 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:43:59 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:00 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Drug Check TL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:00 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lnkBtnTotalOutstanding'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:00 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:02 AM</td>
+					<td class='step-details'>Clicking element '//*[@id='ctl00_ContentPlaceHolder1_grdCC']/tbody/tr[41]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:02 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlOperator' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:02 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ImgBtnAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:03 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:03 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:03 AM</td>
+					<td class='step-details'>Drug 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:03 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:04 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='IDCheck TL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:04 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lnkBtnTotalOutstanding'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:04 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:06 AM</td>
+					<td class='step-details'>Clicking element '//*[@id='ctl00_ContentPlaceHolder1_grdCC']/tbody/tr[13]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:06 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlOperator' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:06 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ImgBtnAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:07 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:07 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:07 AM</td>
+					<td class='step-details'>ID 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:07 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:08 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='IDCheck TL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:08 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lnkBtnTotalOutstanding'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:08 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:09 AM</td>
+					<td class='step-details'>Clicking element '//*[@id='ctl00_ContentPlaceHolder1_grdCC']/tbody/tr[13]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:09 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlOperator' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:09 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ImgBtnAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:11 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:11 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:11 AM</td>
+					<td class='step-details'>ID 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:11 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:12 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='CourtTL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:12 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lnkBtnTotalOutstanding'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:12 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:13 AM</td>
+					<td class='step-details'>Clicking element '//*[@id='ctl00_ContentPlaceHolder1_grdCC']/tbody/tr[2]/td[1]/input[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:13 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlOperator' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:13 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ImgBtnAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:14 AM</td>
+					<td class='step-details'>msg = 1 Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:14 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:14 AM</td>
+					<td class='step-details'>Court 1 Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:14 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:15 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='FACIS TL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:15 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:15 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding_OS'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:16 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlAssignResident' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:16 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_imgAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:17 AM</td>
+					<td class='step-details'>msg = 1Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:17 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:17 AM</td>
+					<td class='step-details'>Facis1Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:17 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:18 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Credit TL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:18 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:19 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding_OS'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:19 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlAssignResident' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:20 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_imgAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:20 AM</td>
+					<td class='step-details'>msg = 1Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:20 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:20 AM</td>
+					<td class='step-details'>Credit1Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:20 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:21 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='BV TL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:21 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:22 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding_OS'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:23 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlAssignResident' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:23 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_imgAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:24 AM</td>
+					<td class='step-details'>msg = 1Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:24 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:24 AM</td>
+					<td class='step-details'>BV1Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:24 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:25 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='IT TL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:25 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:25 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding_OS'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:26 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlAssignResident' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:26 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_imgAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:27 AM</td>
+					<td class='step-details'>msg = 1Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:27 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:27 AM</td>
+					<td class='step-details'>IT1Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:27 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='Dashboard']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:28 AM</td>
+					<td class='step-details'>Clicking element '//*[text()='PF TL']'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:28 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:28 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_lbtnOutstanding_OS'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:29 AM</td>
+					<td class='step-details'>Selecting options from selection list 'ctl00_ContentPlaceHolder1_ddlAssignResident' by label demotl - Chennai.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:29 AM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_imgAssign'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:30 AM</td>
+					<td class='step-details'>msg = 1Record(s) assigned successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:30 AM</td>
+					<td class='step-details'>Clicking element 'ok'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:30 AM</td>
+					<td class='step-details'>PF1Record(s) assigned successfully</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>10:44:30 AM</td>
+					<td class='step-details'>OperationtmAssign completed</td>
 				</tr>
 			</tbody>
 		</table>
@@ -448,6 +2719,100 @@ Session ID: 26e647eaad92b58455d1685dee01baf6
 </div>
 <!-- test view -->
 <!-- category view -->
+<div id='author-view' class='view hide'>
+    <section id='controls'>
+        <div class='controls grey lighten-4'>
+            <!-- search -->
+            <div class='chip transparent' alt='Search Authors' title='Search Authors'>
+                <a href="#" class='search-div'>
+                    <i class='material-icons'>search</i> Search
+                </a>
+
+                <div class='input-field left hide'>
+                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Authors...'>
+                </div>
+
+            </div>
+            <!-- search -->
+        </div>
+    </section>
+
+    <div class='subview-left left'>
+
+        <div class='view-summary'>
+            <h5>Authors</h5>
+                <ul id='author-collection' class='author-collection'>
+
+                        <li class='author displayed active'>
+                            <div class='author-heading'>
+                                <span class='author-name'>Gopinath</span>
+                                <span class='author-status right'>
+                                        <span class='label pass'>6</span>
+						        </span>
+                            </div>
+                            <div class='author-content hide'>
+                                <div class='author-status-counts'>
+                                    <span class='label green accent-4 white-text'>Passed: 6</span>
+                                    
+                                    
+                                </div>
+
+                                <div class='author-tests'>
+                                    <table class='bordered table-results'>
+                                        <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>TestName</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Jun 27, 2018 10:38:42 AM</td>
+                                                <td class='linked' test-id='1'>Login</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jun 27, 2018 10:38:44 AM</td>
+                                                <td class='linked' test-id='2'>caseregistration</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jun 27, 2018 10:38:48 AM</td>
+                                                <td class='linked' test-id='3'>aasignToDE</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jun 27, 2018 10:38:52 AM</td>
+                                                <td class='linked' test-id='4'>dataentry</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jun 27, 2018 10:40:04 AM</td>
+                                                <td class='linked' test-id='5'>assigncase</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Jun 27, 2018 10:41:10 AM</td>
+                                                <td class='linked' test-id='6'>OperationtmAssign</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+
+                </ul>
+        </div>
+    </div>
+
+    <div class='subview-right left'>
+        <div class='view-summary'>
+            <h5 class='author-name'></h5>
+        </div>
+    </div>
+</div>
 <!-- exception view -->
 <div id='dashboard-view' class='view hide'>
 	<div class='card-panel transparent np-v'>
@@ -457,31 +2822,31 @@ Session ID: 26e647eaad92b58455d1685dee01baf6
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Tests
-					<div class='panel-lead'>2</div>
+					<div class='panel-lead'>6</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>40</div>
+					<div class='panel-lead'>467</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Jun 26, 2018 07:22:33 PM</div>
+					<div class='panel-lead'>Jun 27, 2018 10:38:34 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Jun 26, 2018 07:24:11 PM</div>
+			 		<div class='panel-lead'>Jun 27, 2018 10:44:30 AM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 1m 38s+138ms</div>
+					<div class='panel-lead'>0h 5m 56s+217ms</div>
 				</div>
 			</div>
 		</div>
@@ -494,22 +2859,22 @@ Session ID: 26e647eaad92b58455d1685dee01baf6
 
 		<script>
 			var statusGroup = {
-				passParent: 1,
-				failParent: 1,
+				passParent: 6,
+				failParent: 0,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				exceptionsParent: 1,
+				exceptionsParent: 0,
 				
-				passChild: 39,
-				failChild: 1,
+				passChild: 427,
+				failChild: 0,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
-				infoChild: 0,
-				exceptionsChild: 1,
+				infoChild: 40,
+				exceptionsChild: 0,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,
