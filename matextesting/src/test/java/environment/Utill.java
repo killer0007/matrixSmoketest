@@ -31,6 +31,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.mysql.cj.exceptions.ExceptionInterceptorChain;
 
 import testCases.Pages;
 
@@ -203,6 +204,8 @@ public List<WebElement> Get_webelement_list(String path){
 			w.until(ExpectedConditions.presenceOfElementLocated(By.id("ok")));
 			String result=pages.Utill().get_text("//*[@class='m_content']");
 			pages.Utill().click_element("ok");
+			System.out.println(result);
+			logger.log(Status.PASS, result);
 			return result;
 		} catch (WebDriverException e) {
 			WebDriverWait w = new WebDriverWait(driver, 60);
@@ -210,6 +213,8 @@ public List<WebElement> Get_webelement_list(String path){
 			Thread.sleep(1000);
 			String result=pages.Utill().get_text("//*[@class='m_content']");
 			pages.Utill().click_element("ok");
+			System.out.println(result);
+			logger.log(Status.PASS, result);
 			return result;
 		}
 	}
@@ -221,6 +226,13 @@ public List<WebElement> Get_webelement_list(String path){
 		SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
 		Date currentMonth = new Date();
 		return df.format(currentMonth).toString();
+
+	}
+	public void search_and_select(String id, String value) throws Exception{
+		pages.Utill().click_element(".//*[@id='"+id+"']/a");
+		pages.Utill().input_text(".//*[@id='"+id+"']//div/div/input", value);
+		Thread.sleep(1000);
+		pages.Utill().click_element(".//*[@id='"+id+"']/div/ul/li");
 
 	}
 }

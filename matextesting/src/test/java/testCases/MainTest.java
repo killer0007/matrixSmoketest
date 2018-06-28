@@ -21,7 +21,6 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-
 import environment.SendAttachmentInEmail;
 import environment.Utill;
 
@@ -192,6 +191,7 @@ logger.info(MatrixRefNo);
 		pages.OperationTL().BVtl(MatrixRefNo);
 		pages.OperationTL().ITtl(MatrixRefNo);
 		pages.OperationTL().PFtl(MatrixRefNo);
+		
 
 	}
 
@@ -202,6 +202,11 @@ logger.info(MatrixRefNo);
 		pages.OperationTM().Address(MatrixRefNo);
 		pages.OperationTM().Reference(MatrixRefNo);
 		pages.OperationTM().Criminal(MatrixRefNo);
+		pages.OperationTM().DB(MatrixRefNo);
+		pages.OperationTM().Drug(MatrixRefNo);
+		pages.OperationTM().ID(MatrixRefNo);
+		pages.OperationTM().ID(MatrixRefNo);
+		pages.OperationTM().Court(MatrixRefNo);
 		
 	}
 
@@ -212,7 +217,11 @@ logger.info(MatrixRefNo);
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(result.getThrowable().getMessage(),
 					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-		} else {
+		} 
+		else if(result.getStatus() == ITestResult.SKIP){
+			logger.skip(result.getThrowable().getMessage());
+		}else {
+		
 			logger.pass(method.getName() + " completed");
 		}
 
@@ -228,8 +237,8 @@ logger.info(MatrixRefNo);
 	public void afterSuite() {
 		extent.flush();
 		// driver.quit();
-		 SendAttachmentInEmail email = new SendAttachmentInEmail();
-		 email.sendhtmlemail();
+//		 SendAttachmentInEmail email = new SendAttachmentInEmail();
+//		 email.sendhtmlemail();
 
 	}
 }

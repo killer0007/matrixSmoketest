@@ -7,18 +7,14 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
-
 import environment.Utill;
 import testCases.Pages;
 
@@ -52,7 +48,9 @@ public class OperationTM {
 			try {
 				pages.CaseRegistration().navigateTo("Dashboard", "Academic TM");
 			} catch (Exception e) {
-				driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/EducationTMHomepage.aspx");
+				logger.log(Status.WARNING, e.getMessage().toString());
+				pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/EducationTMHomepage.aspx");
+
 			}
 			String x = pages.Utill().get_text(getlocator("v_all_out"));
 			if (!(x.equals("0"))) {
@@ -211,8 +209,10 @@ public class OperationTM {
 		try {
 			try {
 				pages.CaseRegistration().navigateTo("Dashboard", "Prior TM");
-			} catch (Exception e1) {
-				driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/EmploymentTMHomepage.aspx");
+			} catch (Exception e) {
+				logger.log(Status.WARNING, e.getMessage().toString());
+				pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/EmploymentTMHomepage.aspx");
+
 			}
 			String x = pages.Utill().get_text(getlocator("vemp_all_out"));
 			if (!(x.equals("0"))) {
@@ -389,8 +389,10 @@ public class OperationTM {
 	public void Address(String no) throws Exception {
 		try {
 			try {
+
 				pages.CaseRegistration().navigateTo("Dashboard", "Residence TM");
 			} catch (Exception e) {
+				logger.log(Status.WARNING, e.getMessage().toString());
 				pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/MobResidence.aspx");
 			}
 			driver.findElement(By.linkText(no)).click();
@@ -435,6 +437,9 @@ public class OperationTM {
 			logger.log(Status.FAIL, e.toString());
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(driver.getTitle() + e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			
+		}
+		finally {
 			pages.Utill().GoTo(getlocator("home_page"));
 		}
 	}
@@ -443,6 +448,7 @@ public class OperationTM {
 		try {
 			pages.CaseRegistration().navigateTo("Dashboard", "Reference TM");
 		} catch (Exception e) {
+			logger.log(Status.WARNING, e.getMessage().toString());
 			pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/ReferenceTMHomepage.aspx");
 		}
 		String tat = pages.Utill().get_text("ctl00_ContentPlaceHolder1_lbtnWithinTAT");
@@ -537,6 +543,7 @@ public class OperationTM {
 			try {
 				pages.CaseRegistration().navigateTo("Dashboard", "Criminal TM");
 			} catch (Exception e) {
+				logger.log(Status.WARNING, e.getMessage().toString());
 				pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/CriminalTMHomePage.aspx");
 			}
 			String tat = pages.Utill().get_text("ctl00_ContentPlaceHolder1_lbtnWithinTAT");
@@ -557,7 +564,8 @@ public class OperationTM {
 						int index = i + 2;
 						pages.Utill().click_element(
 								".//*[@id='" + getlocator("op_emp_table") + "']/tbody/tr[" + index + "]/td/input[15]");
-						pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_ddlMembers", "test fe -Field Executive");
+						pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_ddlMembers",
+								"test fe -Field Executive");
 						pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAssign");
 						pages.Wait().wait_until_loader_is_invisible();
 						String ss = pages.Utill().clickAlertbox();
@@ -575,6 +583,8 @@ public class OperationTM {
 					// updation dashboard
 					String altat = pages.Utill().get_text("ctl00_ContentPlaceHolder1_lnkOutstanding_updation");
 					if (!(altat.equals("0"))) {
+						pages.Utill().click_element("ctl00_ContentPlaceHolder1_lnkOutstanding_updation");
+						pages.Wait().wait_until_loader_is_invisible();
 						pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnNormalUpt");
 						pages.Wait().wait_until_loader_is_invisible();
 						pages.Utill().input_text(getlocator("vref_tmsearch"), no);
@@ -584,8 +594,10 @@ public class OperationTM {
 						// .//*[@id='ctl00_ContentPlaceHolder1_grupdation']/tbody/tr[2]/td[6]
 						String refno = pages.Utill()
 								.get_text(".//*[@id='" + getlocator("vcri_table") + "']/tbody/tr[2]/td[6]");
-						if (!(refno.equals(no))) {
+						if (refno.equals(no)) {
 							pages.Utill().click_element("ctl00_ContentPlaceHolder1_grupdation_ctl02_btnShowAddress");
+							pages.Wait().wait_until_loader_is_invisible();
+							w.until(ExpectedConditions.visibilityOf(pages.Utill().find(getlocator("vcAddr_Address"))));
 							pages.Utill().input_text(getlocator("vcAddr_Address"), getvalue("vcAddr_Address"));
 							pages.Utill().input_text(getlocator("vcAddr_Pincode"), getvalue("vcAddr_Pincode"));
 							w.until(ExpectedConditions.presenceOfElementLocated(
@@ -615,88 +627,510 @@ public class OperationTM {
 							pages.Utill().click_element(getlocator("vcrim_green"));
 
 							pages.Utill().handle_Alert();
-						}
-							 else {
-								System.out.println(no + " ref no not found in search");
-								logger.log(Status.FAIL, no + " ref no not found in search");
-								String temp = Utill.getScreenshot(driver);
-								logger.fail("ref no not found in search",
-										MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-							}
 						} else {
-							logger.log(Status.FAIL, "no value in Criminal Updation dashboard");
-							System.out.println("no value in Criminal Updation dashboard");
+							System.out.println(no + " ref no not found in search");
+							logger.log(Status.FAIL, no + " ref no not found in search");
 							String temp = Utill.getScreenshot(driver);
-							logger.fail("no value in Criminal Updation dashboard",
+							logger.fail("ref no not found in search",
 									MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 						}
+					} else {
+						logger.log(Status.FAIL, "no value in Criminal Updation dashboard");
+						System.out.println("no value in Criminal Updation dashboard");
+						String temp = Utill.getScreenshot(driver);
+						logger.fail("no value in Criminal Updation dashboard",
+								MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 					}
-
 				}
-			 else {
+
+			} else {
 				// logger.fail("no value in Criminal allocation dashboard");
 				logger.log(Status.FAIL, "no value in Criminal allocation dashboard");
 				System.out.println("no value in Criminal allocation dashboard");
 			}
 		} catch (Exception e) {
 			System.out.println(e.toString());
-			logger.log(Status.FAIL, e.toString());
+			logger.log(Status.FAIL, e.getMessage().toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(driver.getTitle() + e.toString(),
-					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			logger.fail(driver.getTitle() + e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 			pages.Utill().GoTo(getlocator("home_page"));
 		}
 
 	}
 
-	public void temp(String no) throws Exception {
-		pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/CriminalTMHomepage.aspx");
-		String altat = pages.Utill().get_text("ctl00_ContentPlaceHolder1_lnkOutstanding_updation");
-		int c = 0;
-		if (!((altat.equals("0")))) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_lnkOutstanding_updation");
-			pages.Wait().wait_until_loader_is_invisible();
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnNormalUpt");
-			pages.Wait().wait_until_loader_is_invisible();
-			pages.Utill().input_text(getlocator("vref_tmsearch"), no);
-			pages.Utill().click_element(getlocator("vref_tmsearchbtn"));
-			pages.Wait().wait_until_loader_is_invisible();
-			w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vcri_table"))));
-			// .//*[@id='ctl00_ContentPlaceHolder1_grupdation']/tbody/tr[2]/td[6]
-			String refno = pages.Utill().get_text(".//*[@id='" + getlocator("vcri_table") + "']/tbody/tr[2]/td[6]");
-			if (refno.equals(no)) {
-				pages.Utill().click_element("ctl00_ContentPlaceHolder1_grupdation_ctl02_btnShowAddress");
-				pages.Utill().input_text(getlocator("vcAddr_Address"), getvalue("vcAddr_Address"));
-				pages.Utill().input_text(getlocator("vcAddr_Pincode"), getvalue("vcAddr_Pincode"));
-				w.until(ExpectedConditions
-						.presenceOfElementLocated(By.xpath("//*[text()='" + getvalue("vcAddr_Pincode") + "']")));
-				pages.Utill().click_element("//*[text()='" + getvalue("vcAddr_Pincode") + "']");
-				pages.Utill().select_by_label(getlocator("vcAddr_ResiType"), getvalue("vcAddr_ResiType"));
-				pages.Utill().input_text(getlocator("vcAddr_Landmark"), getvalue("vcAddr_Landmark"));
-				pages.Utill().input_text(getlocator("vcAddr_FromDt"), getvalue("vcAddr_FromDt"));
-				pages.Utill().input_text(getlocator("vcAddr_ToDt"), getvalue("vcAddr_ToDt"));
-				pages.Utill().input_text(getlocator("vcAddr_StayPeriod"), getvalue("vcAddr_StayPeriod"));
-				pages.Utill().input_text(getlocator("vcAddr_PoliceSt"), getvalue("vcAddr_PoliceSt"));
-				pages.Utill().input_text(getlocator("vcCrim_PoliceAddr"), getvalue("vcCrim_PoliceAddr"));
-				pages.Utill().input_text(getlocator("vcCrim_RespName"), getvalue("vcCrim_RespName"));
-				pages.Utill().input_text(getlocator("vcCrim_Designation"), getvalue("vcCrim_Designation"));
-				pages.Utill().input_text(getlocator("vcCrim_ContNo"), getvalue("vcCrim_ContNo"));
-				pages.Utill().input_text(getlocator("vcCrim_VisitDt"), pages.Utill().getcurrentdate());
-
-				pages.Utill().select_by_label(getlocator("vcCrim_Result"), getvalue("vcCrim_Result"));
-				pages.Utill().select_by_label(getlocator("vcCrim_YearsCovered"), getvalue("vcCrim_YearsCovered"));
-				pages.Utill().select_by_label(getlocator("vcCrim_Typeofrevert"), getvalue("vcCrim_Typeofrevert"));
-				pages.Utill().input_text(getlocator("vcCrim_Remarks"), getvalue("vcCrim_Remarks"));
-				pages.Utill().click_element(getlocator("vcrim_date"));
-				w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vcrim_today"))));
-				pages.Utill().click_element(getlocator("vcrim_today"));
-				pages.Utill().click_element(getlocator("vcrim_green"));
-
-				pages.Utill().handle_Alert();
-			} else {
-				System.out.println(no + " ref no not found in search");
-				logger.log(Status.FAIL, no + " ref no not found in search");
+	public void DB(String no) throws Exception {
+		try {
+			try {
+				pages.CaseRegistration().navigateTo("Dashboard", "DB Check TM");
+			} catch (Exception e) {
+				logger.log(Status.WARNING, e.getMessage().toString());
+				pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/DBTMHomePage.aspx");
 			}
+			String tat = pages.Utill().get_text("ctl00_ContentPlaceHolder1_btnOutStanding");
+			if (!(tat.equals("0"))) {
+				pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnOutStanding");
+				pages.Wait().wait_until_loader_is_invisible();
+				pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnNormal");
+				pages.Wait().wait_until_loader_is_invisible();
+				w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vdb_table"))));
+				List<WebElement> tabledata = driver
+						.findElements(By.xpath(".//*[@id='" + getlocator("vdb_table") + "']/tbody/tr/td[4]"));
+				logger.log(Status.PASS, "getting web element list '" + no + "'");
+				int b = 0;
+				for (int i = 0; i < tabledata.size(); i++) {
+					String refno = tabledata.get(i).getText();
+					if (refno.equalsIgnoreCase(no)) {
+						int index = i + 2;
+						w.until(ExpectedConditions.visibilityOf(pages.Utill().find(
+								".//*[@id='" + getlocator("vdb_table") + "']/tbody/tr[" + index + "]/td[1]/input")));
+						pages.Utill().click_element(
+								".//*[@id='" + getlocator("vdb_table") + "']/tbody/tr[" + index + "]/td[1]/input");
+						b++;
+						break;
+						// .//*[@id='ctl00_ContentPlaceHolder1_grdCandidate']/tbody/tr[2]/td[4]
+						// .//*[@id='ctl00_ContentPlaceHolder1_grdCandidate']/tbody/tr[2]/td[1]/input
+					}
+				}
+				if (b == 0) {
+					System.out.println(no + "not found in grid");
+					String temp = Utill.getScreenshot(driver);
+					logger.fail(driver.getTitle() + no + "not found in grid",
+							MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+				} else {
+					// do db data entry
+					System.out.println("do db data entry");
+					w.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id(getlocator("drplevel1"))));
+					pages.Utill().select_by_label(getlocator("drplevel1"), getvalue("drplevel1"));
+					pages.Utill().select_by_label(getlocator("drplevel2"), getvalue("drplevel2"));
+					pages.Utill().select_by_label(getlocator("drplevel3"), getvalue("drplevel3"));
+					pages.Utill().select_by_label(getlocator("drplevel4"), getvalue("drplevel4"));
+					pages.Utill().select_by_label(getlocator("drplevel5"), getvalue("drplevel5"));
+					pages.Utill().click_element(getlocator("vdb_add"));
+					pages.Wait().wait_until_loader_is_invisible();
+					String ss = pages.Utill().clickAlertbox();
+					System.out.println(ss);
+					logger.log(Status.PASS, ss);
+					pages.Utill().input_text(getlocator("vdb_ReportRunDate"), pages.Utill().getcurrentdate());
+					pages.Utill().input_text(getlocator("vdb_DatabaseLastUpDate"), pages.Utill().getcurrentdate());
+					pages.Utill().input_text(getlocator("vdb_comments"), getvalue("vdb_comments"));
+					pages.Utill().input_text(getlocator("vdb_remarks"), getvalue("vdb_remarks"));
+					pages.Utill().click_element(getlocator("vdb_verify"));
+					w.until(ExpectedConditions.presenceOfElementLocated(By.id("cOK")));
+					pages.Utill().click_element("cOK");
+					pages.Utill().handle_Alert();
+				}
+
+			} else {
+				System.out.println("no record in Outstanding within TAT");
+				String temp = Utill.getScreenshot(driver);
+				logger.fail(driver.getTitle() + tat + "no record in Outstanding within TAT",
+						MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage().toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(e.getMessage().toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		}
 	}
-}
+
+	public void Drug(String no) throws Exception {
+		try {
+			try {
+				pages.CaseRegistration().navigateTo("Dashboard", "Drug Check TM");
+			} catch (Exception e) {
+				logger.log(Status.WARNING, e.getMessage().toString());
+				pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/DrugcheckTMHomePage.aspx");
+			}
+			String alltat = pages.Utill().get_text("ctl00_ContentPlaceHolder1_btnOutStanding");
+			if (!(alltat.equalsIgnoreCase("0"))) {
+				pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnOutStanding");
+				pages.Wait().wait_until_loader_is_invisible();
+				pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnNormal");
+				pages.Wait().wait_until_loader_is_invisible();
+				w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vdrug_table"))));
+				// .//*[@id='ctl00_ContentPlaceHolder1_grdCandidate_1']/tbody/tr/td[5]/a
+				// .//*[@id='ctl00_ContentPlaceHolder1_grdCandidate_1']/tbody/tr[2]/td[1]/input[4]
+				List<WebElement> alltabledata = driver
+						.findElements(By.xpath("//*[@id='" + getlocator("vdrug_table") + "']/tbody/tr/td[5]/a"));
+				int b = 0;
+				for (int i = 0; i < alltabledata.size(); i++) {
+
+					String refno = alltabledata.get(i).getText();
+					if (refno.equalsIgnoreCase(no)) {
+						int index = i + 2;
+						pages.Utill().click_element(
+								"//*[@id='" + getlocator("vdrug_table") + "']/tbody/tr[" + index + "]/td[1]/input[4]");
+						b++;
+						break;
+					}
+
+				}
+				if (b == 0) {
+					System.out.println(no + " is not found in allocation dashboard grid");
+					logger.log(Status.FAIL, no + " is not found in allocation dashboard grid");
+					String temp = Utill.getScreenshot(driver);
+					logger.fail(no + " is not found in allocation dashboard grid",
+							MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+				} else {
+					pages.Utill().click_element(getlocator("v_edu_vr"));
+					pages.Wait().wait_until_loader_is_invisible();
+					w.until(ExpectedConditions
+							.presenceOfAllElementsLocatedBy(By.id(getlocator("vdrugall_InitiateTo"))));
+					pages.Utill().select_by_label(getlocator("vdrugall_InitiateTo"), getvalue("vdrugall_InitiateTo"));
+					pages.Utill().click_element(getlocator("vdrugall_InitiateVR"));
+					pages.Wait().wait_until_loader_is_invisible();
+					pages.Utill().clickAlertbox();
+					String uptat = pages.Utill().get_text("ctl00_ContentPlaceHolder1_btnOutStanding_1");
+					if (!(uptat.equalsIgnoreCase("0"))) {
+						pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnOutStanding_1");
+						pages.Wait().wait_until_loader_is_invisible();
+						pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnNormalUpt");
+						pages.Wait().wait_until_loader_is_invisible();
+						w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vdb_table"))));
+						List<WebElement> uptabledata = driver
+								.findElements(By.xpath(".//*[@id='" + getlocator("vdb_table") + "']/tbody/tr/td[4]"));
+						// .//*[@id='ctl00_ContentPlaceHolder1_grdCandidate']/tbody/tr/td[4]
+						// .//*[@id='ctl00_ContentPlaceHolder1_grdCandidate']/tbody/tr/td[1]/input
+						int c = 0;
+						for (int i = 0; i < uptabledata.size(); i++) {
+							int index = i + 2;
+							String refno = uptabledata.get(i).getText();
+							if (refno.equalsIgnoreCase(no)) {
+								pages.Utill().click_element(".//*[@id='" + getlocator("vdb_table") + "']/tbody/tr["
+										+ index + "]/td[1]/input");
+								c++;
+								break;
+							}
+
+						}
+						if (c == 0) {
+							System.out.println(no + " is not found in updation dashboard grid");
+							logger.log(Status.FAIL, no + " is not found in updation dashboard grid");
+							String temp = Utill.getScreenshot(driver);
+							logger.fail(no + " is not found in updation dashboard grid",
+									MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+						} else {
+							// do
+							pages.Wait().wait_until_loader_is_invisible();
+							w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vdrug_panel"))));
+							pages.Utill().select_by_label(getlocator("vdrug_panel"), getvalue("vdrug_panel"));
+							pages.Wait().wait_until_loader_is_invisible();
+							w.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+									By.id("ctl00_ContentPlaceHolder1_grdDrugChkverifi_ctl02_ddlflow")));
+							pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_grdDrugChkverifi_ctl02_ddlflow",
+									"Detected");
+							pages.Utill().input_text(getlocator("vdrug_fitness"), getvalue("vdrug_fitness"));
+							pages.Utill().input_text(getlocator("vdrug_con"), getvalue("vdrug_con"));
+							pages.Utill().input_text(getlocator("vdrug_comm"), getvalue("vdrug_comm"));
+							// pages.Utill().click_element(getlocator("vdrug_date1"));
+							// w.until(ExpectedConditions.visibilityOf(pages.Utill().find(getlocator("vdrug_today1"))));
+							// pages.Utill().click_element(getlocator("vdrug_today1"));
+							// pages.Utill().click_element(getlocator("vdrug_date2"));
+							// w.until(ExpectedConditions.visibilityOf(pages.Utill().find(getlocator("vdrug_today2"))));
+							// pages.Utill().click_element(getlocator("vdrug_today2"));
+							pages.Utill().input_text(getlocator("vdrug_remarks"), getvalue("vdrug_remarks"));
+							pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAdd");
+							// pages.Wait().wait_until_alert_isvisible();
+							pages.Utill().clickAlertbox();
+							pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnVerify");
+
+						}
+					} else {
+						System.out.println();
+						System.out.println("no data in outstanding with in tat of updation dashboard");
+						String temp = Utill.getScreenshot(driver);
+						logger.fail("no data in outstanding with in tat of updation dashboard",
+								MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+					}
+				}
+
+			} else {
+				System.out.println("no data in outstanding with in tat");
+				String temp = Utill.getScreenshot(driver);
+				logger.fail("no data in outstanding with in tat",
+						MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage().toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(e.getMessage().toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+		}
+
+	}
+
+	public void ID(String no) throws Exception {
+		try {
+			try {
+				pages.CaseRegistration().navigateTo("Dashboard", "ID Check TM");
+			} catch (Exception e) {
+				logger.log(Status.WARNING, e.getMessage().toString());
+				pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/IDcheckTMHomepage.aspx");
+			}
+			String tat = pages.Utill().get_text("ctl00_ContentPlaceHolder1_btnOutStanding");
+			if (!(tat.equalsIgnoreCase("0"))) {
+				pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnOutStanding");
+				pages.Wait().wait_until_loader_is_invisible();
+				pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnNormal");
+				pages.Wait().wait_until_loader_is_invisible();
+				w.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id(getlocator("vdb_table"))));
+				int b = 0;
+				List<WebElement> tabledata = driver
+						.findElements(By.xpath(".//*[@id='" + getlocator("vdb_table") + "']/tbody/tr/td[4]"));
+				for (int i = 0; i < tabledata.size(); i++) {
+					String refno = tabledata.get(i).getText();
+					if (refno.equalsIgnoreCase(no)) {
+						int index = i + 2;
+						pages.Utill().click_element(
+								".//*[@id='" + getlocator("vdb_table") + "']/tbody/tr[" + index + "]/td[1]/input");
+						b++;
+						break;
+					}
+				}
+				if (b == 0) {
+					System.out.println(no + "  not found in table");
+					String temp = Utill.getScreenshot(driver);
+					logger.fail(no + "  not found in table",
+							MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+				} else {
+					// do work
+					w.until(ExpectedConditions
+							.presenceOfElementLocated(By.id("ctl00_ContentPlaceHolder1_lblCheckName")));
+					String id = pages.Utill().get_text("ctl00_ContentPlaceHolder1_lblCheckName");
+					switch (id) {
+					case "Right To Work Check":
+						System.out.println("Right To Work Check");
+						logger.log(Status.INFO, "Right To Work Check");
+						pages.Utill().select_by_label(getlocator("vid_color"), getvalue("vid_color"));
+						pages.Utill().input_text(getlocator("vid_comments"), getvalue("vid_comments"));
+						pages.Utill().input_text(getlocator("vid_remarks"), getvalue("vid_remarks"));
+						break;
+					case "Aadhar ID Check":
+						System.out.println("Aadhar ID Check");
+						logger.log(Status.INFO, "Aadhar ID Check");
+						pages.Utill().input_text(getlocator("vid_value"), getvalue("vid_value"));
+						pages.Utill().input_text(getlocator("vid_no"), getvalue("vid_no"));
+						pages.Utill().select_by_label(getlocator("vid_color"), getvalue("vid_color"));
+						pages.Utill().input_text(getlocator("vid_comments"), getvalue("vid_comments"));
+						pages.Utill().input_text(getlocator("vid_remarks"), getvalue("vid_remarks"));
+
+						break;
+					default:
+						System.out.println("no matching found");
+					}
+					pages.Utill().click_element(getlocator("vid_verify"));
+					pages.Utill().handle_Alert();
+				}
+				// .//*[@id='ctl00_ContentPlaceHolder1_grdCandidate']/tbody/tr[2]/td[4]
+				// .//*[@id='ctl00_ContentPlaceHolder1_grdCandidate']/tbody/tr[2]/td[1]/input
+
+			} else {
+				System.out.println("no data in outstanding with in tat");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage().toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(e.getMessage().toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+		}
+	}
+
+	public void Court(String no) throws Exception {
+		try {
+			try {
+				pages.CaseRegistration().navigateTo("Dashboard", "CourtTm");
+			} catch (Exception e) {
+				logger.log(Status.WARNING, e.getMessage().toString());
+				pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/CourtCheckTMHomepage.aspx");
+			}
+			String alltat = pages.Utill().get_text("ctl00_ContentPlaceHolder1_btnOutStanding");
+			if (!(alltat.equalsIgnoreCase("0"))) {
+				pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnOutStanding");
+				pages.Wait().wait_until_loader_is_invisible();
+				pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnNormal");
+				pages.Wait().wait_until_loader_is_invisible();
+				w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vcourt_table"))));
+				// .//*[@id='ctl00_ContentPlaceHolder1_grdCandidate_1']/tbody/tr/td[5]/a
+				// .//*[@id='ctl00_ContentPlaceHolder1_grdCandidate_1']/tbody/tr[2]/td[1]/input[4]
+				List<WebElement> alltabledata = driver
+						.findElements(By.xpath("//*[@id='" + getlocator("vcourt_table") + "']/tbody/tr/td[5]/a"));
+				int b = 0;
+				for (int i = 0; i < alltabledata.size(); i++) {
+
+					String refno = alltabledata.get(i).getText();
+					if (refno.equalsIgnoreCase(no)) {
+						int index = i + 2;
+						pages.Utill().click_element(
+								"//*[@id='" + getlocator("vcourt_table") + "']/tbody/tr[" + index + "]/td[1]/input[8]");
+						b++;
+						break;
+					}
+
+				}
+				if (b == 0) {
+					System.out.println(no + " is not found in allocation dashboard grid");
+					logger.log(Status.FAIL, no + " is not found in allocation dashboard grid");
+					String temp = Utill.getScreenshot(driver);
+					logger.fail(no + " is not found in allocation dashboard grid",
+							MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+				} else {
+					pages.Utill().click_element(getlocator("v_edu_vr"));
+					pages.Wait().wait_until_loader_is_invisible();
+					w.until(ExpectedConditions
+							.presenceOfAllElementsLocatedBy(By.id(getlocator("vdrugall_InitiateTo"))));
+					pages.Utill().select_by_label(getlocator("vdrugall_InitiateTo"), "Demo Vendor");
+					pages.Utill().click_element(getlocator("vdrugall_InitiateVR"));
+					pages.Wait().wait_until_loader_is_invisible();
+					pages.Utill().clickAlertbox();
+					String uptat = pages.Utill().get_text("ctl00_ContentPlaceHolder1_btnOutStandingUpt");
+					if (!(uptat.equalsIgnoreCase("0"))) {
+						pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnOutStandingUpt");
+						pages.Wait().wait_until_loader_is_invisible();
+						pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnNormalUpt");
+						pages.Wait().wait_until_loader_is_invisible();
+						w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vcourtup_table"))));
+						List<WebElement> uptabledata = driver
+								.findElements(By.xpath(".//*[@id='" + getlocator("vcourtup_table") + "']/tbody/tr/td[4]"));
+						// .//*[@id='ctl00_ContentPlaceHolder1_grdCandidate']/tbody/tr/td[4]
+						// .//*[@id='ctl00_ContentPlaceHolder1_grdCandidate']/tbody/tr/td[1]/input
+						int c = 0;
+						for (int i = 0; i < uptabledata.size(); i++) {
+							int index = i + 2;
+							String refno = uptabledata.get(i).getText();
+							if (refno.equalsIgnoreCase(no)) {
+								pages.Utill().click_element(".//*[@id='" + getlocator("vcourtup_table") + "']/tbody/tr["
+										+ index + "]/td[1]/input");
+								c++;
+								break;
+							}
+
+						}
+						if (c == 0) {
+							System.out.println(no + " is not found in updation dashboard grid");
+							logger.log(Status.FAIL, no + " is not found in updation dashboard grid");
+							String temp = Utill.getScreenshot(driver);
+							logger.fail(no + " is not found in updation dashboard grid",
+									MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+						} else {
+							// do
+							pages.Utill().search_and_select(getlocator("vcourt1"), getvalue("vcourt1"));
+							pages.Wait().wait_until_loader_is_invisible();
+							pages.Utill().search_and_select(getlocator("vcourt2"), getvalue("vcourt2"));
+							pages.Wait().wait_until_loader_is_invisible();
+							pages.Utill().search_and_select(getlocator("vcourt3"), getvalue("vcourt3"));
+							pages.Wait().wait_until_loader_is_invisible();
+							pages.Utill().search_and_select(getlocator("vcourt4"), getvalue("vcourt4"));
+							pages.Wait().wait_until_loader_is_invisible();
+							pages.Utill().input_text(getlocator("vcourt_comm"), getvalue("vcourt_comm"));
+							pages.Utill().input_text(getlocator("vcourt_remarks"), getvalue("vcourt_remarks"));
+							pages.Utill().click_element(getlocator("vcourt_save"));
+							pages.Wait().wait_until_loader_is_invisible();
+
+						}
+					} else {
+						System.out.println();
+						System.out.println("no data in outstanding with in tat of updation dashboard");
+						String temp = Utill.getScreenshot(driver);
+						logger.fail("no data in outstanding with in tat of updation dashboard",
+								MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+					}
+				}
+
+			} else {
+				System.out.println("no data in outstanding with in tat");
+				String temp = Utill.getScreenshot(driver);
+				logger.fail("no data in outstanding with in tat",
+						MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage().toString());
+			String temp = Utill.getScreenshot(driver);
+			logger.fail(e.getMessage().toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+		}
+	} 
+	public void Facis(String no) throws Exception{
+		try {
+			pages.CaseRegistration().navigateTo("Dashboard", "FACIS TM");
+		} catch (Exception e) {
+			logger.log(Status.WARNING, e.getMessage().toString());
+			pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/FACISTMHomePage.aspx");
+		}
+		String tat =pages.Utill().get_text("ctl00_ContentPlaceHolder1_lbtnWithinTAT");
+		if(!(tat.equalsIgnoreCase("0"))) {
+			pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnWithinTAT");
+			pages.Wait().wait_until_loader_is_invisible();
+			pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnNormal");
+			pages.Wait().wait_until_loader_is_invisible();
+			w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vemp_table"))));
+			List<WebElement> tabledata = driver.findElements(By.xpath("//*[@id='"+getlocator("vemp_table")+"']/tbody/tr/td[5]"));
+			//.//*[@id='ctl00_ContentPlaceHolder1_grdOutstanding']/tbody/tr[4]/td[5]
+			//.//*[@id='ctl00_ContentPlaceHolder1_grdOutstanding']/tbody/tr[4]/td[1]/input
+			int b=0;
+			for (int i = 0; i < tabledata.size(); i++) {
+				String refno=tabledata.get(i).getText();
+				if(refno.equalsIgnoreCase(no)) {
+					int index=i+2;
+					pages.Utill().click_element("//*[@id='"+getlocator("vemp_table")+"']/tbody/tr["+index+"]/td[1]/input");
+					b++;
+					break;
+				}
+			}
+			if(b==0) {
+				System.out.println(no + " is not found in dashboard grid");
+				logger.log(Status.FAIL, no + " is not found in dashboard grid");
+				String temp = Utill.getScreenshot(driver);
+				logger.fail(no + " is not found in dashboard grid",
+						MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			}
+			else {
+				//do data entry
+				System.out.println("do entry");
+				pages.Wait().wait_until_loader_is_invisible();
+				pages.Utill().select_by_label(getlocator("vfacis_status"), getvalue("vfacis_status"));
+				pages.Wait().wait_until_loader_is_invisible();
+				pages.Utill().input_text(getlocator("vfacis_comments"), getvalue("vfacis_comments"));
+				pages.Utill().input_text(getlocator("vfacis_remarks"), getvalue("vfacis_remarks"));
+				pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnverify");
+				pages.Utill().handle_Alert();
+			}
+		}
+		else {
+			System.out.println("no data in outstanding with in tat");
+			String temp = Utill.getScreenshot(driver);
+			logger.fail("no data in outstanding with in tat",
+					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+		}
+		
+	}
+	public void IT(String no) throws Exception{
+		try {
+			pages.CaseRegistration().navigateTo("Dashboard", "IT TM");
+		} catch (Exception e) {
+			logger.log(Status.WARNING, e.getMessage().toString());
+			pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/ITTMHomePage.aspx");
+		}
+	}
+	public void BV(String no) throws Exception{
+		try {
+			pages.CaseRegistration().navigateTo("Dashboard", "BV TM");
+		} catch (Exception e) {
+			logger.log(Status.WARNING, e.getMessage().toString());
+			pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/BVTMHomePage.aspx");
+		}
+	}
+	public void Credit(String no) throws Exception{
+		try {
+			pages.CaseRegistration().navigateTo("Dashboard", "Credit TM");
+		} catch (Exception e) {
+			logger.log(Status.WARNING, e.getMessage().toString());
+			pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/CIBILTMHomePage.aspx");
+		}
+	}
+	public void PF(String no) throws Exception{
+		try {
+			pages.CaseRegistration().navigateTo("Dashboard", "PF TM");
+		} catch (Exception e) {
+			logger.log(Status.WARNING, e.getMessage().toString());
+			pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/PFTMHomePage.aspx");
+		}
+	}
+	}
+

@@ -40,9 +40,14 @@ public String getvalue(String key) throws FileNotFoundException, IOException {
 public void assign_Employment(String refno) throws Exception {
 	WebElement ele=pages.Utill().find(getlocator("ass_Employment"));
 	int b=0;
-	String ss="";
+	
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_Employment")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -53,6 +58,7 @@ public void assign_Employment(String refno) throws Exception {
 			System.out.println("passing not equal to zero");
 			ele.click();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
+			pages.Wait().wait_until_loader_is_invisible();
 			String table=".//*[@id='"+getlocator("ass_emp_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
 			List<WebElement> table_data=driver.findElements(By.xpath(table));
@@ -69,8 +75,8 @@ public void assign_Employment(String refno) throws Exception {
 					//pages.Utill().click_element("ctl00_ContentPlaceHolder1_ing"+checkname+"Assign");
 					pages.Utill().click_element(getlocator("ass_emp_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
-					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+					 pages.Utill().clickAlertbox();
+					
 					b++;
 					
 					break;
@@ -85,7 +91,7 @@ public void assign_Employment(String refno) throws Exception {
 				//return false;
 			}
 			else {
-				logger.pass("Employment "+ss);
+				logger.pass("Employment ");
 				//return true;
 			}
 		}
@@ -107,7 +113,12 @@ public void assign_Education(String refno) throws Exception {
 	int b=0;
 	String ss="";
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_Education")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -118,6 +129,7 @@ public void assign_Education(String refno) throws Exception {
 			System.out.println("passing not equal to zero");
 			ele.click();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
+			pages.Wait().wait_until_loader_is_invisible();
 			String table=".//*[@id='"+getlocator("ass_edu_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
 			List<WebElement> table_data=driver.findElements(By.xpath(table));
@@ -135,7 +147,7 @@ public void assign_Education(String refno) throws Exception {
 					pages.Utill().click_element(getlocator("ass_edu_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
 					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+					//System.out.println(ss);
 					b++;
 					break;
 				}
@@ -171,7 +183,12 @@ public void assign_Reference(String refno) throws Exception {
 	int b=0;
 	String ss="";
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_Reference")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -182,6 +199,7 @@ public void assign_Reference(String refno) throws Exception {
 			System.out.println("passing not equal to zero");
 			ele.click();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
+			pages.Wait().wait_until_loader_is_invisible();
 			String table=".//*[@id='"+getlocator("ass_ref_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
 			List<WebElement> table_data=driver.findElements(By.xpath(table));
@@ -199,7 +217,7 @@ public void assign_Reference(String refno) throws Exception {
 					pages.Utill().click_element(getlocator("ass_ref_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
 					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+					//System.out.println(ss);
 					b++;
 					break;
 				}
@@ -235,7 +253,12 @@ public void assign_Address(String refno) throws Exception {
 	int b=0;
 	String ss="";
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_Address")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -245,6 +268,7 @@ public void assign_Address(String refno) throws Exception {
 		if(!(ele.getText().equals("0"))) {
 			System.out.println("passing not equal to zero");
 			ele.click();
+			pages.Wait().wait_until_loader_is_invisible();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
 			String table=".//*[@id='"+getlocator("ass_address_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
@@ -263,7 +287,7 @@ public void assign_Address(String refno) throws Exception {
 					pages.Utill().click_element(getlocator("ass_address_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
 					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+					//System.out.println(ss);
 					b++;
 					break;
 				}
@@ -299,7 +323,12 @@ public void assign_Criminal(String refno) throws Exception {
 	int b=0;
 	String ss="";
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_Criminal")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -310,6 +339,7 @@ public void assign_Criminal(String refno) throws Exception {
 			System.out.println("passing not equal to zero");
 			ele.click();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
+			pages.Wait().wait_until_loader_is_invisible();
 			String table=".//*[@id='"+getlocator("ass_criminal_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
 			List<WebElement> table_data=driver.findElements(By.xpath(table));
@@ -327,7 +357,7 @@ public void assign_Criminal(String refno) throws Exception {
 					pages.Utill().click_element(getlocator("ass_criminal_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
 					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+					//System.out.println(ss);
 					b++;
 					break;
 				}
@@ -363,7 +393,12 @@ public void assign_DB(String refno) throws Exception {
 	int b=0;
 	String ss="";
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_Db")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -373,6 +408,7 @@ public void assign_DB(String refno) throws Exception {
 		if(!(ele.getText().equals("0"))) {
 			System.out.println("passing not equal to zero");
 			ele.click();
+			pages.Wait().wait_until_loader_is_invisible();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
 			String table=".//*[@id='"+getlocator("ass_db_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
@@ -391,7 +427,7 @@ public void assign_DB(String refno) throws Exception {
 					pages.Utill().click_element(getlocator("ass_db_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
 					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+					//System.out.println(ss);
 					b++;
 					break;
 				}
@@ -427,7 +463,12 @@ public void assign_Drug(String refno) throws Exception {
 	int b=0;
 	String ss="";
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_Drug")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -438,6 +479,7 @@ public void assign_Drug(String refno) throws Exception {
 			System.out.println("passing not equal to zero");
 			ele.click();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
+			pages.Wait().wait_until_loader_is_invisible();
 			String table=".//*[@id='"+getlocator("ass_drug_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
 			List<WebElement> table_data=driver.findElements(By.xpath(table));
@@ -455,7 +497,7 @@ public void assign_Drug(String refno) throws Exception {
 					pages.Utill().click_element(getlocator("ass_drug_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
 					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+				//	System.out.println(ss);
 					b++;
 					break;
 				}
@@ -491,7 +533,12 @@ public void assign_ID(String refno) throws Exception {
 	int b=0;
 	String ss="";
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_ID")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -502,6 +549,7 @@ public void assign_ID(String refno) throws Exception {
 			System.out.println("passing not equal to zero");
 			ele.click();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
+			pages.Wait().wait_until_loader_is_invisible();
 			String table=".//*[@id='"+getlocator("ass_id_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
 			List<WebElement> table_data=driver.findElements(By.xpath(table));
@@ -516,7 +564,7 @@ public void assign_ID(String refno) throws Exception {
 					pages.Utill().click_element(getlocator("ass_id_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
 					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+					//System.out.println(ss);
 					
 					b++;
 					break;
@@ -553,7 +601,12 @@ public void assign_Court(String refno) throws Exception {
 	int b=0;
 	String ss="";
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_Court")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -564,6 +617,7 @@ public void assign_Court(String refno) throws Exception {
 			System.out.println("passing not equal to zero");
 			ele.click();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
+			pages.Wait().wait_until_loader_is_invisible();
 			String table=".//*[@id='"+getlocator("ass_court_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
 			List<WebElement> table_data=driver.findElements(By.xpath(table));
@@ -581,7 +635,7 @@ public void assign_Court(String refno) throws Exception {
 					pages.Utill().click_element(getlocator("ass_court_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
 					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+					//System.out.println(ss);
 					b++;
 					break;
 				}
@@ -617,7 +671,12 @@ public void assign_Facis(String refno) throws Exception {
 	int b=0;
 	String ss="";
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_Facis")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -628,6 +687,7 @@ public void assign_Facis(String refno) throws Exception {
 			System.out.println("passing not equal to zero");
 			ele.click();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
+			pages.Wait().wait_until_loader_is_invisible();
 			String table=".//*[@id='"+getlocator("ass_Facis_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
 			List<WebElement> table_data=driver.findElements(By.xpath(table));
@@ -645,7 +705,7 @@ public void assign_Facis(String refno) throws Exception {
 					pages.Utill().click_element(getlocator("ass_Facis_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
 					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+					//System.out.println(ss);
 					b++;
 					break;
 				}
@@ -681,7 +741,12 @@ public void assign_Credit(String refno) throws Exception {
 	int b=0;
 	String ss="";
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_Credit")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -692,6 +757,7 @@ public void assign_Credit(String refno) throws Exception {
 			System.out.println("passing not equal to zero");
 			ele.click();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
+			pages.Wait().wait_until_loader_is_invisible();
 			String table=".//*[@id='"+getlocator("ass_Credit_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
 			List<WebElement> table_data=driver.findElements(By.xpath(table));
@@ -709,7 +775,7 @@ public void assign_Credit(String refno) throws Exception {
 					pages.Utill().click_element(getlocator("ass_Credit_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
 					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+				//	System.out.println(ss);
 					b++;
 					break;
 				}
@@ -761,6 +827,7 @@ public void assign_IT(String refno) throws Exception {
 			System.out.println("passing not equal to zero");
 			ele.click();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
+			pages.Wait().wait_until_loader_is_invisible();
 			String table=".//*[@id='"+getlocator("ass_it_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
 			List<WebElement> table_data=driver.findElements(By.xpath(table));
@@ -778,7 +845,7 @@ public void assign_IT(String refno) throws Exception {
 					pages.Utill().click_element(getlocator("ass_it_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
 					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+					//System.out.println(ss);
 					b++;
 					break;
 				}
@@ -814,7 +881,12 @@ public void assign_BV(String refno) throws Exception {
 	int b=0;
 	String ss="";
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_BV")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -825,6 +897,7 @@ public void assign_BV(String refno) throws Exception {
 			System.out.println("passing not equal to zero");
 			ele.click();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
+			pages.Wait().wait_until_loader_is_invisible();
 			String table=".//*[@id='"+getlocator("ass_bv_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
 			List<WebElement> table_data=driver.findElements(By.xpath(table));
@@ -842,7 +915,7 @@ public void assign_BV(String refno) throws Exception {
 					pages.Utill().click_element(getlocator("ass_bv_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
 					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+					//System.out.println(ss);
 					b++;
 					break;
 				}
@@ -878,7 +951,12 @@ public void assign_PF(String refno) throws Exception {
 	int b=0;
 	String ss="";
 	if(ele.getText()!="0") {
-		ele.click();
+		try {
+			ele.click();
+		} catch (WebDriverException e) {
+			logger.log(Status.WARNING, e.toString());
+			pages.Utill().clickAlertbox();
+		}
 		logger.info("Clicking element '"+getlocator("ass_PF")+"'");
 		pages.Wait().wait_until_loader_is_invisible();
 		WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -889,6 +967,7 @@ public void assign_PF(String refno) throws Exception {
 			System.out.println("passing not equal to zero");
 			ele.click();
 			logger.info("Clicking element 'ctl00_ContentPlaceHolder1_lbtnNormal'");
+			pages.Wait().wait_until_loader_is_invisible();
 			String table=".//*[@id='"+getlocator("ass_pf_table")+"']/tbody/tr/td[3]/a";
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(table)));
 			List<WebElement> table_data=driver.findElements(By.xpath(table));
@@ -906,7 +985,7 @@ public void assign_PF(String refno) throws Exception {
 					pages.Utill().click_element(getlocator("ass_pf_assign"));
 					pages.Wait().wait_until_loader_is_invisible();
 					ss = pages.Utill().clickAlertbox();
-					System.out.println(ss);
+					//System.out.println(ss);
 					b++;
 					break;
 				}

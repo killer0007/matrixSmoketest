@@ -79,6 +79,9 @@ public class DataEntryTM {
 		pages.Utill().select_by_label(getlocator("driving_license"), getvalue("driving_license"));
 		pages.Utill().select_by_label(getlocator("voter_id"), getvalue("voter_id"));
 		pages.Utill().select_by_label(getlocator("medical"), getvalue("medical"));
+		if (getvalue("drug").equalsIgnoreCase("Yes")) {
+			pages.Utill().select_by_label(getlocator("drug_panel"), getvalue("drug_panel"));
+		}
 		pages.Utill().select_by_label(getlocator("righttocheck"), getvalue("righttocheck"));
 
 		if (getvalue("righttocheck").equals("Yes")) {
