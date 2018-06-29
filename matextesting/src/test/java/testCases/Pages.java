@@ -54,4 +54,12 @@ public class Pages {
 		OperationTM tm=new OperationTM(driver,logger);
 		return tm;
 	}
+	public ReportTL ReportTL() {
+		ReportTL rtl=new ReportTL(driver,logger);
+		return rtl;
+	}
+	public ReportTM ReportTM() {
+		ReportTM rtm=new ReportTM(driver,logger);
+		return rtm;
+	}
 }

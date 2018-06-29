@@ -90,7 +90,7 @@ public class DataEntryTM {
 		pages.Utill().click_element(getlocator("per_save"));
 		pages.Wait().wait_until_loader_is_invisible();
 		String ss = pages.Utill().clickAlertbox();
-		System.out.println("personal  " + ss);
+		// System.out.println("personal " + ss);
 		logger.pass("personal records saved successfully");
 		return ss;
 	}
@@ -131,7 +131,7 @@ public class DataEntryTM {
 			pages.Utill().click_element(getlocator("add_save"));
 			pages.Wait().wait_until_loader_is_invisible();
 			String ss = pages.Utill().clickAlertbox();
-			System.out.println("Address  " + ss);
+			// System.out.println("Address " + ss);
 			logger.pass("Address  " + ss);
 		} else {
 			System.out.println("address skipped");
@@ -140,7 +140,7 @@ public class DataEntryTM {
 	}
 
 	public void EducationCheck() throws Exception {
-		 logger.info("Education check starting");
+		logger.info("Education check starting");
 		if (getvalue("education").equalsIgnoreCase("yes")) {
 			WebDriverWait w = new WebDriverWait(driver, 10);
 			w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("education"))));
@@ -167,8 +167,8 @@ public class DataEntryTM {
 			pages.Utill().click_element(getlocator("Education1_save"));
 			pages.Wait().wait_until_loader_is_invisible();
 			String ss = pages.Utill().clickAlertbox();
-			System.out.println("Education " + ss);
-			 logger.pass("Education " + ss);
+			// System.out.println("Education " + ss);
+			logger.pass("Education " + ss);
 
 		} else {
 			System.out.println("education skipped");
@@ -229,7 +229,7 @@ public class DataEntryTM {
 				pages.Utill().find(getlocator("Emp_save")).click();
 				pages.Wait().wait_until_loader_is_invisible();
 				String ss = pages.Utill().clickAlertbox();
-				System.out.println("Employment " + ss);
+				// System.out.println("Employment " + ss);
 				logger.pass("Employment " + ss);
 			}
 		} else {
@@ -238,7 +238,7 @@ public class DataEntryTM {
 	}
 
 	public void ReeferenceCheck() throws Exception {
-		 logger.info("Reference check starting");
+		logger.info("Reference check starting");
 		if (getvalue("ref").equalsIgnoreCase("yes")) {
 			WebDriverWait w = new WebDriverWait(driver, 10);
 			w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("Referene"))));
@@ -266,15 +266,15 @@ public class DataEntryTM {
 			pages.Utill().click_element(getlocator("Ref_save"));
 			pages.Wait().wait_until_loader_is_invisible();
 			String ss = pages.Utill().clickAlertbox();
-			System.out.println("Reference " + ss);
-			 logger.pass("Reference " + ss);
+			// System.out.println("Reference " + ss);
+			logger.pass("Reference " + ss);
 		} else {
 			System.out.println("reference skipped");
 		}
 	}
 
 	public void GapCheck() throws Exception {
-		 logger.info("Gap check starting");
+		logger.info("Gap check starting");
 		if (getvalue("Gap").equalsIgnoreCase("yes")) {
 			WebDriverWait w = new WebDriverWait(driver, 10);
 			w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("Gap"))));
@@ -293,7 +293,7 @@ public class DataEntryTM {
 			pages.Utill().click_element(getlocator("Gap_Save"));
 			pages.Wait().wait_until_loader_is_invisible();
 			String ss = pages.Utill().clickAlertbox();
-			System.out.println("Gap " + ss);
+			// System.out.println("Gap " + ss);
 			logger.pass("Gap " + ss);
 		} else {
 			System.out.println("gap check skipped");
@@ -301,7 +301,7 @@ public class DataEntryTM {
 	}
 
 	public void FacisCheck() throws Exception {
-		 logger.info("Facis check starting");
+		logger.info("Facis check starting");
 		if (getvalue("others").equalsIgnoreCase("yes") && getvalue("facis").equalsIgnoreCase("yes")
 				&& getvalue("address").equalsIgnoreCase("yes")) {
 			WebDriverWait w = new WebDriverWait(driver, 10);
@@ -317,16 +317,16 @@ public class DataEntryTM {
 			pages.Utill().click_element(getlocator("FACIS_save"));
 			pages.Wait().wait_until_loader_is_invisible();
 			String ss = pages.Utill().clickAlertbox();
-			System.out.println("facis " + ss);
-			logger.pass("facis "+ss);
-			logger.pass("facis "+ss);
+			// System.out.println("facis " + ss);
+			logger.pass("facis " + ss);
+			logger.pass("facis " + ss);
 		} else {
 			System.out.println("facis checks skipped check status");
 		}
 	}
 
 	public void CreditCheck() throws Exception {
-		 logger.info("Credit check starting");
+		logger.info("Credit check starting");
 		if (getvalue("others").equalsIgnoreCase("yes") && getvalue("credit").equalsIgnoreCase("yes")
 				&& getvalue("address").equalsIgnoreCase("yes")) {
 			WebDriverWait w = new WebDriverWait(driver, 10);
@@ -346,7 +346,7 @@ public class DataEntryTM {
 			pages.Utill().click_element(getlocator("credit_save"));
 			pages.Wait().wait_until_loader_is_invisible();
 			String ss = pages.Utill().clickAlertbox();
-			System.out.println("credit " + ss);
+			// System.out.println("credit " + ss);
 			logger.pass("credit " + ss);
 		} else {
 			System.out.println("credit checks skipped check status");
@@ -354,7 +354,7 @@ public class DataEntryTM {
 	}
 
 	public void BvCheck() throws Exception {
-		 logger.info("BV check starting");
+		logger.info("BV check starting");
 		if (getvalue("others").equalsIgnoreCase("yes") && getvalue("bank").equalsIgnoreCase("yes")
 				&& getvalue("emp").equalsIgnoreCase("yes")) {
 			WebDriverWait w = new WebDriverWait(driver, 20);
@@ -392,7 +392,7 @@ public class DataEntryTM {
 			pages.Utill().click_element(getlocator("BVSave"));
 			pages.Wait().wait_until_loader_is_invisible();
 			String ss = pages.Utill().clickAlertbox();
-			System.out.println("Bank Verification " + ss);
+			// System.out.println("Bank Verification " + ss);
 			logger.pass("Bank Verification " + ss);
 		} else {
 			System.out.println("bank checks skipped check status");
@@ -415,7 +415,7 @@ public class DataEntryTM {
 			pages.Utill().click_element(getlocator("ITSave"));
 			pages.Wait().wait_until_loader_is_invisible();
 			String ss = pages.Utill().clickAlertbox();
-			System.out.println("IT Verification " + ss);
+			// System.out.println("IT Verification " + ss);
 			logger.pass("IT Verification " + ss);
 		} else {
 			System.out.println("IT checks skipped check status");
@@ -438,11 +438,11 @@ public class DataEntryTM {
 			pages.Utill().click_element(getlocator("PFSave"));
 			pages.Wait().wait_until_loader_is_invisible();
 			String ss = pages.Utill().clickAlertbox();
-			System.out.println("PF Verification " + ss);
+			// System.out.println("PF Verification " + ss);
 			logger.pass("PF Verification " + ss);
 		} else {
 			System.out.println("PF checks skipped check status");
 		}
 	}
-	
+
 }

@@ -1,8 +1,15 @@
 package testCases;
 
 import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -39,9 +46,9 @@ public class MainTest {
 		reporter = new ExtentHtmlReporter("./Reports/matex.html");
 		reporter.config().setDocumentTitle("Matrix test report");
 		reporter.config().setReportName("test report");
-		
+
 		reporter.config().setTheme(Theme.DARK);
-		
+
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
 	}
@@ -50,13 +57,15 @@ public class MainTest {
 	public void start() throws IOException {
 		String chrome_path = System.getProperty("user.dir") + "\\src\\test\\resources\\driver\\chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", chrome_path);
-		 ChromeOptions chromoption = new ChromeOptions();
-		 chromoption.setHeadless(true);
+		ChromeOptions chromoption = new ChromeOptions();
+		chromoption.setHeadless(true);
 		driver = new ChromeDriver(chromoption);
-		 Dimension d = new Dimension(1382, 744);
-		 driver.manage().window().setSize(d);
+		Dimension d = new Dimension(1382, 744);
+		driver.manage().window().setSize(d);
 		driver.manage().window().maximize();
-		driver.get("http://192.168.2.16/MatexTesting");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.get(getvalue("url"));
+		// driver.get("http://192.168.2.16/MatexTesting");
 	}
 
 	@BeforeMethod
@@ -64,13 +73,14 @@ public class MainTest {
 		logger = extent.createTest(method.getName());
 		logger.pass(method.getName() + " Started");
 		logger.assignAuthor("Gopinath");
+
 		pages = new Pages(driver, logger);
 		System.out.println("before method");
 	}
 
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
-		pages.loginpage().Login("demotl", "pass@123");
+		pages.loginpage().Login(getvalue("uname"), getvalue("password"));
 		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
 
 	}
@@ -79,7 +89,7 @@ public class MainTest {
 	public void caseregistration() throws Exception {
 		candid = pages.Utill().candidateid();
 		candidateName = pages.Utill().candidateName();
-		String re = pages.CaseRegistration().caseRegistration("Demo Testing - Test", candid, candidateName);
+		String re = pages.CaseRegistration().caseRegistration("automation - Test", candid, candidateName);
 		Assert.assertEquals(re, "Registered Successfully.");
 	}
 
@@ -88,7 +98,7 @@ public class MainTest {
 		pages = new Pages(driver, logger);
 		pages.CaseRegistration().navigateTo("Daily Activity", "Assign Cases");
 		MatrixRefNo = pages.CaseRegistration().assignToDETM(candidateName, candid);
-logger.info(MatrixRefNo);
+		logger.info(MatrixRefNo);
 		System.out.println(MatrixRefNo);
 	}
 
@@ -157,7 +167,8 @@ logger.info(MatrixRefNo);
 	@Test(priority = 5, enabled = true, dependsOnMethods = "dataentry")
 	public void assigncase() throws Exception {
 		Thread.sleep(6000);
-		driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/AssignerHome.aspx");
+		
+		pages.Utill().GoTo(getvalue("url")+"/Matrix/AssignerHome.aspx");
 		pages.Assignor().assign_Address(MatrixRefNo);
 		pages.Assignor().assign_Employment(MatrixRefNo);
 		pages.Assignor().assign_Reference(MatrixRefNo);
@@ -191,11 +202,10 @@ logger.info(MatrixRefNo);
 		pages.OperationTL().BVtl(MatrixRefNo);
 		pages.OperationTL().ITtl(MatrixRefNo);
 		pages.OperationTL().PFtl(MatrixRefNo);
-		
 
 	}
 
-	@Test(priority = 7, enabled = true, dependsOnMethods="OperationtmAssign")
+	@Test(priority = 7, enabled = true, dependsOnMethods = "OperationtmAssign")
 	public void Operationtm() throws Exception {
 		pages.OperationTM().Education(MatrixRefNo);
 		pages.OperationTM().Employment(MatrixRefNo);
@@ -207,21 +217,26 @@ logger.info(MatrixRefNo);
 		pages.OperationTM().ID(MatrixRefNo);
 		pages.OperationTM().ID(MatrixRefNo);
 		pages.OperationTM().Court(MatrixRefNo);
-		
+		pages.OperationTM().Facis(MatrixRefNo);
+		pages.OperationTM().IT(MatrixRefNo);
+		pages.OperationTM().BV(MatrixRefNo);
+		pages.OperationTM().PF(MatrixRefNo);
+		pages.OperationTM().Credit(MatrixRefNo);
+		pages.ReportTL().assignReport(MatrixRefNo);
+
 	}
 
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
-		
+
 		if (result.getStatus() == ITestResult.FAILURE) {
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(result.getThrowable().getMessage(),
 					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-		} 
-		else if(result.getStatus() == ITestResult.SKIP){
+		} else if (result.getStatus() == ITestResult.SKIP) {
 			logger.skip(result.getThrowable().getMessage());
-		}else {
-		
+		} else {
+
 			logger.pass(method.getName() + " completed");
 		}
 
@@ -230,15 +245,21 @@ logger.info(MatrixRefNo);
 	@AfterTest
 	public void teardown() {
 		// pages.loginpage().Logout();
-		 driver.close();
+		driver.close();
 	}
 
 	@AfterSuite
 	public void afterSuite() {
 		extent.flush();
 		// driver.quit();
-//		 SendAttachmentInEmail email = new SendAttachmentInEmail();
-//		 email.sendhtmlemail();
+		 SendAttachmentInEmail email = new SendAttachmentInEmail();
+		 email.sendhtmlemail();
 
+	}
+
+	private String getvalue(String key) throws FileNotFoundException, IOException {
+		Properties pr = new Properties();
+		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
+		return pr.getProperty(key);
 	}
 }

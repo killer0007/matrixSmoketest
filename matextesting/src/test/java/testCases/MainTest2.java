@@ -1,8 +1,14 @@
 package testCases;
 
 import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Properties;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
@@ -39,6 +45,7 @@ public class MainTest2 {
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
 	}
+	
 
 	@BeforeTest
 	public void start() throws IOException {
@@ -50,7 +57,7 @@ public class MainTest2 {
 //		 Dimension d = new Dimension(1382, 744);
 //		 driver.manage().window().setSize(d);
 		driver.manage().window().maximize();
-		driver.get("http://192.168.2.16/MatexTesting");
+		driver.get(getvalue("url"));
 	}
 
 	@BeforeMethod
@@ -63,7 +70,7 @@ public class MainTest2 {
 
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
-		pages.loginpage().Login("demotl", "pass@123");
+		pages.loginpage().Login(getvalue("uname"), getvalue("password"));
 		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
 
 	}
@@ -193,7 +200,9 @@ public class MainTest2 {
 		
 		//pages.OperationTM().temp();
 		//pages.OperationTM().Address(MatrixRefNo);
-		pages.OperationTM().Facis("DEMOTAF294");
+		//pages.OperationTM().Credit("DEMOTAF295");
+		pages.ReportTL().assignReport("AUTOMAA002");
+		
 	}
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
@@ -220,5 +229,10 @@ public class MainTest2 {
 		// SendAttachmentInEmail email = new SendAttachmentInEmail();
 		// email.sendhtmlemail();
 
+	}
+	private String getvalue(String key) throws FileNotFoundException, IOException {
+		Properties pr = new Properties();
+		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
+		return pr.getProperty(key);
 	}
 }

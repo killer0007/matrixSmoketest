@@ -42,6 +42,7 @@ public class OperationTL {
 		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
 		return pr.getProperty(key);
 	}
+
 	public void Addresstl(String no) throws Exception {
 		try {
 			pages.CaseRegistration().navigateTo("Dashboard", "Residence TL");
@@ -52,26 +53,25 @@ public class OperationTL {
 			if (no.equals(pages.Utill().get_text("ctl00_ContentPlaceHolder1_grdteamleader_ctl02_btnMatrixRefNo"))) {
 				pages.Utill().click_element("ctl00_ContentPlaceHolder1_grdteamleader_ctl02_chkbox");
 				pages.Utill().click_element(getlocator("op_add_assign"));
-				String ss=pages.Utill().clickAlertbox();
-				logger.log(Status.PASS, "address"+ss);
-			}
-			else {
+				String ss = pages.Utill().clickAlertbox();
+				logger.log(Status.PASS, "address" + ss);
+			} else {
 				logger.log(Status.FAIL, "reference no not found for address check");
 			}
 
 		} catch (Exception e) {
-			
-			//logger.fail(e.toString());
-			logger.log(Status.FAIL, e.toString());
+
+			// logger.fail(e.getMessage().toString());
+			logger.log(Status.FAIL, e.getMessage().toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-			
-			pages.Utill().GoTo(getlocator("home_page"));
-		}
-		finally {
-			driver.navigate().to(getlocator("home_page"));
+			logger.fail(e.getMessage().toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+
+			pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
+		} finally {
+			pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 		}
 	}
+
 	public void Employementtl(String no) throws Exception {
 		try {
 			pages.CaseRegistration().navigateTo("Dashboard", "Prior TL");
@@ -109,11 +109,11 @@ public class OperationTL {
 				logger.pass("Employment " + ss);
 			}
 		} catch (Exception e) {
-			
-			logger.fail(e.toString());
+
+			logger.fail(e.getMessage().toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-			pages.Utill().GoTo(getlocator("home_page"));
+			logger.fail(e.getMessage().toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 		}
 
 	}
@@ -162,11 +162,11 @@ public class OperationTL {
 				logger.pass("Reference " + ss);
 			}
 		} catch (Exception e) {
-			
-			logger.fail(e.toString());
+
+			logger.fail(e.getMessage().toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-			pages.Utill().GoTo(getlocator("home_page"));
+			logger.fail(e.getMessage().toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 		}
 
 	}
@@ -208,11 +208,11 @@ public class OperationTL {
 				logger.pass("Criminal " + ss);
 			}
 		} catch (Exception e) {
-		
-			logger.fail(e.toString());
+
+			logger.fail(e.getMessage().toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-			pages.Utill().GoTo(getlocator("home_page"));
+			logger.fail(e.getMessage().toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 		}
 
 	}
@@ -254,12 +254,12 @@ public class OperationTL {
 				logger.pass("DB " + ss);
 			}
 		} catch (Exception e) {
-		
-			System.out.println(e.toString());
-			logger.fail(e.toString());
+
+			System.out.println(e.getMessage().toString());
+			logger.fail(e.getMessage().toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-			pages.Utill().GoTo(getlocator("home_page"));
+			logger.fail(e.getMessage().toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 		}
 
 	}
@@ -301,12 +301,12 @@ public class OperationTL {
 				logger.pass("Drug " + ss);
 			}
 		} catch (Exception e) {
-			
-			System.out.println(e.toString());
-			logger.fail(e.toString());
+
+			System.out.println(e.getMessage().toString());
+			logger.fail(e.getMessage().toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-			pages.Utill().GoTo(getlocator("home_page"));
+			logger.fail(e.getMessage().toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 		}
 
 	}
@@ -348,11 +348,11 @@ public class OperationTL {
 				logger.pass("ID " + ss);
 			}
 		} catch (Exception e) {
-			System.out.println(e.toString());
-			logger.fail(e.toString());
+			System.out.println(e.getMessage().toString());
+			logger.fail(e.getMessage().toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-			pages.Utill().GoTo(getlocator("home_page"));
+			logger.fail(e.getMessage().toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 		}
 
 	}
@@ -394,12 +394,12 @@ public class OperationTL {
 				logger.pass("Court " + ss);
 			}
 		} catch (Exception e) {
-			System.out.println(e.toString());
-			
-			logger.fail(e.toString());
+			System.out.println(e.getMessage().toString());
+
+			logger.fail(e.getMessage().toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-			pages.Utill().GoTo(getlocator("home_page"));
+			logger.fail(e.getMessage().toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 		}
 
 	}
@@ -436,10 +436,10 @@ public class OperationTL {
 			pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnOutstanding_OS");
 			pages.Wait().wait_until_loader_is_invisible();
 			int i = getindex(driver, ".//*[@id='ctl00_ContentPlaceHolder1_grdUnassigned']/tbody/tr[1]/th");
-			//System.out.println("index is  " + i);
+			// System.out.println("index is " + i);
 			List<WebElement> list = driver.findElements(
 					By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_grdUnassigned']/tbody/tr/td[" + i + "]"));
-			//System.out.println(list.size());
+			// System.out.println(list.size());
 			int b = 0;
 			String ss = "";
 			for (int j = 0; j < list.size(); j++) {
@@ -463,12 +463,13 @@ public class OperationTL {
 				logger.pass(checkname + ss);
 			}
 		} catch (Exception e) {
-			System.out.println(e.toString());
-			
-			logger.fail(checkname + e.toString());
+			System.out.println(e.getMessage().toString());
+
+			logger.fail(checkname + e.getMessage().toString());
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(checkname + e.toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-			pages.Utill().GoTo(getlocator("home_page"));
+			logger.fail(checkname + e.getMessage().toString(),
+					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 		}
 	}
 
