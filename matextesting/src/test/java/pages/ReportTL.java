@@ -80,6 +80,8 @@ public class ReportTL {
 			logger.log(Status.FAIL, "final is :"+fcount);
 			String temp = Utill.getScreenshot(driver);
 			logger.fail("", MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			throw new  Exception("final is :"+fcount);
+			
 			
 		}
 		

@@ -858,6 +858,7 @@ public class OperationTM {
 							pages.Utill().input_text(getlocator("vdrug_remarks"), getvalue("vdrug_remarks"));
 							pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAdd");
 							// pages.Wait().wait_until_alert_isvisible();
+							Thread.sleep(2000);
 							pages.Utill().clickAlertbox();
 							pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnVerify");
 

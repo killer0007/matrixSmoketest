@@ -62,4 +62,8 @@ public class Pages {
 		ReportTM rtm=new ReportTM(driver,logger);
 		return rtm;
 	}
+	public CrtDashboard CrtDashboard() {
+		CrtDashboard crt=new CrtDashboard(driver,logger);
+		return crt;
+	}
 }

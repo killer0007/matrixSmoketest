@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 import environment.Wait;
 import testCases.Pages;
@@ -56,6 +57,8 @@ public class Caseregistration {
 			w.until(ExpectedConditions.elementToBeClickable(pages.Utill().find("//*[text()='"+header+"']")));
 			pages.Utill().click_element("//*[text()='"+header+"']");
 			pages.Utill().click_element("//*[text()='"+menu+"']");
+			System.out.println(driver.getTitle());
+			logger.log(Status.INFO, driver.getTitle());
 		
 	}
 	public String assignToDETM(String cadName,int cadId ) throws Exception {

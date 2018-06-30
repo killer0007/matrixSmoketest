@@ -107,11 +107,35 @@ public class Wait {
 			res = pages.Utill().find("ctl00_ContentPlaceHolder1_overlayScreen").getCssValue("display");
 		} catch (StaleElementReferenceException e) {
 			Thread.sleep(1000);
-			res = pages.Utill().find("ctl00_UpdateProgress1").getCssValue("display");
+			res = pages.Utill().find("ctl00_ContentPlaceHolder1_overlayScreen").getCssValue("display");
 		}
 		while (res.equals("block")) {
 			Thread.sleep(200);
-			res = pages.Utill().find("ctl00_UpdateProgress1").getCssValue("display");
+			res = pages.Utill().find("ctl00_ContentPlaceHolder1_overlayScreen").getCssValue("display");
+			if (!(res.equals("block"))) {
+				// System.out.println("end time"+java.time.LocalTime.now());
+				break;
+			} else {
+				// System.out.println(res);
+				continue;
+
+			}
+		}
+	}
+	//
+	public void wait_until_crtspinner_is_invisible() throws InterruptedException {
+		// Pages pages=new Pages(driver);
+		// System.out.println("Start time"+java.time.LocalTime.now());
+		String res;
+		try {
+			res = pages.Utill().find("ctl00_ContentPlaceHolder1_overlay1").getCssValue("display");
+		} catch (StaleElementReferenceException e) {
+			Thread.sleep(1000);
+			res = pages.Utill().find("ctl00_ContentPlaceHolder1_overlay1").getCssValue("display");
+		}
+		while (res.equals("block")) {
+			Thread.sleep(200);
+			res = pages.Utill().find("ctl00_ContentPlaceHolder1_overlay1").getCssValue("display");
 			if (!(res.equals("block"))) {
 				// System.out.println("end time"+java.time.LocalTime.now());
 				break;

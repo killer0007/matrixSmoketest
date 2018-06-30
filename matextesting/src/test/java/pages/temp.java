@@ -1,60 +1,60 @@
 package pages;
 
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
-import java.util.Scanner;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
+import java.util.Map;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-import org.testng.internal.annotations.FactoryAnnotation;
-
-import com.mysql.jdbc.Driver;
-
-import atu.testrecorder.ATUTestRecorder;
-import environment.SendAttachmentInEmail;
-import testCases.*;
+import org.openqa.selenium.WebElement;
 
 public class temp {
- 
-public static void main(String[] args) throws Exception{
-	String name="abc.*";
-	String fname="abc";
-	String n=new String(name);
-	String f=new String(fname);
-	
-	System.out.println(n.compareTo(f));
-	System.out.println(n.matches(f));
-			System.out.println("hello".matches(".*e.*"));
-	
-}
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		//
+	}
+
+	public static void geturl(WebDriver driver) throws Exception {
+		String path = ".//*[@id='ctl00_pnlHide']/div[2]/ul/li[1]/ul/li/a";
+		driver.findElement(By.xpath("//*[text()='Dashboard']")).click();
+		Map<String, String> map = new HashMap<String, String>();
+		List<String> url = new ArrayList<String>();
+		List<WebElement> ele = driver.findElements(By.xpath(path));
+		for (int i = 0; i < ele.size(); i++) {
+			String te = ele.get(i).getText();
+			url.add(te);
+
+		}
+		System.out.println(url);
+		for (int i = 0; i < url.size(); i++) {
+			//System.out.println(url.get(i));
+			try {
+				driver.findElement(By.xpath("//*[text()='Dashboard']")).click();
+				Thread.sleep(1000);
+				driver.findElement(By.xpath("//*[text()='" + url.get(i) + "']")).click();
+				Thread.sleep(1000);
+				//System.out.println(driver.getTitle());
+				map.put(url.get(i), driver.getTitle());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				map.put(url.get(i), "error");
+				driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/UserHome.aspx");
+			}
+
+		}
+		printMap(map);
+	}
+
+	public static void printMap(Map mp) {
+		Iterator it = mp.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry pair = (Map.Entry) it.next();
+			System.out.println(pair.getKey() + " = " + pair.getValue());
+			it.remove(); // avoids a ConcurrentModificationException
+		}
+	}
 }

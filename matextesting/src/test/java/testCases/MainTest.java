@@ -43,7 +43,8 @@ public class MainTest {
 
 	@BeforeSuite
 	public void beforeSuit() {
-		reporter = new ExtentHtmlReporter("./Reports/matex.html");
+		//reporter = new ExtentHtmlReporter("./Reports/matex.html");
+		reporter = new ExtentHtmlReporter("./Reports/"+Utill.getdatetime()+".html");
 		reporter.config().setDocumentTitle("Matrix test report");
 		reporter.config().setReportName("test report");
 
@@ -180,7 +181,7 @@ public class MainTest {
 		pages.Assignor().assign_Court(MatrixRefNo);
 		pages.Assignor().assign_Facis(MatrixRefNo);
 		pages.Assignor().assign_Credit(MatrixRefNo);
-		pages.Assignor().assign_BV(MatrixRefNo);
+		//pages.Assignor().assign_BV(MatrixRefNo);
 		pages.Assignor().assign_IT(MatrixRefNo);
 		pages.Assignor().assign_PF(MatrixRefNo);
 		assertTrue(true);
@@ -222,8 +223,18 @@ public class MainTest {
 		pages.OperationTM().BV(MatrixRefNo);
 		pages.OperationTM().PF(MatrixRefNo);
 		pages.OperationTM().Credit(MatrixRefNo);
-		pages.ReportTL().assignReport(MatrixRefNo);
+		
 
+	}
+	@Test(priority=8,enabled=true, dependsOnMethods="Operationtm")
+	public void Report() throws Exception{
+		pages.ReportTL().assignReport(MatrixRefNo);
+		pages.ReportTM().Reporttm(MatrixRefNo);
+		
+	}
+	@Test(priority=9,enabled=true, dependsOnMethods="Report")
+	public void publishCase() throws Exception {
+		pages.CrtDashboard().publishcase(MatrixRefNo);
 	}
 
 	@AfterMethod
@@ -252,8 +263,8 @@ public class MainTest {
 	public void afterSuite() {
 		extent.flush();
 		// driver.quit();
-		 SendAttachmentInEmail email = new SendAttachmentInEmail();
-		 email.sendhtmlemail();
+//		 SendAttachmentInEmail email = new SendAttachmentInEmail();
+//		 email.sendhtmlemail();
 
 	}
 

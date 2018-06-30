@@ -28,6 +28,7 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import environment.SendAttachmentInEmail;
 import environment.Utill;
+import pages.temp;
 
 public class MainTest2 {
 	WebDriver driver;
@@ -41,7 +42,7 @@ public class MainTest2 {
 
 	@BeforeSuite
 	public void beforeSuit() {
-		reporter = new ExtentHtmlReporter("./Reports/matex.html");
+		reporter = new ExtentHtmlReporter("./Reports/"+Utill.getdatetime()+".html");
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
 	}
@@ -201,7 +202,9 @@ public class MainTest2 {
 		//pages.OperationTM().temp();
 		//pages.OperationTM().Address(MatrixRefNo);
 		//pages.OperationTM().Credit("DEMOTAF295");
-		pages.ReportTL().assignReport("AUTOMAA002");
+		//pages.ReportTL().assignReport("AUTOMAA002");
+		Thread.sleep(3000);
+		temp.geturl(driver);
 		
 	}
 	@AfterMethod

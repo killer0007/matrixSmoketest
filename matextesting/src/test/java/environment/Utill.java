@@ -3,6 +3,8 @@ package environment;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
@@ -208,6 +210,7 @@ public List<WebElement> Get_webelement_list(String path){
 			logger.log(Status.PASS, result);
 			return result;
 		} catch (WebDriverException e) {
+			Thread.sleep(1000);
 			WebDriverWait w = new WebDriverWait(driver, 60);
 			w.until(ExpectedConditions.elementToBeClickable(pages.Utill().find("ok")));
 			Thread.sleep(1000);
@@ -221,6 +224,8 @@ public List<WebElement> Get_webelement_list(String path){
 	public void GoTo(String url) {
 		driver.navigate().to(url);
 		logger.log(Status.INFO, "navigating to "+url);
+		System.out.println(driver.getTitle());
+		logger.log(Status.INFO, driver.getTitle());
 	}
 	public String getcurrentdate() {
 		SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
@@ -234,5 +239,11 @@ public List<WebElement> Get_webelement_list(String path){
 		Thread.sleep(1000);
 		pages.Utill().click_element(".//*[@id='"+id+"']/div/ul/li");
 
+	}
+	public static String getdatetime() {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
+		LocalDateTime now = LocalDateTime.now();
+		return dtf.format(now); //2016/11/16 12:08:43
+		//return "mmmmm";
 	}
 }
