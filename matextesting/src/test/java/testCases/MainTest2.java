@@ -204,7 +204,7 @@ public class MainTest2 {
 		//pages.OperationTM().Credit("DEMOTAF295");
 		//pages.ReportTL().assignReport("AUTOMAA002");
 		Thread.sleep(3000);
-		temp.geturl(driver);
+		//temp.geturl(driver);
 		
 	}
 	@AfterMethod

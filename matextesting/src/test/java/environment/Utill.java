@@ -10,7 +10,9 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.activity.InvalidActivityException;
@@ -68,11 +70,11 @@ public class Utill {
 
 	public WebElement find(String path) {
 		try {
-			if (path.startsWith("//") || path.startsWith(".//") || path.startsWith("/")|| path.startsWith("./")) {
-				//logger.info("performing actions on " + path);
+			if ( path.startsWith("./") || path.startsWith("/") || path.startsWith("(//")) {
+				// logger.info("performing actions on " + path);
 				return driver.findElement(By.xpath(path));
 			} else {
-				//logger.info("performing actions on " + path);
+				// logger.info("performing actions on " + path);
 				return driver.findElement(By.id(path));
 			}
 		} catch (Exception e) {
@@ -81,22 +83,22 @@ public class Utill {
 	}
 
 	public void input_text(String path, String text) throws Exception {
-		try {
-			
-			pages.Utill().find(path).sendKeys(text);
-			logger.log(Status.PASS, "Typing text '"+text+"' into text field '"+path+"'.");
-			//logger.info();
-		} catch (Exception e) {
-			throw new Exception(e.toString());
-		}
+		// try {
+
+		pages.Utill().find(path).sendKeys(text);
+		logger.log(Status.PASS, "Typing text '" + text + "' into text field '" + path + "'.");
+		// logger.info();
+		// } catch (Exception e) {
+		// throw new Exception(e.toString());
+		// }
 	}
 
 	public String get_text(String path) throws Exception {
 		try {
-		
-					String msg=pages.Utill().find(path).getText();
-					logger.log(Status.PASS, "msg = "+msg+".");
-					return msg;
+
+			String msg = pages.Utill().find(path).getText();
+			logger.log(Status.PASS, "msg = " + msg + ".");
+			return msg;
 		} catch (Exception e) {
 
 			throw new Exception(e.toString());
@@ -106,34 +108,37 @@ public class Utill {
 
 	public void select_by_label(String path, String value) throws Exception {
 		try {
-			//	Selecting options from selection list 'xpath=.//*[@id='ddltype1']' by label Course Completion Certificate.Sele
-			
+			// Selecting options from selection list 'xpath=.//*[@id='ddltype1']' by label
+			// Course Completion Certificate.Sele
+
 			Select sel = new Select(pages.Utill().find(path));
 			sel.selectByVisibleText(value);
-			logger.log(Status.PASS, "Selecting options from selection list '"+path+"' by label "+value+".");
+			logger.log(Status.PASS, "Selecting options from selection list '" + path + "' by label " + value + ".");
 		} catch (Exception e) {
 
 			throw new Exception(e.toString());
 		}
 	}
+
 	public void choose_file(String path, String file) throws Exception {
 		pages.Utill().input_text(path, file);
 		logger.log(Status.PASS, "uploading file");
 	}
-public void click_element(String path) throws Exception {
-	
+
+	public void click_element(String path) throws Exception {
+
 		try {
-			
+
 			pages.Utill().find(path).click();
-			logger.log(Status.PASS, "Clicking element '"+path+"'");
+			logger.log(Status.PASS, "Clicking element '" + path + "'");
 		} catch (StaleElementReferenceException e) {
 			Thread.sleep(1000);
 			pages.Utill().find(path).click();
-			logger.log(Status.PASS, "Clicking element '"+path+"'");
+			logger.log(Status.PASS, "Clicking element '" + path + "'");
 		}
-		
-	
-}
+
+	}
+
 	public int candidateid() {
 		Random ran = new Random();
 		int num = ran.nextInt(9000000) + 1000000;
@@ -151,11 +156,11 @@ public void click_element(String path) throws Exception {
 	public String GetTableCellValue(String id, int row, int col) throws InvalidActivityException {
 		try {
 			String re = find("//table[@id='" + id + "']/tbody/tr[" + row + "]/td[" + col + "]").getText();
-			
+
 			if (re.equals("")) {
 				throw new InvalidActivityException();
 			} else {
-				logger.log(Status.PASS, "getting value from table  :"+re);
+				logger.log(Status.PASS, "getting value from table  :" + re);
 				return re;
 			}
 		} catch (NoSuchElementException e) {
@@ -163,48 +168,51 @@ public void click_element(String path) throws Exception {
 
 		}
 	}
-public int Get_Matching_xpath_count(String path) {
-	logger.log(Status.PASS, "getting xpath count for "+path);
-	return driver.findElements(By.xpath(path)).size();
-}
-public String handle_Alert() throws InterruptedException {
-	String text;
 
-	try {
-		Alert alert=driver.switchTo().alert();
-		text=alert.getText();
-		alert.accept();
-		logger.log(Status.PASS, "education verification data entry completed");
-		return text;
-	} catch (NoAlertPresentException e) {
-		System.out.println("NoAlertPresentException");
-		WebDriverWait w = new WebDriverWait(driver, 10);
-		w.until(ExpectedConditions.alertIsPresent());
-		Alert alert = driver.switchTo().alert();
-		text = alert.getText();
-		alert.accept();
-		//pages.Wait().wait_until_loader_is_invisible();
-		logger.log(Status.PASS, "education verification data entry completed");
-		return text;
-}
-	catch (UnhandledAlertException e) {
-		System.out.println("UnhandledAlertException");
-		Alert alert = driver.switchTo().alert();
-		text = alert.getText();
-		alert.accept();
-		//pages.Wait().wait_until_loader_is_invisible();
-		logger.log(Status.PASS, "education verification data entry completed");
-		return text;
-}
-}
-public List<WebElement> Get_webelement_list(String path){
-	return driver.findElements(By.xpath(path));
-}
+	public int Get_Matching_xpath_count(String path) {
+		logger.log(Status.PASS, "getting xpath count for " + path);
+		return driver.findElements(By.xpath(path)).size();
+	}
+
+	public String handle_Alert() throws InterruptedException {
+		String text;
+
+		try {
+			Alert alert = driver.switchTo().alert();
+			text = alert.getText();
+			alert.accept();
+			logger.log(Status.PASS, "education verification data entry completed");
+			return text;
+		} catch (NoAlertPresentException e) {
+			System.out.println("NoAlertPresentException");
+			WebDriverWait w = new WebDriverWait(driver, 10);
+			w.until(ExpectedConditions.alertIsPresent());
+			Alert alert = driver.switchTo().alert();
+			text = alert.getText();
+			alert.accept();
+			// pages.Wait().wait_until_loader_is_invisible();
+			logger.log(Status.PASS, "education verification data entry completed");
+			return text;
+		} catch (UnhandledAlertException e) {
+			System.out.println("UnhandledAlertException");
+			Alert alert = driver.switchTo().alert();
+			text = alert.getText();
+			alert.accept();
+			// pages.Wait().wait_until_loader_is_invisible();
+			logger.log(Status.PASS, "education verification data entry completed");
+			return text;
+		}
+	}
+
+	public List<WebElement> Get_webelement_list(String path) {
+		return driver.findElements(By.xpath(path));
+	}
+
 	public String clickAlertbox() throws Exception {
 		try {
 			WebDriverWait w = new WebDriverWait(driver, 60);
 			w.until(ExpectedConditions.presenceOfElementLocated(By.id("ok")));
-			String result=pages.Utill().get_text("//*[@class='m_content']");
+			String result = pages.Utill().get_text("//*[@class='m_content']");
 			pages.Utill().click_element("ok");
 			System.out.println(result);
 			logger.log(Status.PASS, result);
@@ -214,36 +222,54 @@ public List<WebElement> Get_webelement_list(String path){
 			WebDriverWait w = new WebDriverWait(driver, 60);
 			w.until(ExpectedConditions.elementToBeClickable(pages.Utill().find("ok")));
 			Thread.sleep(1000);
-			String result=pages.Utill().get_text("//*[@class='m_content']");
+			String result = pages.Utill().get_text("//*[@class='m_content']");
 			pages.Utill().click_element("ok");
 			System.out.println(result);
 			logger.log(Status.PASS, result);
 			return result;
 		}
 	}
+
+	public String getTitle() {
+		String title = driver.getTitle();
+		logger.log(Status.PASS, "getting page title as  " + title);
+		return title;
+	}
+
 	public void GoTo(String url) {
 		driver.navigate().to(url);
-		logger.log(Status.INFO, "navigating to "+url);
+		logger.log(Status.INFO, "navigating to " + url);
 		System.out.println(driver.getTitle());
 		logger.log(Status.INFO, driver.getTitle());
 	}
+
 	public String getcurrentdate() {
 		SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
 		Date currentMonth = new Date();
 		return df.format(currentMonth).toString();
 
 	}
-	public void search_and_select(String id, String value) throws Exception{
-		pages.Utill().click_element(".//*[@id='"+id+"']/a");
-		pages.Utill().input_text(".//*[@id='"+id+"']//div/div/input", value);
+
+	public void search_and_select(String id, String value) throws Exception {
+		pages.Utill().click_element(".//*[@id='" + id + "']/a");
+		pages.Utill().input_text(".//*[@id='" + id + "']//div/div/input", value);
 		Thread.sleep(1000);
-		pages.Utill().click_element(".//*[@id='"+id+"']/div/ul/li");
+		pages.Utill().click_element(".//*[@id='" + id + "']/div/ul/li");
 
 	}
+	public void printMap(Map mp) {
+		Iterator it = mp.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry pair = (Map.Entry) it.next();
+			System.out.println(pair.getKey() + " = " + pair.getValue());
+			it.remove(); // avoids a ConcurrentModificationException
+		}
+	}
+
 	public static String getdatetime() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
 		LocalDateTime now = LocalDateTime.now();
-		return dtf.format(now); //2016/11/16 12:08:43
-		//return "mmmmm";
+		return dtf.format(now); // 2016/11/16 12:08:43
+		// return "mmmmm";
 	}
 }

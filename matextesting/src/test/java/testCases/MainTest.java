@@ -44,7 +44,7 @@ public class MainTest {
 	@BeforeSuite
 	public void beforeSuit() {
 		//reporter = new ExtentHtmlReporter("./Reports/matex.html");
-		reporter = new ExtentHtmlReporter("./Reports/"+Utill.getdatetime()+".html");
+		reporter = new ExtentHtmlReporter("./Reports/matrixflow.html");
 		reporter.config().setDocumentTitle("Matrix test report");
 		reporter.config().setReportName("test report");
 
@@ -229,7 +229,7 @@ public class MainTest {
 	@Test(priority=8,enabled=true, dependsOnMethods="Operationtm")
 	public void Report() throws Exception{
 		pages.ReportTL().assignReport(MatrixRefNo);
-		pages.ReportTM().Reporttm(MatrixRefNo);
+		//pages.ReportTM().Reporttm(MatrixRefNo);
 		
 	}
 	@Test(priority=9,enabled=true, dependsOnMethods="Report")

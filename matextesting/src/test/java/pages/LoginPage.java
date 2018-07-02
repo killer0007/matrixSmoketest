@@ -21,6 +21,7 @@ public class LoginPage {
 	}
 
 	public void Login(String uname, String pass) throws Exception {
+		//System.out.println(uname+":"+pass);
 		pages.Utill().input_text("//*[@id='txtUsername']", uname);
 		pages.Utill().input_text("//*[@id='txtPassword']", pass);
 		pages.Utill().click_element("btnLogin");
