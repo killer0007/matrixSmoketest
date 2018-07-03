@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
 
+import environment.DbConnection;
 import testCases.Pages;
 
 public class LoginPage {
@@ -20,8 +21,10 @@ public class LoginPage {
 		pages = new Pages(driver, logger);
 	}
 
-	public void Login(String uname, String pass) throws Exception {
+	public void Login(String uname) throws Exception {
 		//System.out.println(uname+":"+pass);
+		String pass=DbConnection.GetPassword(uname);
+		
 		pages.Utill().input_text("//*[@id='txtUsername']", uname);
 		pages.Utill().input_text("//*[@id='txtPassword']", pass);
 		pages.Utill().click_element("btnLogin");

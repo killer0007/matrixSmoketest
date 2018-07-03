@@ -210,6 +210,7 @@ public class Utill {
 
 	public String clickAlertbox() throws Exception {
 		try {
+			Thread.sleep(1500);
 			WebDriverWait w = new WebDriverWait(driver, 60);
 			w.until(ExpectedConditions.presenceOfElementLocated(By.id("ok")));
 			String result = pages.Utill().get_text("//*[@class='m_content']");

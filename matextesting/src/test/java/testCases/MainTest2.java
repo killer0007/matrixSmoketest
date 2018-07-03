@@ -71,7 +71,7 @@ public class MainTest2 {
 
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
-		pages.loginpage().Login(getvalue("uname"), getvalue("password"));
+		pages.loginpage().Login(getvalue("uname"));
 		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
 
 	}
@@ -196,16 +196,9 @@ public class MainTest2 {
 	}
 	@Test(priority = 7, enabled = true)
 	public void Operationtm() throws Exception {
-		//pages.OperationTM().Education(MatrixRefNo);
-		//driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/EmploymentTMHomepage.aspx");
-		
-		//pages.OperationTM().temp();
-		//pages.OperationTM().Address(MatrixRefNo);
-		//pages.OperationTM().Credit("DEMOTAF295");
-		//pages.ReportTL().assignReport("AUTOMAA002");
-		Thread.sleep(3000);
-		//temp.geturl(driver);
-		
+		pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/DrugDashboard.aspx");
+		boolean state=temp.getlogo(driver);
+		System.out.println("Result "+state);
 	}
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {

@@ -70,18 +70,18 @@ public class MainTest {
 	}
 
 	@BeforeMethod
-	public void setup(Method method) {
+	public void setup(Method method) throws Exception {
 		logger = extent.createTest(method.getName());
 		logger.pass(method.getName() + " Started");
 		logger.assignAuthor("Gopinath");
-
 		pages = new Pages(driver, logger);
-		System.out.println("before method");
+		System.out.println("-----------------------------------------"+method.getName()+" started"+"-----------------------------------");
+		pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 	}
 
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
-		pages.loginpage().Login(getvalue("uname"), getvalue("password"));
+		pages.loginpage().Login(getvalue("uname"));
 		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
 
 	}
@@ -229,7 +229,7 @@ public class MainTest {
 	@Test(priority=8,enabled=true, dependsOnMethods="Operationtm")
 	public void Report() throws Exception{
 		pages.ReportTL().assignReport(MatrixRefNo);
-		//pages.ReportTM().Reporttm(MatrixRefNo);
+		pages.ReportTM().Reporttm(MatrixRefNo);
 		
 	}
 	@Test(priority=9,enabled=true, dependsOnMethods="Report")
@@ -239,7 +239,7 @@ public class MainTest {
 
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
-
+		System.out.println("-----------------------------------------"+method.getName()+" completed"+"-----------------------------------");
 		if (result.getStatus() == ITestResult.FAILURE) {
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(result.getThrowable().getMessage(),

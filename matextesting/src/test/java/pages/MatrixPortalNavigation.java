@@ -41,7 +41,7 @@ public class MatrixPortalNavigation {
 	}
 
 	public void geturl(String title, Map<String, String> map, String xpath) throws Exception {
-		String currenturl=driver.getCurrentUrl();
+		String currenturl = driver.getCurrentUrl();
 		pages.Utill().click_element("//*[text()='" + title + "']");
 		LinkedList<String> url = new LinkedList<String>();
 		Thread.sleep(1500);
@@ -53,11 +53,10 @@ public class MatrixPortalNavigation {
 		}
 		System.out.println(url);
 		int len;
-		if(title.equals("Masters") || title.equals("Approvals")) {
-			len=url.size()-1;
-		}
-		else {
-			len=url.size();
+		if (title.equals("Masters") || title.equals("Approvals")) {
+			len = url.size() - 1;
+		} else {
+			len = url.size();
 		}
 		for (int i = 0; i < len; i++) {
 			try {
@@ -65,41 +64,103 @@ public class MatrixPortalNavigation {
 				try {
 					pages.Utill().click_element("//*[text()='" + url.get(i) + "']");
 				} catch (ElementNotVisibleException e) {
-					//(//*[text()='City'])[2]
+					// (//*[text()='City'])[2]
 					System.out.println(" exception is ElementNotVisibleException");
-					System.out.println("(//*[text()='"+url.get(i)+"'])[2]");
-					pages.Utill().click_element("(//*[text()='"+url.get(i)+"'])[2]");
+					System.out.println("(//*[text()='" + url.get(i) + "'])[2]");
+					pages.Utill().click_element("(//*[text()='" + url.get(i) + "'])[2]");
 				}
 				map.put(url.get(i), pages.Utill().getTitle());
 			} catch (NoSuchElementException e) {
 				if (e.getMessage().toString().contains("//*[text()='" + title + "']")) {
 					System.out.println("expected");
 					pages.Utill().click_element(getpath(title));
-					// driver.findElement(By.xpath(".//*[@id='ctl00_pnlMenu']/div/div[2]/div[2]/nav/ul/li[2]/ul/li[1]/a")).click();
 					pages.Utill().click_element("//*[text()='" + url.get(i) + "']");
 					map.put(url.get(i), pages.Utill().getTitle());
 				}
-				
-			} 
-//			catch (TimeoutException e) {
-//				System.out.println(e.getMessage().toString());
-//				String temp = Utill.getScreenshot(driver);
-//				logger.fail(e.getMessage().toString(),
-//						MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-//				pages.Utill().GoTo(currenturl);
-//			}
+
+			}
+
 			finally {
 				String titles = driver.getTitle();
+				boolean result =getlogo();
 				if (titles.contains("The resource cannot") || titles.contains("has not been pre-compiled")
-						|| titles.contains("not found on the selected data source")) {
+						|| titles.contains("not found on the selected data source") || titles.contains("Error Page") || !result) {
 					String temp = Utill.getScreenshot(driver);
 					logger.fail(pages.Utill().getTitle() + " for " + title + "->" + url.get(i),
 							MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 					pages.Utill().GoTo(currenturl);
 
-				} else if (driver.getTitle().isEmpty()) {
+				} else if (driver.getTitle().isEmpty() && result) {
 					logger.log(Status.WARNING, " title was empty for " + url.get(i));
-				} else {
+					String temp = Utill.getScreenshot(driver);
+					logger.warning(" title was empty for " + title + "->" + url.get(i),
+							MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+				} else if(!(driver.getTitle().isEmpty()) && result){
+					logger.log(Status.PASS, pages.Utill().getTitle());
+				}
+			}
+			}
+		
+	}
+
+	public void geturlpage(String title, Map<String, String> map, String xpath) throws Exception {
+		
+		String currenturl = getvalue("url") + "/Matrix/UserHome.aspx";
+		pages.Utill().GoTo(currenturl);
+		pages.Utill().click_element("//*[text()='" + title + "']");
+		LinkedList<String> url = new LinkedList<String>();
+		Thread.sleep(1500);
+		List<WebElement> ele = driver.findElements(By.xpath(xpath));
+		for (int i = 0; i < ele.size(); i++) {
+			String te = ele.get(i).getText();
+			url.add(te);
+
+		}
+		System.out.println(url);
+		int len;
+		if (title.equals("Masters") || title.equals("Approvals")) {
+			len = url.size() - 1;
+		} else {
+			len = url.size();
+		}
+		for (int i = 0; i < len; i++) {
+			try {
+				pages.Utill().click_element("//*[text()='" + title + "']");
+				try {
+					pages.Utill().click_element("//*[text()='" + url.get(i) + "']");
+				} catch (ElementNotVisibleException e) {
+					// (//*[text()='City'])[2]
+					System.out.println(" exception is ElementNotVisibleException");
+					System.out.println("(//*[text()='" + url.get(i) + "'])[2]");
+					pages.Utill().click_element("(//*[text()='" + url.get(i) + "'])[2]");
+				}
+				map.put(url.get(i), pages.Utill().getTitle());
+			} catch (NoSuchElementException e) {
+				if (e.getMessage().toString().contains("//*[text()='" + title + "']")) {
+					System.out.println("expected");
+					pages.Utill().click_element(getpath(title));
+					pages.Utill().click_element("//*[text()='" + url.get(i) + "']");
+					map.put(url.get(i), pages.Utill().getTitle());
+				}
+
+			}
+
+			finally {
+				String titles = driver.getTitle();
+				boolean result =getlogo();
+				if (titles.contains("The resource cannot") || titles.contains("has not been pre-compiled")
+						|| titles.contains("not found on the selected data source") || titles.contains("Error Page") || !result) {
+					String temp = Utill.getScreenshot(driver);
+					logger.fail(pages.Utill().getTitle() + " for " + title + "->" + url.get(i),
+							MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+					pages.Utill().GoTo(currenturl);
+
+				} else if (driver.getTitle().isEmpty() && result) {
+					logger.log(Status.WARNING, " title was empty for " + url.get(i));
+					String temp = Utill.getScreenshot(driver);
+					logger.warning(" title was empty for " + title + "->" + url.get(i),
+							MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+				} else if(!(driver.getTitle().isEmpty()) && result){
 					logger.log(Status.PASS, pages.Utill().getTitle());
 				}
 			}
@@ -134,5 +195,38 @@ public class MatrixPortalNavigation {
 			return "not found " + title;
 		}
 
+	}
+
+	private boolean getlogo()  {
+
+		try {
+			String scr = pages.Utill().find("//*[@class='logoin']").getCssValue("background");
+			// String
+			// scr=driver.findElement(By.xpath("//*[@class='logoin']")).getCssValue("background");
+			// System.out.println("try "+scr);
+			logger.log(Status.PASS, scr);
+			if (scr.matches(".*\\bhttp://192.168.2.16/MatexTesting/Extn/img/logoin.gif\\b.*")) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (NoSuchElementException e) {
+			
+			try {
+				String scr = pages.Utill().find("//*[@class='logo']").getAttribute("src");
+				// String
+				// scr=driver.findElement(By.xpath("//*[@class='logo']")).getAttribute("src");
+				// System.out.println("catch "+scr);
+				logger.log(Status.PASS, scr);
+				if (scr.matches(".*\\bhttp://192.168.2.16/MatexTesting/Styles/images/logoin.gif\\b.*")) {
+					return true;
+				} else {
+					return false;
+				}
+			} catch (NoSuchElementException e1) {
+				System.out.println("catch final");
+				return false;
+			}
+		}
 	}
 }
