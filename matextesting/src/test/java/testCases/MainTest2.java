@@ -38,7 +38,7 @@ public class MainTest2 {
 	Pages pages;
 	int candid = 3015270;
 	String candidateName = "gopi";
-	String MatrixRefNo = "DEMOTAF140";
+	String MatrixRefNo = "DEMOTAD057";
 
 	@BeforeSuite
 	public void beforeSuit() {
@@ -62,11 +62,12 @@ public class MainTest2 {
 	}
 
 	@BeforeMethod
-	public void setup(Method method) {
+	public void setup(Method method) throws Exception{
 		logger = extent.createTest(method.getName());
 		logger.pass(method.getName() + " Started");
 		pages = new Pages(driver, logger);
 		System.out.println("before method");
+		//pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 	}
 
 	@Test(priority = 1, enabled = true)
@@ -80,7 +81,7 @@ public class MainTest2 {
 	public void caseregistration() throws Exception {
 		candid = pages.Utill().candidateid();
 		candidateName = pages.Utill().candidateName();
-		String re = pages.CaseRegistration().caseRegistration("Demo Testing - Test", candid, candidateName);
+		String re = pages.CaseRegistration().caseRegistration(getvalue("clientname"), candid, candidateName);
 		Assert.assertEquals(re, "Registered Successfully.");
 	}
 
@@ -155,24 +156,24 @@ public class MainTest2 {
 		}
 	}
 
-	@Test(priority = 5, enabled = false, dependsOnMethods = "dataentry")
+	@Test(priority = 5, enabled = true)
 	public void assigncase() throws Exception {
 		Thread.sleep(6000);
-		driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/AssignerHome.aspx");
+		pages.Utill().GoTo(getvalue("url")+"/Matrix/AssignerHome.aspx");
 		pages.Assignor().assign_Address(MatrixRefNo);
-		pages.Assignor().assign_Employment(MatrixRefNo);
-		pages.Assignor().assign_Reference(MatrixRefNo);
-		pages.Assignor().assign_Criminal(MatrixRefNo);
-		pages.Assignor().assign_DB(MatrixRefNo);
-		pages.Assignor().assign_Drug(MatrixRefNo);
-		pages.Assignor().assign_ID(MatrixRefNo);
-		pages.Assignor().assign_ID(MatrixRefNo);
-		pages.Assignor().assign_Court(MatrixRefNo);
-		pages.Assignor().assign_Facis(MatrixRefNo);
-		pages.Assignor().assign_Credit(MatrixRefNo);
-		pages.Assignor().assign_BV(MatrixRefNo);
-		pages.Assignor().assign_IT(MatrixRefNo);
-		pages.Assignor().assign_PF(MatrixRefNo);
+//		pages.Assignor().assign_Employment(MatrixRefNo);
+//		pages.Assignor().assign_Reference(MatrixRefNo);
+//		pages.Assignor().assign_Criminal(MatrixRefNo);
+//		pages.Assignor().assign_DB(MatrixRefNo);
+//		pages.Assignor().assign_Drug(MatrixRefNo);
+//		pages.Assignor().assign_ID(MatrixRefNo);
+//		pages.Assignor().assign_ID(MatrixRefNo);
+//		pages.Assignor().assign_Court(MatrixRefNo);
+//		pages.Assignor().assign_Facis(MatrixRefNo);
+//		pages.Assignor().assign_Credit(MatrixRefNo);
+//		pages.Assignor().assign_BV(MatrixRefNo);
+//		pages.Assignor().assign_IT(MatrixRefNo);
+//		pages.Assignor().assign_PF(MatrixRefNo);
 		assertTrue(true);
 	}
 
@@ -194,11 +195,11 @@ public class MainTest2 {
 		pages.OperationTL().PFtl(MatrixRefNo);
 
 	}
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = false)
 	public void Operationtm() throws Exception {
-		pages.Utill().GoTo("http://192.168.2.16/MatexTesting/Matrix/DrugDashboard.aspx");
-		boolean state=temp.getlogo(driver);
-		System.out.println("Result "+state);
+		pages.CaseRegistration().navigateTo("Dashboard", "Residence TM");
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_grdteamleader_ctl02_btnMatrixRefNo");
+		pages.MatrixPortalNavigation().verificationpage("Candidate Verify Address");
 	}
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {

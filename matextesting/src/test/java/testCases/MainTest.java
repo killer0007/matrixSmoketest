@@ -30,7 +30,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import environment.SendAttachmentInEmail;
 import environment.Utill;
-
+@Listeners(environment.Listeners.class)
 public class MainTest {
 	WebDriver driver;
 	ExtentHtmlReporter reporter;
@@ -66,7 +66,7 @@ public class MainTest {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get(getvalue("url"));
-		// driver.get("http://192.168.2.16/MatexTesting");
+		 //driver.get("http://192.168.2.16/MatexTesting");
 	}
 
 	@BeforeMethod
@@ -75,13 +75,13 @@ public class MainTest {
 		logger.pass(method.getName() + " Started");
 		logger.assignAuthor("Gopinath");
 		pages = new Pages(driver, logger);
-		System.out.println("-----------------------------------------"+method.getName()+" started"+"-----------------------------------");
 		pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 	}
 
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
 		pages.loginpage().Login(getvalue("uname"));
+		
 		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
 
 	}
@@ -90,7 +90,7 @@ public class MainTest {
 	public void caseregistration() throws Exception {
 		candid = pages.Utill().candidateid();
 		candidateName = pages.Utill().candidateName();
-		String re = pages.CaseRegistration().caseRegistration("automation - Test", candid, candidateName);
+		String re = pages.CaseRegistration().caseRegistration(getvalue("clientname"), candid, candidateName);
 		Assert.assertEquals(re, "Registered Successfully.");
 	}
 
@@ -239,7 +239,7 @@ public class MainTest {
 
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
-		System.out.println("-----------------------------------------"+method.getName()+" completed"+"-----------------------------------");
+		
 		if (result.getStatus() == ITestResult.FAILURE) {
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(result.getThrowable().getMessage(),
@@ -256,7 +256,7 @@ public class MainTest {
 	@AfterTest
 	public void teardown() {
 		// pages.loginpage().Logout();
-		driver.close();
+		//driver.close();
 	}
 
 	@AfterSuite

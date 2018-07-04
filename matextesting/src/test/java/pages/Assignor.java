@@ -46,7 +46,7 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_Employment"));
 		int b = 0;
 
-		if (ele.getText() != "0") {
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {
@@ -120,7 +120,7 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_Education"));
 		int b = 0;
 		String ss = "";
-		if (ele.getText() != "0") {
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {
@@ -192,7 +192,7 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_Reference"));
 		int b = 0;
 		String ss = "";
-		if (ele.getText() != "0") {
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {
@@ -264,7 +264,10 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_Address"));
 		int b = 0;
 		String ss = "";
-		if (ele.getText() != "0") {
+//		String s=ele.getText();
+//		System.out.println(s);
+//		System.out.println(!(s.equals("0")));
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {
@@ -336,7 +339,7 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_Criminal"));
 		int b = 0;
 		String ss = "";
-		if (ele.getText() != "0") {
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {
@@ -408,7 +411,7 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_Db"));
 		int b = 0;
 		String ss = "";
-		if (ele.getText() != "0") {
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {
@@ -479,7 +482,7 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_Drug"));
 		int b = 0;
 		String ss = "";
-		if (ele.getText() != "0") {
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {
@@ -551,7 +554,7 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_ID"));
 		int b = 0;
 		String ss = "";
-		if (ele.getText() != "0") {
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {
@@ -621,7 +624,7 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_Court"));
 		int b = 0;
 		String ss = "";
-		if (ele.getText() != "0") {
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {
@@ -693,7 +696,7 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_Facis"));
 		int b = 0;
 		String ss = "";
-		if (ele.getText() != "0") {
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {
@@ -765,7 +768,7 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_Credit"));
 		int b = 0;
 		String ss = "";
-		if (ele.getText() != "0") {
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {
@@ -837,7 +840,7 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_IT"));
 		int b = 0;
 		String ss = "";
-		if (ele.getText() != "0") {
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {
@@ -909,7 +912,7 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_BV"));
 		int b = 0;
 		String ss = "";
-		if (ele.getText() != "0") {
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {
@@ -981,7 +984,7 @@ public class Assignor {
 		WebElement ele = pages.Utill().find(getlocator("ass_PF"));
 		int b = 0;
 		String ss = "";
-		if (ele.getText() != "0") {
+		if (!(ele.getText().equals("0"))) {
 			try {
 				ele.click();
 			} catch (WebDriverException e) {

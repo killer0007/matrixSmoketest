@@ -23,7 +23,7 @@ public class LoginPage {
 
 	public void Login(String uname) throws Exception {
 		//System.out.println(uname+":"+pass);
-		String pass=DbConnection.GetPassword(uname);
+		String pass=getpassword(uname);
 		
 		pages.Utill().input_text("//*[@id='txtUsername']", uname);
 		pages.Utill().input_text("//*[@id='txtPassword']", pass);
@@ -36,5 +36,20 @@ public class LoginPage {
 		WebDriverWait w = new WebDriverWait(driver, 10);
 		w.until(ExpectedConditions.presenceOfElementLocated(By.id("cOK")));
 		pages.Utill().click_element("cOK");
+	}
+	private  String getpassword(String uname) throws Exception{
+		String url=driver.getCurrentUrl();
+		if(url.contains("http://192.168.2.16")) {
+			return DbConnection.GetloalPassword(uname);
+		}
+		else if(url.contains("http://103.60.137.37/Matex/")) {
+			return DbConnection.GetuatPassword(uname);
+		}
+		else if(url.contains("https://www.matex.co.in/MatEx/")) {
+			return DbConnection.GetlivePassword(uname);
+		}
+		else {
+			return null;
+		}
 	}
 }

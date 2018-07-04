@@ -2,90 +2,90 @@
 <testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="366445" started-at="2018-07-02T11:20:36Z" finished-at="2018-07-02T11:26:42Z">
+  <suite name="Default suite" duration-ms="21158" started-at="2018-07-04T12:46:46Z" finished-at="2018-07-04T12:47:07Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="366445" started-at="2018-07-02T11:20:36Z" finished-at="2018-07-02T11:26:42Z">
-      <class name="testCases.UrlNavigation">
-        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:testCases.UrlNavigation@bd1b6a]" name="beforeSuit" is-config="true" duration-ms="159" started-at="2018-07-02T16:50:36Z" finished-at="2018-07-02T16:50:36Z">
+    <test name="Default test" duration-ms="21158" started-at="2018-07-04T12:46:46Z" finished-at="2018-07-04T12:47:07Z">
+      <class name="testCases.MainTest2">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:testCases.MainTest2@18355a8]" name="beforeSuit" is-config="true" duration-ms="174" started-at="2018-07-04T18:16:46Z" finished-at="2018-07-04T18:16:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuit -->
-        <test-method status="PASS" signature="start()[pri:0, instance:testCases.UrlNavigation@bd1b6a]" name="start" is-config="true" duration-ms="6458" started-at="2018-07-02T16:50:36Z" finished-at="2018-07-02T16:50:42Z">
+        <test-method status="PASS" signature="start()[pri:0, instance:testCases.MainTest2@18355a8]" name="start" is-config="true" duration-ms="6801" started-at="2018-07-04T18:16:46Z" finished-at="2018-07-04T18:16:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- start -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.UrlNavigation@bd1b6a]" name="setup" is-config="true" duration-ms="13" started-at="2018-07-02T16:50:42Z" finished-at="2018-07-02T16:50:42Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@18355a8]" name="setup" is-config="true" duration-ms="13" started-at="2018-07-04T18:16:53Z" finished-at="2018-07-04T18:16:53Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testCases.UrlNavigation.demotlpage() throws java.lang.Exception]]>
+                <![CDATA[public void testCases.MainTest2.Login() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="demotlpage()[pri:0, instance:testCases.UrlNavigation@bd1b6a]" name="demotlpage" duration-ms="288876" started-at="2018-07-02T16:50:42Z" finished-at="2018-07-02T16:55:31Z">
+        <test-method status="PASS" signature="Login()[pri:0, instance:testCases.MainTest2@18355a8]" name="Login" duration-ms="6186" started-at="2018-07-04T18:16:53Z" finished-at="2018-07-04T18:16:59Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- demotlpage -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.UrlNavigation@bd1b6a]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-07-02T16:55:31Z" finished-at="2018-07-02T16:55:31Z">
+        </test-method> <!-- Login -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@18355a8]" name="setup" is-config="true" duration-ms="0" started-at="2018-07-04T18:16:59Z" finished-at="2018-07-04T18:16:59Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=demotlpage status=SUCCESS method=UrlNavigation.demotlpage()[pri:0, instance:testCases.UrlNavigation@bd1b6a] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void testCases.UrlNavigation.demotlpage() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.UrlNavigation@bd1b6a]" name="setup" is-config="true" duration-ms="1" started-at="2018-07-02T16:55:31Z" finished-at="2018-07-02T16:55:31Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void testCases.UrlNavigation.adminpage() throws java.lang.Exception]]>
+                <![CDATA[public void testCases.MainTest2.assigncase() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="adminpage()[pri:0, instance:testCases.UrlNavigation@bd1b6a]" name="adminpage" duration-ms="71083" started-at="2018-07-02T16:55:31Z" finished-at="2018-07-02T16:56:42Z">
+        <test-method status="PASS" signature="assigncase()[pri:0, instance:testCases.MainTest2@18355a8]" name="assigncase" duration-ms="8133" started-at="2018-07-04T18:16:59Z" finished-at="2018-07-04T18:17:07Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- adminpage -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.UrlNavigation@bd1b6a]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-07-02T16:56:42Z" finished-at="2018-07-02T16:56:42Z">
+        </test-method> <!-- assigncase -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@18355a8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-07-04T18:16:59Z" finished-at="2018-07-04T18:16:59Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=adminpage status=SUCCESS method=UrlNavigation.adminpage()[pri:0, instance:testCases.UrlNavigation@bd1b6a] output={null}]]]>
+                <![CDATA[[TestResult name=Login status=SUCCESS method=MainTest2.Login()[pri:0, instance:testCases.MainTest2@18355a8] output={null}]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void testCases.UrlNavigation.adminpage() throws java.lang.Exception]]>
+                <![CDATA[public void testCases.MainTest2.Login() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:testCases.UrlNavigation@bd1b6a]" name="teardown" is-config="true" duration-ms="0" started-at="2018-07-02T16:56:42Z" finished-at="2018-07-02T16:56:42Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:testCases.MainTest2@18355a8]" name="teardown" is-config="true" duration-ms="0" started-at="2018-07-04T18:17:07Z" finished-at="2018-07-04T18:17:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:testCases.UrlNavigation@bd1b6a]" name="afterSuite" is-config="true" duration-ms="630" started-at="2018-07-02T16:56:43Z" finished-at="2018-07-02T16:56:43Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@18355a8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-07-04T18:17:07Z" finished-at="2018-07-04T18:17:07Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=assigncase status=SUCCESS method=MainTest2.assigncase()[pri:0, instance:testCases.MainTest2@18355a8] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void testCases.MainTest2.assigncase() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:testCases.MainTest2@18355a8]" name="afterSuite" is-config="true" duration-ms="252" started-at="2018-07-04T18:17:07Z" finished-at="2018-07-04T18:17:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- testCases.UrlNavigation -->
+      </class> <!-- testCases.MainTest2 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

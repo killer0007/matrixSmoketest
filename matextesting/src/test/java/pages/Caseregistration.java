@@ -40,6 +40,7 @@ public class Caseregistration {
 			
 			
 		}
+		//pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_CaseRegistrationUC_drpTimesLocation", "Mapletree");
 		pages.Utill().input_text(xp + "_Case_CandidateName", cadName);
 		pages.Utill().input_text(xp + "_Case_CandidateId", Integer.toString(cadID));
 		pages.Utill().input_text(xp + "_Case_EmployeeId", "43232");
@@ -57,8 +58,8 @@ public class Caseregistration {
 			w.until(ExpectedConditions.elementToBeClickable(pages.Utill().find("//*[text()='"+header+"']")));
 			pages.Utill().click_element("//*[text()='"+header+"']");
 			pages.Utill().click_element("//*[text()='"+menu+"']");
-			System.out.println(driver.getTitle());
-			logger.log(Status.INFO, driver.getTitle());
+			System.out.println("title was :"+driver.getTitle());
+			logger.log(Status.INFO, "title was :"+driver.getTitle());
 		
 	}
 	public String assignToDETM(String cadName,int cadId ) throws Exception {

@@ -5,9 +5,9 @@
     <classes>
       <class name="testCases.MainTest2">
         <methods>
-          <include name="Operationtm"/>
           <include name="setup"/>
           <include name="start"/>
+          <include name="assigncase"/>
           <include name="beforeSuit"/>
           <include name="afterSuite"/>
           <include name="teardown"/>

@@ -369,25 +369,25 @@ public class DataEntryTM {
 			pages.Utill().input_text(getlocator("BVCountry"), getvalue("BVCountry"));
 			// System.out.println("//*[text()='" + getvalue("BVCountry") + "']");
 			w.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
-					".//*[@id='ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_aceBVCountry_completionListElem']/li[2]")));
-			pages.Utill().input_text(getlocator("BVCountry"), getvalue("BVCountry"));
+					"//li[.='India']")));
+			//pages.Utill().input_text(getlocator("BVCountry"), getvalue("BVCountry"));
 			pages.Utill().click_element(
-					(".//*[@id='ctl00_ContentPlaceHolder1_TabContainer1_TabPanel6_CandidateOtherChecks1_aceBVCountry_completionListElem']/li[2]"));
+					("//li[.='India']"));
 			pages.Utill().input_text(getlocator("BVState"), getvalue("BVState"));
 			w.until(ExpectedConditions
-					.presenceOfElementLocated(By.xpath(".//*[@id='BVautoState_completionListElem']/li")));
-			pages.Utill().click_element(".//*[@id='BVautoState_completionListElem']/li");
+					.presenceOfElementLocated(By.xpath("//li[.='Tamil nadu']")));
+			pages.Utill().click_element("//li[.='Tamil nadu']");
 			try {
 				pages.Utill().input_text(getlocator("BVCity"), getvalue("BVCity"));
 				w.until(ExpectedConditions
-						.presenceOfElementLocated(By.xpath(".//*[@id='BVautoCity_completionListElem']/li[2]")));
-				pages.Utill().click_element(".//*[@id='BVautoCity_completionListElem']/li[2]");
+						.presenceOfElementLocated(By.xpath("//li[.='Chennai']")));
+				pages.Utill().click_element("//li[.='Chennai']");
 			} catch (TimeoutException e) {
 				pages.Utill().find(getlocator("BVCity")).clear();
 				pages.Utill().input_text(getlocator("BVCity"), getvalue("BVCity"));
 				w.until(ExpectedConditions
-						.presenceOfElementLocated(By.xpath(".//*[@id='BVautoCity_completionListElem']/li[2]")));
-				pages.Utill().click_element(".//*[@id='BVautoCity_completionListElem']/li[2]");
+						.presenceOfElementLocated(By.xpath("//li[.='Chennai']")));
+				pages.Utill().click_element("//li[.='Chennai']");
 			}
 			pages.Utill().click_element(getlocator("BVSave"));
 			pages.Wait().wait_until_loader_is_invisible();
