@@ -226,6 +226,38 @@ public class MatrixPortalNavigation {
 		}
 	}
 
+	public void GetGenPactpage(String id, String title) throws Exception {
+		String currenturl = driver.getCurrentUrl();
+		String titles="";
+		boolean result = false;
+		try {
+//			if(!(id.isEmpty())) {
+				pages.Utill().click_element(id);	
+//			}
+			
+			titles = pages.Utill().getTitle().trim();
+			result = title.equals(titles);
+
+		} catch (Exception e) {
+			logger.log(Status.FAIL, e.getMessage().toString());
+			pages.Utill().GoTo(currenturl);
+
+		} finally {
+
+			if (result) {
+				
+				logger.log(Status.PASS, titles+" is equals to "+title);
+
+			} else {
+				String temp = Utill.getScreenshot(driver);
+				logger.fail(titles+" is not equals to "+title, MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+				pages.Utill().GoTo(currenturl);
+
+			}
+		}
+
+	}
+
 	public void verificationpage(String title) throws Exception {
 
 		String currenturl = getvalue("url") + "/Matrix/UserHome.aspx";
@@ -251,7 +283,6 @@ public class MatrixPortalNavigation {
 	public boolean OthersVerificationpage(String title) throws Exception {
 		String titles = "";
 		boolean result = false;
-		
 
 		try {
 
@@ -269,7 +300,7 @@ public class MatrixPortalNavigation {
 			} else {
 				String temp = Utill.getScreenshot(driver);
 				logger.fail(pages.Utill().getTitle(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-				
+
 			}
 		}
 		return result;

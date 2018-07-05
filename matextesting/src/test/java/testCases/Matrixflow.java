@@ -31,7 +31,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import environment.SendAttachmentInEmail;
 import environment.Utill;
 @Listeners(environment.Listeners.class)
-public class MainTest {
+public class Matrixflow {
 	WebDriver driver;
 	ExtentHtmlReporter reporter;
 	ExtentTest logger;

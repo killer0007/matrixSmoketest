@@ -921,7 +921,8 @@ public class OperationTM {
 							MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 				} else {
 					// do work
-					w.until(ExpectedConditions
+					WebDriverWait wait = new WebDriverWait(driver, 60);
+					wait.until(ExpectedConditions
 							.presenceOfElementLocated(By.id("ctl00_ContentPlaceHolder1_lblCheckName")));
 					String id = pages.Utill().get_text("ctl00_ContentPlaceHolder1_lblCheckName");
 					switch (id) {

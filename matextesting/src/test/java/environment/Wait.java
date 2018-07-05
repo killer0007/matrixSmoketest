@@ -29,6 +29,18 @@ public class Wait {
 		waitt.until(ExpectedConditions.visibilityOf(pages.Utill().find(ele)));
 
 	}
+	public void presenceOfElement(String ele, int timeout) {
+
+		waitt = new WebDriverWait(driver, timeout);
+		if ( ele.startsWith("./") || ele.startsWith("/") || ele.startsWith("(//")) {
+			waitt.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ele)));
+		} else {
+			waitt.until(ExpectedConditions.presenceOfElementLocated(By.id(ele)));
+		}
+		
+		
+
+	}
 
 	public void waitForVisibilityOfData(String path, int timeout) throws java.util.concurrent.TimeoutException {
 		// Pages pages=new Pages(driver);

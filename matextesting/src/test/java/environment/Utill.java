@@ -29,6 +29,7 @@ import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -205,7 +206,10 @@ public class Utill {
 	}
 
 	public List<WebElement> Get_webelement_list(String path) {
-		return driver.findElements(By.xpath(path));
+		
+		List<WebElement> li = driver.findElements(By.xpath(path));
+		logger.log(Status.PASS, "getting webelement list of :"+path);
+		return li;
 	}
 
 	public String clickAlertbox() throws Exception {
@@ -272,5 +276,12 @@ public class Utill {
 		LocalDateTime now = LocalDateTime.now();
 		return dtf.format(now); // 2016/11/16 12:08:43
 		// return "mmmmm";
+	}
+	public void mouseover(String id) {
+		Actions action = new Actions(driver);
+		action.moveToElement(pages.Utill().find(id));
+		action.build().perform();
+		logger.log(Status.PASS, "performing mouse over on :"+id);
+		action=null;
 	}
 }

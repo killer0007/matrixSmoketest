@@ -2,90 +2,90 @@
 <testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="21158" started-at="2018-07-04T12:46:46Z" finished-at="2018-07-04T12:47:07Z">
+  <suite name="Default suite" duration-ms="14362" started-at="2018-07-05T13:58:17Z" finished-at="2018-07-05T13:58:31Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="21158" started-at="2018-07-04T12:46:46Z" finished-at="2018-07-04T12:47:07Z">
-      <class name="testCases.MainTest2">
-        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:testCases.MainTest2@18355a8]" name="beforeSuit" is-config="true" duration-ms="174" started-at="2018-07-04T18:16:46Z" finished-at="2018-07-04T18:16:46Z">
+    <test name="Default test" duration-ms="14362" started-at="2018-07-05T13:58:17Z" finished-at="2018-07-05T13:58:31Z">
+      <class name="testCases.Genpactflow">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:testCases.Genpactflow@15530b9]" name="beforeSuit" is-config="true" duration-ms="140" started-at="2018-07-05T19:28:17Z" finished-at="2018-07-05T19:28:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuit -->
-        <test-method status="PASS" signature="start()[pri:0, instance:testCases.MainTest2@18355a8]" name="start" is-config="true" duration-ms="6801" started-at="2018-07-04T18:16:46Z" finished-at="2018-07-04T18:16:53Z">
+        <test-method status="PASS" signature="start()[pri:0, instance:testCases.Genpactflow@15530b9]" name="start" is-config="true" duration-ms="7240" started-at="2018-07-05T19:28:17Z" finished-at="2018-07-05T19:28:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- start -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@18355a8]" name="setup" is-config="true" duration-ms="13" started-at="2018-07-04T18:16:53Z" finished-at="2018-07-04T18:16:53Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.Genpactflow@15530b9]" name="setup" is-config="true" duration-ms="10" started-at="2018-07-05T19:28:24Z" finished-at="2018-07-05T19:28:24Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testCases.MainTest2.Login() throws java.lang.Exception]]>
+                <![CDATA[public void testCases.Genpactflow.Login() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="Login()[pri:0, instance:testCases.MainTest2@18355a8]" name="Login" duration-ms="6186" started-at="2018-07-04T18:16:53Z" finished-at="2018-07-04T18:16:59Z">
+        <test-method status="PASS" signature="Login()[pri:0, instance:testCases.Genpactflow@15530b9]" name="Login" duration-ms="1425" started-at="2018-07-05T19:28:24Z" finished-at="2018-07-05T19:28:26Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@18355a8]" name="setup" is-config="true" duration-ms="0" started-at="2018-07-04T18:16:59Z" finished-at="2018-07-04T18:16:59Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.Genpactflow@15530b9]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-07-05T19:28:26Z" finished-at="2018-07-05T19:28:26Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testCases.MainTest2.assigncase() throws java.lang.Exception]]>
+                <![CDATA[[TestResult name=Login status=SUCCESS method=Genpactflow.Login()[pri:0, instance:testCases.Genpactflow@15530b9] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void testCases.Genpactflow.Login() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="Addressdataentry()[pri:0, instance:testCases.Genpactflow@15530b9]" name="Addressdataentry" duration-ms="5668" started-at="2018-07-05T19:28:26Z" finished-at="2018-07-05T19:28:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Addressdataentry -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.Genpactflow@15530b9]" name="setup" is-config="true" duration-ms="0" started-at="2018-07-05T19:28:26Z" finished-at="2018-07-05T19:28:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void testCases.Genpactflow.Addressdataentry() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="assigncase()[pri:0, instance:testCases.MainTest2@18355a8]" name="assigncase" duration-ms="8133" started-at="2018-07-04T18:16:59Z" finished-at="2018-07-04T18:17:07Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- assigncase -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@18355a8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-07-04T18:16:59Z" finished-at="2018-07-04T18:16:59Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.Genpactflow@15530b9]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-07-05T19:28:31Z" finished-at="2018-07-05T19:28:31Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Login status=SUCCESS method=MainTest2.Login()[pri:0, instance:testCases.MainTest2@18355a8] output={null}]]]>
+                <![CDATA[[TestResult name=Addressdataentry status=SUCCESS method=Genpactflow.Addressdataentry()[pri:0, instance:testCases.Genpactflow@15530b9] output={null}]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void testCases.MainTest2.Login() throws java.lang.Exception]]>
+                <![CDATA[public void testCases.Genpactflow.Addressdataentry() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:testCases.MainTest2@18355a8]" name="teardown" is-config="true" duration-ms="0" started-at="2018-07-04T18:17:07Z" finished-at="2018-07-04T18:17:07Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:testCases.Genpactflow@15530b9]" name="teardown" is-config="true" duration-ms="1" started-at="2018-07-05T19:28:31Z" finished-at="2018-07-05T19:28:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@18355a8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-07-04T18:17:07Z" finished-at="2018-07-04T18:17:07Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=assigncase status=SUCCESS method=MainTest2.assigncase()[pri:0, instance:testCases.MainTest2@18355a8] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void testCases.MainTest2.assigncase() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:testCases.MainTest2@18355a8]" name="afterSuite" is-config="true" duration-ms="252" started-at="2018-07-04T18:17:07Z" finished-at="2018-07-04T18:17:07Z">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:testCases.Genpactflow@15530b9]" name="afterSuite" is-config="true" duration-ms="256" started-at="2018-07-05T19:28:31Z" finished-at="2018-07-05T19:28:32Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- testCases.MainTest2 -->
+      </class> <!-- testCases.Genpactflow -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -38,6 +38,7 @@ public static String GetloalPassword(String uname) throws Exception{
 				//System.out.println(us + "  " + pass);
 				
 			}
+			System.out.println("password is :"+pass);
 		return pass;
 	
 }

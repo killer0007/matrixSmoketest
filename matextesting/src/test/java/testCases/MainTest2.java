@@ -7,6 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Properties;
 
 import org.openqa.selenium.Alert;
@@ -15,8 +18,10 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -42,7 +47,7 @@ public class MainTest2 {
 
 	@BeforeSuite
 	public void beforeSuit() {
-		reporter = new ExtentHtmlReporter("./Reports/"+Utill.getdatetime()+".html");
+		reporter = new ExtentHtmlReporter("./Reports/demo.html");
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
 	}
@@ -72,135 +77,39 @@ public class MainTest2 {
 
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
-		pages.loginpage().Login(getvalue("uname"));
-		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
+		pages.loginpage().Login("demogpt");
+		//Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
 
 	}
 
-	@Test(priority = 2, enabled = false, dependsOnMethods = "Login")
+	@Test(priority = 2, enabled = true, dependsOnMethods = "Login")
 	public void caseregistration() throws Exception {
-		candid = pages.Utill().candidateid();
-		candidateName = pages.Utill().candidateName();
-		String re = pages.CaseRegistration().caseRegistration(getvalue("clientname"), candid, candidateName);
-		Assert.assertEquals(re, "Registered Successfully.");
+		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_dashboard1", "Client Home Page");
+		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_initiator4", "Initiator Page");
+		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_rejector5", "ReinitatorPage");
+		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_casetracker6", "Client case tracker");
+		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_insuffclear7", "CRTInsuff Clear");
+		pages.Utill().mouseover("ctl00_dataentry2");
+		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_LinkButton1", "Verification Entry");
+		pages.Utill().mouseover("ctl00_dataentry2");
+		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_LinkButton2", "Incomplete Data Entry");
+		pages.Utill().mouseover("ctl00_dataentry2");
+		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_LinkButton6", "CRT: Gen Subcheck dataentry");
+		pages.Utill().mouseover("ctl00_dataentry2");
+		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_LinkButton7", "MIS Report Upload");
+		
+		pages.Utill().mouseover("ctl00_coeupdate3");
+		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_LinkButton3", "CoeMaster");
+		pages.Utill().mouseover("ctl00_coeupdate3");
+		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_LinkButton5", "COE Check Setup");
+		
+		pages.Utill().mouseover("ctl00_candidatecreation8");
+		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_candidatecreation", "Genpact Candidate Users");
+		pages.Utill().mouseover("ctl00_candidatecreation8");
+		pages.MatrixPortalNavigation().GetGenPactpage("'ctl00_LinkButton4", "Genpact Candidate Users Search");
 	}
 
-	@Test(priority = 3, enabled = false, dependsOnMethods = "caseregistration")
-	public void aasignToDE() throws Exception {
-		pages = new Pages(driver, logger);
-		pages.CaseRegistration().navigateTo("Daily Activity", "Assign Cases");
-		MatrixRefNo = pages.CaseRegistration().assignToDETM(candidateName, candid);
-
-		System.out.println(MatrixRefNo);
-	}
-
-	@Test(priority = 4, enabled = false, dependsOnMethods = "aasignToDE")
-	public void dataentry() throws Exception {
-		pages = new Pages(driver, logger);
-		pages.CaseRegistration().navigateTo("Daily Activity", "Data Entry");
-		pages.Utill().find("ctl00_ContentPlaceHolder1_txtMatrixRefNo").sendKeys(MatrixRefNo);
-		pages.Utill().find("ctl00_ContentPlaceHolder1_butnSearch").click();
-		pages.Wait().wait_until_loader_is_invisible();
-		String no = pages.Utill().find("ctl00_ContentPlaceHolder1_grdCandidate_ctl02_btnMatrixRefNo").getText();
-		if (no.equals(MatrixRefNo)) {
-			driver.findElement(By.linkText(MatrixRefNo)).click();
-			pages.Wait().wait_until_loader_is_invisible();
-			pages.DataEntryTM().Personal();
-			pages.DataEntryTM().AddressCheck();
-			pages.DataEntryTM().EducationCheck();
-			pages.DataEntryTM().EmploymentCheck();
-			pages.DataEntryTM().ReeferenceCheck();
-			pages.DataEntryTM().GapCheck();
-			pages.DataEntryTM().FacisCheck();
-			pages.DataEntryTM().CreditCheck();
-			pages.DataEntryTM().BvCheck();
-			pages.DataEntryTM().ItCheck();
-			pages.DataEntryTM().PfCheck();
-			String t = pages.DataEntryTM().getlocator("de_submit");
-			pages.Utill().find(t).click();
-			try {
-				System.out.println("try block");
-				Alert alert = driver.switchTo().alert();
-				t = alert.getText();
-				logger.info(t);
-				alert.accept();
-				pages.Wait().wait_until_loader_is_invisible();
-				logger.pass("data entry completed");
-				assertTrue(true);
-			} catch (NoAlertPresentException e) {
-				System.out.println("NoAlertPresentException");
-				WebDriverWait w = new WebDriverWait(driver, 10);
-				w.until(ExpectedConditions.alertIsPresent());
-				Alert alert = driver.switchTo().alert();
-				t = alert.getText();
-				logger.info(t);
-				alert.accept();
-				pages.Wait().wait_until_loader_is_invisible();
-				logger.pass("data entry completed");
-				assertTrue(true);
-			} catch (UnhandledAlertException e) {
-				System.out.println("UnhandledAlertException");
-				Alert alert = driver.switchTo().alert();
-				t = alert.getText();
-				logger.info(t);
-				alert.accept();
-				pages.Wait().wait_until_loader_is_invisible();
-				logger.pass("data entry completed");
-				assertTrue(true);
-			} catch (Exception e) {
-				System.out.println("Exception");
-				assertTrue(false);
-			}
-		} else {
-			assertTrue("Matrix ref no not found", false);
-		}
-	}
-
-	@Test(priority = 5, enabled = true)
-	public void assigncase() throws Exception {
-		Thread.sleep(6000);
-		pages.Utill().GoTo(getvalue("url")+"/Matrix/AssignerHome.aspx");
-		pages.Assignor().assign_Address(MatrixRefNo);
-//		pages.Assignor().assign_Employment(MatrixRefNo);
-//		pages.Assignor().assign_Reference(MatrixRefNo);
-//		pages.Assignor().assign_Criminal(MatrixRefNo);
-//		pages.Assignor().assign_DB(MatrixRefNo);
-//		pages.Assignor().assign_Drug(MatrixRefNo);
-//		pages.Assignor().assign_ID(MatrixRefNo);
-//		pages.Assignor().assign_ID(MatrixRefNo);
-//		pages.Assignor().assign_Court(MatrixRefNo);
-//		pages.Assignor().assign_Facis(MatrixRefNo);
-//		pages.Assignor().assign_Credit(MatrixRefNo);
-//		pages.Assignor().assign_BV(MatrixRefNo);
-//		pages.Assignor().assign_IT(MatrixRefNo);
-//		pages.Assignor().assign_PF(MatrixRefNo);
-		assertTrue(true);
-	}
-
-	@Test(priority = 6, enabled = false, dependsOnMethods = "Login")
-	public void OperationtmAssign() throws Exception {
-		pages.OperationTL().Addresstl(MatrixRefNo);
-		pages.OperationTL().Employementtl(MatrixRefNo);
-		pages.OperationTL().Referencetl(MatrixRefNo);
-		pages.OperationTL().Criminaltl(MatrixRefNo);
-		pages.OperationTL().Dbtl(MatrixRefNo);
-		pages.OperationTL().Drugtl(MatrixRefNo);
-		pages.OperationTL().Idtl(MatrixRefNo);
-		pages.OperationTL().Idtl(MatrixRefNo);
-		pages.OperationTL().Courttl(MatrixRefNo);
-		pages.OperationTL().Facistl(MatrixRefNo);
-		pages.OperationTL().Credittl(MatrixRefNo);
-		pages.OperationTL().BVtl(MatrixRefNo);
-		pages.OperationTL().ITtl(MatrixRefNo);
-		pages.OperationTL().PFtl(MatrixRefNo);
-
-	}
-	@Test(priority = 7, enabled = false)
-	public void Operationtm() throws Exception {
-		pages.CaseRegistration().navigateTo("Dashboard", "Residence TM");
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_grdteamleader_ctl02_btnMatrixRefNo");
-		pages.MatrixPortalNavigation().verificationpage("Candidate Verify Address");
-	}
+	
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
