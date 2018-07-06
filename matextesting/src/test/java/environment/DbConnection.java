@@ -15,10 +15,10 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class DbConnection {
 	
 	public static void main(String[] args)throws Exception {
-		String pass =GetloalPassword("demotl");
+		String pass =GetlocalPassword("Vish5024");
 		System.out.println(pass);
 	}
-public static String GetloalPassword(String uname) throws Exception{
+public static String GetlocalPassword(String uname) throws Exception{
 	
 		String pass=null;
 		final String url="jdbc:sqlserver://192.168.2.16:1433;"+"databaseName=FinalMatrixTestingDB"+"";

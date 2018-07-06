@@ -4,6 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Scanner;
 
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -17,26 +18,13 @@ import org.testng.annotations.ITestAnnotation;
 
 import environment.DbConnection;
 
-public class temp implements IInvokedMethodListener  {
+public class temp   {
 
-	@Override
-	public void afterInvocation(IInvokedMethod method, ITestResult testResult) {
-		System.out.println("start");
-		System.out.println(method.getTestMethod().getMethodName());
-		System.out.println(method.getTestResult().getInstanceName());
-		System.out.println(method.getTestResult().getName());
-		System.out.println(testResult.getName());
-		System.out.println("end");
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		char c=sc.next().charAt(0);
+		System.out.println(c);
 	}
-
-	@Override
-	public void beforeInvocation(IInvokedMethod arg0, ITestResult arg1) {
-		// TODO Auto-generated method stub
-		System.out.println("before");
-	}
-
-
-	
 
 	
 	

@@ -1,36 +1,43 @@
 package testCases;
 
+import static org.testng.Assert.assertTrue;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
+import org.omg.Messaging.SyncScopeHelper;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
+import environment.DbConnection;
+import environment.ReadEmail;
 import environment.Utill;
 
-@Listeners(environment.Listeners.class)
-public class Genpactflow {
+public class CandidatecaseSP {
 	WebDriver driver;
 	ExtentHtmlReporter reporter;
 	ExtentTest logger;
@@ -39,11 +46,12 @@ public class Genpactflow {
 	int candid = 3015270;
 	String candidateName = "gopi";
 	String MatrixRefNo = "DEMOTAF140";
+	String loginid;
 
 	@BeforeSuite
 	public void beforeSuit() {
 		// reporter = new ExtentHtmlReporter("./Reports/matex.html");
-		reporter = new ExtentHtmlReporter("./Reports/Genpactflow.html");
+		reporter = new ExtentHtmlReporter("./Reports/CandidatecaseSP.html");
 		reporter.config().setDocumentTitle("Matrix test report");
 		reporter.config().setReportName("test report");
 
@@ -65,6 +73,7 @@ public class Genpactflow {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get(getvalue("url"));
+		
 		// driver.get("http://192.168.2.16/MatexTesting");
 	}
 
@@ -77,34 +86,26 @@ public class Genpactflow {
 		// pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 	}
 
-	@Test(priority = 1, enabled = true)
-	public void Login() throws Exception {
-		pages.loginpage().Login("demogpt");
-
+	@Test(priority = 1, enabled = false)
+	public void CandidateInitiation() throws Exception {
+		int candidateid = pages.Utill().candidateid();
+		pages.loginpage().Login("demotl");
+		pages.CaseRegistration().navigateTo("CRT", "Candidate users");
+		loginid = pages.CandidateInitiation().InitiateCandidate(candidateid);
 	}
 
-	@Test(priority = 2, enabled = true)
-	public void Addressdataentry() throws Exception {
-		pages.Utill().mouseover(getlocator("dataentry"));
-		pages.Utill().click_element(getlocator("newde"));
-		pages.Utill().select_by_label(getlocator("band"), getvalue("band"));
-		Thread.sleep(2000);
-		pages.Utill().input_text(getlocator("pid"), getvalue("pid"));
-		pages.Wait().presenceOfElement("//*[text()='"+getvalue("pid")+"']", 10);
-		pages.Utill().click_element(".//*[text()='"+getvalue("pid")+"']");
-		Thread.sleep(1000);
-		List<WebElement> title=pages.Utill().Get_webelement_list("//*[@class='gen_title']/span");
-		LinkedList<String> titles=new LinkedList<String>();
-		for (int i = 0; i < title.size(); i++) {
-			String t= title.get(i).getText();
-			titles.add(t);	
-		}
-		System.out.println(titles);
-//		for (int i = 0; i < title.size(); i++) {
-		pages.Utill().click_element(".//*[text()='"+titles.get(0)+"']");
-//		System.out.println(titles.get(i));
-//		}
+	@Test(priority = 2, enabled = false, dependsOnMethods = "CandidateInitiation")
+	public void checkemail() throws Exception {
+		String data = ReadEmail.read();
+		assertTrue(data.contains(loginid));
+	}
 
+	@Test(priority = 3, enabled = true)
+	public void CandidateDataEntry() throws Exception {
+		pages.loginpage().Login("Vish5024");	
+		pages.CandidateInitiation().Personal();
+		
+		
 	}
 
 	@AfterMethod
@@ -140,12 +141,7 @@ public class Genpactflow {
 
 	private String getvalue(String key) throws FileNotFoundException, IOException {
 		Properties pr = new Properties();
-		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\genpactvalues.properties")));
-		return pr.getProperty(key);
-	}
-	public String getlocator(String key) throws FileNotFoundException, IOException {
-		Properties pr = new Properties();
-		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\genpactlocators.properties")));
+		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
 		return pr.getProperty(key);
 	}
 }

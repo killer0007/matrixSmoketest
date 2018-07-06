@@ -16,11 +16,13 @@ public class Genpactdataentry {
 	WebDriver driver;
 	protected final Pages pages;
 	ExtentTest logger;
+
 	public Genpactdataentry(WebDriver driver, ExtentTest logger) {
 		this.driver = driver;
 		this.logger = logger;
 		pages = new Pages(driver, logger);
 	}
+
 	public String getlocator(String key) throws FileNotFoundException, IOException {
 		Properties pr = new Properties();
 		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_locators.properties")));
@@ -33,5 +35,8 @@ public class Genpactdataentry {
 		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
 		return pr.getProperty(key);
 	}
-	
+
+	public void personal() {
+		
+	}
 }

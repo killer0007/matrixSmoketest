@@ -66,9 +66,14 @@ public class Pages {
 		CrtDashboard crt=new CrtDashboard(driver,logger);
 		return crt;
 	}
-	//MatrixPortalNavigation
+	
 	public MatrixPortalNavigation MatrixPortalNavigation() {
 		MatrixPortalNavigation url=new MatrixPortalNavigation(driver,logger);
 		return url;
+	}
+	
+	public CandidateInitiation CandidateInitiation() {
+		CandidateInitiation cc=new CandidateInitiation(driver,logger);
+		return cc;
 	}
 }

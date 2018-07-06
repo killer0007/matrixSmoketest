@@ -40,7 +40,7 @@ public class LoginPage {
 	private  String getpassword(String uname) throws Exception{
 		String url=driver.getCurrentUrl();
 		if(url.contains("http://192.168.2.16")) {
-			return DbConnection.GetloalPassword(uname);
+			return DbConnection.GetlocalPassword(uname);
 		}
 		else if(url.contains("http://103.60.137.37/Matex/")) {
 			return DbConnection.GetuatPassword(uname);

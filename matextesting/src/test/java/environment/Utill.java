@@ -284,4 +284,8 @@ public class Utill {
 		logger.log(Status.PASS, "performing mouse over on :"+id);
 		action=null;
 	}
+	public void SwitchFramebyIndex(int i) {
+		driver.switchTo().frame(i);
+		logger.log(Status.PASS, "switching frame by index "+i);
+	}
 }

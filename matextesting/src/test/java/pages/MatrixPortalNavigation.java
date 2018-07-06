@@ -240,7 +240,9 @@ public class MatrixPortalNavigation {
 
 		} catch (Exception e) {
 			logger.log(Status.FAIL, e.getMessage().toString());
-			pages.Utill().GoTo(currenturl);
+//			String temp = Utill.getScreenshot(driver);
+//			logger.fail(e.getMessage().toString(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+//			pages.Utill().GoTo(currenturl);
 
 		} finally {
 
