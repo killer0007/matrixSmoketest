@@ -86,25 +86,35 @@ public class CandidatecaseSP {
 		// pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 	}
 
-	@Test(priority = 1, enabled = false)
+	@Test(priority = 1, enabled = true)
 	public void CandidateInitiation() throws Exception {
 		int candidateid = pages.Utill().candidateid();
 		pages.loginpage().Login("demotl");
 		pages.CaseRegistration().navigateTo("CRT", "Candidate users");
 		loginid = pages.CandidateInitiation().InitiateCandidate(candidateid);
+		pages.loginpage().Logout();
 	}
 
-	@Test(priority = 2, enabled = false, dependsOnMethods = "CandidateInitiation")
+	@Test(priority = 2, enabled = true, dependsOnMethods = "CandidateInitiation")
 	public void checkemail() throws Exception {
 		String data = ReadEmail.read();
 		assertTrue(data.contains(loginid));
 	}
 
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 3, enabled = false)
 	public void CandidateDataEntry() throws Exception {
-		pages.loginpage().Login("Vish5024");	
+		System.out.println("LOGIN ID IS :"+loginid);
+		pages.loginpage().Login("Hari6321");	
 		pages.CandidateInitiation().Personal();
+		pages.Utill().SwitchDefault();
+		pages.CandidateInitiation().wait_until_loader_is_invisible();
+		pages.Wait().visibilityOfElement(".//*[@id='Address']/a");
+		pages.Utill().click_element(".//*[@id='Address']/a");
+
+		pages.Utill().SwitchFramebyIndex(1);
+		System.out.println("the count is :"+getsubcheck());
 		
+		pages.CandidateInitiation().address("ctl05");
 		
 	}
 
@@ -143,5 +153,20 @@ public class CandidatecaseSP {
 		Properties pr = new Properties();
 		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
 		return pr.getProperty(key);
+	}
+	private int getsubcheck() {
+		int b=0;
+		List<WebElement> list=pages.Utill().Get_webelement_list(".//*[@id='divtitle']/../.");
+//		Thread.sleep(4000);
+		for (int i = 0; i < list.size(); i++) {
+			
+			String pro=list.get(i).getCssValue("display");
+//			System.out.println(pro);
+			if(!(pro.equals("none"))) {
+//				System.out.println(i);
+				b=b+1;
+			}	
+		}
+	return b;
 	}
 }

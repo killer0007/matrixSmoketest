@@ -15,7 +15,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class DbConnection {
 	
 	public static void main(String[] args)throws Exception {
-		String pass =GetlocalPassword("Vish5024");
+		String pass =GetlocalPassword("Abin8375");
 		System.out.println(pass);
 	}
 public static String GetlocalPassword(String uname) throws Exception{

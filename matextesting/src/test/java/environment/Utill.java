@@ -14,12 +14,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-
+import org.openqa.selenium.JavascriptExecutor;
 import javax.activity.InvalidActivityException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
@@ -287,5 +288,15 @@ public class Utill {
 	public void SwitchFramebyIndex(int i) {
 		driver.switchTo().frame(i);
 		logger.log(Status.PASS, "switching frame by index "+i);
+	}
+	public void scrollTo(String id) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView(true);", pages.Utill().find(id));
+		logger.log(Status.PASS, "scrolling into view of :"+id);
+		
+	}
+	public void SwitchDefault() {
+		driver.switchTo().defaultContent();
+		logger.log(Status.PASS, "switching to default frame");
 	}
 }

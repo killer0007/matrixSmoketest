@@ -77,9 +77,62 @@ public class MainTest2 {
 
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
-		pages.loginpage().Login("demogpt");
-		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
+		pages.loginpage().Login("Abin8375");	
+		pages.CandidateInitiation().wait_until_loader_is_invisible();
+		pages.Utill().SwitchFramebyIndex(0);
+		Thread.sleep(2000);
+		pages.Utill().click_element("CandidateHome1_Candidate_DOB");
+		String t=pages.Utill().get_text("CandidateHome1_CanDobdate_title");
+		String cdate ="01 January 2018";
+		System.out.println(cdate);
+		String[] pdate=cdate.split("\\s+");
 
+//		String t="Juy, 2018";
+		String[] gdate=t.replaceAll(",", "").split("\\s+");
+//		for(String s:gdate) {
+//			System.out.println(s);
+//		}	
+		if(pdate[2].equals(gdate[1])) {
+			if(pdate[1].equals(gdate[0])) {
+				System.out.println("click " +pdate[0]);
+				pages.Utill().click_element("//*[contains(@title,'"+pdate[1]+" "+pdate[0]+"')]");
+			}
+			else {
+				//month not matching
+				System.out.println("click title");
+				pages.Utill().click_element("CandidateHome1_CanDobdate_title");
+				//*[contains(@title,'Jan') AND contains(@title,'2018')]
+				Thread.sleep(1000);
+				pages.Utill().click_element("//*[contains(@title,'"+pdate[1]+", "+pdate[2]+"')]");
+				Thread.sleep(1000);
+				pages.Utill().click_element("//*[contains(@title,'"+pdate[1]+" "+pdate[0]+"')]");
+				
+				
+			}
+		}
+		else {
+			//for yesr
+			System.out.println("duble click on title");
+			pages.Utill().click_element("CandidateHome1_CanDobdate_title");
+			Thread.sleep(1000);
+			pages.Utill().click_element("CandidateHome1_CanDobdate_title");
+			Thread.sleep(1000);
+			String year = pages.Utill().get_text("CandidateHome1_CanDobdate_title");
+			//get range
+			//split
+			//check
+			if(true) {
+				//click yr
+				//click month
+				//click date
+			}
+			else {
+				//click again
+				//click month
+				//click date
+			}
+		}
+	
 	}
 
 	
