@@ -5,9 +5,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import java.time.Duration;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
+import org.openqa.selenium.support.ui.FluentWait;
 import com.aventstack.extentreports.ExtentTest;
 
 import environment.ReadEmail;
@@ -83,14 +90,19 @@ public String InitiateCandidate(int id) throws Exception {
 			
 }
 public void Personal()  throws Exception{
+	FluentWait();
+//	wait_until_loader_is_invisible(10);
 	pages.Utill().SwitchFramebyIndex(0);
-	
 pages.Utill().input_text(getlocator("cp_Middlename"), getvalue("cp_Middlename"));
 pages.Utill().input_text(getlocator("cp_Fathername"), getvalue("cp_Fathername"));
 
 pages.Utill().select_by_label(getlocator("cp_Gender"), getvalue("cp_Gender"));
 pages.Utill().select_by_label(getlocator("cp_MaritalStatus"), getvalue("cp_MaritalStatus"));
 //cp_DOB
+pages.Utill().click_element(getlocator("cp_DOB"));
+pages.Wait().visibilityOfElement(getlocator("cc_dobtoday")).click();
+
+
 pages.Utill().input_text(getlocator("cpHR_Name"), getvalue("cpHR_Name"));
 pages.Utill().input_text(getlocator("cp_EmpNo"), getvalue("cp_EmpNo"));
 pages.Utill().input_text(getlocator("cp_Designation"), getvalue("cp_Designation"));
@@ -103,7 +115,11 @@ pages.Utill().input_text(getlocator("cp_Issue_Place"), getvalue("cp_Issue_Place"
 pages.Utill().input_text(getlocator("cp_Issue_State"), getvalue("cp_Issue_State"));
 pages.Utill().input_text(getlocator("cp_Issue_Country"), getvalue("cp_Issue_Country"));
 //cp_Issue_Date
+pages.Utill().click_element(getlocator("cp_Issue_Date"));
+pages.Wait().visibilityOfElement(getlocator("cc_isdatetoday")).click();
 //cp_Expire_Date
+pages.Utill().click_element(getlocator("cp_Expire_Date"));
+pages.Wait().visibilityOfElement(getlocator("cc_exdatetoday")).click();
 pages.Utill().input_text(getlocator("cp_MobileTwo1"), getvalue("cp_MobileTwo1"));
 pages.Utill().input_text(getlocator("cp_VoterId"), getvalue("cp_VoterId"));
 pages.Utill().input_text(getlocator("cp_VoterAddress"), getvalue("cp_VoterAddress"));
@@ -116,9 +132,62 @@ pages.Utill().input_text(getlocator("cp_AadharNumber"), getvalue("cp_AadharNumbe
 pages.Utill().input_text(getlocator("cp_AadharEnrollNumber"), getvalue("cp_AadharEnrollNumber"));
 pages.Utill().input_text(getlocator("cp_Comments"), getvalue("cp_Comments"));
 pages.Utill().select_by_label(getlocator("cp_IsFresher"), getvalue("cp_IsFresher"));
-
+pages.Utill().click_element(getlocator("cp_save"));
 	
 	
 }
+private void wait_until_loader_is_invisible(int timeout) throws InterruptedException {
+	// Pages pages=new Pages(driver);
+	int i=0;
+	int loopcount=(timeout*1000);
+	 System.out.println("Start time"+java.time.LocalTime.now());
+	String res;
+	try {
+		res = pages.Utill().find("ctl00_ContentPlaceHolder1_DivMainFrame").getCssValue("display");
+	} catch (StaleElementReferenceException e) {
+		Thread.sleep(1000);
+		res = pages.Utill().find("ctl00_ContentPlaceHolder1_DivMainFrame").getCssValue("display");
+	}
+	while (!(res.equals("none"))) {
+		Thread.sleep(200);
+		i=i+200;
+		res = pages.Utill().find("ctl00_ContentPlaceHolder1_DivMainFrame").getCssValue("display");
+		if (res.equals("none")) {
+			 System.out.println("end time"+java.time.LocalTime.now());
+			
+			break;
+		} else if(i>=loopcount) {
+			 System.out.println(i+" = "+loopcount);
+			throw new TimeoutException("waiting for ctl00_ContentPlaceHolder1_DivMainFrame is visible for every "+200+" milisec of interval of "+timeout+" secounds");
 
+
+		}
+		else {
+			 System.out.println(i+" = "+loopcount+" : "+res);
+			 
+				continue;
+
+		}
+	}
+}
+public void FluentWait() {
+	FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+			.withTimeout(Duration.ofSeconds(10))
+			.pollingEvery(Duration.ofMillis(200));
+//			.ignoring(NoSuchElementException.class);
+	WebElement ele = wait.until(new Function<WebDriver, WebElement>() {
+		public WebElement apply(WebDriver driver) {
+			WebElement ele=pages.Utill().find("ctl00_ContentPlaceHolder1_DivMainFrame");
+			String res =ele.getCssValue("display");
+			if(res.equals("none")) {
+				System.out.println("success "+res);
+				return ele;
+			}
+			else {
+				System.out.println("failed :"+res);
+				return null;
+			}
+		}
+	});
+}
 }

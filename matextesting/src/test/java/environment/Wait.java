@@ -3,11 +3,13 @@ package environment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.net.UrlChecker.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 import testCases.Pages;
 
@@ -23,22 +25,22 @@ public class Wait {
 		pages = new Pages(driver, logger);
 	}
 
-	public void visibilityOfElement(String ele) {
+	public WebElement visibilityOfElement(String ele) {
 
 		waitt = new WebDriverWait(driver, 10);
 		waitt.until(ExpectedConditions.visibilityOf(pages.Utill().find(ele)));
-
+		logger.log(Status.PASS, "waiting for :"+ele);
+		return pages.Utill().find(ele);
 	}
+
 	public void presenceOfElement(String ele, int timeout) {
 
 		waitt = new WebDriverWait(driver, timeout);
-		if ( ele.startsWith("./") || ele.startsWith("/") || ele.startsWith("(//")) {
+		if (ele.startsWith("./") || ele.startsWith("/") || ele.startsWith("(//")) {
 			waitt.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ele)));
 		} else {
 			waitt.until(ExpectedConditions.presenceOfElementLocated(By.id(ele)));
 		}
-		
-		
 
 	}
 
@@ -111,6 +113,7 @@ public class Wait {
 			}
 		}
 	}
+
 	public void wait_until_spinner_is_invisible() throws InterruptedException {
 		// Pages pages=new Pages(driver);
 		// System.out.println("Start time"+java.time.LocalTime.now());
@@ -134,6 +137,7 @@ public class Wait {
 			}
 		}
 	}
+
 	//
 	public void wait_until_crtspinner_is_invisible() throws InterruptedException {
 		// Pages pages=new Pages(driver);

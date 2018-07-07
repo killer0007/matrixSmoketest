@@ -21,9 +21,10 @@ import environment.DbConnection;
 public class temp   {
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		char c=sc.next().charAt(0);
-		System.out.println(c);
+		int timeout=10;
+		int loopcount=(timeout*1000)/200;
+		System.out.println(loopcount);
+		System.out.println((loopcount*200));
 	}
 
 	

@@ -78,36 +78,11 @@ public class MainTest2 {
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
 		pages.loginpage().Login("demogpt");
-		//Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
+		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
 
 	}
 
-	@Test(priority = 2, enabled = true, dependsOnMethods = "Login")
-	public void caseregistration() throws Exception {
-		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_dashboard1", "Client Home Page");
-		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_initiator4", "Initiator Page");
-		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_rejector5", "ReinitatorPage");
-		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_casetracker6", "Client case tracker");
-		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_insuffclear7", "CRTInsuff Clear");
-		pages.Utill().mouseover("ctl00_dataentry2");
-		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_LinkButton1", "Verification Entry");
-		pages.Utill().mouseover("ctl00_dataentry2");
-		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_LinkButton2", "Incomplete Data Entry");
-		pages.Utill().mouseover("ctl00_dataentry2");
-		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_LinkButton6", "CRT: Gen Subcheck dataentry");
-		pages.Utill().mouseover("ctl00_dataentry2");
-		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_LinkButton7", "MIS Report Upload");
-		
-		pages.Utill().mouseover("ctl00_coeupdate3");
-		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_LinkButton3", "CoeMaster");
-		pages.Utill().mouseover("ctl00_coeupdate3");
-		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_LinkButton5", "COE Check Setup");
-		
-		pages.Utill().mouseover("ctl00_candidatecreation8");
-		pages.MatrixPortalNavigation().GetGenPactpage("ctl00_candidatecreation", "Genpact Candidate Users");
-		pages.Utill().mouseover("ctl00_candidatecreation8");
-		pages.MatrixPortalNavigation().GetGenPactpage("'ctl00_LinkButton4", "Genpact Candidate Users Search");
-	}
+	
 
 	
 	@AfterMethod
@@ -115,7 +90,7 @@ public class MainTest2 {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(result.getThrowable().getMessage(),
-					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+					MediaEntityBuilder.createScreenCaptureFromPath("."+temp).build());
 		} else {
 			logger.pass(method.getName() + " completed");
 		}

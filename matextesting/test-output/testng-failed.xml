@@ -3,17 +3,17 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="testCases.Genpactflow">
+      <class name="testCases.MainTest2">
         <methods>
-          <include name="teardown"/>
-          <include name="tearDown"/>
+          <include name="setup"/>
+          <include name="start"/>
           <include name="beforeSuit"/>
           <include name="afterSuite"/>
-          <include name="start"/>
-          <include name="setup"/>
-          <include name="Addressdataentry"/>
+          <include name="Login"/>
+          <include name="teardown"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- testCases.Genpactflow -->
+      </class> <!-- testCases.MainTest2 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
