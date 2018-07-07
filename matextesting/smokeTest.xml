@@ -3,9 +3,9 @@
 <suite name="Suite">
 	<test thread-count="5" name="Test">
 		<classes>
-<!-- 			<class name="testCases.Matrixflow" /> -->
-<!-- 			<class name="testCases.UrlNavigation" /> -->
-<class name="testCases.MainTest2" />
+			<class name="testCases.Matrixflow" />
+			<class name="testCases.UrlNavigation" />
+<!-- <class name="testCases.MainTest2" /> -->
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
