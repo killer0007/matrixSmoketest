@@ -71,9 +71,9 @@ public class CandidatecaseSP {
 		Dimension d = new Dimension(1382, 744);
 		driver.manage().window().setSize(d);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get(getvalue("url"));
-		
+
 		// driver.get("http://192.168.2.16/MatexTesting");
 	}
 
@@ -86,7 +86,7 @@ public class CandidatecaseSP {
 		// pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 	}
 
-	@Test(priority = 1, enabled = true)
+	@Test(priority = 1, enabled = false)
 	public void CandidateInitiation() throws Exception {
 		int candidateid = pages.Utill().candidateid();
 		pages.loginpage().Login("demotl");
@@ -95,27 +95,41 @@ public class CandidatecaseSP {
 		pages.loginpage().Logout();
 	}
 
-	@Test(priority = 2, enabled = true, dependsOnMethods = "CandidateInitiation")
+	@Test(priority = 2, enabled = false, dependsOnMethods = "CandidateInitiation")
 	public void checkemail() throws Exception {
 		String data = ReadEmail.read();
 		assertTrue(data.contains(loginid));
 	}
 
-	@Test(priority = 3, enabled = false)
-	public void CandidateDataEntry() throws Exception {
-		System.out.println("LOGIN ID IS :"+loginid);
-		pages.loginpage().Login("Hari6321");	
-		pages.CandidateInitiation().Personal();
-		pages.Utill().SwitchDefault();
-		pages.CandidateInitiation().wait_until_loader_is_invisible();
+	@Test(priority = 3, enabled = true)
+	public void Personal_de() throws Exception {
+		System.out.println("LOGIN ID IS :" + loginid);
+		pages.loginpage().Login("Ayya3795");
+//		 pages.loginpage().Login(loginid);
+//		 pages.CandidateInitiation().Personal();
+//		pages.Utill().SwitchDefault();
+//		pages.CandidateInitiation().wait_until_loader_is_invisible();
+
+	}
+
+	@Test(priority = 4, enabled = false)
+	public void Address_de() throws Exception {
 		pages.Wait().visibilityOfElement(".//*[@id='Address']/a");
 		pages.Utill().click_element(".//*[@id='Address']/a");
-
 		pages.Utill().SwitchFramebyIndex(1);
-		System.out.println("the count is :"+getsubcheck());
-		
 		pages.CandidateInitiation().address("ctl05");
-		
+		pages.Utill().click_element("ctl07_ClientAddr_sameas");
+		pages.Utill().SwitchDefault();
+		pages.CandidateInitiation().wait_until_loader_is_invisible();
+//		pages.CandidateInitiation().address("ctl08");
+
+	}
+	@Test(priority = 5, enabled = true)
+	public void Education_de() throws Exception {
+		pages.Wait().visibilityOfElement(".//*[@id='Education']/a");
+		pages.Utill().click_element(".//*[@id='Education']/a");
+		pages.Utill().SwitchFramebyIndex(2);
+		pages.CandidateInitiation().Edcucation();
 	}
 
 	@AfterMethod
@@ -154,19 +168,20 @@ public class CandidatecaseSP {
 		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
 		return pr.getProperty(key);
 	}
+
 	private int getsubcheck() {
-		int b=0;
-		List<WebElement> list=pages.Utill().Get_webelement_list(".//*[@id='divtitle']/../.");
-//		Thread.sleep(4000);
+		int b = 0;
+		List<WebElement> list = pages.Utill().Get_webelement_list(".//*[@id='divtitle']/../.");
+		// Thread.sleep(4000);
 		for (int i = 0; i < list.size(); i++) {
-			
-			String pro=list.get(i).getCssValue("display");
-//			System.out.println(pro);
-			if(!(pro.equals("none"))) {
-//				System.out.println(i);
-				b=b+1;
-			}	
+
+			String pro = list.get(i).getCssValue("display");
+			// System.out.println(pro);
+			if (!(pro.equals("none"))) {
+				// System.out.println(i);
+				b = b + 1;
+			}
 		}
-	return b;
+		return b;
 	}
 }

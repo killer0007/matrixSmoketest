@@ -83,7 +83,7 @@ public class MainTest2 {
 		Thread.sleep(2000);
 		pages.Utill().click_element("CandidateHome1_Candidate_DOB");
 		String t=pages.Utill().get_text("CandidateHome1_CanDobdate_title");
-		String cdate ="01 January 2018";
+		String cdate ="01 January 1984";
 		System.out.println(cdate);
 		String[] pdate=cdate.split("\\s+");
 
@@ -102,9 +102,9 @@ public class MainTest2 {
 				System.out.println("click title");
 				pages.Utill().click_element("CandidateHome1_CanDobdate_title");
 				//*[contains(@title,'Jan') AND contains(@title,'2018')]
-				Thread.sleep(1000);
+//				Thread.sleep(1000);
 				pages.Utill().click_element("//*[contains(@title,'"+pdate[1]+", "+pdate[2]+"')]");
-				Thread.sleep(1000);
+//				Thread.sleep(1000);
 				pages.Utill().click_element("//*[contains(@title,'"+pdate[1]+" "+pdate[0]+"')]");
 				
 				
@@ -116,21 +116,28 @@ public class MainTest2 {
 			pages.Utill().click_element("CandidateHome1_CanDobdate_title");
 			Thread.sleep(1000);
 			pages.Utill().click_element("CandidateHome1_CanDobdate_title");
-			Thread.sleep(1000);
+//			Thread.sleep(1000);
 			String year = pages.Utill().get_text("CandidateHome1_CanDobdate_title");
-			//get range
-			//split
-			//check
-			if(true) {
-				//click yr
-				//click month
-				//click date
+			System.out.println(year);
+			String y[]=year.split("-");
+			System.out.println(y[0]+" : "+y[1]);
+				
+			while(!(Integer.parseInt(y[0])-1<=Integer.parseInt(pdate[2]) && Integer.parseInt(y[1])+1>=Integer.parseInt(pdate[2]))) {
+				System.out.println("out of range");
+				pages.Utill().click_element("CandidateHome1_CanDobdate_prevArrow");
+				year = pages.Utill().get_text("CandidateHome1_CanDobdate_title");
+				System.out.println(year);
+				y=year.split("-");
+				
 			}
-			else {
-				//click again
-				//click month
-				//click date
-			}
+			System.out.println("in range");
+//			Thread.sleep(2000);
+			pages.Utill().click_element("//div[text()='"+pdate[2]+"']");
+			Thread.sleep(2000);
+			pages.Utill().click_element("//*[contains(@title,'"+pdate[1]+", "+pdate[2]+"')]");
+//			Thread.sleep(2000);
+			pages.Utill().click_element("//*[contains(@title,'"+pdate[1]+" "+pdate[0]+"')]");
+//			
 		}
 	
 	}
@@ -143,7 +150,7 @@ public class MainTest2 {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(result.getThrowable().getMessage(),
-					MediaEntityBuilder.createScreenCaptureFromPath("."+temp).build());
+					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		} else {
 			logger.pass(method.getName() + " completed");
 		}

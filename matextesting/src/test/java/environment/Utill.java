@@ -20,7 +20,7 @@ import javax.activity.InvalidActivityException;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
@@ -71,7 +71,7 @@ public class Utill {
 	}
 
 	public WebElement find(String path) {
-		try {
+//		try {
 			if ( path.startsWith("./") || path.startsWith("/") || path.startsWith("(//")) {
 				// logger.info("performing actions on " + path);
 				return driver.findElement(By.xpath(path));
@@ -79,9 +79,10 @@ public class Utill {
 				// logger.info("performing actions on " + path);
 				return driver.findElement(By.id(path));
 			}
-		} catch (Exception e) {
-			throw new NoSuchElementException(e.toString() + path);
-		}
+//		} 
+//		catch (Exception e) {
+//			throw new NoSuchElementException(e.toString() + path);
+//		}
 	}
 
 	public void input_text(String path, String text) throws Exception {
@@ -138,6 +139,10 @@ public class Utill {
 			pages.Utill().find(path).click();
 			logger.log(Status.PASS, "Clicking element '" + path + "'");
 		}
+//		catch (ElementNotVisibleException e) {
+//			pages.Wait().visibilityOfElement(path);
+//			pages.Utill().click_element(path);
+//		}
 
 	}
 
