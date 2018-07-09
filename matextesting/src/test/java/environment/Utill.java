@@ -57,8 +57,8 @@ public class Utill {
 
 		File src = ts.getScreenshotAs(OutputType.FILE);
 
-//		String path = System.getProperty("user.dir") + "/Screenshot/" + System.currentTimeMillis() + ".png";
-		String path ="./Screenshot/" + System.currentTimeMillis() + ".png";
+		String path = System.getProperty("user.dir") + "/Screenshot/" + System.currentTimeMillis() + ".png";
+//		String path ="./Screenshot/" + System.currentTimeMillis() + ".png";
 		File destination = new File(path);
 
 		try {
