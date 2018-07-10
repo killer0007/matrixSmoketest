@@ -56,7 +56,7 @@ public class UrlNavigation {
 
 	@BeforeTest
 	public void start() throws IOException {
-		String chrome_path = System.getProperty("user.dir") + "\\src\\test\\resources\\driver\\chromedrivernew.exe";
+		String chrome_path = System.getProperty("user.dir") + "\\src\\test\\resources\\driver\\chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", chrome_path);
 		ChromeOptions chromoption = new ChromeOptions();
 		chromoption.setHeadless(true);

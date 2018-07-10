@@ -114,19 +114,21 @@ public class Wait {
 		}
 	}
 
-	public void wait_until_spinner_is_invisible() throws InterruptedException {
+	public void wait_until_spinner_is_invisible(String id) throws InterruptedException {
 		// Pages pages=new Pages(driver);
 		// System.out.println("Start time"+java.time.LocalTime.now());
+		//ctl00_ContentPlaceHolder1_overlayScreen_Laod_11
+		//ctl00_ContentPlaceHolder1_overlayScreen
 		String res;
 		try {
-			res = pages.Utill().find("ctl00_ContentPlaceHolder1_overlayScreen").getCssValue("display");
+			res = pages.Utill().find(id).getCssValue("display");
 		} catch (StaleElementReferenceException e) {
 			Thread.sleep(1000);
-			res = pages.Utill().find("ctl00_ContentPlaceHolder1_overlayScreen").getCssValue("display");
+			res = pages.Utill().find(id).getCssValue("display");
 		}
 		while (res.equals("block")) {
 			Thread.sleep(200);
-			res = pages.Utill().find("ctl00_ContentPlaceHolder1_overlayScreen").getCssValue("display");
+			res = pages.Utill().find(id).getCssValue("display");
 			if (!(res.equals("block"))) {
 				// System.out.println("end time"+java.time.LocalTime.now());
 				break;

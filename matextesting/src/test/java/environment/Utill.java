@@ -1,5 +1,9 @@
 package environment;
 
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -304,4 +308,23 @@ public class Utill {
 		driver.switchTo().defaultContent();
 		logger.log(Status.PASS, "switching to default frame");
 	}
+	public void FileUpload(String id, String filename) throws Exception{
+		pages.Utill().click_element(id);
+		Thread.sleep(1000);
+		setClipboardData(filename);
+		 Robot robot = new Robot();
+//		 System.out.println("start");
+         robot.keyPress(KeyEvent.VK_CONTROL);
+         robot.keyPress(KeyEvent.VK_V);
+         robot.keyRelease(KeyEvent.VK_V);
+         robot.keyRelease(KeyEvent.VK_CONTROL);
+         robot.keyPress(KeyEvent.VK_ENTER);
+         robot.keyRelease(KeyEvent.VK_ENTER);
+//         System.out.println("end");
+	}
+	public  void setClipboardData(String string) {
+		//StringSelection is a class that can be used for copy and paste operations.
+		   StringSelection stringSelection = new StringSelection(string);
+		   Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+		}
 }

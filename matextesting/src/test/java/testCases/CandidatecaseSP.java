@@ -26,6 +26,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -71,7 +72,7 @@ public class CandidatecaseSP {
 		Dimension d = new Dimension(1382, 744);
 		driver.manage().window().setSize(d);
 		driver.manage().window().maximize();
-//		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		driver.get(getvalue("url"));
 
 		// driver.get("http://192.168.2.16/MatexTesting");
@@ -86,7 +87,7 @@ public class CandidatecaseSP {
 		// pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 	}
 
-	@Test(priority = 1, enabled = false)
+	@Test(priority = 1, enabled = true)
 	public void CandidateInitiation() throws Exception {
 		int candidateid = pages.Utill().candidateid();
 		pages.loginpage().Login("demotl");
@@ -95,7 +96,7 @@ public class CandidatecaseSP {
 		pages.loginpage().Logout();
 	}
 
-	@Test(priority = 2, enabled = false, dependsOnMethods = "CandidateInitiation")
+	@Test(priority = 2, enabled = true, dependsOnMethods = "CandidateInitiation")
 	public void checkemail() throws Exception {
 		String data = ReadEmail.read();
 		assertTrue(data.contains(loginid));
@@ -104,34 +105,64 @@ public class CandidatecaseSP {
 	@Test(priority = 3, enabled = true)
 	public void Personal_de() throws Exception {
 		System.out.println("LOGIN ID IS :" + loginid);
-		pages.loginpage().Login("Ayya3795");
-//		 pages.loginpage().Login(loginid);
-//		 pages.CandidateInitiation().Personal();
-//		pages.Utill().SwitchDefault();
-//		pages.CandidateInitiation().wait_until_loader_is_invisible();
+//		pages.loginpage().Login("Rahu4951");
+		 pages.loginpage().Login(loginid);
+		 pages.CandidateInitiation().Personal();
+		 pages.Utill().SwitchDefault();
+		 pages.CandidateInitiation().wait_until_loader_is_invisible();
 
 	}
 
-	@Test(priority = 4, enabled = false)
+	@Test(priority = 4, enabled = true)
 	public void Address_de() throws Exception {
 		pages.Wait().visibilityOfElement(".//*[@id='Address']/a");
 		pages.Utill().click_element(".//*[@id='Address']/a");
 		pages.Utill().SwitchFramebyIndex(1);
 		pages.CandidateInitiation().address("ctl05");
-		pages.Utill().click_element("ctl07_ClientAddr_sameas");
+		
 		pages.Utill().SwitchDefault();
 		pages.CandidateInitiation().wait_until_loader_is_invisible();
-//		pages.CandidateInitiation().address("ctl08");
+		// pages.CandidateInitiation().address("ctl08");
 
 	}
+
 	@Test(priority = 5, enabled = true)
 	public void Education_de() throws Exception {
+		SoftAssert sf = new SoftAssert();
 		pages.Wait().visibilityOfElement(".//*[@id='Education']/a");
 		pages.Utill().click_element(".//*[@id='Education']/a");
 		pages.Utill().SwitchFramebyIndex(2);
-		pages.CandidateInitiation().Edcucation();
+		sf.assertEquals("success", pages.CandidateInitiation().Edcucation("10"));
+		sf.assertEquals("success", pages.CandidateInitiation().Edcucation("12"));
+		sf.assertEquals("success", pages.CandidateInitiation().Edcucation("Diploma"));
+		sf.assertEquals("success", pages.CandidateInitiation().Edcucation("UG1"));
+		sf.assertEquals("success", pages.CandidateInitiation().Edcucation("PG1"));
+		sf.assertEquals("success", pages.CandidateInitiation().Edcucation("Highest"));
+		pages.Utill().SwitchDefault();
+		pages.CandidateInitiation().wait_until_loader_is_invisible();
+		sf.assertAll();
 	}
 
+	@Test(priority = 6, enabled = true)
+	public void Reference_de() throws Exception {
+		SoftAssert sf = new SoftAssert();
+		pages.Wait().visibilityOfElement(".//*[@id='Reference']/a");
+		pages.Utill().click_element(".//*[@id='Reference']/a");
+		pages.Utill().SwitchFramebyIndex(4);
+		sf.assertEquals("success", pages.CandidateInitiation().reference("Ref 1"));
+		sf.assertEquals("success", pages.CandidateInitiation().reference("Ref 2"));
+		sf.assertAll();
+	}
+@Test(priority = 7, enabled = true)
+public void Attach_Doc() throws Exception {
+//	pages.loginpage().Login("Rahu4951");
+//	pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
+	pages.Utill().SwitchDefault();
+	pages.CandidateInitiation().attachefile();
+	pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
+	pages.Utill().click_element("ctl00_ibtnSubmit");
+	pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
+}
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
 

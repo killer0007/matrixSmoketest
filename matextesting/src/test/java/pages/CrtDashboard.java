@@ -7,12 +7,14 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
 
 import environment.Utill;
 import testCases.Pages;
@@ -54,7 +56,13 @@ public class CrtDashboard {
 			w.until(ExpectedConditions.visibilityOf(pages.Utill().find("ddlRQCactoion0")));
 			pages.Utill().select_by_label("ddlRQCactoion0", "Publish");
 			pages.Utill().click_element(getlocator("crt_publish"));
-			pages.Wait().wait_until_crtspinner_is_invisible();
+			try {
+				pages.Wait().wait_until_crtspinner_is_invisible();
+			} catch (StaleElementReferenceException e) {
+				logger.log(Status.WARNING, e.getMessage().toString());
+			}
+			WebDriverWait wa= new WebDriverWait(driver, 300);
+			wa.until(ExpectedConditions.presenceOfElementLocated(By.id("ok")));
 			pages.Utill().clickAlertbox();
 		}
 		else {

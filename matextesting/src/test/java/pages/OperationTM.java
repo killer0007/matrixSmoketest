@@ -87,9 +87,10 @@ public class OperationTM {
 									"//*[@id='" + getlocator("v_table") + "']/tbody/tr[" + index + "]/td[1]/input[8]");
 							pages.Utill().click_element(getlocator("v_edu_vr"));
 							pages.Wait().wait_until_loader_is_invisible();
-
+//							pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_ddlInitiateMode", "Fax");
 							w.until(ExpectedConditions
 									.presenceOfElementLocated(By.id("ctl00_ContentPlaceHolder1_btnInitiateVR")));
+
 							pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnInitiateVR");
 							pages.Wait().wait_until_loader_is_invisible();
 							ss = pages.Utill().clickAlertbox();
@@ -251,7 +252,8 @@ public class OperationTM {
 									+ "]/td[1]/input[9]");
 							pages.Utill().click_element(getlocator("v_edu_vr"));
 							pages.Wait().wait_until_loader_is_invisible();
-
+//							pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_ddlInitiateMode", "Fax");
+//							pages.Wait().wait_until_loader_is_invisible();
 							w.until(ExpectedConditions
 									.presenceOfElementLocated(By.id("ctl00_ContentPlaceHolder1_btnInitiateVR")));
 							pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnInitiateVR");

@@ -28,12 +28,14 @@ import testCases.Pages;
 public class CandidateInitiation {
 	protected final WebDriver driver;
 	protected final Pages pages;
+	protected final WebDriverWait aleterwait;
 	ExtentTest logger;
 
 	public CandidateInitiation(WebDriver driver, ExtentTest logger) {
 		this.driver = driver;
 		this.logger = logger;
 		pages = new Pages(driver, logger);
+		aleterwait = new WebDriverWait(driver, 200);
 
 	}
 
@@ -134,6 +136,7 @@ public class CandidateInitiation {
 		driver.switchTo().defaultContent();
 		wait_until_loader_is_invisible();
 		pages.Utill().SwitchFramebyIndex(0);
+		aleterwait.until(ExpectedConditions.visibilityOf(pages.Utill().find("regMessage")));
 		System.out.println(pages.Utill().get_text("regMessage"));
 		pages.Utill().click_element("//span[text()='Ok']");
 	}
@@ -172,6 +175,7 @@ public class CandidateInitiation {
 		pages.Utill().input_text(id + "_ClientAddr_OthLocation", "location");
 		pages.Utill().input_text(id + "_ClientAddr_Others", "others");
 		pages.Utill().input_text(id + "_ClientAddr_Comments", "comments");
+		pages.Utill().click_element("ctl07_ClientAddr_sameas");
 		pages.Utill().scrollTo("btnsavehtml");
 		pages.Wait().visibilityOfElement("btnsavehtml");
 		pages.Utill().click_element("btnsavehtml");
@@ -179,31 +183,281 @@ public class CandidateInitiation {
 		driver.switchTo().defaultContent();
 		wait_until_loader_is_invisible();
 		pages.Utill().SwitchFramebyIndex(1);
+		aleterwait.until(ExpectedConditions.visibilityOf(pages.Utill().find("regMessage")));
 		System.out.println(pages.Utill().get_text("regMessage"));
 		pages.Utill().click_element("//span[text()='Ok']");
 	}
+	
 
-	public void Edcucation() throws Exception {
-		String id = "ctl04";
-		pages.Utill().input_text(id + "_ClientEdu_Name", "Carmel Convent School");
-		WebDriverWait w = new WebDriverWait(driver, 10);
-		w.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[text()='Carmel Convent School']")));
-		pages.Utill().click_element("//*[text()='Carmel Convent School']");
-		pages.Utill().input_text(id + "_ClientEdu_Address", "chennai");
-		pages.Utill().input_text(id + "_ClientEdu_DegreeName", "10");
-		pages.Utill().input_text(id + "_ClientEdu_StudentID", "897987");
-		pages.Utill().input_text(id + "_ClientEdu_Gap", "no");
-		
-		pages.Utill().click_element(id + "_ClientEdu_StartDt");
-		EnterEdudate("Apr-2009", "MonthPicker_"+id+"_ClientEdu_StartDt");
-		pages.Utill().input_text(id+"_ClientEdu_NameofDegree", "10");
-		pages.Utill().click_element(id + "_ClientEdu_EndDt");
-		EnterEdudate("Aug-2010", "MonthPicker_"+id+"_ClientEdu_EndDt");
-		pages.Utill().input_text(id+"_ClientEdu_MajorSubject", "tamil");
-		pages.Utill().click_element(id + "_ClientEdu_PassYear");
-		EnterEdudate("Sep-2010", "MonthPicker_"+id+"_ClientEdu_PassYear");
-		
-		
+	public String Edcucation(String check) throws Exception {
+		String result = "";
+		String id = "";
+		switch (check) {
+		case "10":
+			id = "ctl04";
+			try {
+				pages.Utill().input_text(id + "_ClientEdu_Name", "Carmel Convent School");
+				WebDriverWait w = new WebDriverWait(driver, 10);
+				w.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[text()='Carmel Convent School']")));
+				pages.Utill().click_element("//*[text()='Carmel Convent School']");
+				pages.Utill().input_text(id + "_ClientEdu_Address", "chennai");
+				pages.Utill().input_text(id + "_ClientEdu_DegreeName", "10");
+				pages.Utill().input_text(id + "_ClientEdu_StudentID", "897987");
+				pages.Utill().input_text(id + "_ClientEdu_Gap", "no");
+
+				pages.Utill().click_element(id + "_ClientEdu_StartDt");
+				EnterEdudate("Apr-2009", "MonthPicker_" + id + "_ClientEdu_StartDt");
+				pages.Utill().input_text(id + "_ClientEdu_NameofDegree", "10");
+				pages.Utill().click_element(id + "_ClientEdu_EndDt");
+				EnterEdudate("Apr-2010", "MonthPicker_" + id + "_ClientEdu_EndDt");
+				pages.Utill().input_text(id + "_ClientEdu_MajorSubject", "tamil");
+				pages.Utill().click_element(id + "_ClientEdu_PassYear");
+				EnterEdudate("Apr-2010", "MonthPicker_" + id + "_ClientEdu_PassYear");
+				pages.Utill().select_by_label(id + "_ClientEdu_DegreeType", "CBSE");
+				pages.Utill().select_by_label(id + "_ClientEdu_Graduated", "Yes");
+				pages.Utill().select_by_label(id + "_ClientEdu_ProgramType", "Full Time");
+				pages.Utill().input_text(id + "_ClientEdu_CGPA", "10");
+				pages.Utill().input_text(id + "_ClientEdu_ClassObtained", "A");
+				pages.Utill().input_text(id + "_ClientEdu_Others", "othes comments");
+				pages.Utill().input_text(id + "_ClientEdu_Comments", "additional comments");
+				result = "success";
+			} catch (Exception e) {
+				// e.printStackTrace();
+				result = e.getMessage().toString();
+			}
+			break;
+		case "12":
+			id = "ctl06";
+			try {
+				pages.Utill().input_text(id + "_ClientEdu_Name", "Abhinav Public School");
+				WebDriverWait w = new WebDriverWait(driver, 10);
+				w.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[text()='Abhinav Public School']")));
+				pages.Utill().click_element("//*[text()='Abhinav Public School']");
+				pages.Utill().input_text(id + "_ClientEdu_Address", "chennai");
+				pages.Utill().input_text(id + "_ClientEdu_DegreeName", "12");
+				pages.Utill().input_text(id + "_ClientEdu_StudentID", "897987");
+				pages.Utill().input_text(id + "_ClientEdu_Gap", "no");
+
+				pages.Utill().click_element(id + "_ClientEdu_StartDt");
+				EnterEdudate("Apr-2011", "MonthPicker_" + id + "_ClientEdu_StartDt");
+				pages.Utill().input_text(id + "_ClientEdu_NameofDegree", "12");
+				pages.Utill().click_element(id + "_ClientEdu_EndDt");
+				EnterEdudate("Apr-2012", "MonthPicker_" + id + "_ClientEdu_EndDt");
+				pages.Utill().input_text(id + "_ClientEdu_MajorSubject", "tamil");
+				pages.Utill().click_element(id + "_ClientEdu_PassYear");
+				EnterEdudate("Apr-2012", "MonthPicker_" + id + "_ClientEdu_PassYear");
+				pages.Utill().select_by_label(id + "_ClientEdu_DegreeType", "Diploma");
+				pages.Utill().select_by_label(id + "_ClientEdu_Graduated", "Yes");
+				pages.Utill().select_by_label(id + "_ClientEdu_ProgramType", "Full Time");
+				pages.Utill().input_text(id + "_ClientEdu_CGPA", "10");
+				pages.Utill().input_text(id + "_ClientEdu_ClassObtained", "A");
+				pages.Utill().input_text(id + "_ClientEdu_Others", "othes comments");
+				pages.Utill().input_text(id + "_ClientEdu_Comments", "additional comments");
+				result = "success";
+			} catch (Exception e) {
+				// e.printStackTrace();
+				result = e.getMessage().toString();
+			}
+			break;
+		case "Diploma":
+			id = "ctl07";
+			try {
+				pages.Utill().input_text(id + "_ClientEdu_Name", "Acharya Diploma Education(D.Ed) College");
+				WebDriverWait w = new WebDriverWait(driver, 10);
+				w.until(ExpectedConditions
+						.presenceOfElementLocated(By.xpath("//*[text()='Acharya Diploma Education(D.Ed) College']")));
+				pages.Utill().click_element("//*[text()='Acharya Diploma Education(D.Ed) College']");
+				pages.Utill().input_text(id + "_ClientEdu_Address", "chennai");
+				pages.Utill().input_text(id + "_ClientEdu_DegreeName", "diploma");
+				pages.Utill().input_text(id + "_ClientEdu_StudentID", "897987");
+				pages.Utill().input_text(id + "_ClientEdu_Gap", "no");
+
+				pages.Utill().click_element(id + "_ClientEdu_StartDt");
+				EnterEdudate("Apr-2012", "MonthPicker_" + id + "_ClientEdu_StartDt");
+				pages.Utill().input_text(id + "_ClientEdu_NameofDegree", "diploma");
+				pages.Utill().click_element(id + "_ClientEdu_EndDt");
+				EnterEdudate("Apr-2013", "MonthPicker_" + id + "_ClientEdu_EndDt");
+				pages.Utill().input_text(id + "_ClientEdu_MajorSubject", "ECE");
+				pages.Utill().click_element(id + "_ClientEdu_PassYear");
+				EnterEdudate("Apr-2013", "MonthPicker_" + id + "_ClientEdu_PassYear");
+				pages.Utill().select_by_label(id + "_ClientEdu_DegreeType", "CBSE");
+				pages.Utill().select_by_label(id + "_ClientEdu_Graduated", "Yes");
+				pages.Utill().select_by_label(id + "_ClientEdu_ProgramType", "Full Time");
+				pages.Utill().input_text(id + "_ClientEdu_CGPA", "10");
+				pages.Utill().input_text(id + "_ClientEdu_ClassObtained", "A");
+				pages.Utill().input_text(id + "_ClientEdu_Others", "othes comments");
+				pages.Utill().input_text(id + "_ClientEdu_Comments", "additional comments");
+				result = "success";
+			} catch (Exception e) {
+				// e.printStackTrace();
+				result = e.getMessage().toString();
+			}
+			break;
+		case "UG1":
+			id = "ctl08";
+			try {
+				String college = "Arignar Anna Engineering College";
+				pages.Utill().input_text(id + "_ClientEdu_Name", college);
+				WebDriverWait w = new WebDriverWait(driver, 10);
+				w.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[text()='" + college + "']")));
+				pages.Utill().click_element("//*[text()='" + college + "']");
+				pages.Utill().input_text(id + "_ClientEdu_Address", "chennai");
+				pages.Utill().input_text(id + "_ClientEdu_DegreeName", "UG1");
+				pages.Utill().input_text(id + "_ClientEdu_StudentID", "5325434");
+				pages.Utill().input_text(id + "_ClientEdu_Gap", "no");
+
+				pages.Utill().click_element(id + "_ClientEdu_StartDt");
+				EnterEdudate("Apr-2013", "MonthPicker_" + id + "_ClientEdu_StartDt");
+				pages.Utill().input_text(id + "_ClientEdu_NameofDegree", "UG1");
+				pages.Utill().click_element(id + "_ClientEdu_EndDt");
+				EnterEdudate("Apr-2015", "MonthPicker_" + id + "_ClientEdu_EndDt");
+				pages.Utill().input_text(id + "_ClientEdu_MajorSubject", "ECE");
+				pages.Utill().click_element(id + "_ClientEdu_PassYear");
+				EnterEdudate("Apr-2015", "MonthPicker_" + id + "_ClientEdu_PassYear");
+				pages.Utill().select_by_label(id + "_ClientEdu_DegreeType", "CBSE");
+				pages.Utill().select_by_label(id + "_ClientEdu_Graduated", "Yes");
+				pages.Utill().select_by_label(id + "_ClientEdu_ProgramType", "Full Time");
+				pages.Utill().input_text(id + "_ClientEdu_CGPA", "10");
+				pages.Utill().input_text(id + "_ClientEdu_ClassObtained", "A");
+				pages.Utill().input_text(id + "_ClientEdu_Others", "othes comments");
+				pages.Utill().input_text(id + "_ClientEdu_Comments", "additional comments");
+				result = "success";
+			} catch (Exception e) {
+				// e.printStackTrace();
+				result = e.getMessage().toString();
+			}
+			break;
+		case "PG1":
+			id = "ctl10";
+			try {
+				String college = "Arignar Anna College, Aralvaimozhi";
+				pages.Utill().input_text(id + "_ClientEdu_Name", college);
+				WebDriverWait w = new WebDriverWait(driver, 10);
+				w.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[text()='" + college + "']")));
+				pages.Utill().click_element("//*[text()='" + college + "']");
+				pages.Utill().input_text(id + "_ClientEdu_Address", "chennai");
+				pages.Utill().input_text(id + "_ClientEdu_DegreeName", "PG1");
+				pages.Utill().input_text(id + "_ClientEdu_StudentID", "542354");
+				pages.Utill().input_text(id + "_ClientEdu_Gap", "no");
+
+				pages.Utill().click_element(id + "_ClientEdu_StartDt");
+				EnterEdudate("Apr-2015", "MonthPicker_" + id + "_ClientEdu_StartDt");
+				pages.Utill().input_text(id + "_ClientEdu_NameofDegree", "PG1");
+				pages.Utill().click_element(id + "_ClientEdu_EndDt");
+				EnterEdudate("Apr-2016", "MonthPicker_" + id + "_ClientEdu_EndDt");
+				pages.Utill().input_text(id + "_ClientEdu_MajorSubject", "ECE");
+				pages.Utill().click_element(id + "_ClientEdu_PassYear");
+				EnterEdudate("Apr-2016", "MonthPicker_" + id + "_ClientEdu_PassYear");
+				pages.Utill().select_by_label(id + "_ClientEdu_DegreeType", "CBSE");
+				pages.Utill().select_by_label(id + "_ClientEdu_Graduated", "Yes");
+				pages.Utill().select_by_label(id + "_ClientEdu_ProgramType", "Full Time");
+				pages.Utill().input_text(id + "_ClientEdu_CGPA", "10");
+				pages.Utill().input_text(id + "_ClientEdu_ClassObtained", "A");
+				pages.Utill().input_text(id + "_ClientEdu_Others", "othes comments");
+				pages.Utill().input_text(id + "_ClientEdu_Comments", "additional comments");
+				result = "success";
+			} catch (Exception e) {
+				// e.printStackTrace();
+				result = e.getMessage().toString();
+			}
+			break;
+		case "Highest":
+			id = "ctl12";
+			try {
+				String college = "Anna University of Technology, Coimbatore";
+				pages.Utill().input_text(id + "_ClientEdu_Name", college);
+				WebDriverWait w = new WebDriverWait(driver, 10);
+				w.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[text()='" + college + "']")));
+				pages.Utill().click_element("//*[text()='" + college + "']");
+				pages.Utill().input_text(id + "_ClientEdu_Address", "chennai");
+				pages.Utill().input_text(id + "_ClientEdu_DegreeName", "highest");
+				pages.Utill().input_text(id + "_ClientEdu_StudentID", "52545354");
+				pages.Utill().input_text(id + "_ClientEdu_Gap", "no");
+
+				pages.Utill().click_element(id + "_ClientEdu_StartDt");
+				EnterEdudate("Apr-2016", "MonthPicker_" + id + "_ClientEdu_StartDt");
+				pages.Utill().input_text(id + "_ClientEdu_NameofDegree", "highest");
+				pages.Utill().click_element(id + "_ClientEdu_EndDt");
+				EnterEdudate("Apr-2017", "MonthPicker_" + id + "_ClientEdu_EndDt");
+				pages.Utill().input_text(id + "_ClientEdu_MajorSubject", "ECE");
+				pages.Utill().click_element(id + "_ClientEdu_PassYear");
+				EnterEdudate("Apr-2017", "MonthPicker_" + id + "_ClientEdu_PassYear");
+				pages.Utill().select_by_label(id + "_ClientEdu_DegreeType", "CBSE");
+				pages.Utill().select_by_label(id + "_ClientEdu_Graduated", "Yes");
+				pages.Utill().select_by_label(id + "_ClientEdu_ProgramType", "Full Time");
+				pages.Utill().input_text(id + "_ClientEdu_CGPA", "10");
+				pages.Utill().input_text(id + "_ClientEdu_ClassObtained", "A");
+				pages.Utill().input_text(id + "_ClientEdu_Others", "othes comments");
+				pages.Utill().input_text(id + "_ClientEdu_Comments", "additional comments");
+
+				result = "success";
+				pages.Wait().visibilityOfElement("btnsaveedu");
+				pages.Utill().click_element("btnsaveedu");
+				System.out.println("wait starting");
+				driver.switchTo().defaultContent();
+				wait_until_loader_is_invisible();
+				pages.Utill().SwitchFramebyIndex(2);
+				aleterwait.until(ExpectedConditions.visibilityOf(pages.Utill().find("regMessage")));
+				System.out.println(pages.Utill().get_text("regMessage"));
+				pages.Utill().click_element("//span[text()='Ok']");
+			} catch (Exception e) {
+				// e.printStackTrace();
+				result = e.getMessage().toString();
+			}
+
+			break;
+		default:
+			throw new Exception("no matching found for :" + check);
+		}
+
+		return result;
+	}
+
+	public String reference(String checkName) throws Exception {
+		String id = "";
+		try {
+			switch (checkName) {
+			case "Ref 1":
+				id = "ctl04";
+				break;
+			case "Ref 2":
+				id = "ctl07";
+				break;
+			default:
+				System.out.println("not matching");
+			}
+
+			DataFactory df = new DataFactory();
+			pages.Utill().input_text(id + "_ClientRef_RepName", df.getFirstName());
+			pages.Utill().input_text(id + "_ClientRef_RepDesig", "ref designation");
+			pages.Utill().input_text(id + "_ClientRef_RepMobile1", df.getNumberText(10));
+			pages.Utill().input_text(id + "_ClientRef_RepEmail", df.getEmailAddress());
+			pages.Utill().input_text(id + "_ClientRef_OrgName", df.getBusinessName());
+			pages.Utill().input_text(id + "_ClientRef_OrgAddr", df.getAddress());
+			pages.Utill().input_text(id + "_ClientRef_HRName", df.getFirstName());
+			pages.Utill().input_text(id + "_ClientRef_HRContact", df.getNumberText(10));
+			pages.Utill().input_text(id + "_ClientRef_HRMobile", df.getNumberText(10));
+			pages.Utill().input_text(id + "_ClientRef_HRDesignation", "HR");
+			pages.Utill().input_text(id + "_ClientRef_HREmail", df.getEmailAddress());
+			pages.Utill().input_text(id + "_ClientRef_CanKnown", "working with me");
+			pages.Utill().input_text(id + "_ClientRef_CanAsso", "2 years");
+			System.out.println("id is :" + id.equals("ctl07"));
+			if (id.equals("ctl07")) {
+				System.out.println("passing inside if condition");
+				pages.Wait().visibilityOfElement("btnsaveref");
+				pages.Utill().click_element("btnsaveref");
+				System.out.println("wait starting");
+				driver.switchTo().defaultContent();
+				wait_until_loader_is_invisible();
+				pages.Utill().SwitchFramebyIndex(4);
+				aleterwait.until(ExpectedConditions.visibilityOf(pages.Utill().find("regMessage")));
+				System.out.println(pages.Utill().get_text("regMessage"));
+				pages.Utill().click_element("//span[text()='Ok']");
+			}
+			return "success";
+		} catch (Exception e) {
+			return e.getMessage().toString();
+		}
 	}
 
 	public void wait_until_loader_is_invisible() throws InterruptedException {
@@ -290,13 +544,14 @@ public class CandidateInitiation {
 			//
 		}
 	}
-	public void EnterEdudate(String dates, String id) throws Exception{
-//		String dates = "Feb-2000";
-//		String id="MonthPicker_ctl04_ClientEdu_EndD";
-	
+
+	public void EnterEdudate(String dates, String id) throws Exception {
+		// String dates = "Feb-2000";
+		// String id="MonthPicker_ctl04_ClientEdu_EndD";
+
 		String mon = dates.split("-")[0];
 		String year = dates.split("-")[1];
-		pages.Utill().click_element(".//*[@id='"+id+"']/div[1]/table/tbody/tr/td[2]/a/span");
+		pages.Utill().click_element(".//*[@id='" + id + "']/div[1]/table/tbody/tr/td[2]/a/span");
 		String status = "true";
 		while (status.equals("true")) {
 			try {
@@ -306,20 +561,31 @@ public class CandidateInitiation {
 			}
 			System.out.println("statsu is :" + status);
 			if (status.equals("true")) {
-				pages.Utill().click_element(
-						"//*[@id='"+id+"']/div[1]/table/tbody/tr/td[1]/a/span[1]/i");
+				pages.Utill().click_element("//*[@id='" + id + "']/div[1]/table/tbody/tr/td[1]/a/span[1]/i");
 				System.out.println("clicking on arrow");
 			}
 			Thread.sleep(1000);
 		}
 		System.out.println("found");
-		
-//		 pages.Utill().click_element("//span[text()='"+year+"']");
-		pages.Utill().find(id).findElement(By.xpath("//span[text()='"+year+"']")).click();
-		 Thread.sleep(1000);
-//		 pages.Wait().visibilityOfElement("//span[text()='"+mon+".']");
-//		 pages.Utill().click_element("//span[text()='"+mon+".']");
-		 pages.Utill().find(id).findElement(By.xpath("//span[text()='"+mon+".']")).click();
-		 
+
+		// pages.Utill().click_element("//span[text()='"+year+"']");
+		// pages.Utill().find(id).findElement(By.xpath("//span[text()='"+year+"']")).click();
+		pages.Utill().click_element("//*[@id='" + id + "']//span[text()='" + year + "']");
+		Thread.sleep(1000);
+		pages.Utill().click_element("//*[@id='" + id + "']//span[text()='" + mon + ".']");
+		// pages.Wait().visibilityOfElement("//span[text()='"+mon+".']");
+		// pages.Utill().click_element("//span[text()='"+mon+".']");
+		// pages.Utill().find(id).findElement(By.xpath("//span[text()='"+mon+".']")).click();
+
+	}
+public void attachefile() throws Exception{
+		pages.Utill().scrollTo("ctl00_BtnAttach");
+		pages.Utill().click_element("ctl00_BtnAttach");
+		pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
+//		pages.Utill().click_element("//*[@id='ctl00_Panel3']/input[8]");
+		String file = System.getProperty("user.dir") + "\\Documents\\edu_one.pdf";
+		pages.Utill().FileUpload("//*[@id='ctl00_Panel3']/input[8]", file);
+		pages.Utill().clickAlertbox();
+		pages.Utill().click_element("ctl00_BtnPopupCloseAtt");
 	}
 }

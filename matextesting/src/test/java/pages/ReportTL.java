@@ -51,22 +51,22 @@ public class ReportTL {
 		}
 		pages.Utill().input_text(getlocator("re_matref"), no);
 		pages.Utill().click_element(getlocator("re_search"));
-		pages.Wait().wait_until_spinner_is_invisible();
+		pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen");
 		String fcount=pages.Utill().get_text(getlocator("re_final"));
 		if(Integer.parseInt(fcount)==1) {
 			pages.Utill().click_element(getlocator("re_final"));
-			pages.Wait().wait_until_spinner_is_invisible();
+			pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen");
 			wait.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("re_matno"))));
 			String refno =pages.Utill().get_text(getlocator("re_matno"));
 			if(refno.equalsIgnoreCase(no)) {
 				pages.Utill().click_element(getlocator("re_check"));
 				pages.Utill().click_element(getlocator("re_pri"));
-				pages.Wait().wait_until_spinner_is_invisible();
+				pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen");
 				pages.Utill().click_element(getlocator("re_check"));
 				//Thread.sleep(2000);
 				pages.Utill().select_by_label(getlocator("re_tmname"), getvalue("re_tmname"));
 				pages.Utill().click_element(getlocator("re_assi"));
-				pages.Wait().wait_until_spinner_is_invisible();
+				pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen");
 			}
 			else {
 				System.out.println(no +"  not found in table");

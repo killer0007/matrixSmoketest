@@ -21,7 +21,7 @@ public class LoginPage {
 		pages = new Pages(driver, logger);
 	}
 
-	public void Login(String uname) throws Exception {
+	public  void Login(String uname) throws Exception {
 		//System.out.println(uname+":"+pass);
 		String pass=getpassword(uname);
 		
