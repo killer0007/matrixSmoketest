@@ -27,6 +27,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -39,7 +40,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import environment.DbConnection;
 import environment.ReadEmail;
 import environment.Utill;
-
+@Listeners(environment.Listeners.class)
 public class CandidatecaseSP {
 	WebDriver driver;
 	ExtentHtmlReporter reporter;

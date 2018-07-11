@@ -4,12 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 import java.util.function.Function;
 import java.time.Duration;
-
 import org.fluttercode.datafactory.impl.DataFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -17,13 +14,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
-import com.github.javafaker.Faker;
-
 import environment.ReadEmail;
 import environment.Utill;
 import testCases.Pages;
@@ -139,7 +132,7 @@ public class CandidateInitiation {
 		pages.Utill().scrollTo(getlocator("cp_save"));
 		pages.Wait().visibilityOfElement(getlocator("cp_save"));
 		pages.Utill().click_element(getlocator("cp_save"));
-		System.out.println("wait starting");
+//		System.out.println("wait starting");
 		driver.switchTo().defaultContent();
 		wait_until_loader_is_invisible();
 		pages.Utill().SwitchFramebyIndex(0);
@@ -186,7 +179,7 @@ public class CandidateInitiation {
 		pages.Utill().scrollTo("btnsavehtml");
 		pages.Wait().visibilityOfElement("btnsavehtml");
 		pages.Utill().click_element("btnsavehtml");
-		System.out.println("wait starting");
+//		System.out.println("wait starting");
 		driver.switchTo().defaultContent();
 		wait_until_loader_is_invisible();
 		pages.Utill().SwitchFramebyIndex(1);
@@ -399,7 +392,7 @@ public class CandidateInitiation {
 				result = "success";
 				pages.Wait().visibilityOfElement("btnsaveedu");
 				pages.Utill().click_element("btnsaveedu");
-				System.out.println("wait starting");
+//				System.out.println("wait starting");
 				driver.switchTo().defaultContent();
 				wait_until_loader_is_invisible();
 				pages.Utill().SwitchFramebyIndex(2);
@@ -447,12 +440,12 @@ public class CandidateInitiation {
 			pages.Utill().input_text(id + "_ClientRef_HREmail", df.getEmailAddress());
 			pages.Utill().input_text(id + "_ClientRef_CanKnown", "working with me");
 			pages.Utill().input_text(id + "_ClientRef_CanAsso", "2 years");
-			System.out.println("id is :" + id.equals("ctl07"));
+//			System.out.println("id is :" + id.equals("ctl07"));
 			if (id.equals("ctl07")) {
-				System.out.println("passing inside if condition");
+//				System.out.println("passing inside if condition");
 				pages.Wait().visibilityOfElement("btnsaveref");
 				pages.Utill().click_element("btnsaveref");
-				System.out.println("wait starting");
+//				System.out.println("wait starting");
 				driver.switchTo().defaultContent();
 				wait_until_loader_is_invisible();
 				pages.Utill().SwitchFramebyIndex(4);
@@ -535,7 +528,7 @@ public class CandidateInitiation {
 				pages.Utill().select_by_label(id+"_ClientEmpl_SalType", "Annum");
 				pages.Wait().visibilityOfElement("btnsavehtml");
 				pages.Utill().click_element("btnsavehtml");
-				System.out.println("wait starting");
+//				System.out.println("wait starting");
 				driver.switchTo().defaultContent();
 				wait_until_loader_is_invisible();
 				pages.Utill().SwitchFramebyIndex(3);
@@ -569,10 +562,10 @@ public class CandidateInitiation {
 				WebElement ele = pages.Utill().find("ctl00_ContentPlaceHolder1_DivMainFrame");
 				String res = ele.getCssValue("display");
 				if (res.equals("none")) {
-					System.out.println("success " + res);
+//					System.out.println("success " + res);
 					return ele;
 				} else {
-					System.out.println("failed :" + res);
+//					System.out.println("failed :" + res);
 					return null;
 				}
 			}
@@ -588,10 +581,10 @@ public class CandidateInitiation {
 				WebElement ele = pages.Utill().find("ctl00_ContentPlaceHolder1_DivMainFrame");
 				String res = ele.getCssValue("display");
 				if (res.equals("none")) {
-					System.out.println("success " + res);
+//					System.out.println("success " + res);
 					return ele;
 				} else {
-					System.out.println("failed :" + res);
+//					System.out.println("failed :" + res);
 					return null;
 				}
 			}
@@ -602,16 +595,16 @@ public class CandidateInitiation {
 		// "CandidateHome1_CanDobdate_title"
 		// "CandidateHome1_CanDobdate_prevArrow"
 		String t = pages.Utill().get_text(id);
-		System.out.println(date);
+//		System.out.println(date);
 		String[] pdate = date.replaceAll("-", " ").split("\\s+");
 		String[] gdate = t.replaceAll(",", "").split("\\s+");
 		if (pdate[2].equals(gdate[1])) {
 			if (pdate[1].equals(gdate[0])) {
-				System.out.println("click " + pdate[0]);
+//				System.out.println("click " + pdate[0]);
 				pages.Utill().click_element("//*[contains(@title,'" + pdate[1] + " " + pdate[0] + "')]");
 			} else {
 
-				System.out.println("click title");
+//				System.out.println("click title");
 				pages.Utill().click_element(id);
 
 				Thread.sleep(1000);
@@ -639,7 +632,7 @@ public class CandidateInitiation {
 			Thread.sleep(1500);
 			pages.Utill().click_element("//*[contains(@title,'" + pdate[1] + ", " + pdate[2] + "')]");
 			Thread.sleep(1500);
-			System.out.println("//*[contains(@title,'" + pdate[1] + " " + pdate[0] + "')]");
+//			System.out.println("//*[contains(@title,'" + pdate[1] + " " + pdate[0] + "')]");
 			pages.Utill().click_element("//*[contains(@title,'" + pdate[1] + " " + pdate[0] + "')]");
 			//
 		}
@@ -657,16 +650,16 @@ public class CandidateInitiation {
 			try {
 				status = pages.Utill().find("//span[text()='" + year + "']/..").getAttribute("aria-disabled");
 			} catch (NoSuchElementException e) {
-				System.out.println("exception raised");
+//				System.out.println("exception raised");
 			}
-			System.out.println("statsu is :" + status);
+//			System.out.println("statsu is :" + status);
 			if (status.equals("true")) {
 				pages.Utill().click_element("//*[@id='" + id + "']/div[1]/table/tbody/tr/td[1]/a/span[1]/i");
-				System.out.println("clicking on arrow");
+//				System.out.println("clicking on arrow");
 			}
 			Thread.sleep(1000);
 		}
-		System.out.println("found");
+//		System.out.println("found");
 
 		// pages.Utill().click_element("//span[text()='"+year+"']");
 		// pages.Utill().find(id).findElement(By.xpath("//span[text()='"+year+"']")).click();
