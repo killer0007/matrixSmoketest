@@ -17,6 +17,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
@@ -187,7 +188,6 @@ public class CandidateInitiation {
 		System.out.println(pages.Utill().get_text("regMessage"));
 		pages.Utill().click_element("//span[text()='Ok']");
 	}
-	
 
 	public String Edcucation(String check) throws Exception {
 		String result = "";
@@ -459,6 +459,52 @@ public class CandidateInitiation {
 			return e.getMessage().toString();
 		}
 	}
+	public String Employment(String checkName) throws Exception {
+		String id = "";
+		try {
+			switch (checkName) {
+			case "Emp 1(Latest)":
+				id = "ctl04";
+				break;
+			case "Emp 2":
+				id = "ctl07";
+				break;
+			default:
+				System.out.println("not matching");
+			}
+
+			DataFactory df = new DataFactory();
+			pages.Utill().input_text(id + "_ClientRef_RepName", df.getFirstName());
+			pages.Utill().input_text(id + "_ClientRef_RepDesig", "ref designation");
+			pages.Utill().input_text(id + "_ClientRef_RepMobile1", df.getNumberText(10));
+			pages.Utill().input_text(id + "_ClientRef_RepEmail", df.getEmailAddress());
+			pages.Utill().input_text(id + "_ClientRef_OrgName", df.getBusinessName());
+			pages.Utill().input_text(id + "_ClientRef_OrgAddr", df.getAddress());
+			pages.Utill().input_text(id + "_ClientRef_HRName", df.getFirstName());
+			pages.Utill().input_text(id + "_ClientRef_HRContact", df.getNumberText(10));
+			pages.Utill().input_text(id + "_ClientRef_HRMobile", df.getNumberText(10));
+			pages.Utill().input_text(id + "_ClientRef_HRDesignation", "HR");
+			pages.Utill().input_text(id + "_ClientRef_HREmail", df.getEmailAddress());
+			pages.Utill().input_text(id + "_ClientRef_CanKnown", "working with me");
+			pages.Utill().input_text(id + "_ClientRef_CanAsso", "2 years");
+			System.out.println("id is :" + id.equals("ctl07"));
+			if (id.equals("ctl07")) {
+				System.out.println("passing inside if condition");
+				pages.Wait().visibilityOfElement("btnsaveref");
+				pages.Utill().click_element("btnsaveref");
+				System.out.println("wait starting");
+				driver.switchTo().defaultContent();
+				wait_until_loader_is_invisible();
+				pages.Utill().SwitchFramebyIndex(4);
+				aleterwait.until(ExpectedConditions.visibilityOf(pages.Utill().find("regMessage")));
+				System.out.println(pages.Utill().get_text("regMessage"));
+				pages.Utill().click_element("//span[text()='Ok']");
+			}
+			return "success";
+		} catch (Exception e) {
+			return e.getMessage().toString();
+		}
+	}
 
 	public void wait_until_loader_is_invisible() throws InterruptedException {
 		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(10))
@@ -578,14 +624,20 @@ public class CandidateInitiation {
 		// pages.Utill().find(id).findElement(By.xpath("//span[text()='"+mon+".']")).click();
 
 	}
-public void attachefile() throws Exception{
-		pages.Utill().scrollTo("ctl00_BtnAttach");
-		pages.Utill().click_element("ctl00_BtnAttach");
-		pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
-//		pages.Utill().click_element("//*[@id='ctl00_Panel3']/input[8]");
-		String file = System.getProperty("user.dir") + "\\Documents\\edu_one.pdf";
+
+	public void attachefile(String filename, String doctype, String checktype) throws Exception {
+
+		String file = System.getProperty("user.dir") + "\\Documents\\" + filename;
 		pages.Utill().FileUpload("//*[@id='ctl00_Panel3']/input[8]", file);
 		pages.Utill().clickAlertbox();
-		pages.Utill().click_element("ctl00_BtnPopupCloseAtt");
+		pages.Utill().click_element("//*[text()='" + filename + "']/following-sibling::td[1]/select");
+		pages.Utill().click_element(
+				"//*[text()='" + filename + "']/following-sibling::td[1]//option[text()='" + doctype + "']");
+		if (!(checktype.isEmpty())) {
+			pages.Utill().click_element("//*[text()='" + filename + "']/following-sibling::td[2]/select");
+			pages.Utill().click_element(
+					"//*[text()='" + filename + "']/following-sibling::td[2]//option[text()='" + checktype + "']");
+		}
+
 	}
 }

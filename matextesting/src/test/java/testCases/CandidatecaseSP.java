@@ -87,7 +87,7 @@ public class CandidatecaseSP {
 		// pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 	}
 
-	@Test(priority = 1, enabled = true)
+	@Test(priority = 1, enabled = false)
 	public void CandidateInitiation() throws Exception {
 		int candidateid = pages.Utill().candidateid();
 		pages.loginpage().Login("demotl");
@@ -96,13 +96,13 @@ public class CandidatecaseSP {
 		pages.loginpage().Logout();
 	}
 
-	@Test(priority = 2, enabled = true, dependsOnMethods = "CandidateInitiation")
+	@Test(priority = 2, enabled = false, dependsOnMethods = "CandidateInitiation")
 	public void checkemail() throws Exception {
 		String data = ReadEmail.read();
 		assertTrue(data.contains(loginid));
 	}
 
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 3, enabled = false)
 	public void Personal_de() throws Exception {
 		System.out.println("LOGIN ID IS :" + loginid);
 //		pages.loginpage().Login("Rahu4951");
@@ -113,7 +113,7 @@ public class CandidatecaseSP {
 
 	}
 
-	@Test(priority = 4, enabled = true)
+	@Test(priority = 4, enabled = false)
 	public void Address_de() throws Exception {
 		pages.Wait().visibilityOfElement(".//*[@id='Address']/a");
 		pages.Utill().click_element(".//*[@id='Address']/a");
@@ -126,7 +126,7 @@ public class CandidatecaseSP {
 
 	}
 
-	@Test(priority = 5, enabled = true)
+	@Test(priority = 5, enabled = false)
 	public void Education_de() throws Exception {
 		SoftAssert sf = new SoftAssert();
 		pages.Wait().visibilityOfElement(".//*[@id='Education']/a");
@@ -142,8 +142,11 @@ public class CandidatecaseSP {
 		pages.CandidateInitiation().wait_until_loader_is_invisible();
 		sf.assertAll();
 	}
-
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = false)
+	public void Employment_de() throws Exception {
+		
+	}
+	@Test(priority = 7, enabled = false)
 	public void Reference_de() throws Exception {
 		SoftAssert sf = new SoftAssert();
 		pages.Wait().visibilityOfElement(".//*[@id='Reference']/a");
@@ -153,15 +156,21 @@ public class CandidatecaseSP {
 		sf.assertEquals("success", pages.CandidateInitiation().reference("Ref 2"));
 		sf.assertAll();
 	}
-@Test(priority = 7, enabled = true)
+@Test(priority = 8, enabled = true)
 public void Attach_Doc() throws Exception {
-//	pages.loginpage().Login("Rahu4951");
-//	pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
+	pages.loginpage().Login("Hari8407");
+	pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
 	pages.Utill().SwitchDefault();
-	pages.CandidateInitiation().attachefile();
+	pages.Utill().scrollTo("ctl00_BtnAttach");
+	pages.Utill().click_element("ctl00_BtnAttach");
 	pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
-	pages.Utill().click_element("ctl00_ibtnSubmit");
-	pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
+	pages.CandidateInitiation().attachefile("pancard.jpg","PAN Card","");
+	pages.CandidateInitiation().attachefile("passport.pdf","Passport","");
+	pages.CandidateInitiation().attachefile("emp_one.pdf","Passport","");
+//	pages.Utill().click_element("ctl00_BtnPopupCloseAtt");
+//	pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
+//	pages.Utill().click_element("ctl00_ibtnSubmit");
+//	pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
 }
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {

@@ -27,6 +27,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -77,72 +79,22 @@ public class MainTest2 {
 
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
-		pages.loginpage().Login("Abin8375");	
-		pages.CandidateInitiation().wait_until_loader_is_invisible();
-		pages.Utill().SwitchFramebyIndex(0);
-		Thread.sleep(2000);
-		pages.Utill().click_element("CandidateHome1_Candidate_DOB");
-		String t=pages.Utill().get_text("CandidateHome1_CanDobdate_title");
-		String cdate ="01 January 1984";
-		System.out.println(cdate);
-		String[] pdate=cdate.split("\\s+");
-
-//		String t="Juy, 2018";
-		String[] gdate=t.replaceAll(",", "").split("\\s+");
-//		for(String s:gdate) {
-//			System.out.println(s);
-//		}	
-		if(pdate[2].equals(gdate[1])) {
-			if(pdate[1].equals(gdate[0])) {
-				System.out.println("click " +pdate[0]);
-				pages.Utill().click_element("//*[contains(@title,'"+pdate[1]+" "+pdate[0]+"')]");
-			}
-			else {
-				//month not matching
-				System.out.println("click title");
-				pages.Utill().click_element("CandidateHome1_CanDobdate_title");
-				//*[contains(@title,'Jan') AND contains(@title,'2018')]
-//				Thread.sleep(1000);
-				pages.Utill().click_element("//*[contains(@title,'"+pdate[1]+", "+pdate[2]+"')]");
-//				Thread.sleep(1000);
-				pages.Utill().click_element("//*[contains(@title,'"+pdate[1]+" "+pdate[0]+"')]");
-				
-				
-			}
-		}
-		else {
-			//for yesr
-			System.out.println("duble click on title");
-			pages.Utill().click_element("CandidateHome1_CanDobdate_title");
-			Thread.sleep(1000);
-			pages.Utill().click_element("CandidateHome1_CanDobdate_title");
-//			Thread.sleep(1000);
-			String year = pages.Utill().get_text("CandidateHome1_CanDobdate_title");
-			System.out.println(year);
-			String y[]=year.split("-");
-			System.out.println(y[0]+" : "+y[1]);
-				
-			while(!(Integer.parseInt(y[0])-1<=Integer.parseInt(pdate[2]) && Integer.parseInt(y[1])+1>=Integer.parseInt(pdate[2]))) {
-				System.out.println("out of range");
-				pages.Utill().click_element("CandidateHome1_CanDobdate_prevArrow");
-				year = pages.Utill().get_text("CandidateHome1_CanDobdate_title");
-				System.out.println(year);
-				y=year.split("-");
-				
-			}
-			System.out.println("in range");
-//			Thread.sleep(2000);
-			pages.Utill().click_element("//div[text()='"+pdate[2]+"']");
-			Thread.sleep(2000);
-			pages.Utill().click_element("//*[contains(@title,'"+pdate[1]+", "+pdate[2]+"')]");
-//			Thread.sleep(2000);
-			pages.Utill().click_element("//*[contains(@title,'"+pdate[1]+" "+pdate[0]+"')]");
-//			
-		}
-	
+		int candidateid = pages.Utill().candidateid();
+		pages.loginpage().Login("Mani6482");
+//		pages.CaseRegistration().navigateTo("CRT", "Candidate users");
+//		String loginid = pages.CandidateInitiation().InitiateCandidate(candidateid);
+//
+//		System.out.println(loginid);
+//		pages.loginpage().Logout();
 	}
 
-	
+	@Test(priority = 2, enabled = true)
+	public void Employment_de() throws Exception {
+		SoftAssert sf = new SoftAssert();
+		pages.Wait().visibilityOfElement("//*[@id='Employment']/a");
+		pages.Utill().click_element("//*[@id='Employment']/a");
+		pages.Utill().SwitchFramebyIndex(2);
+	}
 
 	
 	@AfterMethod
