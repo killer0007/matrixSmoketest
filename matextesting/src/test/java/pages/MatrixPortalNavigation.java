@@ -98,6 +98,8 @@ public class MatrixPortalNavigation {
 							MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 				} else if (!(driver.getTitle().isEmpty()) && result) {
 					logger.log(Status.PASS, pages.Utill().getTitle());
+//					String temp = Utill.getScreenshot(driver);
+//					System.out.println(driver.getCurrentUrl()+" : "+temp);
 				}
 			}
 		}

@@ -8,8 +8,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.Alert;
@@ -46,6 +48,7 @@ public class MainTest2 {
 	int candid = 3015270;
 	String candidateName = "gopi";
 	String MatrixRefNo = "DEMOTAD057";
+	Map<String, String> map;
 
 	@BeforeSuite
 	public void beforeSuit() {
@@ -79,22 +82,23 @@ public class MainTest2 {
 
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
-		int candidateid = pages.Utill().candidateid();
-		pages.loginpage().Login("Mani6482");
-//		pages.CaseRegistration().navigateTo("CRT", "Candidate users");
-//		String loginid = pages.CandidateInitiation().InitiateCandidate(candidateid);
-//
-//		System.out.println(loginid);
-//		pages.loginpage().Logout();
+		pages.loginpage().Login(getvalue("uname"));
+		map = new LinkedHashMap<String, String>();
+		final String path = ".//*[@id='ctl00_pnlHide']/div[2]/ul/li[1]/ul/li/a";
+		final String finalqc = ".//*[@id='ctl00_pnlHide']/div[2]/ul/li[2]/ul/li/a";
+		final String crt = ".//*[@id='ctl00_pnlHide']/div[2]/ul/li[3]/ul/li/a";
+		final String DailyActivity = ".//*[@id='ctl00_pnlHide']/div[2]/ul/li[4]/ul/li/a";
+		final String MIS = ".//*[@id='ctl00_pnlHide']/div[2]/ul/li[5]/ul/li/a";
+		pages.MatrixPortalNavigation().geturl("Dashboard", map, path);
+		pages.MatrixPortalNavigation().geturl("Final QC", map, finalqc);
+		pages.MatrixPortalNavigation().geturl("CRT", map, crt);
+		pages.MatrixPortalNavigation().geturl("Daily Activity", map, DailyActivity);
+		pages.MatrixPortalNavigation().geturl("MIS", map, MIS);
+		pages.Utill().printMap(map);
+		pages.loginpage().Logout();
 	}
 
-	@Test(priority = 2, enabled = true)
-	public void Employment_de() throws Exception {
-		SoftAssert sf = new SoftAssert();
-		pages.Wait().visibilityOfElement("//*[@id='Employment']/a");
-		pages.Utill().click_element("//*[@id='Employment']/a");
-		pages.Utill().SwitchFramebyIndex(2);
-	}
+	
 
 	
 	@AfterMethod
