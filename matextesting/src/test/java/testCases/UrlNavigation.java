@@ -584,14 +584,14 @@ public class UrlNavigation {
 	@AfterTest
 	public void teardown() {
 		// pages.loginpage().Logout();
-		// driver.close();
+		 driver.close();
 	}
 
 	@AfterSuite
 	public void afterSuite() {
 		extent.flush();
 		System.out.println("report published successfully");
-		// driver.quit();
+		 driver.quit();
 		// SendAttachmentInEmail email = new SendAttachmentInEmail();
 		// email.sendhtmlemail();
 

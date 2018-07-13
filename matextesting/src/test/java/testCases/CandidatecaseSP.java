@@ -40,6 +40,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import environment.DbConnection;
 import environment.ReadEmail;
 import environment.Utill;
+
 @Listeners(environment.Listeners.class)
 public class CandidatecaseSP {
 	WebDriver driver;
@@ -92,13 +93,13 @@ public class CandidatecaseSP {
 
 	@Test(priority = 1, enabled = true)
 	public void CandidateInitiation() throws Exception {
-		String name=pages.Utill().candidateName();
-		int candidateid = pages.Utill().candidateid();
+		String candidateName = pages.Utill().candidateName();
+		int candid = pages.Utill().candidateid();
 		pages.loginpage().Login("demotl");
 		pages.CaseRegistration().navigateTo("CRT", "Candidate users");
-		loginid = pages.CandidateInitiation().InitiateCandidate(name, candidateid);
+		loginid = pages.CandidateInitiation().InitiateCandidate(candidateName, candid);
 		pages.loginpage().Logout();
-		System.out.println(name+ " "+candidateid);
+		System.out.println(candidateName + " " + candid);
 	}
 
 	@Test(priority = 2, enabled = true)
@@ -146,16 +147,7 @@ public class CandidatecaseSP {
 		sf.assertEquals("success", pages.CandidateInitiation().Edcucation("UG1"));
 		sf.assertEquals("success", pages.CandidateInitiation().Edcucation("PG1"));
 		sf.assertEquals("success", pages.CandidateInitiation().Edcucation("Highest"));
-		// pages.Wait().visibilityOfElement("btnsaveedu");
-		// pages.Utill().click_element("btnsaveedu");
-		// System.out.println("wait starting");
-		// driver.switchTo().defaultContent();
-		// pages.CandidateInitiation().wait_until_loader_is_invisible();
-		// pages.Utill().SwitchFramebyIndex(2);
-		// WebDriverWait aleterwait =new WebDriverWait(driver, 100);
-		// aleterwait.until(ExpectedConditions.visibilityOf(pages.Utill().find("regMessage")));
-		// System.out.println(pages.Utill().get_text("regMessage"));
-		// pages.Utill().click_element("//span[text()='Ok']");
+
 		pages.Utill().SwitchDefault();
 		pages.CandidateInitiation().wait_until_loader_is_invisible();
 		sf.assertAll();
@@ -163,9 +155,8 @@ public class CandidatecaseSP {
 
 	@Test(priority = 6, enabled = true)
 	public void Employment_de() throws Exception {
-		// pages.Utill().SwitchDefault();
-		// pages.Wait().visibilityOfElement("//*[@id='Employment']/a");
-		Thread.sleep(5000);
+
+		Thread.sleep(1000);
 		pages.Utill().scrollTo("Employment");
 		pages.Utill().click_element(".//*[@id='Employment']");
 		pages.Utill().SwitchFramebyIndex(3);
@@ -175,7 +166,7 @@ public class CandidatecaseSP {
 
 	@Test(priority = 7, enabled = true)
 	public void Reference_de() throws Exception {
-		 pages.Utill().SwitchDefault();
+		pages.Utill().SwitchDefault();
 		SoftAssert sf = new SoftAssert();
 		pages.Wait().visibilityOfElement(".//*[@id='Reference']/a");
 		pages.Utill().click_element(".//*[@id='Reference']/a");
@@ -187,8 +178,7 @@ public class CandidatecaseSP {
 
 	@Test(priority = 8, enabled = true)
 	public void Attach_Doc() throws Exception {
-//		pages.loginpage().Login("Hari8407");
-//		pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
+
 		pages.Utill().SwitchDefault();
 		pages.Utill().scrollTo("ctl00_BtnAttach");
 		pages.Utill().click_element("ctl00_BtnAttach");
@@ -203,13 +193,13 @@ public class CandidatecaseSP {
 		pages.CandidateInitiation().attachefile("Edu_two.pdf", "Degree certificate", "UG1");
 		pages.CandidateInitiation().attachefile("Edu_three.pdf", "Degree certificate", "PG1");
 		pages.CandidateInitiation().attachefile("Edu_four.pdf", "Degree certificate", "Highest");
-		 pages.Utill().click_element("ctl00_BtnPopupCloseAtt");
-		 pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
-		 pages.Utill().click_element("ctl00_ibtnSubmit");
-//		 pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
-		 pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkAccept");
-		 pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAccept");
-		 pages.Utill().handle_Alert();
+		pages.Utill().click_element("ctl00_BtnPopupCloseAtt");
+		pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
+		pages.Utill().click_element("ctl00_ibtnSubmit");
+		// pages.Wait().wait_until_spinner_is_invisible("ctl00_ContentPlaceHolder1_overlayScreen_Laod_11");
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkAccept");
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAccept");
+		pages.Utill().handle_Alert();
 	}
 
 	@AfterMethod
@@ -231,13 +221,13 @@ public class CandidatecaseSP {
 	@AfterTest
 	public void teardown() {
 		// pages.loginpage().Logout();
-		// driver.close();
+		driver.close();
 	}
 
 	@AfterSuite
 	public void afterSuite() {
 		extent.flush();
-		// driver.quit();
+		driver.quit();
 		// SendAttachmentInEmail email = new SendAttachmentInEmail();
 		// email.sendhtmlemail();
 
@@ -249,19 +239,4 @@ public class CandidatecaseSP {
 		return pr.getProperty(key);
 	}
 
-	private int getsubcheck() {
-		int b = 0;
-		List<WebElement> list = pages.Utill().Get_webelement_list(".//*[@id='divtitle']/../.");
-		// Thread.sleep(4000);
-		for (int i = 0; i < list.size(); i++) {
-
-			String pro = list.get(i).getCssValue("display");
-			// System.out.println(pro);
-			if (!(pro.equals("none"))) {
-				// System.out.println(i);
-				b = b + 1;
-			}
-		}
-		return b;
-	}
 }

@@ -83,19 +83,13 @@ public class MainTest2 {
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
 		pages.loginpage().Login(getvalue("uname"));
-		map = new LinkedHashMap<String, String>();
-		final String path = ".//*[@id='ctl00_pnlHide']/div[2]/ul/li[1]/ul/li/a";
-		final String finalqc = ".//*[@id='ctl00_pnlHide']/div[2]/ul/li[2]/ul/li/a";
-		final String crt = ".//*[@id='ctl00_pnlHide']/div[2]/ul/li[3]/ul/li/a";
-		final String DailyActivity = ".//*[@id='ctl00_pnlHide']/div[2]/ul/li[4]/ul/li/a";
-		final String MIS = ".//*[@id='ctl00_pnlHide']/div[2]/ul/li[5]/ul/li/a";
-		pages.MatrixPortalNavigation().geturl("Dashboard", map, path);
-		pages.MatrixPortalNavigation().geturl("Final QC", map, finalqc);
-		pages.MatrixPortalNavigation().geturl("CRT", map, crt);
-		pages.MatrixPortalNavigation().geturl("Daily Activity", map, DailyActivity);
-		pages.MatrixPortalNavigation().geturl("MIS", map, MIS);
-		pages.Utill().printMap(map);
-		pages.loginpage().Logout();
+		driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/EmploymentTMHomepage.aspx");
+		temp t= new temp();
+//		t.screen(driver);
+		
+		
+		WebElement ele = driver.findElement(By.xpath("//*[@id='aspnetForm']/div[3]"));
+t.particularcreen(driver, ele);
 	}
 
 	
