@@ -1,67 +1,29 @@
 package pages;
+import java.util.Scanner;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.apache.commons.lang.StringUtils;
+public class temp {
 
-import javax.imageio.ImageIO;
+	 public static void main(String[] args) {
+         Scanner sc=new Scanner(System.in);
+         System.out.println("================================");
+         for(int i=0;i<3;i++){
+             String s1=sc.next();
+             int x=sc.nextInt();
+             //Complete this line
+             int l = s1.length();
+//             System.out.println("lenght is : "+l);
+             System.out.print(StringUtils.rightPad(s1, 15, ""));
+             int ll =Integer.toString(x).length();
+             if(ll>=3) {
+            	 System.out.println(x);
+             }
+             else {
+            	 
+            	 System.out.println(StringUtils.leftPad(Integer.toString(x), 3, "0"));
+             }
+         }
+         System.out.println("================================");
 
-import org.apache.commons.io.FileUtils;
-import org.fluttercode.datafactory.impl.DataFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import ru.yandex.qatools.ashot.AShot;
-import ru.yandex.qatools.ashot.Screenshot;
-import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
-
-public class temp   {
-
-	public static void main(String[] args) {
-	
-		
-	
-}
-public void screen(WebDriver driver) throws Exception{
-	String path = System.getProperty("user.dir") + "/temp/" + System.currentTimeMillis() + ".png";
-	System.out.println(path);
-	Screenshot screenshot = new AShot().shootingStrategy(ShootingStrategies.viewportPasting(1000))
-            .takeScreenshot(driver);
-    ImageIO.write(screenshot.getImage(), "PNG", new File(path));
-    System.out.println("success");
-}
-public void particularcreen(WebDriver driver, WebElement element) throws Exception{
-	String path = System.getProperty("user.dir") + "/temp/" + System.currentTimeMillis() + ".png";
-	File screen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-	  
-	  //Used selenium getSize() method to get height and width of element.
-	  //Retrieve width of element.
-	  int ImageWidth = element.getSize().getWidth();
-	  //Retrieve height of element.
-	  int ImageHeight = element.getSize().getHeight();  
-	  
-	  //Used selenium Point class to get x y coordinates of Image element.
-	  //get location(x y coordinates) of the element.
-	  Point point = element.getLocation();
-	  int xcord = point.getX();
-	  int ycord = point.getY();
-	  System.out.println(xcord +" : "+ycord);
-	  System.out.println(ImageWidth +" : "+ImageHeight);
-	  //Reading full image screenshot.
-	  BufferedImage img = ImageIO.read(screen);
-	  
-	  //cut Image using height, width and x y coordinates parameters.
-	  BufferedImage dest = img.getSubimage(xcord, ycord, ImageWidth, ImageHeight);
-	  ImageIO.write(dest, "png", screen);
-	 
-	  //Used FileUtils class of apache.commons.io.
-	  //save Image screenshot In D: drive.
-	  FileUtils.copyFile(screen, new File(path));
-	 }
-
+ }
 }

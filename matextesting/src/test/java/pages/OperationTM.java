@@ -397,7 +397,7 @@ public class OperationTM {
 				logger.fail("", MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 			}
 		} catch (Exception e) {
-			driver.navigate().to(getlocator("home_page"));
+//			driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.getMessage().toString());
 
 			String temp = Utill.getScreenshot(driver);

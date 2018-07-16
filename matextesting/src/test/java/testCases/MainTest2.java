@@ -89,7 +89,7 @@ public class MainTest2 {
 		
 		
 		WebElement ele = driver.findElement(By.xpath("//*[@id='aspnetForm']/div[3]"));
-t.particularcreen(driver, ele);
+//t.particularcreen(driver, ele);
 	}
 
 	

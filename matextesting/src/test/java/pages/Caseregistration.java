@@ -44,6 +44,7 @@ public class Caseregistration {
 		pages.Utill().input_text(xp + "_Case_CandidateName", cadName);
 		pages.Utill().input_text(xp + "_Case_CandidateId", Integer.toString(cadID));
 		pages.Utill().input_text(xp + "_Case_EmployeeId", "43232");
+		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_CaseRegistrationUC_TypeofMedium", "SoftCopy");
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_CaseRegistrationUC_btnRegister");
 		WebDriverWait w =new WebDriverWait(driver, 10);
 		w.until(ExpectedConditions.presenceOfElementLocated(By.id("ok")));
