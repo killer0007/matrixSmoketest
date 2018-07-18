@@ -1,4 +1,4 @@
-package environment;
+package utility;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,7 +15,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class DbConnection {
 	
 	public static void main(String[] args)throws Exception {
-		String pass =GetlocalPassword("demogpt");
+		String pass =GetlivePassword("demogpt");
 		System.out.println(pass);
 	}
 public static String GetlocalPassword(String uname) throws Exception{
