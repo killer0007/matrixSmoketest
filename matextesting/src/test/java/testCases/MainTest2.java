@@ -62,11 +62,11 @@ public class MainTest2 {
 	public void start() throws IOException {
 		String chrome_path = System.getProperty("user.dir") + "\\src\\test\\resources\\driver\\chromedriver.exe";
 		System.setProperty("webdriver.chrome.driver", chrome_path);
-//		 ChromeOptions chromoption = new ChromeOptions();
-//		 chromoption.setHeadless(true);
-		driver = new ChromeDriver();
-//		 Dimension d = new Dimension(1382, 744);
-//		 driver.manage().window().setSize(d);
+		 ChromeOptions chromoption = new ChromeOptions();
+		 chromoption.setHeadless(true);
+		driver = new ChromeDriver(chromoption);
+		 Dimension d = new Dimension(1382, 744);
+		 driver.manage().window().setSize(d);
 		driver.manage().window().maximize();
 		driver.get(getvalue("url"));
 	}
@@ -82,14 +82,9 @@ public class MainTest2 {
 
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
-		pages.loginpage().Login(getvalue("uname"));
-		driver.navigate().to("http://192.168.2.16/MatexTesting/Matrix/EmploymentTMHomepage.aspx");
-		temp t= new temp();
-//		t.screen(driver);
+pages.loginpage().Login(getvalue("uname"));
 		
-		
-		WebElement ele = driver.findElement(By.xpath("//*[@id='aspnetForm']/div[3]"));
-//t.particularcreen(driver, ele);
+		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "emotl");
 	}
 
 	
@@ -110,13 +105,13 @@ public class MainTest2 {
 	@AfterTest
 	public void teardown() {
 		// pages.loginpage().Logout();
-		//driver.close();
+		driver.close();
 	}
 
 	@AfterSuite
 	public void afterSuite() {
 		extent.flush();
-		// driver.quit();
+		 driver.quit();
 		// SendAttachmentInEmail email = new SendAttachmentInEmail();
 		// email.sendhtmlemail();
 
