@@ -12,6 +12,7 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -368,25 +369,20 @@ public class DataEntryTM {
 			pages.Wait().wait_until_loader_is_invisible();
 			pages.Utill().input_text(getlocator("BVCountry"), getvalue("BVCountry"));
 			// System.out.println("//*[text()='" + getvalue("BVCountry") + "']");
-			w.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
-					"//li[.='India']")));
-			//pages.Utill().input_text(getlocator("BVCountry"), getvalue("BVCountry"));
-			pages.Utill().click_element(
-					("//li[.='India']"));
+			w.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//li[.='India']")));
+			// pages.Utill().input_text(getlocator("BVCountry"), getvalue("BVCountry"));
+			pages.Utill().click_element(("//li[.='India']"));
 			pages.Utill().input_text(getlocator("BVState"), getvalue("BVState"));
-			w.until(ExpectedConditions
-					.presenceOfElementLocated(By.xpath("//li[.='Tamil nadu']")));
+			w.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//li[.='Tamil nadu']")));
 			pages.Utill().click_element("//li[.='Tamil nadu']");
 			try {
 				pages.Utill().input_text(getlocator("BVCity"), getvalue("BVCity"));
-				w.until(ExpectedConditions
-						.presenceOfElementLocated(By.xpath("//li[.='Chennai']")));
+				w.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//li[.='Chennai']")));
 				pages.Utill().click_element("//li[.='Chennai']");
 			} catch (TimeoutException e) {
 				pages.Utill().find(getlocator("BVCity")).clear();
 				pages.Utill().input_text(getlocator("BVCity"), getvalue("BVCity"));
-				w.until(ExpectedConditions
-						.presenceOfElementLocated(By.xpath("//li[.='Chennai']")));
+				w.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//li[.='Chennai']")));
 				pages.Utill().click_element("//li[.='Chennai']");
 			}
 			pages.Utill().click_element(getlocator("BVSave"));
@@ -445,4 +441,42 @@ public class DataEntryTM {
 		}
 	}
 
+	public void RaiseInduff(String check, String dd) throws Exception {
+		// for raise button : //div[contains(@id,'Reference')]//a[text()='Raise']
+		// for insuff dropdown //select[contains(@id,'insuffcmts')] and
+		// //select[contains(@id,'Reference')]
+		// for insuff text //textarea [contains(@id,'txtInsufficiency')] and //textarea
+		// [contains(@id,'Reference')]
+		// for insuff savebtn //input[contains(@id,'btnSaveInsuff')] and
+		// //input[contains(@id,'Reference')]
+		// span[text()='Address' and contains(@id,'tab')]
+		try {
+			if (check.equals("Address") || check.equals("Education") || check.equals("Employment")
+					|| check.equals("Reference") || check.equals("Gap")) {
+				pages.Utill().click_element("//span[contains(text(),'" + check + "') and contains(@id,'tab')]");
+				pages.Utill().click_element("//div[contains(@id,'" + check + "')]//a[text()='Raise']");
+				pages.Wait().presenceOfElement("//option[text()='" + dd + "']", 10);
+				pages.Utill().select_by_label("//select[contains(@id,'insuffcmts') and contains(@id,'" + check + "')]", dd);
+				pages.Utill().input_text("//textarea[contains(@id,'txtInsufficiency') and contains(@id,'" + check + "')]",
+						check + " insuff");
+				pages.Utill().click_element("//input[contains(@id,'btnSaveInsuff') and contains(@id,'" + check + "')]");
+				pages.Wait().wait_until_loader_is_invisible();
+				pages.Utill().clickAlertbox();
+
+			}
+			pages.Utill().click_element("//div[contains(@id,'" + check + "')]//a[text()='Raise']");
+			pages.Wait().presenceOfElement("//option[text()=\"" + dd + "\"]", 10);
+			pages.Utill().select_by_label("//select[contains(@id,'insuffcmts') and contains(@id,\"" + check.toLowerCase() + "\")]", dd);
+			pages.Utill().input_text("//textarea[contains(@id,'txtInsufficiency') and contains(@id,'" + check + "')]",
+					check + " insuff");
+			pages.Utill().click_element("//input[contains(@id,'btnSaveInsuff') and contains(@id,'" + check + "')]");
+			pages.Wait().wait_until_loader_is_invisible();
+			pages.Utill().clickAlertbox();
+
+		} catch (UnhandledAlertException e) {
+
+			pages.Utill().handle_Alert();
+		}
+
+	}
 }

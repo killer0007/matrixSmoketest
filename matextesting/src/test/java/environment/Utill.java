@@ -62,7 +62,7 @@ public class Utill {
 		File src = ts.getScreenshotAs(OutputType.FILE);
 
 		String path = System.getProperty("user.dir") + "/Screenshot/" + System.currentTimeMillis() + ".png";
-//		String path ="./Screenshot/" + System.currentTimeMillis() + ".png";
+		// String path ="./Screenshot/" + System.currentTimeMillis() + ".png";
 		File destination = new File(path);
 
 		try {
@@ -75,18 +75,18 @@ public class Utill {
 	}
 
 	public WebElement find(String path) {
-//		try {
-			if ( path.startsWith("./") || path.startsWith("/") || path.startsWith("(//")) {
-				// logger.info("performing actions on " + path);
-				return driver.findElement(By.xpath(path));
-			} else {
-				// logger.info("performing actions on " + path);
-				return driver.findElement(By.id(path));
-			}
-//		} 
-//		catch (Exception e) {
-//			throw new NoSuchElementException(e.toString() + path);
-//		}
+		// try {
+		if (path.startsWith("./") || path.startsWith("/") || path.startsWith("(//")) {
+			// logger.info("performing actions on " + path);
+			return driver.findElement(By.xpath(path));
+		} else {
+			// logger.info("performing actions on " + path);
+			return driver.findElement(By.id(path));
+		}
+		// }
+		// catch (Exception e) {
+		// throw new NoSuchElementException(e.toString() + path);
+		// }
 	}
 
 	public void input_text(String path, String text) throws Exception {
@@ -143,10 +143,10 @@ public class Utill {
 			pages.Utill().find(path).click();
 			logger.log(Status.PASS, "Clicking element '" + path + "'");
 		}
-//		catch (ElementNotVisibleException e) {
-//			pages.Wait().visibilityOfElement(path);
-//			pages.Utill().click_element(path);
-//		}
+		// catch (ElementNotVisibleException e) {
+		// pages.Wait().visibilityOfElement(path);
+		// pages.Utill().click_element(path);
+		// }
 
 	}
 
@@ -216,9 +216,9 @@ public class Utill {
 	}
 
 	public List<WebElement> Get_webelement_list(String path) {
-		
+
 		List<WebElement> li = driver.findElements(By.xpath(path));
-		logger.log(Status.PASS, "getting webelement list of :"+path);
+		logger.log(Status.PASS, "getting webelement list of :" + path);
 		return li;
 	}
 
@@ -272,6 +272,7 @@ public class Utill {
 		pages.Utill().click_element(".//*[@id='" + id + "']/div/ul/li");
 
 	}
+
 	public void printMap(Map mp) {
 		Iterator it = mp.entrySet().iterator();
 		while (it.hasNext()) {
@@ -287,44 +288,180 @@ public class Utill {
 		return dtf.format(now); // 2016/11/16 12:08:43
 		// return "mmmmm";
 	}
+
 	public void mouseover(String id) {
 		Actions action = new Actions(driver);
 		action.moveToElement(pages.Utill().find(id));
 		action.build().perform();
-		logger.log(Status.PASS, "performing mouse over on :"+id);
-		action=null;
+		logger.log(Status.PASS, "performing mouse over on :" + id);
+		action = null;
 	}
+
 	public void SwitchFramebyIndex(int i) {
 		driver.switchTo().frame(i);
-		logger.log(Status.PASS, "switching frame by index "+i);
+		logger.log(Status.PASS, "switching frame by index " + i);
 	}
+
 	public void scrollTo(String id) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", pages.Utill().find(id));
-		logger.log(Status.PASS, "scrolling into view of :"+id);
-		
+		logger.log(Status.PASS, "scrolling into view of :" + id);
+
 	}
+
 	public void SwitchDefault() {
 		driver.switchTo().defaultContent();
 		logger.log(Status.PASS, "switching to default frame");
 	}
-	public void FileUpload(String id, String filename) throws Exception{
+
+	public void FileUpload(String id, String filename) throws Exception {
 		pages.Utill().click_element(id);
 		Thread.sleep(1000);
 		setClipboardData(filename);
-		 Robot robot = new Robot();
-//		 System.out.println("start");
-         robot.keyPress(KeyEvent.VK_CONTROL);
-         robot.keyPress(KeyEvent.VK_V);
-         robot.keyRelease(KeyEvent.VK_V);
-         robot.keyRelease(KeyEvent.VK_CONTROL);
-         robot.keyPress(KeyEvent.VK_ENTER);
-         robot.keyRelease(KeyEvent.VK_ENTER);
-//         System.out.println("end");
+		Robot robot = new Robot();
+		// System.out.println("start");
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+		// System.out.println("end");
 	}
-	public  void setClipboardData(String string) {
-		//StringSelection is a class that can be used for copy and paste operations.
-		   StringSelection stringSelection = new StringSelection(string);
-		   Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+
+	public void setClipboardData(String string) {
+		// StringSelection is a class that can be used for copy and paste operations.
+		StringSelection stringSelection = new StringSelection(string);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+	}
+
+	// library build by gopinath
+	public void alert_shouldbe_present() {
+		Alert alert = driver.switchTo().alert();
+		String te = alert.getText();
+		logger.log(Status.PASS, "alert text is : " + te);
+		alert.accept();
+		logger.log(Status.PASS, "Alet accepted");
+	}
+
+	public void checkbox_shouldbe_selected(String id) throws Exception {
+		boolean b = pages.Utill().find("id").isSelected();
+		logger.log(Status.PASS, "check box selected state is : " + b);
+		if (!b) {
+			throw new Exception("check box not selected");
 		}
+	}
+
+	public void checkbox_shouldnotbe_selected(String id) throws Exception {
+		boolean b = pages.Utill().find("id").isSelected();
+		logger.log(Status.PASS, "check box selected state is : " + b);
+		if (b) {
+			throw new Exception("check box selected");
+		}
+	}
+
+	public void clear_element_text(String id) {
+		pages.Utill().find(id).clear();
+		logger.log(Status.PASS, "text cleared for : " + id);
+	}
+
+	public void click_link(String link) {
+		driver.findElement(By.linkText(link)).click();
+		logger.log(Status.PASS, "Clicking link : " + link);
+
+	}
+
+	public void close_all_browsers() {
+		driver.quit();
+		logger.log(Status.PASS, "all browsers are closed ");
+	}
+
+	public void close_browser() {
+		driver.close();
+		logger.log(Status.PASS, "browser closed ");
+	}
+
+	public void double_click_element(String id) {
+		WebElement ele = pages.Utill().find(id);
+		Actions action = new Actions(driver);
+		action.doubleClick(ele).build().perform();
+		logger.log(Status.PASS, "double clicking in element : " + id);
+	}
+
+	public void element_shouldbe_enabled(String id) throws Exception {
+		boolean b = pages.Utill().find(id).isEnabled();
+		logger.log(Status.PASS, "element enabled status is : " + b);
+		if (!b) {
+			throw new Exception(id + "  webelement not enabled");
+		}
+	}
+
+	public void element_shouldbe_disabled(String id) throws Exception {
+		boolean b = pages.Utill().find(id).isDisplayed();
+		logger.log(Status.PASS, "element enabled status is : " + b);
+
+		if (!b) {
+			logger.log(Status.FAIL, id + " :element not disabled");
+			throw new Exception(id + "  webelement not enabled");
+		}
+	}
+
+	public void element_shouldbe_focused(String id) throws Exception {
+		WebElement ele = pages.Utill().find(id);
+		boolean b = ele == driver.switchTo().activeElement();
+
+		if (!b) {
+			logger.log(Status.FAIL, id + "  webelement is not focused instead of focusing element is  "
+					+ driver.switchTo().activeElement());
+			throw new Exception(id + "  webelement is not focused instead of focusing element is  "
+					+ driver.switchTo().activeElement());
+		}
+		logger.log(Status.PASS, id + "  : is focused");
+
+	}
+
+	public void element_shouldbe_visible(String id) throws Exception {
+		String css = pages.Utill().find(id).getCssValue("display");
+		if (css.equalsIgnoreCase("none")) {
+			logger.log(Status.FAIL, id + "  is not visible");
+			throw new Exception("element is not visible");
+		}
+		logger.log(Status.PASS, id + "  is visible");
+
+	}
+
+	public void element_should_contains(String id, String text)  throws Exception{
+		String t = pages.Utill().get_text(id);
+		if(t.equals(text)) {
+			logger.log(Status.PASS, id + " contains expected text");	
+		}
+		else {
+			logger.log(Status.FAIL, id + "  contains text as : " +t);
+			throw new Exception(id + "  contains text as : " +t);
+		}
+	}
+	public void element_shouldnotbe_visible(String id) throws Exception {
+		String css = pages.Utill().find(id).getCssValue("display");
+		if (!(css.equalsIgnoreCase("none"))) {
+			logger.log(Status.FAIL, id + "  is visible");
+			throw new Exception("element is  visible");
+		}
+		logger.log(Status.PASS, id + "  is not visible");
+	}
+	public void element_shouldnot_contains(String id, String text)  throws Exception{
+		String t = pages.Utill().get_text(id);
+		if(!(t.equals(text))) {
+			logger.log(Status.PASS, id + " contains expected text");	
+		}
+		else {
+			logger.log(Status.FAIL, id + "  contains text as : " +t);
+			throw new Exception(id + "  contains text as : " +t);
+		}
+	}
+	public String get_element_attribute(String id, String attribute) {
+		String attri =pages.Utill().find(id).getAttribute(attribute);
+		logger.log(Status.PASS,"getting value of : "+id+attribute);
+		return attri;
+	}
+	
 }

@@ -1,23 +1,20 @@
 package pages;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.SimpleFileVisitor;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 
-import org.testng.annotations.Test;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
 public class temp {
-	
-	
-		 @Test
-		 public void print() {
-			 System.out.println("success");
-		 }
-	
-	 
+
+	public static void main(String[] args) throws Exception {
+	WebDriver driver= new ChromeDriver();
+	driver.get("http://192.168.2.16/reportserver/Pages/ReportViewer.aspx?%2fReportForTesting%2fCaseHistory&rs:Command=Render&MatrixRefNo=DTCSSAA145");
+//	WebDriverWait wait = new WebDriverWait(driver, 10);
+//	wait.until(ExpectedConditions.alertIsPresent());
+	System.out.println("starting");
+	driver.switchTo().alert().sendKeys("administrator" + Keys.TAB + "kadamba@123$");
+	driver.switchTo().alert().accept();	
+		System.out.println("ending");
+	}
 }
