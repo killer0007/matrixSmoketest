@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="5" passed="5">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="41443" started-at="2018-08-03T09:39:58Z" finished-at="2018-08-03T09:40:39Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="41443" started-at="2018-08-03T09:39:58Z" finished-at="2018-08-03T09:40:39Z">
+      <class name="livetesting.Base">
+        <test-method status="PASS" signature="suitesetup()[pri:0, instance:livetesting.Base@bbd20a]" name="suitesetup" is-config="true" duration-ms="12" started-at="2018-08-03T15:09:58Z" finished-at="2018-08-03T15:09:58Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suitesetup -->
+        <test-method status="PASS" signature="browerSetup()[pri:0, instance:livetesting.Base@bbd20a]" name="browerSetup" is-config="true" duration-ms="4971" started-at="2018-08-03T15:09:58Z" finished-at="2018-08-03T15:10:03Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- browerSetup -->
+        <test-method status="PASS" signature="login()[pri:0, instance:livetesting.Base@bbd20a]" name="login" duration-ms="1254" started-at="2018-08-03T15:10:03Z" finished-at="2018-08-03T15:10:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method status="PASS" signature="dataentry()[pri:0, instance:livetesting.Base@bbd20a]" name="dataentry" duration-ms="16437" started-at="2018-08-03T15:10:04Z" depends-on-methods="livetesting.Base.login" finished-at="2018-08-03T15:10:21Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dataentry -->
+        <test-method status="PASS" signature="fileupload()[pri:0, instance:livetesting.Base@bbd20a]" name="fileupload" duration-ms="7270" started-at="2018-08-03T15:10:21Z" depends-on-methods="livetesting.Base.dataentry" finished-at="2018-08-03T15:10:28Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fileupload -->
+        <test-method status="PASS" signature="filedownload()[pri:0, instance:livetesting.Base@bbd20a]" name="filedownload" duration-ms="2254" started-at="2018-08-03T15:10:28Z" depends-on-methods="livetesting.Base.fileupload" finished-at="2018-08-03T15:10:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- filedownload -->
+        <test-method status="PASS" signature="reportpreview()[pri:0, instance:livetesting.Base@bbd20a]" name="reportpreview" duration-ms="8573" started-at="2018-08-03T15:10:30Z" depends-on-methods="livetesting.Base.filedownload" finished-at="2018-08-03T15:10:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- reportpreview -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:livetesting.Base@bbd20a]" name="teardown" is-config="true" duration-ms="654" started-at="2018-08-03T15:10:39Z" finished-at="2018-08-03T15:10:39Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+      </class> <!-- livetesting.Base -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

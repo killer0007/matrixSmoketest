@@ -37,7 +37,7 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import environment.SendAttachmentInEmail;
 import environment.Utill;
-import pages.temp;
+
 
 public class MainTest2 {
 	WebDriver driver;
@@ -82,11 +82,147 @@ public class MainTest2 {
 
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
-pages.loginpage().Login(getvalue("uname"));
+		pages.loginpage().Login(getvalue("uname"));
 		
-		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "emotl");
+		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
+
 	}
 
+	@Test(priority = 2, enabled = true, dependsOnMethods = "Login")
+	public void caseregistration() throws Exception {
+		candid = pages.Utill().candidateid();
+		candidateName = pages.Utill().candidateName();
+		String re = pages.CaseRegistration().caseRegistration(getvalue("clientname"), candid, candidateName);
+		Assert.assertEquals(re, "Registered Successfully.");
+	}
+
+	@Test(priority = 3, enabled = true, dependsOnMethods = "caseregistration")
+	public void aasignToDE() throws Exception {
+		pages = new Pages(driver, logger);
+		pages.CaseRegistration().navigateTo("Daily Activity", "Assign Cases");
+		MatrixRefNo = pages.CaseRegistration().assignToDETM(candidateName, candid);
+		logger.info(MatrixRefNo);
+		System.out.println(MatrixRefNo);
+	}
+
+	@Test(priority = 4, enabled = true, dependsOnMethods = "aasignToDE")
+	public void dataentry() throws Exception {
+		pages = new Pages(driver, logger);
+		pages.CaseRegistration().navigateTo("Daily Activity", "Data Entry");
+		pages.Utill().find("ctl00_ContentPlaceHolder1_txtMatrixRefNo").sendKeys(MatrixRefNo);
+		pages.Utill().find("ctl00_ContentPlaceHolder1_butnSearch").click();
+		pages.Wait().wait_until_loader_is_invisible();
+		String no = pages.Utill().find("ctl00_ContentPlaceHolder1_grdCandidate_ctl02_btnMatrixRefNo").getText();
+		if (no.equals(MatrixRefNo)) {
+			driver.findElement(By.linkText(MatrixRefNo)).click();
+			pages.Wait().wait_until_loader_is_invisible();
+			pages.DataEntryTM().Personal();
+			pages.DataEntryTM().AddressCheck();
+			pages.DataEntryTM().EducationCheck();
+			pages.DataEntryTM().EmploymentCheck();
+			pages.DataEntryTM().ReeferenceCheck();
+			
+			String t = pages.DataEntryTM().getlocator("de_submit");
+			pages.Utill().find(t).click();
+			try {
+				System.out.println("try block");
+				Alert alert = driver.switchTo().alert();
+				t = alert.getText();
+				logger.info(t);
+				alert.accept();
+				pages.Wait().wait_until_loader_is_invisible();
+				logger.pass("data entry completed");
+				assertTrue(true);
+			} catch (NoAlertPresentException e) {
+				System.out.println("NoAlertPresentException");
+				WebDriverWait w = new WebDriverWait(driver, 10);
+				w.until(ExpectedConditions.alertIsPresent());
+				Alert alert = driver.switchTo().alert();
+				t = alert.getText();
+				logger.info(t);
+				alert.accept();
+				pages.Wait().wait_until_loader_is_invisible();
+				logger.pass("data entry completed");
+				assertTrue(true);
+			} catch (UnhandledAlertException e) {
+				System.out.println("UnhandledAlertException");
+				Alert alert = driver.switchTo().alert();
+				t = alert.getText();
+				logger.info(t);
+				alert.accept();
+				pages.Wait().wait_until_loader_is_invisible();
+				logger.pass("data entry completed");
+				assertTrue(true);
+			} catch (Exception e) {
+				System.out.println("Exception");
+				assertTrue(false);
+			}
+		} else {
+			assertTrue("Matrix ref no not found", false);
+		}
+	}
+
+	@Test(priority = 5, enabled = true, dependsOnMethods = "dataentry")
+	public void assigncase() throws Exception {
+		Thread.sleep(6000);
+		
+		pages.Utill().GoTo(getvalue("url")+"/Matrix/AssignerHome.aspx");
+		pages.Assignor().assign_Address(MatrixRefNo);
+		pages.Assignor().assign_Employment(MatrixRefNo);
+		pages.Assignor().assign_Reference(MatrixRefNo);
+		pages.Assignor().assign_Criminal(MatrixRefNo);
+		pages.Assignor().assign_DB(MatrixRefNo);
+		pages.Assignor().assign_Drug(MatrixRefNo);
+		pages.Assignor().assign_ID(MatrixRefNo);
+		pages.Assignor().assign_ID(MatrixRefNo);
+		pages.Assignor().assign_Court(MatrixRefNo);
+		pages.Assignor().assign_Facis(MatrixRefNo);
+		pages.Assignor().assign_Credit(MatrixRefNo);
+		//pages.Assignor().assign_BV(MatrixRefNo);
+		pages.Assignor().assign_IT(MatrixRefNo);
+		pages.Assignor().assign_PF(MatrixRefNo);
+		assertTrue(true);
+	}
+
+	@Test(priority = 6, enabled = true, dependsOnMethods = "assigncase")
+	public void OperationtmAssign() throws Exception {
+		pages.OperationTL().Addresstl(MatrixRefNo);
+		pages.OperationTL().Employementtl(MatrixRefNo);
+		pages.OperationTL().Referencetl(MatrixRefNo);
+		pages.OperationTL().Criminaltl(MatrixRefNo);
+		pages.OperationTL().Dbtl(MatrixRefNo);
+		pages.OperationTL().Drugtl(MatrixRefNo);
+		pages.OperationTL().Idtl(MatrixRefNo);
+		pages.OperationTL().Idtl(MatrixRefNo);
+		pages.OperationTL().Courttl(MatrixRefNo);
+		pages.OperationTL().Facistl(MatrixRefNo);
+		pages.OperationTL().Credittl(MatrixRefNo);
+		pages.OperationTL().BVtl(MatrixRefNo);
+		pages.OperationTL().ITtl(MatrixRefNo);
+		pages.OperationTL().PFtl(MatrixRefNo);
+
+	}
+
+	@Test(priority = 7, enabled = true, dependsOnMethods = "OperationtmAssign")
+	public void Operationtm() throws Exception {
+		pages.OperationTM().Education(MatrixRefNo);
+		pages.OperationTM().Employment(MatrixRefNo);
+		pages.OperationTM().Address(MatrixRefNo);
+		pages.OperationTM().Reference(MatrixRefNo);
+		pages.OperationTM().Criminal(MatrixRefNo);
+		pages.OperationTM().DB(MatrixRefNo);
+		pages.OperationTM().Drug(MatrixRefNo);
+		pages.OperationTM().ID(MatrixRefNo);
+		pages.OperationTM().ID(MatrixRefNo);
+		pages.OperationTM().Court(MatrixRefNo);
+		pages.OperationTM().Facis(MatrixRefNo);
+		pages.OperationTM().IT(MatrixRefNo);
+		pages.OperationTM().BV(MatrixRefNo);
+		pages.OperationTM().PF(MatrixRefNo);
+		pages.OperationTM().Credit(MatrixRefNo);
+		
+
+	}
 	
 
 	

@@ -1,34 +1,20 @@
 package testcase;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class Temp {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
-	}
-	public static void test() {
-		  Scanner sc = new Scanner(System.in);
-	        int t=sc.nextInt();
-
-	        for(int i=0;i<t;i++)
-	        {
-
-	            try
-	            {
-	                long x=sc.nextLong();
-	                System.out.println(x+" can be fitted in:");
-	                if(x>=-128 && x<=127)System.out.println("* byte");
-	                if(x>=-32768 && x<=32767)System.out.println("* short");
-	                if(x>=-2147483648 && x<=2147483647)System.out.println("* int");
-//	                if(x>=-9223372036854775808 && x<=9223372036854775808)System.out.println("* long");
-	               
-	                //Complete the code
-	            }
-	            catch(Exception e)
-	            {
-	                System.out.println(sc.next()+" can't be fitted anywhere.");
-	            }
-
-	        }
+		Properties pro = new Properties();
+		String current= System.getProperty("user.dir");
+		System.out.println(current);
+		pro.load(new FileInputStream(new File(current+"/config.properties")));
+	String data =	pro.getProperty("downloadFilepath");
+	System.out.println(data);
 	}}
 

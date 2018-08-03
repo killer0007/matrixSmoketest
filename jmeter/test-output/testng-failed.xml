@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="livetesting.Base2">
+        <methods>
+          <include name="teardown"/>
+          <include name="filedownload"/>
+          <include name="dataentry"/>
+          <include name="login"/>
+          <include name="reportpreview"/>
+          <include name="fileupload"/>
+          <include name="browerSetup"/>
+        </methods>
+      </class> <!-- livetesting.Base2 -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

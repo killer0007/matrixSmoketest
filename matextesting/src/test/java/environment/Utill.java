@@ -114,17 +114,17 @@ public class Utill {
 	}
 
 	public void select_by_label(String path, String value) throws Exception {
-		try {
+//		try {
 			// Selecting options from selection list 'xpath=.//*[@id='ddltype1']' by label
 			// Course Completion Certificate.Sele
 
 			Select sel = new Select(pages.Utill().find(path));
 			sel.selectByVisibleText(value);
 			logger.log(Status.PASS, "Selecting options from selection list '" + path + "' by label " + value + ".");
-		} catch (Exception e) {
+//		} catch (Exception e) {
 
-			throw new Exception(e.toString());
-		}
+//			throw new Exception(e.toString());
+//		}
 	}
 
 	public void choose_file(String path, String file) throws Exception {
@@ -157,7 +157,7 @@ public class Utill {
 	}
 
 	public String candidateName() {
-		String name[] = { "Vishal", "Arjun", "Jagan", "Kavin", "Sadam", "Akash", "Sasi", "Santhosh", "Deepika",
+		String name[] = { "Vishal", "Arjun", "Jagan", "Kavin", "Sadam", "Akash", "Sasi", "Santhosh",
 				"Abinaya", "Ayyappan", "Mani", "Vignesh", "Hari", "Divya", "Rahul" };
 		List<String> answersList = Arrays.asList(name);
 		Collections.shuffle(answersList);

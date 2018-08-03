@@ -226,6 +226,12 @@ public class DataEntryTM {
 				pages.Utill().input_text(getlocator("Emp_HRName"), getvalue("Emp_HRName"));
 				pages.Utill().input_text(getlocator("Emp_ReasonLeave"), getvalue("Emp_ReasonLeave"));
 				pages.Utill().select_by_label(getlocator("Emp_YTR"), getvalue("Emp_YTR"));
+				try {
+					pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_CdtCompany_FullTime_PartTime", "Full Time");
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					System.out.println(e.getMessage().toString());
+				}
 				pages.Utill().find(getlocator("Emp_Applicable")).click();
 				pages.Utill().find(getlocator("Emp_save")).click();
 				pages.Wait().wait_until_loader_is_invisible();
@@ -464,14 +470,24 @@ public class DataEntryTM {
 				pages.Utill().clickAlertbox();
 
 			}
-			pages.Utill().click_element("//div[contains(@id,'" + check + "')]//a[text()='Raise']");
-			pages.Wait().presenceOfElement("//option[text()=\"" + dd + "\"]", 10);
-			pages.Utill().select_by_label("//select[contains(@id,'insuffcmts') and contains(@id,\"" + check.toLowerCase() + "\")]", dd);
-			pages.Utill().input_text("//textarea[contains(@id,'txtInsufficiency') and contains(@id,'" + check + "')]",
-					check + " insuff");
-			pages.Utill().click_element("//input[contains(@id,'btnSaveInsuff') and contains(@id,'" + check + "')]");
-			pages.Wait().wait_until_loader_is_invisible();
-			pages.Utill().clickAlertbox();
+			else {
+				pages.Utill().click_element("//div[contains(@id,'" + check + "')]//a[text()='Raise']");
+				pages.Wait().presenceOfElement("//option[text()=\"" + dd + "\"]", 10);
+				if(check.equalsIgnoreCase("it") || check.equalsIgnoreCase("pf")) {
+					pages.Wait().wait_until_loader_is_invisible();
+					pages.Utill().select_by_label("//select[contains(@id,'insuffcmts') and contains(@id,\"" + check + "\")]", dd);
+				}
+				else {
+					pages.Utill().select_by_label("//select[contains(@id,'insuffcmts') and contains(@id,\"" + check.toLowerCase() + "\")]", dd);
+				}
+			
+				pages.Utill().input_text("//textarea[contains(@id,'txtInsufficiency') and contains(@id,'" + check + "')]",
+						check + " insuff");
+				pages.Utill().click_element("//input[contains(@id,'btnSaveInsuff') and contains(@id,'" + check + "')]");
+				pages.Wait().wait_until_loader_is_invisible();
+				pages.Utill().clickAlertbox();
+			}
+			
 
 		} catch (UnhandledAlertException e) {
 

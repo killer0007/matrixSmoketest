@@ -40,7 +40,7 @@ public class Insufficiency {
 	Pages pages;
 	int candid = 3015270;
 	String candidateName = "gopi";
-	String MatrixRefNo = "AUTOMAA072";
+	String MatrixRefNo = "AUTOMAA081";
 
 	@BeforeSuite
 	public void beforeSuit() {
@@ -79,7 +79,7 @@ public class Insufficiency {
 		pages = new Pages(driver, logger);
 		// pages.Utill().GoTo(getvalue("url") + "/Matrix/UserHome.aspx");
 	}
-	@Test(enabled=true)
+	@Test(priority=1, enabled=true)
 	public void Login() throws Exception {
 		pages.loginpage().Login("demotl");
 //		candid = pages.Utill().candidateid();
@@ -93,9 +93,8 @@ public class Insufficiency {
 		pages.Utill().find("ctl00_ContentPlaceHolder1_txtMatrixRefNo").sendKeys(MatrixRefNo);
 		pages.Utill().find("ctl00_ContentPlaceHolder1_butnSearch").click();
 		pages.Wait().wait_until_loader_is_invisible();
-//		pages.Utill().find("ctl00_ContentPlaceHolder1_grdCandidate_ctl02_btnMatrixRefNo").getText();
 			driver.findElement(By.linkText(MatrixRefNo)).click();
-//			pages.Wait().wait_until_loader_is_invisible();
+			pages.Wait().wait_until_loader_is_invisible();
 //			pages.DataEntryTM().Personal();
 //			pages.DataEntryTM().AddressCheck();
 //			pages.DataEntryTM().EducationCheck();
@@ -108,16 +107,51 @@ public class Insufficiency {
 //			pages.DataEntryTM().ItCheck();
 //			pages.DataEntryTM().PfCheck();
 	}
-	@Test(enabled=true)
-	public void RaiseInsuff() throws Exception{
-//		pages.DataEntryTM().RaiseInduff("Address", "Period of Stay required");
-//		pages.DataEntryTM().RaiseInduff("Education", "Degree certificate required");
-//		pages.DataEntryTM().RaiseInduff("Employment", "Service Letter Required");
-//		pages.DataEntryTM().RaiseInduff("Reference", "Require email id of the referee");
-//		pages.DataEntryTM().RaiseInduff("Gap", "Require period of stay");
-		//FACIS
+	@Test(priority=2, enabled=true, dependsOnMethods="Login")
+	public void Raise_Address() throws Exception{
+		pages.DataEntryTM().RaiseInduff("Address", "Period of Stay required");	
+		
+	}
+	@Test(priority=3, enabled=true, dependsOnMethods="Login")
+	public void Raise_Education() throws Exception{
+		pages.DataEntryTM().RaiseInduff("Education", "Degree certificate required");
+	}
+	@Test(priority=4, enabled=true, dependsOnMethods="Login")
+	public void Raise_Employment() throws Exception{
+		pages.DataEntryTM().RaiseInduff("Employment", "Service Letter Required");
+	}
+	@Test(priority=5, enabled=true, dependsOnMethods="Login")
+	public void Raise_Reference() throws Exception{
+		pages.DataEntryTM().RaiseInduff("Reference", "Require email id of the referee");
+	}
+	@Test(priority=6, enabled=false, dependsOnMethods="Login")
+	public void Raise_Gap() throws Exception{
+		pages.DataEntryTM().RaiseInduff("Gap", "Require period of stay");
+	}
+	@Test(priority=7, enabled=false, dependsOnMethods="Login")
+	public void Raise_Facis() throws Exception{
 		pages.Utill().click_element("//span[contains(text(),'Other') and contains(@id,'tab')]");
 		pages.DataEntryTM().RaiseInduff("FACIS", "Require candidate's complete address");
+	}
+	@Test(priority=8, enabled=true, dependsOnMethods="Login")
+	public void Raise_BV() throws Exception{
+		pages.Utill().click_element("//span[contains(text(),'Other') and contains(@id,'tab')]");
+		pages.DataEntryTM().RaiseInduff("BV", "Require bank location");
+	}
+	@Test(priority=9, enabled=true, dependsOnMethods="Login")
+	public void Raise_IT() throws Exception{
+		pages.Utill().click_element("//span[contains(text(),'Other') and contains(@id,'tab')]");
+		pages.DataEntryTM().RaiseInduff("IT", "Require company name");
+	}
+	@Test(priority=10, enabled=true, dependsOnMethods="Login")
+	public void Raise_PF() throws Exception{
+		pages.Utill().click_element("//span[contains(text(),'Other') and contains(@id,'tab')]");
+		pages.DataEntryTM().RaiseInduff("PF", "Require PF number");
+	}
+	@Test(priority=11, enabled=false, dependsOnMethods="Login")
+	public void Raise_CIBIL() throws Exception{
+		pages.Utill().click_element("//span[contains(text(),'Other') and contains(@id,'tab')]");
+		pages.DataEntryTM().RaiseInduff("CIBIL", "Require signed LOA of the candidate");
 	}
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
