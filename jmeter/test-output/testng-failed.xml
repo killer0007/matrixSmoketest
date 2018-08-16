@@ -3,17 +3,20 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="livetesting.Base2">
+      <class name="livetesting.Base">
         <methods>
+          <include name="crtdocumentupload"/>
+          <include name="reportpreview"/>
+          <include name="reportdoc"/>
+          <include name="browerSetup"/>
+          <include name="login"/>
           <include name="teardown"/>
+          <include name="fileupload"/>
           <include name="filedownload"/>
           <include name="dataentry"/>
-          <include name="login"/>
-          <include name="reportpreview"/>
-          <include name="fileupload"/>
-          <include name="browerSetup"/>
+          <include name="suitesetup"/>
         </methods>
-      </class> <!-- livetesting.Base2 -->
+      </class> <!-- livetesting.Base -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

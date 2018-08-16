@@ -13,6 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -47,8 +48,13 @@ public class MainTest2 {
 	Pages pages;
 	int candid = 3015270;
 	String candidateName = "gopi";
-	String MatrixRefNo = "DEMOTAD057";
+	String MatrixRefNo = "AUTOMAA098";
 	Map<String, String> map;
+	public String getlocator(String key) throws FileNotFoundException, IOException {
+		Properties pr = new Properties();
+		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_locators.properties")));
+		return pr.getProperty(key);
+	}
 
 	@BeforeSuite
 	public void beforeSuit() {
@@ -64,7 +70,7 @@ public class MainTest2 {
 		System.setProperty("webdriver.chrome.driver", chrome_path);
 		 ChromeOptions chromoption = new ChromeOptions();
 		 chromoption.setHeadless(true);
-		driver = new ChromeDriver(chromoption);
+		driver = new ChromeDriver();
 		 Dimension d = new Dimension(1382, 744);
 		 driver.manage().window().setSize(d);
 		driver.manage().window().maximize();
@@ -90,138 +96,112 @@ public class MainTest2 {
 
 	@Test(priority = 2, enabled = true, dependsOnMethods = "Login")
 	public void caseregistration() throws Exception {
-		candid = pages.Utill().candidateid();
-		candidateName = pages.Utill().candidateName();
-		String re = pages.CaseRegistration().caseRegistration(getvalue("clientname"), candid, candidateName);
-		Assert.assertEquals(re, "Registered Successfully.");
-	}
-
-	@Test(priority = 3, enabled = true, dependsOnMethods = "caseregistration")
-	public void aasignToDE() throws Exception {
-		pages = new Pages(driver, logger);
-		pages.CaseRegistration().navigateTo("Daily Activity", "Assign Cases");
-		MatrixRefNo = pages.CaseRegistration().assignToDETM(candidateName, candid);
-		logger.info(MatrixRefNo);
-		System.out.println(MatrixRefNo);
-	}
-
-	@Test(priority = 4, enabled = true, dependsOnMethods = "aasignToDE")
-	public void dataentry() throws Exception {
-		pages = new Pages(driver, logger);
-		pages.CaseRegistration().navigateTo("Daily Activity", "Data Entry");
-		pages.Utill().find("ctl00_ContentPlaceHolder1_txtMatrixRefNo").sendKeys(MatrixRefNo);
-		pages.Utill().find("ctl00_ContentPlaceHolder1_butnSearch").click();
+		pages.CaseRegistration().navigateTo("Dashboard", "Prior TM");
+		pages.Utill().click_element(getlocator("v_updation_out"));
 		pages.Wait().wait_until_loader_is_invisible();
-		String no = pages.Utill().find("ctl00_ContentPlaceHolder1_grdCandidate_ctl02_btnMatrixRefNo").getText();
-		if (no.equals(MatrixRefNo)) {
-			driver.findElement(By.linkText(MatrixRefNo)).click();
+	
+		
+			pages.Utill().click_element(getlocator("vemp_upda_normal"));
 			pages.Wait().wait_until_loader_is_invisible();
-			pages.DataEntryTM().Personal();
-			pages.DataEntryTM().AddressCheck();
-			pages.DataEntryTM().EducationCheck();
-			pages.DataEntryTM().EmploymentCheck();
-			pages.DataEntryTM().ReeferenceCheck();
-			
-			String t = pages.DataEntryTM().getlocator("de_submit");
-			pages.Utill().find(t).click();
-			try {
-				System.out.println("try block");
-				Alert alert = driver.switchTo().alert();
-				t = alert.getText();
-				logger.info(t);
-				alert.accept();
-				pages.Wait().wait_until_loader_is_invisible();
-				logger.pass("data entry completed");
-				assertTrue(true);
-			} catch (NoAlertPresentException e) {
-				System.out.println("NoAlertPresentException");
-				WebDriverWait w = new WebDriverWait(driver, 10);
-				w.until(ExpectedConditions.alertIsPresent());
-				Alert alert = driver.switchTo().alert();
-				t = alert.getText();
-				logger.info(t);
-				alert.accept();
-				pages.Wait().wait_until_loader_is_invisible();
-				logger.pass("data entry completed");
-				assertTrue(true);
-			} catch (UnhandledAlertException e) {
-				System.out.println("UnhandledAlertException");
-				Alert alert = driver.switchTo().alert();
-				t = alert.getText();
-				logger.info(t);
-				alert.accept();
-				pages.Wait().wait_until_loader_is_invisible();
-				logger.pass("data entry completed");
-				assertTrue(true);
-			} catch (Exception e) {
-				System.out.println("Exception");
-				assertTrue(false);
+			pages.Utill().click_element("ctl00_ContentPlaceHolder1_grdUpdation_ctl02_btnemp");
+		Thread.sleep(1000);
+		String currentWindow = driver.getWindowHandle();
+		Set<String> handles = driver.getWindowHandles();
+		System.out.println(handles);
+		for (String e : handles) {
+			if (!(e.equals(currentWindow))) {
+				driver.switchTo().window(e);
+				break;
 			}
-		} else {
-			assertTrue("Matrix ref no not found", false);
 		}
-	}
+		System.out.println(driver.getTitle());
+		WebDriverWait w = new WebDriverWait(driver, 10);
+		w.until(ExpectedConditions
+				.presenceOfElementLocated(By.id(getlocator("vCompany_Type"))));
 
-	@Test(priority = 5, enabled = true, dependsOnMethods = "dataentry")
-	public void assigncase() throws Exception {
-		Thread.sleep(6000);
+		pages.Utill().input_text((getlocator("Empl_CmpName")),
+				(getvalue("Empl_CmpName")));
+		w.until(ExpectedConditions.presenceOfElementLocated(
+				By.xpath("//*[text()='" + getvalue("Empl_CmpName") + "']")));
+		pages.Utill().click_element("//*[text()='" + getvalue("Empl_CmpName") + "']");
+		pages.Wait().wait_until_loader_is_invisible();
+		pages.Utill().input_text(getlocator("Empl_CmpAddr"), getvalue("Empl_CmpAddr"));
+		pages.Utill().input_text(getlocator("Empl_Position"),
+				getvalue("Empl_Position"));
+		pages.Utill().input_text(getlocator("Empl_Department"),
+				getvalue("Empl_Department"));
+		pages.Utill().input_text(getlocator("Empl_HOAddr"), getvalue("Empl_HOAddr"));
+		pages.Utill().input_text(getlocator("Empl_FromDt"), getvalue("Empl_FromDt"));
+		pages.Utill().input_text(getlocator("Empl_ToDt"), getvalue("Empl_ToDt"));
+		pages.Utill().input_text(getlocator("Empl_EmpCode"), getvalue("Empl_EmpCode"));
+
+		pages.Utill().select_by_label(getlocator("Empl_EmplType"),
+				getvalue("Empl_EmplType"));
+		pages.Utill().input_text(getlocator("Empl_LastSalary"),
+				getvalue("Empl_LastSalary"));
+
+		pages.Utill().select_by_label(getlocator("Empl_CurrencyType"),
+				getvalue("Empl_CurrencyType"));
+		pages.Utill().select_by_label(getlocator("Empl_SalType"),
+				getvalue("Empl_SalType"));
+
+//		pages.Utill().input_text(getlocator("Empl_RepAuthName"),
+//				getvalue("Empl_RepAuthName"));
+//		pages.Utill().input_text(getlocator("Empl_RepAuthDesig"),
+//				getvalue("Empl_RepAuthDesig"));
+//		pages.Utill().input_text(getlocator("Empl_RepAuthMobile1"),
+//				getvalue("Empl_RepAuthMobile1"));
+//		pages.Utill().input_text(getlocator("Empl_RepAuthEmail"),
+//				getvalue("Empl_RepAuthEmail"));
+//		pages.Utill().input_text(getlocator("Empl_HRName"), getvalue("Empl_HRName"));
+		pages.Utill().input_text(getlocator("Empl_ReasonLeave"),
+				getvalue("Empl_ReasonLeave"));
+		pages.Utill().input_text(getlocator("Company_VerifierName"),
+				getvalue("Company_VerifierName"));
+		pages.Utill().input_text(getlocator("vemp_VerifierDesignation"),
+				getvalue("vemp_VerifierDesignation"));
+		pages.Utill().input_text(getlocator("vemp_VerifierContact"),
+				getvalue("vemp_VerifierContact"));
+		pages.Utill().input_text(getlocator("vemp_VerifierEmail"),
+				getvalue("vemp_VerifierEmail"));
+
+		pages.Utill().select_by_label(getlocator("vemp_ConfirmationMode"),
+				getvalue("vemp_ConfirmationMode"));
+		//-----------------------------
 		
-		pages.Utill().GoTo(getvalue("url")+"/Matrix/AssignerHome.aspx");
-		pages.Assignor().assign_Address(MatrixRefNo);
-		pages.Assignor().assign_Employment(MatrixRefNo);
-		pages.Assignor().assign_Reference(MatrixRefNo);
-		pages.Assignor().assign_Criminal(MatrixRefNo);
-		pages.Assignor().assign_DB(MatrixRefNo);
-		pages.Assignor().assign_Drug(MatrixRefNo);
-		pages.Assignor().assign_ID(MatrixRefNo);
-		pages.Assignor().assign_ID(MatrixRefNo);
-		pages.Assignor().assign_Court(MatrixRefNo);
-		pages.Assignor().assign_Facis(MatrixRefNo);
-		pages.Assignor().assign_Credit(MatrixRefNo);
-		//pages.Assignor().assign_BV(MatrixRefNo);
-		pages.Assignor().assign_IT(MatrixRefNo);
-		pages.Assignor().assign_PF(MatrixRefNo);
-		assertTrue(true);
-	}
-
-	@Test(priority = 6, enabled = true, dependsOnMethods = "assigncase")
-	public void OperationtmAssign() throws Exception {
-		pages.OperationTL().Addresstl(MatrixRefNo);
-		pages.OperationTL().Employementtl(MatrixRefNo);
-		pages.OperationTL().Referencetl(MatrixRefNo);
-		pages.OperationTL().Criminaltl(MatrixRefNo);
-		pages.OperationTL().Dbtl(MatrixRefNo);
-		pages.OperationTL().Drugtl(MatrixRefNo);
-		pages.OperationTL().Idtl(MatrixRefNo);
-		pages.OperationTL().Idtl(MatrixRefNo);
-		pages.OperationTL().Courttl(MatrixRefNo);
-		pages.OperationTL().Facistl(MatrixRefNo);
-		pages.OperationTL().Credittl(MatrixRefNo);
-		pages.OperationTL().BVtl(MatrixRefNo);
-		pages.OperationTL().ITtl(MatrixRefNo);
-		pages.OperationTL().PFtl(MatrixRefNo);
-
-	}
-
-	@Test(priority = 7, enabled = true, dependsOnMethods = "OperationtmAssign")
-	public void Operationtm() throws Exception {
-		pages.OperationTM().Education(MatrixRefNo);
-		pages.OperationTM().Employment(MatrixRefNo);
-		pages.OperationTM().Address(MatrixRefNo);
-		pages.OperationTM().Reference(MatrixRefNo);
-		pages.OperationTM().Criminal(MatrixRefNo);
-		pages.OperationTM().DB(MatrixRefNo);
-		pages.OperationTM().Drug(MatrixRefNo);
-		pages.OperationTM().ID(MatrixRefNo);
-		pages.OperationTM().ID(MatrixRefNo);
-		pages.OperationTM().Court(MatrixRefNo);
-		pages.OperationTM().Facis(MatrixRefNo);
-		pages.OperationTM().IT(MatrixRefNo);
-		pages.OperationTM().BV(MatrixRefNo);
-		pages.OperationTM().PF(MatrixRefNo);
-		pages.OperationTM().Credit(MatrixRefNo);
+		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RevertReceivedFrom", "Reporting Authority");
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentName", "ragavan");
+		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentDesig", "Assistant General Manager, HR");
+		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentDepartment", "Admin");
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentContact", getvalue("Empl_RepAuthMobile1"));
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentMobile", getvalue("Empl_RepAuthMobile1"));
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentEmail", getvalue("Empl_RepAuthEmail"));
 		
+		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_FullTime_PartTime", "Full Time");
+		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyEligibleforrehire", "Yes");
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtRehireComments", "Eligible for rehire");
+		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyIsthedocumentauthentic", "Yes");
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtIsthedocumentauthentic", "document authentic");
+		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyAnyIssuesPers", "No");
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtIsAnyPertaining", "issues pertaining");
+		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyNoticeServe", "Yes");
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtNoticeServe", "Sufficient notice period serve");
+		
+		//--------------------------------
+		pages.Utill().select_by_label(getlocator("vemp_Typeofrevert"),
+				getvalue("vemp_Typeofrevert"));
+		pages.Utill().select_by_label(getlocator("vemp_VerificationSource"),
+				getvalue("vemp_VerificationSource"));
+		pages.Utill().input_text(getlocator("vemp_VerComments"),
+				getvalue("vemp_VerComments"));
+		pages.Utill().click_element(getlocator("vemp_date"));
+		w.until(ExpectedConditions
+				.presenceOfElementLocated(By.id(getlocator("vemp_today"))));
+		pages.Utill().click_element(getlocator("vemp_today"));
+		pages.Utill().click_element(getlocator("vemp_green"));
 
+		pages.Utill().handle_Alert();
+		driver.switchTo().window(currentWindow);
 	}
 	
 
@@ -239,15 +219,16 @@ public class MainTest2 {
 	}
 
 	@AfterTest
-	public void teardown() {
+	public void teardown() throws Exception{
 		// pages.loginpage().Logout();
-		driver.close();
+		Thread.sleep(10000);
+//		driver.close();
 	}
 
 	@AfterSuite
 	public void afterSuite() {
 		extent.flush();
-		 driver.quit();
+//		 driver.quit();
 		// SendAttachmentInEmail email = new SendAttachmentInEmail();
 		// email.sendhtmlemail();
 

@@ -337,15 +337,15 @@ public class OperationTM {
 										pages.Utill().select_by_label(getlocator("Empl_SalType"),
 												getvalue("Empl_SalType"));
 
-										pages.Utill().input_text(getlocator("Empl_RepAuthName"),
-												getvalue("Empl_RepAuthName"));
-										pages.Utill().input_text(getlocator("Empl_RepAuthDesig"),
-												getvalue("Empl_RepAuthDesig"));
-										pages.Utill().input_text(getlocator("Empl_RepAuthMobile1"),
-												getvalue("Empl_RepAuthMobile1"));
-										pages.Utill().input_text(getlocator("Empl_RepAuthEmail"),
-												getvalue("Empl_RepAuthEmail"));
-										pages.Utill().input_text(getlocator("Empl_HRName"), getvalue("Empl_HRName"));
+//										pages.Utill().input_text(getlocator("Empl_RepAuthName"),
+//												getvalue("Empl_RepAuthName"));
+//										pages.Utill().input_text(getlocator("Empl_RepAuthDesig"),
+//												getvalue("Empl_RepAuthDesig"));
+//										pages.Utill().input_text(getlocator("Empl_RepAuthMobile1"),
+//												getvalue("Empl_RepAuthMobile1"));
+//										pages.Utill().input_text(getlocator("Empl_RepAuthEmail"),
+//												getvalue("Empl_RepAuthEmail"));
+//										pages.Utill().input_text(getlocator("Empl_HRName"), getvalue("Empl_HRName"));
 										pages.Utill().input_text(getlocator("Empl_ReasonLeave"),
 												getvalue("Empl_ReasonLeave"));
 										pages.Utill().input_text(getlocator("Company_VerifierName"),
@@ -359,6 +359,27 @@ public class OperationTM {
 
 										pages.Utill().select_by_label(getlocator("vemp_ConfirmationMode"),
 												getvalue("vemp_ConfirmationMode"));
+										
+										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RevertReceivedFrom", "Reporting Authority");
+										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentName", "ragavan");
+										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentDesig", "Assistant General Manager, HR");
+										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentDepartment", "Admin");
+										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentContact", getvalue("Empl_RepAuthMobile1"));
+										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentMobile", getvalue("Empl_RepAuthMobile1"));
+										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentEmail", getvalue("Empl_RepAuthEmail"));
+										
+										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_FullTime_PartTime", "Full Time");
+										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyEligibleforrehire", "Yes");
+										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtRehireComments", "Eligible for rehire");
+										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyIsthedocumentauthentic", "Yes");
+										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtIsthedocumentauthentic", "document authentic");
+										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyAnyIssuesPers", "No");
+										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtIsAnyPertaining", "issues pertaining");
+										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyNoticeServe", "Yes");
+										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtNoticeServe", "Sufficient notice period serve");
+										
+										
+										
 										pages.Utill().select_by_label(getlocator("vemp_Typeofrevert"),
 												getvalue("vemp_Typeofrevert"));
 										pages.Utill().select_by_label(getlocator("vemp_VerificationSource"),
@@ -445,6 +466,14 @@ public class OperationTM {
 			pages.Utill().select_by_label(getlocator("vAddr_Typeofrevert"), getvalue("vAddr_Typeofrevert"));
 			pages.Utill().input_text(getlocator("vAddr_VerComments"), getvalue("vAddr_VerComments"));
 
+			pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_CandidateAddressFile_Upload1_ddlDocumentType", "Physical Verification Report");
+			pages.Wait().wait_until_loader_is_invisible(20);
+			String file = System.getProperty("user.dir") + "\\Documents\\vpresent.pdf";
+			pages.Utill().choose_file("ctl00_ContentPlaceHolder1_CandidateAddressFile_Upload1_fup", file);
+			pages.Wait().wait_until_loader_is_invisible(60);
+			pages.Utill().clickAlertbox();
+			
+			
 			pages.Utill().click_element(getlocator("vdd_vdate"));
 			w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vadd_Extender1_today"))));
 			pages.Utill().click_element(getlocator("vadd_Extender1_today"));
@@ -613,16 +642,19 @@ public class OperationTM {
 						pages.Wait().wait_until_loader_is_invisible();
 						pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnNormalUpt");
 						pages.Wait().wait_until_loader_is_invisible();
-						pages.Utill().input_text(getlocator("vref_tmsearch"), no);
-						pages.Utill().click_element(getlocator("vref_tmsearchbtn"));
-						pages.Wait().wait_until_loader_is_invisible();
-						w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vcri_table"))));
+//						pages.Utill().input_text(getlocator("vref_tmsearch"), no);
+//						pages.Utill().click_element(getlocator("vref_tmsearchbtn"));
+//						pages.Wait().wait_until_loader_is_invisible(30);
+						//--------------------------
+						pages.Utill().click_element("//td[text()='"+no+"']/../td/input");
+						//td[text()='+"mat"+']/../td/input
+						//w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vcri_table"))));
 						// .//*[@id='ctl00_ContentPlaceHolder1_grupdation']/tbody/tr[2]/td[6]
-						String refno = pages.Utill()
-								.get_text(".//*[@id='" + getlocator("vcri_table") + "']/tbody/tr[2]/td[6]");
-						if (refno.equals(no)) {
-							pages.Utill().click_element("ctl00_ContentPlaceHolder1_grupdation_ctl02_btnShowAddress");
-							pages.Wait().wait_until_loader_is_invisible();
+						//String refno = pages.Utill()
+								//.get_text(".//*[@id='" + getlocator("vcri_table") + "']/tbody/tr[2]/td[6]");
+						//if (refno.equals(no)) {
+//							pages.Utill().click_element("ctl00_ContentPlaceHolder1_grupdation_ctl02_btnShowAddress");
+//							pages.Wait().wait_until_loader_is_invisible();
 							w.until(ExpectedConditions.visibilityOf(pages.Utill().find(getlocator("vcAddr_Address"))));
 							pages.Utill().input_text(getlocator("vcAddr_Address"), getvalue("vcAddr_Address"));
 							pages.Utill().input_text(getlocator("vcAddr_Pincode"), getvalue("vcAddr_Pincode"));
@@ -653,13 +685,13 @@ public class OperationTM {
 							pages.Utill().click_element(getlocator("vcrim_green"));
 
 							pages.Utill().handle_Alert();
-						} else {
-							System.out.println(no + " ref no not found in search");
-							logger.log(Status.FAIL, no + " ref no not found in search");
-							String temp = Utill.getScreenshot(driver);
-							logger.fail("ref no not found in search",
-									MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-						}
+//						} else {
+//							System.out.println(no + " ref no not found in search");
+//							logger.log(Status.FAIL, no + " ref no not found in search");
+//							String temp = Utill.getScreenshot(driver);
+//							logger.fail("ref no not found in search",
+//									MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+//						}
 					} else {
 						logger.log(Status.FAIL, "no value in Criminal Updation dashboard");
 						System.out.println("no value in Criminal Updation dashboard");

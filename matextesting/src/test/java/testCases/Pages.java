@@ -8,72 +8,90 @@ import environment.Utill;
 import environment.Wait;
 import pages.*;
 
-
 public class Pages {
 	WebDriver driver;
 	ExtentTest logger;
+	private LoginPage plogin;
+	private Caseregistration pcasereg;
+	private Utill putil;
+	private Wait pwait;
+	private DataEntryTM pde;
+	private Assignor pas;
+	private OperationTL ptl;
+	private OperationTM ptm;
+	private ReportTL prtl;
+	private ReportTM prtm;
+	private CrtDashboard pcrt;
+	private MatrixPortalNavigation purl;
+	private CandidateInitiation pcc;
 
-	public Pages(WebDriver driver,ExtentTest logger) {
+	public Pages(WebDriver driver, ExtentTest logger) {
 		this.driver = driver;
-		this.logger=logger;
+		this.logger = logger;
 	}
 
 	public LoginPage loginpage() {
-		LoginPage login = new LoginPage(driver,logger);
-		return login;
+		return (plogin == null) ? plogin = new LoginPage(driver, logger) : plogin;
+
 	}
 
 	public Caseregistration CaseRegistration() {
-		Caseregistration casereg = new Caseregistration(driver,logger);
-		return casereg;
+		return (pcasereg == null) ? pcasereg = new Caseregistration(driver, logger) : pcasereg;
+
 	}
+
 	public Utill Utill() {
-		Utill u = new Utill(driver,logger);
-		return u;
+		return (putil == null) ? putil = new Utill(driver, logger) : putil;
+
 	}
 
 	public Wait Wait() {
-		Wait w = new Wait(driver,logger);
-		return w;
+		return (pwait == null) ? pwait = new Wait(driver, logger) : pwait;
+
 	}
+
 	public DataEntryTM DataEntryTM() {
-		DataEntryTM de = new DataEntryTM(driver,logger);
-		return de;
+		return (pde == null) ? pde = new DataEntryTM(driver, logger) : pde;
+
 	}
+
 	public Assignor Assignor() {
-		Assignor as=new Assignor(driver,logger);
-		return as;
+		return (pas == null) ? pas = new Assignor(driver, logger) : pas;
+
 	}
-	
+
 	public OperationTL OperationTL() {
-		OperationTL tl=new OperationTL(driver,logger);
-		return tl;
+		return (ptl == null) ? ptl = new OperationTL(driver, logger) : ptl;
+
 	}
-	
+
 	public OperationTM OperationTM() {
-		OperationTM tm=new OperationTM(driver,logger);
-		return tm;
+		return (ptm == null) ? ptm = new OperationTM(driver, logger) : ptm;
+
 	}
+
 	public ReportTL ReportTL() {
-		ReportTL rtl=new ReportTL(driver,logger);
-		return rtl;
+		return (prtl == null) ? prtl = new ReportTL(driver, logger) : prtl;
+
 	}
+
 	public ReportTM ReportTM() {
-		ReportTM rtm=new ReportTM(driver,logger);
-		return rtm;
+		return (prtm == null) ? prtm = new ReportTM(driver, logger) : prtm;
+
 	}
+
 	public CrtDashboard CrtDashboard() {
-		CrtDashboard crt=new CrtDashboard(driver,logger);
-		return crt;
+		return (pcrt == null) ? pcrt = new CrtDashboard(driver, logger) : pcrt;
+
 	}
-	
+
 	public MatrixPortalNavigation MatrixPortalNavigation() {
-		MatrixPortalNavigation url=new MatrixPortalNavigation(driver,logger);
-		return url;
+		return (purl == null) ? purl = new MatrixPortalNavigation(driver, logger) : purl;
+
 	}
-	
+
 	public CandidateInitiation CandidateInitiation() {
-		CandidateInitiation cc=new CandidateInitiation(driver,logger);
-		return cc;
+		return (pcc == null) ? pcc = new CandidateInitiation(driver, logger) : pcc;
+
 	}
 }

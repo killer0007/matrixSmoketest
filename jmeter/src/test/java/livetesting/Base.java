@@ -1,33 +1,40 @@
 package livetesting;
 
 import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
 import org.testng.annotations.*;
 
 public class Base {
 	protected WebDriver driver;
-	protected String matrixNo = null;
+	protected String matrixNo = "DEMOTAC152";
 	protected String downloadFilepath = null;
 	protected String filename = null;
 	protected String filepath = null;
+	
 	Properties config = new Properties();
+	Utility utill;
 
 	@BeforeSuite
 	public void suitesetup() throws Exception {
@@ -36,6 +43,7 @@ public class Base {
 		downloadFilepath = config.getProperty("downloadFilepath");
 		filename = config.getProperty("filename");
 		filepath = config.getProperty("filepath");
+		
 	}
 
 	@BeforeTest
@@ -44,6 +52,9 @@ public class Base {
 		HashMap<String, Object> config = new HashMap<String, Object>();
 		config.put("profile.default_content_settings.popups", 0);
 		config.put("download.default_directory", downloadFilepath);
+		config.put("download.prompt_for_download", false);
+		config.put("download.directory_upgrade", true);
+//				config.put("plugins.always_open_pdf_externally", true);
 		ChromeOptions options = new ChromeOptions();
 		options.setExperimentalOption("prefs", config);
 		options.addArguments("--disable-notifications");
@@ -52,7 +63,7 @@ public class Base {
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		driver.get(this.config.getProperty("url"));
 
-		Utility utill = new Utility(driver);
+		utill = new Utility(driver);
 		utill.deleteFiles(new File(downloadFilepath));
 	}
 
@@ -69,33 +80,33 @@ public class Base {
 	public void dataentry() throws Exception {
 		String name = "ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_";
 		// WebDriverWait wait = new WebDriverWait(driver, 10);
-		Utility util = new Utility(driver);
+		// Utility util = new Utility(driver);
 		this.navigate("Daily Activity", "Data Entry");
-		
+
 		WebElement mat = driver.findElement(By.id("ctl00_ContentPlaceHolder1_grdCandidate_ctl02_btnMatrixRefNo"));
-		matrixNo=mat.getText();
+		matrixNo = mat.getText();
 		driver.findElement(By.linkText(matrixNo)).click();
-		util.wait_until_loader_is_invisible();
+		utill.wait_until_loader_is_invisible();
 		driver.findElement(By.id(name + "Fathername")).clear();
 		driver.findElement(By.id(name + "Fathername")).sendKeys("fname");
-		util.selectbyindex(name + "DBCheckApplicable", 2);
-		util.selectbyindex(name + "AadharApplicable", 2);
-		util.selectbyindex(name + "DrivingLicenseApplicable", 2);
-		util.selectbyindex(name + "PassportApplicable", 2);
-		util.selectbyindex(name + "VoterIDApplicable", 2);
-		util.selectbyindex(name + "DrugCheckApplicable", 2);
-		util.selectbyindex(name + "DrugCheckMedical", 2);
-		util.selectbyindex(name + "IsFresher", 2);
-		util.selectbyindex(name + "RTWCheckApplicable", 2);
+		utill.selectbyindex(name + "DBCheckApplicable", 2);
+		utill.selectbyindex(name + "AadharApplicable", 2);
+		utill.selectbyindex(name + "DrivingLicenseApplicable", 2);
+		utill.selectbyindex(name + "PassportApplicable", 2);
+		utill.selectbyindex(name + "VoterIDApplicable", 2);
+		utill.selectbyindex(name + "DrugCheckApplicable", 2);
+		utill.selectbyindex(name + "DrugCheckMedical", 2);
+		utill.selectbyindex(name + "IsFresher", 2);
+		utill.selectbyindex(name + "RTWCheckApplicable", 2);
 		driver.findElement(By.id("ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_save")).click();
 
-		util.wait_until_loader_is_invisible();
-		util.clickAlertbox();
+		utill.wait_until_loader_is_invisible();
+		utill.clickAlertbox();
 		driver.get(this.config.getProperty("url") + "/Matrix/UserHome.aspx");
 		// driver.get("http://192.168.2.16/MatexTesting/Matrix/UserHome.aspx");
 		this.navigate("Daily Activity", "Data Entry");
 		driver.findElement(By.linkText(matrixNo)).click();
-		util.wait_until_loader_is_invisible();
+		utill.wait_until_loader_is_invisible();
 		String fname = driver.findElement(By.id(name + "Fathername")).getAttribute("value");
 		assertEquals("fname", fname);
 
@@ -115,15 +126,15 @@ public class Base {
 		driver.findElement(By.id(name + "fup")).sendKeys(filepath + "\\" + filename);
 		util.wait_until_loader_is_invisible();
 		util.clickAlertbox();
-
-		String actual = driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_upGrid']/tbody/tr[2]/td[1]"))
-				.getText();
-		assertEquals(filename, actual);
+boolean re =driver.findElement(By.xpath("//td[text()='Testpdf.pdf']")).isDisplayed();
+//		String actual = driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_upGrid']/tbody/tr[2]/td[1]"))
+//				.getText();
+		assertTrue(re);
 	}
 
 	@Test(priority = 3, enabled = true, dependsOnMethods = "fileupload")
 	public void filedownload() throws Exception {
-		driver.findElement(By.id("ctl00_ContentPlaceHolder1_upGrid_ctl02_downdoc")).click();
+		driver.findElement(By.xpath("//td[text()='Testpdf.pdf']/following-sibling::td[2]/input")).click();
 		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnContactClose")).click();
 
 		// driver.findElement(By.id("ctl00_btnHome")).click();
@@ -132,9 +143,12 @@ public class Base {
 
 	}
 
-	@Test(priority = 4, enabled = true, dependsOnMethods = "filedownload")
+	 @Test(priority = 4, enabled = true, dependsOnMethods = "filedownload")
+//	@Test(priority = 4, enabled = false)
 	public void reportpreview() throws Exception {
+
 		this.navigate("Dashboard", "Report TM Dashboard");
+		matrixNo = driver.findElement(By.id("ctl00_ContentPlaceHolder1_grdteammember_ctl02_MatrixRefNo")).getText();
 		driver.findElement(By.id("ctl00_ContentPlaceHolder1_grdteammember_ctl02_MatrixRefNo")).click();
 		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnPublishandPreview")).click();
 		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btn_preview")).click();
@@ -154,13 +168,63 @@ public class Base {
 		sc.click(pdfdown);
 		robot.keyRelease(KeyEvent.VK_TAB);
 		sc.click(save);
-		driver.close();
+		 driver.close();
+		 driver.switchTo().window(currentw);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnContactClose")).click();
+		driver.get(this.config.getProperty("url") + "/Matrix/UserHome.aspx");
+		
+		System.out.println(matrixNo);
+	}
+
+	@Test(priority = 5, enabled = true, dependsOnMethods = "reportpreview")
+	public void crtdocumentupload() throws Exception {
+		// matrixNo = "DEMOTAC152";
+		this.navigate("CRT", "CRT Document Upload");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtMatrixRefNo")).sendKeys(matrixNo);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_butnSearch")).click();
+		utill.selectbyindex("ctl00_ContentPlaceHolder1_ddlUploadType", 0);
+		utill.selectbytext("ctl00_ContentPlaceHolder1_ddltype", "Personal");
+		utill.selectbytext("ctl00_ContentPlaceHolder1_ddlDocumentTypegen", "Passport");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_addfup")).sendKeys(filepath + "\\" + filename);
+		utill.wait_until_loader_is_invisible();
+		String msg = utill.clickAlertbox();
+		System.out.println(msg);
+		boolean re = msg.contains("The following file(s) are already uploaded")
+				|| msg.contains("Document Uploaded Successfully");
+		assertTrue(re);
+	}
+
+	@Test(priority = 6, enabled = true, dependsOnMethods="crtdocumentupload")
+	public void reportdoc() throws Exception {
+		try {
+			this.navigate("Dashboard", "Report TM Dashboard");
+			Thread.sleep(2000);
+			driver.findElement(By.xpath("(//*[text()='" + matrixNo + "'])[2]")).click();
+			driver.findElement(By.id("ctl00_ContentPlaceHolder1_ddl_subcheck_type_title")).click();
+			driver.findElement(By.xpath("//span[text()=' Personal']")).click();
+			WebElement source = driver.findElement(By.xpath("//a[text()='"+filename+"']"));
+			WebElement target = driver.findElement(By.id("ctl00_ContentPlaceHolder1_ReportDocument"));
+			JavascriptExecutor je =(JavascriptExecutor)driver;
+			je.executeScript("arguments[0].scrollIntoView(true);", target);
+			Actions action = new Actions(driver);
+			action.dragAndDrop(source, target).build().perform();
+			driver.findElement(By.xpath("//a[text()='"+filename+"']")).click();
+
+			Screen sc = new Screen();
+			Pattern pdfverify = new Pattern(this.config.getProperty("pdfverify"));
+			Match m = sc.exists(pdfverify.exact());
+			System.out.println(m.toString());
+			assertTrue(true);
+		} catch (NullPointerException e) {
+			System.out.println(e.getMessage().toString());
+			assertTrue(false);
+		}
 
 	}
 
 	@AfterTest
 	public void teardown() {
-		driver.quit();
+		// driver.quit();
 	}
 
 	public void navigate(String title, String page) {

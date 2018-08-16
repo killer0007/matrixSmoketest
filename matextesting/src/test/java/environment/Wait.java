@@ -1,11 +1,16 @@
 package environment;
 
+import java.time.Duration;
+import java.util.function.Function;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.net.UrlChecker.TimeoutException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
@@ -112,6 +117,45 @@ public class Wait {
 
 			}
 		}
+	}
+	public void wait_until_loader_is_invisible(int TimeOut) throws InterruptedException {
+		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
+				.pollingEvery(Duration.ofMillis(200))
+				.ignoring(NoSuchElementException.class);
+		WebElement ele = wait.until(new Function<WebDriver, WebElement>() {
+			public WebElement apply(WebDriver driver) {
+				WebElement ele = pages.Utill().find("ctl00_UpdateProgress1");
+				String res = ele.getCssValue("display");
+				if (res.equals("none")) {
+//					System.out.println("success " + res);
+					return ele;
+				} else {
+//					System.out.println("failed :" + res);
+					return null;
+				}
+			}
+		});
+//		// Pages pages=new Pages(driver);
+//		// System.out.println("Start time"+java.time.LocalTime.now());
+//		String res;
+//		try {
+//			res = pages.Utill().find("ctl00_UpdateProgress1").getCssValue("display");
+//		} catch (StaleElementReferenceException e) {
+//			Thread.sleep(1000);
+//			res = pages.Utill().find("ctl00_UpdateProgress1").getCssValue("display");
+//		}
+//		while (res.equals("block")) {
+//			Thread.sleep(200);
+//			res = pages.Utill().find("ctl00_UpdateProgress1").getCssValue("display");
+//			if (!(res.equals("block"))) {
+//				// System.out.println("end time"+java.time.LocalTime.now());
+//				break;
+//			} else {
+//				// System.out.println(res);
+//				continue;
+//
+//			}
+//		}
 	}
 
 	public void wait_until_spinner_is_invisible(String id) throws InterruptedException {
