@@ -273,4 +273,7 @@ public class Matrixflow {
 		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
 		return pr.getProperty(key);
 	}
+	public WebDriver getwebdriver() {
+		return driver;
+	}
 }

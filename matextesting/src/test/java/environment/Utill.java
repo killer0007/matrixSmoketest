@@ -143,10 +143,6 @@ public class Utill {
 			pages.Utill().find(path).click();
 			logger.log(Status.PASS, "Clicking element '" + path + "'");
 		}
-		// catch (ElementNotVisibleException e) {
-		// pages.Wait().visibilityOfElement(path);
-		// pages.Utill().click_element(path);
-		// }
 
 	}
 

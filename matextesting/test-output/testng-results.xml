@@ -1,308 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="9" passed="9">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="773110" started-at="2018-08-16T09:39:59Z" finished-at="2018-08-16T09:52:52Z">
+  <suite name="Default suite" duration-ms="22157" started-at="2018-08-16T13:04:01Z" finished-at="2018-08-16T13:04:23Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="773110" started-at="2018-08-16T09:39:59Z" finished-at="2018-08-16T09:52:52Z">
-      <class name="testCases.Matrixflow">
-        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:testCases.Matrixflow@181e022]" name="beforeSuit" is-config="true" duration-ms="178" started-at="2018-08-16T15:09:59Z" finished-at="2018-08-16T15:09:59Z">
+    <test name="Default test" duration-ms="22157" started-at="2018-08-16T13:04:01Z" finished-at="2018-08-16T13:04:23Z">
+      <class name="testCases.MainTest2">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:testCases.MainTest2@19e5ddf]" name="beforeSuit" is-config="true" duration-ms="220" started-at="2018-08-16T18:34:00Z" finished-at="2018-08-16T18:34:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuit -->
-        <test-method status="PASS" signature="start()[pri:0, instance:testCases.Matrixflow@181e022]" name="start" is-config="true" duration-ms="5664" started-at="2018-08-16T15:09:59Z" finished-at="2018-08-16T15:10:05Z">
+        <test-method status="PASS" signature="start()[pri:0, instance:testCases.MainTest2@19e5ddf]" name="start" is-config="true" duration-ms="8645" started-at="2018-08-16T18:34:01Z" finished-at="2018-08-16T18:34:10Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- start -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="setup" is-config="true" duration-ms="121" started-at="2018-08-16T15:10:05Z" finished-at="2018-08-16T15:10:05Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@19e5ddf]" name="setup" is-config="true" duration-ms="18" started-at="2018-08-16T18:34:10Z" finished-at="2018-08-16T18:34:10Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testCases.Matrixflow.Login() throws java.lang.Exception]]>
+                <![CDATA[public void testCases.MainTest2.Login() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="Login()[pri:0, instance:testCases.Matrixflow@181e022]" name="Login" duration-ms="1418" started-at="2018-08-16T15:10:05Z" finished-at="2018-08-16T15:10:06Z">
+        <test-method status="PASS" signature="Login()[pri:0, instance:testCases.MainTest2@19e5ddf]" name="Login" duration-ms="2989" started-at="2018-08-16T18:34:10Z" finished-at="2018-08-16T18:34:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-08-16T15:10:06Z" finished-at="2018-08-16T15:10:06Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Login status=SUCCESS method=Matrixflow.Login()[pri:0, instance:testCases.Matrixflow@181e022] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void testCases.Matrixflow.Login() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
+        <test-method status="PASS" signature="testtwo()[pri:0, instance:testCases.MainTest2@19e5ddf]" name="testtwo" duration-ms="1" started-at="2018-08-16T18:34:13Z" finished-at="2018-08-16T18:34:13Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="setup" is-config="true" duration-ms="158" started-at="2018-08-16T15:10:06Z" finished-at="2018-08-16T15:10:06Z">
+        </test-method> <!-- testtwo -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@19e5ddf]" name="setup" is-config="true" duration-ms="0" started-at="2018-08-16T18:34:13Z" finished-at="2018-08-16T18:34:13Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testCases.Matrixflow.caseregistration() throws java.lang.Exception]]>
+                <![CDATA[public void testCases.MainTest2.testtwo()]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="caseregistration()[pri:0, instance:testCases.Matrixflow@181e022]" name="caseregistration" duration-ms="13467" started-at="2018-08-16T15:10:06Z" depends-on-methods="testCases.Matrixflow.Login" finished-at="2018-08-16T15:10:20Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- caseregistration -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="setup" is-config="true" duration-ms="140" started-at="2018-08-16T15:10:20Z" finished-at="2018-08-16T15:10:20Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@19e5ddf]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-08-16T18:34:13Z" finished-at="2018-08-16T18:34:13Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void testCases.Matrixflow.aasignToDE() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-08-16T15:10:20Z" finished-at="2018-08-16T15:10:20Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=caseregistration status=SUCCESS method=Matrixflow.caseregistration()[pri:0, instance:testCases.Matrixflow@181e022] output={null}]]]>
+                <![CDATA[[TestResult name=Login status=SUCCESS method=MainTest2.Login()[pri:0, instance:testCases.MainTest2@19e5ddf] output={null}]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void testCases.Matrixflow.caseregistration() throws java.lang.Exception]]>
+                <![CDATA[public void testCases.MainTest2.Login() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="aasignToDE()[pri:0, instance:testCases.Matrixflow@181e022]" name="aasignToDE" duration-ms="5761" started-at="2018-08-16T15:10:20Z" depends-on-methods="testCases.Matrixflow.caseregistration" finished-at="2018-08-16T15:10:26Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- aasignToDE -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-08-16T15:10:26Z" finished-at="2018-08-16T15:10:26Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.MainTest2@19e5ddf]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-08-16T18:34:13Z" finished-at="2018-08-16T18:34:13Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=aasignToDE status=SUCCESS method=Matrixflow.aasignToDE()[pri:0, instance:testCases.Matrixflow@181e022] output={null}]]]>
+                <![CDATA[[TestResult name=testtwo status=SUCCESS method=MainTest2.testtwo()[pri:0, instance:testCases.MainTest2@19e5ddf] output={null}]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void testCases.Matrixflow.aasignToDE() throws java.lang.Exception]]>
+                <![CDATA[public void testCases.MainTest2.testtwo()]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="setup" is-config="true" duration-ms="140" started-at="2018-08-16T15:10:26Z" finished-at="2018-08-16T15:10:26Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void testCases.Matrixflow.dataentry() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="dataentry()[pri:0, instance:testCases.Matrixflow@181e022]" name="dataentry" duration-ms="73549" started-at="2018-08-16T15:10:26Z" depends-on-methods="testCases.Matrixflow.aasignToDE" finished-at="2018-08-16T15:11:39Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- dataentry -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="setup" is-config="true" duration-ms="2221" started-at="2018-08-16T15:11:39Z" finished-at="2018-08-16T15:11:42Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void testCases.Matrixflow.assigncase() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-08-16T15:11:39Z" finished-at="2018-08-16T15:11:39Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=dataentry status=SUCCESS method=Matrixflow.dataentry()[pri:0, instance:testCases.Matrixflow@181e022] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void testCases.Matrixflow.dataentry() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="assigncase()[pri:0, instance:testCases.Matrixflow@181e022]" name="assigncase" duration-ms="64595" started-at="2018-08-16T15:11:42Z" depends-on-methods="testCases.Matrixflow.dataentry" finished-at="2018-08-16T15:12:46Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- assigncase -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-08-16T15:12:46Z" finished-at="2018-08-16T15:12:46Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=assigncase status=SUCCESS method=Matrixflow.assigncase()[pri:0, instance:testCases.Matrixflow@181e022] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void testCases.Matrixflow.assigncase() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="setup" is-config="true" duration-ms="140" started-at="2018-08-16T15:12:46Z" finished-at="2018-08-16T15:12:46Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void testCases.Matrixflow.OperationtmAssign() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="OperationtmAssign()[pri:0, instance:testCases.Matrixflow@181e022]" name="OperationtmAssign" duration-ms="92950" started-at="2018-08-16T15:12:46Z" depends-on-methods="testCases.Matrixflow.assigncase" finished-at="2018-08-16T15:14:19Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- OperationtmAssign -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-08-16T15:14:19Z" finished-at="2018-08-16T15:14:19Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=OperationtmAssign status=SUCCESS method=Matrixflow.OperationtmAssign()[pri:0, instance:testCases.Matrixflow@181e022] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void testCases.Matrixflow.OperationtmAssign() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="setup" is-config="true" duration-ms="173" started-at="2018-08-16T15:14:19Z" finished-at="2018-08-16T15:14:19Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void testCases.Matrixflow.Operationtm() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="Operationtm()[pri:0, instance:testCases.Matrixflow@181e022]" name="Operationtm" duration-ms="390098" started-at="2018-08-16T15:14:19Z" depends-on-methods="testCases.Matrixflow.OperationtmAssign" finished-at="2018-08-16T15:20:49Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Operationtm -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-08-16T15:20:49Z" finished-at="2018-08-16T15:20:49Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Operationtm status=SUCCESS method=Matrixflow.Operationtm()[pri:0, instance:testCases.Matrixflow@181e022] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void testCases.Matrixflow.Operationtm() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="setup" is-config="true" duration-ms="500" started-at="2018-08-16T15:20:49Z" finished-at="2018-08-16T15:20:50Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void testCases.Matrixflow.Report() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="Report()[pri:0, instance:testCases.Matrixflow@181e022]" name="Report" duration-ms="14288" started-at="2018-08-16T15:20:50Z" depends-on-methods="testCases.Matrixflow.Operationtm" finished-at="2018-08-16T15:21:04Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Report -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-08-16T15:21:04Z" finished-at="2018-08-16T15:21:04Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=Report status=SUCCESS method=Matrixflow.Report()[pri:0, instance:testCases.Matrixflow@181e022] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void testCases.Matrixflow.Report() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="setup" is-config="true" duration-ms="59455" started-at="2018-08-16T15:21:04Z" finished-at="2018-08-16T15:22:04Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void testCases.Matrixflow.publishCase() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="publishCase()[pri:0, instance:testCases.Matrixflow@181e022]" name="publishCase" duration-ms="47864" started-at="2018-08-16T15:22:04Z" depends-on-methods="testCases.Matrixflow.Report" finished-at="2018-08-16T15:22:52Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- publishCase -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:testCases.Matrixflow@181e022]" name="teardown" is-config="true" duration-ms="384" started-at="2018-08-16T15:22:52Z" finished-at="2018-08-16T15:22:52Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:testCases.MainTest2@19e5ddf]" name="teardown" is-config="true" duration-ms="10001" started-at="2018-08-16T18:34:13Z" finished-at="2018-08-16T18:34:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:testCases.Matrixflow@181e022]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-08-16T15:22:52Z" finished-at="2018-08-16T15:22:52Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=publishCase status=SUCCESS method=Matrixflow.publishCase()[pri:0, instance:testCases.Matrixflow@181e022] output={null}]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void testCases.Matrixflow.publishCase() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:testCases.Matrixflow@181e022]" name="afterSuite" is-config="true" duration-ms="939" started-at="2018-08-16T15:22:52Z" finished-at="2018-08-16T15:22:53Z">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:testCases.MainTest2@19e5ddf]" name="afterSuite" is-config="true" duration-ms="7996" started-at="2018-08-16T18:34:23Z" finished-at="2018-08-16T18:34:31Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- testCases.Matrixflow -->
+      </class> <!-- testCases.MainTest2 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
