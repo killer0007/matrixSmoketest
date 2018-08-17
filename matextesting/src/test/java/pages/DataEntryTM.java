@@ -1,7 +1,5 @@
 package pages;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -17,7 +15,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
-
+import environment.BaseClass;
 import testCases.Pages;
 
 public class DataEntryTM {
@@ -31,16 +29,13 @@ public class DataEntryTM {
 		pages = new Pages(driver, logger);
 	}
 
-	public String getlocator(String key) throws FileNotFoundException, IOException {
-		Properties pr = new Properties();
-		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_locators.properties")));
-		// src\test\resources\property
+	private String getvalue(String key) throws FileNotFoundException, IOException {
+		Properties pr = BaseClass.getvalue();
 		return pr.getProperty(key);
 	}
 
-	public String getvalue(String key) throws FileNotFoundException, IOException {
-		Properties pr = new Properties();
-		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
+	private String getlocator(String key) throws FileNotFoundException, IOException {
+		Properties pr = BaseClass.getlocator();
 		return pr.getProperty(key);
 	}
 
@@ -227,7 +222,9 @@ public class DataEntryTM {
 				pages.Utill().input_text(getlocator("Emp_ReasonLeave"), getvalue("Emp_ReasonLeave"));
 				pages.Utill().select_by_label(getlocator("Emp_YTR"), getvalue("Emp_YTR"));
 				try {
-					pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_CdtCompany_FullTime_PartTime", "Full Time");
+					pages.Utill().select_by_label(
+							"ctl00_ContentPlaceHolder1_TabContainer1_TabPanel4_CandidateEmployment1_CdtCompany_FullTime_PartTime",
+							"Full Time");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					System.out.println(e.getMessage().toString());
@@ -462,32 +459,35 @@ public class DataEntryTM {
 				pages.Utill().click_element("//span[contains(text(),'" + check + "') and contains(@id,'tab')]");
 				pages.Utill().click_element("//div[contains(@id,'" + check + "')]//a[text()='Raise']");
 				pages.Wait().presenceOfElement("//option[text()='" + dd + "']", 10);
-				pages.Utill().select_by_label("//select[contains(@id,'insuffcmts') and contains(@id,'" + check + "')]", dd);
-				pages.Utill().input_text("//textarea[contains(@id,'txtInsufficiency') and contains(@id,'" + check + "')]",
+				pages.Utill().select_by_label("//select[contains(@id,'insuffcmts') and contains(@id,'" + check + "')]",
+						dd);
+				pages.Utill().input_text(
+						"//textarea[contains(@id,'txtInsufficiency') and contains(@id,'" + check + "')]",
 						check + " insuff");
 				pages.Utill().click_element("//input[contains(@id,'btnSaveInsuff') and contains(@id,'" + check + "')]");
 				pages.Wait().wait_until_loader_is_invisible();
 				pages.Utill().clickAlertbox();
 
-			}
-			else {
+			} else {
 				pages.Utill().click_element("//div[contains(@id,'" + check + "')]//a[text()='Raise']");
 				pages.Wait().presenceOfElement("//option[text()=\"" + dd + "\"]", 10);
-				if(check.equalsIgnoreCase("it") || check.equalsIgnoreCase("pf")) {
+				if (check.equalsIgnoreCase("it") || check.equalsIgnoreCase("pf")) {
 					pages.Wait().wait_until_loader_is_invisible();
-					pages.Utill().select_by_label("//select[contains(@id,'insuffcmts') and contains(@id,\"" + check + "\")]", dd);
+					pages.Utill().select_by_label(
+							"//select[contains(@id,'insuffcmts') and contains(@id,\"" + check + "\")]", dd);
+				} else {
+					pages.Utill().select_by_label(
+							"//select[contains(@id,'insuffcmts') and contains(@id,\"" + check.toLowerCase() + "\")]",
+							dd);
 				}
-				else {
-					pages.Utill().select_by_label("//select[contains(@id,'insuffcmts') and contains(@id,\"" + check.toLowerCase() + "\")]", dd);
-				}
-			
-				pages.Utill().input_text("//textarea[contains(@id,'txtInsufficiency') and contains(@id,'" + check + "')]",
+
+				pages.Utill().input_text(
+						"//textarea[contains(@id,'txtInsufficiency') and contains(@id,'" + check + "')]",
 						check + " insuff");
 				pages.Utill().click_element("//input[contains(@id,'btnSaveInsuff') and contains(@id,'" + check + "')]");
 				pages.Wait().wait_until_loader_is_invisible();
 				pages.Utill().clickAlertbox();
 			}
-			
 
 		} catch (UnhandledAlertException e) {
 

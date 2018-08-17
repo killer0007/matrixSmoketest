@@ -31,12 +31,7 @@ public class MainTest2 {
 	String candidateName = "gopi";
 	String MatrixRefNo = "AUTOMAA098";
 	Map<String, String> map;
-	public String getlocator(String key) throws FileNotFoundException, IOException {
-		Properties pr = new Properties();
-		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_locators.properties")));
-		return pr.getProperty(key);
-	}
-
+	
 	@BeforeSuite
 	public void beforeSuit() {
 		reporter = new ExtentHtmlReporter("./Reports/demo.html");
@@ -105,8 +100,7 @@ public class MainTest2 {
 
 	}
 	private String getvalue(String key) throws FileNotFoundException, IOException {
-		Properties pr = new Properties();
-		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
+		Properties pr = BaseClass.getvalue();
 		return pr.getProperty(key);
 	}
 }

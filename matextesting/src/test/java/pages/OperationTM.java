@@ -1,7 +1,5 @@
 package pages;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -15,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
+import environment.BaseClass;
 import environment.Utill;
 import testCases.Pages;
 
@@ -31,15 +30,13 @@ public class OperationTM {
 		w = new WebDriverWait(driver, 20);
 	}
 
-	public String getlocator(String key) throws FileNotFoundException, IOException {
-		Properties pr = new Properties();
-		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_locators.properties")));
+	private String getvalue(String key) throws FileNotFoundException, IOException {
+		Properties pr = BaseClass.getvalue();
 		return pr.getProperty(key);
 	}
 
-	public String getvalue(String key) throws FileNotFoundException, IOException {
-		Properties pr = new Properties();
-		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
+	private String getlocator(String key) throws FileNotFoundException, IOException {
+		Properties pr = BaseClass.getlocator();
 		return pr.getProperty(key);
 	}
 
@@ -87,7 +84,8 @@ public class OperationTM {
 									"//*[@id='" + getlocator("v_table") + "']/tbody/tr[" + index + "]/td[1]/input[8]");
 							pages.Utill().click_element(getlocator("v_edu_vr"));
 							pages.Wait().wait_until_loader_is_invisible();
-//							pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_ddlInitiateMode", "Fax");
+							// pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_ddlInitiateMode",
+							// "Fax");
 							w.until(ExpectedConditions
 									.presenceOfElementLocated(By.id("ctl00_ContentPlaceHolder1_btnInitiateVR")));
 
@@ -252,8 +250,9 @@ public class OperationTM {
 									+ "]/td[1]/input[9]");
 							pages.Utill().click_element(getlocator("v_edu_vr"));
 							pages.Wait().wait_until_loader_is_invisible();
-//							pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_ddlInitiateMode", "Fax");
-//							pages.Wait().wait_until_loader_is_invisible();
+							// pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_ddlInitiateMode",
+							// "Fax");
+							// pages.Wait().wait_until_loader_is_invisible();
 							w.until(ExpectedConditions
 									.presenceOfElementLocated(By.id("ctl00_ContentPlaceHolder1_btnInitiateVR")));
 							pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnInitiateVR");
@@ -337,15 +336,15 @@ public class OperationTM {
 										pages.Utill().select_by_label(getlocator("Empl_SalType"),
 												getvalue("Empl_SalType"));
 
-//										pages.Utill().input_text(getlocator("Empl_RepAuthName"),
-//												getvalue("Empl_RepAuthName"));
-//										pages.Utill().input_text(getlocator("Empl_RepAuthDesig"),
-//												getvalue("Empl_RepAuthDesig"));
-//										pages.Utill().input_text(getlocator("Empl_RepAuthMobile1"),
-//												getvalue("Empl_RepAuthMobile1"));
-//										pages.Utill().input_text(getlocator("Empl_RepAuthEmail"),
-//												getvalue("Empl_RepAuthEmail"));
-//										pages.Utill().input_text(getlocator("Empl_HRName"), getvalue("Empl_HRName"));
+										// pages.Utill().input_text(getlocator("Empl_RepAuthName"),
+										// getvalue("Empl_RepAuthName"));
+										// pages.Utill().input_text(getlocator("Empl_RepAuthDesig"),
+										// getvalue("Empl_RepAuthDesig"));
+										// pages.Utill().input_text(getlocator("Empl_RepAuthMobile1"),
+										// getvalue("Empl_RepAuthMobile1"));
+										// pages.Utill().input_text(getlocator("Empl_RepAuthEmail"),
+										// getvalue("Empl_RepAuthEmail"));
+										// pages.Utill().input_text(getlocator("Empl_HRName"), getvalue("Empl_HRName"));
 										pages.Utill().input_text(getlocator("Empl_ReasonLeave"),
 												getvalue("Empl_ReasonLeave"));
 										pages.Utill().input_text(getlocator("Company_VerifierName"),
@@ -359,27 +358,57 @@ public class OperationTM {
 
 										pages.Utill().select_by_label(getlocator("vemp_ConfirmationMode"),
 												getvalue("vemp_ConfirmationMode"));
-										
-										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RevertReceivedFrom", "Reporting Authority");
-										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentName", "ragavan");
-										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentDesig", "Assistant General Manager, HR");
-										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentDepartment", "Admin");
-										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentContact", getvalue("Empl_RepAuthMobile1"));
-										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentMobile", getvalue("Empl_RepAuthMobile1"));
-										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentEmail", getvalue("Empl_RepAuthEmail"));
-										
-										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_FullTime_PartTime", "Full Time");
-										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyEligibleforrehire", "Yes");
-										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtRehireComments", "Eligible for rehire");
-										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyIsthedocumentauthentic", "Yes");
-										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtIsthedocumentauthentic", "document authentic");
-										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyAnyIssuesPers", "No");
-										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtIsAnyPertaining", "issues pertaining");
-										pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyNoticeServe", "Yes");
-										pages.Utill().input_text("ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtNoticeServe", "Sufficient notice period serve");
-										
-										
-										
+
+										pages.Utill().select_by_label(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RevertReceivedFrom",
+												"Reporting Authority");
+										pages.Utill().input_text(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentName",
+												"ragavan");
+										pages.Utill().select_by_label(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentDesig",
+												"Assistant General Manager, HR");
+										pages.Utill().select_by_label(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentDepartment",
+												"Admin");
+										pages.Utill().input_text(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentContact",
+												getvalue("Empl_RepAuthMobile1"));
+										pages.Utill().input_text(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentMobile",
+												getvalue("Empl_RepAuthMobile1"));
+										pages.Utill().input_text(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_RespondentEmail",
+												getvalue("Empl_RepAuthEmail"));
+
+										pages.Utill().select_by_label(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompany_FullTime_PartTime",
+												"Full Time");
+										pages.Utill().select_by_label(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyEligibleforrehire",
+												"Yes");
+										pages.Utill().input_text(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtRehireComments",
+												"Eligible for rehire");
+										pages.Utill().select_by_label(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyIsthedocumentauthentic",
+												"Yes");
+										pages.Utill().input_text(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtIsthedocumentauthentic",
+												"document authentic");
+										pages.Utill().select_by_label(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyAnyIssuesPers",
+												"No");
+										pages.Utill().input_text(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtIsAnyPertaining",
+												"issues pertaining");
+										pages.Utill().select_by_label(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_CdtCompanyNoticeServe",
+												"Yes");
+										pages.Utill().input_text(
+												"ctl00_ContentPlaceHolder1_RightCandidateEmployment1_TxtNoticeServe",
+												"Sufficient notice period serve");
+
 										pages.Utill().select_by_label(getlocator("vemp_Typeofrevert"),
 												getvalue("vemp_Typeofrevert"));
 										pages.Utill().select_by_label(getlocator("vemp_VerificationSource"),
@@ -418,7 +447,7 @@ public class OperationTM {
 				logger.fail("", MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 			}
 		} catch (Exception e) {
-//			driver.navigate().to(getlocator("home_page"));
+			// driver.navigate().to(getlocator("home_page"));
 			logger.fail(e.getMessage().toString());
 
 			String temp = Utill.getScreenshot(driver);
@@ -466,14 +495,14 @@ public class OperationTM {
 			pages.Utill().select_by_label(getlocator("vAddr_Typeofrevert"), getvalue("vAddr_Typeofrevert"));
 			pages.Utill().input_text(getlocator("vAddr_VerComments"), getvalue("vAddr_VerComments"));
 
-			pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_CandidateAddressFile_Upload1_ddlDocumentType", "Physical Verification Report");
+			pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_CandidateAddressFile_Upload1_ddlDocumentType",
+					"Physical Verification Report");
 			pages.Wait().wait_until_loader_is_invisible(20);
 			String file = System.getProperty("user.dir") + "\\Documents\\vpresent.pdf";
 			pages.Utill().choose_file("ctl00_ContentPlaceHolder1_CandidateAddressFile_Upload1_fup", file);
 			pages.Wait().wait_until_loader_is_invisible(60);
 			pages.Utill().clickAlertbox();
-			
-			
+
 			pages.Utill().click_element(getlocator("vdd_vdate"));
 			w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vadd_Extender1_today"))));
 			pages.Utill().click_element(getlocator("vadd_Extender1_today"));
@@ -642,56 +671,56 @@ public class OperationTM {
 						pages.Wait().wait_until_loader_is_invisible();
 						pages.Utill().click_element("ctl00_ContentPlaceHolder1_lbtnNormalUpt");
 						pages.Wait().wait_until_loader_is_invisible();
-//						pages.Utill().input_text(getlocator("vref_tmsearch"), no);
-//						pages.Utill().click_element(getlocator("vref_tmsearchbtn"));
-//						pages.Wait().wait_until_loader_is_invisible(30);
-						//--------------------------
-						pages.Utill().click_element("//td[text()='"+no+"']/../td/input");
-						//td[text()='+"mat"+']/../td/input
-						//w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vcri_table"))));
+						// pages.Utill().input_text(getlocator("vref_tmsearch"), no);
+						// pages.Utill().click_element(getlocator("vref_tmsearchbtn"));
+						// pages.Wait().wait_until_loader_is_invisible(30);
+						// --------------------------
+						pages.Utill().click_element("//td[text()='" + no + "']/../td/input");
+						// td[text()='+"mat"+']/../td/input
+						// w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vcri_table"))));
 						// .//*[@id='ctl00_ContentPlaceHolder1_grupdation']/tbody/tr[2]/td[6]
-						//String refno = pages.Utill()
-								//.get_text(".//*[@id='" + getlocator("vcri_table") + "']/tbody/tr[2]/td[6]");
-						//if (refno.equals(no)) {
-//							pages.Utill().click_element("ctl00_ContentPlaceHolder1_grupdation_ctl02_btnShowAddress");
-//							pages.Wait().wait_until_loader_is_invisible();
-							w.until(ExpectedConditions.visibilityOf(pages.Utill().find(getlocator("vcAddr_Address"))));
-							pages.Utill().input_text(getlocator("vcAddr_Address"), getvalue("vcAddr_Address"));
-							pages.Utill().input_text(getlocator("vcAddr_Pincode"), getvalue("vcAddr_Pincode"));
-							w.until(ExpectedConditions.presenceOfElementLocated(
-									By.xpath("//*[text()='" + getvalue("vcAddr_Pincode") + "']")));
-							pages.Utill().click_element("//*[text()='" + getvalue("vcAddr_Pincode") + "']");
-							pages.Utill().select_by_label(getlocator("vcAddr_ResiType"), getvalue("vcAddr_ResiType"));
-							pages.Utill().input_text(getlocator("vcAddr_Landmark"), getvalue("vcAddr_Landmark"));
-							pages.Utill().input_text(getlocator("vcAddr_FromDt"), getvalue("vcAddr_FromDt"));
-							pages.Utill().input_text(getlocator("vcAddr_ToDt"), getvalue("vcAddr_ToDt"));
-							pages.Utill().input_text(getlocator("vcAddr_StayPeriod"), getvalue("vcAddr_StayPeriod"));
-							pages.Utill().input_text(getlocator("vcAddr_PoliceSt"), getvalue("vcAddr_PoliceSt"));
-							pages.Utill().input_text(getlocator("vcCrim_PoliceAddr"), getvalue("vcCrim_PoliceAddr"));
-							pages.Utill().input_text(getlocator("vcCrim_RespName"), getvalue("vcCrim_RespName"));
-							pages.Utill().input_text(getlocator("vcCrim_Designation"), getvalue("vcCrim_Designation"));
-							pages.Utill().input_text(getlocator("vcCrim_ContNo"), getvalue("vcCrim_ContNo"));
-							pages.Utill().input_text(getlocator("vcCrim_VisitDt"), pages.Utill().getcurrentdate());
+						// String refno = pages.Utill()
+						// .get_text(".//*[@id='" + getlocator("vcri_table") + "']/tbody/tr[2]/td[6]");
+						// if (refno.equals(no)) {
+						// pages.Utill().click_element("ctl00_ContentPlaceHolder1_grupdation_ctl02_btnShowAddress");
+						// pages.Wait().wait_until_loader_is_invisible();
+						w.until(ExpectedConditions.visibilityOf(pages.Utill().find(getlocator("vcAddr_Address"))));
+						pages.Utill().input_text(getlocator("vcAddr_Address"), getvalue("vcAddr_Address"));
+						pages.Utill().input_text(getlocator("vcAddr_Pincode"), getvalue("vcAddr_Pincode"));
+						w.until(ExpectedConditions.presenceOfElementLocated(
+								By.xpath("//*[text()='" + getvalue("vcAddr_Pincode") + "']")));
+						pages.Utill().click_element("//*[text()='" + getvalue("vcAddr_Pincode") + "']");
+						pages.Utill().select_by_label(getlocator("vcAddr_ResiType"), getvalue("vcAddr_ResiType"));
+						pages.Utill().input_text(getlocator("vcAddr_Landmark"), getvalue("vcAddr_Landmark"));
+						pages.Utill().input_text(getlocator("vcAddr_FromDt"), getvalue("vcAddr_FromDt"));
+						pages.Utill().input_text(getlocator("vcAddr_ToDt"), getvalue("vcAddr_ToDt"));
+						pages.Utill().input_text(getlocator("vcAddr_StayPeriod"), getvalue("vcAddr_StayPeriod"));
+						pages.Utill().input_text(getlocator("vcAddr_PoliceSt"), getvalue("vcAddr_PoliceSt"));
+						pages.Utill().input_text(getlocator("vcCrim_PoliceAddr"), getvalue("vcCrim_PoliceAddr"));
+						pages.Utill().input_text(getlocator("vcCrim_RespName"), getvalue("vcCrim_RespName"));
+						pages.Utill().input_text(getlocator("vcCrim_Designation"), getvalue("vcCrim_Designation"));
+						pages.Utill().input_text(getlocator("vcCrim_ContNo"), getvalue("vcCrim_ContNo"));
+						pages.Utill().input_text(getlocator("vcCrim_VisitDt"), pages.Utill().getcurrentdate());
 
-							pages.Utill().select_by_label(getlocator("vcCrim_Result"), getvalue("vcCrim_Result"));
-							pages.Utill().select_by_label(getlocator("vcCrim_YearsCovered"),
-									getvalue("vcCrim_YearsCovered"));
-							pages.Utill().select_by_label(getlocator("vcCrim_Typeofrevert"),
-									getvalue("vcCrim_Typeofrevert"));
-							pages.Utill().input_text(getlocator("vcCrim_Remarks"), getvalue("vcCrim_Remarks"));
-							pages.Utill().click_element(getlocator("vcrim_date"));
-							w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vcrim_today"))));
-							pages.Utill().click_element(getlocator("vcrim_today"));
-							pages.Utill().click_element(getlocator("vcrim_green"));
+						pages.Utill().select_by_label(getlocator("vcCrim_Result"), getvalue("vcCrim_Result"));
+						pages.Utill().select_by_label(getlocator("vcCrim_YearsCovered"),
+								getvalue("vcCrim_YearsCovered"));
+						pages.Utill().select_by_label(getlocator("vcCrim_Typeofrevert"),
+								getvalue("vcCrim_Typeofrevert"));
+						pages.Utill().input_text(getlocator("vcCrim_Remarks"), getvalue("vcCrim_Remarks"));
+						pages.Utill().click_element(getlocator("vcrim_date"));
+						w.until(ExpectedConditions.presenceOfElementLocated(By.id(getlocator("vcrim_today"))));
+						pages.Utill().click_element(getlocator("vcrim_today"));
+						pages.Utill().click_element(getlocator("vcrim_green"));
 
-							pages.Utill().handle_Alert();
-//						} else {
-//							System.out.println(no + " ref no not found in search");
-//							logger.log(Status.FAIL, no + " ref no not found in search");
-//							String temp = Utill.getScreenshot(driver);
-//							logger.fail("ref no not found in search",
-//									MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-//						}
+						pages.Utill().handle_Alert();
+						// } else {
+						// System.out.println(no + " ref no not found in search");
+						// logger.log(Status.FAIL, no + " ref no not found in search");
+						// String temp = Utill.getScreenshot(driver);
+						// logger.fail("ref no not found in search",
+						// MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+						// }
 					} else {
 						logger.log(Status.FAIL, "no value in Criminal Updation dashboard");
 						System.out.println("no value in Criminal Updation dashboard");

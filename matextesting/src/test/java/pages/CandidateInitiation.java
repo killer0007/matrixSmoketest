@@ -1,7 +1,5 @@
 package pages;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
@@ -17,7 +15,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
-import environment.ReadEmail;
+import environment.BaseClass;
 import environment.Utill;
 import testCases.Pages;
 
@@ -35,15 +33,13 @@ public class CandidateInitiation {
 
 	}
 
-	public String getlocator(String key) throws FileNotFoundException, IOException {
-		Properties pr = new Properties();
-		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_locators.properties")));
+	private String getvalue(String key) throws FileNotFoundException, IOException {
+		Properties pr = BaseClass.getvalue();
 		return pr.getProperty(key);
 	}
 
-	public String getvalue(String key) throws FileNotFoundException, IOException {
-		Properties pr = new Properties();
-		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
+	private String getlocator(String key) throws FileNotFoundException, IOException {
+		Properties pr = BaseClass.getlocator();
 		return pr.getProperty(key);
 	}
 
@@ -67,8 +63,9 @@ public class CandidateInitiation {
 		pages.Utill().click_element(getlocator("cc_save"));
 		pages.Wait().wait_until_loader_is_invisible();
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkbxlast");
-//		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_DropDownListempyear", "2");
-		
+		// pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_DropDownListempyear",
+		// "2");
+
 		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_DropDownListemp", "2");
 		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_DropDownListref", "2");
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkbxedu");
@@ -89,8 +86,7 @@ public class CandidateInitiation {
 	public void Personal() throws Exception {
 		wait_until_loader_is_invisible();
 		String temp = Utill.getScreenshot(driver);
-		logger.info("after login",
-				MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+		logger.info("after login", MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		pages.Utill().SwitchFramebyIndex(0);
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.visibilityOf(pages.Utill().find(getlocator("cp_Middlename"))));
@@ -132,7 +128,7 @@ public class CandidateInitiation {
 		pages.Utill().scrollTo(getlocator("cp_save"));
 		pages.Wait().visibilityOfElement(getlocator("cp_save"));
 		pages.Utill().click_element(getlocator("cp_save"));
-//		System.out.println("wait starting");
+		// System.out.println("wait starting");
 		driver.switchTo().defaultContent();
 		wait_until_loader_is_invisible();
 		pages.Utill().SwitchFramebyIndex(0);
@@ -179,7 +175,7 @@ public class CandidateInitiation {
 		pages.Utill().scrollTo("btnsavehtml");
 		pages.Wait().visibilityOfElement("btnsavehtml");
 		pages.Utill().click_element("btnsavehtml");
-//		System.out.println("wait starting");
+		// System.out.println("wait starting");
 		driver.switchTo().defaultContent();
 		wait_until_loader_is_invisible();
 		pages.Utill().SwitchFramebyIndex(1);
@@ -392,7 +388,7 @@ public class CandidateInitiation {
 				result = "success";
 				pages.Wait().visibilityOfElement("btnsaveedu");
 				pages.Utill().click_element("btnsaveedu");
-//				System.out.println("wait starting");
+				// System.out.println("wait starting");
 				driver.switchTo().defaultContent();
 				wait_until_loader_is_invisible();
 				pages.Utill().SwitchFramebyIndex(2);
@@ -440,12 +436,12 @@ public class CandidateInitiation {
 			pages.Utill().input_text(id + "_ClientRef_HREmail", df.getEmailAddress());
 			pages.Utill().input_text(id + "_ClientRef_CanKnown", "working with me");
 			pages.Utill().input_text(id + "_ClientRef_CanAsso", "2 years");
-//			System.out.println("id is :" + id.equals("ctl07"));
+			// System.out.println("id is :" + id.equals("ctl07"));
 			if (id.equals("ctl07")) {
-//				System.out.println("passing inside if condition");
+				// System.out.println("passing inside if condition");
 				pages.Wait().visibilityOfElement("btnsaveref");
 				pages.Utill().click_element("btnsaveref");
-//				System.out.println("wait starting");
+				// System.out.println("wait starting");
 				driver.switchTo().defaultContent();
 				wait_until_loader_is_invisible();
 				pages.Utill().SwitchFramebyIndex(4);
@@ -458,98 +454,100 @@ public class CandidateInitiation {
 			return e.getMessage().toString();
 		}
 	}
+
 	public void Employment(String checkName, String companyname) throws Exception {
 		String id = "";
 		DataFactory df = new DataFactory();
 
-			switch (checkName) {
-			case "Emp 1(Latest)":
-				id = "ctl04";
-				
-				pages.Utill().input_text(id+"_ClientEmpl_CmpName", companyname);
-				WebDriverWait wait = new WebDriverWait(driver, 10);
-				wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//*[text()='"+companyname+"']")));
-//				pages.Wait().visibilityOfElement("//*[text()='"+companyname+"']");
-				pages.Utill().click_element("//*[text()='"+companyname+"']");
-				pages.Utill().input_text(id+"_ClientEmpl_CmpAddr", df.getAddress());
-				pages.Utill().input_text(id+"_ClientEmpl_Position", "Developer");
-				pages.Utill().input_text(id+"_ClientEmpl_Department", "IT");
-				pages.Utill().input_text(id+"_ClientEmpl_HOAddr", df.getAddress());
-				pages.Utill().input_text(id+"_ClientEmpl_CanCmpAddr", df.getAddress());
-				pages.Utill().input_text(id+"_ClientEmpl_EmpCode", "42134234");
-				pages.Utill().input_text(id+"_ClientEmpl_OhrId", "3245234");
-				pages.Utill().input_text(id+"_ClientEmpl_LastSalary", "500000");
-				pages.Utill().input_text(id+"_ClientEmpl_RepAuthName", df.getFirstName());
-				pages.Utill().input_text(id+"_ClientEmpl_RepAuthDesig", "hr");
-				pages.Utill().input_text(id+"_ClientEmpl_RepAuthMobile1", df.getNumberText(10));
-				pages.Utill().input_text(id+"_ClientEmpl_RepAuthEmail", df.getEmailAddress());
-				pages.Utill().input_text(id+"_ClientEmpl_HRName", "hr");
-				pages.Utill().input_text(id+"_ClientEmpl_HRMobile1", df.getNumberText(10));
-				pages.Utill().input_text(id+"_ClientEmpl_ReferenceNow", "YES");
-				pages.Utill().input_text(id+"_ClientEmpl_Gap", "no");
-				pages.Utill().input_text(id+"_ClientEmpl_ReasonLeave", "ReasonLeave");
-				pages.Utill().input_text(id+"_ClientEmpl_Others", "others");
-				pages.Utill().input_text(id+"_ClientEmpl_Comments", "comments");
-				pages.Utill().input_text(id+"_ClientEmpl_HREmail", df.getEmailAddress());
-				pages.Utill().select_by_label(id+"_ClientEmpl_EmplType", "Permanent");
-				pages.Utill().select_by_label(id+"_ClientEmpl_CurrencyType", "INR");
-				pages.Utill().select_by_label(id+"_ClientEmpl_SalType", "Annum");
-				
-				break;
-			case "Emp 2":
-				id = "ctl07";
-				pages.Utill().input_text(id+"_ClientEmpl_CmpName", companyname);
-				WebDriverWait waitt = new WebDriverWait(driver, 10);
-				waitt.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//*[text()='"+companyname+"']")));
-//				pages.Wait().visibilityOfElement("//*[text()='"+companyname+"']");
-				pages.Utill().click_element("//*[text()='"+companyname+"']");
-				pages.Utill().input_text(id+"_ClientEmpl_CmpAddr", df.getAddress());
-				pages.Utill().input_text(id+"_ClientEmpl_Position", "Developer");
-				pages.Utill().input_text(id+"_ClientEmpl_Department", "IT");
-				pages.Utill().input_text(id+"_ClientEmpl_HOAddr", df.getAddress());
-				pages.Utill().input_text(id+"_ClientEmpl_CanCmpAddr", df.getAddress());
-				pages.Utill().input_text(id+"_ClientEmpl_EmpCode", "42134234");
-				pages.Utill().input_text(id+"_ClientEmpl_OhrId", "3245234");
-				pages.Utill().input_text(id+"_ClientEmpl_LastSalary", "500000");
-				pages.Utill().input_text(id+"_ClientEmpl_RepAuthName", df.getFirstName());
-				pages.Utill().input_text(id+"_ClientEmpl_RepAuthDesig", "hr");
-				pages.Utill().input_text(id+"_ClientEmpl_RepAuthMobile1", df.getNumberText(10));
-				pages.Utill().input_text(id+"_ClientEmpl_RepAuthEmail", df.getEmailAddress());
-				pages.Utill().input_text(id+"_ClientEmpl_HRName", "hr");
-				pages.Utill().input_text(id+"_ClientEmpl_HRMobile1", df.getNumberText(10));
-				pages.Utill().input_text(id+"_ClientEmpl_ReferenceNow", "YES");
-				pages.Utill().input_text(id+"_ClientEmpl_Gap", "no");
-				pages.Utill().input_text(id+"_ClientEmpl_ReasonLeave", "ReasonLeave");
-				pages.Utill().input_text(id+"_ClientEmpl_Others", "others");
-				pages.Utill().input_text(id+"_ClientEmpl_Comments", "comments");
-				pages.Utill().input_text(id+"_ClientEmpl_HREmail", df.getEmailAddress());
-				pages.Utill().select_by_label(id+"_ClientEmpl_EmplType", "Permanent");
-				pages.Utill().select_by_label(id+"_ClientEmpl_CurrencyType", "INR");
-				pages.Utill().select_by_label(id+"_ClientEmpl_SalType", "Annum");
-				pages.Wait().visibilityOfElement("btnsavehtml");
-				pages.Utill().click_element("btnsavehtml");
-//				System.out.println("wait starting");
-				driver.switchTo().defaultContent();
-				wait_until_loader_is_invisible();
-				pages.Utill().SwitchFramebyIndex(3);
-				aleterwait.until(ExpectedConditions.visibilityOf(pages.Utill().find("regMessage")));
-				System.out.println(pages.Utill().get_text("regMessage"));
-				pages.Utill().click_element("//span[text()='Ok']");
-				break;
-			default:
-				System.out.println("not matching");
-			}
+		switch (checkName) {
+		case "Emp 1(Latest)":
+			id = "ctl04";
 
-				
-//				pages.Wait().visibilityOfElement("btnsavehtml");
-//				pages.Utill().click_element("btnsavehtml");
-//				System.out.println("wait starting");
-//				driver.switchTo().defaultContent();
-//				wait_until_loader_is_invisible();
-//				pages.Utill().SwitchFramebyIndex(3);
-//				aleterwait.until(ExpectedConditions.visibilityOf(pages.Utill().find("regMessage")));
-//				System.out.println(pages.Utill().get_text("regMessage"));
-//				pages.Utill().click_element("//span[text()='Ok']");
+			pages.Utill().input_text(id + "_ClientEmpl_CmpName", companyname);
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			wait.until(
+					ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//*[text()='" + companyname + "']")));
+			// pages.Wait().visibilityOfElement("//*[text()='"+companyname+"']");
+			pages.Utill().click_element("//*[text()='" + companyname + "']");
+			pages.Utill().input_text(id + "_ClientEmpl_CmpAddr", df.getAddress());
+			pages.Utill().input_text(id + "_ClientEmpl_Position", "Developer");
+			pages.Utill().input_text(id + "_ClientEmpl_Department", "IT");
+			pages.Utill().input_text(id + "_ClientEmpl_HOAddr", df.getAddress());
+			pages.Utill().input_text(id + "_ClientEmpl_CanCmpAddr", df.getAddress());
+			pages.Utill().input_text(id + "_ClientEmpl_EmpCode", "42134234");
+			pages.Utill().input_text(id + "_ClientEmpl_OhrId", "3245234");
+			pages.Utill().input_text(id + "_ClientEmpl_LastSalary", "500000");
+			pages.Utill().input_text(id + "_ClientEmpl_RepAuthName", df.getFirstName());
+			pages.Utill().input_text(id + "_ClientEmpl_RepAuthDesig", "hr");
+			pages.Utill().input_text(id + "_ClientEmpl_RepAuthMobile1", df.getNumberText(10));
+			pages.Utill().input_text(id + "_ClientEmpl_RepAuthEmail", df.getEmailAddress());
+			pages.Utill().input_text(id + "_ClientEmpl_HRName", "hr");
+			pages.Utill().input_text(id + "_ClientEmpl_HRMobile1", df.getNumberText(10));
+			pages.Utill().input_text(id + "_ClientEmpl_ReferenceNow", "YES");
+			pages.Utill().input_text(id + "_ClientEmpl_Gap", "no");
+			pages.Utill().input_text(id + "_ClientEmpl_ReasonLeave", "ReasonLeave");
+			pages.Utill().input_text(id + "_ClientEmpl_Others", "others");
+			pages.Utill().input_text(id + "_ClientEmpl_Comments", "comments");
+			pages.Utill().input_text(id + "_ClientEmpl_HREmail", df.getEmailAddress());
+			pages.Utill().select_by_label(id + "_ClientEmpl_EmplType", "Permanent");
+			pages.Utill().select_by_label(id + "_ClientEmpl_CurrencyType", "INR");
+			pages.Utill().select_by_label(id + "_ClientEmpl_SalType", "Annum");
+
+			break;
+		case "Emp 2":
+			id = "ctl07";
+			pages.Utill().input_text(id + "_ClientEmpl_CmpName", companyname);
+			WebDriverWait waitt = new WebDriverWait(driver, 10);
+			waitt.until(
+					ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath("//*[text()='" + companyname + "']")));
+			// pages.Wait().visibilityOfElement("//*[text()='"+companyname+"']");
+			pages.Utill().click_element("//*[text()='" + companyname + "']");
+			pages.Utill().input_text(id + "_ClientEmpl_CmpAddr", df.getAddress());
+			pages.Utill().input_text(id + "_ClientEmpl_Position", "Developer");
+			pages.Utill().input_text(id + "_ClientEmpl_Department", "IT");
+			pages.Utill().input_text(id + "_ClientEmpl_HOAddr", df.getAddress());
+			pages.Utill().input_text(id + "_ClientEmpl_CanCmpAddr", df.getAddress());
+			pages.Utill().input_text(id + "_ClientEmpl_EmpCode", "42134234");
+			pages.Utill().input_text(id + "_ClientEmpl_OhrId", "3245234");
+			pages.Utill().input_text(id + "_ClientEmpl_LastSalary", "500000");
+			pages.Utill().input_text(id + "_ClientEmpl_RepAuthName", df.getFirstName());
+			pages.Utill().input_text(id + "_ClientEmpl_RepAuthDesig", "hr");
+			pages.Utill().input_text(id + "_ClientEmpl_RepAuthMobile1", df.getNumberText(10));
+			pages.Utill().input_text(id + "_ClientEmpl_RepAuthEmail", df.getEmailAddress());
+			pages.Utill().input_text(id + "_ClientEmpl_HRName", "hr");
+			pages.Utill().input_text(id + "_ClientEmpl_HRMobile1", df.getNumberText(10));
+			pages.Utill().input_text(id + "_ClientEmpl_ReferenceNow", "YES");
+			pages.Utill().input_text(id + "_ClientEmpl_Gap", "no");
+			pages.Utill().input_text(id + "_ClientEmpl_ReasonLeave", "ReasonLeave");
+			pages.Utill().input_text(id + "_ClientEmpl_Others", "others");
+			pages.Utill().input_text(id + "_ClientEmpl_Comments", "comments");
+			pages.Utill().input_text(id + "_ClientEmpl_HREmail", df.getEmailAddress());
+			pages.Utill().select_by_label(id + "_ClientEmpl_EmplType", "Permanent");
+			pages.Utill().select_by_label(id + "_ClientEmpl_CurrencyType", "INR");
+			pages.Utill().select_by_label(id + "_ClientEmpl_SalType", "Annum");
+			pages.Wait().visibilityOfElement("btnsavehtml");
+			pages.Utill().click_element("btnsavehtml");
+			// System.out.println("wait starting");
+			driver.switchTo().defaultContent();
+			wait_until_loader_is_invisible();
+			pages.Utill().SwitchFramebyIndex(3);
+			aleterwait.until(ExpectedConditions.visibilityOf(pages.Utill().find("regMessage")));
+			System.out.println(pages.Utill().get_text("regMessage"));
+			pages.Utill().click_element("//span[text()='Ok']");
+			break;
+		default:
+			System.out.println("not matching");
+		}
+
+		// pages.Wait().visibilityOfElement("btnsavehtml");
+		// pages.Utill().click_element("btnsavehtml");
+		// System.out.println("wait starting");
+		// driver.switchTo().defaultContent();
+		// wait_until_loader_is_invisible();
+		// pages.Utill().SwitchFramebyIndex(3);
+		// aleterwait.until(ExpectedConditions.visibilityOf(pages.Utill().find("regMessage")));
+		// System.out.println(pages.Utill().get_text("regMessage"));
+		// pages.Utill().click_element("//span[text()='Ok']");
 
 	}
 
@@ -562,10 +560,10 @@ public class CandidateInitiation {
 				WebElement ele = pages.Utill().find("ctl00_ContentPlaceHolder1_DivMainFrame");
 				String res = ele.getCssValue("display");
 				if (res.equals("none")) {
-//					System.out.println("success " + res);
+					// System.out.println("success " + res);
 					return ele;
 				} else {
-//					System.out.println("failed :" + res);
+					// System.out.println("failed :" + res);
 					return null;
 				}
 			}
@@ -581,10 +579,10 @@ public class CandidateInitiation {
 				WebElement ele = pages.Utill().find("ctl00_ContentPlaceHolder1_DivMainFrame");
 				String res = ele.getCssValue("display");
 				if (res.equals("none")) {
-//					System.out.println("success " + res);
+					// System.out.println("success " + res);
 					return ele;
 				} else {
-//					System.out.println("failed :" + res);
+					// System.out.println("failed :" + res);
 					return null;
 				}
 			}
@@ -595,16 +593,16 @@ public class CandidateInitiation {
 		// "CandidateHome1_CanDobdate_title"
 		// "CandidateHome1_CanDobdate_prevArrow"
 		String t = pages.Utill().get_text(id);
-//		System.out.println(date);
+		// System.out.println(date);
 		String[] pdate = date.replaceAll("-", " ").split("\\s+");
 		String[] gdate = t.replaceAll(",", "").split("\\s+");
 		if (pdate[2].equals(gdate[1])) {
 			if (pdate[1].equals(gdate[0])) {
-//				System.out.println("click " + pdate[0]);
+				// System.out.println("click " + pdate[0]);
 				pages.Utill().click_element("//*[contains(@title,'" + pdate[1] + " " + pdate[0] + "')]");
 			} else {
 
-//				System.out.println("click title");
+				// System.out.println("click title");
 				pages.Utill().click_element(id);
 
 				Thread.sleep(1000);
@@ -632,7 +630,8 @@ public class CandidateInitiation {
 			Thread.sleep(1500);
 			pages.Utill().click_element("//*[contains(@title,'" + pdate[1] + ", " + pdate[2] + "')]");
 			Thread.sleep(1500);
-//			System.out.println("//*[contains(@title,'" + pdate[1] + " " + pdate[0] + "')]");
+			// System.out.println("//*[contains(@title,'" + pdate[1] + " " + pdate[0] +
+			// "')]");
 			pages.Utill().click_element("//*[contains(@title,'" + pdate[1] + " " + pdate[0] + "')]");
 			//
 		}
@@ -650,16 +649,16 @@ public class CandidateInitiation {
 			try {
 				status = pages.Utill().find("//span[text()='" + year + "']/..").getAttribute("aria-disabled");
 			} catch (NoSuchElementException e) {
-//				System.out.println("exception raised");
+				// System.out.println("exception raised");
 			}
-//			System.out.println("statsu is :" + status);
+			// System.out.println("statsu is :" + status);
 			if (status.equals("true")) {
 				pages.Utill().click_element("//*[@id='" + id + "']/div[1]/table/tbody/tr/td[1]/a/span[1]/i");
-//				System.out.println("clicking on arrow");
+				// System.out.println("clicking on arrow");
 			}
 			Thread.sleep(1000);
 		}
-//		System.out.println("found");
+		// System.out.println("found");
 
 		// pages.Utill().click_element("//span[text()='"+year+"']");
 		// pages.Utill().find(id).findElement(By.xpath("//span[text()='"+year+"']")).click();
@@ -682,9 +681,10 @@ public class CandidateInitiation {
 				"//*[text()='" + filename + "']/following-sibling::td[1]//option[text()='" + doctype + "']");
 		if (!(checktype.isEmpty())) {
 			pages.Utill().click_element("//*[text()='" + filename + "']/following-sibling::td[2]/select");
-			pages.Utill().click_element(
-					"//*[text()='" + filename + "']/following-sibling::td[2]//option[contains(text(),'" + checktype + "')]");
-			//*[text()='emp_one.pdf']/following-sibling::td[2]//option[contains(text(),'Emp 2')]
+			pages.Utill().click_element("//*[text()='" + filename
+					+ "']/following-sibling::td[2]//option[contains(text(),'" + checktype + "')]");
+			// *[text()='emp_one.pdf']/following-sibling::td[2]//option[contains(text(),'Emp
+			// 2')]
 		}
 
 	}

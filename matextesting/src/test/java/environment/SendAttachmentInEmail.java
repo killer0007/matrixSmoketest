@@ -131,7 +131,7 @@ public class SendAttachmentInEmail {
            objMessageBodyPart = new MimeBodyPart();
 
            //Set path to the pdf report file
-           String filename = System.getProperty("user.dir")+"\\Default test2.pdf"; 
+           String filename = System.getProperty("user.dir")+"\\Report.pdf"; 
            //Create data source to attach the file in mail
            DataSource source = new FileDataSource(filename);
            

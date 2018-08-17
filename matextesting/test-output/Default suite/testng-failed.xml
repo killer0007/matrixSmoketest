@@ -3,17 +3,25 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="testCases.MainTest2">
+      <class name="testCases.Matrixflow">
         <methods>
-          <include name="setup"/>
-          <include name="start"/>
-          <include name="beforeSuit"/>
-          <include name="afterSuite"/>
-          <include name="testtwo"/>
-          <include name="teardown"/>
+          <include name="OperationtmAssign"/>
           <include name="tearDown"/>
+          <include name="publishCase"/>
+          <include name="aasignToDE"/>
+          <include name="beforeSuit"/>
+          <include name="caseregistration"/>
+          <include name="start"/>
+          <include name="Login"/>
+          <include name="Operationtm"/>
+          <include name="Report"/>
+          <include name="dataentry"/>
+          <include name="assigncase"/>
+          <include name="teardown"/>
+          <include name="afterSuite"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- testCases.MainTest2 -->
+      </class> <!-- testCases.Matrixflow -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

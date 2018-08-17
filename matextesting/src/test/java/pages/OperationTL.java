@@ -1,7 +1,5 @@
 package pages;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -14,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
-
+import environment.BaseClass;
 import environment.Utill;
 import testCases.Pages;
 
@@ -31,15 +29,13 @@ public class OperationTL {
 		w = new WebDriverWait(driver, 100);
 	}
 
-	public String getlocator(String key) throws FileNotFoundException, IOException {
-		Properties pr = new Properties();
-		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_locators.properties")));
+	private String getvalue(String key) throws FileNotFoundException, IOException {
+		Properties pr = BaseClass.getvalue();
 		return pr.getProperty(key);
 	}
 
-	public String getvalue(String key) throws FileNotFoundException, IOException {
-		Properties pr = new Properties();
-		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
+	private String getlocator(String key) throws FileNotFoundException, IOException {
+		Properties pr = BaseClass.getlocator();
 		return pr.getProperty(key);
 	}
 

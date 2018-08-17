@@ -214,7 +214,8 @@ public class JyperionListener implements ITestListener {
 	public void onStart(ITestContext context) {
 		log("onStart("+context+")");
 		try {
-			PdfWriter.getInstance(this.document, new FileOutputStream(context.getName()+".pdf"));
+//			PdfWriter.getInstance(this.document, new FileOutputStream(context.getName()+".pdf"));
+			PdfWriter.getInstance(this.document, new FileOutputStream("Report.pdf"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

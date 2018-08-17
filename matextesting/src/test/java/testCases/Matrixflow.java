@@ -28,9 +28,13 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+
+import environment.BaseClass;
 import environment.SendAttachmentInEmail;
 import environment.Utill;
-@Listeners(environment.Listeners.class)
+
+//@Listeners(environment.Listeners.class)
+@Listeners(environment.JyperionListener.class)
 public class Matrixflow {
 	WebDriver driver;
 	ExtentHtmlReporter reporter;
@@ -43,30 +47,20 @@ public class Matrixflow {
 
 	@BeforeSuite
 	public void beforeSuit() {
-		//reporter = new ExtentHtmlReporter("./Reports/matex.html");
+		// reporter = new ExtentHtmlReporter("./Reports/matex.html");
 		reporter = new ExtentHtmlReporter("./Reports/matrixflow.html");
 		reporter.config().setDocumentTitle("Matrix test report");
 		reporter.config().setReportName("test report");
-
 		reporter.config().setTheme(Theme.DARK);
-
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
 	}
 
 	@BeforeTest
 	public void start() throws IOException {
-		String chrome_path = System.getProperty("user.dir") + "\\src\\test\\resources\\driver\\chromedriver.exe";
-		System.setProperty("webdriver.chrome.driver", chrome_path);
-		ChromeOptions chromoption = new ChromeOptions();
-		chromoption.setHeadless(true);
-		driver = new ChromeDriver(chromoption);
-		Dimension d = new Dimension(1382, 744);
-		driver.manage().window().setSize(d);
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver = BaseClass.getDriver();
 		driver.get(getvalue("url"));
-		 //driver.get("http://192.168.2.16/MatexTesting");
+		// driver.get("http://192.168.2.16/MatexTesting");
 	}
 
 	@BeforeMethod
@@ -81,7 +75,7 @@ public class Matrixflow {
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
 		pages.loginpage().Login(getvalue("uname"));
-		
+
 		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
 
 	}
@@ -125,7 +119,7 @@ public class Matrixflow {
 			pages.DataEntryTM().BvCheck();
 			pages.DataEntryTM().ItCheck();
 			pages.DataEntryTM().PfCheck();
-			String t = pages.DataEntryTM().getlocator("de_submit");
+			String t = "ctl00_ContentPlaceHolder1_ImgBtnSearch";
 			pages.Utill().find(t).click();
 			try {
 				System.out.println("try block");
@@ -168,8 +162,8 @@ public class Matrixflow {
 	@Test(priority = 5, enabled = true, dependsOnMethods = "dataentry")
 	public void assigncase() throws Exception {
 		Thread.sleep(6000);
-		
-		pages.Utill().GoTo(getvalue("url")+"/Matrix/AssignerHome.aspx");
+
+		pages.Utill().GoTo(getvalue("url") + "/Matrix/AssignerHome.aspx");
 		pages.Assignor().assign_Address(MatrixRefNo);
 		pages.Assignor().assign_Employment(MatrixRefNo);
 		pages.Assignor().assign_Reference(MatrixRefNo);
@@ -181,7 +175,7 @@ public class Matrixflow {
 		pages.Assignor().assign_Court(MatrixRefNo);
 		pages.Assignor().assign_Facis(MatrixRefNo);
 		pages.Assignor().assign_Credit(MatrixRefNo);
-		//pages.Assignor().assign_BV(MatrixRefNo);
+		// pages.Assignor().assign_BV(MatrixRefNo);
 		pages.Assignor().assign_IT(MatrixRefNo);
 		pages.Assignor().assign_PF(MatrixRefNo);
 		assertTrue(true);
@@ -223,23 +217,24 @@ public class Matrixflow {
 		pages.OperationTM().BV(MatrixRefNo);
 		pages.OperationTM().PF(MatrixRefNo);
 		pages.OperationTM().Credit(MatrixRefNo);
-		
 
 	}
-	@Test(priority=8,enabled=true, dependsOnMethods="Operationtm")
-	public void Report() throws Exception{
+
+	@Test(priority = 8, enabled = true, dependsOnMethods = "Operationtm")
+	public void Report() throws Exception {
 		pages.ReportTL().assignReport(MatrixRefNo);
 		pages.ReportTM().Reporttm(MatrixRefNo);
-		
+
 	}
-	@Test(priority=9,enabled=true, dependsOnMethods="Report")
+
+	@Test(priority = 9, enabled = true, dependsOnMethods = "Report")
 	public void publishCase() throws Exception {
 		pages.CrtDashboard().publishcase(MatrixRefNo);
 	}
 
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
-		
+
 		if (result.getStatus() == ITestResult.FAILURE) {
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(result.getThrowable().getMessage(),
@@ -261,10 +256,12 @@ public class Matrixflow {
 
 	@AfterSuite
 	public void afterSuite() {
+		SendAttachmentInEmail email = new SendAttachmentInEmail();
+		email.sendPDFReportByGMail("gopinath.n@kadambatechnologies.com", "KILLER@007", "gopinathvijay7@gmail.com", "PDF Report", "");
 		extent.flush();
-		 driver.quit();
-//		 SendAttachmentInEmail email = new SendAttachmentInEmail();
-//		 email.sendhtmlemail();
+		driver.quit();
+		// SendAttachmentInEmail email = new SendAttachmentInEmail();
+		// email.sendhtmlemail();
 
 	}
 
@@ -273,6 +270,7 @@ public class Matrixflow {
 		pr.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
 		return pr.getProperty(key);
 	}
+
 	public WebDriver getwebdriver() {
 		return driver;
 	}
