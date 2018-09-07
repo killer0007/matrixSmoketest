@@ -79,7 +79,32 @@ public class Utill {
 		if (path.startsWith("./") || path.startsWith("/") || path.startsWith("(//")) {
 			// logger.info("performing actions on " + path);
 			return driver.findElement(By.xpath(path));
-		} else {
+		} 
+		else if (path.startsWith("xpath")) {
+			String loc []=path.split(":");
+			return driver.findElement(By.xpath(loc[1]));
+		}
+		else if (path.startsWith("name")) {
+			String loc []=path.split(":");
+			return driver.findElement(By.name(loc[1]));
+		}
+		else if (path.startsWith("css")) {
+			String loc []=path.split(":");
+			return driver.findElement(By.cssSelector(loc[1]));
+		}
+		else if (path.startsWith("link")) {
+			String loc []=path.split(":");
+			return driver.findElement(By.linkText(loc[1]));
+		}
+		else if (path.startsWith("partiallink")) {
+			String loc []=path.split(":");
+			return driver.findElement(By.partialLinkText(loc[1]));
+		}
+		else if (path.startsWith("class")) {
+			String loc []=path.split(":");
+			return driver.findElement(By.className(loc[1]));
+		}	
+			else {
 			// logger.info("performing actions on " + path);
 			return driver.findElement(By.id(path));
 		}
@@ -217,7 +242,29 @@ public class Utill {
 		logger.log(Status.PASS, "getting webelement list of :" + path);
 		return li;
 	}
+	public void wait_until_loader_is_invisible() throws InterruptedException {
+		// Pages pages=new Pages(driver);
+		// System.out.println("Start time"+java.time.LocalTime.now());
+		String res;
+		try {
+			res = pages.Utill().find("ctl00_UpdateProgress1").getCssValue("display");
+		} catch (StaleElementReferenceException e) {
+			Thread.sleep(1000);
+			res = pages.Utill().find("ctl00_UpdateProgress1").getCssValue("display");
+		}
+		while (res.equals("block")) {
+			Thread.sleep(200);
+			res = pages.Utill().find("ctl00_UpdateProgress1").getCssValue("display");
+			if (!(res.equals("block"))) {
+				// System.out.println("end time"+java.time.LocalTime.now());
+				break;
+			} else {
+				// System.out.println(res);
+				continue;
 
+			}
+		}
+	}
 	public String clickAlertbox() throws Exception {
 		try {
 			Thread.sleep(1500);

@@ -21,6 +21,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sikuli.script.FindFailed;
 import org.sikuli.script.Match;
 import org.sikuli.script.Pattern;
 import org.sikuli.script.Screen;
@@ -76,7 +77,7 @@ public class Base {
 		assertEquals("Demotl", name);
 	}
 
-	@Test(priority = 2, enabled = true, dependsOnMethods = "login")
+	@Test(priority = 2, enabled = false, dependsOnMethods = "login")
 	public void dataentry() throws Exception {
 		String name = "ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_CandidateHome1_Candidate_";
 		// WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -112,7 +113,7 @@ public class Base {
 
 	}
 
-	@Test(priority = 2, enabled = true, dependsOnMethods = "dataentry")
+	@Test(priority = 2, enabled = false, dependsOnMethods = "dataentry")
 	public void fileupload() throws Exception {
 		String name = "ctl00_ContentPlaceHolder1_";
 		driver.findElement(By.id("ctl00_ContentPlaceHolder1_TabContainer1_TabPanel1_btnAttachment")).click();
@@ -132,7 +133,7 @@ boolean re =driver.findElement(By.xpath("//td[text()='Testpdf.pdf']")).isDisplay
 		assertTrue(re);
 	}
 
-	@Test(priority = 3, enabled = true, dependsOnMethods = "fileupload")
+	@Test(priority = 3, enabled = false, dependsOnMethods = "fileupload")
 	public void filedownload() throws Exception {
 		driver.findElement(By.xpath("//td[text()='Testpdf.pdf']/following-sibling::td[2]/input")).click();
 		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnContactClose")).click();
@@ -143,11 +144,15 @@ boolean re =driver.findElement(By.xpath("//td[text()='Testpdf.pdf']")).isDisplay
 
 	}
 
-	 @Test(priority = 4, enabled = true, dependsOnMethods = "filedownload")
-//	@Test(priority = 4, enabled = false)
+//	 @Test(priority = 4, enabled = true, dependsOnMethods = "filedownload")
+	@Test(priority = 4, enabled = true)
 	public void reportpreview() throws Exception {
 
 		this.navigate("Dashboard", "Report TM Dashboard");
+		driver.findElement(By.xpath(".//*[@id='aspnetForm']/div[3]/div[2]/div[3]/table/tbody/tr[2]/td[4]/div/button")).click();
+		driver.findElement(By.xpath("//*[@id='aspnetForm']/div[3]/div[2]/div[3]/table/tbody/tr[2]/td[4]/div/ul/li[1]/div/input")).sendKeys("automation");
+		driver.findElement(By.xpath("//*[@id='aspnetForm']/div[3]/div[2]/div[3]/table/tbody/tr[2]/td[4]/div/ul/li[3]/a/label/input")).click();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_ApplyFilter")).click();
 		matrixNo = driver.findElement(By.id("ctl00_ContentPlaceHolder1_grdteammember_ctl02_MatrixRefNo")).getText();
 		driver.findElement(By.id("ctl00_ContentPlaceHolder1_grdteammember_ctl02_MatrixRefNo")).click();
 		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnPublishandPreview")).click();
@@ -165,6 +170,8 @@ boolean re =driver.findElement(By.xpath("//td[text()='Testpdf.pdf']")).isDisplay
 		Robot robot = new Robot();
 		robot.keyPress(KeyEvent.VK_TAB);
 		System.out.println("key press");
+		//
+		this.waitForImage(this.config.getProperty("down"),5);
 		sc.click(pdfdown);
 		robot.keyRelease(KeyEvent.VK_TAB);
 		sc.click(save);
@@ -206,6 +213,7 @@ boolean re =driver.findElement(By.xpath("//td[text()='Testpdf.pdf']")).isDisplay
 			WebElement target = driver.findElement(By.id("ctl00_ContentPlaceHolder1_ReportDocument"));
 			JavascriptExecutor je =(JavascriptExecutor)driver;
 			je.executeScript("arguments[0].scrollIntoView(true);", target);
+			
 			Actions action = new Actions(driver);
 			action.dragAndDrop(source, target).build().perform();
 			driver.findElement(By.xpath("//a[text()='"+filename+"']")).click();
@@ -226,8 +234,30 @@ boolean re =driver.findElement(By.xpath("//td[text()='Testpdf.pdf']")).isDisplay
 	public void teardown() {
 		// driver.quit();
 	}
-
-	public void navigate(String title, String page) {
+	private boolean isImagePresent(String image)
+    {
+        boolean status = false;
+        Screen  screen = new Screen();
+        try {
+            screen.find(image);
+            status = true;
+        } catch (FindFailed e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return status;
+    }   
+	private void waitForImage(String image, int time) throws InterruptedException{
+        for(int i=0; i<time; i++){
+            if(isImagePresent(image)){
+                break;
+            }
+            else{
+                Thread.sleep(1000);
+            }
+        }
+    }
+	private void navigate(String title, String page) {
 		driver.findElement(By.xpath("//a[text()='" + title + "']")).click();
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		By name = By.xpath("//a[text()='" + page + "']");

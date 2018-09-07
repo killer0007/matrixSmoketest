@@ -22,7 +22,7 @@ public class LoginPage {
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
-		Pages pages = new Pages(driver);
+		pages = new Pages(driver);
 	}
 
 	public void setUserName(String name) throws Exception {

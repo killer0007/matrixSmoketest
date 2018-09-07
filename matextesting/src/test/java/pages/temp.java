@@ -7,9 +7,12 @@ import java.util.List;
 import java.util.Properties;
 
 import org.json.simple.JSONObject;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import io.restassured.RestAssured;
@@ -22,75 +25,40 @@ import io.restassured.specification.RequestSpecification;
 class temp
 
 {
-	 public static void main(String args[]) {
-	        int n=40;
-	        for (int i=1;i<=n;i++ ){
-	            for (int j=1;j<=n-i ;j++ ){
-	                System.out.print(" ");
-	            } 
-	            for(int k=1; k<=i;k++){
-	                System.out.print(k+" ");
-	            }
-	        System.out.println();    
-	        } 
-	        
-	for (int i=n-1;i>=1;i-- ){
-	            for (int j=n-i;j>=1 ;j-- ){
-	                System.out.print(" ");
-	            } 
-	            for(int k=1; k<=i;k++){
-	                System.out.print(k+" ");
-	            }
-	        System.out.println();    
-	        } 
-	        
+	public static void main(String[] args) throws Exception {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("http://192.168.2.17:5000/#/");
+		driver.findElement(By.xpath("html/body/div[1]/form/div[1]/div/div[2]/div[2]/div[1]/div/input")).sendKeys("shield");
+		driver.findElement(By.xpath("html/body/div[1]/form/div[1]/div/div[2]/div[2]/div[2]/div/input")).sendKeys("Shield@1011");
+		driver.findElement(By.xpath("html/body/div[1]/form/div[1]/div/div[2]/div[2]/div[5]/button")).click();
+		Thread.sleep(2000);
+		driver.get("http://192.168.2.17:5000/#/createcontract");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(".//*[@id='client_chzn']/a/div/b")).click();
+		driver.findElement(By.xpath(".//*[@id='client_chzn']/div/ul/li[3]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(".//*[@id='contract-accordion']/div/div/accordion/div/div[6]/div/div[1]/h4/a/span[1]")).click();
+		
+//		WebElement sc=driver.findElement(By.xpath(".//*[@id='contract-accordion']/div/div/accordion/div/div[6]/div/div[2]/div/div/ul/div[1]"));
+//		JavascriptExecutor js = (JavascriptExecutor)driver;
+//		js.executeScript("arguments[0].scrollIntoView(true);", sc);
+		Thread.sleep(2000);
+		List<WebElement> parent= driver.findElements(By.xpath("//div[@class='panel-collapse collapse in']//div[@class='ng-binding ng-scope']"));
+		if(parent.size()>0) {
+			for (int i = 0; i < parent.size(); i++) {
+				System.out.println(parent.get(i).getText());
+				if(!driver.findElement(By.xpath("(//div[@class='panel-collapse collapse in']//div[@class='ng-binding ng-scope']/input)["+(i+1)+"]")).isSelected()) {
+					driver.findElement(By.xpath("(//div[@class='panel-collapse collapse in']//div[@class='ng-binding ng-scope']/input)["+(i+1)+"]")).click();	
+				}
+			}
+		}
+		else {
+			System.out.println("lenght is : "+parent.size());
+		}
+		
+	}
 	    
 		
-	}
-	public static void post() {
-		RestAssured.baseURI="http://restapi.demoqa.com/utilities/weather/city";
-		RequestSpecification headerreq = RestAssured.given();
-		JSONObject requestParams = new JSONObject();
-		requestParams.put("FirstName", "Virender"); // Cast
-		requestParams.put("LastName", "Singh");
-		requestParams.put("UserName", "sdimpleuser2dd2011");
-		requestParams.put("Password", "password1");
-		requestParams.put("Email",  "sample2ee26d9@gmail.com");
-		headerreq.header("Content-Type", "application/json");
-		headerreq.body(requestParams.toJSONString());
-		
-//		Response response = headerreq.request(Method.POST, "/register");
-		Response response = headerreq.post("/register");
-		System.out.println(response.asString());
-		int statusCode = response.getStatusCode();
-		
-		String successCode = response.jsonPath().get("SuccessCode");
-		System.out.println(statusCode);
-		System.out.println(successCode);
-	}
-public void get() {
-	RestAssured.baseURI="http://restapi.demoqa.com/utilities/weather/city";
-	RequestSpecification headerreq = RestAssured.given();
-	Response response = headerreq.request(Method.GET, "/Hyderabad");
-//	String responsebody = response.getBody().asString();
-//	System.out.println(responsebody);
-//	String rescode = response.getStatusLine();
-//	System.out.println(rescode);
-//	String contentType = response.header("Content-Type");
-//	System.out.println("Content-Type value: " + contentType);
-// 
-//	
-//	String serverType =  response.header("Server");
-//	System.out.println("Server value: " + serverType);
-// 
-//	
-//	String acceptLanguage = response.header("Content-Encoding");
-//	System.out.println("Content-Encoding: " + acceptLanguage);
-//	System.out.println(response.getHeaders());
-//	List<Header> hd =response.getHeaders().asList();
-	Headers hd= response.headers();
-	for(Header h:hd) {
-		System.out.println(h.getName()+" : "+h.getValue());
-	}
-}
+	
 }

@@ -7,14 +7,23 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import javax.activity.InvalidActivityException;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+
 
 public class Utility {
 	WebDriver driver;
@@ -110,6 +119,22 @@ public class Utility {
 			}
 		}
 	}
+	public String GetTableCellValue(String id, int row, int col) throws InvalidActivityException {
+		try {
+			String re =driver.findElement(By.xpath("//table[@id='" + id + "']/tbody/tr[" + row + "]/td[" + col + "]")).getText();
+			//String re = find("//table[@id='" + id + "']/tbody/tr[" + row + "]/td[" + col + "]")
+
+			if (re.equals("")) {
+				throw new InvalidActivityException();
+			} else {
+				
+				return re;
+			}
+		} catch (NoSuchElementException e) {
+			throw new NoSuchElementException(e.getMessage());
+
+		}
+	}
 
 	public String clickAlertbox() throws Exception {
 		try {
@@ -203,6 +228,61 @@ public class Utility {
 		else {
 			System.out.println("file empty2");
 			return false;
+		}
+	}
+	public String handle_Alert() throws InterruptedException {
+		String text;
+
+		try {
+			Alert alert = driver.switchTo().alert();
+			text = alert.getText();
+			alert.accept();
+			
+			return text;
+		} catch (NoAlertPresentException e) {
+			System.out.println("NoAlertPresentException");
+			WebDriverWait w = new WebDriverWait(driver, 10);
+			w.until(ExpectedConditions.alertIsPresent());
+			Alert alert = driver.switchTo().alert();
+			text = alert.getText();
+			alert.accept();
+			// pages.Wait().wait_until_loader_is_invisible();
+			
+			return text;
+		} catch (UnhandledAlertException e) {
+			System.out.println("UnhandledAlertException");
+			Alert alert = driver.switchTo().alert();
+			text = alert.getText();
+			alert.accept();
+			// pages.Wait().wait_until_loader_is_invisible();
+			
+			return text;
+		}
+	}
+	public void wait_until_spinner_is_invisible(String id) throws InterruptedException {
+		// Pages pages=new Pages(driver);
+		// System.out.println("Start time"+java.time.LocalTime.now());
+		//ctl00_ContentPlaceHolder1_overlayScreen_Laod_11
+		//ctl00_ContentPlaceHolder1_overlayScreen
+		String res;
+		try {
+			res = driver.findElement(By.id(id)).getCssValue("display");
+			
+		} catch (StaleElementReferenceException e) {
+			Thread.sleep(1000);
+			res = driver.findElement(By.id(id)).getCssValue("display");
+		}
+		while (res.equals("block")) {
+			Thread.sleep(200);
+			res = driver.findElement(By.id(id)).getCssValue("display");
+			if (!(res.equals("block"))) {
+				// System.out.println("end time"+java.time.LocalTime.now());
+				break;
+			} else {
+				// System.out.println(res);
+				continue;
+
+			}
 		}
 	}
 }

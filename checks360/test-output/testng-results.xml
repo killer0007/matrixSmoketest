@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="25541" started-at="2018-09-07T05:10:34Z" finished-at="2018-09-07T05:11:00Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="25541" started-at="2018-09-07T05:10:34Z" finished-at="2018-09-07T05:11:00Z">
+      <class name="maintest.Basic">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest.Basic@1a8c74e]" name="beforeSuit" is-config="true" duration-ms="213" started-at="2018-09-07T10:40:34Z" finished-at="2018-09-07T10:40:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuit -->
+        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest.Basic@1a8c74e]" name="beforetest" is-config="true" duration-ms="6743" started-at="2018-09-07T10:40:34Z" finished-at="2018-09-07T10:40:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforetest -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.Basic@1a8c74e]" name="setup" is-config="true" duration-ms="15" started-at="2018-09-07T10:40:41Z" finished-at="2018-09-07T10:40:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.Basic.Login()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="Login()[pri:0, instance:maintest.Basic@1a8c74e]" name="Login" duration-ms="6407" started-at="2018-09-07T10:40:41Z" finished-at="2018-09-07T10:40:47Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.Basic@1a8c74e]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-07T10:40:47Z" finished-at="2018-09-07T10:40:47Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Login status=SUCCESS method=Basic.Login()[pri:0, instance:maintest.Basic@1a8c74e] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.Basic.Login()]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest.Basic@1a8c74e]" name="teardown" is-config="true" duration-ms="12337" started-at="2018-09-07T10:40:47Z" finished-at="2018-09-07T10:41:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest.Basic@1a8c74e]" name="afterSuite" is-config="true" duration-ms="361" started-at="2018-09-07T10:41:00Z" finished-at="2018-09-07T10:41:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- maintest.Basic -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
