@@ -47,5 +47,7 @@ public class Login {
 		this.setUserName(name);
 		this.setPassword(pass);
 		this.clickLogin();
+		pages.Utill().wait_until_loader_is_invisible(40);
 	}
+	
 }

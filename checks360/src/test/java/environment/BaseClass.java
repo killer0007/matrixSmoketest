@@ -35,7 +35,7 @@ public class BaseClass {
 	public static Properties getlocator() throws FileNotFoundException, IOException {
 		if (loc == null) {
 			loc = new Properties();
-			loc.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_locators.properties")));
+			loc.load(new FileInputStream(new File("./config.properties")));
 			// src\test\resources\property
 
 		}

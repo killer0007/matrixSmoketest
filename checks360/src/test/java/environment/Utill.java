@@ -10,17 +10,17 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
+import java.util.function.Function;
+
 import org.openqa.selenium.JavascriptExecutor;
 import javax.activity.InvalidActivityException;
 import javax.imageio.ImageIO;
@@ -28,18 +28,14 @@ import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.UnhandledAlertException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -132,18 +128,12 @@ public class Utill {
 		
 	}
 
-	public void select_by_label(String path, String value) throws Exception {
-//		try {
-			// Selecting options from selection list 'xpath=.//*[@id='ddltype1']' by label
-			// Course Completion Certificate.Sele
+	public void select_by_label(String path, String value)  {
 
 			Select sel = new Select(pages.Utill().find(path));
 			sel.selectByVisibleText(value);
 			logger.log(Status.PASS, "Selecting options from selection list '" + path + "' by label " + value + ".");
-//		} catch (Exception e) {
 
-//			throw new Exception(e.toString());
-//		}
 	}
 
 	public void choose_file(String path, String file) throws Exception {
@@ -194,87 +184,15 @@ public class Utill {
 		return driver.findElements(By.xpath(path)).size();
 	}
 
-	public String handle_Alert() throws InterruptedException {
-		String text;
-
-		try {
-			Alert alert = driver.switchTo().alert();
-			text = alert.getText();
-			alert.accept();
-			logger.log(Status.PASS, "education verification data entry completed");
-			return text;
-		} catch (NoAlertPresentException e) {
-			System.out.println("NoAlertPresentException");
-			WebDriverWait w = new WebDriverWait(driver, 10);
-			w.until(ExpectedConditions.alertIsPresent());
-			Alert alert = driver.switchTo().alert();
-			text = alert.getText();
-			alert.accept();
-			// pages.Wait().wait_until_loader_is_invisible();
-			logger.log(Status.PASS, "education verification data entry completed");
-			return text;
-		} catch (UnhandledAlertException e) {
-			System.out.println("UnhandledAlertException");
-			Alert alert = driver.switchTo().alert();
-			text = alert.getText();
-			alert.accept();
-			// pages.Wait().wait_until_loader_is_invisible();
-			logger.log(Status.PASS, "education verification data entry completed");
-			return text;
-		}
-	}
-
+	
 	public List<WebElement> Get_webelement_list(String path) {
 
 		List<WebElement> li = driver.findElements(By.xpath(path));
 		logger.log(Status.PASS, "getting webelement list of :" + path);
 		return li;
 	}
-	public void wait_until_loader_is_invisible() throws InterruptedException {
-		// Pages pages=new Pages(driver);
-		// System.out.println("Start time"+java.time.LocalTime.now());
-		String res;
-		try {
-			res = pages.Utill().find("ctl00_UpdateProgress1").getCssValue("display");
-		} catch (StaleElementReferenceException e) {
-			Thread.sleep(1000);
-			res = pages.Utill().find("ctl00_UpdateProgress1").getCssValue("display");
-		}
-		while (res.equals("block")) {
-			Thread.sleep(200);
-			res = pages.Utill().find("ctl00_UpdateProgress1").getCssValue("display");
-			if (!(res.equals("block"))) {
-				// System.out.println("end time"+java.time.LocalTime.now());
-				break;
-			} else {
-				// System.out.println(res);
-				continue;
-
-			}
-		}
-	}
-	public String clickAlertbox() throws Exception {
-		try {
-			Thread.sleep(1500);
-			WebDriverWait w = new WebDriverWait(driver, 60);
-			w.until(ExpectedConditions.presenceOfElementLocated(By.id("ok")));
-			String result = pages.Utill().get_text("//*[@class='m_content']");
-			pages.Utill().click_element("ok");
-			System.out.println(result);
-			logger.log(Status.PASS, result);
-			return result;
-		} catch (WebDriverException e) {
-			Thread.sleep(1000);
-			WebDriverWait w = new WebDriverWait(driver, 60);
-			w.until(ExpectedConditions.elementToBeClickable(pages.Utill().find("ok")));
-			Thread.sleep(1000);
-			String result = pages.Utill().get_text("//*[@class='m_content']");
-			pages.Utill().click_element("ok");
-			System.out.println(result);
-			logger.log(Status.PASS, result);
-			return result;
-		}
-	}
+	
+	
 
 	public String getTitle() {
 		String title = driver.getTitle();
@@ -304,14 +222,7 @@ public class Utill {
 
 	}
 
-	public void printMap(Map mp) {
-		Iterator it = mp.entrySet().iterator();
-		while (it.hasNext()) {
-			Map.Entry pair = (Map.Entry) it.next();
-			System.out.println(pair.getKey() + " = " + pair.getValue());
-			it.remove(); // avoids a ConcurrentModificationException
-		}
-	}
+	
 
 	public static String getdatetime() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
@@ -331,6 +242,11 @@ public class Utill {
 	public void SwitchFramebyIndex(int i) {
 		driver.switchTo().frame(i);
 		logger.log(Status.PASS, "switching frame by index " + i);
+	}
+	public void switchWindow(int index) {
+		ArrayList tabs= new ArrayList(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(index).toString());
+		
 	}
 
 	public void scrollTo(String id) {
@@ -463,7 +379,7 @@ public class Utill {
 
 	public void element_should_contains(String id, String text)  throws Exception{
 		String t = pages.Utill().get_text(id);
-		if(t.equals(text)) {
+		if(t.contains(text)) {
 			logger.log(Status.PASS, id + " contains expected text");	
 		}
 		else {
@@ -481,7 +397,7 @@ public class Utill {
 	}
 	public void element_shouldnot_contains(String id, String text)  throws Exception{
 		String t = pages.Utill().get_text(id);
-		if(!(t.equals(text))) {
+		if(!(t.contains(text))) {
 			logger.log(Status.PASS, id + " contains expected text");	
 		}
 		else {
@@ -494,6 +410,66 @@ public class Utill {
 		logger.log(Status.PASS,"getting value of : "+id+attribute);
 		return attri;
 	}
+	public void wait_until_dropdownload(String path, int TimeOut)  {
+		try {
+		final String id=path;
+//		Thread.sleep(1500);
+		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
+				.pollingEvery(Duration.ofMillis(200));
+//		.ignoring(NoSuchElementException.class);
+		WebElement ele = wait.until(new Function<WebDriver, WebElement>() {
+			public WebElement apply(WebDriver driver) {
+				WebElement ele = pages.Utill().find(id);
+				StringBuffer res = new StringBuffer(ele.getCssValue("display"));
+//				String res = ele.getCssValue("display");
+				if (!res.toString().equals("none")) {
+					 System.out.println("success " + res);
+					 res=null;
+					return ele;
+				} else {
+					 System.out.println("failed :" + res);
+					 res=null;
+					return null;
+				}
+			}
+		});
+		}
+		catch(NoSuchElementException e){
+			System.out.println("done");
+		}
+	}
+	public void wait_until_loader_is_invisible(int TimeOut)  {
+		try {
+		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
+				.pollingEvery(Duration.ofMillis(200));
+//		.ignoring(NoSuchElementException.class);
+		WebElement ele = wait.until(new Function<WebDriver, WebElement>() {
+			public WebElement apply(WebDriver driver) {
+				WebElement ele = pages.Utill().find("loading-bar-spinner");
+				StringBuffer res = new StringBuffer(ele.getCssValue("display"));
+//				String res = ele.getCssValue("display");
+				if (!res.toString().equals("block")) {
+//					 System.out.println("success " + res);
+					 res=null;
+					return ele;
+				} else {
+//					 System.out.println("failed :" + res);
+					 res=null;
+					return null;
+				}
+			}
+		});
+		}
+		catch(NoSuchElementException e){
+			System.out.println("done");
+		}
+	}
+public void wait_until_element_isvisible(String path, int Timeout) {
+	WebDriverWait wait = new WebDriverWait(driver, Timeout);
+	wait.until(ExpectedConditions.visibilityOf(pages.Utill().find(path)));
+	wait=null;
+	
+}
 	public boolean isimage(String url) {
 		try {
 			
@@ -510,4 +486,5 @@ public class Utill {
 			return false;
 		}
 	}
+	
 }
