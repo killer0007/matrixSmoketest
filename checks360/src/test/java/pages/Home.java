@@ -20,7 +20,7 @@ public class Home {
 	}
 
 	public void Logout() {
-		pages.Utill().click_element("btnGetNext");
+		pages.Utill().click_element("ctl00_lnkLogout");
 	}
 
 	public void clickRole() {

@@ -58,10 +58,12 @@ public class Basic extends Design{
 	@Test
 	public void Login() throws Exception {
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-		pages.Home().selectRole("Demo Role");
+		//pages.Home().selectRole("Demo Role");
 		pages.Home().clickRegister();
-		pages.CaseRegistration().selectClient("Demo Client");
-		pages.CaseRegistration().selectProject("Client Project");
+		pages.CaseRegistration().selectClient("Demo Client1234");
+		pages.CaseRegistration().selectProject("demo client1234");
+		
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddComponent_input");
 		
 //		AlokPurohit Client Project
 	} 

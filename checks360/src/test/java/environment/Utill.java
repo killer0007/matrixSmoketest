@@ -199,6 +199,9 @@ public class Utill {
 		logger.log(Status.PASS, "getting page title as  " + title);
 		return title;
 	}
+	public String getcssvalue(String id, String attribute) {
+		return pages.Utill().find(id).getCssValue(attribute);
+	}
 
 	public void GoTo(String url) {
 		driver.navigate().to(url);
@@ -435,7 +438,7 @@ public class Utill {
 		});
 		}
 		catch(NoSuchElementException e){
-			System.out.println("done");
+//			System.out.println("done");
 		}
 	}
 	public void wait_until_loader_is_invisible(int TimeOut)  {
