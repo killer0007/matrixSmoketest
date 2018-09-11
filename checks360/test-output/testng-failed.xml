@@ -5,20 +5,14 @@
     <classes>
       <class name="maintest.SPcasereg">
         <methods>
+          <include name="teardown"/>
+          <include name="TC_SPCR_010"/>
           <include name="tearDown"/>
           <include name="Login"/>
-          <include name="TC_SPCR_002"/>
           <include name="beforeSuit"/>
-          <include name="beforetest"/>
-          <include name="TC_SPCR_006"/>
-          <include name="teardown"/>
           <include name="setup"/>
-          <include name="TC_SPCR_007"/>
-          <include name="TC_SPCR_008"/>
-          <include name="TC_SPCR_009"/>
-          <include name="TC_SPCR_003"/>
-          <include name="TC_SPCR_004"/>
-          <include name="TC_SPCR_005"/>
+          <include name="afterSuite"/>
+          <include name="beforetest"/>
         </methods>
       </class> <!-- maintest.SPcasereg -->
     </classes>

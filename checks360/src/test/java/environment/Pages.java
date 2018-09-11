@@ -13,7 +13,8 @@ public class Pages {
 	private Login login;
 	private Utill utill;
 	private Home home;
-	CaseRegistration caseregistration;
+	private CaseRegistration caseregistration;
+	private DbConnection db;
 	public Pages(WebDriver driver, ExtentTest logger) {
 		this.driver = driver;
 		this.logger = logger;
@@ -31,5 +32,8 @@ public class Pages {
 	
 	public CaseRegistration CaseRegistration() {
 		return (caseregistration == null) ? caseregistration = new CaseRegistration(driver, logger) : caseregistration;
+	}
+	public DbConnection DbConnection() {
+		return (db == null) ? db = new DbConnection() : db;
 	}
 }

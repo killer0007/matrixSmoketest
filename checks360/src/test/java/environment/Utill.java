@@ -19,6 +19,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.function.Function;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -26,10 +27,13 @@ import javax.activity.InvalidActivityException;
 import javax.imageio.ImageIO;
 
 import org.apache.commons.io.FileUtils;
+import org.fluttercode.datafactory.impl.DataFactory;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -41,7 +45,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-
+import com.github.javafaker.Faker;
+import com.mchange.v2.log.FallbackMLog;
 
 import environment.Pages;
 
@@ -162,7 +167,17 @@ public class Utill {
 		Collections.shuffle(answersList);
 		return answersList.get(3);
 	}
-
+	public String getemail() {
+		DataFactory df = new DataFactory();
+		return df.getEmailAddress();
+		
+		
+	}
+public String mobileno() {
+	Random rand = new Random();
+	long drand = (long)(rand.nextDouble()*10000000000L);
+	return Long.toString(drand);
+}
 	public String GetTableCellValue(String id, int row, int col) throws InvalidActivityException {
 		try {
 			String re = find("//table[@id='" + id + "']/tbody/tr[" + row + "]/td[" + col + "]").getText();
@@ -262,6 +277,10 @@ public class Utill {
 	public void SwitchDefault() {
 		driver.switchTo().defaultContent();
 		logger.log(Status.PASS, "switching to default frame");
+	}
+	public void executescript(String script) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript(script);
 	}
 
 	public void FileUpload(String id, String filename) throws Exception {
@@ -444,8 +463,8 @@ public class Utill {
 	public void wait_until_loader_is_invisible(int TimeOut)  {
 		try {
 		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
-				.pollingEvery(Duration.ofMillis(200));
-//		.ignoring(NoSuchElementException.class);
+				.pollingEvery(Duration.ofMillis(200))
+		.ignoring(StaleElementReferenceException.class);
 		WebElement ele = wait.until(new Function<WebDriver, WebElement>() {
 			public WebElement apply(WebDriver driver) {
 				WebElement ele = pages.Utill().find("loading-bar-spinner");
@@ -489,5 +508,13 @@ public void wait_until_element_isvisible(String path, int Timeout) {
 			return false;
 		}
 	}
-	
+	public Set<Cookie> getcookies() {
+		return driver.manage().getCookies();
+	}
+	public void importcookies(Set<Cookie> allcookie) {
+		for(Cookie cookie : allcookie) {
+		    driver.manage().addCookie(cookie);
+		}
+		
+	}
 }
