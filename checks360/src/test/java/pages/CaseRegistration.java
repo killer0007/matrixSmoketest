@@ -19,6 +19,7 @@ public class CaseRegistration {
 	Pages pages;
 
 	public CaseRegistration(WebDriver driver, ExtentTest logger) {
+//		super(driver, logger);
 		this.driver = driver;
 		pages = new Pages(driver, logger);
 	}
@@ -193,10 +194,12 @@ public class CaseRegistration {
 
 	public void save() {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnSave_input");
+		pages.Utill().wait_until_loader_is_invisible(10);
 	}
 
 	public void submit() {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnSaveSubmit_input");
+		pages.Utill().wait_until_loader_is_invisible(10);
 	}
 
 	public void cancel() {
@@ -270,4 +273,20 @@ public class CaseRegistration {
 		casereg.clickfresher(fresher);
 		casereg.addEditComponent();
 	}
+	
 }
+//class caseregdashboard {
+//	WebDriver driver;
+//	ExtentTest logger;
+//	Pages pages;
+//	public caseregdashboard(WebDriver driver, ExtentTest logger) {
+//		this.driver=driver;
+//		this.logger=logger;
+//		pages = new Pages(driver, logger);
+//	}
+//	
+//	public void setusername(String firstname) {
+//		pages.Utill().input_text("txtFirstName", firstname);
+//	}
+//}
+

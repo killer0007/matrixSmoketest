@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]">
-  <test name="Default test(failed)">
+<suite name="Failed suite [Suite]">
+  <test name="Test(failed)">
     <classes>
       <class name="maintest.SPcasereg">
         <methods>
           <include name="teardown"/>
           <include name="TC_SPCR_010"/>
+          <include name="TC_SPCR_011"/>
           <include name="tearDown"/>
           <include name="Login"/>
           <include name="beforeSuit"/>
@@ -16,5 +17,5 @@
         </methods>
       </class> <!-- maintest.SPcasereg -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

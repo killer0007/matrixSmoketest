@@ -80,9 +80,11 @@ public class Home {
 
 	}
 
-	public void clickCaseTracker() {
+	public void CaseTracker() {
 		pages.Utill().click_element("CaseTracker");
-		pages.Utill().wait_until_loader_is_invisible(15);
+//		pages.Utill().wait_until_loader_is_invisible(15);
+		pages.Utill().switchWindow(1);
+		pages.Utill().wait_until_loader_is_invisible(10);
 	}
 
 	public void clickRegister() {
@@ -145,5 +147,9 @@ public class Home {
 	public void clickSearch() {
 		pages.Utill().click_element("Button3");
 		pages.Utill().wait_until_loader_is_invisible(10);
+	}
+	public void homepage() {
+		pages.Utill().click_element("ctl00_imgHome");
+		pages.Utill().wait_until_loader_is_invisible(20);
 	}
 }

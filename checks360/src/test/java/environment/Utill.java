@@ -1,5 +1,6 @@
 package environment;
 
+import java.awt.AWTException;
 import java.awt.Image;
 import java.awt.Robot;
 import java.awt.Toolkit;
@@ -21,12 +22,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
-
 import org.openqa.selenium.JavascriptExecutor;
-import javax.activity.InvalidActivityException;
 import javax.imageio.ImageIO;
-
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.math3.exception.NoDataException;
 import org.fluttercode.datafactory.impl.DataFactory;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -42,12 +41,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import com.github.javafaker.Faker;
-import com.mchange.v2.log.FallbackMLog;
-
 import environment.Pages;
 
 public class Utill {
@@ -97,7 +92,7 @@ public class Utill {
 			String loc []=path.split(":");
 			return driver.findElement(By.cssSelector(loc[1]));
 		}
-		else if (path.startsWith("link")) {
+		else if (path.startsWith("linkText")) {
 			String loc []=path.split(":");
 			return driver.findElement(By.linkText(loc[1]));
 		}
@@ -178,12 +173,14 @@ public String mobileno() {
 	long drand = (long)(rand.nextDouble()*10000000000L);
 	return Long.toString(drand);
 }
-	public String GetTableCellValue(String id, int row, int col) throws InvalidActivityException {
+	public String GetTableCellValue(String id, int row, int col) throws NoDataException {
 		try {
 			String re = find("//table[@id='" + id + "']/tbody/tr[" + row + "]/td[" + col + "]").getText();
 
 			if (re.equals("")) {
-				throw new InvalidActivityException();
+				System.out.println("//table[@id='" + id + "']/tbody/tr[" + row + "]/td[" + col + "]");
+				throw new NoDataException();
+				
 			} else {
 				logger.log(Status.PASS, "getting value from table  :" + re);
 				return re;
@@ -262,7 +259,7 @@ public String mobileno() {
 		logger.log(Status.PASS, "switching frame by index " + i);
 	}
 	public void switchWindow(int index) {
-		ArrayList tabs= new ArrayList(driver.getWindowHandles());
+		ArrayList<String> tabs= new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(index).toString());
 		
 	}
@@ -439,7 +436,7 @@ public String mobileno() {
 		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
 				.pollingEvery(Duration.ofMillis(200));
 //		.ignoring(NoSuchElementException.class);
-		WebElement ele = wait.until(new Function<WebDriver, WebElement>() {
+		wait.until(new Function<WebDriver, WebElement>() {
 			public WebElement apply(WebDriver driver) {
 				WebElement ele = pages.Utill().find(id);
 				StringBuffer res = new StringBuffer(ele.getCssValue("display"));
@@ -465,7 +462,7 @@ public String mobileno() {
 		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
 				.pollingEvery(Duration.ofMillis(200))
 		.ignoring(StaleElementReferenceException.class);
-		WebElement ele = wait.until(new Function<WebDriver, WebElement>() {
+		wait.until(new Function<WebDriver, WebElement>() {
 			public WebElement apply(WebDriver driver) {
 				WebElement ele = pages.Utill().find("loading-bar-spinner");
 				StringBuffer res = new StringBuffer(ele.getCssValue("display"));
@@ -515,6 +512,33 @@ public void wait_until_element_isvisible(String path, int Timeout) {
 		for(Cookie cookie : allcookie) {
 		    driver.manage().addCookie(cookie);
 		}
+		
+	}
+	public void confirmAlert() {
+		By loc= By.xpath("//*[text()='OK']");
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.presenceOfElementLocated(loc));
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(loc)));
+		driver.findElement(loc).click();
+		
+	}
+	public String firstName() {
+		DataFactory df = new DataFactory();
+		return df.getFirstName();
+		
+	}
+	public String lastName() {
+		DataFactory df = new DataFactory();
+		return df.getLastName();
+		
+	}
+	public void closetab() throws AWTException {
+		Robot robot = new Robot();
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_W);
+		
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_W);
 		
 	}
 }

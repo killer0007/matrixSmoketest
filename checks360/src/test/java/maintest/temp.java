@@ -1,20 +1,11 @@
 package maintest;
 
-import java.awt.Image;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Random;
 import java.util.Set;
-
-import javax.imageio.ImageIO;
-
+import org.fluttercode.datafactory.impl.DataFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class temp {
 public static void main(String[] args) throws Exception{
@@ -39,10 +30,13 @@ public static void main(String[] args) throws Exception{
 //    driver2.manage().addCookie(cookie);
 //}
 //driver2.get("http://192.168.2.17:97/Web/dashboard.aspx");
+	DataFactory df = new DataFactory();
+	for (int i = 0; i < 100; i++) {
+		String fname=df.getFirstName();
+//		String lname = df.getLastName();
+		System.out.println(fname);
+//		System.out.println(fname+" : "+lname);
+	}
 	
-	Random rand = new Random();
-
-	long drand = (long)(rand.nextDouble()*10000000000L);
-	System.out.println(Long.toString(drand));
 }
 }

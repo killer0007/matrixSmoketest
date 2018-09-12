@@ -1,9 +1,10 @@
 package maintest;
 
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +19,7 @@ import environment.BaseClass;
 import environment.Pages;
 import environment.Utill;
 
-public class Basic extends Design{
+public class Basic extends Design {
 	WebDriver driver;
 	ExtentHtmlReporter reporter;
 	ExtentTest logger;
@@ -34,16 +35,16 @@ public class Basic extends Design{
 		reporter.config().setTheme(Theme.DARK);
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
-		
+
 	}
 
 	@BeforeTest
 	public void beforetest() throws FileNotFoundException, IOException {
 		driver = BaseClass.getDriver();
-		config=BaseClass.getlocator();
+		config = BaseClass.getlocator();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(config.getProperty("url"));
-		
+
 	}
 
 	@BeforeMethod
@@ -52,21 +53,25 @@ public class Basic extends Design{
 		logger.pass(method.getName() + " Started");
 		logger.assignAuthor("Gopinath");
 		pages = new Pages(driver, logger);
-		
+
 	}
 
 	@Test
 	public void Login() throws Exception {
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-		//pages.Home().selectRole("Demo Role");
-		pages.Home().clickRegister();
-		pages.CaseRegistration().selectClient("Demo Client1234");
-		pages.CaseRegistration().selectProject("demo client1234");
-		
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddComponent_input");
-		
-//		AlokPurohit Client Project
-	} 
+//		pages.DcaseRegistration().firstname("");
+//		pages.DcaseRegistration().lasttname("");
+		pages.Home().CaseTracker();
+		pages.CaseTracker().clickcase("HDFC000198");
+
+//		driver.findElement(By.linkText("HDFC000198"));
+		List<HashMap<String, String>> data = pages.CaseTracker().getcasedata();
+		System.out.println(data.size());
+		List<String> contract = pages.DbConnection().getcontractdetails("demo automation");
+		List<String> checkname=pages.CaseTracker().getcomponentname(data);
+		contract.removeAll(checkname);
+		System.out.println("result : "+contract.size());
+	}
 
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
@@ -81,7 +86,7 @@ public class Basic extends Design{
 	}
 
 	@AfterTest
-	public void teardown() throws Exception{
+	public void teardown() throws Exception {
 		// pages.loginpage().Logout();
 //		Thread.sleep(10000);
 //		driver.close();
