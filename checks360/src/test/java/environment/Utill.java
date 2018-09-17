@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -79,32 +80,25 @@ public class Utill {
 		if (path.startsWith("./") || path.startsWith("/") || path.startsWith("(//")) {
 			// logger.info("performing actions on " + path);
 			return driver.findElement(By.xpath(path));
-		} 
-		else if (path.startsWith("xpath")) {
-			String loc []=path.split(":");
+		} else if (path.startsWith("xpath")) {
+			String loc[] = path.split(":");
 			return driver.findElement(By.xpath(loc[1]));
-		}
-		else if (path.startsWith("name")) {
-			String loc []=path.split(":");
+		} else if (path.startsWith("name")) {
+			String loc[] = path.split(":");
 			return driver.findElement(By.name(loc[1]));
-		}
-		else if (path.startsWith("css")) {
-			String loc []=path.split(":");
+		} else if (path.startsWith("css")) {
+			String loc[] = path.split(":");
 			return driver.findElement(By.cssSelector(loc[1]));
-		}
-		else if (path.startsWith("linkText")) {
-			String loc []=path.split(":");
+		} else if (path.startsWith("linkText")) {
+			String loc[] = path.split(":");
 			return driver.findElement(By.linkText(loc[1]));
-		}
-		else if (path.startsWith("partiallink")) {
-			String loc []=path.split(":");
+		} else if (path.startsWith("partiallink")) {
+			String loc[] = path.split(":");
 			return driver.findElement(By.partialLinkText(loc[1]));
-		}
-		else if (path.startsWith("class")) {
-			String loc []=path.split(":");
+		} else if (path.startsWith("class")) {
+			String loc[] = path.split(":");
 			return driver.findElement(By.className(loc[1]));
-		}	
-			else {
+		} else {
 			// logger.info("performing actions on " + path);
 			return driver.findElement(By.id(path));
 		}
@@ -117,22 +111,22 @@ public class Utill {
 	public void input_text(String path, String text) {
 		pages.Utill().find(path).sendKeys(text);
 		logger.log(Status.PASS, "Typing text '" + text + "' into text field '" + path + "'.");
-		
+
 	}
 
-	public String get_text(String path)  {
-		
-			String msg = pages.Utill().find(path).getText();
-			logger.log(Status.PASS, "msg = " + msg + ".");
-			return msg;
-		
+	public String get_text(String path) {
+
+		String msg = pages.Utill().find(path).getText();
+		logger.log(Status.PASS, "msg = " + msg + ".");
+		return msg;
+
 	}
 
-	public void select_by_label(String path, String value)  {
+	public void select_by_label(String path, String value) {
 
-			Select sel = new Select(pages.Utill().find(path));
-			sel.selectByVisibleText(value);
-			logger.log(Status.PASS, "Selecting options from selection list '" + path + "' by label " + value + ".");
+		Select sel = new Select(pages.Utill().find(path));
+		sel.selectByVisibleText(value);
+		logger.log(Status.PASS, "Selecting options from selection list '" + path + "' by label " + value + ".");
 
 	}
 
@@ -143,9 +137,8 @@ public class Utill {
 
 	public void click_element(String path) {
 
-			pages.Utill().find(path).click();
-			logger.log(Status.PASS, "Clicking element '" + path + "'");
-		
+		pages.Utill().find(path).click();
+		logger.log(Status.PASS, "Clicking element '" + path + "'");
 
 	}
 
@@ -156,23 +149,33 @@ public class Utill {
 	}
 
 	public String candidateName() {
-		String name[] = { "Vishal", "Arjun", "Jagan", "Kavin", "Sadam", "Akash", "Sasi", "Santhosh",
-				"Abinaya", "Ayyappan", "Mani", "Vignesh", "Hari", "Divya", "Rahul" };
+		String name[] = { "Lindsey", "Noah", "Erica", "Cheyenne", "Ryan", "Wyatt", "Erika", "Tim", "Brooklyn", "Jill",
+				"Karen", "Leslie", "Eddie", "Mariah", "Nancy", "Wayne", "Chasity", "Terri", "Aaron", "Jim", "Kendra",
+				"Stephanie", "Jenna", "Antonio", "Jane", "Jan", "George", "Annette", "Janet", "Raymond", "Steven",
+				"Cassandra", "Shane", "Judy", "Unborn", "Brian", "Kaitlyn", "Dusty", "Donald", "Laura", "Alisha",
+				"Haley", "Marty", "Leslie", "Sam", "Eric", "Jeffrey", "Donna", "Thomas", "Myron", "Mickey", "Rod",
+				"Chuck", "Ken", "Sierra", "Marsha", "Michael", "Dana", "Richard", "James", "Margaret", "Michelle",
+				"Hope", "Kylie", "Helen", "Gabriel", "Myron", "Dusty", "Laura", "Paige", "Patrick", "Steven", "Kaylee",
+				"Eddie", "Timmy", "Jody", "Terry", "Erin", "Donnie", "Leroy", "Rick", "Jan", "Dave", "Blake", "Carrie",
+				"Randi", "Brenda", "Juanita", "Kaitlyn", "Dave", "Sandra", "Jeremiah", "Donna", "Kris", "Vernon",
+				"Brianna", "Greg", "Ronald", "Brad", "Shawna" };
 		List<String> answersList = Arrays.asList(name);
 		Collections.shuffle(answersList);
 		return answersList.get(3);
 	}
+
 	public String getemail() {
 		DataFactory df = new DataFactory();
 		return df.getEmailAddress();
-		
-		
+
 	}
-public String mobileno() {
-	Random rand = new Random();
-	long drand = (long)(rand.nextDouble()*10000000000L);
-	return Long.toString(drand);
-}
+
+	public String mobileno() {
+		Random rand = new Random();
+		long drand = (long) (rand.nextDouble() * 10000000000L);
+		return Long.toString(drand);
+	}
+
 	public String GetTableCellValue(String id, int row, int col) throws NoDataException {
 		try {
 			String re = find("//table[@id='" + id + "']/tbody/tr[" + row + "]/td[" + col + "]").getText();
@@ -180,7 +183,7 @@ public String mobileno() {
 			if (re.equals("")) {
 				System.out.println("//table[@id='" + id + "']/tbody/tr[" + row + "]/td[" + col + "]");
 				throw new NoDataException();
-				
+
 			} else {
 				logger.log(Status.PASS, "getting value from table  :" + re);
 				return re;
@@ -196,21 +199,19 @@ public String mobileno() {
 		return driver.findElements(By.xpath(path)).size();
 	}
 
-	
 	public List<WebElement> Get_webelement_list(String path) {
 
 		List<WebElement> li = driver.findElements(By.xpath(path));
 		logger.log(Status.PASS, "getting webelement list of :" + path);
 		return li;
 	}
-	
-	
 
 	public String getTitle() {
 		String title = driver.getTitle();
 		logger.log(Status.PASS, "getting page title as  " + title);
 		return title;
 	}
+
 	public String getcssvalue(String id, String attribute) {
 		return pages.Utill().find(id).getCssValue(attribute);
 	}
@@ -237,13 +238,21 @@ public String mobileno() {
 
 	}
 
-	
-
 	public static String getdatetime() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
 		LocalDateTime now = LocalDateTime.now();
 		return dtf.format(now); // 2016/11/16 12:08:43
 		// return "mmmmm";
+	}
+
+	public String getdob() {
+		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		Random random = new Random();
+		int minDay = (int) LocalDate.of(1990, 1, 1).toEpochDay();
+		int maxDay = (int) LocalDate.of(2015, 1, 1).toEpochDay();
+		long randomDay = minDay + random.nextInt(maxDay - minDay);
+		LocalDate randomBirthDate = LocalDate.ofEpochDay(randomDay);
+		return df.format(randomBirthDate).toString();
 	}
 
 	public void mouseover(String id) {
@@ -258,10 +267,11 @@ public String mobileno() {
 		driver.switchTo().frame(i);
 		logger.log(Status.PASS, "switching frame by index " + i);
 	}
+
 	public void switchWindow(int index) {
-		ArrayList<String> tabs= new ArrayList<String>(driver.getWindowHandles());
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(index).toString());
-		
+
 	}
 
 	public void scrollTo(String id) {
@@ -275,6 +285,7 @@ public String mobileno() {
 		driver.switchTo().defaultContent();
 		logger.log(Status.PASS, "switching to default frame");
 	}
+
 	public void executescript(String script) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript(script);
@@ -396,16 +407,16 @@ public String mobileno() {
 
 	}
 
-	public void element_should_contains(String id, String text)  throws Exception{
+	public void element_should_contains(String id, String text) throws Exception {
 		String t = pages.Utill().get_text(id);
-		if(t.contains(text)) {
-			logger.log(Status.PASS, id + " contains expected text");	
-		}
-		else {
-			logger.log(Status.FAIL, id + "  contains text as : " +t);
-			throw new Exception(id + "  contains text as : " +t);
+		if (t.contains(text)) {
+			logger.log(Status.PASS, id + " contains expected text");
+		} else {
+			logger.log(Status.FAIL, id + "  contains text as : " + t);
+			throw new Exception(id + "  contains text as : " + t);
 		}
 	}
+
 	public void element_shouldnotbe_visible(String id) throws Exception {
 		String css = pages.Utill().find(id).getCssValue("display");
 		if (!(css.equalsIgnoreCase("none"))) {
@@ -414,90 +425,92 @@ public String mobileno() {
 		}
 		logger.log(Status.PASS, id + "  is not visible");
 	}
-	public void element_shouldnot_contains(String id, String text)  throws Exception{
+
+	public void element_shouldnot_contains(String id, String text) throws Exception {
 		String t = pages.Utill().get_text(id);
-		if(!(t.contains(text))) {
-			logger.log(Status.PASS, id + " contains expected text");	
-		}
-		else {
-			logger.log(Status.FAIL, id + "  contains text as : " +t);
-			throw new Exception(id + "  contains text as : " +t);
+		if (!(t.contains(text))) {
+			logger.log(Status.PASS, id + " contains expected text");
+		} else {
+			logger.log(Status.FAIL, id + "  contains text as : " + t);
+			throw new Exception(id + "  contains text as : " + t);
 		}
 	}
+
 	public String get_element_attribute(String id, String attribute) {
-		String attri =pages.Utill().find(id).getAttribute(attribute);
-		logger.log(Status.PASS,"getting value of : "+id+attribute);
+		String attri = pages.Utill().find(id).getAttribute(attribute);
+		logger.log(Status.PASS, "getting value of : " + id + attribute);
 		return attri;
 	}
-	public void wait_until_dropdownload(String path, int TimeOut)  {
+
+	public void wait_until_dropdownload(String path, int TimeOut) {
 		try {
-		final String id=path;
-//		Thread.sleep(1500);
-		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
-				.pollingEvery(Duration.ofMillis(200));
-//		.ignoring(NoSuchElementException.class);
-		wait.until(new Function<WebDriver, WebElement>() {
-			public WebElement apply(WebDriver driver) {
-				WebElement ele = pages.Utill().find(id);
-				StringBuffer res = new StringBuffer(ele.getCssValue("display"));
-//				String res = ele.getCssValue("display");
-				if (!res.toString().equals("none")) {
-					 System.out.println("success " + res);
-					 res=null;
-					return ele;
-				} else {
-					 System.out.println("failed :" + res);
-					 res=null;
-					return null;
+			final String id = path;
+			// Thread.sleep(1500);
+			FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
+					.pollingEvery(Duration.ofMillis(200));
+			// .ignoring(NoSuchElementException.class);
+			wait.until(new Function<WebDriver, WebElement>() {
+				public WebElement apply(WebDriver driver) {
+					WebElement ele = pages.Utill().find(id);
+					StringBuffer res = new StringBuffer(ele.getCssValue("display"));
+					// String res = ele.getCssValue("display");
+					if (!res.toString().equals("none")) {
+						System.out.println("success " + res);
+						res = null;
+						return ele;
+					} else {
+						System.out.println("failed :" + res);
+						res = null;
+						return null;
+					}
 				}
-			}
-		});
-		}
-		catch(NoSuchElementException e){
-//			System.out.println("done");
+			});
+		} catch (NoSuchElementException e) {
+			// System.out.println("done");
 		}
 	}
-	public void wait_until_loader_is_invisible(int TimeOut)  {
+
+	public void wait_until_loader_is_invisible(int TimeOut) {
 		try {
-		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
-				.pollingEvery(Duration.ofMillis(200))
-		.ignoring(StaleElementReferenceException.class);
-		wait.until(new Function<WebDriver, WebElement>() {
-			public WebElement apply(WebDriver driver) {
-				WebElement ele = pages.Utill().find("loading-bar-spinner");
-				StringBuffer res = new StringBuffer(ele.getCssValue("display"));
-//				String res = ele.getCssValue("display");
-				if (!res.toString().equals("block")) {
-//					 System.out.println("success " + res);
-					 res=null;
-					return ele;
-				} else {
-//					 System.out.println("failed :" + res);
-					 res=null;
-					return null;
+			FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
+					.pollingEvery(Duration.ofMillis(200)).ignoring(StaleElementReferenceException.class);
+			wait.until(new Function<WebDriver, WebElement>() {
+				public WebElement apply(WebDriver driver) {
+					WebElement ele = pages.Utill().find("loading-bar-spinner");
+					StringBuffer res = new StringBuffer(ele.getCssValue("display"));
+					// String res = ele.getCssValue("display");
+					if (!res.toString().equals("block")) {
+						// System.out.println("success " + res);
+						res = null;
+						return ele;
+					} else {
+						// System.out.println("failed :" + res);
+						res = null;
+						return null;
+					}
 				}
-			}
-		});
-		}
-		catch(NoSuchElementException e){
+			});
+		} catch (NoSuchElementException e) {
 			System.out.println("done");
 		}
 	}
-public void wait_until_element_isvisible(String path, int Timeout) {
-	WebDriverWait wait = new WebDriverWait(driver, Timeout);
-	wait.until(ExpectedConditions.visibilityOf(pages.Utill().find(path)));
-	wait=null;
-	
-}
+
+	public void wait_until_element_isvisible(String path, int Timeout) {
+		WebDriverWait wait = new WebDriverWait(driver, Timeout);
+		wait.until(ExpectedConditions.visibilityOf(pages.Utill().find(path)));
+		wait = null;
+
+	}
+
 	public boolean isimage(String url) {
 		try {
-			
+
 			Image image = ImageIO.read(new URL(url));
-			if(image != null){
-			  return true;
-			    
-			}else{
-			    return false;
+			if (image != null) {
+				return true;
+
+			} else {
+				return false;
 			}
 		} catch (MalformedURLException e) {
 			return false;
@@ -505,40 +518,115 @@ public void wait_until_element_isvisible(String path, int Timeout) {
 			return false;
 		}
 	}
+
 	public Set<Cookie> getcookies() {
 		return driver.manage().getCookies();
 	}
+
 	public void importcookies(Set<Cookie> allcookie) {
-		for(Cookie cookie : allcookie) {
-		    driver.manage().addCookie(cookie);
+		for (Cookie cookie : allcookie) {
+			driver.manage().addCookie(cookie);
 		}
-		
+
 	}
+
 	public void confirmAlert() {
-		By loc= By.xpath("//*[text()='OK']");
+		By loc = By.xpath("//*[text()='OK']");
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.presenceOfElementLocated(loc));
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(loc)));
 		driver.findElement(loc).click();
-		
+
 	}
+
 	public String firstName() {
 		DataFactory df = new DataFactory();
 		return df.getFirstName();
-		
+
 	}
+
 	public String lastName() {
-		DataFactory df = new DataFactory();
-		return df.getLastName();
-		
+				String name[] = { "Cotton", "Craft", "Cannon", "Larsen", "Ruiz", "Levine", "Santiago", "Smith", "McGuire",
+				"Sloan", "Byrd", "Mayer", "Bass", "Holcomb", "Stevens", "Vasquez", "Conway", "Fletcher", "McCray",
+				"Olsen", "Allen", "Fry", "Burns", "Garner", "Mayo", "Patton", "Suarez", "Jarvis", "Abbott", "Sloan",
+				"Marshall", "Townsend", "Heath", "Burks", "Vega", "Jefferson", "Wilder", "Chaney", "Morgan", "Dudley",
+				"Dunn", "Cook", "Franco", "Reilly", "Jackson", "Mercado", "Suarez", "Fields", "Dotson", "Blanchard",
+				"Cruz", "McIntyre", "Castillo", "Carr", "Schneider", "Doyle", "Gross", "Whitley", "Wheeler", "Mullen",
+				"Kane", "Decker", "Compton", "Adams", "Richmond", "Hurst", "Hayes", "Rowe", "Richardson", "Stark",
+				"Walker", "Patterson", "Austin", "Rosa", "Green", "Blackwell", "Roberson", "Stafford", "Nunez",
+				"Schmidt", "Stein", "Chang", "Morrison", "McDowell", "Velez", "Flynn", "Brewer", "Kerr", "Wilder",
+				"Love", "Bird", "Navarro", "Suarez", "Lloyd", "Powell", "Hahn", "Reed", "Mays" };
+		List<String> answersList = Arrays.asList(name);
+		Collections.shuffle(answersList);
+		return answersList.get(3);
 	}
+
+	public List<String> getAddressChecks(List<String> allchecks) {
+		List<String> address = new ArrayList<String>();
+		for (int i = 0; i < 6; i++) {
+			address.add(allchecks.get(i).toString());
+		}
+		return address;
+	}
+
+	public List<String> getEducationChecks(List<String> allchecks) {
+		List<String> education = new ArrayList<String>();
+		for (int i = 22; i < 30; i++) {
+			education.add(allchecks.get(i).toString());
+		}
+		return education;
+	}
+
+	public List<String> getEmploymentChecks(List<String> allchecks) {
+		List<String> emp = new ArrayList<String>();
+		for (int i = 30; i < 35; i++) {
+			emp.add(allchecks.get(i).toString());
+		}
+		return emp;
+	}
+
+	public List<String> getReferenceChecks(List<String> allchecks) {
+		List<String> ref = new ArrayList<String>();
+		for (int i = 45; i < 50; i++) {
+			ref.add(allchecks.get(i).toString());
+		}
+		return ref;
+	}
+
+	public List<String> getIdChecks(List<String> allchecks) {
+		List<String> id = new ArrayList<String>();
+		for (int i = 35; i < 45; i++) {
+			id.add(allchecks.get(i).toString());
+		}
+		return id;
+	}
+
+	public List<String> getCriminalChecks(List<String> allchecks) {
+		List<String> cri = new ArrayList<String>();
+		for (int i = 13; i < 19; i++) {
+			cri.add(allchecks.get(i).toString());
+		}
+		return cri;
+	}
+
+	public List<String> getCourtChecks(List<String> allchecks) {
+		List<String> court = new ArrayList<String>();
+		for (int i = 6; i < 12; i++) {
+			court.add(allchecks.get(i).toString());
+		}
+		return court;
+	}
+
+	public List<String> getDrugChecks(List<String> allchecks) {
+		List<String> drug = new ArrayList<String>();
+		for (int i = 20; i < 22; i++) {
+			drug.add(allchecks.get(i).toString());
+		}
+		return drug;
+	}
+
 	public void closetab() throws AWTException {
-		Robot robot = new Robot();
-		robot.keyPress(KeyEvent.VK_CONTROL);
-		robot.keyPress(KeyEvent.VK_W);
-		
-		robot.keyRelease(KeyEvent.VK_CONTROL);
-		robot.keyRelease(KeyEvent.VK_W);
-		
+		driver.close();
+
 	}
 }

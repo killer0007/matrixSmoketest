@@ -24,7 +24,10 @@ public class CaseTracker {
 		pages = new Pages(driver, logger);
 	}
 	public void  search(String refno) {
+		pages.Utill().click_element("searchBox");
 		pages.Utill().input_text("searchBox", refno);
+		this.search();
+		//pages.Utill().wait_until_loader_is_invisible(10);
 	}
 	public void search() {
 		pages.Utill().click_element("//span[text()=' Search']");

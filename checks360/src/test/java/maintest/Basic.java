@@ -1,5 +1,7 @@
 package maintest;
 
+import static org.testng.Assert.assertTrue;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -9,7 +11,10 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
+import org.testng.SkipException;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -26,6 +31,12 @@ public class Basic extends Design {
 	ExtentReports extent;
 	Pages pages;
 	Properties config;
+	protected String ClientName=null;
+	protected String ProjectName=null;
+	protected String CandidateName=null;
+	protected String CandidateId=null;
+	protected String lastname=null;
+	protected String refno=null;
 
 	@BeforeSuite
 	public void beforeSuit() {
@@ -44,6 +55,8 @@ public class Basic extends Design {
 		config = BaseClass.getlocator();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(config.getProperty("url"));
+		ClientName = config.getProperty("clientname");
+		ProjectName = config.getProperty("projectname");
 
 	}
 
@@ -56,23 +69,22 @@ public class Basic extends Design {
 
 	}
 
-	@Test
+	@Test(priority=1,enabled=true)
 	public void Login() throws Exception {
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-//		pages.DcaseRegistration().firstname("");
-//		pages.DcaseRegistration().lasttname("");
-		pages.Home().CaseTracker();
-		pages.CaseTracker().clickcase("HDFC000198");
 
-//		driver.findElement(By.linkText("HDFC000198"));
-		List<HashMap<String, String>> data = pages.CaseTracker().getcasedata();
-		System.out.println(data.size());
-		List<String> contract = pages.DbConnection().getcontractdetails("demo automation");
-		List<String> checkname=pages.CaseTracker().getcomponentname(data);
-		contract.removeAll(checkname);
-		System.out.println("result : "+contract.size());
-	}
+		}
+	
+	@Test(priority=2,enabled=true, dependsOnMethods="Login")
+	public void one() throws Exception {
+		assertTrue(false);
 
+		}
+	@Test(priority=3,enabled=true, dependsOnMethods="one")
+	public void two() throws Exception {
+		assertTrue(true);
+
+		}
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {

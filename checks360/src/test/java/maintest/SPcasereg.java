@@ -29,12 +29,13 @@ public class SPcasereg extends Design {
 	ExtentReports extent;
 	Pages pages;
 	Properties config;
-	protected String ClientName=null;
-	protected String ProjectName=null;
-	protected String CandidateName=null;
-	protected String CandidateId=null;
-	protected String lastname=null;
-	protected String refno=null;
+	protected String ClientName = null;
+	protected String ContractName=null;
+	protected String ProjectName = null;
+	protected String CandidateName = null;
+	protected String CandidateId = null;
+	protected String lastname = null;
+	protected String refno = null;
 
 	@BeforeSuite
 	public void beforeSuit() {
@@ -44,7 +45,6 @@ public class SPcasereg extends Design {
 		reporter.config().setTheme(Theme.DARK);
 		extent = new ExtentReports();
 		extent.attachReporter(reporter);
-
 	}
 
 	@BeforeTest
@@ -56,6 +56,7 @@ public class SPcasereg extends Design {
 		driver.get(config.getProperty("url"));
 		ClientName = config.getProperty("clientname");
 		ProjectName = config.getProperty("projectname");
+		ContractName=config.getProperty("contractname");
 
 	}
 
@@ -65,16 +66,15 @@ public class SPcasereg extends Design {
 		logger.pass(method.getName() + " Started");
 		logger.assignAuthor("Gopinath");
 		pages = new Pages(driver, logger);
-
 	}
 
-	@Test(priority = 1, enabled = true)
+	@Test(priority = 1, enabled = true, groups= {"smoketest"})
 	public void Login() throws Exception {
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
 		pages.Home().clickRegister();
 	}
 
-	@Test(priority = 2, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 2, enabled = true, dependsOnMethods = "Login" , groups= {"smoketest"})
 	public void TC_SPCR_001() {
 		String title = pages.CaseRegistration().getTitle();
 		if (title.equals("Case Registration")) {
@@ -170,9 +170,11 @@ public class SPcasereg extends Design {
 			assertTrue(result, false);
 		}
 	}
-//with all checks and fresher is no
-	@Test(priority = 11, enabled = true, dependsOnMethods = "Login")
+
+	// with all checks and fresher is no
+	@Test(priority = 11, enabled = true, dependsOnMethods = "Login", groups= {"smoketest"})
 	public void TC_SPCR_010() throws Exception {
+		// pages.Home().clickRegister();
 		CandidateName = pages.Utill().firstName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
@@ -183,15 +185,15 @@ public class SPcasereg extends Design {
 		datas.put("ProjectName", ProjectName);
 		datas.put("lastname", lastname);
 		pages.CaseRegistration().registercase(datas, false);
-		List<String> contract = pages.DbConnection().getcontractdetails("demo automation");
+		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
 		for (int i = 0; i < contract.size(); i++) {
 			pages.CaseRegistration().selectcheck(contract.get(i).toString());
 		}
 		pages.CaseRegistration().save();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno =pages.DcaseRegistration().getrefno(CandidateName, lastname);
-		pages.Utill().click_element("//span[text()='"+refno+"']");
+		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		pages.Utill().click_element("//span[text()='" + refno + "']");
 		pages.Utill().wait_until_loader_is_invisible(5);
 		pages.CaseRegistration().addEditComponent();
 		pages.Utill().wait_until_loader_is_invisible(10);
@@ -199,62 +201,298 @@ public class SPcasereg extends Design {
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
 		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
 		pages.CaseTracker().clickcase(refno);
 		List<HashMap<String, String>> data = pages.CaseTracker().getcasedata();
 		System.out.println(data.size());
-		SoftAssert sf= new SoftAssert();
+		SoftAssert sf = new SoftAssert();
 		for (int i = 0; i < data.size(); i++) {
 			String name = data.get(i).get("ComponentName");
 			if (name.equals("Panel1") || name.equals("Medical Test")) {
 				if (data.get(i).get("CurrentStage").equals("Verification Assignment Pending")) {
-				sf.assertTrue(true, "success");
+					sf.assertTrue(true, "success");
 				} else {
-				sf.assertTrue(false, data.get(i).get("ComponentName"));
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
 				}
-			}
-			else {
+			} else {
 				if (data.get(i).get("CurrentStage").equals("Data Entry Assignment Pending")) {
 					sf.assertTrue(true, "success");
-					} else {
+				} else {
 					sf.assertTrue(false, data.get(i).get("ComponentName"));
-					}
+				}
 			}
 		}
-		List<String> checkname=pages.CaseTracker().getcomponentname(data);
+		List<String> checkname = pages.CaseTracker().getcomponentname(data);
 		pages.CaseTracker().cancel();
 		contract.removeAll(checkname);
-		sf.assertTrue(contract.size()==0, "success");
+		sf.assertTrue(contract.size() == 0, "success");
 		sf.assertAll();
 	}
-	//with all checks and fresher is yes
-		@Test(priority = 12, enabled = true, dependsOnMethods = "Login")
-		public void TC_SPCR_011() throws Exception {
+
+	// with all checks and fresher is yes
+	@Test(priority = 12, enabled = true, dependsOnMethods = "Login")
+	public void TC_SPCR_011() throws Exception {
+		refno = null;
+		pages.Home().clickRegister();
+		CandidateName = pages.Utill().candidateName();
+		CandidateId = Integer.toString(pages.Utill().candidateid());
+		lastname = pages.Utill().candidateName();
+		HashMap<String, String> datas = new HashMap<String, String>();
+		datas.put("CandidateName", CandidateName);
+		datas.put("CandidateId", CandidateId);
+		datas.put("ClientName", ClientName);
+		datas.put("ProjectName", ProjectName);
+		datas.put("lastname", lastname);
+		pages.CaseRegistration().registercase(datas, true);
+		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		contract.remove("Current/Latest Employment");
+		contract.remove("Previous Employment");
+		contract.remove("Previous Employment 2");
+		contract.remove("Previous Employment 3");
+		contract.remove("Previous Employment 4");
+
+		for (int i = 0; i < contract.size(); i++) {
+			pages.CaseRegistration().selectcheck(contract.get(i).toString());
+		}
+		pages.CaseRegistration().save();
+		pages.Utill().confirmAlert();
+		pages.Home().homepage();
+		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		System.out.println("case refference no is : " + refno);
+		pages.Utill().click_element("//span[text()='" + refno + "']");
+		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.CaseRegistration().addEditComponent();
+		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.CaseRegistration().submit();
+		pages.Utill().confirmAlert();
+		pages.Home().homepage();
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		List<HashMap<String, String>> data = pages.CaseTracker().getcasedata();
+		System.out.println(data.size());
+		SoftAssert sf = new SoftAssert();
+		for (int i = 0; i < data.size(); i++) {
+			String name = data.get(i).get("ComponentName");
+			if (name.equals("Panel1") || name.equals("Medical Test")) {
+				if (data.get(i).get("CurrentStage").equals("Verification Assignment Pending")) {
+					sf.assertTrue(true, "success");
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			} else if (name.contains("Employment")) {
+				if (data.get(i).get("CurrentStage").equals("Yet to start")) {
+					sf.assertTrue(true, "success");
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			} else {
+				if (data.get(i).get("CurrentStage").equals("Data Entry Assignment Pending")) {
+					sf.assertTrue(true, "success");
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			}
+		}
+		List<String> checkname = pages.CaseTracker().getcomponentname(data);
+		pages.CaseTracker().cancel();
+		contract.removeAll(checkname);
+
+		sf.assertTrue(contract.size() == 0, "success");
+		sf.assertAll();
+	}
+
+	// only address checks
+	@Test(priority = 13, enabled = true, dependsOnMethods = "Login")
+	public void TC_SPCR_012() throws Exception {
+		pages.Home().clickRegister();
+		CandidateName = pages.Utill().firstName();
+		CandidateId = Integer.toString(pages.Utill().candidateid());
+		lastname = pages.Utill().lastName();
+		HashMap<String, String> datas = new HashMap<String, String>();
+		datas.put("CandidateName", CandidateName);
+		datas.put("CandidateId", CandidateId);
+		datas.put("ClientName", ClientName);
+		datas.put("ProjectName", ProjectName);
+		datas.put("lastname", lastname);
+		pages.CaseRegistration().registercase(datas, false);
+		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> address = pages.Utill().getAddressChecks(contract);
+		for (int i = 0; i < address.size(); i++) {
+			pages.CaseRegistration().selectcheck(address.get(i).toString());
+		}
+		pages.CaseRegistration().save();
+		pages.Utill().confirmAlert();
+		pages.Home().homepage();
+		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		pages.Utill().click_element("//span[text()='" + refno + "']");
+		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.CaseRegistration().addEditComponent();
+		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.CaseRegistration().submit();
+		pages.Utill().confirmAlert();
+		pages.Home().homepage();
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		List<HashMap<String, String>> data = pages.CaseTracker().getcasedata();
+		System.out.println(data.size());
+		SoftAssert sf = new SoftAssert();
+		for (int i = 0; i < data.size(); i++) {
+			String name = data.get(i).get("ComponentName");
+			if (address.contains(name)) {
+				if (data.get(i).get("CurrentStage").equals("Data Entry Assignment Pending")) {
+					sf.assertTrue(true, "success");
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			} else {
+				if (data.get(i).get("CurrentStage").equals("Yet to start")) {
+					sf.assertTrue(true, "success");
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			}
+		}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
+
+	}
+
+	// only education checks
+	@Test(priority = 14, enabled = true, dependsOnMethods = "Login")
+	public void TC_SPCR_013() throws Exception {
+		pages.Home().clickRegister();
+		CandidateName = pages.Utill().firstName();
+		CandidateId = Integer.toString(pages.Utill().candidateid());
+		lastname = pages.Utill().lastName();
+		HashMap<String, String> datas = new HashMap<String, String>();
+		datas.put("CandidateName", CandidateName);
+		datas.put("CandidateId", CandidateId);
+		datas.put("ClientName", ClientName);
+		datas.put("ProjectName", ProjectName);
+		datas.put("lastname", lastname);
+		pages.CaseRegistration().registercase(datas, false);
+		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> education = pages.Utill().getEducationChecks(contract);
+		for (int i = 0; i < education.size(); i++) {
+			pages.CaseRegistration().selectcheck(education.get(i).toString());
+		}
+		pages.CaseRegistration().save();
+		pages.Utill().confirmAlert();
+		pages.Home().homepage();
+		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		pages.Utill().click_element("//span[text()='" + refno + "']");
+		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.CaseRegistration().addEditComponent();
+		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.CaseRegistration().submit();
+		pages.Utill().confirmAlert();
+		pages.Home().homepage();
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		List<HashMap<String, String>> data = pages.CaseTracker().getcasedata();
+		System.out.println(data.size());
+		SoftAssert sf = new SoftAssert();
+		for (int i = 0; i < data.size(); i++) {
+			String name = data.get(i).get("ComponentName");
+			if (education.contains(name)) {
+				if (data.get(i).get("CurrentStage").equals("Data Entry Assignment Pending")) {
+					sf.assertTrue(true, "success");
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			} else {
+				if (data.get(i).get("CurrentStage").equals("Yet to start")) {
+					sf.assertTrue(true, "success");
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			}
+		}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
+	}
+	//only employment
+	@Test(priority = 15, enabled = true, dependsOnMethods = "Login")
+	public void TC_SPCR_014() throws Exception {
+		pages.Home().clickRegister();
+		CandidateName = pages.Utill().firstName();
+		CandidateId = Integer.toString(pages.Utill().candidateid());
+		lastname = pages.Utill().lastName();
+		HashMap<String, String> datas = new HashMap<String, String>();
+		datas.put("CandidateName", CandidateName);
+		datas.put("CandidateId", CandidateId);
+		datas.put("ClientName", ClientName);
+		datas.put("ProjectName", ProjectName);
+		datas.put("lastname", lastname);
+		pages.CaseRegistration().registercase(datas, false);
+		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> emp = pages.Utill().getEducationChecks(contract);
+		for (int i = 0; i < emp.size(); i++) {
+			pages.CaseRegistration().selectcheck(emp.get(i).toString());
+		}
+		pages.CaseRegistration().save();
+		pages.Utill().confirmAlert();
+		pages.Home().homepage();
+		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		pages.Utill().click_element("//span[text()='" + refno + "']");
+		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.CaseRegistration().addEditComponent();
+		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.CaseRegistration().submit();
+		pages.Utill().confirmAlert();
+		pages.Home().homepage();
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		List<HashMap<String, String>> data = pages.CaseTracker().getcasedata();
+		System.out.println(data.size());
+		SoftAssert sf = new SoftAssert();
+		for (int i = 0; i < data.size(); i++) {
+			String name = data.get(i).get("ComponentName");
+			if (emp.contains(name)) {
+				if (data.get(i).get("CurrentStage").equals("Data Entry Assignment Pending")) {
+					sf.assertTrue(true, "success");
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			} else {
+				if (data.get(i).get("CurrentStage").equals("Yet to start")) {
+					sf.assertTrue(true, "success");
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			}
+		}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
+	}
+	//only reference
+		@Test(priority = 16, enabled = true, dependsOnMethods = "Login")
+		public void TC_SPCR_015() throws Exception {
 			pages.Home().clickRegister();
-			CandidateName = pages.Utill().candidateName();
+			CandidateName = pages.Utill().firstName();
 			CandidateId = Integer.toString(pages.Utill().candidateid());
-			lastname = pages.Utill().candidateName();
+			lastname = pages.Utill().lastName();
 			HashMap<String, String> datas = new HashMap<String, String>();
 			datas.put("CandidateName", CandidateName);
 			datas.put("CandidateId", CandidateId);
 			datas.put("ClientName", ClientName);
 			datas.put("ProjectName", ProjectName);
 			datas.put("lastname", lastname);
-			pages.CaseRegistration().registercase(datas, true);
-			List<String> contract = pages.DbConnection().getcontractdetails("demo automation");
-			contract.remove("Current/Latest Employment");
-			contract.remove("Previous Employment");
-			contract.remove("Previous Employment 2");
-			contract.remove("Previous Employment 3");
-			contract.remove("Previous Employment 4");
-
-			for (int i = 0; i < contract.size(); i++) {
-				pages.CaseRegistration().selectcheck(contract.get(i).toString());
+			pages.CaseRegistration().registercase(datas, false);
+			List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+			List<String> ref = pages.Utill().getReferenceChecks(contract);
+			for (int i = 0; i < ref.size(); i++) {
+				pages.CaseRegistration().selectcheck(ref.get(i).toString());
 			}
 			pages.CaseRegistration().save();
 			pages.Utill().confirmAlert();
 			pages.Home().homepage();
-			refno =pages.DcaseRegistration().getrefno(CandidateName, lastname);
-			pages.Utill().click_element("//span[text()='"+refno+"']");
+			refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+			pages.Utill().click_element("//span[text()='" + refno + "']");
 			pages.Utill().wait_until_loader_is_invisible(5);
 			pages.CaseRegistration().addEditComponent();
 			pages.Utill().wait_until_loader_is_invisible(10);
@@ -262,47 +500,39 @@ public class SPcasereg extends Design {
 			pages.Utill().confirmAlert();
 			pages.Home().homepage();
 			pages.Home().CaseTracker();
+			pages.CaseTracker().search(refno);
 			pages.CaseTracker().clickcase(refno);
 			List<HashMap<String, String>> data = pages.CaseTracker().getcasedata();
 			System.out.println(data.size());
-			SoftAssert sf= new SoftAssert();
+			SoftAssert sf = new SoftAssert();
 			for (int i = 0; i < data.size(); i++) {
 				String name = data.get(i).get("ComponentName");
-				if (name.equals("Panel1") || name.equals("Medical Test")) {
-					if (data.get(i).get("CurrentStage").equals("Verification Assignment Pending")) {
-					sf.assertTrue(true, "success");
-					} else {
-					sf.assertTrue(false, data.get(i).get("ComponentName"));
-					}
-				}
-				else if (name.contains("Employment")) {
-					if (data.get(i).get("CurrentStage").equals("Yet to start")) {
-					sf.assertTrue(true, "success");
-					} else {
-					sf.assertTrue(false, data.get(i).get("ComponentName"));
-					}
-				}
-				else {
+				if (ref.contains(name)) {
 					if (data.get(i).get("CurrentStage").equals("Data Entry Assignment Pending")) {
 						sf.assertTrue(true, "success");
-						} else {
+					} else {
 						sf.assertTrue(false, data.get(i).get("ComponentName"));
-						}
+					}
+				} else {
+					if (data.get(i).get("CurrentStage").equals("Yet to start")) {
+						sf.assertTrue(true, "success");
+					} else {
+						sf.assertTrue(false, data.get(i).get("ComponentName"));
+					}
 				}
 			}
-			List<String> checkname=pages.CaseTracker().getcomponentname(data);
-			contract.removeAll(checkname);
-			
-			sf.assertTrue(contract.size()==0, "success");
+			pages.CaseTracker().cancel();
 			sf.assertAll();
 		}
-
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(result.getThrowable().getMessage(),
 					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			// driver.get("http://192.168.2.17:97/Web/dashboard.aspx");
+			driver.get(config.getProperty("url") + "/Web/dashboard.aspx");
+			pages.Utill().wait_until_loader_is_invisible(80);
 		} else {
 			logger.pass(method.getName() + " completed");
 		}
@@ -311,22 +541,15 @@ public class SPcasereg extends Design {
 
 	@AfterTest
 	public void teardown() throws Exception {
-//		pages.Home().Logout();
+		// pages.Home().Logout();
 		// Thread.sleep(10000);
-//		driver.close();
+		// driver.close();
 	}
 
 	@AfterSuite
 	public void afterSuite() {
-
 		extent.flush();
 		// driver.quit();
 
 	}
-	// private String getvalue(String key) throws FileNotFoundException, IOException
-	// {
-	// Properties pr = new Properties();
-	// pr.load(new FileInputStream(new File("./config.properties")));
-	// return pr.getProperty(key);
-	// }
 }

@@ -257,7 +257,7 @@ public class CaseRegistration {
 		casereg.selectProject(data.get("ProjectName"));
 		casereg.FirstName(data.get("CandidateName"));
 		casereg.LastName(data.get("lastname"));
-		casereg.DOB("18/04/1995");
+		casereg.DOB(pages.Utill().getdob());
 		casereg.gender("male");
 		casereg.Email(data.get("CandidateName")+"@ggmail.com");
 		casereg.FatherFirstName("fname");

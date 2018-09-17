@@ -9,6 +9,11 @@ import java.util.List;
 public class DbConnection {
 	
 	public static void main(String[] args)throws Exception {	
+		List<String> data=new DbConnection().getcontractdetails("demo contractauto");
+		for (int i = 0; i < data.size(); i++) {
+//		for (int i = 21; i < 28; i++) {
+			System.out.println(i+" = "+data.get(i).toString());
+		}
 	}
 public List<String> getcontractdetails(String contractname) throws Exception {
 	List<String> result = new ArrayList<String>();
