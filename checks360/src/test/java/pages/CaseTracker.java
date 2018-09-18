@@ -49,27 +49,21 @@ public class CaseTracker {
 				switch(j) {
 				case 0:
 					rowdata.put("ComponentName", temp);
-					//data.add(rowdata);
 					break;
 				case 1:
 					rowdata.put("ReceivedOn", temp);
-					//data.add(rowdata);
 					break;
 				case 2:
 					rowdata.put("Status", temp);
-					//data.add(rowdata);
 					break;
 				case 3:
 					rowdata.put("ComponentOutcome", temp);
-					//data.add(rowdata);
 					break;
 				case 4:
 					rowdata.put("CurrentStage", temp);
-					//data.add(rowdata);
 					break;
 				case 5:
 					rowdata.put("PersonResponsible", temp);
-					//data.add(rowdata);
 					break;
 				default:
 					throw new NotFoundException();
@@ -79,8 +73,8 @@ public class CaseTracker {
 		}
 		return data;
 	}
-	public void cancel() throws AWTException {
-		pages.Utill().click_element("//button[@class='close']");
+	public void cancel() {
+//		pages.Utill().click_element("//button[@class='close']");
 		pages.Utill().closetab();
 		pages.Utill().switchWindow(0);
 	}

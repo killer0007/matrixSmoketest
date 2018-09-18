@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,7 +20,7 @@ public class CaseRegistration {
 	Pages pages;
 
 	public CaseRegistration(WebDriver driver, ExtentTest logger) {
-//		super(driver, logger);
+		// super(driver, logger);
 		this.driver = driver;
 		pages = new Pages(driver, logger);
 	}
@@ -38,7 +39,12 @@ public class CaseRegistration {
 	public void selectProject(String name) throws InterruptedException {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlProject_Input");
 		Thread.sleep(1000);
-		pages.Utill().click_element("//li[text()='" + name + "']");
+		try {
+			pages.Utill().click_element("//li[text()='" + name + "']");
+		} catch (ElementNotVisibleException e) {
+			Thread.sleep(1000);
+			pages.Utill().click_element("//li[text()='" + name + "']");
+		}
 		pages.Utill().wait_until_loader_is_invisible(10);
 	}
 
@@ -106,13 +112,15 @@ public class CaseRegistration {
 
 	public void clickfresher(boolean value) {
 		if (value) {
-//			pages.Utill().click_element("_rfdSkinnedctl00_ContentPlaceHolder1_rblFresher_0");
-//			pages.Utill().clear_element_text("ctl00_ContentPlaceHolder1_rblFresher_0");
-			pages.Utill().executescript("document.getElementById('ctl00_ContentPlaceHolder1_rblFresher_0').checked='checked'");
-			
+			// pages.Utill().click_element("_rfdSkinnedctl00_ContentPlaceHolder1_rblFresher_0");
+			// pages.Utill().clear_element_text("ctl00_ContentPlaceHolder1_rblFresher_0");
+			pages.Utill().executescript(
+					"document.getElementById('ctl00_ContentPlaceHolder1_rblFresher_0').checked='checked'");
+
 		} else {
-//			pages.Utill().click_element("_rfdSkinnedctl00_ContentPlaceHolder1_rblFresher_1");
-			pages.Utill().executescript("document.getElementById('ctl00_ContentPlaceHolder1_rblFresher_1').checked='checked'");
+			// pages.Utill().click_element("_rfdSkinnedctl00_ContentPlaceHolder1_rblFresher_1");
+			pages.Utill().executescript(
+					"document.getElementById('ctl00_ContentPlaceHolder1_rblFresher_1').checked='checked'");
 		}
 	}
 
@@ -204,16 +212,17 @@ public class CaseRegistration {
 
 	public void cancel() {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCancel");
+		pages.Utill().wait_until_loader_is_invisible(50);
 	}
 
 	public void gender(String gender) throws Exception {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlGender_Input");
 		Thread.sleep(1000);
 		if (gender.equalsIgnoreCase("male")) {
-			//pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']//text()='Male'");
+			// pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']//text()='Male'");
 			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']/div/ul/li[2]");
 		} else if (gender.equalsIgnoreCase("female")) {
-			//pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']//text()='Female'");
+			// pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']//text()='Female'");
 			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']/div/ul/li[3]");
 		} else {
 			throw new NotFoundException(gender);
@@ -224,13 +233,13 @@ public class CaseRegistration {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input");
 		Thread.sleep(1000);
 		if (status.equalsIgnoreCase("Single")) {
-//			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']//text()='Single'");
+			// pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']//text()='Single'");
 			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']/div/ul/li[2]");
 		} else if (status.equalsIgnoreCase("married")) {
-//			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']//text()='Married'");
+			// pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']//text()='Married'");
 			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']/div/ul/li[3]");
 		} else if (status.equalsIgnoreCase("divorced")) {
-//			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']//text()='Divorced'");
+			// pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']//text()='Divorced'");
 			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']/div/ul/li[4]");
 		}
 
@@ -239,30 +248,35 @@ public class CaseRegistration {
 		}
 	}
 
-	public List<String> getcomponentlist() {
+	public List<String> getDisplayedComponents() {
 		List<String> data = new ArrayList<String>();
-		List<WebElement> ele = driver.findElements(
+		List<WebElement> loc = driver.findElements(
 				By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_grdComponentDetails_ctl00']/tbody/tr/td[3]"));
-		for (int i = 0; i < ele.size(); i++) {
-			String name = ele.get(i).getText();
-			if (name.length() > 1) {
+		for (int i = 0; i < loc.size(); i++) {
+			String name = loc.get(i).getText().toString().trim();
+			if (name.length() != 0) {
 				data.add(name);
+			} else {
+				continue;
 			}
 		}
 		return data;
 	}
+
+	
+
 	public void registercase(HashMap<String, String> data, boolean fresher) throws Exception {
-		CaseRegistration casereg =pages.CaseRegistration();
+		CaseRegistration casereg = pages.CaseRegistration();
 		casereg.selectClient(data.get("ClientName"));
 		casereg.selectProject(data.get("ProjectName"));
 		casereg.FirstName(data.get("CandidateName"));
 		casereg.LastName(data.get("lastname"));
 		casereg.DOB(pages.Utill().getdob());
 		casereg.gender("male");
-		casereg.Email(data.get("CandidateName")+"@ggmail.com");
+		casereg.Email(data.get("CandidateName") + "@ggmail.com");
 		casereg.FatherFirstName("fname");
 		casereg.FatherLastName("lname");
-		casereg.LinkedIn(data.get("CandidateName")+" linkedin");
+		casereg.LinkedIn(data.get("CandidateName") + " linkedin");
 		casereg.maritalStatus("Single");
 		casereg.Nationality("Indian");
 		casereg.LandlineNumber(pages.Utill().mobileno());
@@ -273,20 +287,46 @@ public class CaseRegistration {
 		casereg.clickfresher(fresher);
 		casereg.addEditComponent();
 	}
-	
-}
-//class caseregdashboard {
-//	WebDriver driver;
-//	ExtentTest logger;
-//	Pages pages;
-//	public caseregdashboard(WebDriver driver, ExtentTest logger) {
-//		this.driver=driver;
-//		this.logger=logger;
-//		pages = new Pages(driver, logger);
-//	}
-//	
-//	public void setusername(String firstname) {
-//		pages.Utill().input_text("txtFirstName", firstname);
-//	}
-//}
+	public void registercase(HashMap<String, String> data) throws Exception {
+		CaseRegistration casereg = pages.CaseRegistration();
+		casereg.selectClient(data.get("ClientName"));
+		casereg.selectProject(data.get("ProjectName"));
+		casereg.FirstName(data.get("CandidateName"));
+		casereg.LastName(data.get("lastname"));
+		casereg.DOB(data.get("DateofBirth"));
+		casereg.gender("male");
+		casereg.Email(data.get("CandidateName") + "@ggmail.com");
+		casereg.FatherFirstName("fname");
+		casereg.FatherLastName("lname");
+		casereg.LinkedIn(data.get("CandidateName") + " linkedin");
+		casereg.maritalStatus("Single");
+		casereg.Nationality("Indian");
+		casereg.LandlineNumber(pages.Utill().mobileno());
+		casereg.MobileNumber(pages.Utill().mobileno());
+		casereg.EmergencyContactNumber(pages.Utill().mobileno());
+		casereg.EmergencyContactPerson(data.get("CandidateName"));
+		casereg.CandidateID(data.get("CandidateId"));
+		casereg.clickfresher(false);
+		casereg.addEditComponent();
+	}
 
+
+	public int getCheckCount() {
+		return Integer.parseInt(pages.Utill().get_text("ctl00_ContentPlaceHolder1_lblComponentCount"));
+	}
+
+}
+// class caseregdashboard {
+// WebDriver driver;
+// ExtentTest logger;
+// Pages pages;
+// public caseregdashboard(WebDriver driver, ExtentTest logger) {
+// this.driver=driver;
+// this.logger=logger;
+// pages = new Pages(driver, logger);
+// }
+//
+// public void setusername(String firstname) {
+// pages.Utill().input_text("txtFirstName", firstname);
+// }
+// }

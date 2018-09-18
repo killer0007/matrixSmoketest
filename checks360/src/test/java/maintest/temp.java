@@ -49,23 +49,18 @@ public static void main(String[] args) throws Exception{
 //		System.out.println(lname);
 ////		System.out.println(fname+" : "+lname);
 //	}
-	DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-//	
-////	Date date = new Date();
-//	LocalDateTime now = LocalDateTime.now();
-//	String ds=df.format(now);
-////	String ds=date.toString();
-//	System.out.println(ds);
-//	int year=Integer.parseInt(ds.substring(6, 10))-20;
-//	System.out.println(year);
 
-	Random random = new Random();
-	int minDay = (int) LocalDate.of(1990, 1, 1).toEpochDay();
-	int maxDay = (int) LocalDate.of(2015, 1, 1).toEpochDay();
-	long randomDay = minDay + random.nextInt(maxDay - minDay);
-
-	LocalDate randomBirthDate = LocalDate.ofEpochDay(randomDay);
-
-	System.out.println(df.format(randomBirthDate).toString());
+	String no ="HDFC000264";
+	String code=no.substring(0, 4);
+	StringBuilder st = new StringBuilder("");
+	int n=Integer.parseInt(no.substring(4))+1;
+	for (int i = 0; i < 6-Integer.toString(n).length(); i++) {
+	st.append("0");
+	}
+	System.out.println(code+st+Integer.toString(n));
+	
+	
+	
+	
 }
 }

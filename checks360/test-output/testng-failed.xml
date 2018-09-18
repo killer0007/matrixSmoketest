@@ -3,19 +3,18 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="maintest.Basic">
+      <class name="maintest.SPcasereg">
         <methods>
-          <include name="Login"/>
-          <include name="setup"/>
-          <include name="beforetest"/>
-          <include name="one"/>
-          <include name="beforeSuit"/>
-          <include name="afterSuite"/>
-          <include name="two"/>
           <include name="teardown"/>
           <include name="tearDown"/>
+          <include name="Login"/>
+          <include name="TC_SPCR_013"/>
+          <include name="beforeSuit"/>
+          <include name="setup"/>
+          <include name="afterSuite"/>
+          <include name="beforetest"/>
         </methods>
-      </class> <!-- maintest.Basic -->
+      </class> <!-- maintest.SPcasereg -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

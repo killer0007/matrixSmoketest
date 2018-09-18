@@ -491,7 +491,7 @@ public class Utill {
 				}
 			});
 		} catch (NoSuchElementException e) {
-			System.out.println("done");
+//			System.out.println("done");
 		}
 	}
 
@@ -530,12 +530,14 @@ public class Utill {
 
 	}
 
-	public void confirmAlert() {
+	public String confirmAlert() {
 		By loc = By.xpath("//*[text()='OK']");
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.presenceOfElementLocated(loc));
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(loc)));
+		String msg=pages.Utill().get_text("class:rwDialogText");
 		driver.findElement(loc).click();
+		return msg.trim();
 
 	}
 
@@ -625,7 +627,7 @@ public class Utill {
 		return drug;
 	}
 
-	public void closetab() throws AWTException {
+	public void closetab() {
 		driver.close();
 
 	}

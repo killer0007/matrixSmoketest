@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.SkipException;
@@ -18,12 +20,13 @@ import org.testng.asserts.SoftAssert;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import environment.BaseClass;
 import environment.Pages;
 import environment.Utill;
-
+@Listeners(environment.Listener.class)
 public class Basic extends Design {
 	WebDriver driver;
 	ExtentHtmlReporter reporter;
@@ -31,6 +34,7 @@ public class Basic extends Design {
 	ExtentReports extent;
 	Pages pages;
 	Properties config;
+	protected String ContractName = null;
 	protected String ClientName=null;
 	protected String ProjectName=null;
 	protected String CandidateName=null;
@@ -55,6 +59,7 @@ public class Basic extends Design {
 		config = BaseClass.getlocator();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(config.getProperty("url"));
+		ContractName = config.getProperty("contractname");
 		ClientName = config.getProperty("clientname");
 		ProjectName = config.getProperty("projectname");
 
@@ -72,19 +77,24 @@ public class Basic extends Design {
 	@Test(priority=1,enabled=true)
 	public void Login() throws Exception {
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-
+		HashMap<String, String> data =pages.DbConnection().getLastCase(ProjectName);
+		pages.Home().clickRegister();
+		CandidateName = data.get("firstname");
+		CandidateId = Integer.toString(pages.Utill().candidateid());
+		lastname = data.get("lastname");
+		HashMap<String, String> datas = new HashMap<String, String>();
+		datas.put("CandidateName", CandidateName);
+		datas.put("CandidateId", CandidateId);
+		datas.put("ClientName", ClientName);
+		datas.put("ProjectName", ProjectName);
+		datas.put("lastname", lastname);
+		datas.put("DateofBirth", data.get("DateofBirth"));
+		pages.CaseRegistration().registercase(datas);
+		String msg = pages.Utill().confirmAlert();
+		System.out.println(msg);
 		}
 	
-	@Test(priority=2,enabled=true, dependsOnMethods="Login")
-	public void one() throws Exception {
-		assertTrue(false);
-
-		}
-	@Test(priority=3,enabled=true, dependsOnMethods="one")
-	public void two() throws Exception {
-		assertTrue(true);
-
-		}
+	
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
