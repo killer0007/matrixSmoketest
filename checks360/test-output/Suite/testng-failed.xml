@@ -6,7 +6,8 @@
       <class name="maintest.SPcasereg">
         <methods>
           <include name="teardown"/>
-          <include name="TC_SPCR_001"/>
+          <include name="TC_SPCR_010"/>
+          <include name="TC_SPCR_011"/>
           <include name="tearDown"/>
           <include name="Login"/>
           <include name="beforeSuit"/>

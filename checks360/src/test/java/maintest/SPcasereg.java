@@ -1,7 +1,6 @@
 package maintest;
 
 import static org.junit.Assert.assertTrue;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -19,6 +18,8 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+
+import actions.CaseOwnerInsuffClear;
 import environment.BaseClass;
 import environment.Pages;
 import environment.Utill;
@@ -39,7 +40,7 @@ public class SPcasereg extends Design {
 	protected String lastname = null;
 	protected String refno = null;
 
-	@BeforeSuite
+	@BeforeSuite(alwaysRun=true)
 	public void beforeSuit() {
 		reporter = new ExtentHtmlReporter("./Reports/SPcasereg.html");
 		reporter.config().setDocumentTitle("service provider case registration");
@@ -49,7 +50,7 @@ public class SPcasereg extends Design {
 		extent.attachReporter(reporter);
 	}
 
-	@BeforeTest
+	@BeforeTest(alwaysRun=true)
 	public void beforetest() throws FileNotFoundException, IOException {
 		driver = BaseClass.getDriver();
 
@@ -62,7 +63,7 @@ public class SPcasereg extends Design {
 
 	}
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun=true)
 	public void setup(Method method) throws FileNotFoundException, IOException {
 		logger = extent.createTest(method.getName());
 		logger.pass(method.getName() + " Started");
@@ -70,13 +71,13 @@ public class SPcasereg extends Design {
 		pages = new Pages(driver, logger);
 	}
 
-	@Test(priority = 1, enabled = true, groups = { "smoketest" })
+	@Test(priority = 1, enabled = true, groups = { "smoketest", "spcase registration", "insuff"})
 	public void Login() throws Exception {
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
 		
 	}
 
-	@Test(priority = 2, enabled = true, dependsOnMethods = "Login", groups = { "smoketest" })
+	@Test(priority = 2, enabled = true, dependsOnMethods = "Login", groups = { "smoketest", "spcase registration" })
 	public void TC_SPCR_001() {
 		pages.Home().clickRegister();
 		String title = pages.CaseRegistration().getTitle();
@@ -87,7 +88,7 @@ public class SPcasereg extends Design {
 		}
 	}
 
-	@Test(priority = 3, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 3, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_002() {
 		pages.CaseRegistration().addEditComponent();
 		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_ddlClient", "border");
@@ -98,7 +99,7 @@ public class SPcasereg extends Design {
 		}
 	}
 
-	@Test(priority = 4, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 4, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_003() {
 		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_ddlProject", "border");
 		if (result.equals("1px solid rgb(255, 0, 0)")) {
@@ -108,7 +109,7 @@ public class SPcasereg extends Design {
 		}
 	}
 
-	@Test(priority = 5, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 5, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_004() {
 		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_ddlContract", "border");
 		if (result.equals("1px solid rgb(255, 0, 0)")) {
@@ -118,7 +119,7 @@ public class SPcasereg extends Design {
 		}
 	}
 
-	@Test(priority = 6, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 6, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_005() {
 		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_txtFirstName",
 				"border-color");
@@ -129,7 +130,7 @@ public class SPcasereg extends Design {
 		}
 	}
 
-	@Test(priority = 7, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 7, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_006() {
 		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_txtLastName", "border-color");
 		if (result.equals("rgb(213, 25, 35)")) {
@@ -139,7 +140,7 @@ public class SPcasereg extends Design {
 		}
 	}
 
-	@Test(priority = 8, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 8, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_007() {
 		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_txtFatherFirstName",
 				"border-color");
@@ -150,7 +151,7 @@ public class SPcasereg extends Design {
 		}
 	}
 
-	@Test(priority = 9, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 9, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_008() {
 		// pages.CaseRegistration().addEditComponent();
 		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_txtFatherLastName",
@@ -162,7 +163,7 @@ public class SPcasereg extends Design {
 		}
 	}
 
-	@Test(priority = 10, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 10, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_009() {
 		// pages.CaseRegistration().addEditComponent();
 		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_txtClientCandidateID",
@@ -175,10 +176,10 @@ public class SPcasereg extends Design {
 	}
 
 	// with all checks and fresher is no
-	@Test(priority = 11, enabled = true, dependsOnMethods = "Login", groups = { "smoketest" })
+	@Test(priority = 11, enabled = true, dependsOnMethods = "Login", groups = { "smoketest","spcase registration" })
 	public void TC_SPCR_010() throws Exception {
 		// pages.Home().clickRegister();
-		CandidateName = pages.Utill().firstName();
+		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
@@ -234,7 +235,7 @@ public class SPcasereg extends Design {
 	}
 
 	// with all checks and fresher is yes
-	@Test(priority = 12, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 12, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_011() throws Exception {
 		refno = null;
 		pages.Home().clickRegister();
@@ -307,10 +308,10 @@ public class SPcasereg extends Design {
 	}
 
 	// only address checks
-	@Test(priority = 13, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 13, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_012() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().firstName();
+		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
@@ -365,10 +366,10 @@ public class SPcasereg extends Design {
 	}
 
 	// only education checks
-	@Test(priority = 14, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 14, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_013() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().firstName();
+		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
@@ -422,10 +423,10 @@ public class SPcasereg extends Design {
 	}
 
 	// only employment
-	@Test(priority = 15, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 15, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_014() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().firstName();
+		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
@@ -479,10 +480,10 @@ public class SPcasereg extends Design {
 	}
 
 	// only reference
-	@Test(priority = 16, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 16, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_015() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().firstName();
+		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
@@ -536,10 +537,10 @@ public class SPcasereg extends Design {
 	}
 
 	// only id
-	@Test(priority = 17, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 17, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_016() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().firstName();
+		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
@@ -593,10 +594,10 @@ public class SPcasereg extends Design {
 	}
 
 	// only criminal
-	@Test(priority = 18, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 18, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_017() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().firstName();
+		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
@@ -650,10 +651,10 @@ public class SPcasereg extends Design {
 	}
 
 	// only court
-	@Test(priority = 19, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 19, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_018() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().firstName();
+		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
@@ -707,10 +708,10 @@ public class SPcasereg extends Design {
 	}
 
 	// only drug
-	@Test(priority = 20, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 20, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_019() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().firstName();
+		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
@@ -764,10 +765,10 @@ public class SPcasereg extends Design {
 	}
 
 	// only db
-	@Test(priority = 21, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 21, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_020() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().firstName();
+		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
@@ -823,10 +824,10 @@ public class SPcasereg extends Design {
 	}
 
 	// only credit
-	@Test(priority = 22, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 22, enabled = true, dependsOnMethods = "Login", groups= {"spcase registration"})
 	public void TC_SPCR_021() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().firstName();
+		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
@@ -882,10 +883,10 @@ public class SPcasereg extends Design {
 	}
 
 	// To check cancel with updating all data
-	@Test(priority = 23, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 23, enabled = true, dependsOnMethods = "Login", groups= {"smoketest","spcase registration"})
 	public void TC_SPCR_022() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().firstName();
+		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
@@ -911,10 +912,10 @@ public class SPcasereg extends Design {
 	}
 
 	// To check component count
-	@Test(priority = 24, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 24, enabled = true, dependsOnMethods = "Login", groups= {"smoketest","spcase registration"})
 	public void TC_SPCR_023() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().firstName();
+		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
 		lastname = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
@@ -934,7 +935,7 @@ public class SPcasereg extends Design {
 
 	}
 	//To check compenent displayed in registration screen 
-	@Test(priority = 25, enabled = true, dependsOnMethods = "TC_SPCR_023")
+	@Test(priority = 25, enabled = true, dependsOnMethods = "TC_SPCR_023", groups= {"smoketest","spcase registration"})
 	public void TC_SPCR_024() throws Exception {
 		List<String> components = pages.CaseRegistration().getDisplayedComponents();
 		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
@@ -946,7 +947,7 @@ public class SPcasereg extends Design {
 		}
 	}
 	//To check component list when fresher is Yes
-	@Test(priority = 26, enabled = true)
+	@Test(priority = 26, enabled = true, dependsOnMethods = "Login", groups= {"smoketest","spcase registration"})
 	public void TC_SPCR_025() throws Exception {
 		pages.Home().clickRegister();
 		CandidateName = pages.Utill().candidateName();
@@ -975,7 +976,7 @@ public class SPcasereg extends Design {
 		}
 	}
 	//To check alert message for employment check when frehser is yes
-	@Test(priority = 27, enabled = true)
+	@Test(priority = 27, enabled = true,dependsOnMethods = "Login",  groups= {"smoketest","spcase registration"})
 	public void TC_SPCR_026() throws Exception {
 		pages.Home().clickRegister();
 		CandidateName = pages.Utill().candidateName();
@@ -1002,7 +1003,7 @@ public class SPcasereg extends Design {
 		
 		
 	}
-	@Test(priority = 28, enabled = true)
+	@Test(priority = 28, enabled = true, dependsOnMethods = "Login", groups= {"smoketest","spcase registration"})
 	public void TC_SPCR_027() throws Exception {
 		HashMap<String, String> data =pages.DbConnection().getLastCase(ProjectName);
 		pages.Home().clickRegister();
@@ -1027,8 +1028,47 @@ public class SPcasereg extends Design {
 		}
 
 	}
+	//To check insuff raised case showing in clear queue
+	@Test(priority = 29, enabled = true, dependsOnMethods = "Login", groups= {"smoketest","insuff"})
+	public void TC_SPINF_001() throws Exception {
+		CaseOwnerInsuffClear cs = pages.CaseOwnerInsuffClear();
+		pages.Home().clickRegister();
+		CandidateName = pages.Utill().candidateName();
+		CandidateId = Integer.toString(pages.Utill().candidateid());
+		lastname = pages.Utill().candidateName();
+		HashMap<String, String> datas = new HashMap<String, String>();
+		datas.put("CandidateName", CandidateName);
+		datas.put("CandidateId", CandidateId);
+		datas.put("ClientName", ClientName);
+		datas.put("ProjectName", ProjectName);
+		datas.put("lastname", lastname);
+		pages.CaseRegistration().registercase(datas, false);
+		pages.CaseRegistration().selectcheck("Permanent");
+		pages.CaseRegistration().selectcheck("Current Address");
+		pages.CaseRegistration().raiseInsuff("Permanent", "need address proof");
+		pages.CaseRegistration().submit();
+		pages.Utill().confirmAlert();
+		pages.Home().homepage();
+		pages.Home().clickActions();
+		cs.caseOwner();
+		String refno = pages.DbConnection().getLastrefno(ProjectName);
+		cs.search(refno, "sp");
+		String no = cs.getrefNo();
+		if (refno.equals(no)) {
+		assertTrue(true);
+		} else {
+			assertTrue(refno+" not found", false);
+		}
+	}
+	//To check insuff cleared components moved to case registration
+	@Test(priority = 30, enabled = true, dependsOnMethods = "TC_SPINF_001", groups= {"smoketest","insuff"})
+	public void TC_SPINF_002() throws Exception {
+		CaseOwnerInsuffClear cs =pages.CaseOwnerInsuffClear();
+		cs.clear();
+		
+	}
 
-	@AfterMethod
+	@AfterMethod(alwaysRun=true)
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			String temp = Utill.getScreenshot(driver);
@@ -1042,14 +1082,14 @@ public class SPcasereg extends Design {
 
 	}
 
-	@AfterTest
+	@AfterTest(alwaysRun=true)
 	public void teardown() throws Exception {
 		// pages.Home().Logout();
 		// Thread.sleep(10000);
 		// driver.close();
 	}
 
-	@AfterSuite
+	@AfterSuite(alwaysRun=true)
 	public void afterSuite() {
 		extent.flush();
 		// driver.quit();

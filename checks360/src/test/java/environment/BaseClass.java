@@ -19,8 +19,8 @@ public class BaseClass {
 	public static WebDriver getDriver() {
 		if (driver == null) {
 
-//			String chrome_path = "/home/ubuntu/Downloads/chromedriver";
-//			System.setProperty("webdriver.chrome.driver", chrome_path);
+			String chrome_path = "/home/ubuntu/Downloads/chromedriver";
+			System.setProperty("webdriver.chrome.driver", chrome_path);
 			ChromeOptions chromoption = new ChromeOptions();
 			chromoption.setHeadless(true);
 			driver = new ChromeDriver();

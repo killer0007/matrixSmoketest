@@ -147,17 +147,17 @@ public class CaseRegistration {
 	}
 
 	public void notApplicable(String name, String remarks) {
-		pages.Utill().click_element("//td[text()='" + name + "']/../td[6]//label");
+		pages.Utill().click_element("//td[text()='" + name + "']/../td[6]//input");
 		pages.Utill().input_text("//td[text()='" + name + "']/../td[6]//textarea", remarks);
 	}
 
 	public void raiseInsuff(String name, String comments) {
-		pages.Utill().click_element("//td[text()='" + name + "']/../td[7]//label");
+		pages.Utill().click_element("//td[text()='" + name + "']/../td[7]//input");
 		pages.Utill().input_text("//td[text()='" + name + "']/../td[7]//textarea", comments);
 	}
 
 	public void cep(String name, String comments, String releasedate) {
-		pages.Utill().click_element("//td[text()='" + name + "']/../td[8]//label");
+		pages.Utill().click_element("//td[text()='" + name + "']/../td[8]//input");
 		pages.Utill().input_text("//td[text()='" + name + "']/../td[8]//textarea", comments);
 		pages.Utill().input_text(
 				"//td[text()='" + name + "']/../td[8]//tbody/tr/td/div/table/tbody/tr/td/span/input[1]", releasedate);

@@ -1,13 +1,10 @@
 package pages;
 
-import java.awt.AWTException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import javax.ws.rs.NotFoundException;
-
 import org.openqa.selenium.By;
+import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.aventstack.extentreports.ExtentTest;

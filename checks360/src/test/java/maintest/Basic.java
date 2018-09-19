@@ -23,9 +23,12 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+
+import actions.CaseOwnerInsuffClear;
 import environment.BaseClass;
 import environment.Pages;
 import environment.Utill;
+
 @Listeners(environment.Listener.class)
 public class Basic extends Design {
 	WebDriver driver;
@@ -35,12 +38,12 @@ public class Basic extends Design {
 	Pages pages;
 	Properties config;
 	protected String ContractName = null;
-	protected String ClientName=null;
-	protected String ProjectName=null;
-	protected String CandidateName=null;
-	protected String CandidateId=null;
-	protected String lastname=null;
-	protected String refno=null;
+	protected String ClientName = null;
+	protected String ProjectName = null;
+	protected String CandidateName = null;
+	protected String CandidateId = null;
+	protected String lastname = null;
+	protected String refno = null;
 
 	@BeforeSuite
 	public void beforeSuit() {
@@ -74,27 +77,25 @@ public class Basic extends Design {
 
 	}
 
-	@Test(priority=1,enabled=true)
+	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
+		CaseOwnerInsuffClear cs = pages.CaseOwnerInsuffClear();
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-		HashMap<String, String> data =pages.DbConnection().getLastCase(ProjectName);
-		pages.Home().clickRegister();
-		CandidateName = data.get("firstname");
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = data.get("lastname");
-		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
-		datas.put("DateofBirth", data.get("DateofBirth"));
-		pages.CaseRegistration().registercase(datas);
-		String msg = pages.Utill().confirmAlert();
-		System.out.println(msg);
-		}
-	
-	
+		pages.Home().clickActions();
+		refno="HDFC000286";
+		cs.search(refno, "sp");
+		cs.openCase();
+		cs.insuffClear("Permanent", "clear comments");
+		pages.Utill().confirmAlert();
+		pages.Home().workStage();
+		pages.Utill().click_element("//span[text()='" + refno + "']");
+		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.CaseRegistration().addEditComponent();
+		pages.Utill().wait_until_loader_is_invisible(10);
+			
+		
+	}
+
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {

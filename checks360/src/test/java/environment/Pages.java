@@ -7,6 +7,7 @@ import com.aventstack.extentreports.ExtentTest;
 import environment.Utill;
 import pages.*;
 import dashboard.*;
+import actions.*;
 
 public class Pages {
 	private WebDriver driver;
@@ -18,6 +19,7 @@ public class Pages {
 	private DcaseRegistration dcaseregistration;
 	private DbConnection db;
 	private CaseTracker casetracker;
+	private CaseOwnerInsuffClear CaseOwnerInsuffClear;
 	public Pages(WebDriver driver, ExtentTest logger) {
 		this.driver = driver;
 		this.logger = logger;
@@ -46,4 +48,8 @@ public class Pages {
 	public CaseTracker CaseTracker() {
 		return (casetracker == null) ? casetracker = new CaseTracker(driver, logger) : casetracker;
 	}
+	public CaseOwnerInsuffClear CaseOwnerInsuffClear() {
+		return (CaseOwnerInsuffClear == null) ? CaseOwnerInsuffClear = new CaseOwnerInsuffClear(driver, logger) : CaseOwnerInsuffClear;
+	}
+	//CaseOwnerInsuffClear
 }

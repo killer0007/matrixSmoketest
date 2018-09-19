@@ -91,7 +91,10 @@ public class Home {
 		pages.Utill().click_element("btnNewCase_Click");
 		pages.Utill().wait_until_loader_is_invisible(15);
 	}
-
+public void workStage() {
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnStages_input");
+	pages.Utill().wait_until_loader_is_invisible(100);
+}
 	public void clickCaseSearch() {
 		pages.Utill().click_element("ButtonDuplicateSearcha");
 		pages.Utill().wait_until_loader_is_invisible(15);

@@ -1,6 +1,5 @@
 package environment;
 
-import java.awt.AWTException;
 import java.awt.Image;
 import java.awt.Robot;
 import java.awt.Toolkit;
@@ -498,7 +497,6 @@ public class Utill {
 	public void wait_until_element_isvisible(String path, int Timeout) {
 		WebDriverWait wait = new WebDriverWait(driver, Timeout);
 		wait.until(ExpectedConditions.visibilityOf(pages.Utill().find(path)));
-		wait = null;
 
 	}
 
@@ -538,12 +536,6 @@ public class Utill {
 		String msg=pages.Utill().get_text("class:rwDialogText");
 		driver.findElement(loc).click();
 		return msg.trim();
-
-	}
-
-	public String firstName() {
-		DataFactory df = new DataFactory();
-		return df.getFirstName();
 
 	}
 
