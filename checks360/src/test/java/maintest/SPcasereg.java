@@ -1051,7 +1051,7 @@ public class SPcasereg extends Design {
 		pages.Home().homepage();
 		pages.Home().clickActions();
 		cs.caseOwner();
-		String refno = pages.DbConnection().getLastrefno(ProjectName);
+		refno = pages.DbConnection().getLastrefno(ProjectName);
 		cs.search(refno, "sp");
 		String no = cs.getrefNo();
 		if (refno.equals(no)) {
@@ -1064,9 +1064,40 @@ public class SPcasereg extends Design {
 	@Test(priority = 30, enabled = true, dependsOnMethods = "TC_SPINF_001", groups= {"smoketest","insuff"})
 	public void TC_SPINF_002() throws Exception {
 		CaseOwnerInsuffClear cs =pages.CaseOwnerInsuffClear();
-		cs.clear();
-		
+		cs.openCase();
+		cs.insuffClear("Permanent", "clear comments");
+		pages.Utill().confirmAlert();
+		pages.Home().workStage();
+		pages.Utill().click_element("//span[text()='" + refno + "']");
+		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.CaseRegistration().addEditComponent();
+		pages.Utill().wait_until_loader_is_invisible(10);
 	}
+	//To check already moved components are whether editable or not in case registration
+		@Test(priority = 31, enabled = true, dependsOnMethods = "TC_SPINF_002", groups= {"smoketest","insuff"})
+		public void TC_SPINF_003() throws Exception {
+			assertTrue(pages.CaseRegistration().isSelected("Current Address"));
+			assertTrue(!pages.CaseRegistration().isEnabled("Current Address"));
+		}
+		//To check is able to add additional component in case registration
+		@Test(priority = 32, enabled = true, dependsOnMethods = "TC_SPINF_003", groups= {"smoketest","insuff"})
+		public void TC_SPINF_004() throws Exception {
+			pages.CaseRegistration().selectcheck("Current/Latest Employment");
+			pages.CaseRegistration().submit();
+			pages.Utill().confirmAlert();
+			assertTrue(true);
+		}
+		//To check newly added check moved to team member queue
+		@Test(priority = 33, enabled = true, dependsOnMethods = "TC_SPINF_004", groups= {"smoketest","insuff"})
+		public void TC_SPINF_005() throws Exception {
+			SoftAssert sf = new SoftAssert();
+			pages.Home().homepage();
+			pages.Home().CaseTracker();
+			sf.assertEquals(pages.CaseTracker().getCurrentStage(refno, "Current/Latest Employment"), "");
+			sf.assertEquals(pages.CaseTracker().responsiblePerson(refno, "Current/Latest Employment"), "");
+			sf.assertAll();
+			
+		}
 
 	@AfterMethod(alwaysRun=true)
 	public void tearDown(ITestResult result, Method method) throws IOException {

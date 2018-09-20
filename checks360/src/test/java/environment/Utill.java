@@ -108,14 +108,14 @@ public class Utill {
 	}
 
 	public void input_text(String path, String text) {
-		pages.Utill().find(path).sendKeys(text);
+		this.find(path).sendKeys(text);
 		logger.log(Status.PASS, "Typing text '" + text + "' into text field '" + path + "'.");
 
 	}
 
 	public String get_text(String path) {
 
-		String msg = pages.Utill().find(path).getText();
+		String msg = this.find(path).getText();
 		logger.log(Status.PASS, "msg = " + msg + ".");
 		return msg;
 
@@ -123,20 +123,20 @@ public class Utill {
 
 	public void select_by_label(String path, String value) {
 
-		Select sel = new Select(pages.Utill().find(path));
+		Select sel = new Select(this.find(path));
 		sel.selectByVisibleText(value);
 		logger.log(Status.PASS, "Selecting options from selection list '" + path + "' by label " + value + ".");
 
 	}
 
 	public void choose_file(String path, String file) throws Exception {
-		pages.Utill().input_text(path, file);
+		this.input_text(path, file);
 		logger.log(Status.PASS, "uploading file");
 	}
 
 	public void click_element(String path) {
 
-		pages.Utill().find(path).click();
+		this.find(path).click();
 		logger.log(Status.PASS, "Clicking element '" + path + "'");
 
 	}
@@ -212,7 +212,7 @@ public class Utill {
 	}
 
 	public String getcssvalue(String id, String attribute) {
-		return pages.Utill().find(id).getCssValue(attribute);
+		return this.find(id).getCssValue(attribute);
 	}
 
 	public void GoTo(String url) {
@@ -230,10 +230,10 @@ public class Utill {
 	}
 
 	public void search_and_select(String id, String value) throws Exception {
-		pages.Utill().click_element(".//*[@id='" + id + "']/a");
-		pages.Utill().input_text(".//*[@id='" + id + "']//div/div/input", value);
+		this.click_element(".//*[@id='" + id + "']/a");
+		this.input_text(".//*[@id='" + id + "']//div/div/input", value);
 		Thread.sleep(1000);
-		pages.Utill().click_element(".//*[@id='" + id + "']/div/ul/li");
+		this.click_element(".//*[@id='" + id + "']/div/ul/li");
 
 	}
 
@@ -256,7 +256,7 @@ public class Utill {
 
 	public void mouseover(String id) {
 		Actions action = new Actions(driver);
-		action.moveToElement(pages.Utill().find(id));
+		action.moveToElement(this.find(id));
 		action.build().perform();
 		logger.log(Status.PASS, "performing mouse over on :" + id);
 		action = null;
@@ -275,7 +275,7 @@ public class Utill {
 
 	public void scrollTo(String id) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].scrollIntoView(true);", pages.Utill().find(id));
+		js.executeScript("arguments[0].scrollIntoView(true);", this.find(id));
 		logger.log(Status.PASS, "scrolling into view of :" + id);
 
 	}
@@ -291,7 +291,7 @@ public class Utill {
 	}
 
 	public void FileUpload(String id, String filename) throws Exception {
-		pages.Utill().click_element(id);
+		this.click_element(id);
 		Thread.sleep(1000);
 		setClipboardData(filename);
 		Robot robot = new Robot();
@@ -321,7 +321,7 @@ public class Utill {
 	}
 
 	public void checkbox_shouldbe_selected(String id) throws Exception {
-		boolean b = pages.Utill().find("id").isSelected();
+		boolean b = this.find("id").isSelected();
 		logger.log(Status.PASS, "check box selected state is : " + b);
 		if (!b) {
 			throw new Exception("check box not selected");
@@ -329,15 +329,27 @@ public class Utill {
 	}
 
 	public void checkbox_shouldnotbe_selected(String id) throws Exception {
-		boolean b = pages.Utill().find("id").isSelected();
+		boolean b = this.find("id").isSelected();
 		logger.log(Status.PASS, "check box selected state is : " + b);
 		if (b) {
 			throw new Exception("check box selected");
 		}
 	}
 
+	public boolean isSelected(String path) {
+		return this.find(path).isSelected();
+	}
+
+	public boolean isDisplayed(String path) {
+		return this.find(path).isDisplayed();
+	}
+
+	public boolean isEnabled(String path) {
+		return this.find(path).isEnabled();
+	}
+
 	public void clear_element_text(String id) {
-		pages.Utill().find(id).clear();
+		this.find(id).clear();
 		logger.log(Status.PASS, "text cleared for : " + id);
 	}
 
@@ -358,14 +370,14 @@ public class Utill {
 	}
 
 	public void double_click_element(String id) {
-		WebElement ele = pages.Utill().find(id);
+		WebElement ele = this.find(id);
 		Actions action = new Actions(driver);
 		action.doubleClick(ele).build().perform();
 		logger.log(Status.PASS, "double clicking in element : " + id);
 	}
 
 	public void element_shouldbe_enabled(String id) throws Exception {
-		boolean b = pages.Utill().find(id).isEnabled();
+		boolean b = this.find(id).isEnabled();
 		logger.log(Status.PASS, "element enabled status is : " + b);
 		if (!b) {
 			throw new Exception(id + "  webelement not enabled");
@@ -373,7 +385,7 @@ public class Utill {
 	}
 
 	public void element_shouldbe_disabled(String id) throws Exception {
-		boolean b = pages.Utill().find(id).isDisplayed();
+		boolean b = this.find(id).isDisplayed();
 		logger.log(Status.PASS, "element enabled status is : " + b);
 
 		if (!b) {
@@ -383,7 +395,7 @@ public class Utill {
 	}
 
 	public void element_shouldbe_focused(String id) throws Exception {
-		WebElement ele = pages.Utill().find(id);
+		WebElement ele = this.find(id);
 		boolean b = ele == driver.switchTo().activeElement();
 
 		if (!b) {
@@ -397,7 +409,7 @@ public class Utill {
 	}
 
 	public void element_shouldbe_visible(String id) throws Exception {
-		String css = pages.Utill().find(id).getCssValue("display");
+		String css = this.find(id).getCssValue("display");
 		if (css.equalsIgnoreCase("none")) {
 			logger.log(Status.FAIL, id + "  is not visible");
 			throw new Exception("element is not visible");
@@ -407,7 +419,7 @@ public class Utill {
 	}
 
 	public void element_should_contains(String id, String text) throws Exception {
-		String t = pages.Utill().get_text(id);
+		String t = this.get_text(id);
 		if (t.contains(text)) {
 			logger.log(Status.PASS, id + " contains expected text");
 		} else {
@@ -417,7 +429,7 @@ public class Utill {
 	}
 
 	public void element_shouldnotbe_visible(String id) throws Exception {
-		String css = pages.Utill().find(id).getCssValue("display");
+		String css = this.find(id).getCssValue("display");
 		if (!(css.equalsIgnoreCase("none"))) {
 			logger.log(Status.FAIL, id + "  is visible");
 			throw new Exception("element is  visible");
@@ -426,7 +438,7 @@ public class Utill {
 	}
 
 	public void element_shouldnot_contains(String id, String text) throws Exception {
-		String t = pages.Utill().get_text(id);
+		String t = this.get_text(id);
 		if (!(t.contains(text))) {
 			logger.log(Status.PASS, id + " contains expected text");
 		} else {
@@ -436,7 +448,7 @@ public class Utill {
 	}
 
 	public String get_element_attribute(String id, String attribute) {
-		String attri = pages.Utill().find(id).getAttribute(attribute);
+		String attri = this.find(id).getAttribute(attribute);
 		logger.log(Status.PASS, "getting value of : " + id + attribute);
 		return attri;
 	}
@@ -496,7 +508,7 @@ public class Utill {
 
 	public void wait_until_element_isvisible(String path, int Timeout) {
 		WebDriverWait wait = new WebDriverWait(driver, Timeout);
-		wait.until(ExpectedConditions.visibilityOf(pages.Utill().find(path)));
+		wait.until(ExpectedConditions.visibilityOf(this.find(path)));
 
 	}
 
@@ -533,14 +545,14 @@ public class Utill {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.presenceOfElementLocated(loc));
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(loc)));
-		String msg=pages.Utill().get_text("class:rwDialogText");
+		String msg = this.get_text("class:rwDialogText");
 		driver.findElement(loc).click();
 		return msg.trim();
 
 	}
 
 	public String lastName() {
-				String name[] = { "Cotton", "Craft", "Cannon", "Larsen", "Ruiz", "Levine", "Santiago", "Smith", "McGuire",
+		String name[] = { "Cotton", "Craft", "Cannon", "Larsen", "Ruiz", "Levine", "Santiago", "Smith", "McGuire",
 				"Sloan", "Byrd", "Mayer", "Bass", "Holcomb", "Stevens", "Vasquez", "Conway", "Fletcher", "McCray",
 				"Olsen", "Allen", "Fry", "Burns", "Garner", "Mayo", "Patton", "Suarez", "Jarvis", "Abbott", "Sloan",
 				"Marshall", "Townsend", "Heath", "Burks", "Vega", "Jefferson", "Wilder", "Chaney", "Morgan", "Dudley",

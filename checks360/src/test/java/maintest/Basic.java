@@ -1,6 +1,6 @@
 package maintest;
 
-import static org.testng.Assert.assertTrue;
+import static org.junit.Assert.assertTrue;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
@@ -81,20 +82,24 @@ public class Basic extends Design {
 	public void Login() throws Exception {
 		CaseOwnerInsuffClear cs = pages.CaseOwnerInsuffClear();
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-		pages.Home().clickActions();
-		refno="HDFC000286";
-		cs.search(refno, "sp");
-		cs.openCase();
-		cs.insuffClear("Permanent", "clear comments");
-		pages.Utill().confirmAlert();
-		pages.Home().workStage();
+	}
+	
+	//To check insuff cleared components moved to case registration
+	@Test(priority = 30, enabled = true)
+	public void TC_SPINF_002() throws Exception {
+		refno="HDFC000291";
 		pages.Utill().click_element("//span[text()='" + refno + "']");
 		pages.Utill().wait_until_loader_is_invisible(5);
 		pages.CaseRegistration().addEditComponent();
 		pages.Utill().wait_until_loader_is_invisible(10);
-			
-		
 	}
+	@Test(priority = 31, enabled = true, dependsOnMethods = "TC_SPINF_002", groups= {"smoketest","insuff"})
+	public void TC_SPINF_003() throws Exception {
+	assertTrue(pages.CaseRegistration().isSelected("Current Address"));
+	assertTrue(!pages.CaseRegistration().isEnabled("Current Address"));
+	}
+
+	
 
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {

@@ -314,7 +314,12 @@ public class CaseRegistration {
 	public int getCheckCount() {
 		return Integer.parseInt(pages.Utill().get_text("ctl00_ContentPlaceHolder1_lblComponentCount"));
 	}
-
+public boolean isSelected(String componentname) {
+	return pages.Utill().isSelected("//td[text()='" + componentname + "']/../td[2]//input");
+}
+public boolean isEnabled(String componentname) {
+	return pages.Utill().isEnabled("//td[text()='" + componentname + "']/../td[2]//input");
+}
 }
 // class caseregdashboard {
 // WebDriver driver;

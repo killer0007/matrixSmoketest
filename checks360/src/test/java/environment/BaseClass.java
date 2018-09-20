@@ -19,7 +19,7 @@ public class BaseClass {
 	public static WebDriver getDriver() {
 		if (driver == null) {
 
-			String chrome_path = "/home/ubuntu/Downloads/chromedriver";
+			String chrome_path = "D:\\gopi\\chromedriver.exe";
 			System.setProperty("webdriver.chrome.driver", chrome_path);
 			ChromeOptions chromoption = new ChromeOptions();
 			chromoption.setHeadless(true);
