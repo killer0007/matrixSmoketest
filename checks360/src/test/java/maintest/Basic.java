@@ -87,17 +87,11 @@ public class Basic extends Design {
 	//To check insuff cleared components moved to case registration
 	@Test(priority = 30, enabled = true)
 	public void TC_SPINF_002() throws Exception {
-		refno="HDFC000291";
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
-		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		refno="HDFC000292";
+		pages.DataEntrySupervision().datanentrysupervision();
+		pages.DataEntrySupervision().assign(refno, "demoempl");
 	}
-	@Test(priority = 31, enabled = true, dependsOnMethods = "TC_SPINF_002", groups= {"smoketest","insuff"})
-	public void TC_SPINF_003() throws Exception {
-	assertTrue(pages.CaseRegistration().isSelected("Current Address"));
-	assertTrue(!pages.CaseRegistration().isEnabled("Current Address"));
-	}
+	
 
 	
 

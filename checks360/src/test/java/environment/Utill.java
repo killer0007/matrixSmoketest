@@ -128,6 +128,13 @@ public class Utill {
 		logger.log(Status.PASS, "Selecting options from selection list '" + path + "' by label " + value + ".");
 
 	}
+	public void select_by_value(String path, String value) {
+
+		Select sel = new Select(this.find(path));
+		sel.selectByValue(value);
+		logger.log(Status.PASS, "Selecting options from selection list '" + path + "' by label " + value + ".");
+
+	}
 
 	public void choose_file(String path, String file) throws Exception {
 		this.input_text(path, file);

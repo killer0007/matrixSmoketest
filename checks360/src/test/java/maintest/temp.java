@@ -11,56 +11,73 @@ import java.io.Reader;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import org.fluttercode.datafactory.impl.DataFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import com.graphbuilder.struc.LinkedList;
 
 import io.restassured.internal.support.FileReader;
 
 public class temp {
 public static void main(String[] args) throws Exception{
-//	s//driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtUserName")).sendKeys("demoemp");
-//driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtPassword")).sendKeys("Pass@123");
-//driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnLogin")).click();
-//Set<Cookie> allcookie = driver.manage().getCookies();
-////JavascriptExecutor js = (JavascriptExecutor) driver;
-////js.executeScript("document.getElementById('ctl00_lnkLogout').click()");
-////driver.findElement(By.id("ctl00_lnkLogout")).click();
-//driver.close();
-//for(Cookie cookie : allcookie) {
-//    System.out.println(cookie.getValue());
-//}
-////Thread.sleep(1260000);
-//WebDriver driver2=new ChromeDriver();
-//driver2.get("http://192.168.2.17:96/Login.aspx");
-//for(Cookie cookie : allcookie) {
-//    driver2.manage().addCookie(cookie);
-//}
-//driver2.get("http://192.168.2.17:97/Web/dashboard.aspx");
-//	DataFactory df = new DataFactory();
-//	for (int i = 0; i < 100; i++) {
-////		String fname=df.getFirstName();
-//		String lname = df.getLastName();
-//		System.out.println(lname);
-////		System.out.println(fname+" : "+lname);
-//	}
 
-	String no ="HDFC000264";
-	String code=no.substring(0, 4);
-	StringBuilder st = new StringBuilder("");
-	int n=Integer.parseInt(no.substring(4))+1;
-	for (int i = 0; i < 6-Integer.toString(n).length(); i++) {
-	st.append("0");
+WebDriver driver= new ChromeDriver();
+driver.get("file:///C:/Users/admin/Downloads/Qp.html");
+List<String> actual=new ArrayList<String>();
+List<WebElement> list = driver.findElements(By.xpath("html/body/div[1]/div[3]/div/div"));
+for (int i = 0; i < list.size(); i++) {
+	List<WebElement> tr =list.get(i).findElements(By.xpath("table/tbody/tr/td/table/tbody/tr/td/img[1]"));
+	for (int j = 1; j < tr.size(); j++) {
+		String scr=tr.get(j).getAttribute("src");
+		if(scr.contains("tick")) {
+//			System.out.println((i+1)+" = "+j+" pass");
+			actual.add(Integer.toString(j));
+			break;
+		}
+		else if(scr.contains("cross")) {
+//			System.out.println(i+" failed");
+			continue;
+		}
+		else {
+			throw new Exception(scr);
+			
+		}
 	}
-	System.out.println(code+st+Integer.toString(n));
-	
-	
-	
 	
 }
+
+List<WebElement> aclist=driver.findElements(By.xpath("html/body/div[1]/div[3]/div/div/table/tbody/tr/td/table/tbody/tr[2]/td[3]/table/tbody/tr[3]/td[2]"));
+List<String> expected=new ArrayList<String>();
+for (int i = 0; i < aclist.size(); i++) {
+	
+	expected.add(aclist.get(i).getText());
+}
+
+//System.out.println("actual "+actual.size());
+//System.out.println("expected "+expected.size());	
+int pass=0;
+int fail=0;
+for (int i = 0; i < 75; i++) {
+	if(actual.get(i).equals(expected.get(i))) {
+		pass++;
+	}
+	else if(!expected.get(i).contains("-")) {
+		fail++;
+	}
+}
+System.out.println("pass ="+pass);
+System.out.println("fail ="+fail);
+int result=pass-(fail/3);
+System.out.println("result is "+ result);
+}
+
 }

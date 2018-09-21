@@ -31,29 +31,79 @@ div.shootout {padding:2em;border:3px #4854A8 solid}
 <body>
 <table cellspacing="0" cellpadding="0" class="result">
 <tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">3</td><td class="numi">3</td><td class="numi">0</td><td class="numi">0</td><td class="numi">43.6 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">caseregistration</td><td class="numi">5</td><td class="numi">5</td><td class="numi">0</td><td class="numi_attn">1</td><td class="numi">147.5 seconds</td><td class="numi">insuff </td><td class="numi"></td></tr>
 </table>
 <table cellspacing="0" cellpadding="0" class="passed" id="summary">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
-<tr><th colspan="4">Default test &#8212; passed</th></tr>
-<tr class="passedodd"><td rowspan="3">maintest.Basic</td><td><a href="#m1"><b>Login</b>  </a></td><td class="numi">1</td><td>1537445510380</td><td class="numi">27123</td></tr><tr class="passedodd"><td><a href="#m2"><b>TC_SPINF_002</b>  </a></td><td class="numi">1</td><td>1537445537506</td><td class="numi">10961</td></tr><tr class="passedodd"><td><a href="#m3"><b>TC_SPINF_003</b> (insuff, smoketest) </a></td><td class="numi">1</td><td>1537445548472</td><td class="numi">127</td></tr>
+<tr><th colspan="4">caseregistration &#8212; failed</th></tr>
+<tr class="failedodd"><td rowspan="1">maintest.SPcasereg</td><td><a href="#m1"><b>TC_SPINF_005</b> (insuff, smoketest) </a></td><td class="numi">1</td><td>1537536267136</td><td class="numi">15100</td></tr>
+<tr><th colspan="4">caseregistration &#8212; passed</th></tr>
+<tr class="passedodd"><td rowspan="5">maintest.SPcasereg</td><td><a href="#m2"><b>Login</b> (spcase registration, insuff, smoketest) </a></td><td class="numi">1</td><td>1537536145629</td><td class="numi">7136</td></tr><tr class="passedodd"><td><a href="#m3"><b>TC_SPINF_001</b> (insuff, smoketest) </a></td><td class="numi">1</td><td>1537536152770</td><td class="numi">50398</td></tr><tr class="passedodd"><td><a href="#m4"><b>TC_SPINF_002</b> (insuff, smoketest) </a></td><td class="numi">1</td><td>1537536203170</td><td class="numi">60290</td></tr><tr class="passedodd"><td><a href="#m5"><b>TC_SPINF_003</b> (insuff, smoketest) </a></td><td class="numi">1</td><td>1537536263463</td><td class="numi">109</td></tr><tr class="passedodd"><td><a href="#m6"><b>TC_SPINF_004</b> (insuff, smoketest) </a></td><td class="numi">1</td><td>1537536263573</td><td class="numi">3561</td></tr>
 </table>
-<h1>Default test</h1>
-<h2 id="m1">maintest.Basic:TC_SPINF_002</h2>
+<h1>caseregistration</h1>
+<h2 id="m1">maintest.SPcasereg:TC_SPINF_005</h2>
 <div style="padding-left:3em">
-Test Method resides in maintest.Basic<br/>
+<h3>Test Messages</h3>
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Failed<br/>
+<h3>Failure</h3>
+<p>unknown error: Element &lt;input type=&quot;text&quot; id=&quot;searchBox&quot; ng-model=&quot;searchValue&quot; placeholder=&quot;Case Ref No (or) Client Ref No&quot; class=&quot;rfdRoundedCorners rfdDecorated ng-valid ng-dirty&quot;&gt; is not clickable at point (571, 185). Other element would receive the click: &lt;td&gt;...&lt;/td&gt;
+  (Session info: chrome=69.0.3497.100)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;KAD-I-032&apos;, ip: &apos;192.168.2.67&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_181&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:62573}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.100, webStorageEnabled: true}
+Session ID: cbf00f4ffd2b0154186c1d36fc68d8d6</p>
+sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+<br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+<br/>at java.lang.reflect.Constructor.newInstance(Unknown Source)
+<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+<br/>at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+<br/>at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+<br/>at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+<br/>at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+<br/>at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+<br/>at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
+<br/>at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+<br/>at environment.Utill.click_element(Utill.java:146)
+<br/>at pages.CaseTracker.search(CaseTracker.java:25)
+<br/>at pages.CaseTracker.responsiblePerson(CaseTracker.java:57)
+<br/>at maintest.SPcasereg.TC_SPINF_005(SPcasereg.java:1102)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m2">maintest.SPcasereg:TC_SPINF_001</h2>
+<div style="padding-left:3em">
+Test Method resides in maintest.SPcasereg<br/>
 Test Status: Pass<br/>
 </div>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m2">maintest.Basic:Login</h2>
+<h2 id="m3">maintest.SPcasereg:Login</h2>
 <div style="padding-left:3em">
-Test Method resides in maintest.Basic<br/>
+Test Method resides in maintest.SPcasereg<br/>
 Test Status: Pass<br/>
 </div>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m3">maintest.Basic:TC_SPINF_003</h2>
+<h2 id="m4">maintest.SPcasereg:TC_SPINF_004</h2>
 <div style="padding-left:3em">
-Test Method resides in maintest.Basic<br/>
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m5">maintest.SPcasereg:TC_SPINF_002</h2>
+<div style="padding-left:3em">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m6">maintest.SPcasereg:TC_SPINF_003</h2>
+<div style="padding-left:3em">
+Test Method resides in maintest.SPcasereg<br/>
 Test Status: Pass<br/>
 </div>
 <p class="totop"><a href="#summary">back to summary</a></p>

@@ -39,6 +39,7 @@ public class SPcasereg extends Design {
 	protected String CandidateId = null;
 	protected String lastname = null;
 	protected String refno = null;
+	protected String uname=null;
 
 	@BeforeSuite(alwaysRun=true)
 	public void beforeSuit() {
@@ -73,6 +74,7 @@ public class SPcasereg extends Design {
 
 	@Test(priority = 1, enabled = true, groups = { "smoketest", "spcase registration", "insuff"})
 	public void Login() throws Exception {
+		uname=config.getProperty("uname");
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
 		
 	}
@@ -1063,11 +1065,14 @@ public class SPcasereg extends Design {
 	//To check insuff cleared components moved to case registration
 	@Test(priority = 30, enabled = true, dependsOnMethods = "TC_SPINF_001", groups= {"smoketest","insuff"})
 	public void TC_SPINF_002() throws Exception {
-		CaseOwnerInsuffClear cs =pages.CaseOwnerInsuffClear();
+		CaseOwnerInsuffClear cs =pages.CaseOwnerInsuffClear();	
 		cs.openCase();
 		cs.insuffClear("Permanent", "clear comments");
 		pages.Utill().confirmAlert();
-		pages.Home().workStage();
+		pages.Home().workStage();	
+		pages.DataEntrySupervision().datanentrysupervision();
+		pages.DataEntrySupervision().assign(refno, uname);
+		pages.DcaseRegistration().caseRegistration();
 		pages.Utill().click_element("//span[text()='" + refno + "']");
 		pages.Utill().wait_until_loader_is_invisible(5);
 		pages.CaseRegistration().addEditComponent();
@@ -1093,8 +1098,11 @@ public class SPcasereg extends Design {
 			SoftAssert sf = new SoftAssert();
 			pages.Home().homepage();
 			pages.Home().CaseTracker();
-			sf.assertEquals(pages.CaseTracker().getCurrentStage(refno, "Current/Latest Employment"), "");
-			sf.assertEquals(pages.CaseTracker().responsiblePerson(refno, "Current/Latest Employment"), "");
+			sf.assertEquals(pages.CaseTracker().getCurrentStage(refno, "Current/Latest Employment"), "Data Entry Pending");
+			sf.assertEquals(pages.CaseTracker().responsiblePerson("Current/Latest Employment"), uname);
+			pages.CaseTracker().cancel();
+			pages.DataEntry().datanentry();
+			sf.assertEquals(pages.DataEntry().getSearchResult(refno), refno);
 			sf.assertAll();
 			
 		}

@@ -8,7 +8,6 @@
           <include name="TC_SPINF_002"/>
           <include name="setup"/>
           <include name="beforetest"/>
-          <include name="TC_SPINF_003"/>
           <include name="beforeSuit"/>
           <include name="afterSuite"/>
           <include name="teardown"/>

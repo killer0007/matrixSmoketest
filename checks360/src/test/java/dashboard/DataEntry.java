@@ -2,23 +2,27 @@ package dashboard;
 
 import org.apache.commons.math3.exception.NoDataException;
 import org.openqa.selenium.WebDriver;
+
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+
 import environment.Pages;
 
-public class DcaseRegistration {
+public class DataEntry {
 	WebDriver driver;
 	ExtentTest logger;
 	Pages pages;
-	public DcaseRegistration(WebDriver driver, ExtentTest logger) {
-		this.driver=driver;
-		this.logger=logger;
+
+	public DataEntry(WebDriver driver, ExtentTest logger) {
+		this.driver = driver;
+		this.logger = logger;
 		pages = new Pages(driver, logger);
 	}
-	public void caseRegistration() {
-		pages.Utill().select_by_value("ddlAct", "0");
+
+	public void datanentry() {
+		pages.Utill().select_by_value("ddlAct", "2");
 		pages.Utill().wait_until_loader_is_invisible(50);
 	}
-	
 	public void firstname(String firstname) {
 		pages.Utill().input_text("txtFirstName", firstname);
 	}
@@ -43,6 +47,14 @@ public class DcaseRegistration {
 		pages.Utill().click_element("btnsearch");
 		pages.Utill().wait_until_loader_is_invisible(10);
 	}
+	public void search(String refno) {
+		this.caserefno(refno);
+		this.search();
+	}
+	public String getSearchResult(String refno) {
+		this.search(refno);
+		return pages.Utill().get_text("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
+	}
 	public String getrefno(String firstname, String lastname) throws NoDataException {
 		this.firstname(firstname);
 		this.lasttname(lastname);
@@ -51,4 +63,5 @@ public class DcaseRegistration {
 		
 		return no;
 	}
+	
 }

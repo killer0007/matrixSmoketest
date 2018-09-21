@@ -50,13 +50,13 @@ public class CaseTracker {
 
 	public String responsiblePerson(String componentName) {
 
-		return pages.Utill().get_text("//span[text()='" + componentName + "']/../../td[5]");
+		return pages.Utill().get_text("//span[text()='" + componentName + "']/../../td[5]").trim();
 	}
 
 	public String responsiblePerson(String refno, String componentName) {
 		this.search(refno);
 		this.clickcase(refno);
-		return this.responsiblePerson(componentName);
+		return this.responsiblePerson(componentName).trim();
 	}
 
 	public List<HashMap<String, String>> getcasedata() throws Exception {

@@ -20,6 +20,9 @@ public class Pages {
 	private DbConnection db;
 	private CaseTracker casetracker;
 	private CaseOwnerInsuffClear CaseOwnerInsuffClear;
+	private DataEntrySupervision DataEntrySupervision;
+	private DataEntry dataentry;
+	
 	public Pages(WebDriver driver, ExtentTest logger) {
 		this.driver = driver;
 		this.logger = logger;
@@ -41,7 +44,7 @@ public class Pages {
 	public DcaseRegistration DcaseRegistration() {
 		return (dcaseregistration == null) ? dcaseregistration = new DcaseRegistration(driver, logger) : dcaseregistration;
 	}
-	public DbConnection DbConnection() {
+	public DbConnection DbConnection() throws Exception {
 		return (db == null) ? db = new DbConnection() : db;
 	}
 
@@ -51,5 +54,11 @@ public class Pages {
 	public CaseOwnerInsuffClear CaseOwnerInsuffClear() {
 		return (CaseOwnerInsuffClear == null) ? CaseOwnerInsuffClear = new CaseOwnerInsuffClear(driver, logger) : CaseOwnerInsuffClear;
 	}
-	//CaseOwnerInsuffClear
+	public DataEntrySupervision DataEntrySupervision() {
+		return (DataEntrySupervision == null) ? DataEntrySupervision = new DataEntrySupervision(driver, logger) : DataEntrySupervision;
+	}
+	public DataEntry DataEntry() {
+		return (dataentry == null) ? dataentry = new DataEntry(driver, logger) : dataentry;
+	}
+
 }
