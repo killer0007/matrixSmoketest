@@ -50,7 +50,7 @@ public class CaseTracker {
 
 	public String responsiblePerson(String componentName) {
 
-		return pages.Utill().get_text("//span[text()='" + componentName + "']/../../td[5]").trim();
+		return pages.Utill().get_text("//span[text()='" + componentName + "']/../../td[6]").trim();
 	}
 
 	public String responsiblePerson(String refno, String componentName) {

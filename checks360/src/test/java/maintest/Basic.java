@@ -1,10 +1,13 @@
 package maintest;
 
 import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
@@ -13,6 +16,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.ITestResult;
 import org.testng.SkipException;
 import org.testng.annotations.*;
@@ -24,6 +29,12 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import actions.CaseOwnerInsuffClear;
 import environment.BaseClass;
@@ -32,6 +43,9 @@ import environment.Utill;
 
 @Listeners(environment.Listener.class)
 public class Basic extends Design {
+
+	private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 100, Font.BOLD);
+
 	WebDriver driver;
 	ExtentHtmlReporter reporter;
 	ExtentTest logger;
@@ -80,20 +94,42 @@ public class Basic extends Design {
 
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
-		CaseOwnerInsuffClear cs = pages.CaseOwnerInsuffClear();
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
 	}
-	
-	//To check insuff cleared components moved to case registration
+
+	// To check insuff cleared components moved to case registration
 	@Test(priority = 30, enabled = true)
 	public void TC_SPINF_002() throws Exception {
-		refno="HDFC000292";
+		String[] checks = { "Current Address", "UG1", "Current/Latest Employment", "Reference 1", "Aadhaar Card",
+				"Current Address Criminal Check", "Current Address Court Check", "Credit Check 1", "Panel1",
+				"Database" };
+		refno = "HDFC000308";
+		pages.Home().clickActions();
+		pages.CaseOwnerInsuffClear().search(refno, "sp");
+		pages.CaseOwnerInsuffClear().openCase();
+		for (int i = 0; i < checks.length; i++) {
+			String name = checks[i].toString();
+			pages.CaseOwnerInsuffClear().clearComments(name, name + " clear");
+		}
+		pages.CaseOwnerInsuffClear().clear();
+		pages.Utill().confirmAlert();
+		pages.Home().workStage();
+		pages.Utill().click_element("//span[text()='" + refno + "']");
+		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.CaseRegistration().addEditComponent();
+		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.CaseRegistration().submit();
+		pages.Utill().confirmAlert();
+		pages.Home().homepage();
+		//assing
 		pages.DataEntrySupervision().datanentrysupervision();
 		pages.DataEntrySupervision().assign(refno, "demoempl");
-	}
-	
+		pages.DataEntry().datanentry();
+		pages.DataEntry().search(refno);
+		pages.DataEntry().selectcase(refno);
 
-	
+
+	}
 
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {

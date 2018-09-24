@@ -3,17 +3,44 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="maintest.Basic">
+      <class name="maintest.SPcasereg">
         <methods>
-          <include name="TC_SPINF_002"/>
-          <include name="setup"/>
-          <include name="beforetest"/>
+          <include name="TC_SPINF_006"/>
+          <include name="TC_SPCR_013"/>
           <include name="beforeSuit"/>
-          <include name="afterSuite"/>
+          <include name="TC_SPINF_001"/>
+          <include name="TC_SPINF_023"/>
           <include name="teardown"/>
+          <include name="TC_SPINF_002"/>
+          <include name="TC_SPINF_009"/>
+          <include name="TC_SPINF_008"/>
+          <include name="TC_SPINF_007"/>
+          <include name="TC_SPINF_029"/>
+          <include name="TC_SPINF_020"/>
+          <include name="TC_SPINF_005"/>
+          <include name="TC_SPINF_004"/>
+          <include name="TC_SPINF_026"/>
+          <include name="TC_SPINF_003"/>
+          <include name="TC_SPCR_022"/>
+          <include name="TC_SPCR_023"/>
+          <include name="TC_SPINF_017"/>
           <include name="tearDown"/>
+          <include name="Login"/>
+          <include name="TC_SPCR_024"/>
+          <include name="beforetest"/>
+          <include name="TC_SPINF_011"/>
+          <include name="TC_SPINF_010"/>
+          <include name="TC_SPINF_032"/>
+          <include name="setup"/>
+          <include name="TC_SPINF_035"/>
+          <include name="afterSuite"/>
+          <include name="TC_SPCR_020"/>
+          <include name="TC_SPINF_03"/>
+          <include name="TC_SPINF_038"/>
+          <include name="TC_SPCR_025"/>
+          <include name="TC_SPINF_014"/>
         </methods>
-      </class> <!-- maintest.Basic -->
+      </class> <!-- maintest.SPcasereg -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

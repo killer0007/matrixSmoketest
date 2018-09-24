@@ -8,7 +8,7 @@
   <test thread-count="5" name="caseregistration">
   <groups>
   <run>
-  <include name="insuff"/>
+  <include name="s3"/>
   </run>
   </groups>
     <classes>

@@ -1,8 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" total="6" passed="5">
+<testng-results skipped="0" failed="1" total="12" passed="11">
   <reporter-output>
     <line>
       <![CDATA[About to begin executing Test caseregistration]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.SPcasereg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.SPcasereg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.SPcasereg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.SPcasereg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.SPcasereg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.SPcasereg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
     </line>
     <line>
       <![CDATA[Test Method resides in maintest.SPcasereg]]>
@@ -44,39 +80,53 @@
       <![CDATA[Completed executing test caseregistration]]>
     </line>
   </reporter-output>
-  <suite name="regression testing" duration-ms="147490" started-at="2018-09-21T13:22:21Z" finished-at="2018-09-21T13:24:49Z">
+  <suite name="regression testing" duration-ms="100128" started-at="2018-09-24T13:18:08Z" finished-at="2018-09-24T13:19:48Z">
     <groups>
+      <group name="s3">
+        <method signature="SPcasereg.TC_SPINF_011()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_011" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_014()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_014" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_017()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_017" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_020()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_020" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_023()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_023" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_026()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_026" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_029()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_029" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_03()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_03" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_032()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_032" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_035()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_035" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_038()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_038" class="maintest.SPcasereg"/>
+      </group> <!-- s3 -->
       <group name="spcase registration">
-        <method signature="SPcasereg.Login()[pri:0, instance:maintest.SPcasereg@320068]" name="Login" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.Login()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="Login" class="maintest.SPcasereg"/>
       </group> <!-- spcase registration -->
       <group name="insuff">
-        <method signature="SPcasereg.Login()[pri:0, instance:maintest.SPcasereg@320068]" name="Login" class="maintest.SPcasereg"/>
-        <method signature="SPcasereg.TC_SPINF_001()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_001" class="maintest.SPcasereg"/>
-        <method signature="SPcasereg.TC_SPINF_002()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_002" class="maintest.SPcasereg"/>
-        <method signature="SPcasereg.TC_SPINF_003()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_003" class="maintest.SPcasereg"/>
-        <method signature="SPcasereg.TC_SPINF_004()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_004" class="maintest.SPcasereg"/>
-        <method signature="SPcasereg.TC_SPINF_005()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_005" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.Login()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="Login" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_011()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_011" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_014()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_014" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_017()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_017" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_020()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_020" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_023()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_023" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_026()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_026" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_029()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_029" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_03()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_03" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_032()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_032" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_035()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_035" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.TC_SPINF_038()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_038" class="maintest.SPcasereg"/>
       </group> <!-- insuff -->
       <group name="smoketest">
-        <method signature="SPcasereg.Login()[pri:0, instance:maintest.SPcasereg@320068]" name="Login" class="maintest.SPcasereg"/>
-        <method signature="SPcasereg.TC_SPINF_001()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_001" class="maintest.SPcasereg"/>
-        <method signature="SPcasereg.TC_SPINF_002()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_002" class="maintest.SPcasereg"/>
-        <method signature="SPcasereg.TC_SPINF_003()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_003" class="maintest.SPcasereg"/>
-        <method signature="SPcasereg.TC_SPINF_004()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_004" class="maintest.SPcasereg"/>
-        <method signature="SPcasereg.TC_SPINF_005()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_005" class="maintest.SPcasereg"/>
+        <method signature="SPcasereg.Login()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="Login" class="maintest.SPcasereg"/>
       </group> <!-- smoketest -->
     </groups>
-    <test name="caseregistration" duration-ms="147490" started-at="2018-09-21T13:22:21Z" finished-at="2018-09-21T13:24:49Z">
+    <test name="caseregistration" duration-ms="100128" started-at="2018-09-24T13:18:08Z" finished-at="2018-09-24T13:19:48Z">
       <class name="maintest.SPcasereg">
-        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest.SPcasereg@320068]" name="beforeSuit" is-config="true" duration-ms="174" started-at="2018-09-21T18:52:21Z" finished-at="2018-09-21T18:52:21Z">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="beforeSuit" is-config="true" duration-ms="165" started-at="2018-09-24T18:48:08Z" finished-at="2018-09-24T18:48:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuit -->
-        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest.SPcasereg@320068]" name="beforetest" is-config="true" duration-ms="4097" started-at="2018-09-21T18:52:21Z" finished-at="2018-09-21T18:52:25Z">
+        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="beforetest" is-config="true" duration-ms="4382" started-at="2018-09-24T18:48:08Z" finished-at="2018-09-24T18:48:12Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforetest -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@320068]" name="setup" is-config="true" duration-ms="12" started-at="2018-09-21T18:52:25Z" finished-at="2018-09-21T18:52:25Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="setup" is-config="true" duration-ms="10" started-at="2018-09-24T18:48:12Z" finished-at="2018-09-24T18:48:12Z">
           <params>
             <param index="0">
               <value>
@@ -87,7 +137,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="Login()[pri:0, instance:maintest.SPcasereg@320068]" name="Login" duration-ms="7136" started-at="2018-09-21T18:52:25Z" finished-at="2018-09-21T18:52:32Z">
+        <test-method status="PASS" signature="Login()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="Login" duration-ms="9246" started-at="2018-09-24T18:48:12Z" finished-at="2018-09-24T18:48:22Z">
           <reporter-output>
             <line>
               <![CDATA[Test Method resides in maintest.SPcasereg]]>
@@ -97,11 +147,11 @@
             </line>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@320068]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-21T18:52:32Z" finished-at="2018-09-21T18:52:32Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-09-24T18:48:22Z" finished-at="2018-09-24T18:48:22Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Login status=SUCCESS method=SPcasereg.Login()[pri:0, instance:maintest.SPcasereg@320068] output=Test Method resides in maintest.SPcasereg]]]>
+                <![CDATA[[TestResult name=Login status=SUCCESS method=SPcasereg.Login()[pri:0, instance:maintest.SPcasereg@f2b07d] output=Test Method resides in maintest.SPcasereg]]]>
               </value>
             </param>
             <param index="1">
@@ -113,7 +163,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="TC_SPINF_001()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_001" duration-ms="50398" started-at="2018-09-21T18:52:32Z" depends-on-methods="maintest.SPcasereg.Login" finished-at="2018-09-21T18:53:23Z">
+        <test-method status="PASS" signature="TC_SPINF_011()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_011" duration-ms="53789" started-at="2018-09-24T18:48:22Z" depends-on-methods="maintest.SPcasereg.Login" finished-at="2018-09-24T18:49:16Z">
           <reporter-output>
             <line>
               <![CDATA[Test Method resides in maintest.SPcasereg]]>
@@ -122,35 +172,46 @@
               <![CDATA[Test Status: Pass]]>
             </line>
           </reporter-output>
-        </test-method> <!-- TC_SPINF_001 -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@320068]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-21T18:52:32Z" finished-at="2018-09-21T18:52:32Z">
+        </test-method> <!-- TC_SPINF_011 -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-24T18:48:22Z" finished-at="2018-09-24T18:48:22Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest.SPcasereg.TC_SPINF_001() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_011() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@320068]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-21T18:53:23Z" finished-at="2018-09-21T18:53:23Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SPINF_001 status=SUCCESS method=SPcasereg.TC_SPINF_001()[pri:0, instance:maintest.SPcasereg@320068] output=Test Method resides in maintest.SPcasereg]]]>
+                <![CDATA[[TestResult name=TC_SPINF_011 status=SUCCESS method=SPcasereg.TC_SPINF_011()[pri:0, instance:maintest.SPcasereg@f2b07d] output=Test Method resides in maintest.SPcasereg]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest.SPcasereg.TC_SPINF_001() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_011() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="TC_SPINF_002()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_002" duration-ms="60290" started-at="2018-09-21T18:53:23Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_001" finished-at="2018-09-21T18:54:23Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_014() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="TC_SPINF_014()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_014" duration-ms="62" started-at="2018-09-24T18:49:16Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_011" finished-at="2018-09-24T18:49:16Z">
           <reporter-output>
             <line>
               <![CDATA[Test Method resides in maintest.SPcasereg]]>
@@ -159,46 +220,35 @@
               <![CDATA[Test Status: Pass]]>
             </line>
           </reporter-output>
-        </test-method> <!-- TC_SPINF_002 -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@320068]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-21T18:53:23Z" finished-at="2018-09-21T18:53:23Z">
+        </test-method> <!-- TC_SPINF_014 -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest.SPcasereg.TC_SPINF_002() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_017() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@320068]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-21T18:54:23Z" finished-at="2018-09-21T18:54:23Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SPINF_002 status=SUCCESS method=SPcasereg.TC_SPINF_002()[pri:0, instance:maintest.SPcasereg@320068] output=Test Method resides in maintest.SPcasereg]]]>
+                <![CDATA[[TestResult name=TC_SPINF_014 status=SUCCESS method=SPcasereg.TC_SPINF_014()[pri:0, instance:maintest.SPcasereg@f2b07d] output=Test Method resides in maintest.SPcasereg]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest.SPcasereg.TC_SPINF_002() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_014() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@320068]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-21T18:54:23Z" finished-at="2018-09-21T18:54:23Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void maintest.SPcasereg.TC_SPINF_003() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="TC_SPINF_003()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_003" duration-ms="109" started-at="2018-09-21T18:54:23Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_002" finished-at="2018-09-21T18:54:23Z">
+        <test-method status="PASS" signature="TC_SPINF_017()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_017" duration-ms="50" started-at="2018-09-24T18:49:16Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_011" finished-at="2018-09-24T18:49:16Z">
           <reporter-output>
             <line>
               <![CDATA[Test Method resides in maintest.SPcasereg]]>
@@ -207,19 +257,35 @@
               <![CDATA[Test Status: Pass]]>
             </line>
           </reporter-output>
-        </test-method> <!-- TC_SPINF_003 -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@320068]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-21T18:54:23Z" finished-at="2018-09-21T18:54:23Z">
+        </test-method> <!-- TC_SPINF_017 -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest.SPcasereg.TC_SPINF_004() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_020() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="TC_SPINF_004()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_004" duration-ms="3561" started-at="2018-09-21T18:54:23Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_003" finished-at="2018-09-21T18:54:27Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPINF_017 status=SUCCESS method=SPcasereg.TC_SPINF_017()[pri:0, instance:maintest.SPcasereg@f2b07d] output=Test Method resides in maintest.SPcasereg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_017() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="TC_SPINF_020()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_020" duration-ms="40" started-at="2018-09-24T18:49:16Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_011" finished-at="2018-09-24T18:49:16Z">
           <reporter-output>
             <line>
               <![CDATA[Test Method resides in maintest.SPcasereg]]>
@@ -228,73 +294,272 @@
               <![CDATA[Test Status: Pass]]>
             </line>
           </reporter-output>
-        </test-method> <!-- TC_SPINF_004 -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@320068]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-21T18:54:23Z" finished-at="2018-09-21T18:54:23Z">
+        </test-method> <!-- TC_SPINF_020 -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SPINF_003 status=SUCCESS method=SPcasereg.TC_SPINF_003()[pri:0, instance:maintest.SPcasereg@320068] output=Test Method resides in maintest.SPcasereg]]]>
+                <![CDATA[[TestResult name=TC_SPINF_020 status=SUCCESS method=SPcasereg.TC_SPINF_020()[pri:0, instance:maintest.SPcasereg@f2b07d] output=Test Method resides in maintest.SPcasereg]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest.SPcasereg.TC_SPINF_003() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_020() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@320068]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-21T18:54:27Z" finished-at="2018-09-21T18:54:27Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="setup" is-config="true" duration-ms="1" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SPINF_004 status=SUCCESS method=SPcasereg.TC_SPINF_004()[pri:0, instance:maintest.SPcasereg@320068] output=Test Method resides in maintest.SPcasereg]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void maintest.SPcasereg.TC_SPINF_004() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@320068]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-21T18:54:27Z" finished-at="2018-09-21T18:54:27Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void maintest.SPcasereg.TC_SPINF_005() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_023() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="FAIL" signature="TC_SPINF_005()[pri:0, instance:maintest.SPcasereg@320068]" name="TC_SPINF_005" duration-ms="15100" started-at="2018-09-21T18:54:27Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_004" finished-at="2018-09-21T18:54:42Z">
-          <exception class="org.openqa.selenium.WebDriverException">
+        <test-method status="PASS" signature="TC_SPINF_023()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_023" duration-ms="37" started-at="2018-09-24T18:49:16Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_011" finished-at="2018-09-24T18:49:16Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.SPcasereg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_SPINF_023 -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPINF_023 status=SUCCESS method=SPcasereg.TC_SPINF_023()[pri:0, instance:maintest.SPcasereg@f2b07d] output=Test Method resides in maintest.SPcasereg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_023() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_026() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="TC_SPINF_026()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_026" duration-ms="38" started-at="2018-09-24T18:49:16Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_011" finished-at="2018-09-24T18:49:16Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.SPcasereg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_SPINF_026 -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPINF_026 status=SUCCESS method=SPcasereg.TC_SPINF_026()[pri:0, instance:maintest.SPcasereg@f2b07d] output=Test Method resides in maintest.SPcasereg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_026() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="setup" is-config="true" duration-ms="1" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_029() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="TC_SPINF_029()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_029" duration-ms="47" started-at="2018-09-24T18:49:16Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_011" finished-at="2018-09-24T18:49:16Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.SPcasereg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_SPINF_029 -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPINF_029 status=SUCCESS method=SPcasereg.TC_SPINF_029()[pri:0, instance:maintest.SPcasereg@f2b07d] output=Test Method resides in maintest.SPcasereg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_029() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="TC_SPINF_032()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_032" duration-ms="42" started-at="2018-09-24T18:49:16Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_011" finished-at="2018-09-24T18:49:16Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.SPcasereg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_SPINF_032 -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_032() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPINF_032 status=SUCCESS method=SPcasereg.TC_SPINF_032()[pri:0, instance:maintest.SPcasereg@f2b07d] output=Test Method resides in maintest.SPcasereg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_032() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="TC_SPINF_035()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_035" duration-ms="43" started-at="2018-09-24T18:49:16Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_011" finished-at="2018-09-24T18:49:16Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.SPcasereg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_SPINF_035 -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_035() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="setup" is-config="true" duration-ms="1" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_038() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:16Z" finished-at="2018-09-24T18:49:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPINF_035 status=SUCCESS method=SPcasereg.TC_SPINF_035()[pri:0, instance:maintest.SPcasereg@f2b07d] output=Test Method resides in maintest.SPcasereg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_035() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="TC_SPINF_038()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_038" duration-ms="1432" started-at="2018-09-24T18:49:16Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_011" finished-at="2018-09-24T18:49:17Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.SPcasereg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_SPINF_038 -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:17Z" finished-at="2018-09-24T18:49:17Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPINF_038 status=SUCCESS method=SPcasereg.TC_SPINF_038()[pri:0, instance:maintest.SPcasereg@f2b07d] output=Test Method resides in maintest.SPcasereg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_038() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="FAIL" signature="TC_SPINF_03()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="TC_SPINF_03" duration-ms="23908" started-at="2018-09-24T18:49:17Z" depends-on-methods="maintest.SPcasereg.TC_SPINF_011" finished-at="2018-09-24T18:49:41Z">
+          <exception class="org.openqa.selenium.NoSuchElementException">
             <message>
-              <![CDATA[unknown error: Element <input type="text" id="searchBox" ng-model="searchValue" placeholder="Case Ref No (or) Client Ref No" class="rfdRoundedCorners rfdDecorated ng-valid ng-dirty"> is not clickable at point (571, 185). Other element would receive the click: <td>...</td>
+              <![CDATA[no such element: Unable to locate element: {"method":"id","selector":"ctl00_ContentPlaceHolder1_grdTaskList_ctl00_ctl04_btnClearInsuff"}
   (Session info: chrome=69.0.3497.100)
   (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
 System info: host: 'KAD-I-032', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_181'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:62573}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.100, webStorageEnabled: true}
-Session ID: cbf00f4ffd2b0154186c1d36fc68d8d6]]>
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:60715}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.100, webStorageEnabled: true}
+Session ID: 1378e060f5b36723c8b6e463fc3743ca
+*** Element info: {Using=id, value=ctl00_ContentPlaceHolder1_grdTaskList_ctl00_ctl04_btnClearInsuff}]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.WebDriverException: unknown error: Element <input type="text" id="searchBox" ng-model="searchValue" placeholder="Case Ref No (or) Client Ref No" class="rfdRoundedCorners rfdDecorated ng-valid ng-dirty"> is not clickable at point (571, 185). Other element would receive the click: <td>...</td>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"id","selector":"ctl00_ContentPlaceHolder1_grdTaskList_ctl00_ctl04_btnClearInsuff"}
   (Session info: chrome=69.0.3497.100)
   (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
 System info: host: 'KAD-I-032', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_181'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:62573}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.100, webStorageEnabled: true}
-Session ID: cbf00f4ffd2b0154186c1d36fc68d8d6
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:60715}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.100, webStorageEnabled: true}
+Session ID: 1378e060f5b36723c8b6e463fc3743ca
+*** Element info: {Using=id, value=ctl00_ContentPlaceHolder1_grdTaskList_ctl00_ctl04_btnClearInsuff}
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
@@ -307,12 +572,14 @@ Session ID: cbf00f4ffd2b0154186c1d36fc68d8d6
 	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
 	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
 	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
-	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:317)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:363)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:309)
+	at environment.Utill.find(Utill.java:102)
 	at environment.Utill.click_element(Utill.java:146)
-	at pages.CaseTracker.search(CaseTracker.java:25)
-	at pages.CaseTracker.responsiblePerson(CaseTracker.java:57)
-	at maintest.SPcasereg.TC_SPINF_005(SPcasereg.java:1102)
+	at actions.CaseOwnerInsuffClear.openCase(CaseOwnerInsuffClear.java:91)
+	at maintest.SPcasereg.TC_SPINF_03(SPcasereg.java:1305)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -339,7 +606,7 @@ Session ID: cbf00f4ffd2b0154186c1d36fc68d8d6
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.WebDriverException -->
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
             <line>
               <![CDATA[Test Method resides in maintest.SPcasereg]]>
@@ -348,28 +615,39 @@ Session ID: cbf00f4ffd2b0154186c1d36fc68d8d6
               <![CDATA[Test Status: Failed]]>
             </line>
           </reporter-output>
-        </test-method> <!-- TC_SPINF_005 -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@320068]" name="tearDown" is-config="true" duration-ms="6754" started-at="2018-09-21T18:54:42Z" finished-at="2018-09-21T18:54:49Z">
+        </test-method> <!-- TC_SPINF_03 -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:17Z" finished-at="2018-09-24T18:49:17Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SPINF_005 status=FAILURE method=SPcasereg.TC_SPINF_005()[pri:0, instance:maintest.SPcasereg@320068] output=Test Method resides in maintest.SPcasereg]]]>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_03() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.SPcasereg@f2b07d]" name="tearDown" is-config="true" duration-ms="6962" started-at="2018-09-24T18:49:41Z" finished-at="2018-09-24T18:49:48Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPINF_03 status=FAILURE method=SPcasereg.TC_SPINF_03()[pri:0, instance:maintest.SPcasereg@f2b07d] output=Test Method resides in maintest.SPcasereg]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest.SPcasereg.TC_SPINF_005() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.SPcasereg.TC_SPINF_03() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest.SPcasereg@320068]" name="teardown" is-config="true" duration-ms="0" started-at="2018-09-21T18:54:49Z" finished-at="2018-09-21T18:54:49Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="teardown" is-config="true" duration-ms="0" started-at="2018-09-24T18:49:48Z" finished-at="2018-09-24T18:49:48Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest.SPcasereg@320068]" name="afterSuite" is-config="true" duration-ms="307" started-at="2018-09-21T18:54:49Z" finished-at="2018-09-21T18:54:49Z">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest.SPcasereg@f2b07d]" name="afterSuite" is-config="true" duration-ms="300" started-at="2018-09-24T18:49:48Z" finished-at="2018-09-24T18:49:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

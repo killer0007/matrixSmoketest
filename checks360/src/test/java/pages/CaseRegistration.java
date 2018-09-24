@@ -231,7 +231,7 @@ public class CaseRegistration {
 
 	public void maritalStatus(String status) throws Exception {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input");
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		if (status.equalsIgnoreCase("Single")) {
 			// pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']//text()='Single'");
 			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']/div/ul/li[2]");

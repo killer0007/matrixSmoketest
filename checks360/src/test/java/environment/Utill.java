@@ -142,7 +142,7 @@ public class Utill {
 	}
 
 	public void click_element(String path) {
-
+//this.wait_until_element_isclickable(path);
 		this.find(path).click();
 		logger.log(Status.PASS, "Clicking element '" + path + "'");
 
@@ -311,6 +311,19 @@ public class Utill {
 		robot.keyRelease(KeyEvent.VK_ENTER);
 		// System.out.println("end");
 	}
+	public void FileUpload(String filename) throws Exception {
+		Thread.sleep(1000);
+		setClipboardData(filename);
+		Robot robot = new Robot();
+		// System.out.println("start");
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+		// System.out.println("end");
+	}
 
 	public void setClipboardData(String string) {
 		// StringSelection is a class that can be used for copy and paste operations.
@@ -365,7 +378,10 @@ public class Utill {
 		logger.log(Status.PASS, "Clicking link : " + link);
 
 	}
-
+public void wait_until_element_isclickable(String path) {
+	WebDriverWait wait = new WebDriverWait(driver, 20);
+	wait.until(ExpectedConditions.elementToBeClickable(this.find(path)));
+}
 	public void close_all_browsers() {
 		driver.quit();
 		logger.log(Status.PASS, "all browsers are closed ");
@@ -499,11 +515,11 @@ public class Utill {
 					// String res = ele.getCssValue("display");
 					if (!res.toString().equals("block")) {
 						// System.out.println("success " + res);
-						res = null;
+						//res = null;
 						return ele;
 					} else {
 						// System.out.println("failed :" + res);
-						res = null;
+						//res = null;
 						return null;
 					}
 				}

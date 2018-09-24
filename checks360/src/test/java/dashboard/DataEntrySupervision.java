@@ -35,6 +35,13 @@ public class DataEntrySupervision {
 		pages.Utill().wait_until_loader_is_invisible(60);
 
 	}
+	public String getSearchResult(String refno) {
+		this.search(refno);
+		String re=pages.Utill().get_text("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
+		if(re.equals(null))
+			re=pages.Utill().get_text("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
+			return re;
+	}
 
 	public void assign() {
 		pages.Utill().click_element("btnBulkAllocation");

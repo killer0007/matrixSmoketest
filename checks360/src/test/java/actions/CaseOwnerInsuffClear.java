@@ -1,6 +1,14 @@
 package actions;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.util.List;
+
+import org.apache.bsf.engines.javascript.JavaScriptEngine;
 import org.openqa.selenium.InvalidSelectorException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
 
@@ -26,7 +34,8 @@ public class CaseOwnerInsuffClear {
 
 	public void caseSource(String source) throws Exception {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlWorkflowType_Input");
-		pages.Utill().wait_until_element_isvisible("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[1]", 10);
+		pages.Utill().wait_until_element_isvisible(
+				"//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[1]", 10);
 		switch (source.toLowerCase()) {
 		case "sp":
 			pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[1]");
@@ -46,10 +55,11 @@ public class CaseOwnerInsuffClear {
 		default:
 			throw new InvalidSelectorException(source + " not found in list");
 		}
-pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().wait_until_loader_is_invisible(10);
 	}
 
 	public void caserefno(String refno) {
+		pages.Utill().clear_element_text("ctl00_ContentPlaceHolder1_TextBoxCaseReference");
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_TextBoxCaseReference", refno);
 	}
 
@@ -130,14 +140,18 @@ pages.Utill().wait_until_loader_is_invisible(10);
 						+ componentname + "']/../td[23]");
 	}
 
-	private void upload(String doctype, String filename) {
-		pages.Utill().input_text(
-				"//table[@id='ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_grdUploadDocuments_ctl00']//td[text()='Mark Sheet']/../td[6]/div/ul//input[1]",
-				filename);
+	private void upload(String doctype, String filename) throws Exception {
+		Thread.sleep(1000);
+		pages.Utill().click_element("//table[@id='ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_grdUploadDocuments_ctl00']//td[text()='"+doctype+"']/../td[6]/div/ul/li/span");
+		pages.Utill().FileUpload(filename);
+//		pages.Utill().click_element("//table[@id='ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_grdUploadDocuments_ctl00']//td[text()='"+doctype+"']/../td[6]/div/ul/li/span");
+//		pages.Utill().input_text(
+//				"//table[@id='ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_grdUploadDocuments_ctl00']//td[text()='"+doctype+"']/../td[6]/div/ul/li/span",
+//				filename);
 		this.addDocument();
 	}
 
-	public void upload(String componentname, String doctype, String filename) {
+	public void upload(String componentname, String doctype, String filename)  throws Exception{
 		this.upload(componentname);
 		this.upload(doctype, filename);
 	}
@@ -148,20 +162,73 @@ pages.Utill().wait_until_loader_is_invisible(10);
 		this.close();
 	}
 
+	public void uploadMultiplecom(String[] componentlist) throws Exception {
+		for (int i = 0; i < componentlist.length; i++) {
+			String name = componentlist[i].toString();
+			switch (name) {
+			case "Current Address":
+				this.upload(name);
+				this.upload("Address Proof", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				break;
+			case "UG1":
+				this.upload(name);
+				this.upload("Degree Certificate", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				break;
+			case "Current/Latest Employment":
+				this.upload(name);
+				this.upload("Relieving Letter", "D:\\gopi\\msbuild\\pdf\\current employment.pdf");
+				break;
+			case "Reference 1":
+				this.upload(name);
+				this.upload("Others", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				break;
+			case "Aadhaar Card":
+				this.upload(name);
+				this.upload("Aadhaar Id - Front", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				break;
+			case "Current Address Criminal Check":
+				this.upload(name);
+				this.upload("Address Proof", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				break;
+			case "Current Address Court Check":
+				this.upload(name);
+				this.upload("Address Proof", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				break;
+			case "Credit Check 1":
+				this.upload(name);
+				this.upload("Aadhaar Id - Back", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				break;
+			case "Database":
+				this.upload(name);
+				this.upload("Others", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				break;
+			default:
+				throw new NotFoundException(name);
+			}
+		}
+		for (int i = 0; i < componentlist.length; i++) {
+			String name = componentlist[i].toString();
+			this.clearComments(name, name + " clear");
+		}
+		this.clear();
+
+	}
+
 	public void close() {
 		pages.Utill().click_element(
 				"//div[@id='RadWindowWrapper_ctl00_ContentPlaceHolder1_rdwDocumentUpload']//tr//td//span[contains(text(),'Close')]");
 		;
 	}
+
 	public void insuffClear(String componentname, String comments, String doctype, String filename) {
 		this.insuffClear(componentname, comments);
-	
-		
+
 	}
-public void insuffClear(String componentname, String comments) {
-	this.clearComments(componentname, comments);
-	this.clear();
-	
+
+	public void insuffClear(String componentname, String comments) {
+		this.clearComments(componentname, comments);
+		this.clear();
+
 	}
 
 }

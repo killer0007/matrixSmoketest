@@ -2,10 +2,7 @@ package dashboard;
 
 import org.apache.commons.math3.exception.NoDataException;
 import org.openqa.selenium.WebDriver;
-
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
-
 import environment.Pages;
 
 public class DataEntry {
@@ -53,7 +50,12 @@ public class DataEntry {
 	}
 	public String getSearchResult(String refno) {
 		this.search(refno);
-		return pages.Utill().get_text("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
+		String re=pages.Utill().get_text("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
+		if(re.equals(null))
+			re=pages.Utill().get_text("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
+			return re;
+		
+		
 	}
 	public String getrefno(String firstname, String lastname) throws NoDataException {
 		this.firstname(firstname);
@@ -62,6 +64,10 @@ public class DataEntry {
 		String no =pages.Utill().GetTableCellValue("grdTaskList", 1, 2);
 		
 		return no;
+	}
+	public void selectcase(String refno) {
+		pages.Utill().click_element("//span[text()='"+refno+"']");
+		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 	
 }
