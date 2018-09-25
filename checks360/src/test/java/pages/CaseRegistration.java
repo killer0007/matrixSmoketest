@@ -24,7 +24,10 @@ public class CaseRegistration {
 		this.driver = driver;
 		pages = new Pages(driver, logger);
 	}
-
+	public void casereg() {
+		pages.Utill().select_by_value("ddlAct", "0");
+		pages.Utill().wait_until_loader_is_invisible(50);
+	}
 	public String getTitle() {
 		return pages.Utill().get_text(".//*[@id='ctl00_ContentPlaceHolder1_divAddVal']/h2/table/tbody/tr/td[1]");
 	}

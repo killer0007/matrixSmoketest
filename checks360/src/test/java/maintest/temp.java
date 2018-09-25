@@ -28,56 +28,25 @@ import com.graphbuilder.struc.LinkedList;
 import io.restassured.internal.support.FileReader;
 
 public class temp {
-public static void main(String[] args) throws Exception{
-
-WebDriver driver= new ChromeDriver();
-driver.get("file:///C:/Users/admin/Downloads/Qp.html");
-List<String> actual=new ArrayList<String>();
-List<WebElement> list = driver.findElements(By.xpath("html/body/div[1]/div[3]/div/div"));
-for (int i = 0; i < list.size(); i++) {
-	List<WebElement> tr =list.get(i).findElements(By.xpath("table/tbody/tr/td/table/tbody/tr/td/img[1]"));
-	for (int j = 1; j < tr.size(); j++) {
-		String scr=tr.get(j).getAttribute("src");
-		if(scr.contains("tick")) {
-//			System.out.println((i+1)+" = "+j+" pass");
-			actual.add(Integer.toString(j));
-			break;
-		}
-		else if(scr.contains("cross")) {
-//			System.out.println(i+" failed");
-			continue;
-		}
-		else {
-			throw new Exception(scr);
-			
-		}
-	}
-	
+String name;
+public temp(String name) {
+	this.name=name;
 }
-
-List<WebElement> aclist=driver.findElements(By.xpath("html/body/div[1]/div[3]/div/div/table/tbody/tr/td/table/tbody/tr[2]/td[3]/table/tbody/tr[3]/td[2]"));
-List<String> expected=new ArrayList<String>();
-for (int i = 0; i < aclist.size(); i++) {
-	
-	expected.add(aclist.get(i).getText());
+public static void main(String[] args) {
+	temp t = new temp("hi");
+	one o = t.new one();
+	two to = t.new two();
 }
-
-//System.out.println("actual "+actual.size());
-//System.out.println("expected "+expected.size());	
-int pass=0;
-int fail=0;
-for (int i = 0; i < 75; i++) {
-	if(actual.get(i).equals(expected.get(i))) {
-		pass++;
-	}
-	else if(!expected.get(i).contains("-")) {
-		fail++;
+class one {
+	public one() {
+		System.out.println("from one :"+name);
 	}
 }
-System.out.println("pass ="+pass);
-System.out.println("fail ="+fail);
-int result=pass-(fail/3);
-System.out.println("result is "+ result);
+class two{
+	public two() {
+		System.out.println("from two :"+name);
+	}
+}
 }
 
-}
+

@@ -291,6 +291,7 @@ public class Utill {
 		driver.switchTo().defaultContent();
 		logger.log(Status.PASS, "switching to default frame");
 	}
+	
 
 	public void executescript(String script) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -565,7 +566,7 @@ public void wait_until_element_isclickable(String path) {
 
 	public String confirmAlert() {
 		By loc = By.xpath("//*[text()='OK']");
-		WebDriverWait wait = new WebDriverWait(driver, 10);
+		WebDriverWait wait = new WebDriverWait(driver, 70);
 		wait.until(ExpectedConditions.presenceOfElementLocated(loc));
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(loc)));
 		String msg = this.get_text("class:rwDialogText");
@@ -589,7 +590,11 @@ public void wait_until_element_isclickable(String path) {
 		Collections.shuffle(answersList);
 		return answersList.get(3);
 	}
-
+public void waitForReady(long timeOutInSeconds) {
+	WebDriverWait wait=new WebDriverWait(driver, timeOutInSeconds);
+	wait.until(ExpectedConditions.invisibilityOf(pages.Utill().find("loading-bar-spinner")));
+	logger.log(Status.INFO, "spinner");
+}
 	public List<String> getAddressChecks(List<String> allchecks) {
 		List<String> address = new ArrayList<String>();
 		for (int i = 0; i < 6; i++) {

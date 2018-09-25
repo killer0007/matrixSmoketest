@@ -103,32 +103,22 @@ public class Basic extends Design {
 		String[] checks = { "Current Address", "UG1", "Current/Latest Employment", "Reference 1", "Aadhaar Card",
 				"Current Address Criminal Check", "Current Address Court Check", "Credit Check 1", "Panel1",
 				"Database" };
-		refno = "HDFC000308";
-		pages.Home().clickActions();
-		pages.CaseOwnerInsuffClear().search(refno, "sp");
-		pages.CaseOwnerInsuffClear().openCase();
-		for (int i = 0; i < checks.length; i++) {
-			String name = checks[i].toString();
-			pages.CaseOwnerInsuffClear().clearComments(name, name + " clear");
-		}
-		pages.CaseOwnerInsuffClear().clear();
-		pages.Utill().confirmAlert();
-		pages.Home().workStage();
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
-		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
-		pages.CaseRegistration().submit();
-		pages.Utill().confirmAlert();
-		pages.Home().homepage();
-		//assing
-		pages.DataEntrySupervision().datanentrysupervision();
-		pages.DataEntrySupervision().assign(refno, "demoempl");
+		refno = "HDFC000326";
+		String uname="demoempl";
 		pages.DataEntry().datanentry();
 		pages.DataEntry().search(refno);
 		pages.DataEntry().selectcase(refno);
-
-
+		
+		pages.DeCriminal().criminalcheck();
+		pages.DeCriminal().history();
+		assertEquals(pages.DeCriminal().getraisedBy(), uname);
+		assertEquals(pages.DeCriminal().getraisedStage(), "Case Registration Pending");
+		assertEquals(pages.DeCriminal().getraisedComments(), "insuff Current Address Criminal Check");
+		assertEquals(pages.DeCriminal().getclearedBy(), uname);
+		assertEquals(pages.DeCriminal().getclearedComments(), "Current Address Criminal Check clear");
+		pages.DeCriminal().close();
+		
+		
 	}
 
 	@AfterMethod
