@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [regression testing]">
-  <test name="caseregistration(failed)">
-    <groups>
-      <run>
-        <include name="s3"/>
-      </run>
-    </groups>
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
     <classes>
-      <class name="maintest.SPcasereg">
+      <class name="maintest.Basic">
         <methods>
-          <include name="teardown"/>
-          <include name="TC_SPINF_33"/>
-          <include name="tearDown"/>
-          <include name="beforeSuit"/>
+          <include name="TC_SPINF_012"/>
           <include name="setup"/>
-          <include name="TC_SPINF_27"/>
-          <include name="TC_SPINF_38"/>
-          <include name="afterSuite"/>
-          <include name="TC_SPINF_24"/>
           <include name="beforetest"/>
-          <include name="TC_SPINF_21"/>
-          <include name="TC_SPINF_30"/>
+          <include name="beforeSuit"/>
+          <include name="afterSuite"/>
+          <include name="teardown"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- maintest.SPcasereg -->
+      </class> <!-- maintest.Basic -->
     </classes>
-  </test> <!-- caseregistration(failed) -->
-</suite> <!-- Failed suite [regression testing] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

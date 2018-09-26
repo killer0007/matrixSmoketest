@@ -13,6 +13,7 @@ public class Login {
 
 	public Login(WebDriver driver, ExtentTest logger) {
 		this.driver = driver;
+		this.logger=logger;
 		pages = new Pages(driver, logger);
 	}
 

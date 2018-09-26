@@ -16,6 +16,9 @@ public class DbConnection {
 //		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 //		conn = DriverManager.getConnection(url, "Sa", "Sql@123");
 //	}
+	public static void main(String[] args) throws Exception {
+		System.out.println(new DbConnection().getLastCase("demo client1234"));
+	}
 public List<String> getcontractdetails(String contractname) throws Exception {
 	List<String> result = new ArrayList<String>();
 	String id=null;

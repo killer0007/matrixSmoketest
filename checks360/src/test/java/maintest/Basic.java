@@ -42,7 +42,7 @@ import environment.Pages;
 import environment.Utill;
 
 @Listeners(environment.Listener.class)
-public class Basic extends Design {
+public class Basic  {
 
 	private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 100, Font.BOLD);
 
@@ -93,33 +93,54 @@ public class Basic extends Design {
 	}
 
 	@Test(priority = 1, enabled = true)
-	public void Login() throws Exception {
+	public void TC_SPINF_012() throws Exception {
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+		refno="HDFC000389";
+		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		contract.remove("Current/Latest Employment");
+		contract.remove("Previous Employment");
+		contract.remove("Previous Employment 2");
+		contract.remove("Previous Employment 3");
+		contract.remove("Previous Employment 4");
+
+
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		List<HashMap<String, String>> data = pages.CaseTracker().getcasedata();
+		// System.out.println(data.size());
+		SoftAssert sf = new SoftAssert();
+		for (int i = 0; i < data.size(); i++) {
+			String name = data.get(i).get("ComponentName").trim();
+			if (name.equals("Panel1") || name.equals("Medical Test")) {
+				if (data.get(i).get("CurrentStage").equals("Verification Assignment Pending")) {
+					sf.assertTrue(true, "success");
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			} else if (name.contains("Employment")) {
+				if (data.get(i).get("CurrentStage").equals("Yet to start")) {
+					sf.assertTrue(true, "success");
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			} else {
+				if (data.get(i).get("CurrentStage").equals("Data Entry Assignment Pending")) {
+					sf.assertTrue(true, "success");
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			}
+		}
+		List<String> checkname = pages.CaseTracker().getcomponentname(data);
+		pages.CaseTracker().cancel();
+		contract.removeAll(checkname);
+
+		sf.assertTrue(contract.size() == 0, "success");
+		sf.assertAll();
 	}
 
-	// To check insuff cleared components moved to case registration
-	@Test(priority = 30, enabled = true)
-	public void TC_SPINF_002() throws Exception {
-		String[] checks = { "Current Address", "UG1", "Current/Latest Employment", "Reference 1", "Aadhaar Card",
-				"Current Address Criminal Check", "Current Address Court Check", "Credit Check 1", "Panel1",
-				"Database" };
-		refno = "HDFC000326";
-		String uname="demoempl";
-		pages.DataEntry().datanentry();
-		pages.DataEntry().search(refno);
-		pages.DataEntry().selectcase(refno);
-		
-		pages.DeCriminal().criminalcheck();
-		pages.DeCriminal().history();
-		assertEquals(pages.DeCriminal().getraisedBy(), uname);
-		assertEquals(pages.DeCriminal().getraisedStage(), "Case Registration Pending");
-		assertEquals(pages.DeCriminal().getraisedComments(), "insuff Current Address Criminal Check");
-		assertEquals(pages.DeCriminal().getclearedBy(), uname);
-		assertEquals(pages.DeCriminal().getclearedComments(), "Current Address Criminal Check clear");
-		pages.DeCriminal().close();
-		
-		
-	}
+
 
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {

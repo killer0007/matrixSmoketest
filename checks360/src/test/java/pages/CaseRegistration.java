@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 import environment.Pages;
 
@@ -22,6 +24,7 @@ public class CaseRegistration {
 	public CaseRegistration(WebDriver driver, ExtentTest logger) {
 		// super(driver, logger);
 		this.driver = driver;
+		this.logger=logger;
 		pages = new Pages(driver, logger);
 	}
 	public void casereg() {
@@ -34,8 +37,19 @@ public class CaseRegistration {
 
 	public void selectClient(String name) throws InterruptedException {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlClient_Input");
-		Thread.sleep(1000);
-		pages.Utill().click_element("//li[text()='" + name + "']");
+		
+		try {
+			pages.Utill().click_element("//li[text()='" + name + "']");
+		} catch (ElementNotVisibleException e) {
+			logger.log(Status.WARNING, e.getMessage().toString());
+			Thread.sleep(2000);
+			pages.Utill().click_element("//li[text()='" + name + "']");
+		}
+		 catch (ElementNotInteractableException e) {
+			 logger.log(Status.WARNING, e.getMessage().toString());
+				Thread.sleep(2000);
+				pages.Utill().click_element("//li[text()='" + name + "']");
+			}
 		pages.Utill().wait_until_loader_is_invisible(10);
 	}
 

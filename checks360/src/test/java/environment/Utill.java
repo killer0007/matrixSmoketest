@@ -37,6 +37,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
@@ -116,6 +117,21 @@ public class Utill {
 	public String get_text(String path) {
 
 		String msg = this.find(path).getText();
+		int c=0;
+		while(msg.equals(null) || msg.isEmpty()) {
+			try {
+				Thread.sleep(200);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			msg = this.find(path).getText();
+			c++;
+			logger.log(Status.INFO, "loop count is :"+c);
+			if(c>4) {
+				break;
+			}
+		}
+		
 		logger.log(Status.PASS, "msg = " + msg + ".");
 		return msg;
 
@@ -566,7 +582,7 @@ public void wait_until_element_isclickable(String path) {
 
 	public String confirmAlert() {
 		By loc = By.xpath("//*[text()='OK']");
-		WebDriverWait wait = new WebDriverWait(driver, 70);
+		WebDriverWait wait = new WebDriverWait(driver, 130);
 		wait.until(ExpectedConditions.presenceOfElementLocated(loc));
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(loc)));
 		String msg = this.get_text("class:rwDialogText");
@@ -658,9 +674,22 @@ public void waitForReady(long timeOutInSeconds) {
 		}
 		return drug;
 	}
+	public  String formatedob(String date) {
+		//String date ="2007-04-29";
+		//yyyy-mm-dd
+		return date.substring(8,10)+"/"+date.substring(5,7)+"/"+date.substring(0,4);
+		
+	}
 
 	public void closetab() {
 		driver.close();
-
+	}
+	public void wait_element_has_text(String xpath, long timeout) {
+		(new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
+		    public Boolean apply(WebDriver d) {
+		    	System.out.println("waiting for data");
+		        return d.findElement(By.xpath(xpath)).getText().length() != 0;
+		    }
+		});
 	}
 }

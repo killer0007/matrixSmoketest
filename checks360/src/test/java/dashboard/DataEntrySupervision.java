@@ -55,6 +55,7 @@ public class DataEntrySupervision {
 		int count = pages.DbConnection().getAssignedCount();
 		pages.Utill().select_by_label("ddlFilteredTMforAllocation", empname + " (" + count + ")");
 		pages.Utill().click_element("//div[@class='modal-dialog modal-lg']//button[text()='Ok']");
+		Thread.sleep(1000);
 		pages.Utill().click_element("//div[@class='modal-content']//button[contains(text(),'Yes')]");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}

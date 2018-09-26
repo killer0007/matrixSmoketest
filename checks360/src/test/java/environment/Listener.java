@@ -63,7 +63,7 @@ public class Listener implements ITestListener {
 
 	public void onTestStart(ITestResult result) {
 
-		System.out.println("The execution of the main test starts now");
+		System.out.println("The execution of the main test starts now---" + result.getName());
 
 	}
 

@@ -3,6 +3,7 @@ package dataEntry;
 import org.openqa.selenium.WebDriver;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 import environment.Pages;
 
@@ -57,5 +58,18 @@ public class Address {
 	}
 	public void close() {
 		pages.Utill().click_element("//a[@class='rwCloseButton']");
+	}
+	public String historyDocument() {
+		String dc=pages.Utill().get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblDoc");
+		return dc.replaceAll("[0-9]", "");
+		
+//		if(op.equals(doc+".pdf")) {
+//			return true;
+//		}
+//		else {
+//			logger.log(Status.FAIL, dc);
+//			return false;
+//		}
+		
 	}
 }

@@ -16,6 +16,7 @@ public class Home {
 
 	public Home(WebDriver driver, ExtentTest logger) {
 		this.driver = driver;
+		this.logger=logger;
 		pages = new Pages(driver, logger);
 	}
 

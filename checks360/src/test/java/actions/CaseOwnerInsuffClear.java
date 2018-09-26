@@ -4,6 +4,7 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.List;
+import java.util.Properties;
 
 import org.apache.bsf.engines.javascript.JavaScriptEngine;
 import org.openqa.selenium.InvalidSelectorException;
@@ -12,6 +13,7 @@ import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
 
+import environment.BaseClass;
 import environment.Pages;
 
 public class CaseOwnerInsuffClear {
@@ -142,12 +144,12 @@ public class CaseOwnerInsuffClear {
 
 	private void upload(String doctype, String filename) throws Exception {
 		Thread.sleep(1000);
-		pages.Utill().click_element("//table[@id='ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_grdUploadDocuments_ctl00']//td[text()='"+doctype+"']/../td[6]/div/ul/li/span");
-		pages.Utill().FileUpload(filename);
 //		pages.Utill().click_element("//table[@id='ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_grdUploadDocuments_ctl00']//td[text()='"+doctype+"']/../td[6]/div/ul/li/span");
-//		pages.Utill().input_text(
-//				"//table[@id='ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_grdUploadDocuments_ctl00']//td[text()='"+doctype+"']/../td[6]/div/ul/li/span",
-//				filename);
+//		pages.Utill().FileUpload(filename);
+//		pages.Utill().click_element("//table[@id='ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_grdUploadDocuments_ctl00']//td[text()='"+doctype+"']/../td[6]/div/ul/li/span");
+		pages.Utill().input_text(
+				"//table[@id='ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_grdUploadDocuments_ctl00']//td[text()='"+doctype+"']/../td[6]/div/ul/li/span/input[2]",
+				filename);
 		this.addDocument();
 	}
 
@@ -163,48 +165,52 @@ public class CaseOwnerInsuffClear {
 	}
 
 	public void uploadMultiplecom(String[] componentlist) throws Exception {
+		Properties loc=BaseClass.getlocator();
 		for (int i = 0; i < componentlist.length; i++) {
 			String name = componentlist[i].toString();
 			switch (name) {
 			case "Current Address":
 				this.upload(name);
-				this.upload("Address Proof", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				this.upload("Address Proof", loc.getProperty("addressinsuffdoc"));
 				break;
 			case "UG1":
 				this.upload(name);
-				this.upload("Degree Certificate", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				this.upload("Degree Certificate", loc.getProperty("eduinsuffdoc"));
 				break;
 			case "Current/Latest Employment":
 				this.upload(name);
-				this.upload("Relieving Letter", "D:\\gopi\\msbuild\\pdf\\current employment.pdf");
+				this.upload("Relieving Letter", loc.getProperty("empinsuffdoc"));
 				break;
 			case "Reference 1":
 				this.upload(name);
-				this.upload("Others", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				this.upload("Others", loc.getProperty("refinsuffdoc"));
 				break;
 			case "Aadhaar Card":
 				this.upload(name);
-				this.upload("Aadhaar Id - Front", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				this.upload("Aadhaar Id - Front", loc.getProperty("idinsuffdoc"));
 				break;
 			case "Current Address Criminal Check":
 				this.upload(name);
-				this.upload("Address Proof", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				this.upload("Address Proof", loc.getProperty("criminalinsuffdoc"));
 				break;
 			case "Current Address Court Check":
 				this.upload(name);
-				this.upload("Address Proof", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				this.upload("Address Proof", loc.getProperty("courtinsuffdoc"));
 				break;
 			case "Credit Check 1":
 				this.upload(name);
-				this.upload("Aadhaar Id - Back", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				this.upload("Aadhaar Id - Back", loc.getProperty("creditinsuffdoc"));
 				break;
 			case "Database":
 				this.upload(name);
-				this.upload("Others", "D:\\gopi\\msbuild\\pdf\\" + name + ".pdf");
+				this.upload("Others", loc.getProperty("dbinsuffdoc"));
+				break;
+			case "Panel1":
 				break;
 			default:
 				throw new NotFoundException(name);
 			}
+			
 		}
 		for (int i = 0; i < componentlist.length; i++) {
 			String name = componentlist[i].toString();

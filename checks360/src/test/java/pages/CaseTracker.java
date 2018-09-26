@@ -18,6 +18,7 @@ public class CaseTracker {
 
 	public CaseTracker(WebDriver driver, ExtentTest logger) {
 		this.driver = driver;
+		this.logger=logger;
 		pages = new Pages(driver, logger);
 	}
 
@@ -35,6 +36,8 @@ public class CaseTracker {
 
 	public void clickcase(String refno) {
 		pages.Utill().click_element("linkText:" + refno);
+		pages.Utill().wait_element_has_text("//div[@class='modal-content']//table[@id='grdTaskList']/tbody/tr[1]/td[1]/span", 10);
+		
 	}
 
 	public String getCurrentStage(String componentName) {
@@ -60,7 +63,7 @@ public class CaseTracker {
 	}
 
 	public List<HashMap<String, String>> getcasedata() throws Exception {
-		Thread.sleep(2000);
+//		Thread.sleep(5000);
 		List<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
 		int row = driver.findElements(By.xpath("//div[@class='modal-content']//table[@id='grdTaskList']/tbody/tr"))
 				.size();

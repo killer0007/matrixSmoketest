@@ -24,7 +24,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 public class temp2 {
-	 private static String FILE = "D:\\gopi\\msbuild\\FirstPdf.pdf";
+//	 private static String FILE = "D:\\gopi\\msbuild\\FirstPdf.pdf";
 	    private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 100,
 	            Font.BOLD);
 	   
@@ -32,20 +32,23 @@ public class temp2 {
 	    public static void main(String[] args) {
 	    	
 	     java.util.List<String> data = new ArrayList<String>();
-	     data.add("currnt address");
-	     data.add("current employment");
-	     data.add("UG1");
-	     data.add("currnt address");
-	     data.add("currnt address");
-	     data.add("currnt address");
-	     data.add("currnt address");
-	        	for (int i = 0; i < args.length; i++) {
+	     data.add("address");
+	     data.add("employment");
+	     data.add("education");
+	     data.add("criminal");
+	     data.add("reference");
+	     data.add("id");
+	     data.add("database");
+	     data.add("credit");
+	     data.add("court");
+	        	for (int i = 0; i < data.size(); i++) {
 	        		   try {
+	        			   String FILE = "D:\\gopi\\checks360\\insuff\\"+data.get(i).toString()+".pdf";
 	        		 Document document = new Document();
 	 	            PdfWriter.getInstance(document, new FileOutputStream(FILE));
 	 	            document.open();
 	 	          
-	 	            addTitlePage(document);
+	 	            addTitlePage(document,data.get(i).toString());
 	 	            document.close();
 	 	        } catch (Exception e) {
 	 	            e.printStackTrace();
@@ -59,13 +62,13 @@ public class temp2 {
 	    // under File -> Properties
 	   
 
-	    private static void addTitlePage(Document document)
+	    private static void addTitlePage(Document document, String data)
 	            throws DocumentException {
 	        Paragraph preface = new Paragraph();
 	        // We add one empty line
 	        addEmptyLine(preface, 5);
 	       
-	        preface.add(new Paragraph("present", catFont));
+	        preface.add(new Paragraph(data +" insuff ", catFont));
 	        preface.setAlignment(Element.ALIGN_CENTER);
 
 	

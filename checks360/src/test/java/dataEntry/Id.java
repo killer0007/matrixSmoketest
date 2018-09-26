@@ -58,4 +58,7 @@ public class Id {
 	public void close() {
 		pages.Utill().click_element("//a[@class='rwCloseButton']");
 	}
+	public String historyDocument() {
+		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblDoc").replaceAll("[0-9]", "");
+	}
 }
