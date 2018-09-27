@@ -5,10 +5,10 @@
 	<!-- <listeners> -->
 	<!-- <listener class-name = "environment.CustomReporter" /> -->
 	<!-- </listeners> -->
-	<test thread-count="5" name="caseregistration">
+	<test thread-count="5" name="insuff">
 		<groups>
 			<run>
-				<include name="insuff" />
+				<include name="not applicable" />
 			</run>
 		</groups>
 		<classes>

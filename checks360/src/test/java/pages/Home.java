@@ -75,7 +75,7 @@ public class Home {
 		pages.Utill().click_element("ctl00_lnkLogout");
 	}
 
-	public void clickActions() {
+	public void Actions() {
 		pages.Utill().click_element("btnActions");
 		pages.Utill().wait_until_loader_is_invisible(15);
 

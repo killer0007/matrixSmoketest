@@ -1057,7 +1057,7 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		pages.Home().clickActions();
+		pages.Home().Actions();
 		cs.caseOwner();
 		refno = pages.DbConnection().getLastrefno(ProjectName);
 		cs.search(refno, "sp");
@@ -1150,7 +1150,7 @@ public class SPcasereg extends Design {
 	@Test(priority = 35, enabled = true, groups = { "insuff", "smoketest" })
 	public void TC_SPINF_007() throws Exception {
 		CaseOwnerInsuffClear cs = pages.CaseOwnerInsuffClear();
-		pages.Home().clickActions();
+		pages.Home().Actions();
 		cs.caseOwner();
 		cs.search(refno, "sp");
 		String no = cs.getrefNo();
@@ -1231,7 +1231,7 @@ public class SPcasereg extends Design {
 		pages.Home().homepage();
 		refno = pages.DbConnection().getLastrefno(ProjectName);
 //			refno="HDFC000308";
-		pages.Home().clickActions();
+		pages.Home().Actions();
 		pages.CaseOwnerInsuffClear().search(refno, "sp");
 		pages.CaseOwnerInsuffClear().openCase();
 		assertEquals(pages.CaseOwnerInsuffClear().getComments("Current Address"), "insuff Current Address");
@@ -1304,7 +1304,7 @@ public class SPcasereg extends Design {
 				"Current Address Criminal Check", "Current Address Court Check", "Credit Check 1", "Panel1",
 				"Database" };
 //		refno = "HDFC000308";
-		pages.Home().clickActions();
+		pages.Home().Actions();
 		pages.CaseOwnerInsuffClear().search(refno, "sp");
 		pages.CaseOwnerInsuffClear().openCase();
 		for (int i = 0; i < checks.length; i++) {

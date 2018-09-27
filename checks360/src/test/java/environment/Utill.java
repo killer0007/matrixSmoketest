@@ -580,7 +580,7 @@ public void wait_until_element_isclickable(String path) {
 
 	}
 
-	public String confirmAlert() {
+	public String confirmAlert() throws Exception{
 		By loc = By.xpath("//*[text()='OK']");
 		WebDriverWait wait = new WebDriverWait(driver, 130);
 		wait.until(ExpectedConditions.presenceOfElementLocated(loc));

@@ -8,12 +8,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -59,6 +63,7 @@ public class Basic  {
 	protected String CandidateId = null;
 	protected String lastname = null;
 	protected String refno = null;
+	protected String uname = null;
 
 	@BeforeSuite
 	public void beforeSuit() {
@@ -92,65 +97,43 @@ public class Basic  {
 
 	}
 
-	@Test(priority = 1, enabled = true)
-	public void TC_SPINF_012() throws Exception {
+	@Test(priority = 29, enabled = true, groups = {"insuff" })
+	public void TC_SPINF_001() throws Exception {
+		uname = config.getProperty("uname");
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-		refno="HDFC000389";
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
-		contract.remove("Current/Latest Employment");
-		contract.remove("Previous Employment");
-		contract.remove("Previous Employment 2");
-		contract.remove("Previous Employment 3");
-		contract.remove("Previous Employment 4");
-
-
-		pages.Home().CaseTracker();
-		pages.CaseTracker().search(refno);
-		pages.CaseTracker().clickcase(refno);
-		List<HashMap<String, String>> data = pages.CaseTracker().getcasedata();
-		// System.out.println(data.size());
-		SoftAssert sf = new SoftAssert();
-		for (int i = 0; i < data.size(); i++) {
-			String name = data.get(i).get("ComponentName").trim();
-			if (name.equals("Panel1") || name.equals("Medical Test")) {
-				if (data.get(i).get("CurrentStage").equals("Verification Assignment Pending")) {
-					sf.assertTrue(true, "success");
-				} else {
-					sf.assertTrue(false, data.get(i).get("ComponentName"));
-				}
-			} else if (name.contains("Employment")) {
-				if (data.get(i).get("CurrentStage").equals("Yet to start")) {
-					sf.assertTrue(true, "success");
-				} else {
-					sf.assertTrue(false, data.get(i).get("ComponentName"));
-				}
-			} else {
-				if (data.get(i).get("CurrentStage").equals("Data Entry Assignment Pending")) {
-					sf.assertTrue(true, "success");
-				} else {
-					sf.assertTrue(false, data.get(i).get("ComponentName"));
-				}
-			}
-		}
-		List<String> checkname = pages.CaseTracker().getcomponentname(data);
-		pages.CaseTracker().cancel();
-		contract.removeAll(checkname);
-
-		sf.assertTrue(contract.size() == 0, "success");
-		sf.assertAll();
+	
 	}
 
-
-
-	@AfterMethod
+	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			String temp = Utill.getScreenshot(driver);
 			logger.fail(result.getThrowable().getMessage(),
 					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+			logger.log(Status.INFO, refno);
+			String pagesource =driver.getPageSource();
+			if(result.getThrowable().getMessage().contains("The following asserts failed")) {
+				logger.log(Status.FAIL, result.getThrowable().getMessage());
+			}
+			else if(pagesource.contains("Images/message.png")) {
+				logger.log(Status.WARNING, "Your last session was terminated");
+				pages.Utill().click_element("ctl00_ContentPlaceHolder1_urls");
+				pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+			}
+			else if (pagesource.contains("ctl00_ContentPlaceHolder1_txtUserName")) {
+				logger.log(Status.WARNING, "Your last session was closed by user");
+				pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+			}
+			else {
+				logger.log(Status.WARNING, method.getName()+" navigating to home page due to error");
+				driver.get(config.getProperty("url") + "/Web/dashboard.aspx");
+				pages.Utill().wait_until_loader_is_invisible(80);
+			}
+			
 		} else {
 			logger.pass(method.getName() + " completed");
 		}
+		
 
 	}
 

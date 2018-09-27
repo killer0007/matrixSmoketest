@@ -5,12 +5,21 @@
     <classes>
       <class name="maintest.Basic">
         <methods>
-          <include name="TC_SPINF_002"/>
-          <include name="setup"/>
           <include name="beforetest"/>
           <include name="beforeSuit"/>
-          <include name="afterSuite"/>
           <include name="teardown"/>
+          <include name="TC_SPINF_010"/>
+          <include name="TC_SPINF_001"/>
+          <include name="TC_SPINF_012"/>
+          <include name="TC_SPINF_011"/>
+          <include name="TC_SPINF_033"/>
+          <include name="TC_SPINF_024"/>
+          <include name="TC_SPINF_030"/>
+          <include name="setup"/>
+          <include name="afterSuite"/>
+          <include name="TC_SPINF_005"/>
+          <include name="TC_SPINF_038"/>
+          <include name="TC_SPINF_006"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- maintest.Basic -->

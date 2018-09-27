@@ -6,12 +6,13 @@ import com.aventstack.extentreports.ExtentTest;
 
 import environment.Pages;
 
-public class Credit {
+public class Credit extends DataEntryPage{
 	WebDriver driver;
 	ExtentTest logger;
 	Pages pages;
 
 	public Credit(WebDriver driver, ExtentTest logger) {
+		super(driver, logger);
 		this.driver=driver;
 		this.logger=logger;
 		pages=new Pages(driver, logger);

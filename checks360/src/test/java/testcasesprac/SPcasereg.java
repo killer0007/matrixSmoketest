@@ -6,6 +6,7 @@ import static org.testng.Assert.assertEquals;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
@@ -1057,7 +1058,7 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		pages.Home().clickActions();
+		pages.Home().Actions();
 		cs.caseOwner();
 		refno = pages.DbConnection().getLastrefno(ProjectName);
 		cs.search(refno, "sp");
@@ -1150,7 +1151,7 @@ public class SPcasereg extends Design {
 	@Test(priority = 35, enabled = true,dependsOnMethods="TC_SPINF_006", groups = {"insuff"})
 	public void TC_SPINF_007() throws Exception {
 		CaseOwnerInsuffClear cs = pages.CaseOwnerInsuffClear();
-		pages.Home().clickActions();
+		pages.Home().Actions();
 		cs.caseOwner();
 		cs.search(refno, "sp");
 		String no = cs.getrefNo();
@@ -1231,7 +1232,7 @@ public class SPcasereg extends Design {
 		pages.Home().homepage();
 		refno = pages.DbConnection().getLastrefno(ProjectName);
 //			refno="HDFC000308";
-		pages.Home().clickActions();
+		pages.Home().Actions();
 		pages.CaseOwnerInsuffClear().search(refno, "sp");
 		pages.CaseOwnerInsuffClear().openCase();
 		assertEquals(pages.CaseOwnerInsuffClear().getComments("Current Address"), "insuff Current Address");
@@ -1304,10 +1305,11 @@ public class SPcasereg extends Design {
 				"Current Address Criminal Check", "Current Address Court Check", "Credit Check 1", "Panel1",
 				"Database" };
 //		refno = "HDFC000308";
-		pages.Home().clickActions();
+		pages.Home().Actions();
 		pages.CaseOwnerInsuffClear().search(refno, "sp");
 		pages.CaseOwnerInsuffClear().openCase();
 		pages.CaseOwnerInsuffClear().uploadMultiplecom(checks);
+		
 		pages.Home().workStage();
 		pages.Utill().click_element("//span[text()='" + refno + "']");
 		pages.Utill().wait_until_loader_is_invisible(5);
@@ -1349,7 +1351,7 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeEducation().getraisedComments(), "insuff UG1");
 		sf.assertEquals(pages.DeEducation().getclearedBy(), uname);
 		sf.assertEquals(pages.DeEducation().getclearedComments(), "UG1 clear");
-		String doc =pages.DeAddress().historyDocument();
+		String doc =pages.DeEducation().historyDocument();
 		sf.assertTrue((doc.equals("education.pdf")),doc);
 		pages.DeEducation().close();
 		sf.assertAll();
@@ -1367,7 +1369,7 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeEmployment().getraisedComments(), "insuff Current/Latest Employment");
 		sf.assertEquals(pages.DeEmployment().getclearedBy(), uname);
 		sf.assertEquals(pages.DeEmployment().getclearedComments(), "Current/Latest Employment clear");
-		String doc =pages.DeAddress().historyDocument();
+		String doc =pages.DeEmployment().historyDocument();
 		sf.assertTrue((doc.equals("employment.pdf")),doc);
 		}
 		catch (Exception e) {
@@ -1391,7 +1393,7 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeReference().getraisedComments(), "insuff Reference 1");
 		sf.assertEquals(pages.DeReference().getclearedBy(), uname);
 		sf.assertEquals(pages.DeReference().getclearedComments(), "Reference 1 clear");
-		String doc =pages.DeAddress().historyDocument();
+		String doc =pages.DeReference().historyDocument();
 		sf.assertTrue((doc.equals("reference.pdf")),doc);
 		pages.DeReference().close();
 		sf.assertAll();
@@ -1408,7 +1410,7 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeDatabase().getraisedComments(), "insuff Database");
 		sf.assertEquals(pages.DeDatabase().getclearedBy(), uname);
 		sf.assertEquals(pages.DeDatabase().getclearedComments(), "Database clear");
-		String doc =pages.DeAddress().historyDocument();
+		String doc =pages.DeDatabase().historyDocument();
 		sf.assertTrue((doc.equals("database.pdf")),doc);
 		pages.DeDatabase().close();
 		sf.assertAll();
@@ -1425,7 +1427,7 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeCriminal().getraisedComments(), "insuff Current Address Criminal Check");
 		sf.assertEquals(pages.DeCriminal().getclearedBy(), uname);
 		sf.assertEquals(pages.DeCriminal().getclearedComments(), "Current Address Criminal Check clear");
-		String doc =pages.DeAddress().historyDocument();
+		String doc =pages.DeCriminal().historyDocument();
 		sf.assertTrue((doc.equals("criminal.pdf")),doc);
 		pages.DeCriminal().close();
 		sf.assertAll();
@@ -1442,7 +1444,7 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeCredit().getraisedComments(), "insuff Credit Check 1");
 		sf.assertEquals(pages.DeCredit().getclearedBy(), uname);
 		sf.assertEquals(pages.DeCredit().getclearedComments(), "Credit Check 1 clear");
-		String doc =pages.DeAddress().historyDocument();
+		String doc =pages.DeCredit().historyDocument();
 		sf.assertTrue((doc.equals("credit.pdf")),doc);
 		pages.DeCredit().close();
 		sf.assertAll();
@@ -1459,7 +1461,7 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeCourt().getraisedComments(), "insuff Current Address Court Check");
 		sf.assertEquals(pages.DeCourt().getclearedBy(), uname);
 		sf.assertEquals(pages.DeCourt().getclearedComments(), "Current Address Court Check clear");
-		String doc =pages.DeAddress().historyDocument();
+		String doc =pages.DeCourt().historyDocument();
 		sf.assertTrue((doc.equals("court.pdf")),doc);
 		pages.DeCourt().close();
 		sf.assertAll();
@@ -1477,7 +1479,7 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeId().getraisedComments(), "insuff Aadhaar Card");
 		sf.assertEquals(pages.DeId().getclearedBy(), uname);
 		sf.assertEquals(pages.DeId().getclearedComments(), "Aadhaar Card clear");
-		String doc =pages.DeAddress().historyDocument();
+		String doc =pages.DeId().historyDocument();
 		sf.assertTrue((doc.equals("id.pdf")),doc);
 		pages.DeId().close();
 		}
@@ -1493,6 +1495,171 @@ public class SPcasereg extends Design {
 		}
 		
 	}
+	@Test(priority = 58, enabled = true, alwaysRun=true,dependsOnMethods="TC_SPINF_024", groups = {"not applicable"})
+	public void TC_SPNAPP_001() throws Exception {
+		String[] checks = { "Current Address", "UG1", "Current/Latest Employment", "Reference 1", "Aadhaar Card",
+				"Current Address Criminal Check", "Current Address Court Check", "Credit Check 1", "Panel1",
+				"Database" };
+		String[] notapplicable = { "Permanent", "12th", "Previous Employment", "Reference 2", "PAN Card",
+				"Permanent Criminal Check", "Permanent Court Check" };
+		pages.Home().clickRegister();
+		CandidateName = pages.Utill().candidateName();
+		CandidateId = Integer.toString(pages.Utill().candidateid());
+		lastname = pages.Utill().candidateName();
+		HashMap<String, String> datas = new HashMap<String, String>();
+		datas.put("CandidateName", CandidateName);
+		datas.put("CandidateId", CandidateId);
+		datas.put("ClientName", ClientName);
+		datas.put("ProjectName", ProjectName);
+		datas.put("lastname", lastname);
+		pages.CaseRegistration().registercase(datas, false);
+		for (int i = 0; i < checks.length; i++) {
+			pages.CaseRegistration().selectcheck(checks[i].toString());
+		}
+		for (int i = 0; i < notapplicable.length; i++) {
+			pages.CaseRegistration().selectcheck(notapplicable[i].toString());
+			pages.CaseRegistration().notApplicable(notapplicable[i].toString(), "not applicable");
+			//not applicable
+		}
+		pages.CaseRegistration().submit();
+		pages.Utill().confirmAlert();
+		pages.Home().homepage();
+		refno = pages.DbConnection().getLastrefno(ProjectName);
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		List<HashMap<String, String>> data = pages.CaseTracker().getcasedata();
+		SoftAssert sf = new SoftAssert();
+		for (int i = 0; i < data.size(); i++) {
+			String name = data.get(i).get("ComponentName").trim();
+			if(Arrays.asList(checks).contains(name)) {
+				if (data.get(i).get("Status").equals("WIP")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("Status"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+				if (data.get(i).get("CurrentStage").equals("Data Entry Assignment Pending")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("CurrentStage"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+				if (data.get(i).get("PersonResponsible").equals("Team Leader")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			}
+			else if(Arrays.asList(notapplicable).contains(name)) {
+				if (data.get(i).get("Status").equals("Not Required")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("Status"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+				if (data.get(i).get("CurrentStage").equals("Not Required")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("CurrentStage"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+				if (data.get(i).get("PersonResponsible").equals("-")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			}
+//			else {
+//				System.out.println("---------------------------------");
+//				System.out.println(data.get(i).get("ComponentName"));
+//			}
+		}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
+	}
+	@Test(priority = 59, enabled = true, alwaysRun=true,dependsOnMethods="TC_SPNAPP_001", groups = {"not applicable"})
+	public void TC_SPCEP_001() throws Exception {
+		String[] checks = { "Current Address", "UG1", "Previous Employment", "Reference 3"};
+		String[] cep = { "Current/Latest Employment", "Previous Employment 2", "Reference 1", "Reference 2"};
+		pages.Home().clickRegister();
+		CandidateName = pages.Utill().candidateName();
+		CandidateId = Integer.toString(pages.Utill().candidateid());
+		lastname = pages.Utill().candidateName();
+		HashMap<String, String> datas = new HashMap<String, String>();
+		datas.put("CandidateName", CandidateName);
+		datas.put("CandidateId", CandidateId);
+		datas.put("ClientName", ClientName);
+		datas.put("ProjectName", ProjectName);
+		datas.put("lastname", lastname);
+		pages.CaseRegistration().registercase(datas, false);
+		for (int i = 0; i < checks.length; i++) {
+			pages.CaseRegistration().selectcheck(checks[i].toString());
+		}
+		for (int i = 0; i < cep.length; i++) {
+			pages.CaseRegistration().selectcheck(cep[i].toString());
+//			pages.CaseRegistration().notApplicable(cep[i].toString(), "not applicable");
+			pages.CaseRegistration().cep(cep[i].toString(), "cep raised", "10/11/2018");
+			//not applicable
+		}
+		pages.CaseRegistration().submit();
+		pages.Utill().confirmAlert();
+		pages.Home().homepage();
+		refno = pages.DbConnection().getLastrefno(ProjectName);
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		List<HashMap<String, String>> data = pages.CaseTracker().getcasedata();
+		SoftAssert sf = new SoftAssert();
+		for (int i = 0; i < data.size(); i++) {
+			String name = data.get(i).get("ComponentName").trim();
+			if(Arrays.asList(checks).contains(name)) {
+				if (data.get(i).get("Status").equals("WIP")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("Status"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+				if (data.get(i).get("CurrentStage").equals("Data Entry Assignment Pending")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("CurrentStage"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+				if (data.get(i).get("PersonResponsible").equals("Team Leader")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			}
+			else if(Arrays.asList(cep).contains(name)) {
+				if (data.get(i).get("Status").equals("CEP Onhold")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("Status"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+				if (data.get(i).get("CurrentStage").equals("CEP Raised - Data Entry Assignment Pending")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("CurrentStage"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+				if (data.get(i).get("PersonResponsible").equals("Team Leader")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			}
+			
+			}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
+	}
 
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {
@@ -1501,8 +1668,22 @@ public class SPcasereg extends Design {
 			logger.fail(result.getThrowable().getMessage(),
 					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 			logger.log(Status.INFO, refno);
-			driver.get(config.getProperty("url") + "/Web/dashboard.aspx");
-			pages.Utill().wait_until_loader_is_invisible(80);
+			String pagesource =driver.getPageSource();
+			if(pagesource.contains("Images/message.png")) {
+				logger.log(Status.WARNING, "Your last session was terminated");
+				pages.Utill().click_element("ctl00_ContentPlaceHolder1_urls");
+				pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+			}
+			else if (pagesource.contains("ctl00_ContentPlaceHolder1_txtUserName")) {
+				logger.log(Status.WARNING, "Your last session was closed by user");
+				pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+			}
+			else {
+				logger.log(Status.WARNING, method.getName()+" navigating to home page due to error");
+				driver.get(config.getProperty("url") + "/Web/dashboard.aspx");
+				pages.Utill().wait_until_loader_is_invisible(80);
+			}
+			
 		} else {
 			logger.pass(method.getName() + " completed");
 		}
@@ -1520,7 +1701,7 @@ public class SPcasereg extends Design {
 	@AfterSuite(alwaysRun = true)
 	public void afterSuite() {
 		extent.flush();
-		// driver.quit();
+		if(driver!=null) driver.quit();
 
 	}
 }

@@ -2,20 +2,19 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]">
   <test name="Test(failed)">
+    <groups>
+      <run>
+        <include name="smoke"/>
+        <exclude name="qty"/>
+      </run>
+    </groups>
     <classes>
-      <class name="maintest.SPcasereg">
+      <class name="maintest.temp">
         <methods>
-          <include name="teardown"/>
-          <include name="TC_SPCR_010"/>
-          <include name="TC_SPCR_011"/>
-          <include name="tearDown"/>
-          <include name="Login"/>
-          <include name="beforeSuit"/>
-          <include name="setup"/>
-          <include name="afterSuite"/>
-          <include name="beforetest"/>
+          <include name="decreaseQty"/>
+          <include name="increaseQty"/>
         </methods>
-      </class> <!-- maintest.SPcasereg -->
+      </class> <!-- maintest.temp -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
