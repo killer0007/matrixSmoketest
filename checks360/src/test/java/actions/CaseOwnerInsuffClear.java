@@ -143,6 +143,7 @@ public class CaseOwnerInsuffClear extends ActionPage{
 		pages.Utill().input_text(
 				"//table[@id='ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_grdUploadDocuments_ctl00']//td[text()='"+doctype+"']/../td[6]/div/ul/li/span/input[2]",
 				filename);
+		Thread.sleep(1000);
 		this.addDocument();
 	}
 
@@ -150,7 +151,10 @@ public class CaseOwnerInsuffClear extends ActionPage{
 		this.upload(componentname);
 		this.upload(doctype, filename);
 	}
+	public String getrefNo() {
 
+		return pages.Utill().get_text("//table[@id='ctl00_ContentPlaceHolder1_grdTaskList_ctl00']/tbody/tr[1]/td[5]");
+	}
 	private void addDocument() {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_btnSubmitAddedDocument");
 		pages.Utill().wait_until_loader_is_invisible(70);

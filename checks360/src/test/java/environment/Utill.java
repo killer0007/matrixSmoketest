@@ -127,7 +127,7 @@ public class Utill {
 			msg = this.find(path).getText();
 			c++;
 			logger.log(Status.INFO, "loop count is :"+c);
-			if(c>4) {
+			if(c>10) {
 				break;
 			}
 		}
@@ -194,7 +194,12 @@ public class Utill {
 
 	public String mobileno() {
 		Random rand = new Random();
+
 		long drand = (long) (rand.nextDouble() * 10000000000L);
+		while (Long.toString(drand).length()<10) {
+
+		drand = (long) (rand.nextDouble() * 10000000000L);
+		}
 		return Long.toString(drand);
 	}
 
@@ -503,8 +508,8 @@ public void wait_until_element_isclickable(String path) {
 			wait.until(new Function<WebDriver, WebElement>() {
 				public WebElement apply(WebDriver driver) {
 					WebElement ele = pages.Utill().find(id);
-					StringBuffer res = new StringBuffer(ele.getCssValue("display"));
-					// String res = ele.getCssValue("display");
+//					StringBuffer res = new StringBuffer(ele.getCssValue("display"));
+					 String res = ele.getCssValue("display");
 					if (!res.toString().equals("none")) {
 						System.out.println("success " + res);
 						res = null;

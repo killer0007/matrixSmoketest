@@ -6,27 +6,26 @@
 	<!-- <listener class-name = "environment.CustomReporter" /> -->
 	<!-- </listeners> -->
 	<test thread-count="5" name="insuff">
-		<groups>
-			<run>
-				<include name="not applicable" />
-			</run>
-		</groups>
+<!-- 		<groups> -->
+<!-- 			<run> -->
+<!-- 				<include name="not applicable" /> -->
+<!-- 			</run> -->
+<!-- 		</groups> -->
 		<classes>
 			<!-- <class name="MAINTEST.SPCASEREG"> -->
-			<class name="testcasesprac.SPcasereg">
-				<!-- <methods> -->
-				<!-- <exclude name ="TC_SPCR_012" /> -->
-				<!-- <exclude name ="TC_SPCR_013" /> -->
-				<!-- <exclude name ="TC_SPCR_014" /> -->
-				<!-- <exclude name ="TC_SPCR_015" /> -->
-				<!-- <exclude name ="TC_SPCR_016" /> -->
-				<!-- <exclude name ="TC_SPCR_017" /> -->
-				<!-- <exclude name ="TC_SPCR_018" /> -->
-				<!-- <exclude name ="TC_SPCR_019" /> -->
-
-				<!-- <exclude name ="TC_SPCR_020" /> -->
-				<!-- <exclude name ="TC_SPCR_021" /> -->
-				<!-- </methods> -->
+			<class name="maintest.SPcasereg">
+				<methods>
+				<exclude name ="TC_SPCR_012" />
+				<exclude name ="TC_SPCR_013" />
+				<exclude name ="TC_SPCR_014" />
+				<exclude name ="TC_SPCR_015" />
+				<exclude name ="TC_SPCR_016" />
+				<exclude name ="TC_SPCR_017" />
+				<exclude name ="TC_SPCR_018" />
+				<exclude name ="TC_SPCR_019" />
+				<exclude name ="TC_SPCR_020" />
+				<exclude name ="TC_SPCR_021" />
+				</methods>
 			</class>
 		</classes>
 	</test> <!-- Test -->

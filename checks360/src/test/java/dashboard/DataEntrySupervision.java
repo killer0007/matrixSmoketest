@@ -82,4 +82,19 @@ public class DataEntrySupervision {
 	public void close() {
 		pages.Utill().click_element("//span[text()='×']");
 	}
+	public void assigngetnext(String refno) throws Exception{
+		pages.DataEntrySupervision().search(refno);
+		pages.Utill().select_by_label("//select[@ng-model='Emp.Priority']", "High");
+		pages.Utill().wait_until_loader_is_invisible(20);
+//		Thread.sleep(1000);
+		pages.Utill().click_element("xpath:html/body/div[3]/div/div/table/tbody/tr[3]/td/button[1]");
+		pages.Utill().wait_until_loader_is_invisible(20);
+		pages.Utill().select_by_label("Reserverfor", "demoempl");
+		pages.DataEntry().datanentry();
+		pages.Utill().click_element("btnGetNext");
+		pages.Utill().wait_until_loader_is_invisible(40);
+		pages.Utill().click_element("imgHome");
+		pages.Utill().wait_until_loader_is_invisible(40);
+		pages.DataEntrySupervision().datanentrysupervision();
+	}
 }

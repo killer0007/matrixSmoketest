@@ -60,10 +60,7 @@ abstract class ActionPage {
 		pages.Utill().wait_until_loader_is_invisible(10);
 	}
 
-	public String getrefNo() {
-
-		return pages.Utill().get_text("//table[@id='ctl00_ContentPlaceHolder1_grdTaskList_ctl00']/tbody/tr[1]/td[5]");
-	}
+	public abstract String getrefNo();
 
 	public void search(String refno, String source) throws Exception {
 		this.caserefno(refno);

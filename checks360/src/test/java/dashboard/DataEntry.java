@@ -78,6 +78,5 @@ public class DataEntry {
 		pages.Utill().click_element("//span[text()='" + refno + "']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
-
 	
 }

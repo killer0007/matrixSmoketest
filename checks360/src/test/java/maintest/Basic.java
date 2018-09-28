@@ -98,12 +98,109 @@ public class Basic  {
 	}
 
 	@Test(priority = 29, enabled = true, groups = {"insuff" })
-	public void TC_SPINF_001() throws Exception {
+	public void TC_SPCEP_001() throws Exception {
 		uname = config.getProperty("uname");
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+		String[] checks = { "Current Address", "UG1", "Previous Employment", "Reference 3"};
+		String[] cep = { "Current/Latest Employment", "Previous Employment 2", "Reference 1", "Reference 2"};
+		pages.Home().clickRegister();
+		CandidateName = pages.Utill().candidateName();
+		CandidateId = Integer.toString(pages.Utill().candidateid());
+		lastname = pages.Utill().candidateName();
+		HashMap<String, String> datas = new HashMap<String, String>();
+		datas.put("CandidateName", CandidateName);
+		datas.put("CandidateId", CandidateId);
+		datas.put("ClientName", ClientName);
+		datas.put("ProjectName", ProjectName);
+		datas.put("lastname", lastname);
+		pages.CaseRegistration().registercase(datas, false);
+		for (int i = 0; i < checks.length; i++) {
+			pages.CaseRegistration().selectcheck(checks[i].toString());
+		}
+		for (int i = 0; i < cep.length; i++) {
+			pages.CaseRegistration().selectcheck(cep[i].toString());
+//			pages.CaseRegistration().notApplicable(cep[i].toString(), "not applicable");
+			pages.CaseRegistration().cep(cep[i].toString(), "cep raised", "10/11/2018");
+			//not applicable
+		}
+		pages.CaseRegistration().submit();
+		pages.Utill().confirmAlert();
+		pages.Home().homepage();
+		refno = pages.DbConnection().getLastrefno(ProjectName);
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		List<HashMap<String, String>> data = pages.CaseTracker().getcasedata();
+		SoftAssert sf = new SoftAssert();
+		for (int i = 0; i < data.size(); i++) {
+			String name = data.get(i).get("ComponentName").trim();
+			if(Arrays.asList(checks).contains(name)) {
+				if (data.get(i).get("Status").equals("WIP")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("Status"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+				if (data.get(i).get("CurrentStage").equals("Data Entry Assignment Pending")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("CurrentStage"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+				if (data.get(i).get("PersonResponsible").equals("Team Leader")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			}
+			else if(Arrays.asList(cep).contains(name)) {
+				if (data.get(i).get("Status").equals("CEP Onhold")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("Status"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+				if (data.get(i).get("CurrentStage").equals("CEP Raised - Data Entry Assignment Pending")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("CurrentStage"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+				if (data.get(i).get("PersonResponsible").equals("Team Leader")) {
+					sf.assertTrue(true, "success");
+					//System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
+				} else {
+					sf.assertTrue(false, data.get(i).get("ComponentName"));
+				}
+			}
+			
+			}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
 	
 	}
-
+	@Test(priority = 30, enabled = true, groups = {"insuff" })
+	public void TC_SPCEP_002() throws Exception {
+		pages.Home().Actions();
+		pages.CEP().CEPClear();
+		pages.CEP().search(refno, "SP");
+		String no =pages.CEP().getrefNo();
+		assertEquals(no, refno);
+	}
+	@Test(priority = 31, enabled = true, groups = {"insuff" })
+	public void TC_SPCEP_003() throws Exception {
+		Properties loc=BaseClass.getlocator();
+		pages.CEP().upload(refno,"comments cep", "Relieving Letter", loc.getProperty("addressinsuffdoc"));
+		pages.Home().workStage();
+		pages.DataEntrySupervision().datanentrysupervision();
+		pages.DataEntrySupervision().assigngetnext(refno);
+		pages.DataEntry().datanentry();
+		pages.DataEntry().search(refno);
+		pages.DataEntry().selectcase(refno);
+		
+		
+	}
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
