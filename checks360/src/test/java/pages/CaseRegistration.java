@@ -24,32 +24,33 @@ public class CaseRegistration {
 	public CaseRegistration(WebDriver driver, ExtentTest logger) {
 		// super(driver, logger);
 		this.driver = driver;
-		this.logger=logger;
+		this.logger = logger;
 		pages = new Pages(driver, logger);
 	}
+
 	public void casereg() {
 		pages.Utill().select_by_value("ddlAct", "0");
 		pages.Utill().wait_until_loader_is_invisible(50);
 	}
+
 	public String getTitle() {
 		return pages.Utill().get_text(".//*[@id='ctl00_ContentPlaceHolder1_divAddVal']/h2/table/tbody/tr/td[1]");
 	}
 
 	public void selectClient(String name) throws InterruptedException {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlClient_Input");
-		
+
 		try {
 			pages.Utill().click_element("//li[text()='" + name + "']");
 		} catch (ElementNotVisibleException e) {
 			logger.log(Status.WARNING, e.getMessage().toString());
 			Thread.sleep(2000);
 			pages.Utill().click_element("//li[text()='" + name + "']");
+		} catch (ElementNotInteractableException e) {
+			logger.log(Status.WARNING, e.getMessage().toString());
+			Thread.sleep(2000);
+			pages.Utill().click_element("//li[text()='" + name + "']");
 		}
-		 catch (ElementNotInteractableException e) {
-			 logger.log(Status.WARNING, e.getMessage().toString());
-				Thread.sleep(2000);
-				pages.Utill().click_element("//li[text()='" + name + "']");
-			}
 		pages.Utill().wait_until_loader_is_invisible(10);
 	}
 
@@ -129,13 +130,10 @@ public class CaseRegistration {
 
 	public void clickfresher(boolean value) {
 		if (value) {
-			// pages.Utill().click_element("_rfdSkinnedctl00_ContentPlaceHolder1_rblFresher_0");
-			// pages.Utill().clear_element_text("ctl00_ContentPlaceHolder1_rblFresher_0");
 			pages.Utill().executescript(
 					"document.getElementById('ctl00_ContentPlaceHolder1_rblFresher_0').checked='checked'");
 
 		} else {
-			// pages.Utill().click_element("_rfdSkinnedctl00_ContentPlaceHolder1_rblFresher_1");
 			pages.Utill().executescript(
 					"document.getElementById('ctl00_ContentPlaceHolder1_rblFresher_1').checked='checked'");
 		}
@@ -180,20 +178,58 @@ public class CaseRegistration {
 				"//td[text()='" + name + "']/../td[8]//tbody/tr/td/div/table/tbody/tr/td/span/input[1]", releasedate);
 	}
 
-	public void documentupload(String name, String file, String doctype) {
-		this.clickupload(name);
+	public void documentupload(String componentName, String file, String doctype) {
+		this.clickupload(componentName);
 		this.upload(file, doctype);
 		this.addDocument();
 		this.docupClose();
 
 	}
 
-	public void upload(String file, String doctype) {
-		pages.Utill().input_text("//td[text()='" + doctype + "']/following-sibling::td[3]//@value='Select'", file);
+	public String getDocumentName(String componentName, String doctype) {
+		this.clickupload(componentName);
+		String docname = pages.Utill()
+				.get_text("//table[@id='ctl00_ContentPlaceHolder1_rdmAddDoc_C_grdDocumentList_ctl00']//td[text()='"
+						+ doctype + "']/../td[6]//span");
+		this.docupClose();
+		return docname.replaceAll("[0-9]", "");
+
 	}
 
-	public void clickupload(String name) {
-		pages.Utill().click_element("//td[text()='" + name + "']/../td[10]//input[1]");
+	public void uploadcaseDoc(String doctype, String fileName) {
+		this.uploadcaseDoc();
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().input_text(
+				"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='" + doctype
+						+ "']/../td[5]//div/ul/li/span/input[2]",
+				fileName);
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnAddCaseDocument_input");
+		pages.Utill().wait_until_loader_is_invisible(50);
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel");
+
+	}
+
+	public String getuploadcaseDoc(String doctype) {
+		this.uploadcaseDoc();
+		pages.Utill().wait_until_loader_is_invisible(100);
+		//
+		String docname = pages.Utill()
+				.get_text("//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='"
+						+ doctype + "']/../td[5]//span");
+
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel");
+		return docname.replaceAll("[0-9]", "");
+	}
+
+	public void upload(String file, String doctype) {
+//		pages.Utill().input_text("//td[text()='" + doctype + "']/following-sibling::td[3]//@value='Select'", file);
+		pages.Utill()
+				.input_text("//table[@id='ctl00_ContentPlaceHolder1_rdmAddDoc_C_grdDocumentList_ctl00']//td[text()='"
+						+ doctype + "']/../td[6]//input[2]", file);
+	}
+
+	public void clickupload(String componentName) {
+		pages.Utill().click_element("//td[text()='" + componentName + "']/../td[10]//input[1]");
 		pages.Utill().wait_until_loader_is_invisible(10);
 	}
 
@@ -202,9 +238,8 @@ public class CaseRegistration {
 		pages.Utill().wait_until_loader_is_invisible(10);
 	}
 
-	public void documentupload(String file) {
+	public void uploadcaseDoc() {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCaseDocument_input");
-		// write code for upload
 	}
 
 	public void docupCancel() {
@@ -280,8 +315,6 @@ public class CaseRegistration {
 		return data;
 	}
 
-	
-
 	public void registercase(HashMap<String, String> data, boolean fresher) throws Exception {
 		CaseRegistration casereg = pages.CaseRegistration();
 		casereg.selectClient(data.get("ClientName"));
@@ -304,6 +337,7 @@ public class CaseRegistration {
 		casereg.clickfresher(fresher);
 		casereg.addEditComponent();
 	}
+
 	public void registercase(HashMap<String, String> data) throws Exception {
 		CaseRegistration casereg = pages.CaseRegistration();
 		casereg.selectClient(data.get("ClientName"));
@@ -327,28 +361,15 @@ public class CaseRegistration {
 		casereg.addEditComponent();
 	}
 
-
 	public int getCheckCount() {
 		return Integer.parseInt(pages.Utill().get_text("ctl00_ContentPlaceHolder1_lblComponentCount"));
 	}
-public boolean isSelected(String componentname) {
-	return pages.Utill().isSelected("//td[text()='" + componentname + "']/../td[2]//input");
+
+	public boolean isSelected(String componentname) {
+		return pages.Utill().isSelected("//td[text()='" + componentname + "']/../td[2]//input");
+	}
+
+	public boolean isEnabled(String componentname) {
+		return pages.Utill().isEnabled("//td[text()='" + componentname + "']/../td[2]//input");
+	}
 }
-public boolean isEnabled(String componentname) {
-	return pages.Utill().isEnabled("//td[text()='" + componentname + "']/../td[2]//input");
-}
-}
-// class caseregdashboard {
-// WebDriver driver;
-// ExtentTest logger;
-// Pages pages;
-// public caseregdashboard(WebDriver driver, ExtentTest logger) {
-// this.driver=driver;
-// this.logger=logger;
-// pages = new Pages(driver, logger);
-// }
-//
-// public void setusername(String firstname) {
-// pages.Utill().input_text("txtFirstName", firstname);
-// }
-// }

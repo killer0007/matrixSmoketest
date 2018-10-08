@@ -1,9 +1,7 @@
 package dataEntry;
 
 import org.openqa.selenium.WebDriver;
-
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 
 import environment.Pages;
 

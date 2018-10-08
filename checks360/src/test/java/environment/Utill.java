@@ -25,7 +25,6 @@ import java.util.function.Function;
 import org.openqa.selenium.JavascriptExecutor;
 import javax.imageio.ImageIO;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.math3.exception.NoDataException;
 import org.fluttercode.datafactory.impl.DataFactory;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -203,13 +202,13 @@ public class Utill {
 		return Long.toString(drand);
 	}
 
-	public String GetTableCellValue(String id, int row, int col) throws NoDataException {
+	public String GetTableCellValue(String id, int row, int col) throws Exception {
 		try {
 			String re = find("//table[@id='" + id + "']/tbody/tr[" + row + "]/td[" + col + "]").getText();
 
 			if (re.equals("")) {
 				System.out.println("//table[@id='" + id + "']/tbody/tr[" + row + "]/td[" + col + "]");
-				throw new NoDataException();
+				throw new Exception();
 
 			} else {
 				logger.log(Status.PASS, "getting value from table  :" + re);
@@ -293,12 +292,12 @@ public class Utill {
 	public void SwitchFramebyIndex(int i) {
 		driver.switchTo().frame(i);
 		logger.log(Status.PASS, "switching frame by index " + i);
+		
 	}
 
 	public void switchWindow(int index) {
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
-		driver.switchTo().window(tabs.get(index).toString());
-
+		driver.switchTo().window(tabs.get(index).toString());	
 	}
 
 	public void scrollTo(String id) {

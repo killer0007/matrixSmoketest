@@ -1,6 +1,5 @@
 package dashboard;
 
-import org.apache.commons.math3.exception.NoDataException;
 import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
 import environment.Pages;
@@ -43,7 +42,7 @@ public class DcaseRegistration {
 		pages.Utill().click_element("btnsearch");
 		pages.Utill().wait_until_loader_is_invisible(10);
 	}
-	public String getrefno(String firstname, String lastname) throws NoDataException {
+	public String getrefno(String firstname, String lastname) throws Exception {
 		this.firstname(firstname);
 		this.lasttname(lastname);
 		this.search();

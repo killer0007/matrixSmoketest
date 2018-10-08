@@ -1497,6 +1497,7 @@ public class SPcasereg extends Design {
 			pages.Utill().SwitchDefault();
 			pages.Utill().click_element("imgHome");
 			pages.Utill().wait_until_loader_is_invisible(100);
+			pages.CaseRegistration().casereg();
 			sf.assertAll();	
 		}
 		
