@@ -62,4 +62,9 @@ public class Credit extends DataEntryPage{
 	public String historyDocument() {
 		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdCreditInsuffHistory_ctl00_ctl04_lblDoc").replaceAll("[0-9]", "");
 	}
+	
+	public void document() {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCreditAddDocuments_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
 }

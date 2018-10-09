@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" total="3" passed="2">
+<testng-results skipped="0" failed="0" total="8" passed="8">
   <reporter-output>
     <line>
       <![CDATA[About to begin executing Test Default test]]>
@@ -20,42 +20,67 @@
       <![CDATA[Test Method resides in maintest.Basic]]>
     </line>
     <line>
-      <![CDATA[Test Status: Failed]]>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.Basic]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.Basic]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.Basic]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.Basic]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.Basic]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
     </line>
     <line>
       <![CDATA[Completed executing test Default test]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="115859" started-at="2018-09-28T12:50:01Z" finished-at="2018-09-28T12:51:57Z">
+  <suite name="Default suite" duration-ms="203386" started-at="2018-10-09T12:35:40Z" finished-at="2018-10-09T12:39:03Z">
     <groups>
-      <group name="insuff">
-        <method signature="Basic.TC_SPCEP_001()[pri:0, instance:maintest.Basic@17e1b0c]" name="TC_SPCEP_001" class="maintest.Basic"/>
-        <method signature="Basic.TC_SPCEP_002()[pri:0, instance:maintest.Basic@17e1b0c]" name="TC_SPCEP_002" class="maintest.Basic"/>
-        <method signature="Basic.TC_SPCEP_003()[pri:0, instance:maintest.Basic@17e1b0c]" name="TC_SPCEP_003" class="maintest.Basic"/>
-      </group> <!-- insuff -->
     </groups>
-    <test name="Default test" duration-ms="115859" started-at="2018-09-28T12:50:01Z" finished-at="2018-09-28T12:51:57Z">
+    <test name="Default test" duration-ms="203386" started-at="2018-10-09T12:35:40Z" finished-at="2018-10-09T12:39:03Z">
       <class name="maintest.Basic">
-        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest.Basic@17e1b0c]" name="beforeSuit" is-config="true" duration-ms="671" started-at="2018-09-28T18:20:00Z" finished-at="2018-09-28T18:20:01Z">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest.Basic@18355a8]" name="beforeSuit" is-config="true" duration-ms="125" started-at="2018-10-09T18:05:39Z" finished-at="2018-10-09T18:05:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuit -->
-        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest.Basic@17e1b0c]" name="beforetest" is-config="true" duration-ms="8078" started-at="2018-09-28T18:20:01Z" finished-at="2018-09-28T18:20:09Z">
+        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest.Basic@18355a8]" name="beforetest" is-config="true" duration-ms="4149" started-at="2018-10-09T18:05:40Z" finished-at="2018-10-09T18:05:44Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforetest -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.Basic@17e1b0c]" name="setup" is-config="true" duration-ms="49" started-at="2018-09-28T18:20:09Z" finished-at="2018-09-28T18:20:09Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="setup" is-config="true" duration-ms="9" started-at="2018-10-09T18:05:44Z" finished-at="2018-10-09T18:05:44Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest.Basic.TC_SPCEP_001() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_001() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="TC_SPCEP_001()[pri:0, instance:maintest.Basic@17e1b0c]" name="TC_SPCEP_001" duration-ms="69985" started-at="2018-09-28T18:20:09Z" finished-at="2018-09-28T18:21:19Z">
+        <test-method status="PASS" signature="TC_SPDOC_001()[pri:0, instance:maintest.Basic@18355a8]" name="TC_SPDOC_001" duration-ms="47370" started-at="2018-10-09T18:05:44Z" finished-at="2018-10-09T18:06:31Z">
           <reporter-output>
             <line>
               <![CDATA[Test Method resides in maintest.Basic]]>
@@ -64,35 +89,24 @@
               <![CDATA[Test Status: Pass]]>
             </line>
           </reporter-output>
-        </test-method> <!-- TC_SPCEP_001 -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.Basic@17e1b0c]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-28T18:21:19Z" finished-at="2018-09-28T18:21:19Z">
+        </test-method> <!-- TC_SPDOC_001 -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-09T18:06:31Z" finished-at="2018-10-09T18:06:31Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest.Basic.TC_SPCEP_002() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.Basic@17e1b0c]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-28T18:21:19Z" finished-at="2018-09-28T18:21:19Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=TC_SPCEP_001 status=SUCCESS method=Basic.TC_SPCEP_001()[pri:0, instance:maintest.Basic@17e1b0c] output=Test Method resides in maintest.Basic]]]>
+                <![CDATA[[TestResult name=TC_SPDOC_001 status=SUCCESS method=Basic.TC_SPDOC_001()[pri:0, instance:maintest.Basic@18355a8] output=Test Method resides in maintest.Basic]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest.Basic.TC_SPCEP_001() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_001() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="TC_SPCEP_002()[pri:0, instance:maintest.Basic@17e1b0c]" name="TC_SPCEP_002" duration-ms="21357" started-at="2018-09-28T18:21:19Z" finished-at="2018-09-28T18:21:40Z">
+        <test-method status="PASS" signature="TC_SPDOC_002()[pri:0, instance:maintest.Basic@18355a8]" name="TC_SPDOC_002" duration-ms="10454" started-at="2018-10-09T18:06:31Z" finished-at="2018-10-09T18:06:42Z">
           <reporter-output>
             <line>
               <![CDATA[Test Method resides in maintest.Basic]]>
@@ -101,134 +115,261 @@
               <![CDATA[Test Status: Pass]]>
             </line>
           </reporter-output>
-        </test-method> <!-- TC_SPCEP_002 -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.Basic@17e1b0c]" name="setup" is-config="true" duration-ms="0" started-at="2018-09-28T18:21:40Z" finished-at="2018-09-28T18:21:40Z">
+        </test-method> <!-- TC_SPDOC_002 -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-09T18:06:31Z" finished-at="2018-10-09T18:06:31Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest.Basic.TC_SPCEP_003() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_002() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="FAIL" signature="TC_SPCEP_003()[pri:0, instance:maintest.Basic@17e1b0c]" name="TC_SPCEP_003" duration-ms="6343" started-at="2018-09-28T18:21:40Z" finished-at="2018-09-28T18:21:46Z">
-          <exception class="org.openqa.selenium.StaleElementReferenceException">
-            <message>
-              <![CDATA[stale element reference: element is not attached to the page document
-  (Session info: chrome=69.0.3497.100)
-  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
-Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
-System info: host: 'KAD-I-032', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_181'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:59963}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.100, webStorageEnabled: true}
-Session ID: 4403955b0ef257c0a1abae001cbe939f]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.StaleElementReferenceException: stale element reference: element is not attached to the page document
-  (Session info: chrome=69.0.3497.100)
-  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: http://seleniumhq.org/exceptions/stale_element_reference.html
-Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
-System info: host: 'KAD-I-032', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_181'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:59963}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.100, webStorageEnabled: true}
-Session ID: 4403955b0ef257c0a1abae001cbe939f
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
-	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
-	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
-	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
-	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
-	at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:100)
-	at environment.Utill.input_text(Utill.java:112)
-	at actions.CEP.clearComments(CEP.java:49)
-	at actions.CEP.upload(CEP.java:77)
-	at maintest.Basic.TC_SPCEP_003(Basic.java:194)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
-	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
-	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
-	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
-	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
-	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
-	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
-	at org.testng.TestRunner.privateRun(TestRunner.java:767)
-	at org.testng.TestRunner.run(TestRunner.java:617)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
-	at org.testng.TestNG.run(TestNG.java:1031)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.StaleElementReferenceException -->
+        <test-method status="PASS" signature="TC_SPDOC_003()[pri:0, instance:maintest.Basic@18355a8]" name="TC_SPDOC_003" duration-ms="10735" started-at="2018-10-09T18:06:42Z" finished-at="2018-10-09T18:06:52Z">
           <reporter-output>
             <line>
               <![CDATA[Test Method resides in maintest.Basic]]>
             </line>
             <line>
-              <![CDATA[Test Status: Failed]]>
+              <![CDATA[Test Status: Pass]]>
             </line>
           </reporter-output>
-        </test-method> <!-- TC_SPCEP_003 -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.Basic@17e1b0c]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-09-28T18:21:40Z" finished-at="2018-09-28T18:21:40Z">
+        </test-method> <!-- TC_SPDOC_003 -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-09T18:06:42Z" finished-at="2018-10-09T18:06:42Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SPCEP_002 status=SUCCESS method=Basic.TC_SPCEP_002()[pri:0, instance:maintest.Basic@17e1b0c] output=Test Method resides in maintest.Basic]]]>
+                <![CDATA[[TestResult name=TC_SPDOC_002 status=SUCCESS method=Basic.TC_SPDOC_002()[pri:0, instance:maintest.Basic@18355a8] output=Test Method resides in maintest.Basic]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest.Basic.TC_SPCEP_002() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_002() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.Basic@17e1b0c]" name="tearDown" is-config="true" duration-ms="10011" started-at="2018-09-28T18:21:46Z" finished-at="2018-09-28T18:21:56Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-09T18:06:42Z" finished-at="2018-10-09T18:06:42Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_SPCEP_003 status=FAILURE method=Basic.TC_SPCEP_003()[pri:0, instance:maintest.Basic@17e1b0c] output=Test Method resides in maintest.Basic]]]>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_003() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-10-09T18:06:52Z" finished-at="2018-10-09T18:06:52Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPDOC_003 status=SUCCESS method=Basic.TC_SPDOC_003()[pri:0, instance:maintest.Basic@18355a8] output=Test Method resides in maintest.Basic]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest.Basic.TC_SPCEP_003() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_003() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest.Basic@17e1b0c]" name="teardown" is-config="true" duration-ms="0" started-at="2018-09-28T18:21:57Z" finished-at="2018-09-28T18:21:57Z">
+        <test-method status="PASS" signature="TC_SPDOC_004()[pri:0, instance:maintest.Basic@18355a8]" name="TC_SPDOC_004" duration-ms="22446" started-at="2018-10-09T18:06:52Z" finished-at="2018-10-09T18:07:15Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.Basic]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_SPDOC_004 -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-09T18:06:52Z" finished-at="2018-10-09T18:06:52Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_004() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="TC_SPDOC_005()[pri:0, instance:maintest.Basic@18355a8]" name="TC_SPDOC_005" duration-ms="89821" started-at="2018-10-09T18:07:15Z" finished-at="2018-10-09T18:08:45Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.Basic]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_SPDOC_005 -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-09T18:07:15Z" finished-at="2018-10-09T18:07:15Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_005() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-09T18:07:15Z" finished-at="2018-10-09T18:07:15Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPDOC_004 status=SUCCESS method=Basic.TC_SPDOC_004()[pri:0, instance:maintest.Basic@18355a8] output=Test Method resides in maintest.Basic]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_004() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-10-09T18:08:45Z" finished-at="2018-10-09T18:08:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPDOC_005 status=SUCCESS method=Basic.TC_SPDOC_005()[pri:0, instance:maintest.Basic@18355a8] output=Test Method resides in maintest.Basic]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_005() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="TC_SPDOC_006()[pri:0, instance:maintest.Basic@18355a8]" name="TC_SPDOC_006" duration-ms="4593" started-at="2018-10-09T18:08:45Z" finished-at="2018-10-09T18:08:49Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.Basic]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_SPDOC_006 -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-09T18:08:45Z" finished-at="2018-10-09T18:08:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_006() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-09T18:08:49Z" finished-at="2018-10-09T18:08:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_007() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="TC_SPDOC_007()[pri:0, instance:maintest.Basic@18355a8]" name="TC_SPDOC_007" duration-ms="5689" started-at="2018-10-09T18:08:49Z" finished-at="2018-10-09T18:08:55Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.Basic]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_SPDOC_007 -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-09T18:08:49Z" finished-at="2018-10-09T18:08:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPDOC_006 status=SUCCESS method=Basic.TC_SPDOC_006()[pri:0, instance:maintest.Basic@18355a8] output=Test Method resides in maintest.Basic]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_006() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-09T18:08:55Z" finished-at="2018-10-09T18:08:55Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPDOC_007 status=SUCCESS method=Basic.TC_SPDOC_007()[pri:0, instance:maintest.Basic@18355a8] output=Test Method resides in maintest.Basic]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_007() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="TC_SPDOC_008()[pri:0, instance:maintest.Basic@18355a8]" name="TC_SPDOC_008" duration-ms="7438" started-at="2018-10-09T18:08:55Z" finished-at="2018-10-09T18:09:02Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.Basic]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- TC_SPDOC_008 -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-09T18:08:55Z" finished-at="2018-10-09T18:08:55Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_008() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.Basic@18355a8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-09T18:09:02Z" finished-at="2018-10-09T18:09:02Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=TC_SPDOC_008 status=SUCCESS method=Basic.TC_SPDOC_008()[pri:0, instance:maintest.Basic@18355a8] output=Test Method resides in maintest.Basic]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.Basic.TC_SPDOC_008() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest.Basic@18355a8]" name="teardown" is-config="true" duration-ms="660" started-at="2018-10-09T18:09:02Z" finished-at="2018-10-09T18:09:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest.Basic@17e1b0c]" name="afterSuite" is-config="true" duration-ms="438" started-at="2018-09-28T18:21:57Z" finished-at="2018-09-28T18:21:57Z">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest.Basic@18355a8]" name="afterSuite" is-config="true" duration-ms="491" started-at="2018-10-09T18:09:03Z" finished-at="2018-10-09T18:09:03Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

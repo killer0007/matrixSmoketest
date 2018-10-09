@@ -23,5 +23,9 @@ public class Criminal extends DataEntryPage {
 		pages.Utill().SwitchFramebyIndex(5);
 	}
 
-	
+	@Override
+	public void document() {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCriminalDocument_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
 }

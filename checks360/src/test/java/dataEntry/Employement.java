@@ -64,4 +64,9 @@ public class Employement extends DataEntryPage {
 
 
 	}
+	@Override
+	public void document() {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEmploymentDocumentUpload_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
 }

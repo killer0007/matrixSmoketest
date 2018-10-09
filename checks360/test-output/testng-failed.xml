@@ -5,11 +5,11 @@
     <classes>
       <class name="maintest.Basic">
         <methods>
+          <include name="TC_SPDOC_008"/>
           <include name="setup"/>
           <include name="beforetest"/>
           <include name="beforeSuit"/>
           <include name="afterSuite"/>
-          <include name="TC_SPCEP_003"/>
           <include name="teardown"/>
           <include name="tearDown"/>
         </methods>

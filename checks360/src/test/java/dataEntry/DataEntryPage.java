@@ -83,6 +83,6 @@ abstract class DataEntryPage {
 				"//*[@id='ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_RadTabStripForHistory']/div//li[2]");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
-
+public abstract void document();
 	
 }

@@ -31,6 +31,7 @@ public class Pages {
 	private dataEntry.Court court;
 	private dataEntry.Id id;
 	private CEP cep;
+	private dataEntry.CaseInformation caseinformation;
 
 	public Pages(WebDriver driver, ExtentTest logger) {
 		this.driver = driver;
@@ -118,5 +119,8 @@ public class Pages {
 	public CEP CEP() {
 		return (cep == null) ? cep = new CEP(driver, logger) : cep;
 	}
-
+//CaseInformation
+	public dataEntry.CaseInformation CaseInformation() {
+		return (caseinformation == null) ? caseinformation = new dataEntry.CaseInformation(driver, logger) : caseinformation;
+	}
 }

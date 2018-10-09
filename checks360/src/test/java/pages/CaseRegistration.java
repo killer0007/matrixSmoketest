@@ -125,7 +125,7 @@ public class CaseRegistration {
 
 	public void addEditComponent() {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddComponent_input");
-		pages.Utill().wait_until_loader_is_invisible(20);
+		pages.Utill().wait_until_loader_is_invisible(10);
 	}
 
 	public void clickfresher(boolean value) {
@@ -199,33 +199,69 @@ public class CaseRegistration {
 	public void uploadcaseDoc(String doctype, String fileName) {
 		this.uploadcaseDoc();
 		pages.Utill().wait_until_loader_is_invisible(100);
+		if(this.isDoctypeValid(doctype,1)) {
 		pages.Utill().input_text(
 				"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='" + doctype
 						+ "']/../td[5]//div/ul/li/span/input[2]",
 				fileName);
+		}
+		else
+			throw new NotFoundException(doctype);
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnAddCaseDocument_input");
 		pages.Utill().wait_until_loader_is_invisible(50);
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel");
 
 	}
 
+	public void deleteComponentdoc(String doctype) throws Exception {
+		if(this.isDoctypeValid(doctype,0)) {
+		String path = "//*[@id='ctl00_ContentPlaceHolder1_rdmAddDoc_C_grdDocumentList_ctl00']//td[text()='" + doctype
+				+ "']/../td[7]//td[2]/input";
+		pages.Utill().click_element(path);
+		}
+		else 
+			throw new NotFoundException(doctype);
+		pages.Utill().confirmAlert();
+		pages.Utill().wait_until_loader_is_invisible(50);
+
+	}
+
+	public void deleteCasedoc(String doctype) throws Exception {
+		if(this.isDoctypeValid(doctype,1)) {
+		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='"
+				+ doctype + "']/../td[6]//td[2]/input";
+		pages.Utill().click_element(path);
+		}
+		else 
+			throw new NotFoundException(doctype);
+		pages.Utill().confirmAlert();
+		pages.Utill().wait_until_loader_is_invisible(50);
+	}
+
 	public String getuploadcaseDoc(String doctype) {
 		this.uploadcaseDoc();
 		pages.Utill().wait_until_loader_is_invisible(100);
 		//
-		String docname = pages.Utill()
+		String docname=null;
+		if(this.isDoctypeValid(doctype,1)) {
+		docname = pages.Utill()
 				.get_text("//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='"
 						+ doctype + "']/../td[5]//span");
-
+		}
+		else 
+			throw new NotFoundException(doctype);
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel");
 		return docname.replaceAll("[0-9]", "");
 	}
 
 	public void upload(String file, String doctype) {
 //		pages.Utill().input_text("//td[text()='" + doctype + "']/following-sibling::td[3]//@value='Select'", file);
+		if(this.isDoctypeValid(doctype,0)) {
 		pages.Utill()
 				.input_text("//table[@id='ctl00_ContentPlaceHolder1_rdmAddDoc_C_grdDocumentList_ctl00']//td[text()='"
 						+ doctype + "']/../td[6]//input[2]", file);
+		}
+		else throw new NotFoundException(doctype);
 	}
 
 	public void clickupload(String componentName) {
@@ -371,5 +407,32 @@ public class CaseRegistration {
 
 	public boolean isEnabled(String componentname) {
 		return pages.Utill().isEnabled("//td[text()='" + componentname + "']/../td[2]//input");
+	}
+// 1 for case documents
+	public boolean isDoctypeValid(String doctype, int b) {
+		String path="";
+		if(b==1) {
+			path = "//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']/tbody/tr/td[2]";	
+		}
+		else {
+			path = "//table[@id='ctl00_ContentPlaceHolder1_rdmAddDoc_C_grdDocumentList_ctl00']/tbody/tr/td[3]";	
+		}
+		
+		List<WebElement> list = driver.findElements(By.xpath(path));
+//		System.out.println("length is  : "+list.size());
+		if (list.size() > 0) {
+			List<String> doc = new ArrayList<String>();
+			for (int i = 0; i < list.size(); i++) {
+				doc.add(list.get(i).getText().trim());
+//				System.out.println(list.get(i).getText().trim());
+			}
+			if (doc.contains(doctype)) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 }

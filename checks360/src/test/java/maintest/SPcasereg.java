@@ -54,7 +54,7 @@ public class SPcasereg extends Design {
 	}
 
 	@BeforeTest(alwaysRun = true)
-	public void beforetest() throws FileNotFoundException, IOException {
+	public void beforetest() throws Exception {
 		driver = BaseClass.getDriver();
 
 		config = BaseClass.getlocator();

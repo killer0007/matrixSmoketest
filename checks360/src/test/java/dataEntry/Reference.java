@@ -22,6 +22,10 @@ public class Reference extends DataEntryPage {
 		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[4]/a/span/span/span");
 		pages.Utill().SwitchFramebyIndex(3);
 	}
-
+	@Override
+	public void document() {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnRefDocument_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
 	
 }

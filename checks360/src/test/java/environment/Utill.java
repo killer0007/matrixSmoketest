@@ -696,4 +696,28 @@ public void waitForReady(long timeOutInSeconds) {
 		    }
 		});
 	}
+	public void deleteFiles(File folder) throws IOException {
+		File[] files = folder.listFiles();
+		for (File file : files) {
+			if (file.isFile()) {
+				file.delete();
+				System.out.println("deleted file");
+			} else if (file.isDirectory()) {
+				deleteFiles(file);
+				System.out.println("deleted dir");
+			}
+		}
+	}
+	public String isfileexist(File folder) throws Exception {
+		Thread.sleep(2000);
+			File[] files = folder.listFiles();
+			if (files[0].isFile()) {
+				String name = files[0].getName();
+//				System.out.println("file name is :"+name);
+//				System.out.println("parent name :"+files[0].getAbsolutePath());
+				return name.replaceAll("[0-9]", "");
+			} else {
+				return null;
+			}
+	}
 }

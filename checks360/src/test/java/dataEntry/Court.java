@@ -22,6 +22,9 @@ public class Court extends DataEntryPage{
 		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[8]/a/span/span/span");
 		pages.Utill().SwitchFramebyIndex(7);
 	}
-
+	public void document() {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCourtDocument_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
 	
 }

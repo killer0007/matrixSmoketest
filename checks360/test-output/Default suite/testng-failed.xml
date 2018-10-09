@@ -5,8 +5,7 @@
     <classes>
       <class name="maintest.Basic">
         <methods>
-          <include name="TC_SPDOC_001"/>
-          <include name="TC_SPDOC_002"/>
+          <include name="TC_SPDOC_008"/>
           <include name="setup"/>
           <include name="beforetest"/>
           <include name="beforeSuit"/>

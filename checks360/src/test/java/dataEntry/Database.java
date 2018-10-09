@@ -23,5 +23,9 @@ public class Database extends DataEntryPage {
 		pages.Utill().SwitchFramebyIndex(4);
 	}
 
-	
+	@Override
+	public void document() {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnDataBaseDocument_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
 }

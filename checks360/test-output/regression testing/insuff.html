@@ -1,0 +1,797 @@
+<html>
+<head>
+<title>TestNG:  insuff</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>insuff</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>48/1/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Oct 08 10:52:14 IST 2018</td>
+</tr>
+<tr><td>Total time:</td><td>1521 seconds (1521644 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPNAPP_001()'><b>TC_SPNAPP_001</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-16602806" onClick='toggleBox("Output-16602806", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-16602806" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-16602806">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Failed<br/>
+</div>
+</td>
+<td><div><pre>org.openqa.selenium.ElementNotVisibleException: element not interactable
+  (Session info: chrome=69.0.3497.100)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;KAD-I-032&apos;, ip: &apos;192.168.2.67&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_181&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:49632}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.100, webStorageEnabled: true}
+Session ID: e5ed79643885cdfc6aa6249e96c15a2c
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+	at environment.Utill.click_element(Utill.java:162)
+	at pages.Home.clickRegister(Home.java:92)
+	at maintest.SPcasereg.TC_SPNAPP_001(SPcasereg.java:1511)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace16602806", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace16602806'><pre>org.openqa.selenium.ElementNotVisibleException: element not interactable
+  (Session info: chrome=69.0.3497.100)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;KAD-I-032&apos;, ip: &apos;192.168.2.67&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_181&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:49632}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.100, webStorageEnabled: true}
+Session ID: e5ed79643885cdfc6aa6249e96c15a2c
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+	at environment.Utill.click_element(Utill.java:162)
+	at pages.Home.clickRegister(Home.java:92)
+	at maintest.SPcasereg.TC_SPNAPP_001(SPcasereg.java:1511)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:80)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1198)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1123)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='maintest.SPcasereg.Login()'><b>Login</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-4410568" onClick='toggleBox("Output-4410568", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-4410568" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-4410568">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCEP_001()'><b>TC_SPCEP_001</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-11763083" onClick='toggleBox("Output-11763083", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-11763083" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-11763083">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>145</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_001()'><b>TC_SPCR_001</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-14160495" onClick='toggleBox("Output-14160495", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-14160495" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-14160495">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>4</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_002()'><b>TC_SPCR_002</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-10015613" onClick='toggleBox("Output-10015613", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-10015613" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-10015613">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_003()'><b>TC_SPCR_003</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-3989186" onClick='toggleBox("Output-3989186", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-3989186" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-3989186">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_004()'><b>TC_SPCR_004</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-25047915" onClick='toggleBox("Output-25047915", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-25047915" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-25047915">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_005()'><b>TC_SPCR_005</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-19479363" onClick='toggleBox("Output-19479363", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-19479363" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-19479363">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_006()'><b>TC_SPCR_006</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-29962480" onClick='toggleBox("Output-29962480", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-29962480" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-29962480">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_007()'><b>TC_SPCR_007</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-21811541" onClick='toggleBox("Output-21811541", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-21811541" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-21811541">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_008()'><b>TC_SPCR_008</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-25832268" onClick='toggleBox("Output-25832268", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-25832268" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-25832268">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_009()'><b>TC_SPCR_009</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-23751662" onClick='toggleBox("Output-23751662", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-23751662" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-23751662">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_010()'><b>TC_SPCR_010</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-22894393" onClick='toggleBox("Output-22894393", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-22894393" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-22894393">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>80</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_011()'><b>TC_SPCR_011</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-11395109" onClick='toggleBox("Output-11395109", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-11395109" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-11395109">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>82</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_022()'><b>TC_SPCR_022</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-18816702" onClick='toggleBox("Output-18816702", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-18816702" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-18816702">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>33</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_023()'><b>TC_SPCR_023</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-25091218" onClick='toggleBox("Output-25091218", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-25091218" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-25091218">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>21</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_024()'><b>TC_SPCR_024</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-13801142" onClick='toggleBox("Output-13801142", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-13801142" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-13801142">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_025()'><b>TC_SPCR_025</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-13439006" onClick='toggleBox("Output-13439006", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-13439006" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-13439006">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>33</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_026()'><b>TC_SPCR_026</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-8209299" onClick='toggleBox("Output-8209299", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-8209299" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-8209299">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>32</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPCR_027()'><b>TC_SPCR_027</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-15211585" onClick='toggleBox("Output-15211585", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-15211585" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-15211585">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>32</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_001()'><b>TC_SPINF_001</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-30189069" onClick='toggleBox("Output-30189069", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-30189069" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-30189069">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>55</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_002()'><b>TC_SPINF_002</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-20680410" onClick='toggleBox("Output-20680410", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-20680410" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-20680410">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>149</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_003()'><b>TC_SPINF_003</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-5701153" onClick='toggleBox("Output-5701153", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-5701153" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-5701153">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_004()'><b>TC_SPINF_004</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-24238487" onClick='toggleBox("Output-24238487", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-24238487" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-24238487">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_005()'><b>TC_SPINF_005</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-16559877" onClick='toggleBox("Output-16559877", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-16559877" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-16559877">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>32</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_006()'><b>TC_SPINF_006</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-8721822" onClick='toggleBox("Output-8721822", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-8721822" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-8721822">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>41</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_007()'><b>TC_SPINF_007</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-16031658" onClick='toggleBox("Output-16031658", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-16031658" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-16031658">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>47</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_008()'><b>TC_SPINF_008</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-8182782" onClick='toggleBox("Output-8182782", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-8182782" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-8182782">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>9</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_009()'><b>TC_SPINF_009</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-20754108" onClick='toggleBox("Output-20754108", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-20754108" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-20754108">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>3</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_010()'><b>TC_SPINF_010</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-15109231" onClick='toggleBox("Output-15109231", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-15109231" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-15109231">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>55</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_011()'><b>TC_SPINF_011</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-13129230" onClick='toggleBox("Output-13129230", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-13129230" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-13129230">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>58</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_012()'><b>TC_SPINF_012</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-15572903" onClick='toggleBox("Output-15572903", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-15572903" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-15572903">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>373</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_014()'><b>TC_SPINF_014</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-19036413" onClick='toggleBox("Output-19036413", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-19036413" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-19036413">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_015()'><b>TC_SPINF_015</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-11601488" onClick='toggleBox("Output-11601488", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-11601488" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-11601488">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>24</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_017()'><b>TC_SPINF_017</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-30822062" onClick='toggleBox("Output-30822062", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-30822062" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-30822062">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_018()'><b>TC_SPINF_018</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-20271149" onClick='toggleBox("Output-20271149", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-20271149" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-20271149">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>18</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_020()'><b>TC_SPINF_020</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-17038205" onClick='toggleBox("Output-17038205", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-17038205" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-17038205">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_021()'><b>TC_SPINF_021</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-19392056" onClick='toggleBox("Output-19392056", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-19392056" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-19392056">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>18</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_023()'><b>TC_SPINF_023</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-21079480" onClick='toggleBox("Output-21079480", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-21079480" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-21079480">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_024()'><b>TC_SPINF_024</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-21150988" onClick='toggleBox("Output-21150988", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-21150988" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-21150988">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>34</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_026()'><b>TC_SPINF_026</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-21276236" onClick='toggleBox("Output-21276236", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-21276236" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-21276236">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_027()'><b>TC_SPINF_027</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-22936108" onClick='toggleBox("Output-22936108", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-22936108" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-22936108">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>21</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_029()'><b>TC_SPINF_029</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-10480889" onClick='toggleBox("Output-10480889", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-10480889" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-10480889">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_030()'><b>TC_SPINF_030</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-4370054" onClick='toggleBox("Output-4370054", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-4370054" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-4370054">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>21</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_032()'><b>TC_SPINF_032</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-5099223" onClick='toggleBox("Output-5099223", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-5099223" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-5099223">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_033()'><b>TC_SPINF_033</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-24028423" onClick='toggleBox("Output-24028423", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-24028423" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-24028423">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>21</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_035()'><b>TC_SPINF_035</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-3580951" onClick='toggleBox("Output-3580951", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-3580951" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-3580951">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_038()'><b>TC_SPINF_038</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-9226863" onClick='toggleBox("Output-9226863", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-9226863" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-9226863">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>1</td>
+<td>maintest.SPcasereg@320068</td></tr>
+<tr>
+<td title='maintest.SPcasereg.TC_SPINF_039()'><b>TC_SPINF_039</b><br>Test class: maintest.SPcasereg<br/>
+<a href="#Output-21378735" onClick='toggleBox("Output-21378735", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-21378735" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-21378735">
+Test Method resides in maintest.SPcasereg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>22</td>
+<td>maintest.SPcasereg@320068</td></tr>
+</table><p>
+</body>
+</html>

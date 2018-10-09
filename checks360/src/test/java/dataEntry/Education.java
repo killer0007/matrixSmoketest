@@ -22,6 +22,10 @@ public class Education extends DataEntryPage {
 		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[2]/a/span/span/span");
 		pages.Utill().SwitchFramebyIndex(1);
 	}
-
+	@Override
+	public void document() {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEducationAddDocuments_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
 	
 }

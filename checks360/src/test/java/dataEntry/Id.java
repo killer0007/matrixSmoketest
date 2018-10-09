@@ -22,6 +22,9 @@ public class Id extends DataEntryPage {
 		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[9]/a/span/span/span");
 		pages.Utill().SwitchFramebyIndex(9);
 	}
-
+	public void document() {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnIdAddDocuments_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
 	
 }
