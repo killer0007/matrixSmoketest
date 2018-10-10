@@ -33,7 +33,7 @@
 					<source>1.7</source>
 					<target>1.7</target>
 					<fork>true</fork>
-					<executable>C:\Program Files\Java\jdk1.8.0_171\bin\javac</executable>
+					<executable>C:\Program Files\Java\jdk1.8.0_181\bin\javac</executable>
 				</configuration>
 				<!-- <configuration> -->
 				<!-- <source>1.8</source> -->
@@ -160,6 +160,5 @@
 			<version>6.4.0.jre8</version>
 <!-- 			<scope>test</scope> -->
 		</dependency>
-
 	</dependencies>
 </project>

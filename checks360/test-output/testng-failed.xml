@@ -8,6 +8,7 @@
           <include name="TC_SPDOC_008"/>
           <include name="setup"/>
           <include name="beforetest"/>
+          <include name="TC_SPDOC_007"/>
           <include name="beforeSuit"/>
           <include name="afterSuite"/>
           <include name="teardown"/>

@@ -13,7 +13,7 @@
 <!-- 		</groups> -->
 		<classes>
 			<!-- <class name="MAINTEST.SPCASEREG"> -->
-			<class name="maintest.SPcasereg">
+			<class name="testcasesprac.SPcasereg">
 				<methods>
 				<exclude name ="TC_SPCR_012" />
 				<exclude name ="TC_SPCR_013" />

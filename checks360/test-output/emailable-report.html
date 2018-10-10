@@ -31,39 +31,80 @@ div.shootout {padding:2em;border:3px #4854A8 solid}
 <body>
 <table cellspacing="0" cellpadding="0" class="result">
 <tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">8</td><td class="numi">8</td><td class="numi">0</td><td class="numi">0</td><td class="numi">203.4 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">6</td><td class="numi">6</td><td class="numi">0</td><td class="numi_attn">2</td><td class="numi">240.4 seconds</td><td class="numi"></td><td class="numi"></td></tr>
 </table>
 <table cellspacing="0" cellpadding="0" class="passed" id="summary">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
+<tr><th colspan="4">Default test &#8212; failed</th></tr>
+<tr class="failedodd"><td rowspan="2">maintest.Basic</td><td><a href="#m1"><b>TC_SPDOC_007</b>  </a></td><td class="numi">1</td><td>1539175894195</td><td class="numi">4864</td></tr><tr class="failedodd"><td><a href="#m2"><b>TC_SPDOC_008</b>  </a></td><td class="numi">1</td><td>1539175908083</td><td class="numi">3130</td></tr>
 <tr><th colspan="4">Default test &#8212; passed</th></tr>
-<tr class="passedodd"><td rowspan="8">maintest.Basic</td><td><a href="#m1"><b>TC_SPDOC_001</b>  </a></td><td class="numi">1</td><td>1539088544178</td><td class="numi">47370</td></tr><tr class="passedodd"><td><a href="#m2"><b>TC_SPDOC_002</b>  </a></td><td class="numi">1</td><td>1539088591550</td><td class="numi">10454</td></tr><tr class="passedodd"><td><a href="#m3"><b>TC_SPDOC_003</b>  </a></td><td class="numi">1</td><td>1539088602004</td><td class="numi">10735</td></tr><tr class="passedodd"><td><a href="#m4"><b>TC_SPDOC_004</b>  </a></td><td class="numi">1</td><td>1539088612741</td><td class="numi">22446</td></tr><tr class="passedodd"><td><a href="#m5"><b>TC_SPDOC_005</b>  </a></td><td class="numi">1</td><td>1539088635187</td><td class="numi">89821</td></tr><tr class="passedodd"><td><a href="#m6"><b>TC_SPDOC_006</b>  </a></td><td class="numi">1</td><td>1539088725010</td><td class="numi">4593</td></tr><tr class="passedodd"><td><a href="#m7"><b>TC_SPDOC_007</b>  </a></td><td class="numi">1</td><td>1539088729605</td><td class="numi">5689</td></tr><tr class="passedodd"><td><a href="#m8"><b>TC_SPDOC_008</b>  </a></td><td class="numi">1</td><td>1539088735297</td><td class="numi">7438</td></tr>
+<tr class="passedodd"><td rowspan="6">maintest.Basic</td><td><a href="#m3"><b>TC_SPDOC_001</b>  </a></td><td class="numi">1</td><td>1539175685378</td><td class="numi">46533</td></tr><tr class="passedodd"><td><a href="#m4"><b>TC_SPDOC_002</b>  </a></td><td class="numi">1</td><td>1539175731926</td><td class="numi">10457</td></tr><tr class="passedodd"><td><a href="#m5"><b>TC_SPDOC_003</b>  </a></td><td class="numi">1</td><td>1539175742383</td><td class="numi">10549</td></tr><tr class="passedodd"><td><a href="#m6"><b>TC_SPDOC_004</b>  </a></td><td class="numi">1</td><td>1539175752932</td><td class="numi">22580</td></tr><tr class="passedodd"><td><a href="#m7"><b>TC_SPDOC_005</b>  </a></td><td class="numi">1</td><td>1539175775512</td><td class="numi">114180</td></tr><tr class="passedodd"><td><a href="#m8"><b>TC_SPDOC_006</b>  </a></td><td class="numi">1</td><td>1539175889695</td><td class="numi">4498</td></tr>
 </table>
 <h1>Default test</h1>
-<h2 id="m1">maintest.Basic:TC_SPDOC_002</h2>
+<h2 id="m1">maintest.Basic:TC_SPDOC_007</h2>
+<div style="padding-left:3em">
+<h3>Test Messages</h3>
+Test Method resides in maintest.Basic<br/>
+Test Status: Failed<br/>
+<h3>Failure</h3>
+<p>0</p>
+environment.Utill.isfileexist(Utill.java:714)
+<br/>at maintest.Basic.TC_SPDOC_007(Basic.java:203)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m2">maintest.Basic:TC_SPDOC_008</h2>
+<div style="padding-left:3em">
+<h3>Test Messages</h3>
+Test Method resides in maintest.Basic<br/>
+Test Status: Failed<br/>
+<h3>Failure</h3>
+<p>no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&apos;tabStrip&apos;]/div/ul/li[1]/a/span/span/span&quot;}
+  (Session info: headless chrome=69.0.3497.100)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;3.12.0&apos;, revision: &apos;7c6e0b3&apos;, time: &apos;2018-05-08T14:04:26.12Z&apos;
+System info: host: &apos;KAD-I-032&apos;, ip: &apos;192.168.2.67&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_181&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:62254}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.100, webStorageEnabled: true}
+Session ID: ce648fc8626ed3dc8af951786332f310
+*** Element info: {Using=xpath, value=//*[@id=&apos;tabStrip&apos;]/div/ul/li[1]/a/span/span/span}</p>
+sun.reflect.GeneratedConstructorAccessor13.newInstance(Unknown Source)
+<br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+<br/>at java.lang.reflect.Constructor.newInstance(Unknown Source)
+<br/>at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+<br/>at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+<br/>at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+<br/>at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+<br/>at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+<br/>at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+<br/>at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:317)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:419)
+<br/>at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:309)
+<br/>at environment.Utill.find(Utill.java:81)
+<br/>at environment.Utill.click_element(Utill.java:161)
+<br/>at dataEntry.Address.addresscheck(Address.java:28)
+<br/>at maintest.Basic.TC_SPDOC_008(Basic.java:212)
+<br/>25 lines not shown
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m3">maintest.Basic:TC_SPDOC_004</h2>
 <div style="padding-left:3em">
 Test Method resides in maintest.Basic<br/>
 Test Status: Pass<br/>
 </div>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m2">maintest.Basic:TC_SPDOC_003</h2>
+<h2 id="m4">maintest.Basic:TC_SPDOC_002</h2>
 <div style="padding-left:3em">
 Test Method resides in maintest.Basic<br/>
 Test Status: Pass<br/>
 </div>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m3">maintest.Basic:TC_SPDOC_005</h2>
-<div style="padding-left:3em">
-Test Method resides in maintest.Basic<br/>
-Test Status: Pass<br/>
-</div>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m4">maintest.Basic:TC_SPDOC_007</h2>
-<div style="padding-left:3em">
-Test Method resides in maintest.Basic<br/>
-Test Status: Pass<br/>
-</div>
-<p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m5">maintest.Basic:TC_SPDOC_004</h2>
+<h2 id="m5">maintest.Basic:TC_SPDOC_001</h2>
 <div style="padding-left:3em">
 Test Method resides in maintest.Basic<br/>
 Test Status: Pass<br/>
@@ -75,13 +116,13 @@ Test Method resides in maintest.Basic<br/>
 Test Status: Pass<br/>
 </div>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m7">maintest.Basic:TC_SPDOC_008</h2>
+<h2 id="m7">maintest.Basic:TC_SPDOC_003</h2>
 <div style="padding-left:3em">
 Test Method resides in maintest.Basic<br/>
 Test Status: Pass<br/>
 </div>
 <p class="totop"><a href="#summary">back to summary</a></p>
-<h2 id="m8">maintest.Basic:TC_SPDOC_001</h2>
+<h2 id="m8">maintest.Basic:TC_SPDOC_005</h2>
 <div style="padding-left:3em">
 Test Method resides in maintest.Basic<br/>
 Test Status: Pass<br/>

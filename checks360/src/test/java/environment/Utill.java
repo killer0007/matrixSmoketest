@@ -720,4 +720,7 @@ public void waitForReady(long timeOutInSeconds) {
 				return null;
 			}
 	}
+	public String FilterFileName(String FilePath) {
+		return FilePath.substring(FilePath.lastIndexOf("\\")).replace("\\", "");
+	}
 }

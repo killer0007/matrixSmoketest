@@ -35,8 +35,8 @@ public class BaseClass {
 			chromoption.addArguments("start-maximized");
 //			driver = new ChromeDriver();
 			driver = new ChromeDriver(chromoption);
-//			Dimension d = new Dimension(1382, 744);
-//			driver.manage().window().setSize(d);
+			Dimension d = new Dimension(1382, 744);
+			driver.manage().window().setSize(d);
 //			driver.manage().window().maximize();
 		}
 		return driver;

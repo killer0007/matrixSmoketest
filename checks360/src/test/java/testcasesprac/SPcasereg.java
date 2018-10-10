@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -1080,7 +1081,8 @@ public class SPcasereg extends Design {
 		pages.Utill().confirmAlert();
 		pages.Home().workStage();
 		pages.DataEntrySupervision().datanentrysupervision();
-		pages.DataEntrySupervision().assign(refno, uname);
+//		pages.DataEntrySupervision().assign(refno, uname);
+		pages.DataEntrySupervision().assigngetnext(refno);
 		pages.DcaseRegistration().caseRegistration();
 		Thread.sleep(1500);
 		pages.Utill().click_element("//span[text()='" + refno + "']");
@@ -1321,7 +1323,8 @@ public class SPcasereg extends Design {
 		pages.Home().homepage();
 		// assing
 		pages.DataEntrySupervision().datanentrysupervision();
-		pages.DataEntrySupervision().assign(refno, "demoempl");
+//		pages.DataEntrySupervision().assign(refno, "demoempl");
+		pages.DataEntrySupervision().assigngetnext(refno);
 		pages.DataEntry().datanentry();
 		pages.DataEntry().search(refno);
 		pages.DataEntry().selectcase(refno);
@@ -1335,7 +1338,9 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeAddress().getclearedBy(), uname);
 		sf.assertEquals(pages.DeAddress().getclearedComments(), "Current Address clear");
 		String doc = pages.DeAddress().historyDocument();
-		sf.assertTrue((doc.equals("address.pdf")), doc);
+//		sf.assertTrue((doc.equals("address.pdf")), doc);
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
+		sf.assertEquals(doc, expected);
 		pages.DeAddress().close();
 		sf.assertAll();
 	}
@@ -1353,7 +1358,9 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeEducation().getclearedBy(), uname);
 		sf.assertEquals(pages.DeEducation().getclearedComments(), "UG1 clear");
 		String doc = pages.DeEducation().historyDocument();
-		sf.assertTrue((doc.equals("education.pdf")), doc);
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("eduinsuffdoc"));
+//		sf.assertTrue((doc.equals("education.pdf")), doc);
+		sf.assertEquals(doc, expected);
 		pages.DeEducation().close();
 		sf.assertAll();
 	}
@@ -1371,7 +1378,9 @@ public class SPcasereg extends Design {
 			sf.assertEquals(pages.DeEmployment().getclearedBy(), uname);
 			sf.assertEquals(pages.DeEmployment().getclearedComments(), "Current/Latest Employment clear");
 			String doc = pages.DeEmployment().historyDocument();
-			sf.assertTrue((doc.equals("employment.pdf")), doc);
+			String expected=this.FilterFileName(BaseClass.getlocator().getProperty("empinsuffdoc"));
+			sf.assertEquals(doc, expected);
+//			sf.assertTrue((doc.equals("employment.pdf")), doc);
 		} catch (Exception e) {
 			// TODO: handle exception
 		} finally {
@@ -1393,7 +1402,9 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeReference().getclearedBy(), uname);
 		sf.assertEquals(pages.DeReference().getclearedComments(), "Reference 1 clear");
 		String doc = pages.DeReference().historyDocument();
-		sf.assertTrue((doc.equals("reference.pdf")), doc);
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("refinsuffdoc"));
+//		sf.assertTrue((doc.equals("reference.pdf")), doc);
+sf.assertEquals(doc, expected);
 		pages.DeReference().close();
 		sf.assertAll();
 	}
@@ -1410,7 +1421,9 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeDatabase().getclearedBy(), uname);
 		sf.assertEquals(pages.DeDatabase().getclearedComments(), "Database clear");
 		String doc = pages.DeDatabase().historyDocument();
-		sf.assertTrue((doc.equals("database.pdf")), doc);
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("dbinsuffdoc"));
+		sf.assertEquals(doc, expected);
+//		sf.assertTrue((doc.equals("database.pdf")), doc);
 		pages.DeDatabase().close();
 		sf.assertAll();
 	}
@@ -1427,7 +1440,9 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeCriminal().getclearedBy(), uname);
 		sf.assertEquals(pages.DeCriminal().getclearedComments(), "Current Address Criminal Check clear");
 		String doc = pages.DeCriminal().historyDocument();
-		sf.assertTrue((doc.equals("criminal.pdf")), doc);
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("criminalinsuffdoc"));
+		sf.assertEquals(doc, expected);
+//		sf.assertTrue((doc.equals("criminal.pdf")), doc);
 		pages.DeCriminal().close();
 		sf.assertAll();
 	}
@@ -1444,7 +1459,9 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeCredit().getclearedBy(), uname);
 		sf.assertEquals(pages.DeCredit().getclearedComments(), "Credit Check 1 clear");
 		String doc = pages.DeCredit().historyDocument();
-		sf.assertTrue((doc.equals("credit.pdf")), doc);
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("creditinsuffdoc"));
+		sf.assertEquals(doc, expected);
+//		sf.assertTrue((doc.equals("credit.pdf")), doc);
 		pages.DeCredit().close();
 		sf.assertAll();
 	}
@@ -1461,7 +1478,9 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeCourt().getclearedBy(), uname);
 		sf.assertEquals(pages.DeCourt().getclearedComments(), "Current Address Court Check clear");
 		String doc = pages.DeCourt().historyDocument();
-		sf.assertTrue((doc.equals("court.pdf")), doc);
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("courtinsuffdoc"));
+		sf.assertEquals(doc, expected);
+//		sf.assertTrue((doc.equals("court.pdf")), doc);
 		pages.DeCourt().close();
 		sf.assertAll();
 	}
@@ -1479,7 +1498,9 @@ public class SPcasereg extends Design {
 			sf.assertEquals(pages.DeId().getclearedBy(), uname);
 			sf.assertEquals(pages.DeId().getclearedComments(), "Aadhaar Card clear");
 			String doc = pages.DeId().historyDocument();
-			sf.assertTrue((doc.equals("id.pdf")), doc);
+//			sf.assertTrue((doc.equals("id.pdf")), doc);
+			String expected=this.FilterFileName(BaseClass.getlocator().getProperty("idinsuffdoc"));
+			sf.assertEquals(doc, expected);
 			pages.DeId().close();
 		} catch (Exception e) {
 			String temp = Utill.getScreenshot(driver);
@@ -1496,7 +1517,7 @@ public class SPcasereg extends Design {
 			"not applicable" })
 	public void TC_SPNAPP_001() throws Exception {
 		String[] checks = { "Current Address", "UG1", "Current/Latest Employment", "Reference 1", "Aadhaar Card",
-				"Current Address Criminal Check", "Current Address Court Check", "Credit Check 1", "Panel1",
+				"Current Address Criminal Check", "Current Address Court Check", "Credit Check 1",
 				"Database" };
 		String[] notapplicable = { "Permanent", "12th", "Previous Employment", "Reference 2", "PAN Card",
 				"Permanent Criminal Check", "Permanent Court Check" };
@@ -1667,6 +1688,7 @@ public class SPcasereg extends Design {
 		Properties loc = BaseClass.getlocator();
 		pages.CEP().upload(refno, "comments cep", "Relieving Letter", loc.getProperty("addressinsuffdoc"));
 		pages.Home().workStage();
+		
 		pages.DataEntrySupervision().datanentrysupervision();
 		pages.DataEntrySupervision().assigngetnext(refno);
 		pages.DataEntry().datanentry();
@@ -1683,7 +1705,8 @@ public class SPcasereg extends Design {
 	public void TC_SPCEP_004() throws Exception {
 		String actual = pages.DeEmployment().CephistoryDocument();
 		pages.DeEmployment().close();
-		assertEquals(actual, "address.pdf");
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
+		assertEquals(actual, expected);
 		pages.Utill().SwitchDefault();
 		pages.Utill().click_element("imgHome");
 	}
@@ -1705,8 +1728,10 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().addEditComponent();
 		pages.CaseRegistration().uploadcaseDoc("Authorization Letter",
 				BaseClass.getlocator().getProperty("addressinsuffdoc"));
-		String name = pages.CaseRegistration().getuploadcaseDoc("Authorization Letter");
-		assertEquals(name, "address.pdf");
+		Thread.sleep(1000);
+		String actual = pages.CaseRegistration().getuploadcaseDoc("Authorization Letter");
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
+		assertEquals(actual, expected);
 	}
 
 	@Test(priority = 64, enabled = true, dependsOnMethods = "TC_SPDOC_001")
@@ -1714,8 +1739,9 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().selectcheck("Permanent");
 		pages.CaseRegistration().documentupload("Permanent", BaseClass.getlocator().getProperty("addressinsuffdoc"),
 				"Address Proof");
-		String name = pages.CaseRegistration().getDocumentName("Permanent", "Address Proof");
-		assertEquals(name, "address.pdf");
+		String actual = pages.CaseRegistration().getDocumentName("Permanent", "Address Proof");
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
+		assertEquals(actual, expected);
 	}
 
 	@Test(priority = 65, enabled = true, dependsOnMethods = "TC_SPDOC_002")
@@ -1770,7 +1796,8 @@ public class SPcasereg extends Design {
 		pages.CaseInformation().CaseDocument();
 		String actual = pages.CaseInformation().getDocumentName("Authorization Letter");
 		pages.CaseInformation().cancel();
-		assertEquals(actual, "address.pdf");
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
+		assertEquals(actual, expected);
 	}
 
 	@Test(priority = 68, enabled = true, dependsOnMethods = "TC_SPDOC_005")
@@ -1779,7 +1806,8 @@ public class SPcasereg extends Design {
 		pages.DeAddress().document();
 		String actual = pages.DeAddress().getDocumentName("Address Proof");
 		pages.DeAddress().docclose();
-		assertEquals(actual, "address.pdf");
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
+		assertEquals(actual, expected);
 	}
 
 	@Test(priority = 69, enabled = true, dependsOnMethods = "TC_SPDOC_006")
@@ -1791,7 +1819,8 @@ public class SPcasereg extends Design {
 		pages.CaseInformation().documentDownload("Authorization Letter");
 		pages.CaseInformation().cancel();
 		String actual = pages.Utill().isfileexist(file);
-		assertEquals(actual, "address.pdf");
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
+		assertEquals(actual, expected);
 	}
 
 	@Test(priority = 70, enabled = true, dependsOnMethods = "TC_SPDOC_007")
@@ -1806,7 +1835,8 @@ public class SPcasereg extends Design {
 		String actual = pages.Utill().isfileexist(file);
 		pages.Utill().SwitchDefault();
 		pages.Utill().click_element("imgHome");
-		assertEquals(actual, "address.pdf");
+		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
+		assertEquals(actual, expected);
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -1829,7 +1859,14 @@ public class SPcasereg extends Design {
 				driver.get(config.getProperty("url") + "/Web/dashboard.aspx");
 				pages.Utill().wait_until_loader_is_invisible(80);
 			}
-
+			List<String> windows = new ArrayList<String>(driver.getWindowHandles());
+			if (windows.size() > 1) {
+				for (int i = 1; i < windows.size(); i++) {
+					driver.switchTo().window(windows.get(i).toString());
+					driver.close();
+				}
+				driver.switchTo().window(windows.get(0).toString());
+			}
 		} else {
 			logger.pass(method.getName() + " completed");
 		}
@@ -1842,9 +1879,11 @@ public class SPcasereg extends Design {
 			driver.quit();
 	}
 
-	@AfterSuite(alwaysRun = true)
 	public void afterSuite() {
 		extent.flush();
 
+	}
+	private String FilterFileName(String FilePath) {
+		return FilePath.substring(FilePath.lastIndexOf("\\")).replace("\\", "");
 	}
 }

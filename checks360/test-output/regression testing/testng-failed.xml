@@ -3,25 +3,35 @@
 <suite name="Failed suite [regression testing]">
   <test name="insuff(failed)">
     <classes>
-      <class name="maintest.SPcasereg">
+      <class name="testcasesprac.SPcasereg">
         <methods>
-          <include name="TC_SPINF_006"/>
-          <include name="tearDown"/>
-          <include name="beforeSuit"/>
-          <include name="beforetest"/>
-          <include name="TC_SPNAPP_001"/>
           <include name="TC_SPINF_001"/>
-          <include name="TC_SPINF_012"/>
           <include name="teardown"/>
-          <include name="TC_SPINF_011"/>
+          <include name="TC_SPINF_024"/>
+          <include name="TC_SPDOC_005"/>
+          <include name="beforetest"/>
+          <include name="TC_SPCEP_003"/>
+          <include name="TC_SPCEP_001"/>
+          <include name="TC_SPINF_005"/>
+          <include name="TC_SPINF_006"/>
+          <include name="TC_SPCEP_002"/>
+          <include name="beforeSuit"/>
+          <include name="TC_SPDOC_006"/>
+          <include name="TC_SPDOC_004"/>
+          <include name="TC_SPDOC_007"/>
+          <include name="TC_SPDOC_008"/>
+          <include name="TC_SPINF_012"/>
+          <include name="TC_SPDOC_001"/>
           <include name="TC_SPINF_010"/>
           <include name="setup"/>
-          <include name="TC_SPINF_024"/>
-          <include name="afterSuite"/>
-          <include name="TC_SPINF_005"/>
+          <include name="TC_SPINF_011"/>
+          <include name="TC_SPDOC_002"/>
+          <include name="TC_SPDOC_003"/>
           <include name="TC_SPINF_038"/>
+          <include name="tearDown"/>
+          <include name="TC_SPNAPP_001"/>
         </methods>
-      </class> <!-- maintest.SPcasereg -->
+      </class> <!-- testcasesprac.SPcasereg -->
     </classes>
   </test> <!-- insuff(failed) -->
 </suite> <!-- Failed suite [regression testing] -->
