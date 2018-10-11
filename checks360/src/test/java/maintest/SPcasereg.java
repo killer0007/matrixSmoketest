@@ -84,7 +84,7 @@ public class SPcasereg extends Design {
 	}
 
 	@Test(priority = 2, enabled = true, groups = { "smoketest", "spcase registration" })
-	public void TC_SPCR_001() {
+	public void TC_SPCR_001() throws Exception {
 		pages.Home().clickRegister();
 		String title = pages.CaseRegistration().getTitle();
 		if (title.equals("Case Registration")) {

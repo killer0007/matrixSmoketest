@@ -86,7 +86,7 @@ public class SPcasereg extends Design {
 	}
 
 	@Test(priority = 2, enabled = true, groups = { "smoketest", "spcase registration" })
-	public void TC_SPCR_001() {
+	public void TC_SPCR_001() throws Exception{
 		pages.Home().clickRegister();
 		String title = pages.CaseRegistration().getTitle();
 		if (title.equals("Case Registration")) {
@@ -118,13 +118,14 @@ public class SPcasereg extends Design {
 	}
 
 	@Test(priority = 5, enabled = true, groups = { "spcase registration" })
-	public void TC_SPCR_004() {
+	public void TC_SCPR_004() {
 		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_ddlContract", "border");
 		if (result.equals("1px solid rgb(255, 0, 0)")) {
 			assertTrue(true);
 		} else {
 			assertTrue(result, false);
 		}
+		
 	}
 
 	@Test(priority = 6, enabled = true, groups = { "spcase registration" })
@@ -1521,6 +1522,7 @@ sf.assertEquals(doc, expected);
 				"Database" };
 		String[] notapplicable = { "Permanent", "12th", "Previous Employment", "Reference 2", "PAN Card",
 				"Permanent Criminal Check", "Permanent Court Check" };
+		Thread.sleep(3000);
 		pages.Home().clickRegister();
 		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
@@ -1788,6 +1790,7 @@ sf.assertEquals(doc, expected);
 	@Test(priority = 67, enabled = true, dependsOnMethods = "TC_SPDOC_004")
 	public void TC_SPDOC_005() throws Exception {
 		pages.DataEntrySupervision().datanentrysupervision();
+		refno= pages.DbConnection().getLastrefno(ProjectName);
 		pages.DataEntrySupervision().assigngetnext(refno);
 		pages.DataEntry().datanentry();
 		pages.DataEntry().search(refno);

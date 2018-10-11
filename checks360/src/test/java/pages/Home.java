@@ -3,6 +3,7 @@ package pages;
 import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -88,8 +89,15 @@ public class Home {
 		pages.Utill().wait_until_loader_is_invisible(10);
 	}
 
-	public void clickRegister() {
+	public void clickRegister() throws Exception {
+		try {
 		pages.Utill().click_element("btnNewCase_Click");
+		}
+		catch(ElementNotVisibleException e) {
+			Thread.sleep(3000);
+			pages.Utill().click_element("btnNewCase_Click");	
+		}
+		
 		pages.Utill().wait_until_loader_is_invisible(15);
 	}
 public void workStage() {
