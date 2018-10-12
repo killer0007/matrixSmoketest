@@ -1,7 +1,10 @@
 package actions;
 
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+
 import environment.Pages;
 
 public class CEP extends ActionPage {
@@ -135,7 +138,12 @@ public class CEP extends ActionPage {
 	public void upload(String refno, String comments, String doctype, String file) throws Exception {
 		pages.Utill().click_element("(//td[text()='" + refno + "'])[2]");
 		pages.Utill().wait_until_loader_is_invisible(100);
-		this.clearComments(comments);
+		try {
+			this.clearComments(comments);
+		} catch (StaleElementReferenceException e) {
+			logger.log(Status.WARNING,"StaleElementReferenceException");
+			this.clearComments(comments);
+		}
 		this.upload(doctype, file);
 		this.submit();
 	}

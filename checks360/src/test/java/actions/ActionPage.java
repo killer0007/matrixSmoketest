@@ -34,6 +34,7 @@ abstract class ActionPage {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlWorkflowType_Input");
 		pages.Utill().wait_until_element_isvisible(
 				"//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[1]", 10);
+		Thread.sleep(1000);
 		switch (source.toLowerCase()) {
 		case "sp":
 			pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[1]");

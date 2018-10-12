@@ -42,7 +42,7 @@ public class DbConnection {
 	 * @return refno case reference number
 	 * @throws Exception when SQL connection failed
 	 */
-	public synchronized String getLastrefno(String project) throws Exception {
+	public  String getLastrefno(String project) throws Exception {
 //	select top 1 refno from tblcasemaster where projectshortname='demo client1234' order by id desc
 		String result = null;
 		final String url = "jdbc:sqlserver://192.168.2.17:1433;" + "databaseName=FP_Checks360_V2.1s_Testing" + "";

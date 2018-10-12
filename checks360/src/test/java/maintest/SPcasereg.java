@@ -1509,6 +1509,7 @@ sf.assertEquals(doc, expected);
 		} finally {
 			pages.Utill().SwitchDefault();
 			pages.Utill().click_element("imgHome");
+			pages.Utill().wait_until_loader_is_invisible(100);
 			sf.assertAll();
 		}
 
@@ -1522,7 +1523,9 @@ sf.assertEquals(doc, expected);
 				"Database" };
 		String[] notapplicable = { "Permanent", "12th", "Previous Employment", "Reference 2", "PAN Card",
 				"Permanent Criminal Check", "Permanent Court Check" };
-		Thread.sleep(3000);
+		pages.CaseRegistration().casereg();
+		pages.Utill().wait_until_loader_is_invisible(100);
+//		Thread.sleep(3000);
 		pages.Home().clickRegister();
 		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
@@ -1878,12 +1881,14 @@ sf.assertEquals(doc, expected);
 
 	@AfterTest(alwaysRun = true)
 	public void teardown() throws Exception {
-		if (driver != null)
-			driver.quit();
+//		if (driver != null)
+//			driver.quit();
 	}
 
 	public void afterSuite() {
+		System.out.println("report flushing");
 		extent.flush();
+		System.out.println("report flushed");
 
 	}
 	private String FilterFileName(String FilePath) {

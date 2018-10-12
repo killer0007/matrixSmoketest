@@ -67,7 +67,7 @@ public class Utill {
 	 * @param driver instance of webdriver
 	 * @return screenshot path
 	 */
-	public static String getScreenshot(WebDriver driver) {
+	public static synchronized String getScreenshot(WebDriver driver) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 
 		File src = ts.getScreenshotAs(OutputType.FILE);
