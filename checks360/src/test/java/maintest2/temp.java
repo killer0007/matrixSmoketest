@@ -1,4 +1,4 @@
-package maintest;
+package maintest2;
 
 
 
@@ -22,4 +22,5 @@ driver.manage().window().maximize();
 System.out.println(driver.manage().window().getSize());
 driver.close();
 	}
+	
 }

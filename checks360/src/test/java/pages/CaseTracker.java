@@ -16,12 +16,24 @@ public class CaseTracker {
 	ExtentTest logger;
 	Pages pages;
 
+	/**
+	 * This is class for CaseTracker Page
+	 * 
+	 * @param driver webdriver instance
+	 * @param logger logger instance
+	 */
 	public CaseTracker(WebDriver driver, ExtentTest logger) {
 		this.driver = driver;
-		this.logger=logger;
+		this.logger = logger;
 		pages = new Pages(driver, logger);
 	}
 
+	/**
+	 * Takes case Reference Number as input pass the reference number to search box
+	 * field and hit search
+	 * 
+	 * @param refno Case Reference Number
+	 */
 	public void search(String refno) {
 		pages.Utill().click_element("searchBox");
 		pages.Utill().input_text("searchBox", refno);
@@ -29,39 +41,84 @@ public class CaseTracker {
 		// pages.Utill().wait_until_loader_is_invisible(10);
 	}
 
+	/**
+	 * Performs click action on search button
+	 */
 	public void search() {
 		pages.Utill().click_element("//span[text()=' Search']");
 		pages.Utill().wait_until_loader_is_invisible(10);
 	}
 
+	/**
+	 * Takes case Reference Number as input and click on it
+	 * 
+	 * @param refno Case Reference Number
+	 */
 	public void clickcase(String refno) {
 		pages.Utill().click_element("linkText:" + refno);
-		pages.Utill().wait_element_has_text("//div[@class='modal-content']//table[@id='grdTaskList']/tbody/tr[1]/td[1]/span", 10);
-		
+		pages.Utill().wait_element_has_text(
+				"//div[@class='modal-content']//table[@id='grdTaskList']/tbody/tr[1]/td[1]/span", 10);
+
 	}
 
+	/**
+	 * Takes Component name as input and returns current stage of that component
+	 * from case tracker
+	 * 
+	 * @param componentName Sub component name
+	 * @return Current Stage
+	 */
 	public String getCurrentStage(String componentName) {
 
 		return pages.Utill().get_text("//span[text()='" + componentName + "']/../../td[5]");
 	}
 
+	/**
+	 * Takes Component name and refno as input and returns current stage of that
+	 * component from case tracker
+	 * 
+	 * @param refno         Case Reference Number
+	 * @param componentName Sub component name
+	 * @return Current Stage
+	 */
 	public String getCurrentStage(String refno, String componentName) {
 		this.search(refno);
 		this.clickcase(refno);
 		return this.getCurrentStage(componentName);
 	}
 
+	/**
+	 * Takes Component name as input and returns responsible Person from case
+	 * tracker
+	 * 
+	 * @param componentName Sub component name
+	 * @return name responsible person name
+	 */
 	public String responsiblePerson(String componentName) {
 
 		return pages.Utill().get_text("//span[text()='" + componentName + "']/../../td[6]").trim();
 	}
 
+	/**
+	 * Takes Component name and refno as input and returns responsible Person from
+	 * case tracker
+	 * 
+	 * @param refno         Case Reference Number
+	 * @param componentName Sub component name
+	 * @return name responsible person name
+	 */
 	public String responsiblePerson(String refno, String componentName) {
 		this.search(refno);
 		this.clickcase(refno);
 		return this.responsiblePerson(componentName).trim();
 	}
 
+	/**
+	 * returns the entire case tracker details as list
+	 * 
+	 * @return List of hashmap
+	 * @throws Exception case not found
+	 */
 	public List<HashMap<String, String>> getcasedata() throws Exception {
 //		Thread.sleep(5000);
 		List<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
@@ -102,12 +159,21 @@ public class CaseTracker {
 		return data;
 	}
 
+	/**
+	 * closes the case tracker window
+	 */
 	public void cancel() {
 //		pages.Utill().click_element("//button[@class='close']");
 		pages.Utill().closetab();
 		pages.Utill().switchWindow(0);
 	}
 
+	/**
+	 * Takes case tracker details as input and returns only component name
+	 * 
+	 * @param input case tracker details
+	 * @return component name
+	 */
 	public List<String> getcomponentname(List<HashMap<String, String>> input) {
 		List<String> data = new ArrayList<String>();
 		for (int i = 0; i < input.size(); i++) {

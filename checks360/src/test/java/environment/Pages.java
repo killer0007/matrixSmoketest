@@ -23,7 +23,7 @@ public class Pages {
 	private DataEntry dataentry;
 	private dataEntry.Address address;
 	private dataEntry.Education education;
-	private dataEntry.Employement employement;
+	private dataEntry.Employment employement;
 	private dataEntry.Reference reference;
 	private dataEntry.Database database;
 	private dataEntry.Criminal criminal;
@@ -89,8 +89,8 @@ public class Pages {
 		return (education == null) ? education = new dataEntry.Education(driver, logger) : education;
 	}
 
-	public dataEntry.Employement DeEmployment() {
-		return (employement == null) ? employement = new dataEntry.Employement(driver, logger) : employement;
+	public dataEntry.Employment DeEmployment() {
+		return (employement == null) ? employement = new dataEntry.Employment(driver, logger) : employement;
 	}
 
 	public dataEntry.Reference DeReference() {

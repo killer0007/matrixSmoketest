@@ -1,21 +1,16 @@
-package testcasesprac;
+package maintest2;
 
 import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -61,6 +56,7 @@ public class SPcasereg extends Design {
 	@BeforeTest(alwaysRun = true)
 	public void beforetest() throws Exception {
 		driver = BaseClass.getDriver();
+
 		config = BaseClass.getlocator();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(config.getProperty("url"));
@@ -68,6 +64,7 @@ public class SPcasereg extends Design {
 		ProjectName = config.getProperty("projectname");
 		ContractName = config.getProperty("contractname");
 //		uname = config.getProperty("uname");
+		
 
 	}
 
@@ -79,14 +76,15 @@ public class SPcasereg extends Design {
 		pages = new Pages(driver, logger);
 	}
 
-	@Test(priority = 1, enabled = true, groups = { "smoketest", "smoketest", "spcase registration", "insuff" })
+	@Test(priority = 1, enabled = true, groups = { "smoketest","smoketest", "spcase registration", "insuff" })
 	public void Login() throws Exception {
 		uname = config.getProperty("uname");
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+
 	}
 
 	@Test(priority = 2, enabled = true, groups = { "smoketest", "spcase registration" })
-	public void TC_SPCR_001() throws Exception{
+	public void TC_SPCR_001() throws Exception {
 		pages.Home().clickRegister();
 		String title = pages.CaseRegistration().getTitle();
 		if (title.equals("Case Registration")) {
@@ -118,14 +116,13 @@ public class SPcasereg extends Design {
 	}
 
 	@Test(priority = 5, enabled = true, groups = { "spcase registration" })
-	public void TC_SCPR_004() {
+	public void TC_SPCR_004() {
 		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_ddlContract", "border");
 		if (result.equals("1px solid rgb(255, 0, 0)")) {
 			assertTrue(true);
 		} else {
 			assertTrue(result, false);
 		}
-		
 	}
 
 	@Test(priority = 6, enabled = true, groups = { "spcase registration" })
@@ -1041,7 +1038,7 @@ public class SPcasereg extends Design {
 	}
 
 	// To check insuff raised case showing in clear queue
-	@Test(priority = 29, enabled = true, groups = { "insuff" })
+	@Test(priority = 29, enabled = true, groups = {"insuff" })
 	public void TC_SPINF_001() throws Exception {
 		CaseOwnerInsuffClear cs = pages.CaseOwnerInsuffClear();
 		pages.Home().clickRegister();
@@ -1074,14 +1071,16 @@ public class SPcasereg extends Design {
 	}
 
 	// To check insuff cleared components moved to case registration
-	@Test(priority = 30, enabled = true, dependsOnMethods = "TC_SPINF_001", groups = { "insuff" })
+	@Test(priority = 30, enabled = true,dependsOnMethods="TC_SPINF_001", groups = {"insuff" })
 	public void TC_SPINF_002() throws Exception {
 		CaseOwnerInsuffClear cs = pages.CaseOwnerInsuffClear();
 		cs.openCase();
 		cs.insuffClear("Permanent", "clear comments");
 		pages.Utill().confirmAlert();
 		pages.Home().workStage();
+		
 		pages.DataEntrySupervision().datanentrysupervision();
+		//TODO : 
 //		pages.DataEntrySupervision().assign(refno, uname);
 		pages.DataEntrySupervision().assigngetnext(refno);
 		pages.DcaseRegistration().caseRegistration();
@@ -1094,14 +1093,14 @@ public class SPcasereg extends Design {
 
 	// To check already moved components are whether editable or not in case
 	// registration
-	@Test(priority = 31, enabled = true, dependsOnMethods = "TC_SPINF_001", groups = { "insuff" })
+	@Test(priority = 31, enabled = true,dependsOnMethods="TC_SPINF_001", groups = {"insuff" })
 	public void TC_SPINF_003() throws Exception {
 		assertTrue(pages.CaseRegistration().isSelected("Current Address"));
 		assertTrue(!pages.CaseRegistration().isEnabled("Current Address"));
 	}
 
 	// To check is able to add additional component in case registration
-	@Test(priority = 32, enabled = true, dependsOnMethods = "TC_SPINF_001", groups = { "insuff" })
+	@Test(priority = 32, enabled = true,dependsOnMethods="TC_SPINF_001", groups = {"insuff" })
 	public void TC_SPINF_004() throws Exception {
 		pages.CaseRegistration().selectcheck("Current/Latest Employment");
 		pages.CaseRegistration().submit();
@@ -1110,7 +1109,7 @@ public class SPcasereg extends Design {
 	}
 
 	// To check newly added check moved to team member queue
-	@Test(priority = 33, dependsOnMethods = "TC_SPINF_001", groups = { "insuff" })
+	@Test(priority = 33,dependsOnMethods="TC_SPINF_001", groups = {"insuff" })
 	public void TC_SPINF_005() throws Exception {
 		SoftAssert sf = new SoftAssert();
 		pages.Home().homepage();
@@ -1125,7 +1124,7 @@ public class SPcasereg extends Design {
 
 	}
 
-	@Test(priority = 34, enabled = true, dependsOnMethods = "TC_SPINF_005", alwaysRun = true, groups = { "insuff" })
+	@Test(priority = 34, enabled = true,dependsOnMethods="TC_SPINF_005", alwaysRun=true, groups = {"insuff"})
 	public void TC_SPINF_006() throws Exception {
 		pages.Home().clickRegister();
 		CandidateName = pages.Utill().candidateName();
@@ -1152,7 +1151,7 @@ public class SPcasereg extends Design {
 
 	}
 
-	@Test(priority = 35, enabled = true, dependsOnMethods = "TC_SPINF_006", groups = { "insuff" })
+	@Test(priority = 35, enabled = true,dependsOnMethods="TC_SPINF_006", groups = {"insuff"})
 	public void TC_SPINF_007() throws Exception {
 		CaseOwnerInsuffClear cs = pages.CaseOwnerInsuffClear();
 		pages.Home().Actions();
@@ -1174,7 +1173,7 @@ public class SPcasereg extends Design {
 
 	}
 
-	@Test(priority = 36, enabled = true, dependsOnMethods = "TC_SPINF_006", groups = { "insuff" })
+	@Test(priority = 36, enabled = true,dependsOnMethods="TC_SPINF_006", groups = {"insuff"})
 	public void TC_SPINF_008() throws Exception {
 
 		pages.Utill().click_element("//span[text()='" + refno + "']");
@@ -1185,7 +1184,7 @@ public class SPcasereg extends Design {
 		assertTrue(!pages.CaseRegistration().isEnabled("Current Address"));
 	}
 
-	@Test(priority = 37, enabled = true, dependsOnMethods = "TC_SPINF_006", groups = { "insuff" })
+	@Test(priority = 37, enabled = true,dependsOnMethods="TC_SPINF_006", groups = {"insuff"})
 	public void TC_SPINF_009() throws Exception {
 
 		pages.CaseRegistration().selectcheck("Current/Latest Employment");
@@ -1194,7 +1193,7 @@ public class SPcasereg extends Design {
 		assertTrue(true);
 	}
 
-	@Test(priority = 38, enabled = true, dependsOnMethods = "TC_SPINF_006", groups = { "insuff" })
+	@Test(priority = 38, enabled = true,dependsOnMethods="TC_SPINF_006", groups = {"insuff"})
 	public void TC_SPINF_010() throws Exception {
 		SoftAssert sf = new SoftAssert();
 		pages.Home().homepage();
@@ -1211,7 +1210,7 @@ public class SPcasereg extends Design {
 	}
 
 	// check insuff raise comments for address check
-	@Test(priority = 39, enabled = true, dependsOnMethods = "TC_SPINF_010", alwaysRun = true, groups = { "insuff" })
+	@Test(priority = 39, enabled = true, dependsOnMethods="TC_SPINF_010",alwaysRun=true, groups = {"insuff"})
 	public void TC_SPINF_011() throws Exception {
 		String[] checks = { "Current Address", "UG1", "Current/Latest Employment", "Reference 1", "Aadhaar Card",
 				"Current Address Criminal Check", "Current Address Court Check", "Credit Check 1", "Panel1",
@@ -1244,65 +1243,65 @@ public class SPcasereg extends Design {
 	}
 
 	// check insuff raise comments for education check
-	@Test(priority = 40, enabled = true, dependsOnMethods = "TC_SPINF_011", groups = { "insuff" })
+	@Test(priority = 40, enabled = true,dependsOnMethods="TC_SPINF_011", groups = {"insuff"})
 	public void TC_SPINF_014() throws Exception {
 		assertEquals(pages.CaseOwnerInsuffClear().getComments("UG1"), "insuff UG1");
 	}
 
 	// check insuff raise comments for employment check
-	@Test(priority = 41, enabled = true, dependsOnMethods = "TC_SPINF_011", groups = { "insuff" })
+	@Test(priority = 41, enabled = true,dependsOnMethods="TC_SPINF_011", groups = {"insuff"})
 	public void TC_SPINF_017() throws Exception {
 		assertEquals(pages.CaseOwnerInsuffClear().getComments("Current/Latest Employment"),
 				"insuff Current/Latest Employment");
 	}
 
 	// check insuff raise comments for reference check
-	@Test(priority = 42, enabled = true, dependsOnMethods = "TC_SPINF_011", groups = { "insuff" })
+	@Test(priority = 42, enabled = true,dependsOnMethods="TC_SPINF_011", groups = {"insuff"})
 	public void TC_SPINF_020() throws Exception {
 		assertEquals(pages.CaseOwnerInsuffClear().getComments("Reference 1"), "insuff Reference 1");
 	}
 
 	// check insuff raise comments for id check
-	@Test(priority = 43, enabled = true, dependsOnMethods = "TC_SPINF_011", groups = { "insuff" })
+	@Test(priority = 43, enabled = true,dependsOnMethods="TC_SPINF_011", groups = {"insuff"})
 	public void TC_SPINF_023() throws Exception {
 		assertEquals(pages.CaseOwnerInsuffClear().getComments("Aadhaar Card"), "insuff Aadhaar Card");
 	}
 
 	// check insuff raise comments for criminal check
-	@Test(priority = 44, enabled = true, dependsOnMethods = "TC_SPINF_011", groups = { "insuff" })
+	@Test(priority = 44, enabled = true,dependsOnMethods="TC_SPINF_011", groups = {"insuff"})
 	public void TC_SPINF_026() throws Exception {
 		assertEquals(pages.CaseOwnerInsuffClear().getComments("Current Address Criminal Check"),
 				"insuff Current Address Criminal Check");
 	}
 
 	// check insuff raise comments for court check
-	@Test(priority = 45, enabled = true, dependsOnMethods = "TC_SPINF_011", groups = { "insuff" })
+	@Test(priority = 45, enabled = true,dependsOnMethods="TC_SPINF_011", groups = {"insuff"})
 	public void TC_SPINF_029() throws Exception {
 		assertEquals(pages.CaseOwnerInsuffClear().getComments("Current Address Court Check"),
 				"insuff Current Address Court Check");
 	}
 
 	// check insuff raise comments for credit check
-	@Test(priority = 46, enabled = true, dependsOnMethods = "TC_SPINF_011", groups = { "insuff" })
+	@Test(priority = 46, enabled = true,dependsOnMethods="TC_SPINF_011", groups = {"insuff"})
 	public void TC_SPINF_032() throws Exception {
 		assertEquals(pages.CaseOwnerInsuffClear().getComments("Credit Check 1"), "insuff Credit Check 1");
 	}
 
 	// check insuff raise comments for drug check
-	@Test(priority = 47, enabled = true, dependsOnMethods = "TC_SPINF_011", groups = { "insuff" })
+	@Test(priority = 47, enabled = true,dependsOnMethods="TC_SPINF_011", groups = {"insuff"})
 	public void TC_SPINF_035() throws Exception {
 		assertEquals(pages.CaseOwnerInsuffClear().getComments("Panel1"), "insuff Panel1");
 	}
 
 	// check insuff raise comments for db check
-	@Test(priority = 48, enabled = true, dependsOnMethods = "TC_SPINF_011", groups = { "insuff" })
+	@Test(priority = 48, enabled = true,dependsOnMethods="TC_SPINF_011", groups = {"insuff"})
 	public void TC_SPINF_038() throws Exception {
 		assertEquals(pages.CaseOwnerInsuffClear().getComments("Database"), "insuff Database");
 		pages.CaseOwnerInsuffClear().cancel();
 	}
 
 	// for insuff clear and check clear comments in address
-	@Test(priority = 49, enabled = true, dependsOnMethods = "TC_SPINF_038", alwaysRun = true, groups = { "insuff" })
+	@Test(priority = 49, enabled = true, dependsOnMethods="TC_SPINF_038", alwaysRun=true, groups = {"insuff"})
 	public void TC_SPINF_012() throws Exception {
 		pages.Home().workStage();
 		String[] checks = { "Current Address", "UG1", "Current/Latest Employment", "Reference 1", "Aadhaar Card",
@@ -1313,7 +1312,7 @@ public class SPcasereg extends Design {
 		pages.CaseOwnerInsuffClear().search(refno, "sp");
 		pages.CaseOwnerInsuffClear().openCase();
 		pages.CaseOwnerInsuffClear().uploadMultiplecom(checks);
-
+		
 		pages.Home().workStage();
 		pages.Utill().click_element("//span[text()='" + refno + "']");
 		pages.Utill().wait_until_loader_is_invisible(5);
@@ -1324,6 +1323,7 @@ public class SPcasereg extends Design {
 		pages.Home().homepage();
 		// assing
 		pages.DataEntrySupervision().datanentrysupervision();
+		//TODO:
 //		pages.DataEntrySupervision().assign(refno, "demoempl");
 		pages.DataEntrySupervision().assigngetnext(refno);
 		pages.DataEntry().datanentry();
@@ -1338,16 +1338,14 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeAddress().getraisedComments(), "insuff Current Address");
 		sf.assertEquals(pages.DeAddress().getclearedBy(), uname);
 		sf.assertEquals(pages.DeAddress().getclearedComments(), "Current Address clear");
-		String doc = pages.DeAddress().historyDocument();
-//		sf.assertTrue((doc.equals("address.pdf")), doc);
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
-		sf.assertEquals(doc, expected);
+		String doc =pages.DeAddress().historyDocument();
+		sf.assertTrue((doc.equals("address.pdf")),doc);
 		pages.DeAddress().close();
 		sf.assertAll();
 	}
 
 	// education clear comments
-	@Test(priority = 50, enabled = true, dependsOnMethods = "TC_SPINF_012", groups = { "insuff" })
+	@Test(priority = 50, enabled = true,dependsOnMethods="TC_SPINF_012", groups = {"insuff"})
 	public void TC_SPINF_015() throws Exception {
 
 		pages.DeEducation().educationcheck();
@@ -1358,41 +1356,39 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeEducation().getraisedComments(), "insuff UG1");
 		sf.assertEquals(pages.DeEducation().getclearedBy(), uname);
 		sf.assertEquals(pages.DeEducation().getclearedComments(), "UG1 clear");
-		String doc = pages.DeEducation().historyDocument();
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("eduinsuffdoc"));
-//		sf.assertTrue((doc.equals("education.pdf")), doc);
-		sf.assertEquals(doc, expected);
+		String doc =pages.DeEducation().historyDocument();
+		sf.assertTrue((doc.equals("education.pdf")),doc);
 		pages.DeEducation().close();
 		sf.assertAll();
 	}
 
 	// employment clear comments
-	@Test(priority = 51, enabled = true, dependsOnMethods = "TC_SPINF_012", groups = { "insuff" })
+	@Test(priority = 51, enabled = true,dependsOnMethods="TC_SPINF_012", groups = {"insuff"})
 	public void TC_SPINF_018() throws Exception {
 		pages.DeEmployment().employementcheck();
 		pages.DeEmployment().history();
 		SoftAssert sf = new SoftAssert();
 		try {
-			sf.assertEquals(pages.DeEmployment().getraisedBy(), uname);
-			sf.assertEquals(pages.DeEmployment().getraisedStage(), "Case Registration Pending");
-			sf.assertEquals(pages.DeEmployment().getraisedComments(), "insuff Current/Latest Employment");
-			sf.assertEquals(pages.DeEmployment().getclearedBy(), uname);
-			sf.assertEquals(pages.DeEmployment().getclearedComments(), "Current/Latest Employment clear");
-			String doc = pages.DeEmployment().historyDocument();
-			String expected=this.FilterFileName(BaseClass.getlocator().getProperty("empinsuffdoc"));
-			sf.assertEquals(doc, expected);
-//			sf.assertTrue((doc.equals("employment.pdf")), doc);
-		} catch (Exception e) {
-			// TODO: handle exception
-		} finally {
+		sf.assertEquals(pages.DeEmployment().getraisedBy(), uname);
+		sf.assertEquals(pages.DeEmployment().getraisedStage(), "Case Registration Pending");
+		sf.assertEquals(pages.DeEmployment().getraisedComments(), "insuff Current/Latest Employment");
+		sf.assertEquals(pages.DeEmployment().getclearedBy(), uname);
+		sf.assertEquals(pages.DeEmployment().getclearedComments(), "Current/Latest Employment clear");
+		String doc =pages.DeEmployment().historyDocument();
+		sf.assertTrue((doc.equals("employment.pdf")),doc);
+		}
+		catch (Exception e) {
+			
+		}
+		finally {
 			pages.DeEmployment().close();
 			sf.assertAll();
 		}
-
+		
 	}
 
 	// reference clear comments
-	@Test(priority = 52, enabled = true, dependsOnMethods = "TC_SPINF_012", groups = { "insuff" })
+	@Test(priority = 52, enabled = true, dependsOnMethods="TC_SPINF_012", groups = {"insuff"})
 	public void TC_SPINF_021() throws Exception {
 		pages.DeReference().referencecheck();
 		pages.DeReference().history();
@@ -1402,16 +1398,14 @@ public class SPcasereg extends Design {
 		sf.assertEquals(pages.DeReference().getraisedComments(), "insuff Reference 1");
 		sf.assertEquals(pages.DeReference().getclearedBy(), uname);
 		sf.assertEquals(pages.DeReference().getclearedComments(), "Reference 1 clear");
-		String doc = pages.DeReference().historyDocument();
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("refinsuffdoc"));
-//		sf.assertTrue((doc.equals("reference.pdf")), doc);
-sf.assertEquals(doc, expected);
+		String doc =pages.DeReference().historyDocument();
+		sf.assertTrue((doc.equals("reference.pdf")),doc);
 		pages.DeReference().close();
 		sf.assertAll();
 	}
 
 	// database clear comments
-	@Test(priority = 53, enabled = true, dependsOnMethods = "TC_SPINF_012", groups = { "insuff" })
+	@Test(priority = 53, enabled = true, dependsOnMethods="TC_SPINF_012", groups = {"insuff"})
 	public void TC_SPINF_039() throws Exception {
 		pages.DeDatabase().databasecheck();
 		pages.DeDatabase().history();
@@ -1421,16 +1415,14 @@ sf.assertEquals(doc, expected);
 		sf.assertEquals(pages.DeDatabase().getraisedComments(), "insuff Database");
 		sf.assertEquals(pages.DeDatabase().getclearedBy(), uname);
 		sf.assertEquals(pages.DeDatabase().getclearedComments(), "Database clear");
-		String doc = pages.DeDatabase().historyDocument();
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("dbinsuffdoc"));
-		sf.assertEquals(doc, expected);
-//		sf.assertTrue((doc.equals("database.pdf")), doc);
+		String doc =pages.DeDatabase().historyDocument();
+		sf.assertTrue((doc.equals("database.pdf")),doc);
 		pages.DeDatabase().close();
 		sf.assertAll();
 	}
 
 	// criminal clear comments
-	@Test(priority = 54, enabled = true, dependsOnMethods = "TC_SPINF_012", groups = { "insuff" })
+	@Test(priority = 54, enabled = true, dependsOnMethods="TC_SPINF_012", groups = {"insuff"})
 	public void TC_SPINF_027() throws Exception {
 		pages.DeCriminal().criminalcheck();
 		pages.DeCriminal().history();
@@ -1440,16 +1432,14 @@ sf.assertEquals(doc, expected);
 		sf.assertEquals(pages.DeCriminal().getraisedComments(), "insuff Current Address Criminal Check");
 		sf.assertEquals(pages.DeCriminal().getclearedBy(), uname);
 		sf.assertEquals(pages.DeCriminal().getclearedComments(), "Current Address Criminal Check clear");
-		String doc = pages.DeCriminal().historyDocument();
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("criminalinsuffdoc"));
-		sf.assertEquals(doc, expected);
-//		sf.assertTrue((doc.equals("criminal.pdf")), doc);
+		String doc =pages.DeCriminal().historyDocument();
+		sf.assertTrue((doc.equals("criminal.pdf")),doc);
 		pages.DeCriminal().close();
 		sf.assertAll();
 	}
 
 	// credit clear comments
-	@Test(priority = 55, enabled = true, dependsOnMethods = "TC_SPINF_012", groups = { "insuff" })
+	@Test(priority = 55, enabled = true, dependsOnMethods="TC_SPINF_012", groups = {"insuff"})
 	public void TC_SPINF_033() throws Exception {
 		pages.DeCredit().creditcheck();
 		pages.DeCredit().history();
@@ -1459,16 +1449,14 @@ sf.assertEquals(doc, expected);
 		sf.assertEquals(pages.DeCredit().getraisedComments(), "insuff Credit Check 1");
 		sf.assertEquals(pages.DeCredit().getclearedBy(), uname);
 		sf.assertEquals(pages.DeCredit().getclearedComments(), "Credit Check 1 clear");
-		String doc = pages.DeCredit().historyDocument();
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("creditinsuffdoc"));
-		sf.assertEquals(doc, expected);
-//		sf.assertTrue((doc.equals("credit.pdf")), doc);
+		String doc =pages.DeCredit().historyDocument();
+		sf.assertTrue((doc.equals("credit.pdf")),doc);
 		pages.DeCredit().close();
 		sf.assertAll();
 	}
 
 	// court clear comments
-	@Test(priority = 56, enabled = true, dependsOnMethods = "TC_SPINF_012", groups = { "insuff" })
+	@Test(priority = 56, enabled = true, dependsOnMethods="TC_SPINF_012", groups = {"insuff"})
 	public void TC_SPINF_030() throws Exception {
 		pages.DeCourt().courtcheck();
 		pages.DeCourt().history();
@@ -1478,51 +1466,49 @@ sf.assertEquals(doc, expected);
 		sf.assertEquals(pages.DeCourt().getraisedComments(), "insuff Current Address Court Check");
 		sf.assertEquals(pages.DeCourt().getclearedBy(), uname);
 		sf.assertEquals(pages.DeCourt().getclearedComments(), "Current Address Court Check clear");
-		String doc = pages.DeCourt().historyDocument();
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("courtinsuffdoc"));
-		sf.assertEquals(doc, expected);
-//		sf.assertTrue((doc.equals("court.pdf")), doc);
+		String doc =pages.DeCourt().historyDocument();
+		sf.assertTrue((doc.equals("court.pdf")),doc);
 		pages.DeCourt().close();
 		sf.assertAll();
 	}
 
 	// id clear comments
-	@Test(priority = 57, enabled = true, dependsOnMethods = "TC_SPINF_012", groups = { "insuff" })
+	@Test(priority = 57, enabled = true, dependsOnMethods="TC_SPINF_012", groups = {"insuff"})
 	public void TC_SPINF_024() throws Exception {
 		pages.DeId().idcheck();
 		pages.DeId().history();
 		SoftAssert sf = new SoftAssert();
 		try {
-			sf.assertEquals(pages.DeId().getraisedBy(), uname);
-			sf.assertEquals(pages.DeId().getraisedStage(), "Case Registration Pending");
-			sf.assertEquals(pages.DeId().getraisedComments(), "insuff Aadhaar Card");
-			sf.assertEquals(pages.DeId().getclearedBy(), uname);
-			sf.assertEquals(pages.DeId().getclearedComments(), "Aadhaar Card clear");
-			String doc = pages.DeId().historyDocument();
-//			sf.assertTrue((doc.equals("id.pdf")), doc);
-			String expected=this.FilterFileName(BaseClass.getlocator().getProperty("idinsuffdoc"));
-			sf.assertEquals(doc, expected);
-			pages.DeId().close();
-		} catch (Exception e) {
+		sf.assertEquals(pages.DeId().getraisedBy(), uname);
+		sf.assertEquals(pages.DeId().getraisedStage(), "Case Registration Pending");
+		sf.assertEquals(pages.DeId().getraisedComments(), "insuff Aadhaar Card");
+		sf.assertEquals(pages.DeId().getclearedBy(), uname);
+		sf.assertEquals(pages.DeId().getclearedComments(), "Aadhaar Card clear");
+		String doc =pages.DeId().historyDocument();
+		sf.assertTrue((doc.equals("id.pdf")),doc);
+		pages.DeId().close();
+		}
+		catch (Exception e) {
 			String temp = Utill.getScreenshot(driver);
-			logger.fail(e.getMessage(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
-		} finally {
+			logger.fail(e.getMessage(),
+					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
+		}
+		finally {
 			pages.Utill().SwitchDefault();
 			pages.Utill().click_element("imgHome");
-			sf.assertAll();
+			pages.Utill().wait_until_loader_is_invisible(100);
+			pages.CaseRegistration().casereg();
+			sf.assertAll();	
 		}
-
+		
 	}
-
-	@Test(priority = 58, enabled = true, alwaysRun = true, dependsOnMethods = "TC_SPINF_024", groups = {
-			"not applicable" })
+	@Test(priority = 58, enabled = true, alwaysRun=true,dependsOnMethods="TC_SPINF_024", groups = {"not applicable"})
 	public void TC_SPNAPP_001() throws Exception {
 		String[] checks = { "Current Address", "UG1", "Current/Latest Employment", "Reference 1", "Aadhaar Card",
-				"Current Address Criminal Check", "Current Address Court Check", "Credit Check 1",
+				"Current Address Criminal Check", "Current Address Court Check", "Credit Check 1", "Panel1",
 				"Database" };
 		String[] notapplicable = { "Permanent", "12th", "Previous Employment", "Reference 2", "PAN Card",
 				"Permanent Criminal Check", "Permanent Court Check" };
-		Thread.sleep(3000);
 		pages.Home().clickRegister();
 		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
@@ -1540,7 +1526,7 @@ sf.assertEquals(doc, expected);
 		for (int i = 0; i < notapplicable.length; i++) {
 			pages.CaseRegistration().selectcheck(notapplicable[i].toString());
 			pages.CaseRegistration().notApplicable(notapplicable[i].toString(), "not applicable");
-			// not applicable
+			//not applicable
 		}
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
@@ -1553,55 +1539,58 @@ sf.assertEquals(doc, expected);
 		SoftAssert sf = new SoftAssert();
 		for (int i = 0; i < data.size(); i++) {
 			String name = data.get(i).get("ComponentName").trim();
-			if (Arrays.asList(checks).contains(name)) {
+			if(Arrays.asList(checks).contains(name)) {
 				if (data.get(i).get("Status").equals("WIP")) {
 					sf.assertTrue(true, "success");
-					// System.out.println(name+" : "+data.get(i).get("Status"));
+					//System.out.println(name+" : "+data.get(i).get("Status"));
 				} else {
 					sf.assertTrue(false, data.get(i).get("ComponentName"));
 				}
 				if (data.get(i).get("CurrentStage").equals("Data Entry Assignment Pending")) {
 					sf.assertTrue(true, "success");
-					// System.out.println(name+" : "+data.get(i).get("CurrentStage"));
+					//System.out.println(name+" : "+data.get(i).get("CurrentStage"));
 				} else {
 					sf.assertTrue(false, data.get(i).get("ComponentName"));
 				}
 				if (data.get(i).get("PersonResponsible").equals("Team Leader")) {
 					sf.assertTrue(true, "success");
-					// System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
+					//System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
 				} else {
 					sf.assertTrue(false, data.get(i).get("ComponentName"));
 				}
-			} else if (Arrays.asList(notapplicable).contains(name)) {
+			}
+			else if(Arrays.asList(notapplicable).contains(name)) {
 				if (data.get(i).get("Status").equals("Not Required")) {
 					sf.assertTrue(true, "success");
-					// System.out.println(name+" : "+data.get(i).get("Status"));
+					//System.out.println(name+" : "+data.get(i).get("Status"));
 				} else {
 					sf.assertTrue(false, data.get(i).get("ComponentName"));
 				}
 				if (data.get(i).get("CurrentStage").equals("Not Required")) {
 					sf.assertTrue(true, "success");
-					// System.out.println(name+" : "+data.get(i).get("CurrentStage"));
+					//System.out.println(name+" : "+data.get(i).get("CurrentStage"));
 				} else {
 					sf.assertTrue(false, data.get(i).get("ComponentName"));
 				}
 				if (data.get(i).get("PersonResponsible").equals("-")) {
 					sf.assertTrue(true, "success");
-					// System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
+					//System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
 				} else {
 					sf.assertTrue(false, data.get(i).get("ComponentName"));
 				}
 			}
+//			else {
+//				System.out.println("---------------------------------");
+//				System.out.println(data.get(i).get("ComponentName"));
+//			}
 		}
 		pages.CaseTracker().cancel();
 		sf.assertAll();
 	}
-
-	@Test(priority = 59, enabled = true, alwaysRun = true, dependsOnMethods = "TC_SPNAPP_001", groups = {
-			"not applicable" })
+	@Test(priority = 59, enabled = true, alwaysRun=true,dependsOnMethods="TC_SPNAPP_001", groups = {"not applicable"})
 	public void TC_SPCEP_001() throws Exception {
-		String[] checks = { "Current Address", "UG1", "Previous Employment", "Reference 3" };
-		String[] cep = { "Current/Latest Employment", "Previous Employment 2", "Reference 1", "Reference 2" };
+		String[] checks = { "Current Address", "UG1", "Previous Employment", "Reference 3"};
+		String[] cep = { "Current/Latest Employment", "Previous Employment 2", "Reference 1", "Reference 2"};
 		pages.Home().clickRegister();
 		CandidateName = pages.Utill().candidateName();
 		CandidateId = Integer.toString(pages.Utill().candidateid());
@@ -1618,7 +1607,9 @@ sf.assertEquals(doc, expected);
 		}
 		for (int i = 0; i < cep.length; i++) {
 			pages.CaseRegistration().selectcheck(cep[i].toString());
+//			pages.CaseRegistration().notApplicable(cep[i].toString(), "not applicable");
 			pages.CaseRegistration().cep(cep[i].toString(), "cep raised", "10/11/2018");
+			//not applicable
 		}
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
@@ -1631,215 +1622,50 @@ sf.assertEquals(doc, expected);
 		SoftAssert sf = new SoftAssert();
 		for (int i = 0; i < data.size(); i++) {
 			String name = data.get(i).get("ComponentName").trim();
-			if (Arrays.asList(checks).contains(name)) {
+			if(Arrays.asList(checks).contains(name)) {
 				if (data.get(i).get("Status").equals("WIP")) {
 					sf.assertTrue(true, "success");
-					// System.out.println(name+" : "+data.get(i).get("Status"));
+					//System.out.println(name+" : "+data.get(i).get("Status"));
 				} else {
 					sf.assertTrue(false, data.get(i).get("ComponentName"));
 				}
 				if (data.get(i).get("CurrentStage").equals("Data Entry Assignment Pending")) {
 					sf.assertTrue(true, "success");
-					// System.out.println(name+" : "+data.get(i).get("CurrentStage"));
+					//System.out.println(name+" : "+data.get(i).get("CurrentStage"));
 				} else {
 					sf.assertTrue(false, data.get(i).get("ComponentName"));
 				}
 				if (data.get(i).get("PersonResponsible").equals("Team Leader")) {
 					sf.assertTrue(true, "success");
-					// System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
+					//System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
 				} else {
 					sf.assertTrue(false, data.get(i).get("ComponentName"));
 				}
-			} else if (Arrays.asList(cep).contains(name)) {
+			}
+			else if(Arrays.asList(cep).contains(name)) {
 				if (data.get(i).get("Status").equals("CEP Onhold")) {
 					sf.assertTrue(true, "success");
-					// System.out.println(name+" : "+data.get(i).get("Status"));
+					//System.out.println(name+" : "+data.get(i).get("Status"));
 				} else {
 					sf.assertTrue(false, data.get(i).get("ComponentName"));
 				}
 				if (data.get(i).get("CurrentStage").equals("CEP Raised - Data Entry Assignment Pending")) {
 					sf.assertTrue(true, "success");
-					// System.out.println(name+" : "+data.get(i).get("CurrentStage"));
+					//System.out.println(name+" : "+data.get(i).get("CurrentStage"));
 				} else {
 					sf.assertTrue(false, data.get(i).get("ComponentName"));
 				}
 				if (data.get(i).get("PersonResponsible").equals("Team Leader")) {
 					sf.assertTrue(true, "success");
-					// System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
+					//System.out.println(name+" : "+data.get(i).get("PersonResponsible"));
 				} else {
 					sf.assertTrue(false, data.get(i).get("ComponentName"));
 				}
 			}
-
-		}
+			
+			}
 		pages.CaseTracker().cancel();
 		sf.assertAll();
-	}
-
-	@Test(priority = 60, enabled = true, dependsOnMethods = "TC_SPCEP_001")
-	public void TC_SPCEP_002() throws Exception {
-		pages.Home().Actions();
-		pages.CEP().CEPClear();
-		pages.CEP().search(refno, "SP");
-		String no = pages.CEP().getrefNo();
-		assertEquals(no, refno);
-	}
-
-	@Test(priority = 61, enabled = true, dependsOnMethods = "TC_SPCEP_002")
-	public void TC_SPCEP_003() throws Exception {
-		Properties loc = BaseClass.getlocator();
-		pages.CEP().upload(refno, "comments cep", "Relieving Letter", loc.getProperty("addressinsuffdoc"));
-		pages.Home().workStage();
-		
-		pages.DataEntrySupervision().datanentrysupervision();
-		pages.DataEntrySupervision().assigngetnext(refno);
-		pages.DataEntry().datanentry();
-		pages.DataEntry().search(refno);
-		pages.DataEntry().selectcase(refno);
-		pages.DeEmployment().employementcheck();
-		pages.DeEmployment().history();
-		pages.DeEmployment().Cep();
-		String actual = pages.DeEmployment().CepgetclearedComments();
-		assertEquals(actual, "comments cep");
-	}
-
-	@Test(priority = 62, enabled = true, dependsOnMethods = "TC_SPCEP_003")
-	public void TC_SPCEP_004() throws Exception {
-		String actual = pages.DeEmployment().CephistoryDocument();
-		pages.DeEmployment().close();
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
-		assertEquals(actual, expected);
-		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("imgHome");
-	}
-
-	@Test(priority = 63, enabled = true, alwaysRun = true, dependsOnMethods = "TC_SPCEP_003")
-	public void TC_SPDOC_001() throws Exception {
-		pages.CaseRegistration().casereg();
-		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().candidateName();
-		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
-		pages.CaseRegistration().registercase(datas, false);
-		pages.CaseRegistration().addEditComponent();
-		pages.CaseRegistration().uploadcaseDoc("Authorization Letter",
-				BaseClass.getlocator().getProperty("addressinsuffdoc"));
-		Thread.sleep(1000);
-		String actual = pages.CaseRegistration().getuploadcaseDoc("Authorization Letter");
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
-		assertEquals(actual, expected);
-	}
-
-	@Test(priority = 64, enabled = true, dependsOnMethods = "TC_SPDOC_001")
-	public void TC_SPDOC_002() throws Exception {
-		pages.CaseRegistration().selectcheck("Permanent");
-		pages.CaseRegistration().documentupload("Permanent", BaseClass.getlocator().getProperty("addressinsuffdoc"),
-				"Address Proof");
-		String actual = pages.CaseRegistration().getDocumentName("Permanent", "Address Proof");
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
-		assertEquals(actual, expected);
-	}
-
-	@Test(priority = 65, enabled = true, dependsOnMethods = "TC_SPDOC_002")
-	public void TC_SPDOC_003() throws Exception {
-		pages.CaseRegistration().uploadcaseDoc();
-		pages.Utill().wait_until_loader_is_invisible(100);
-		if (pages.CaseRegistration().isDoctypeValid("Credit Form", 1)) {
-			pages.Utill().input_text(
-					"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='Credit Form']/../td[5]//div/ul/li/span/input[2]",
-					BaseClass.getlocator().getProperty("creditinsuffdoc"));
-		} else
-			throw new NotFoundException("Credit Form");
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnAddCaseDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(50);
-		pages.Utill().click_element(
-				"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='Credit Form']/../td[6]//td[2]/input");
-		pages.Utill().confirmAlert();
-		pages.Utill().wait_until_loader_is_invisible(50);
-		int count = driver.findElements(By.xpath(
-				"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='Credit Form']/../td[5]//span"))
-				.size();
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel");
-		assertTrue(count > 1);
-	}
-
-	@Test(priority = 66, enabled = true, dependsOnMethods = "TC_SPDOC_003")
-	public void TC_SPDOC_004() throws Exception {
-		pages.Utill().click_element("//td[text()='Permanent']/../td[10]//input[1]");
-		pages.Utill().wait_until_loader_is_invisible(10);
-		if (pages.CaseRegistration().isDoctypeValid("Others", 0)) {
-			pages.Utill().input_text(
-					"//table[@id='ctl00_ContentPlaceHolder1_rdmAddDoc_C_grdDocumentList_ctl00']//td[text()='Others']/../td[6]//input[2]",
-					BaseClass.getlocator().getProperty("creditinsuffdoc"));
-		} else
-			throw new NotFoundException("Others");
-		pages.CaseRegistration().addDocument();
-		pages.CaseRegistration().deleteComponentdoc("Others");
-		pages.CaseRegistration().docupClose();
-		pages.CaseRegistration().submit();
-		pages.Utill().confirmAlert();
-		pages.Home().homepage();
-	}
-
-	@Test(priority = 67, enabled = true, dependsOnMethods = "TC_SPDOC_004")
-	public void TC_SPDOC_005() throws Exception {
-		pages.DataEntrySupervision().datanentrysupervision();
-		refno= pages.DbConnection().getLastrefno(ProjectName);
-		pages.DataEntrySupervision().assigngetnext(refno);
-		pages.DataEntry().datanentry();
-		pages.DataEntry().search(refno);
-		pages.DataEntry().selectcase(refno);
-		pages.CaseInformation().edit();
-		pages.CaseInformation().CaseDocument();
-		String actual = pages.CaseInformation().getDocumentName("Authorization Letter");
-		pages.CaseInformation().cancel();
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
-		assertEquals(actual, expected);
-	}
-
-	@Test(priority = 68, enabled = true, dependsOnMethods = "TC_SPDOC_005")
-	public void TC_SPDOC_006() throws Exception {
-		pages.DeAddress().addresscheck();
-		pages.DeAddress().document();
-		String actual = pages.DeAddress().getDocumentName("Address Proof");
-		pages.DeAddress().docclose();
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
-		assertEquals(actual, expected);
-	}
-
-	@Test(priority = 69, enabled = true, dependsOnMethods = "TC_SPDOC_006")
-	public void TC_SPDOC_007() throws Exception {
-		File file = new File(BaseClass.getlocator().getProperty("downloadFilepath"));
-		pages.Utill().deleteFiles(file);
-		pages.Utill().SwitchDefault();
-		pages.CaseInformation().CaseDocument();
-		pages.CaseInformation().documentDownload("Authorization Letter");
-		pages.CaseInformation().cancel();
-		String actual = pages.Utill().isfileexist(file);
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
-		assertEquals(actual, expected);
-	}
-
-	@Test(priority = 70, enabled = true, dependsOnMethods = "TC_SPDOC_007")
-	public void TC_SPDOC_008() throws Exception {
-		File file = new File(BaseClass.getlocator().getProperty("downloadFilepath"));
-		pages.Utill().deleteFiles(file);
-		pages.Utill().SwitchDefault();
-		pages.DeAddress().addresscheck();
-		pages.DeAddress().document();
-		pages.DeAddress().downloaddoc("Address Proof");
-		pages.DeAddress().docclose();
-		String actual = pages.Utill().isfileexist(file);
-		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("imgHome");
-		String expected=this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
-		assertEquals(actual, expected);
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -1849,44 +1675,41 @@ sf.assertEquals(doc, expected);
 			logger.fail(result.getThrowable().getMessage(),
 					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 			logger.log(Status.INFO, refno);
-			String pagesource = driver.getPageSource();
-			if (pagesource.contains("Images/message.png")) {
+			String pagesource =driver.getPageSource();
+			if(pagesource.contains("Images/message.png")) {
 				logger.log(Status.WARNING, "Your last session was terminated");
 				pages.Utill().click_element("ctl00_ContentPlaceHolder1_urls");
 				pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-			} else if (pagesource.contains("ctl00_ContentPlaceHolder1_txtUserName")) {
+			}
+			else if (pagesource.contains("ctl00_ContentPlaceHolder1_txtUserName")) {
 				logger.log(Status.WARNING, "Your last session was closed by user");
 				pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-			} else {
-				logger.log(Status.WARNING, method.getName() + " navigating to home page due to error");
+			}
+			else {
+				logger.log(Status.WARNING, method.getName()+" navigating to home page due to error");
 				driver.get(config.getProperty("url") + "/Web/dashboard.aspx");
+				pages.DcaseRegistration().caseRegistration();
 				pages.Utill().wait_until_loader_is_invisible(80);
 			}
-			List<String> windows = new ArrayList<String>(driver.getWindowHandles());
-			if (windows.size() > 1) {
-				for (int i = 1; i < windows.size(); i++) {
-					driver.switchTo().window(windows.get(i).toString());
-					driver.close();
-				}
-				driver.switchTo().window(windows.get(0).toString());
-			}
+			
 		} else {
 			logger.pass(method.getName() + " completed");
 		}
+		
 
 	}
 
 	@AfterTest(alwaysRun = true)
 	public void teardown() throws Exception {
-		if (driver != null)
-			driver.quit();
+		// pages.Home().Logout();
+		// Thread.sleep(10000);
+		// driver.close();
 	}
 
+	@AfterSuite(alwaysRun = true)
 	public void afterSuite() {
 		extent.flush();
+		if(driver!=null) driver.quit();
 
-	}
-	private String FilterFileName(String FilePath) {
-		return FilePath.substring(FilePath.lastIndexOf("\\")).replace("\\", "");
 	}
 }

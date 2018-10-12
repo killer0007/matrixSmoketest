@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]">
-  <test name="Default test(failed)">
+<suite name="Failed suite [regression testing]">
+  <test name="insuff(failed)">
     <classes>
-      <class name="maintest.Basic">
+      <class name="testcasesprac.SPcasereg">
         <methods>
-          <include name="TC_SPDOC_008"/>
-          <include name="setup"/>
-          <include name="beforetest"/>
-          <include name="TC_SPDOC_007"/>
-          <include name="beforeSuit"/>
-          <include name="afterSuite"/>
+          <include name="TC_SPINF_001"/>
           <include name="teardown"/>
+          <include name="TC_SPINF_024"/>
+          <include name="TC_SPDOC_005"/>
+          <include name="beforetest"/>
+          <include name="TC_SPCEP_003"/>
+          <include name="TC_SPCEP_001"/>
+          <include name="TC_SPINF_005"/>
+          <include name="TC_SPINF_006"/>
+          <include name="TC_SPCEP_002"/>
+          <include name="beforeSuit"/>
+          <include name="TC_SPDOC_006"/>
+          <include name="TC_SPDOC_004"/>
+          <include name="TC_SPDOC_007"/>
+          <include name="TC_SPDOC_008"/>
+          <include name="TC_SPINF_012"/>
+          <include name="TC_SPDOC_001"/>
+          <include name="TC_SPINF_010"/>
+          <include name="setup"/>
+          <include name="TC_SPINF_011"/>
+          <include name="TC_SPDOC_002"/>
+          <include name="TC_SPDOC_003"/>
+          <include name="TC_SPINF_038"/>
           <include name="tearDown"/>
+          <include name="TC_SPNAPP_001"/>
         </methods>
-      </class> <!-- maintest.Basic -->
+      </class> <!-- testcasesprac.SPcasereg -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- insuff(failed) -->
+</suite> <!-- Failed suite [regression testing] -->

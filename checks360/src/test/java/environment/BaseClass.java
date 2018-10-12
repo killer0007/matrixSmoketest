@@ -18,7 +18,11 @@ public class BaseClass {
 	static WebDriver driver;
 	static Properties loc;
 	static Properties val;
-
+/**
+ * Creates webdriver and returns the instance
+ * @return WebDriver instance
+ * @throws Exception WebDriver exception
+ */
 	public static WebDriver getDriver() throws Exception{
 		if (driver == null) {
 			String downloadFilepath = getlocator().getProperty("downloadFilepath");
@@ -44,7 +48,12 @@ public class BaseClass {
 		}
 		return driver;
 	}
-
+/**
+ * Read the config.properties file and return property object
+ * @return Properties config gile property
+ * @throws FileNotFoundException when config file missing
+ * @throws IOException when file stream failed
+ */
 	public static Properties getlocator() throws FileNotFoundException, IOException {
 		if (loc == null) {
 			loc = new Properties();
@@ -53,14 +62,6 @@ public class BaseClass {
 
 		}
 		return loc;
-	}
-
-	public static Properties getvalue() throws FileNotFoundException, IOException {
-		if (val == null) {
-			val = new Properties();
-			val.load(new FileInputStream(new File("./src\\test\\resources\\property\\dataentry_values.properties")));
-		}
-		return val;
 	}
 
 }
