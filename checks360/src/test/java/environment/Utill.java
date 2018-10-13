@@ -46,6 +46,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import environment.Pages;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
 
 public class Utill {
 	WebDriver driver;
@@ -1014,5 +1016,18 @@ public class Utill {
  */
 	public String FilterFileName(String FilePath) {
 		return FilePath.substring(FilePath.lastIndexOf("\\")).replace("\\", "");
+	}
+
+	/**
+	 * Takes webelement and file out put path as input
+	 * takes the screen shot and save it to given file path
+	 * @param cap WebElement
+	 * @param filepath output file path
+	 * @throws IOException File not found
+	 */
+	public void screenshot(WebElement cap, String fileoutputpath) throws IOException {
+		 Screenshot screenshot = new AShot().takeScreenshot(driver, 
+				cap);
+				ImageIO.write(screenshot.getImage(), "PNG", new File(fileoutputpath));	
 	}
 }

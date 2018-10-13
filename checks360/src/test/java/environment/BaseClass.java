@@ -26,7 +26,7 @@ public class BaseClass {
 	public static WebDriver getDriver() throws Exception{
 		if (driver == null) {
 			String downloadFilepath = getlocator().getProperty("downloadFilepath");
-			String chrome_path = "D:\\gopi\\chromedriver.exe";
+			String chrome_path = getlocator().getProperty("chromedriver");
 			System.setProperty("webdriver.chrome.driver", chrome_path);
 			ChromeOptions chromoption = new ChromeOptions();
 			HashMap<String, Object> config = new HashMap<String, Object>();

@@ -87,137 +87,15 @@ public class Basic {
 	public void TC_SPDOC_001() throws Exception {
 		uname = config.getProperty("uname");
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().candidateName();
-		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
-		pages.CaseRegistration().registercase(datas, false);
-//		refno = "HDFC000355";
-//		pages.Utill().click_element("//*[text()='" + refno + "']");
-//		pages.Utill().wait_until_loader_is_invisible(100);
-		pages.CaseRegistration().addEditComponent();
-		pages.CaseRegistration().uploadcaseDoc("Authorization Letter",
-				BaseClass.getlocator().getProperty("addressinsuffdoc"));
-		String name = pages.CaseRegistration().getuploadcaseDoc("Authorization Letter");
-		assertEquals(name, "address.pdf");
-		System.out.println(name);
-
-	}
-
-	@Test(priority = 30, enabled = true)
-	public void TC_SPDOC_002() throws Exception {
-		pages.CaseRegistration().selectcheck("Permanent");
-		pages.CaseRegistration().documentupload("Permanent", BaseClass.getlocator().getProperty("addressinsuffdoc"),
-				"Address Proof");
-		String name = pages.CaseRegistration().getDocumentName("Permanent", "Address Proof");
-		assertEquals(name, "address.pdf");
-	}
-
-	@Test(priority = 31, enabled = true)
-	public void TC_SPDOC_003() throws Exception {
-		pages.CaseRegistration().uploadcaseDoc();
+		pages.Home().CaseTracker();
+		pages.CaseTracker().clickcase("HDFC000539");
+//		pages.Utill().click_element("//*[text()='HDFC000539']");
 		pages.Utill().wait_until_loader_is_invisible(100);
-		if (pages.CaseRegistration().isDoctypeValid("Credit Form", 1)) {
-			pages.Utill().input_text(
-					"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='Credit Form']/../td[5]//div/ul/li/span/input[2]",
-					BaseClass.getlocator().getProperty("creditinsuffdoc"));
-		} else
-			throw new NotFoundException("Credit Form");
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnAddCaseDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(50);
-		pages.Utill().click_element(
-				"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='Credit Form']/../td[6]//td[2]/input");
-		pages.Utill().confirmAlert();
-		pages.Utill().wait_until_loader_is_invisible(50);
-		int count = driver.findElements(By.xpath(
-				"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='Credit Form']/../td[5]//span"))
-				.size();
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel");
-//		System.out.println(count);
-		assertTrue(count > 1);
+	
 
 	}
 
-	@Test(priority = 32, enabled = true)
-	public void TC_SPDOC_004() throws Exception {
-		pages.Utill().click_element("//td[text()='Permanent']/../td[10]//input[1]");
-		pages.Utill().wait_until_loader_is_invisible(10);
-		if (pages.CaseRegistration().isDoctypeValid("Others", 0)) {
-			pages.Utill().input_text(
-					"//table[@id='ctl00_ContentPlaceHolder1_rdmAddDoc_C_grdDocumentList_ctl00']//td[text()='Others']/../td[6]//input[2]",
-					BaseClass.getlocator().getProperty("creditinsuffdoc"));
-		} else
-			throw new NotFoundException("Others");
-		pages.CaseRegistration().addDocument();
-		pages.CaseRegistration().deleteComponentdoc("Others");
-		pages.CaseRegistration().docupClose();
-		pages.CaseRegistration().submit();
-		pages.Utill().confirmAlert();
-		pages.Home().homepage();
-		refno = pages.DbConnection().getLastrefno(ProjectName);
-		System.out.println(refno);
-	}
-
-	// check documents in data entry
-	@Test(priority = 33, enabled = true)
-	public void TC_SPDOC_005() throws Exception {
-//		uname = config.getProperty("uname");
-//		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-		pages.DataEntrySupervision().datanentrysupervision();
-//		refno = "HDFC000458";
-		pages.DataEntrySupervision().assigngetnext(refno);
-		pages.DataEntry().datanentry();
-		pages.DataEntry().search(refno);
-		pages.DataEntry().selectcase(refno);
-		pages.CaseInformation().edit();
-		pages.CaseInformation().CaseDocument();
-		String actual = pages.CaseInformation().getDocumentName("Authorization Letter");
-		pages.CaseInformation().cancel();
-		assertEquals(actual, "address.pdf");
-
-	}
-
-	@Test(priority = 34, enabled = true)
-	public void TC_SPDOC_006() throws Exception {
-		pages.DeAddress().addresscheck();
-		pages.DeAddress().document();
-		String actual = pages.DeAddress().getDocumentName("Address Proof");
-		pages.DeAddress().docclose();
-		assertEquals(actual, "address.pdf");
-	}
-
-	@Test(priority = 35, enabled = true)
-	public void TC_SPDOC_007() throws Exception {
-		File file = new File(BaseClass.getlocator().getProperty("downloadFilepath"));
-		pages.Utill().deleteFiles(file);
-		pages.Utill().SwitchDefault();
-		pages.CaseInformation().CaseDocument();
-		pages.CaseInformation().documentDownload("Authorization Letter");
-		pages.CaseInformation().cancel();
-		String actual = pages.Utill().isfileexist(file);
-		assertEquals(actual, "address.pdf");
-	}
-
-	@Test(priority = 36, enabled = true)
-	public void TC_SPDOC_008() throws Exception {
-		File file = new File(BaseClass.getlocator().getProperty("downloadFilepath"));
-		pages.Utill().deleteFiles(file);
-		pages.Utill().SwitchDefault();
-		pages.DeAddress().addresscheck();
-		pages.DeAddress().document();
-		pages.DeAddress().downloaddoc("Address Proof");
-		pages.DeAddress().docclose();
-		String actual = pages.Utill().isfileexist(file);
-		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("imgHome");
-		assertEquals(actual, "address.pdf");
-	}
+	
 
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {

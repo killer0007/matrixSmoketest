@@ -1,87 +1,87 @@
 package maintest2;
 
-import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.Date;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import com.itextpdf.text.Anchor;
-import com.itextpdf.text.BadElementException;
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Chapter;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.List;
-import com.itextpdf.text.ListItem;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.Phrase;
-import com.itextpdf.text.Section;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 public class temp2 {
-//	 private static String FILE = "D:\\gopi\\msbuild\\FirstPdf.pdf";
-	    private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 100,
-	            Font.BOLD);
+	public static final String xmlFilePath = "D:\\c bkp\\downloads\\image\\xmlfile.xml";
+
+	public static void main(String argv[]) {
+
+		try {
+
+			DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
+
+			DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
+
+			Document document = documentBuilder.newDocument();
+
+			// root element
+			Element root = document.createElement("company");
+			document.appendChild(root);
+
+			// employee element
+			Element employee = document.createElement("employee");
+
+			root.appendChild(employee);
+
+			// set an attribute to staff element
+			Attr attr = document.createAttribute("id");
+			attr.setValue("10");
+			employee.setAttributeNode(attr);
+
+			//you can also use staff.setAttribute("id", "1") for this
+
+			// firstname element
+			Element firstName = document.createElement("firstname");
+			firstName.appendChild(document.createTextNode("James"));
+			employee.appendChild(firstName);
+
+			// lastname element
+			Element lastname = document.createElement("lastname");
+			lastname.appendChild(document.createTextNode("Harley"));
+			employee.appendChild(lastname);
+
+			// email element
+			Element email = document.createElement("email");
+			email.appendChild(document.createTextNode("james@example.org"));
+			employee.appendChild(email);
+
+			// department elements
+			Element department = document.createElement("department");
+			department.appendChild(document.createTextNode("Human Resources"));
+			employee.appendChild(department);
+
+			// create the xml file
+			//transform the DOM Object to an XML File
+			TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			Transformer transformer = transformerFactory.newTransformer();
+			DOMSource domSource = new DOMSource(document);
+			StreamResult streamResult = new StreamResult(new File(xmlFilePath));
+
+			// If you use
+			// StreamResult result = new StreamResult(System.out);
+			// the output will be pushed to the standard output ...
+			// You can use that for debugging 
+
+			transformer.transform(domSource, streamResult);
+
+			System.out.println("Done creating XML File");
+
+		} catch (ParserConfigurationException pce) {
+			pce.printStackTrace();
+		} catch (TransformerException tfe) {
+			tfe.printStackTrace();
+		}
+	}
 	   
-
-	    public static void main(String[] args) {
-	    	
-	     java.util.List<String> data = new ArrayList<String>();
-	     data.add("address");
-	     data.add("employment");
-	     data.add("education");
-	     data.add("criminal");
-	     data.add("reference");
-	     data.add("id");
-	     data.add("database");
-	     data.add("credit");
-	     data.add("court");
-	        	for (int i = 0; i < data.size(); i++) {
-	        		   try {
-	        			   String FILE = "D:\\gopi\\checks360\\insuff\\"+data.get(i).toString()+".pdf";
-	        		 Document document = new Document();
-	 	            PdfWriter.getInstance(document, new FileOutputStream(FILE));
-	 	            document.open();
-	 	          
-	 	            addTitlePage(document,data.get(i).toString());
-	 	            document.close();
-	 	        } catch (Exception e) {
-	 	            e.printStackTrace();
-	 	        }
-				}
-	           
-	    }
-
-	    // iText allows to add metadata to the PDF which can be viewed in your Adobe
-	    // Reader
-	    // under File -> Properties
-	   
-
-	    private static void addTitlePage(Document document, String data)
-	            throws DocumentException {
-	        Paragraph preface = new Paragraph();
-	        // We add one empty line
-	        addEmptyLine(preface, 5);
-	       
-	        preface.add(new Paragraph(data +" insuff ", catFont));
-	        preface.setAlignment(Element.ALIGN_CENTER);
-
-	
-
-	        document.add(preface);
-	        // Start a new page
-	        document.newPage();
-	    }
-
-	    private static void addEmptyLine(Paragraph paragraph, int number) {
-	        for (int i = 0; i < number; i++) {
-	            paragraph.add(new Paragraph(" "));
-	        }
-	    }
 }
