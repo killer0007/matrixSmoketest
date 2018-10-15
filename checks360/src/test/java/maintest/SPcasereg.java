@@ -2087,6 +2087,7 @@ public class SPcasereg extends Design {
 		pages.DataEntrySupervision().assigngetnext(refno);
 		pages.DataEntry().datanentry();
 		pages.DataEntry().search(refno);
+		
 		pages.DataEntry().selectcase(refno);
 		pages.CaseInformation().edit();
 		pages.CaseInformation().CaseDocument();
@@ -2172,15 +2173,16 @@ public class SPcasereg extends Design {
 				logger.log(Status.WARNING, method.getName() + " navigating to home page due to error");
 				driver.get(config.getProperty("url") + "/Web/dashboard.aspx");
 				pages.Utill().wait_until_loader_is_invisible(80);
-			}
-			List<String> windows = new ArrayList<String>(driver.getWindowHandles());
-			if (windows.size() > 1) {
-				for (int i = 1; i < windows.size(); i++) {
-					driver.switchTo().window(windows.get(i).toString());
-					driver.close();
+				List<String> windows = new ArrayList<String>(driver.getWindowHandles());
+				if (windows.size() > 1) {
+					for (int i = 1; i < windows.size(); i++) {
+						driver.switchTo().window(windows.get(i).toString());
+						driver.close();
+					}
+					driver.switchTo().window(windows.get(0).toString());
 				}
-				driver.switchTo().window(windows.get(0).toString());
 			}
+			
 		} else {
 			logger.pass(method.getName() + " completed");
 		}
