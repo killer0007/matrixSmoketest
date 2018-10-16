@@ -85,7 +85,7 @@ public class SPcasereg extends Design {
 		logger = extent.createTest(method.getName());
 		logger.pass(method.getName() + " Started");
 		logger.assignAuthor("Gopinath");
-		pages = new Pages(driver, logger);
+		pages = new Pages(logger);
 	}
 
 	/**

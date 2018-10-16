@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.aventstack.extentreports.ExtentTest;
 
+import environment.BaseClass;
 import environment.Pages;
 
 public class Education extends DataEntryPage {
@@ -16,11 +17,11 @@ public class Education extends DataEntryPage {
 	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
-	public Education(WebDriver driver, ExtentTest logger) {
-		super(driver, logger);
-		this.driver=driver;
-		this.logger=logger;
-		pages=new Pages(driver, logger);
+	public Education(ExtentTest logger) {
+		super(logger);
+		driver = BaseClass.getWebDriver();
+		this.logger = logger;
+		pages = new Pages(logger);
 	}
 	/**
 	 * Select Education tab and switch to Education frame

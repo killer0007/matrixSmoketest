@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.aventstack.extentreports.ExtentTest;
 
+import environment.BaseClass;
 import environment.Pages;
 
 public class Reference extends DataEntryPage {
@@ -16,11 +17,11 @@ public class Reference extends DataEntryPage {
 	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
-	public Reference(WebDriver driver, ExtentTest logger) {
-		super(driver, logger);
-		this.driver=driver;
-		this.logger=logger;
-		pages=new Pages(driver, logger);
+	public Reference(ExtentTest logger) {
+		super(logger);
+		driver = BaseClass.getWebDriver();
+		this.logger = logger;
+		pages = new Pages(logger);
 	}
 	/**
 	 * Select Reference tab and switch to Reference frame

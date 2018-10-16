@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
 
+import environment.BaseClass;
 import environment.Pages;
 
 public class Court extends DataEntryPage{
@@ -25,11 +26,11 @@ public class Court extends DataEntryPage{
 	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
-	public Court(WebDriver driver, ExtentTest logger) {
-		super(driver, logger);
-		this.driver=driver;
-		this.logger=logger;
-		pages=new Pages(driver, logger);
+	public Court(ExtentTest logger) {
+		super(logger);
+		driver = BaseClass.getWebDriver();
+		this.logger = logger;
+		pages = new Pages(logger);
 	}
 	/**
 	 * Select Court tab and switch to Court frame

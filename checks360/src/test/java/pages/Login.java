@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
+
+import environment.BaseClass;
 import environment.Pages;
 
 public class Login {
@@ -15,10 +17,10 @@ public class Login {
 	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
-	public Login(WebDriver driver, ExtentTest logger) {
-		this.driver = driver;
+	public Login(ExtentTest logger) {
+		driver = BaseClass.getWebDriver();
 		this.logger = logger;
-		pages = new Pages(driver, logger);
+		pages = new Pages(logger);
 	}
 
 	/**

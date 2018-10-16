@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.aventstack.extentreports.ExtentTest;
 
+import environment.BaseClass;
 import environment.Pages;
 
 public class CaseTracker {
@@ -22,10 +23,10 @@ public class CaseTracker {
 	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
-	public CaseTracker(WebDriver driver, ExtentTest logger) {
-		this.driver = driver;
+	public CaseTracker(ExtentTest logger) {
+		driver = BaseClass.getWebDriver();
 		this.logger = logger;
-		pages = new Pages(driver, logger);
+		pages = new Pages(logger);
 	}
 
 	/**

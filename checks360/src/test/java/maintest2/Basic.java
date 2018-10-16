@@ -79,7 +79,7 @@ public class Basic {
 		logger = extent.createTest(method.getName());
 		logger.pass(method.getName() + " Started");
 		logger.assignAuthor("Gopinath");
-		pages = new Pages(driver, logger);
+		pages = new Pages(logger);
 
 	}
 

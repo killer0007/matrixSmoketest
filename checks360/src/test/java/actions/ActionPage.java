@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.aventstack.extentreports.ExtentTest;
 
+import environment.BaseClass;
 import environment.Pages;
 
 abstract class ActionPage {
@@ -18,10 +19,10 @@ abstract class ActionPage {
 	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
-	public ActionPage(WebDriver driver, ExtentTest logger) {
-		this.driver = driver;
+	public ActionPage(ExtentTest logger) {
+		driver = BaseClass.getWebDriver();
 		this.logger = logger;
-		pages = new Pages(driver, logger);
+		pages = new Pages(logger);
 	}
 
 	/**

@@ -10,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.aventstack.extentreports.ExtentTest;
+
+import environment.BaseClass;
 import environment.Pages;
 
 public class Casereg extends Home {
@@ -23,11 +25,11 @@ public class Casereg extends Home {
 	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
-	public Casereg(WebDriver driver, ExtentTest logger) {
-		super(driver, logger);
-		this.driver = driver;
+	public Casereg(ExtentTest logger) {
+		super(logger);
+		driver = BaseClass.getWebDriver();
 		this.logger = logger;
-		pages = new Pages(driver, logger);
+		pages = new Pages(logger);
 	}
 
 	/**

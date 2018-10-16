@@ -48,6 +48,9 @@ public class BaseClass {
 		}
 		return driver;
 	}
+	public static WebDriver getWebDriver() {
+		return driver;
+	}
 /**
  * Read the config.properties file and return property object
  * @return Properties config gile property

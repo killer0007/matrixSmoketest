@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 import com.aventstack.extentreports.ExtentTest;
 
+import environment.BaseClass;
 import environment.Pages;
 
 abstract class DataEntryPage {
@@ -11,10 +12,10 @@ abstract class DataEntryPage {
 	ExtentTest logger;
 	Pages pages;
 
-	public DataEntryPage(WebDriver driver, ExtentTest logger) {
-		this.driver = driver;
+	public DataEntryPage(ExtentTest logger) {
+		driver = BaseClass.getWebDriver();
 		this.logger = logger;
-		pages = new Pages(driver, logger);
+		pages = new Pages(logger);
 	}
 	/**
 	 * Performs click action on History button

@@ -14,6 +14,7 @@ import org.openqa.selenium.WebElement;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
+import environment.BaseClass;
 import environment.Pages;
 
 public class CaseRegistration {
@@ -27,11 +28,10 @@ public class CaseRegistration {
 	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
-	public CaseRegistration(WebDriver driver, ExtentTest logger) {
-		// super(driver, logger);
-		this.driver = driver;
+	public CaseRegistration(ExtentTest logger) {
+		driver = BaseClass.getWebDriver();
 		this.logger = logger;
-		pages = new Pages(driver, logger);
+		pages = new Pages(logger);
 	}
 
 	/**

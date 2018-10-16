@@ -73,7 +73,7 @@ public class SPcasereg extends Design {
 		logger = extent.createTest(method.getName());
 		logger.pass(method.getName() + " Started");
 		logger.assignAuthor("Gopinath");
-		pages = new Pages(driver, logger);
+		pages = new Pages(logger);
 	}
 
 	@Test(priority = 1, enabled = true, groups = { "smoketest","smoketest", "spcase registration", "insuff" })

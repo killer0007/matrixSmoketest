@@ -7,6 +7,8 @@ import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.aventstack.extentreports.ExtentTest;
+
+import environment.BaseClass;
 import environment.Pages;
 
 public class CaseInformation {
@@ -20,10 +22,10 @@ public class CaseInformation {
 	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
-	public CaseInformation(WebDriver driver, ExtentTest logger) {
-		this.driver = driver;
+	public CaseInformation(ExtentTest logger) {
+		driver = BaseClass.getWebDriver();
 		this.logger = logger;
-		pages = new Pages(driver, logger);
+		pages = new Pages(logger);
 	}
 
 	/**

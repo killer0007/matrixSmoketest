@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
+import environment.BaseClass;
 import environment.Pages;
 
 public class CEP extends ActionPage {
@@ -18,11 +19,11 @@ public class CEP extends ActionPage {
 	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
-	public CEP(WebDriver driver, ExtentTest logger) {
-		super(driver, logger);
-		this.driver = driver;
+	public CEP(ExtentTest logger) {
+		super(logger);
+		driver = BaseClass.getWebDriver();
 		this.logger = logger;
-		pages = new Pages(driver, logger);
+		pages = new Pages(logger);
 	}
 
 	/**

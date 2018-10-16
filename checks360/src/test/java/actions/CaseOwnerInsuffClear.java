@@ -18,11 +18,11 @@ public class CaseOwnerInsuffClear extends ActionPage {
 	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
-	public CaseOwnerInsuffClear(WebDriver driver, ExtentTest logger) {
-		super(driver, logger);
-		this.driver = driver;
+	public CaseOwnerInsuffClear(ExtentTest logger) {
+		super(logger);
+		driver = BaseClass.getWebDriver();
 		this.logger = logger;
-		pages = new Pages(driver, logger);
+		pages = new Pages(logger);
 	}
 
 	/**
