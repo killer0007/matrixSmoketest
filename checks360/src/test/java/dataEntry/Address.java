@@ -2,19 +2,14 @@ package dataEntry;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.activity.InvalidActivityException;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.aventstack.extentreports.ExtentTest;
-import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
-
 import environment.Pages;
 
 public class Address extends DataEntryPage {
@@ -167,10 +162,14 @@ public class Address extends DataEntryPage {
 	 * @throws InvalidActivityException invalid data 0 and 1 only acceptable
 	 */
 	public void CopyComponentDatafrom(byte i) throws InvalidActivityException {
-		if (i == 1)
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtCopySame_0");
-		else if (i == 0)
+		if (i == 1) {
 			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtCopySame_1");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
+		else if (i == 0) {
+			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtCopySame_0");
+		pages.Utill().wait_until_loader_is_invisible(100);
+}
 		else
 			throw new InvalidActivityException(Integer.toString(i));
 	}
