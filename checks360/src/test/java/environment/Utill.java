@@ -55,7 +55,6 @@ public class Utill {
 	protected final Pages pages;
 /**
  * constructor to initiatize webdriver and logger 
- * @param driver webdriver instance
  * @param logger logger instance
  */
 	public Utill(ExtentTest logger) {
@@ -1022,7 +1021,7 @@ public class Utill {
 	 * Takes webelement and file out put path as input
 	 * takes the screen shot and save it to given file path
 	 * @param cap WebElement
-	 * @param filepath output file path
+	 * @param fileoutputpath file path
 	 * @throws IOException File not found
 	 */
 	public void screenshot(WebElement cap, String fileoutputpath) throws IOException {

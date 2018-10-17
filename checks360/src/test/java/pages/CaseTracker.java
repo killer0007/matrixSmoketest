@@ -20,7 +20,6 @@ public class CaseTracker {
 	/**
 	 * This is class for CaseTracker Page
 	 * 
-	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
 	public CaseTracker(ExtentTest logger) {

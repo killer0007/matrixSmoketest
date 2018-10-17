@@ -5,31 +5,20 @@ import java.util.List;
 import javax.activity.InvalidActivityException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
 
-import environment.BaseClass;
-import environment.Pages;
-
 public class Address extends DataEntryPage {
-	WebDriver driver;
-	ExtentTest logger;
-	Pages pages;
 
 	/**
 	 * This is class for address page in data entry
 	 * 
-	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
 	public Address(ExtentTest logger) {
 		super(logger);
-		driver = BaseClass.getWebDriver();
-		this.logger = logger;
-		pages = new Pages(logger);
 	}
 
 	/**
@@ -179,7 +168,7 @@ public class Address extends DataEntryPage {
 	/**
 	 * Takes address line 1 as input and pass it to address field
 	 * 
-	 * @param address
+	 * @param address address line 1
 	 */
 	public void AddressLine1(String address) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressAddress", address);
@@ -268,6 +257,7 @@ public class Address extends DataEntryPage {
 
 	/**
 	 * Takes landlord name as input
+	 * @param name land lard name
 	 */
 	public void Name(String name) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressLandLordName", name);

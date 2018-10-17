@@ -13,8 +13,7 @@ public class DataEntry {
 
 	/**
 	 * This is class for Data Entry Stage
-	 * 
-	 * @param driver webdriver instance
+	 *
 	 * @param logger logger instance
 	 */
 	public DataEntry(ExtentTest logger) {

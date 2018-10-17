@@ -19,7 +19,6 @@ public class Home {
 	/**
 	 * This is class for Home Page
 	 * 
-	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
 	public Home(ExtentTest logger) {

@@ -83,19 +83,72 @@ public class Basic {
 
 	}
 
-	@Test(priority = 29, enabled = true)
-	public void TC_SPDOC_001() throws Exception {
+	/**
+	 * Login action
+	 */
+	@Test(priority = 1, enabled = true, groups = { "smoketest", "smoketest", "spcase registration", "insuff" })
+	public void Login() throws Exception {
 		uname = config.getProperty("uname");
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-		pages.Home().CaseTracker();
-		pages.CaseTracker().clickcase("HDFC000539");
-//		pages.Utill().click_element("//*[text()='HDFC000539']");
-		pages.Utill().wait_until_loader_is_invisible(100);
-	
+	}
+
+	/**
+	 * To check title of page
+	 * 
+	 * @throws Exception WebDriver Exception
+	 */
+	@Test(priority = 2, enabled = true, groups = { "smoketest", "spcase registration" })
+	public void TC_SPCR_001() throws Exception {
+		pages.Home().clickRegister();
+		String title = pages.CaseRegistration().getTitle();
+		if (title.equals("Case Registration")) {
+			assertTrue(true);
+		} else {
+			assertTrue(title, false);
+		}
+	}
+
+	/**
+	 * To check mandatory alert for client
+	 */
+	@Test(priority = 3, enabled = true, groups = { "spcase registration" })
+	public void TC_SPCR_002() {
+		pages.CaseRegistration().addEditComponent();
+		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_ddlClient", "border");
+		if (result.equals("1px solid rgb(255, 0, 0)")) {
+			assertTrue(true);
+		} else {
+			assertTrue(result, false);
+		}
+	}
+
+	/**
+	 * To check mandatory alert for project
+	 */
+	@Test(priority = 4, enabled = true, groups = { "spcase registration" })
+	public void TC_SPCR_003() {
+		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_ddlProject", "border");
+		if (result.equals("1px solid rgb(255, 0, 0)")) {
+			assertTrue(true);
+		} else {
+			assertTrue(result, false);
+		}
+	}
+
+	/**
+	 * To check mandatory alert for contract
+	 */
+	@Test(priority = 5, enabled = true, groups = { "spcase registration" })
+	public void TC_SCPR_004() {
+		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_ddlContract", "border");
+		if (result.equals("1px solid rgb(255, 0, 0)")) {
+			assertTrue(true);
+		} else {
+			assertTrue(result, false);
+		}
 
 	}
 
-	
 
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {

@@ -14,7 +14,6 @@ public class DcaseRegistration {
 	/**
 	 * This is class for Case Registration Stage
 	 * 
-	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
 	public DcaseRegistration(ExtentTest logger) {

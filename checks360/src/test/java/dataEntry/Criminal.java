@@ -1,36 +1,23 @@
 package dataEntry;
 
 import java.util.List;
-
 import javax.activity.InvalidActivityException;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.aventstack.extentreports.ExtentTest;
 
-import environment.BaseClass;
-import environment.Pages;
-
 public class Criminal extends DataEntryPage {
-	WebDriver driver;
-	ExtentTest logger;
-	Pages pages;
+
 	/**
 	 * This is class for Criminal page in data entry
 	 * 
-	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
 	public Criminal(ExtentTest logger) {
 		super(logger);
-		driver = BaseClass.getWebDriver();
-		this.logger = logger;
-		pages = new Pages(logger);
 	}
 	/**
 	 * Select Criminal tab and switch to Criminal frame
@@ -114,7 +101,7 @@ public class Criminal extends DataEntryPage {
 	/**
 	 * Takes address line 1 as input and pass it to address field
 	 * 
-	 * @param address
+	 * @param address line 1
 	 */
 	public void AddressLine1(String address) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCriminalAddress", address);

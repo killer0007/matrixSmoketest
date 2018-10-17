@@ -25,7 +25,6 @@ public class CaseRegistration {
 	/**
 	 * This is class for Service Provider case registration
 	 * 
-	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
 	public CaseRegistration(ExtentTest logger) {
@@ -223,6 +222,7 @@ public class CaseRegistration {
 	 */
 	public String getalertcolor(String id, String attribute) {
 		String color = pages.Utill().getcssvalue(id, attribute);
+		logger.log(Status.PASS, color);
 		return color;
 	}
 

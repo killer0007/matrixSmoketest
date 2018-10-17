@@ -2,27 +2,17 @@ package actions;
 
 import java.util.Properties;
 import org.openqa.selenium.NotFoundException;
-import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
 import environment.BaseClass;
-import environment.Pages;
 
 public class CaseOwnerInsuffClear extends ActionPage {
-	WebDriver driver;
-	ExtentTest logger;
-	Pages pages;
-
 	/**
 	 * This is class for case owner insuff clear
 	 * 
-	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
 	public CaseOwnerInsuffClear(ExtentTest logger) {
 		super(logger);
-		driver = BaseClass.getWebDriver();
-		this.logger = logger;
-		pages = new Pages(logger);
 	}
 
 	/**

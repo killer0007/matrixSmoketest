@@ -14,7 +14,6 @@ public class Login {
 	/**
 	 * This is class for Login Page
 	 * 
-	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
 	public Login(ExtentTest logger) {

@@ -8,27 +8,27 @@ import actions.*;
 
 public class Pages {
 	private  ExtentTest logger;
-	private static Login login;
-	private static Utill utill;
-	private static Home home;
-	private static CaseRegistration caseregistration;
-	private static DcaseRegistration dcaseregistration;
-	private static DbConnection db;
-	private static CaseTracker casetracker;
-	private static CaseOwnerInsuffClear CaseOwnerInsuffClear;
-	private static DataEntrySupervision DataEntrySupervision;
-	private static DataEntry dataentry;
-	private static dataEntry.Address address;
-	private static dataEntry.Education education;
-	private static dataEntry.Employment employement;
-	private static dataEntry.Reference reference;
-	private static dataEntry.Database database;
-	private static dataEntry.Criminal criminal;
-	private static dataEntry.Credit credit;
-	private static dataEntry.Court court;
-	private static dataEntry.Id id;
-	private static CEP cep;
-	private static dataEntry.CaseInformation caseinformation;
+	private Login login;
+	private Utill utill;
+	private Home home;
+	private CaseRegistration caseregistration;
+	private DcaseRegistration dcaseregistration;
+	private DbConnection db;
+	private CaseTracker casetracker;
+	private CaseOwnerInsuffClear CaseOwnerInsuffClear;
+	private DataEntrySupervision DataEntrySupervision;
+	private DataEntry dataentry;
+	private dataEntry.Address address;
+	private dataEntry.Education education;
+	private dataEntry.Employment employement;
+	private dataEntry.Reference reference;
+	private dataEntry.Database database;
+	private dataEntry.Criminal criminal;
+	private dataEntry.Credit credit;
+	private dataEntry.Court court;
+	private dataEntry.Id id;
+	private CEP cep;
+	private dataEntry.CaseInformation caseinformation;
 
 	public Pages(ExtentTest logger) {
 		this.logger = logger;

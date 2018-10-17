@@ -15,7 +15,6 @@ public class DataEntrySupervision {
 	/**
 	 * This is class for Data Entry Supervision Stage
 	 * 
-	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
 	public DataEntrySupervision(ExtentTest logger) {

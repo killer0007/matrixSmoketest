@@ -4,31 +4,20 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.aventstack.extentreports.ExtentTest;
 
-import environment.BaseClass;
-import environment.Pages;
-
 public class Credit extends DataEntryPage{
-	WebDriver driver;
-	ExtentTest logger;
-	Pages pages;
+
 	/**
 	 * This is class for Credit page in data entry
 	 * 
-	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
 	public Credit(ExtentTest logger) {
 		super(logger);
-		driver = BaseClass.getWebDriver();
-		this.logger = logger;
-		pages = new Pages(logger);
 	}
 	/**
 	 * Select Credit tab and switch to Credit frame

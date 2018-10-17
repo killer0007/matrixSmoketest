@@ -19,7 +19,6 @@ public class CaseInformation {
 	/**
 	 * This is class for Case information part in data entry
 	 * 
-	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
 	public CaseInformation(ExtentTest logger) {
