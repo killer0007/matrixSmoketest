@@ -1,6 +1,7 @@
 package client;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
@@ -608,5 +609,38 @@ public class Casereg extends Home {
 				"//td[text()='" + componentname + "']/../td[8]//tbody/tr/td/div/table/tbody/tr/td/span/input[1]",
 				releasedate);
 	}
-
+	/**
+	 * case registration action after searching of particular case
+	 * Gets case details from table and map it to hashmap
+	 * keys are caserefno, clientrefno, candidatename, dob, recievedon, duedate
+	 * @return table data (hashmap)
+	 */
+public HashMap<String, String> getcasedetails() { 
+//	String tableid="ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_GridData";
+	HashMap<String, String> data = new HashMap<String, String>();
+	String caserefno=pages.Utill().get_text("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[4]");
+	String clientrefno=pages.Utill().get_text("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[5]");
+	String candidatename=pages.Utill().get_text("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[6]");
+	String dob=pages.Utill().get_text("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[7]");
+	String recievedon=pages.Utill().get_text("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[9]");
+	String duedate=pages.Utill().get_text("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[11]");
+	data.put("caserefno", caserefno);
+	data.put("clientrefno", clientrefno);
+	data.put("candidatename", candidatename);
+	data.put("dob", dob);
+	data.put("recievedon", recievedon);
+	data.put("duedate", duedate);
+	return data;
+}
+/**
+ * Takes case reference number as input and pass it to caserefno field
+ * click search button and return case details which shown in table
+ * @param caserefnumber case reference number
+ * @return table data (hashmap)
+ */
+public HashMap<String, String> getcasedetails(String caserefnumber) { 
+//	String tableid="ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_GridData";
+	this.Search(caserefnumber);
+	return this.getcasedetails();
+}
 }

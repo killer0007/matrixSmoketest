@@ -722,4 +722,12 @@ public class CaseRegistration {
 			return false;
 		}
 	}
+	/**
+	 * Takes 1 components form each check and return as array
+	 * @return list of components
+	 */
+	public String [] getcomponents() {
+		String [] compoents= {"Permanent","Current Address","12th","UG1","Current/Latest Employment","Previous Employment","Reference 1","Aadhaar Card","Passport","Current Address Criminal Check","Permanent Criminal Check","Current Address Court Check","Permanent Court Check","Credit Check 1","Panel1","Database"};
+		return compoents;
+	}
 }

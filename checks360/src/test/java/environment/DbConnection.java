@@ -67,7 +67,7 @@ public class DbConnection {
 	/**
 	 * Takes project name as input and return hashmap which contains most recent
 	 * case information like first name, last name and doc
-	 * 
+	 * firstname, lastname, DateofBirth
 	 * @param project Project Name
 	 * @return hashmap first name, lastname, dob
 	 * @throws Exception when SQL connection failed

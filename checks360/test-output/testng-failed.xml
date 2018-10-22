@@ -1,45 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [regression testing]">
-  <test name="insuff(failed)">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
     <classes>
-      <class name="maintest.SPcasereg">
+      <class name="maintest2.Basic">
         <methods>
-          <include name="TC_SPINF_006"/>
-          <include name="TC_SPDOC_007"/>
-          <include name="beforeSuit"/>
-          <include name="TC_SPDOC_005"/>
-          <include name="TC_SPDOC_006"/>
-          <include name="TC_SPDOC_004"/>
-          <include name="TC_SPDOC_008"/>
-          <include name="TC_SPINF_001"/>
-          <include name="teardown"/>
-          <include name="TC_SPINF_021"/>
-          <include name="TC_SPINF_024"/>
-          <include name="TC_SPCEP_001"/>
-          <include name="TC_SPINF_005"/>
-          <include name="TC_SPINF_027"/>
-          <include name="TC_SPCEP_004"/>
-          <include name="TC_SPCEP_003"/>
-          <include name="TC_SPCEP_002"/>
-          <include name="TC_SPINF_039"/>
-          <include name="tearDown"/>
-          <include name="beforetest"/>
-          <include name="TC_SPNAPP_001"/>
-          <include name="TC_SPINF_012"/>
-          <include name="TC_SPINF_011"/>
-          <include name="TC_SPINF_033"/>
-          <include name="TC_SPINF_010"/>
-          <include name="TC_SPDOC_003"/>
-          <include name="TC_SPINF_030"/>
-          <include name="TC_SPDOC_001"/>
-          <include name="TC_SPDOC_002"/>
           <include name="setup"/>
-          <include name="TC_SPINF_018"/>
-          <include name="TC_SPINF_038"/>
-          <include name="TC_SPINF_015"/>
+          <include name="tearDown"/>
+          <include name="teardown"/>
+          <include name="beforeSuit"/>
+          <include name="afterSuite"/>
+          <include name="dataEntry"/>
+          <include name="beforetest"/>
         </methods>
-      </class> <!-- maintest.SPcasereg -->
+      </class> <!-- maintest2.Basic -->
     </classes>
-  </test> <!-- insuff(failed) -->
-</suite> <!-- Failed suite [regression testing] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

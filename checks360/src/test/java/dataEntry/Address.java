@@ -1,6 +1,7 @@
 package dataEntry;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.activity.InvalidActivityException;
 import org.openqa.selenium.By;
@@ -362,5 +363,16 @@ public class Address extends DataEntryPage {
 	 */
 	public void Notapplicablecomm(String comments) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+	}
+	public void addresscheck(HashMap<String, String> data) {
+		this.Component(data.get(""));
+		this.AddressLine1(data.get(""));
+		this.State();
+		this.City();
+		this.Pincode(data.get(""));
+		this.LandMark(data.get(""));
+		this.FromDate(data.get(""));
+		this.ToDate(data.get(""));
+		this.isRented(true);
 	}
 }

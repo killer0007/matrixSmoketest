@@ -46,6 +46,7 @@ public class DataEntrySupervision {
 	 * @param refno caserefno
 	 */
 	public void caserefno(String refno) {
+		pages.Utill().clear_element_text("txtCaserefNo");
 		pages.Utill().input_text("txtCaserefNo", refno);
 	}
 

@@ -107,4 +107,118 @@ public class CaseInformation {
 	public void cancel() {
 		pages.Utill().click_element("rwmCaseDocuments_C_btnCaseDocumentCancels");
 	}
+	/**
+	 * Return Client name
+	 * @return name Client name
+	 */
+	public String Client() {
+		
+		return pages.Utill().getvalue("txtClientName");
+	}
+	/**
+	 * Return Project name
+	 * @return Project Project name
+	 */
+	public String Project() {
+		return pages.Utill().getvalue("txtProjectName");
+	}
+	/**
+	 * Return Case Owner
+	 * @return name Case Owner name
+	 */
+	public String CaseOwner() {
+		return pages.Utill().getvalue("txtCaseOwner");
+	}
+	/**
+	 * Return First Name
+	 * @return Name First Name
+	 */
+	public String FirstName() {
+		return pages.Utill().getvalue("txtFirstName");
+	}
+	/**
+	 * Return Last Name
+	 * @return Name Last Name
+	 */
+	public String LastName() {
+		return pages.Utill().getvalue("txtLastName");
+	}
+	/**
+	 * Return dob
+	 * @return dob date of birth
+	 */
+	public String dob() {
+		return pages.Utill().getvalue("txtDateofBirth");
+	}
+	/**
+	 * Return Email
+	 * @return id Email id
+	 */
+	public String Email() {
+		return pages.Utill().getvalue("txtEmail");
+	}
+	/**
+	 * Return Father First Name 
+	 * @return name Father First Name 
+	 */
+	public String FatherFirstName () {
+		return pages.Utill().getvalue("txtFatherFirstName");
+	}
+	/**
+	 * Return Father Last Name 
+	 * @return name Father Last Name 
+	 */
+	public String FatherLastName () {
+		return pages.Utill().getvalue("txtFatherLastName");
+	}
+	/**
+	 * Return LinkedIn ID
+	 * @return id LinkedIn ID
+	 */
+	public String LinkedInID() {
+		return pages.Utill().getvalue("txtLinkedIn");
+	}
+	/**
+	 * Return Nationality
+	 * @return name Nationality
+	 */
+	public String Nationality() {
+		return pages.Utill().getvalue("txtNationality");
+	}
+	/**
+	 * Return LandLine Number
+	 * @return number LandLine Number
+	 */
+	public String LandLineNumber() {
+		return pages.Utill().getvalue("txtLandLine");
+	}
+	/**
+	 * Return Mobile Number
+	 * @return number Mobile Number
+	 */
+	public String MobileNumber() {
+		return pages.Utill().getvalue("txtMobileNumber1");
+	}
+	/**
+	 * Return Emergency Contact Number
+	 * @return number Emergency Contact Number
+	 */
+	public String EmergencyContactNumber() {
+		return pages.Utill().getvalue("txtMobileNumberSecond");
+	}
+	/**
+	 * Return Emergency Contact Person
+	 * @return name Emergency Contact Person
+	 */
+	public String EmergencyContactPerson() {
+		return pages.Utill().getvalue("txtCntPerson");
+	}
+	/**
+	 * Return candidate ID
+	 * @return id candidate ID
+	 */
+	public String candidateID() {
+		return pages.Utill().getvalue("txtClientCandidateID");
+	}
+	
 }

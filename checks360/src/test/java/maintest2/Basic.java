@@ -86,67 +86,22 @@ public class Basic {
 	/**
 	 * Login action
 	 */
-	@Test(priority = 1, enabled = true, groups = { "smoketest", "smoketest", "spcase registration", "insuff" })
+	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
 		uname = config.getProperty("uname");
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
 	}
 
-	/**
-	 * To check title of page
-	 * 
-	 * @throws Exception WebDriver Exception
-	 */
-	@Test(priority = 2, enabled = true, groups = { "smoketest", "spcase registration" })
-	public void TC_SPCR_001() throws Exception {
-		pages.Home().clickRegister();
-		String title = pages.CaseRegistration().getTitle();
-		if (title.equals("Case Registration")) {
-			assertTrue(true);
-		} else {
-			assertTrue(title, false);
-		}
-	}
-
-	/**
-	 * To check mandatory alert for client
-	 */
-	@Test(priority = 3, enabled = true, groups = { "spcase registration" })
-	public void TC_SPCR_002() {
-		pages.CaseRegistration().addEditComponent();
-		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_ddlClient", "border");
-		if (result.equals("1px solid rgb(255, 0, 0)")) {
-			assertTrue(true);
-		} else {
-			assertTrue(result, false);
-		}
-	}
-
-	/**
-	 * To check mandatory alert for project
-	 */
-	@Test(priority = 4, enabled = true, groups = { "spcase registration" })
-	public void TC_SPCR_003() {
-		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_ddlProject", "border");
-		if (result.equals("1px solid rgb(255, 0, 0)")) {
-			assertTrue(true);
-		} else {
-			assertTrue(result, false);
-		}
-	}
-
-	/**
-	 * To check mandatory alert for contract
-	 */
-	@Test(priority = 5, enabled = true, groups = { "spcase registration" })
-	public void TC_SCPR_004() {
-		String result = pages.CaseRegistration().getalertcolor("ctl00_ContentPlaceHolder1_ddlContract", "border");
-		if (result.equals("1px solid rgb(255, 0, 0)")) {
-			assertTrue(true);
-		} else {
-			assertTrue(result, false);
-		}
-
+	@Test(priority=4, enabled=true)
+	public void dataEntry() throws Exception{
+		refno="HDFC000578";
+		pages.DataEntry().datanentry();
+		pages.Utill().click_element("//*[text()='"+refno+"']");
+		HashMap<String, String> casedetails =pages.DbConnection().getLastCase(ProjectName);
+		assertEquals(casedetails.get("firstname"), pages.CaseInformation().FirstName());
+		assertEquals(casedetails.get("lastname"), pages.CaseInformation().LastName());
+		
+		
 	}
 
 
@@ -157,21 +112,21 @@ public class Basic {
 			logger.fail(result.getThrowable().getMessage(),
 					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 			logger.log(Status.INFO, refno);
-			String pagesource = driver.getPageSource();
-			if (result.getThrowable().getMessage().contains("The following asserts failed")) {
-				logger.log(Status.FAIL, result.getThrowable().getMessage());
-			} else if (pagesource.contains("Images/message.png")) {
-				logger.log(Status.WARNING, "Your last session was terminated");
-				pages.Utill().click_element("ctl00_ContentPlaceHolder1_urls");
-				pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-			} else if (pagesource.contains("ctl00_ContentPlaceHolder1_txtUserName")) {
-				logger.log(Status.WARNING, "Your last session was closed by user");
-				pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-			} else {
-				logger.log(Status.WARNING, method.getName() + " navigating to home page due to error");
-				driver.get(config.getProperty("url") + "/Web/dashboard.aspx");
-				pages.Utill().wait_until_loader_is_invisible(80);
-			}
+//			String pagesource = driver.getPageSource();
+//			if (result.getThrowable().getMessage().contains("The following asserts failed")) {
+//				logger.log(Status.FAIL, result.getThrowable().getMessage());
+//			} else if (pagesource.contains("Images/message.png")) {
+//				logger.log(Status.WARNING, "Your last session was terminated");
+//				pages.Utill().click_element("ctl00_ContentPlaceHolder1_urls");
+//				pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+//			} else if (pagesource.contains("ctl00_ContentPlaceHolder1_txtUserName")) {
+//				logger.log(Status.WARNING, "Your last session was closed by user");
+//				pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+//			} else {
+//				logger.log(Status.WARNING, method.getName() + " navigating to home page due to error");
+//				driver.get(config.getProperty("url") + "/Web/dashboard.aspx");
+//				pages.Utill().wait_until_loader_is_invisible(80);
+//			}
 
 		} else {
 			logger.pass(method.getName() + " completed");
@@ -181,7 +136,7 @@ public class Basic {
 
 	@AfterTest
 	public void teardown() throws Exception {
-		driver.quit();
+//		driver.quit();
 	}
 
 	@AfterSuite

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="5" passed="5">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
     <line>
       <![CDATA[About to begin executing Test Default test]]>
@@ -17,55 +17,23 @@
       <![CDATA[Test Status: Pass]]>
     </line>
     <line>
-      <![CDATA[Test Method resides in maintest2.Basic]]>
-    </line>
-    <line>
-      <![CDATA[Test Status: Pass]]>
-    </line>
-    <line>
-      <![CDATA[Test Method resides in maintest2.Basic]]>
-    </line>
-    <line>
-      <![CDATA[Test Status: Pass]]>
-    </line>
-    <line>
-      <![CDATA[Test Method resides in maintest2.Basic]]>
-    </line>
-    <line>
-      <![CDATA[Test Status: Pass]]>
-    </line>
-    <line>
       <![CDATA[Completed executing test Default test]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="20715" started-at="2018-10-17T07:53:30Z" finished-at="2018-10-17T07:53:50Z">
+  <suite name="Default suite" duration-ms="51312" started-at="2018-10-19T06:53:34Z" finished-at="2018-10-19T06:54:25Z">
     <groups>
-      <group name="spcase registration">
-        <method signature="Basic.Login()[pri:0, instance:maintest2.Basic@4edc67]" name="Login" class="maintest2.Basic"/>
-        <method signature="Basic.TC_SCPR_004()[pri:0, instance:maintest2.Basic@4edc67]" name="TC_SCPR_004" class="maintest2.Basic"/>
-        <method signature="Basic.TC_SPCR_001()[pri:0, instance:maintest2.Basic@4edc67]" name="TC_SPCR_001" class="maintest2.Basic"/>
-        <method signature="Basic.TC_SPCR_002()[pri:0, instance:maintest2.Basic@4edc67]" name="TC_SPCR_002" class="maintest2.Basic"/>
-        <method signature="Basic.TC_SPCR_003()[pri:0, instance:maintest2.Basic@4edc67]" name="TC_SPCR_003" class="maintest2.Basic"/>
-      </group> <!-- spcase registration -->
-      <group name="insuff">
-        <method signature="Basic.Login()[pri:0, instance:maintest2.Basic@4edc67]" name="Login" class="maintest2.Basic"/>
-      </group> <!-- insuff -->
-      <group name="smoketest">
-        <method signature="Basic.Login()[pri:0, instance:maintest2.Basic@4edc67]" name="Login" class="maintest2.Basic"/>
-        <method signature="Basic.TC_SPCR_001()[pri:0, instance:maintest2.Basic@4edc67]" name="TC_SPCR_001" class="maintest2.Basic"/>
-      </group> <!-- smoketest -->
     </groups>
-    <test name="Default test" duration-ms="20715" started-at="2018-10-17T07:53:30Z" finished-at="2018-10-17T07:53:50Z">
+    <test name="Default test" duration-ms="51312" started-at="2018-10-19T06:53:34Z" finished-at="2018-10-19T06:54:25Z">
       <class name="maintest2.Basic">
-        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest2.Basic@4edc67]" name="beforeSuit" is-config="true" duration-ms="129" started-at="2018-10-17T13:23:30Z" finished-at="2018-10-17T13:23:30Z">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest2.Basic@4edc67]" name="beforeSuit" is-config="true" duration-ms="234" started-at="2018-10-19T12:23:34Z" finished-at="2018-10-19T12:23:34Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuit -->
-        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest2.Basic@4edc67]" name="beforetest" is-config="true" duration-ms="4241" started-at="2018-10-17T13:23:30Z" finished-at="2018-10-17T13:23:34Z">
+        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest2.Basic@4edc67]" name="beforetest" is-config="true" duration-ms="6326" started-at="2018-10-19T12:23:34Z" finished-at="2018-10-19T12:23:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforetest -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="setup" is-config="true" duration-ms="13" started-at="2018-10-17T13:23:34Z" finished-at="2018-10-17T13:23:34Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="setup" is-config="true" duration-ms="9" started-at="2018-10-19T12:23:40Z" finished-at="2018-10-19T12:23:40Z">
           <params>
             <param index="0">
               <value>
@@ -76,7 +44,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="Login()[pri:0, instance:maintest2.Basic@4edc67]" name="Login" duration-ms="8668" started-at="2018-10-17T13:23:34Z" finished-at="2018-10-17T13:23:43Z">
+        <test-method status="PASS" signature="Login()[pri:0, instance:maintest2.Basic@4edc67]" name="Login" duration-ms="33645" started-at="2018-10-19T12:23:40Z" finished-at="2018-10-19T12:24:14Z">
           <reporter-output>
             <line>
               <![CDATA[Test Method resides in maintest2.Basic]]>
@@ -86,7 +54,28 @@
             </line>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-17T13:23:43Z" finished-at="2018-10-17T13:23:43Z">
+        <test-method status="PASS" signature="dataEntry()[pri:0, instance:maintest2.Basic@4edc67]" name="dataEntry" duration-ms="11323" started-at="2018-10-19T12:24:14Z" finished-at="2018-10-19T12:24:25Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest2.Basic]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- dataEntry -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-19T12:24:14Z" finished-at="2018-10-19T12:24:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest2.Basic.dataEntry() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-19T12:24:14Z" finished-at="2018-10-19T12:24:14Z">
           <params>
             <param index="0">
               <value>
@@ -102,159 +91,27 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="TC_SPCR_001()[pri:0, instance:maintest2.Basic@4edc67]" name="TC_SPCR_001" duration-ms="3872" started-at="2018-10-17T13:23:43Z" finished-at="2018-10-17T13:23:46Z">
-          <reporter-output>
-            <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
-            </line>
-            <line>
-              <![CDATA[Test Status: Pass]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- TC_SPCR_001 -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-17T13:23:43Z" finished-at="2018-10-17T13:23:43Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-19T12:24:25Z" finished-at="2018-10-19T12:24:25Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest2.Basic.TC_SPCR_001() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-17T13:23:46Z" finished-at="2018-10-17T13:23:46Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=TC_SPCR_001 status=SUCCESS method=Basic.TC_SPCR_001()[pri:0, instance:maintest2.Basic@4edc67] output=Test Method resides in maintest2.Basic]]]>
+                <![CDATA[[TestResult name=dataEntry status=SUCCESS method=Basic.dataEntry()[pri:0, instance:maintest2.Basic@4edc67] output=Test Method resides in maintest2.Basic]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest2.Basic.TC_SPCR_001() throws java.lang.Exception]]>
+                <![CDATA[public void maintest2.Basic.dataEntry() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-17T13:23:47Z" finished-at="2018-10-17T13:23:47Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void maintest2.Basic.TC_SPCR_002()]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="TC_SPCR_002()[pri:0, instance:maintest2.Basic@4edc67]" name="TC_SPCR_002" duration-ms="3247" started-at="2018-10-17T13:23:47Z" finished-at="2018-10-17T13:23:50Z">
-          <reporter-output>
-            <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
-            </line>
-            <line>
-              <![CDATA[Test Status: Pass]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- TC_SPCR_002 -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-10-17T13:23:50Z" finished-at="2018-10-17T13:23:50Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=TC_SPCR_002 status=SUCCESS method=Basic.TC_SPCR_002()[pri:0, instance:maintest2.Basic@4edc67] output=Test Method resides in maintest2.Basic]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void maintest2.Basic.TC_SPCR_002()]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-17T13:23:50Z" finished-at="2018-10-17T13:23:50Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void maintest2.Basic.TC_SPCR_003()]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="TC_SPCR_003()[pri:0, instance:maintest2.Basic@4edc67]" name="TC_SPCR_003" duration-ms="37" started-at="2018-10-17T13:23:50Z" finished-at="2018-10-17T13:23:50Z">
-          <reporter-output>
-            <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
-            </line>
-            <line>
-              <![CDATA[Test Status: Pass]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- TC_SPCR_003 -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-17T13:23:50Z" finished-at="2018-10-17T13:23:50Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void maintest2.Basic.TC_SCPR_004()]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="TC_SCPR_004()[pri:0, instance:maintest2.Basic@4edc67]" name="TC_SCPR_004" duration-ms="36" started-at="2018-10-17T13:23:50Z" finished-at="2018-10-17T13:23:50Z">
-          <reporter-output>
-            <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
-            </line>
-            <line>
-              <![CDATA[Test Status: Pass]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- TC_SCPR_004 -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-17T13:23:50Z" finished-at="2018-10-17T13:23:50Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=TC_SPCR_003 status=SUCCESS method=Basic.TC_SPCR_003()[pri:0, instance:maintest2.Basic@4edc67] output=Test Method resides in maintest2.Basic]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void maintest2.Basic.TC_SPCR_003()]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@4edc67]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-10-17T13:23:50Z" finished-at="2018-10-17T13:23:50Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=TC_SCPR_004 status=SUCCESS method=Basic.TC_SCPR_004()[pri:0, instance:maintest2.Basic@4edc67] output=Test Method resides in maintest2.Basic]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void maintest2.Basic.TC_SCPR_004()]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest2.Basic@4edc67]" name="teardown" is-config="true" duration-ms="577" started-at="2018-10-17T13:23:50Z" finished-at="2018-10-17T13:23:50Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest2.Basic@4edc67]" name="teardown" is-config="true" duration-ms="1" started-at="2018-10-19T12:24:25Z" finished-at="2018-10-19T12:24:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest2.Basic@4edc67]" name="afterSuite" is-config="true" duration-ms="282" started-at="2018-10-17T13:23:50Z" finished-at="2018-10-17T13:23:51Z">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest2.Basic@4edc67]" name="afterSuite" is-config="true" duration-ms="235" started-at="2018-10-19T12:24:25Z" finished-at="2018-10-19T12:24:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

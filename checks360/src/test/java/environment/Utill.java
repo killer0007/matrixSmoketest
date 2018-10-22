@@ -163,7 +163,9 @@ public class Utill {
 		return msg;
 
 	}
-
+public String getvalue(String id) {
+	return this.find(id).getAttribute("value").trim();
+}
 	/**
 	 * Takes the Locater value and String value as input and select the given string value from select option
 	 * @param path locator of select dropdown

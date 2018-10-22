@@ -3,17 +3,17 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="maintest.Basic">
+      <class name="maintest2.Basic">
         <methods>
-          <include name="TC_SPDOC_008"/>
           <include name="setup"/>
-          <include name="beforetest"/>
+          <include name="tearDown"/>
+          <include name="teardown"/>
           <include name="beforeSuit"/>
           <include name="afterSuite"/>
-          <include name="teardown"/>
-          <include name="tearDown"/>
+          <include name="dataEntry"/>
+          <include name="beforetest"/>
         </methods>
-      </class> <!-- maintest.Basic -->
+      </class> <!-- maintest2.Basic -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
