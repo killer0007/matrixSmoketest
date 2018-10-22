@@ -9,7 +9,7 @@
   </run>
   </groups>
     <classes>
-      <class name="maintest.temp"/>
+      <class name="maintest2.Basic"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -92,18 +92,7 @@ public class Basic {
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
 	}
 
-	@Test(priority=4, enabled=true)
-	public void dataEntry() throws Exception{
-		refno="HDFC000578";
-		pages.DataEntry().datanentry();
-		pages.Utill().click_element("//*[text()='"+refno+"']");
-		HashMap<String, String> casedetails =pages.DbConnection().getLastCase(ProjectName);
-		assertEquals(casedetails.get("firstname"), pages.CaseInformation().FirstName());
-		assertEquals(casedetails.get("lastname"), pages.CaseInformation().LastName());
-		
-		
-	}
-
+	
 
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {
@@ -136,7 +125,7 @@ public class Basic {
 
 	@AfterTest
 	public void teardown() throws Exception {
-//		driver.quit();
+		driver.quit();
 	}
 
 	@AfterSuite
