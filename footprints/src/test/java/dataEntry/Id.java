@@ -85,8 +85,8 @@ public class Id extends DataEntryPage {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlIdCheckComponent_Input");
 		
 			pages.Utill()
-					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlCreditId_DropDown']/div/ul/li//text()='"
-							+ component + "'");
+					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlCreditId_DropDown']/div/ul//li[text()='"
+							+ component + "']");
 	}
 	/**
 	 * Takes name as input Pass it to name On Id
@@ -139,7 +139,7 @@ public void State() {
 	new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlIdIssueState_DropDown']/div/ul/li[1]")));
 	pages.Utill().click_element(
-			"//*[@id='ctl00_ContentPlaceHolder1_ddlIdIssueState_DropDown']/div/ul/li//text()='Tamil Nadu'");
+			"//*[@id='ctl00_ContentPlaceHolder1_ddlIdIssueState_DropDown']/div/ul//li[text()='Tamil Nadu']");
 	pages.Utill().wait_until_loader_is_invisible(100);
 }
 
@@ -151,7 +151,7 @@ public void City() {
 	new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlIdIssueCity_DropDown']/div/ul/li[1]")));
 	pages.Utill().click_element(
-			"//*[@id='ctl00_ContentPlaceHolder1_ddlIdIssueCity_DropDown']/div/ul/li//text()='Chennai'");
+			"//*[@id='ctl00_ContentPlaceHolder1_ddlIdIssueCity_DropDown']/div/ul//li[text()='Chennai']");
 	pages.Utill().wait_until_loader_is_invisible(100);
 }
 /**

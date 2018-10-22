@@ -33,6 +33,8 @@ import org.fluttercode.datafactory.impl.DataFactory;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -208,7 +210,24 @@ public String getvalue(String id) {
 	 * @param path locator
 	 */
 	public void click_element(String path) {
+//		try {
 		this.find(path).click();
+//		}
+//		catch (ElementNotInteractableException  e) {
+//			this.find(path).click();
+//		}
+//		catch (ElementNotInteractableException  es) {
+//			System.err.println("interactable exception");
+//			try {
+//				Thread.sleep(6000);
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//				
+//			}
+//			this.find(path).click();
+//		}
+		
 		logger.log(Status.PASS, "Clicking element '" + path + "'");
 
 	}

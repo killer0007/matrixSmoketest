@@ -47,7 +47,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Oct 19, 2018 06:06:08 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Oct 22, 2018 06:59:55 PM</span>
 				</a>
 			</li>
 			<li>
@@ -73,6 +73,7 @@
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
 											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -123,10 +124,10 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>2</span> test(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='50%'><span class='strong'>1</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='50%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -138,10 +139,10 @@
 					<canvas id='child-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>34</span> step(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='92%'><span class='strong'>23</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='4%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='4%'>1</span> others
 				</div>
 			</div>
 		</div>
@@ -159,14 +160,14 @@
 				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Login</span>
-						<span class='test-time'>Oct 19, 2018 06:06:12 PM</span>
+						<span class='test-time'>Oct 22, 2018 06:59:59 PM</span>
 						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Oct 19, 2018 06:06:12 PM</span>
-	<span class='label end-time'>Oct 19, 2018 06:06:20 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 8s+319ms</span>
+	<span class='label start-time'>Oct 22, 2018 06:59:59 PM</span>
+	<span class='label end-time'>Oct 22, 2018 07:00:08 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 9s+63ms</span>
 </div>
 	<div class='test-attributes'>
 			<div class='author-list'>
@@ -185,27 +186,27 @@
 			<tbody>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:12 PM</td>
+					<td class='timestamp'>6:59:59 PM</td>
 					<td class='step-details'>Login Started</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:12 PM</td>
+					<td class='timestamp'>6:59:59 PM</td>
 					<td class='step-details'>Typing text 'demoempl' into text field 'ctl00_ContentPlaceHolder1_txtUserName'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:12 PM</td>
+					<td class='timestamp'>6:59:59 PM</td>
 					<td class='step-details'>Typing text 'Pass$123' into text field 'ctl00_ContentPlaceHolder1_txtPassword'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:13 PM</td>
+					<td class='timestamp'>7:00:01 PM</td>
 					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnLogin'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:20 PM</td>
+					<td class='timestamp'>7:00:08 PM</td>
 					<td class='step-details'>Login completed</td>
 				</tr>
 			</tbody>
@@ -215,17 +216,17 @@
 				</li>
 				
 				
-				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='2'>
 					<div class='test-heading'>
 						<span class='test-name'>dataEntry</span>
-						<span class='test-time'>Oct 19, 2018 06:06:20 PM</span>
-						<span class='test-status right pass'>pass</span>
+						<span class='test-time'>Oct 22, 2018 07:00:08 PM</span>
+						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Oct 19, 2018 06:06:20 PM</span>
-	<span class='label end-time'>Oct 19, 2018 06:06:59 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 39s+19ms</span>
+	<span class='label start-time'>Oct 22, 2018 07:00:08 PM</span>
+	<span class='label end-time'>Oct 22, 2018 07:00:34 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 26s+30ms</span>
 </div>
 	<div class='test-attributes'>
 			<div class='author-list'>
@@ -244,148 +245,111 @@
 			<tbody>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:20 PM</td>
+					<td class='timestamp'>7:00:08 PM</td>
 					<td class='step-details'>dataEntry Started</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:20 PM</td>
+					<td class='timestamp'>7:00:08 PM</td>
 					<td class='step-details'>Selecting options from selection list 'ddlAct' by label 2.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:26 PM</td>
-					<td class='step-details'>Clicking element '//*[text()='HDFC000582']'</td>
+					<td class='timestamp'>7:00:14 PM</td>
+					<td class='step-details'>Clicking element '//*[text()='HDFC000583']'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:33 PM</td>
+					<td class='timestamp'>7:00:20 PM</td>
 					<td class='step-details'>switching to default frame</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:33 PM</td>
-					<td class='step-details'>Clicking element '//*[@id='tabStrip']/div/ul/li[1]/a/span/span/span'</td>
+					<td class='timestamp'>7:00:23 PM</td>
+					<td class='step-details'>Clicking element '//*[@id='tabStrip']/div/ul/li[3]/a/span/span/span'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:33 PM</td>
-					<td class='step-details'>switching frame by index 0</td>
+					<td class='timestamp'>7:00:23 PM</td>
+					<td class='step-details'>switching frame by index 2</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:33 PM</td>
-					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ddlComponent_Input'</td>
+					<td class='timestamp'>7:00:23 PM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:33 PM</td>
-					<td class='step-details'>Clicking element '//div[@id='ctl00_ContentPlaceHolder1_ddlComponent_DropDown']/div/ul//li[text()='Current Address']'</td>
+					<td class='timestamp'>7:00:25 PM</td>
+					<td class='step-details'>Clicking element '//div[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul//li[text()='Current/Latest Employment']'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:37 PM</td>
-					<td class='step-details'>Typing text '4th street, anna nagar' into text field 'ctl00_ContentPlaceHolder1_txtAddressAddress'.</td>
+					<td class='timestamp'>7:00:29 PM</td>
+					<td class='step-details'>Typing text 'TCS  & company' into text field 'ctl00_ContentPlaceHolder1_ddlEmploymentCompany_Input'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:38 PM</td>
-					<td class='step-details'>Typing text 'tamil nadu' into text field 'ctl00_ContentPlaceHolder1_ddlAddressState_Input'.</td>
+					<td class='timestamp'>7:00:29 PM</td>
+					<td class='step-details'>Clicking element '//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentCompany_DropDown']/div/ul//li[text()='TCS  & company']'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:38 PM</td>
-					<td class='step-details'>Clicking element '//*[@id='ctl00_ContentPlaceHolder1_ddlAddressState_DropDown']/div/ul//li[text()='Tamil Nadu']'</td>
+					<td class='timestamp'>7:00:32 PM</td>
+					<td class='step-details'>Typing text 'Gopinath' into text field 'ctl00_ContentPlaceHolder1_txtnameEmpRec'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:41 PM</td>
-					<td class='step-details'>Typing text 'chennai' into text field 'ctl00_ContentPlaceHolder1_ddlAddressCity_Input'.</td>
+					<td class='timestamp'>7:00:33 PM</td>
+					<td class='step-details'>Typing text '365' into text field 'ctl00_ContentPlaceHolder1_txtEmployeeID'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:42 PM</td>
-					<td class='step-details'>Clicking element '//*[@id='ctl00_ContentPlaceHolder1_ddlAddressCity_DropDown']/div/ul//li[text()='Chennai']'</td>
+					<td class='timestamp'>7:00:33 PM</td>
+					<td class='step-details'>Typing text 'Senior Tester' into text field 'ctl00_ContentPlaceHolder1_txtEmployeeDesignation'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:45 PM</td>
-					<td class='step-details'>Typing text '123456' into text field 'ctl00_ContentPlaceHolder1_txtAddressPincode'.</td>
+					<td class='timestamp'>7:00:33 PM</td>
+					<td class='step-details'>Typing text 'Testing' into text field 'ctl00_ContentPlaceHolder1_txtEmployeeDepartment'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:46 PM</td>
-					<td class='step-details'>Typing text 'near city centre maal' into text field 'ctl00_ContentPlaceHolder1_txtAddressLandMark'.</td>
+					<td class='timestamp'>7:00:33 PM</td>
+					<td class='step-details'>Typing text '01/2018' into text field 'ctl00_ContentPlaceHolder1_txtFromDate_dateInput'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:46 PM</td>
-					<td class='step-details'>Typing text '08/2006' into text field 'ctl00_ContentPlaceHolder1_txtAddressFromDate_dateInput'.</td>
+					<td class='timestamp'>7:00:34 PM</td>
+					<td class='step-details'>Typing text '10/2018' into text field 'ctl00_ContentPlaceHolder1_txtToDate_dateInput'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:46 PM</td>
-					<td class='step-details'>Typing text '08/2016' into text field 'ctl00_ContentPlaceHolder1_txtAddressToDate_dateInput'.</td>
+					<td class='timestamp'>7:00:34 PM</td>
+					<td class='step-details'>Typing text '400000' into text field 'ctl00_ContentPlaceHolder1_txtLastSalaryDrawn'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:46 PM</td>
-					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_rbResidenceType_0'</td>
+					<td class='timestamp'>7:00:34 PM</td>
+					<td class='step-details'>Typing text 'PHP' into text field 'ctl00_ContentPlaceHolder1_ddlCurrencyType_Input'.</td>
 				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:50 PM</td>
-					<td class='step-details'>Typing text 'ramesh kumar' into text field 'ctl00_ContentPlaceHolder1_txtAddressLandLordName'.</td>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>7:00:34 PM</td>
+					<td class='step-details'>element not interactable
+  (Session info: chrome=69.0.3497.100)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.12.0', revision: '7c6e0b3', time: '2018-05-08T14:04:26.12Z'
+System info: host: 'KAD-I-032', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:59366}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 69.0.3497.100, webStorageEnabled: true}
+Session ID: f636bf290c54c69727df80fdabfa9b66<img data-featherlight='D:\gopi\git\matrixSmoketest\footprints/Screenshot/1540215034832.png' width='10%' src='D:\gopi\git\matrixSmoketest\footprints/Screenshot/1540215034832.png' data-src='D:\gopi\git\matrixSmoketest\footprints/Screenshot/1540215034832.png'></td>
 				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:50 PM</td>
-					<td class='step-details'>Typing text '2nd street, raja nagar' into text field 'ctl00_ContentPlaceHolder1_txtAddressLandLordAddress'.</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:51 PM</td>
-					<td class='step-details'>Typing text 'tamil nadu' into text field 'ctl00_ContentPlaceHolder1_ddlLandLordState_Input'.</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:51 PM</td>
-					<td class='step-details'>Clicking element '//*[@id='ctl00_ContentPlaceHolder1_ddlLandLordState_DropDown']/div/ul//li[text()='Tamil Nadu']'</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:55 PM</td>
-					<td class='step-details'>Typing text 'chennai' into text field 'ctl00_ContentPlaceHolder1_ddlLandLordCity_Input'.</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:55 PM</td>
-					<td class='step-details'>Clicking element '//*[@id='ctl00_ContentPlaceHolder1_ddlLandLordCity_DropDown']/div/ul//li[text()='Chennai']'</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:58 PM</td>
-					<td class='step-details'>Typing text '600003' into text field 'ctl00_ContentPlaceHolder1_txtLandLordPincode'.</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:59 PM</td>
-					<td class='step-details'>Typing text 'new railway station' into text field 'ctl00_ContentPlaceHolder1_txtAddressLandMark'.</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:59 PM</td>
-					<td class='step-details'>Typing text '7856340987' into text field 'ctl00_ContentPlaceHolder1_txtAddressLandLordContactNo'.</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:59 PM</td>
-					<td class='step-details'>Typing text 'current address comments' into text field 'ctl00_ContentPlaceHolder1_txtAddressComments'.</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>6:06:59 PM</td>
-					<td class='step-details'>dataEntry completed</td>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>7:00:34 PM</td>
+					<td class='step-details'>HDFC000583</td>
 				</tr>
 			</tbody>
 		</table>
@@ -446,13 +410,14 @@
                             <div class='author-heading'>
                                 <span class='author-name'>Gopinath</span>
                                 <span class='author-status right'>
-                                        <span class='label pass'>2</span>
+                                        <span class='label pass'>1</span>
+                                        <span class='label fail'>1</span>
 						        </span>
                             </div>
                             <div class='author-content hide'>
                                 <div class='author-status-counts'>
-                                    <span class='label green accent-4 white-text'>Passed: 2</span>
-                                    
+                                    <span class='label green accent-4 white-text'>Passed: 1</span>
+                                    <span class='label red lighten-1 white-text'>Failed: 1</span>
                                     
                                 </div>
 
@@ -467,14 +432,14 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Oct 19, 2018 06:06:12 PM</td>
+                                                <td>Oct 22, 2018 06:59:59 PM</td>
                                                 <td class='linked' test-id='1'>Login</td>
                                                 <td><span class='test-status pass'>pass</span></td>
                                             </tr>
                                             <tr>
-                                                <td>Oct 19, 2018 06:06:20 PM</td>
+                                                <td>Oct 22, 2018 07:00:08 PM</td>
                                                 <td class='linked' test-id='2'>dataEntry</td>
-                                                <td><span class='test-status pass'>pass</span></td>
+                                                <td><span class='test-status fail'>fail</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -507,25 +472,25 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>34</div>
+					<div class='panel-lead'>25</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Oct 19, 2018 06:06:08 PM</div>
+					<div class='panel-lead'>Oct 22, 2018 06:59:55 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Oct 19, 2018 06:06:59 PM</div>
+			 		<div class='panel-lead'>Oct 22, 2018 07:00:34 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 0m 51s+751ms</div>
+					<div class='panel-lead'>0h 0m 39s+550ms</div>
 				</div>
 			</div>
 		</div>
@@ -538,22 +503,22 @@
 
 		<script>
 			var statusGroup = {
-				passParent: 2,
-				failParent: 0,
+				passParent: 1,
+				failParent: 1,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				exceptionsParent: 0,
+				exceptionsParent: 1,
 				
-				passChild: 34,
-				failChild: 0,
+				passChild: 23,
+				failChild: 1,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
-				infoChild: 0,
-				exceptionsChild: 0,
+				infoChild: 1,
+				exceptionsChild: 1,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,

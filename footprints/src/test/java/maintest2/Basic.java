@@ -94,17 +94,20 @@ public class Basic {
 
 	@Test(priority=4, enabled=true)
 	public void dataEntry() throws Exception{
-		refno="HDFC000582";
+		refno="HDFC000583";
 		pages.DataEntry().datanentry();
 		pages.Utill().click_element("//*[text()='"+refno+"']");
 		pages.Utill().wait_until_loader_is_invisible(100);
-		HashMap<String, String> casedetails =pages.DbConnection().getLastCase(ProjectName);
-		System.out.println(casedetails);
-		assertEquals(casedetails.get("firstname"), pages.CaseInformation().FirstName());
-		assertEquals(casedetails.get("lastname"), pages.CaseInformation().LastName());
-		
-		
-		pages.DeAddress().CurrentAddress();
+//		HashMap<String, String> casedetails =pages.DbConnection().getLastCase(ProjectName);
+//		System.out.println(casedetails);
+//		assertEquals(casedetails.get("firstname"), pages.CaseInformation().FirstName());
+//		assertEquals(casedetails.get("lastname"), pages.CaseInformation().LastName());
+//		pages.DeAddress().CurrentAddress();
+//		pages.DeAddress().sameascurrent("Permanent","Current Address");
+//		pages.DeEducation().educationcheck();
+//		pages.DeEducation().twelveth();
+//		pages.DeEducation().UGone();
+		pages.DeEmployment().currentEmployment();
 
 	}
 

@@ -1,5 +1,7 @@
 package maintest;
 
+import static org.junit.Assert.assertEquals;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -124,7 +126,15 @@ public class FullFlow extends Design{
 	public void dataEntry() throws Exception{
 		pages.DataEntry().datanentry();
 		pages.Utill().click_element("//*[text()='"+refno+"']");
-		
+		pages.Utill().wait_until_loader_is_invisible(100);
+		HashMap<String, String> casedetails =pages.DbConnection().getLastCase(ProjectName);
+		System.out.println(casedetails);
+		assertEquals(casedetails.get("firstname"), pages.CaseInformation().FirstName());
+		assertEquals(casedetails.get("lastname"), pages.CaseInformation().LastName());
+		pages.DeAddress().CurrentAddress();
+		pages.DeAddress().sameascurrent("Permanent","Current Address");
+		pages.DeEducation().twelveth();
+		pages.DeEducation().UGone();
 		
 	}
 	/**

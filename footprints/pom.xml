@@ -47,7 +47,7 @@
 				<configuration>
 					<suiteXmlFiles>
 						TestNG suite XML files
-						<suiteXmlFile>smokeTest.xml</suiteXmlFile>
+<!-- 						<suiteXmlFile>smokeTest.xml</suiteXmlFile> -->
 						<suiteXmlFile>testng.xml</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>

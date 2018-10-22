@@ -1,8 +1,10 @@
 package dataEntry;
 
 import java.util.List;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -43,8 +45,9 @@ public class Education extends DataEntryPage {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill()
-					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlEducationComponent_DropDown']/div/ul/li//text()='"
-							+ component + "'");
+					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlEducationComponent_DropDown']/div/ul//li[text()='"
+							+ component + "']");
+			pages.Utill().wait_until_loader_is_invisible(100);
 		} else {
 			throw new NotFoundException(component);
 		}
@@ -57,7 +60,12 @@ public class Education extends DataEntryPage {
 	 * @return true when component valid
 	 */
 	private boolean verifyddvalue(String component) {
-
+try {
+	Thread.sleep(1500);
+} catch (InterruptedException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
 		List<WebElement> list = driver
 				.findElements(By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_ddlEducationComponent_DropDown']/div/ul/li"));
 		if (list.size() > 0) {
@@ -66,6 +74,7 @@ public class Education extends DataEntryPage {
 				String t = list.get(i).getText();
 				if (t.equals(component)) {
 					re = true;
+					break;
 				} else {
 					re = false;
 				}
@@ -86,7 +95,7 @@ public class Education extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstitute_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstitute_DropDown']/div/ul/li//text()='"+name+"'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstitute_DropDown']/div/ul//li[text()='"+name+"']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 	/**
@@ -106,7 +115,7 @@ public class Education extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstituteState_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstituteState_DropDown']/div/ul/li//text()='Tamil Nadu'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstituteState_DropDown']/div/ul//li[text()='Tamil Nadu']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 
@@ -118,7 +127,7 @@ public class Education extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstituteCity_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstituteCity_DropDown']/div/ul/li//text()='Chennai'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstituteCity_DropDown']/div/ul//li[text()='Chennai']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 	/**
@@ -131,7 +140,7 @@ public class Education extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoard_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoard_DropDown']/div/ul/li//text()='"+name+"'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoard_DropDown']/div/ul//li[text()='"+name+"']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 	/**
@@ -151,7 +160,7 @@ public class Education extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoardState_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoardState_DropDown']/div/ul/li//text()='Tamil Nadu'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoardState_DropDown']/div/ul//li[text()='Tamil Nadu']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 
@@ -163,7 +172,7 @@ public class Education extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoardCity_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoardCity_DropDown']/div/ul/li//text()='Chennai'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoardCity_DropDown']/div/ul//li[text()='Chennai']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 	/**
@@ -188,8 +197,14 @@ public class Education extends DataEntryPage {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input", Program);
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_DropDown']/div/ul/li[1]")));
+		try {
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_DropDown']/div/ul/li//text()='"+Program+"'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_DropDown']/div/ul//li[text()='"+Program+"']");
+		}
+		catch (ElementNotVisibleException e) {
+			// TODO: handle exception
+			System.err.println("visible");
+		}
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 	/**
@@ -225,7 +240,7 @@ public class Education extends DataEntryPage {
 	 * @param CompletionYear year of Course Completion
 	 */
 	public void CourseCompletionYear(String CompletionYear) {
-		pages.Utill().input_text("ctl00$ContentPlaceHolder1$txtEducationCourseCompletionDate$dateInput", CompletionYear);
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtEducationCourseCompletionDate_dateInput",CompletionYear);
 	}
 	/**
 	 * Takes gap reason as input
@@ -277,4 +292,58 @@ public class Education extends DataEntryPage {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 	}
 	
+	/**
+	 * click submit button on education data entry
+	 * @throws Exception WebDriverException
+	 */
+	public void submit() throws Exception{
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEducationSaveSubmit_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().confirmAlert();
+	}
+	/**
+	 * performs click action on save button
+	 */
+	public void save() throws Exception {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEducationSave_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().confirmAlert();
+	}
+
+	public void twelveth() throws Exception {
+		this.educationcheck();
+		Properties pro = pages.Utill().dedata("education");
+		this.Component("12th");
+		this.InstituteName(pro.getProperty("InstituteName"));
+		this.InstituteAddressLine1(pro.getProperty("InstituteAddressLine1"));
+		this.BoardAddressLine1(pro.getProperty("BoardAddressLine1"));
+		this.NameOfCourse(pro.getProperty("NameOfCourse"));
+		this.MajorSubject(pro.getProperty("MajorSubject"));
+		this.TypeOfProgram(pro.getProperty("TypeOfProgram"));
+		this.CandidateNameinCertificate(pro.getProperty("CandidateNameinCertificate"));
+		this.Enrollment(pro.getProperty("Enrollment"));
+		this.Percentage(pro.getProperty("CGPA"));
+		this.CourseCommencementYear(pro.getProperty("CourseCommencementYear"));
+		this.CourseCompletionYear(pro.getProperty("CourseCompletionYear"));
+		this.Comments(pro.getProperty("Comments"));
+		this.save();
+	}
+	public void UGone() throws Exception {
+		this.educationcheck();
+		Properties pro = pages.Utill().dedata("education");
+		this.Component("UG1");
+		this.InstituteName(pro.getProperty("UG1InstituteName"));
+		this.InstituteAddressLine1(pro.getProperty("UG1InstituteAddressLine1"));
+		this.BoardAddressLine1(pro.getProperty("UG1BoardAddressLine1"));
+		this.NameOfCourse(pro.getProperty("UG1NameOfCourse"));
+		this.MajorSubject(pro.getProperty("UG1MajorSubject"));
+		this.TypeOfProgram(pro.getProperty("UG1TypeOfProgram"));
+		this.CandidateNameinCertificate(pro.getProperty("UG1CandidateNameinCertificate"));
+		this.Enrollment(pro.getProperty("UG1Enrollment"));
+		this.Percentage(pro.getProperty("UG1CGPA"));
+		this.CourseCommencementYear(pro.getProperty("UG1CourseCommencementYear"));
+		this.CourseCompletionYear(pro.getProperty("UG1CourseCompletionYear"));
+		this.Comments(pro.getProperty("UG1Comments"));
+		this.save();
+	}
 }

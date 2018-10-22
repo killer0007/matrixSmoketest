@@ -44,8 +44,8 @@ public class Criminal extends DataEntryPage {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCriminalComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill()
-					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlCriminalComponent_DropDown']/div/ul/li//text()='"
-							+ component + "'");
+					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlCriminalComponent_DropDown']/div/ul//li[text()='"
+							+ component + "']");
 		} else {
 			throw new NotFoundException(component);
 		}
@@ -115,7 +115,7 @@ public class Criminal extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalState_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalState_DropDown']/div/ul/li//text()='Tamil Nadu'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalState_DropDown']/div/ul//li[text()='Tamil Nadu']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 
@@ -127,7 +127,7 @@ public class Criminal extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlAddressState_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalCity_DropDown']/div/ul/li//text()='Chennai'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalCity_DropDown']/div/ul//li[text()='Chennai']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 

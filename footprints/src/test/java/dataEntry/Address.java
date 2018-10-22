@@ -110,7 +110,7 @@ public class Address extends DataEntryPage {
 	 * 
 	 * @param component sub component name
 	 */
-	public void Component(String component) {
+	public void Component(String component) throws Exception{
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill()
@@ -128,14 +128,16 @@ public class Address extends DataEntryPage {
 	 * @param component sub component name
 	 * @return true when component valid
 	 */
-	private boolean verifyddvalue(String component) {
-
+	private boolean verifyddvalue(String component) throws Exception {
+		Thread.sleep(2000);
 		List<WebElement> list = driver
 				.findElements(By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_ddlComponent_DropDown']/div/ul/li"));
+//		System.out.println("lenght is :"+list.size());
 		if (list.size() > 0) {
 			boolean re = false;
 			for (int i = 0; i < list.size(); i++) {
 				String t = list.get(i).getText();
+//				System.out.println("success : "+t+"  -  "+i);
 				if (t.equals(component)) {
 					re = true;
 					break;
@@ -156,13 +158,22 @@ public class Address extends DataEntryPage {
 	 * @param i 1 for SAME check 0 for OTHERS check
 	 * @throws InvalidActivityException invalid data 0 and 1 only acceptable
 	 */
-	public void CopyComponentDatafrom(byte i) throws InvalidActivityException {
+	public void CopyComponentDatafrom(int i, String component) throws Exception {
+		
 		if (i == 1) {
 			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtCopySame_1");
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlSameAs_Input");
+		Thread.sleep(1000);
+		pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlSameAs_DropDown']/div/ul//li[text()='"+component+"']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 		else if (i == 0) {
 			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtCopySame_0");
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCopy_Input");
+		Thread.sleep(1000);
+		pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlCopy_DropDown']/div/ul//li[text()='"+component+"']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 }
 		else
@@ -367,12 +378,28 @@ public class Address extends DataEntryPage {
 	public void Notapplicablecomm(String comments) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 	}
+	/**
+	 * click submit button on address data entry
+	 * @throws Exception WebDriverException
+	 */
 	public void submit() throws Exception{
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressSubmit_input");
 		pages.Utill().wait_until_loader_is_invisible(100);
-		pages.Utill().SwitchDefault();
+//		pages.Utill().SwitchDefault();
 		pages.Utill().confirmAlert();
 	}
+	/**
+	 * performs click action on save button
+	 */
+	public void save() throws Exception {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressAdd_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().confirmAlert();
+	}
+	/**
+	 * Takes input from address.properties file and pass it to address data entry
+	 * @throws Exception WebDriverException
+	 */
 	public void CurrentAddress() throws Exception {
 		Properties pro=pages.Utill().dedata("address");
 		this.addresscheck();
@@ -390,10 +417,24 @@ public class Address extends DataEntryPage {
 		this.LandLordState();
 		this.LandLordCity();
 		this.LandLordPincode(pro.getProperty("LandLordPincode"));
-		this.LandMark(pro.getProperty("LandLordLandmark"));
+		this.LandLordLandMark(pro.getProperty("LandLordLandmark"));
 		this.ContactNo(pro.getProperty("LandLordContactNo"));
 		this.comments(pro.getProperty("Comments"));
 //		this.submit();
+		this.save();
 		
+	}
+	/**
+	 * Takes component and source component as input and set this same as address
+	 * @param component sub component name
+	 * @param sourcecomponent source component name 
+	 * @throws Exception WebDriverException
+	 */
+	public void sameascurrent(String component, String sourcecomponent) throws Exception {
+		this.addresscheck();
+		this.Component(component);
+		this.CopyComponentDatafrom(1, sourcecomponent);
+		this.comments(pages.Utill().dedata("address").getProperty("permanentcomments"));
+		this.save();
 	}
 }

@@ -1,6 +1,8 @@
 package dataEntry;
 
 import java.util.List;
+import java.util.Properties;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebElement;
@@ -123,8 +125,9 @@ public class Employment extends DataEntryPage {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill().click_element(
-					"//div[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul/li//text()='"
-							+ component + "'");
+					"//div[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul//li[text()='"
+							+ component + "']");
+			pages.Utill().wait_until_loader_is_invisible(100);
 		} else {
 			throw new NotFoundException(component);
 		}
@@ -137,7 +140,12 @@ public class Employment extends DataEntryPage {
 	 * @return true when component valid
 	 */
 	private boolean verifyddvalue(String component) {
-
+try {
+	Thread.sleep(1500);
+} catch (InterruptedException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
 		List<WebElement> list = driver.findElements(
 				By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul/li"));
 		if (list.size() > 0) {
@@ -146,6 +154,7 @@ public class Employment extends DataEntryPage {
 				String t = list.get(i).getText();
 				if (t.equals(component)) {
 					re = true;
+					break;
 				} else {
 					re = false;
 				}
@@ -167,7 +176,7 @@ public class Employment extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentCompany_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentCompany_DropDown']/div/ul/li//text()='" + name + "'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentCompany_DropDown']/div/ul//li[text()='" + name + "']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 
@@ -188,7 +197,7 @@ public class Employment extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployementState_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlEmployementState_DropDown']/div/ul/li//text()='Tamil Nadu'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlEmployementState_DropDown']/div/ul//li[text()='Tamil Nadu']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 
@@ -200,7 +209,7 @@ public class Employment extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployementCity_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlEmployementCity_DropDown']/div/ul/li//text()='Chennai'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlEmployementCity_DropDown']/div/ul//li[text()='Chennai']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 
@@ -246,11 +255,10 @@ public class Employment extends DataEntryPage {
 	 * @param date date of join
 	 */
 	public void EmpFromDate(String date) {
-		pages.Utill().input_text("ctl00$ContentPlaceHolder1$txtFromDate$dateInput", date);
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtFromDate_dateInput", date);
 	}
 
 	/**
-	 * Takes to date as input
 	 * 
 	 * @param date date of releaving
 	 */
@@ -282,10 +290,12 @@ public class Employment extends DataEntryPage {
 	 */
 	public void Currency(String currency) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCurrencyType_Input", currency);
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+		WebDriverWait wait =new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCurrencyType_DropDown']/div/ul/li[1]")));
+		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCurrencyType_DropDown']/div/ul//li[text()='" + currency + "']"))));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlCurrencyType_DropDown']/div/ul/li//text()='" + currency + "'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlCurrencyType_DropDown']/div/ul//li[text()='" + currency + "']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 
@@ -299,8 +309,8 @@ public class Employment extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_DropDown']/div/ul/li[1]")));
 		pages.Utill()
-				.click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_DropDown']/div/ul/li//text()='"
-						+ period + "'");
+				.click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_DropDown']/div/ul//li[text()='"
+						+ period + "']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 
@@ -314,7 +324,7 @@ public class Employment extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentType_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentType_DropDown']/div/ul/li//text()='" + type + "'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentType_DropDown']/div/ul//li[text()='" + type + "']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 
@@ -346,7 +356,7 @@ public class Employment extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship1_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship1_DropDown']/div/ul/li//text()='" + type + "'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship1_DropDown']/div/ul//li[text()='" + type + "']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 
@@ -432,7 +442,7 @@ public class Employment extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship2_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship2_DropDown']/div/ul/li//text()='" + type + "'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship2_DropDown']/div/ul//li[text()='" + type + "']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 
@@ -592,4 +602,40 @@ public class Employment extends DataEntryPage {
 	public void CepComments(String comments) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtEmploymentCEPRemarks", comments);
 	}
+
+	/**
+	 * click submit button on employment data entry
+	 * @throws Exception WebDriverException
+	 */
+	public void submit() throws Exception{
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEmploymentSubmit_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().confirmAlert();
+	}
+	/**
+	 * performs click action on save button
+	 */
+	public void save() throws Exception {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEmploymentSave_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().confirmAlert();
+	}
+public void currentEmployment() throws Exception{
+	Properties pro = pages.Utill().dedata("employment");
+	this.employementcheck();
+	this.Component("Current/Latest Employment");
+	this.CompanyName(pro.getProperty("cEmployerName"));
+	this.NameasperEmployersRecord(pro.getProperty("cEmployerNameasperEmployers"));
+	this.EmployeeID(pro.getProperty("cEmploymentEmployeeID"));
+	this.EmpDesignation(pro.getProperty("cEmploymentDesignation"));
+	this.EmpDepartment(pro.getProperty("cEmploymentDepartment"));
+	this.EmpFromDate(pro.getProperty("cEmploymentFromDate"));
+	this.EmpToDate(pro.getProperty("cEmploymentToDate"));
+	this.LastCTC(pro.getProperty("cEmploymentLastCTC"));
+//	this.Currency(pro.getProperty("cEmploymentCurrency"));
+//	this.Period(pro.getProperty("cEmploymentPeriod"));
+//	this.TypeOfEmployment(pro.getProperty("cEmploymentTypeOfEmployment"));
+	
+}
+
 }
