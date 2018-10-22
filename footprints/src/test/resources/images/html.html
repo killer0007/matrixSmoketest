@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+   
+    <script>
+function show() {
+  var n=document.getElementById('name')
+  alert(n.length)
+  if(n.length==Number(0) || n='undefined'){
+    alert("enter the value")
+  }
+  else {
+  var s=n.value
+  
+  document.getElementById('result').value=s  
+  }
+  
+}
+</script>
+  </head>
+
+  <body>
+    <h1>Hello Plunker!</h1>
+    <input type='text' id ='name'/>
+    <input type='text' id ='result'/>
+    <button id='btn' onclick=show() >ok</button>
+  </body>
+
+</html>
