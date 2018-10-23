@@ -250,6 +250,37 @@ public class Reference extends DataEntryPage {
 	public void CepComments(String comments) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtRefReportYTR", comments);
 	}
+	/**
+	 * select tamil nadu as state
+	 */
+	public void RefState() {
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlRefererState_Input", "tamil nadu");
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlRefererState_DropDown']/div/ul/li[1]")));
+		pages.Utill().click_element(
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlRefererState_DropDown']/div/ul//li[text()='Tamil Nadu']");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
+
+	/**
+	 * select chennai as city
+	 */
+	public void RefCity() {
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlRefererCity_Input", "chennai");
+		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlRefererCity_DropDown']/div/ul/li[1]")));
+		pages.Utill().click_element(
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlRefererCity_DropDown']/div/ul//li[text()='Chennai']");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
+	/**
+	 * Takes pincode as input and pass it to pincode field
+	 * 
+	 * @param pincode pincode of address
+	 */
+	public void RefPincode(String pincode) {
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtRefererPincode", pincode);
+	}
 	public void referenceone() throws Exception {
 		Properties pro = pages.Utill().dedata("reference");
 		this.referencecheck();
@@ -259,6 +290,8 @@ public class Reference extends DataEntryPage {
 		this.RefContactNo(pro.getProperty(""));
 		this.RefEmailId(pro.getProperty(""));
 		this.RefAddressLine1(pro.getProperty(""));
-//		this.r
+		this.RefState();
+		this.RefCity();
+//		this.pin
 	}
 }
