@@ -25,7 +25,8 @@ public class Court extends DataEntryPage{
 	 */
 	public void courtcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[8]/a/span/span/span");
+//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[8]/a/span/span/span");
+		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Court']");
 		pages.Utill().SwitchFramebyIndex(7);
 	}
 	/**

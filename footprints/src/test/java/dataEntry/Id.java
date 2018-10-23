@@ -24,7 +24,8 @@ public class Id extends DataEntryPage {
 	 */
 	public void idcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[9]/a/span/span/span");
+//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[9]/a/span/span/span");
+		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='ID']");
 		pages.Utill().SwitchFramebyIndex(9);
 	}
 	/**

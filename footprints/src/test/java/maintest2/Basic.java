@@ -94,7 +94,7 @@ public class Basic {
 
 	@Test(priority=4, enabled=true)
 	public void dataEntry() throws Exception{
-		refno="HDFC000583";
+		refno="HDFC000584";
 		pages.DataEntry().datanentry();
 		pages.Utill().click_element("//*[text()='"+refno+"']");
 		pages.Utill().wait_until_loader_is_invisible(100);
@@ -107,7 +107,8 @@ public class Basic {
 //		pages.DeEducation().educationcheck();
 //		pages.DeEducation().twelveth();
 //		pages.DeEducation().UGone();
-		pages.DeEmployment().currentEmployment();
+//		pages.DeEmployment().currentEmployment();
+//		pages.DeEmployment().perviousoneEmployment();
 
 	}
 

@@ -24,7 +24,8 @@ public class Credit extends DataEntryPage{
 	 */
 	public void creditcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[7]/a/span/span/span");
+//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[7]/a/span/span/span");
+		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Credit']");
 		pages.Utill().SwitchFramebyIndex(6);
 	}
 /**

@@ -23,9 +23,10 @@ public class BaseClass {
 			System.setProperty("webdriver.chrome.driver", chrome_path);
 			ChromeOptions chromoption = new ChromeOptions();
 			chromoption.setHeadless(true);
-			driver = new ChromeDriver(chromoption);
-			Dimension d = new Dimension(1382, 744);
-			driver.manage().window().setSize(d);
+//			driver = new ChromeDriver(chromoption);
+			driver=new ChromeDriver();
+//			Dimension d = new Dimension(1382, 744);
+//			driver.manage().window().setSize(d);
 			driver.manage().window().maximize();
 		}
 		return driver;

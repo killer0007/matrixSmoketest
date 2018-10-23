@@ -135,7 +135,8 @@ public class FullFlow extends Design{
 		pages.DeAddress().sameascurrent("Permanent","Current Address");
 		pages.DeEducation().twelveth();
 		pages.DeEducation().UGone();
-		
+		pages.DeEmployment().currentEmployment();
+		pages.DeEmployment().perviousoneEmployment();
 	}
 	/**
 	 * Takes test Result as input and Log the results into reports

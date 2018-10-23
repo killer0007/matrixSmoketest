@@ -2,9 +2,7 @@ package dataEntry;
 
 import java.util.List;
 import java.util.Properties;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,7 +23,8 @@ public class Education extends DataEntryPage {
 	 */
 	public void educationcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[2]/a/span/span/span");
+//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[2]/a/span/span/span");
+		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Education']");
 		pages.Utill().SwitchFramebyIndex(1);
 	}
 	/**
@@ -42,6 +41,8 @@ public class Education extends DataEntryPage {
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
+		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
+		if(!value.trim().equals(component)) {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill()
@@ -50,6 +51,7 @@ public class Education extends DataEntryPage {
 			pages.Utill().wait_until_loader_is_invisible(100);
 		} else {
 			throw new NotFoundException(component);
+		}
 		}
 	}
 
@@ -194,18 +196,16 @@ try {
 	 * @param Program name of Program
 	 */
 	public void TypeOfProgram(String Program) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input", Program);
+		System.out.println(Program);
+		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input");
+		if(!value.equals(Program.trim())) {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_DropDown']/div/ul/li[1]")));
-		try {
 		pages.Utill().click_element(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_DropDown']/div/ul//li[text()='"+Program+"']");
+//		pages.Utill().wait_until_loader_is_invisible(100);
 		}
-		catch (ElementNotVisibleException e) {
-			// TODO: handle exception
-			System.err.println("visible");
-		}
-		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 	/**
 	 * Takes Candidate name as input
@@ -326,7 +326,8 @@ try {
 		this.CourseCommencementYear(pro.getProperty("CourseCommencementYear"));
 		this.CourseCompletionYear(pro.getProperty("CourseCompletionYear"));
 		this.Comments(pro.getProperty("Comments"));
-		this.save();
+//		this.save();
+		this.submit();
 	}
 	public void UGone() throws Exception {
 		this.educationcheck();
@@ -344,6 +345,7 @@ try {
 		this.CourseCommencementYear(pro.getProperty("UG1CourseCommencementYear"));
 		this.CourseCompletionYear(pro.getProperty("UG1CourseCompletionYear"));
 		this.Comments(pro.getProperty("UG1Comments"));
-		this.save();
+//		this.save();
+		this.submit();
 	}
 }

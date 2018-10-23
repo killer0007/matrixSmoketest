@@ -28,7 +28,8 @@ public class Address extends DataEntryPage {
 	 */
 	public void addresscheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[1]/a/span/span/span");
+//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[1]/a/span/span/span");
+		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Address']");
 		pages.Utill().SwitchFramebyIndex(0);
 	}
 
@@ -111,6 +112,8 @@ public class Address extends DataEntryPage {
 	 * @param component sub component name
 	 */
 	public void Component(String component) throws Exception{
+		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlComponent_Input");
+		if(!value.trim().equals(component)) {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill()
@@ -120,6 +123,7 @@ public class Address extends DataEntryPage {
 			throw new NotFoundException(component);
 		}
 		pages.Utill().wait_until_loader_is_invisible(100);
+		}
 	}
 
 	/**
@@ -420,8 +424,8 @@ public class Address extends DataEntryPage {
 		this.LandLordLandMark(pro.getProperty("LandLordLandmark"));
 		this.ContactNo(pro.getProperty("LandLordContactNo"));
 		this.comments(pro.getProperty("Comments"));
-//		this.submit();
-		this.save();
+		this.submit();
+//		this.save();
 		
 	}
 	/**
@@ -435,6 +439,7 @@ public class Address extends DataEntryPage {
 		this.Component(component);
 		this.CopyComponentDatafrom(1, sourcecomponent);
 		this.comments(pages.Utill().dedata("address").getProperty("permanentcomments"));
-		this.save();
+//		this.save();
+		this.submit();
 	}
 }

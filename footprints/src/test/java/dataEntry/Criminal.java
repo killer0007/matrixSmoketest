@@ -24,7 +24,8 @@ public class Criminal extends DataEntryPage {
 	 */
 	public void criminalcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[6]/a/span/span/span");
+//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[6]/a/span/span/span");
+		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Criminal']");
 		pages.Utill().SwitchFramebyIndex(5);
 	}
 	/**

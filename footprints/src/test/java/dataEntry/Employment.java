@@ -2,7 +2,6 @@ package dataEntry;
 
 import java.util.List;
 import java.util.Properties;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebElement;
@@ -26,7 +25,8 @@ public class Employment extends DataEntryPage {
 	 */
 	public void employementcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[3]/a/span/span/span");
+//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[3]/a/span/span/span");
+		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Employment']");
 		pages.Utill().SwitchFramebyIndex(2);
 	}
 
@@ -122,15 +122,19 @@ public class Employment extends DataEntryPage {
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
-		if (verifyddvalue(component)) {
-			pages.Utill().click_element(
-					"//div[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul//li[text()='"
-							+ component + "']");
-			pages.Utill().wait_until_loader_is_invisible(100);
-		} else {
-			throw new NotFoundException(component);
+		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
+		if(!value.trim().equals(component)) {
+			pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
+			if (verifyddvalue(component)) {
+				pages.Utill().click_element(
+						"//div[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul//li[text()='"
+								+ component + "']");
+				pages.Utill().wait_until_loader_is_invisible(100);
+			} else {
+				throw new NotFoundException(component);
+			}
 		}
+		
 	}
 
 	/**
@@ -143,7 +147,6 @@ public class Employment extends DataEntryPage {
 try {
 	Thread.sleep(1500);
 } catch (InterruptedException e) {
-	// TODO Auto-generated catch block
 	e.printStackTrace();
 }
 		List<WebElement> list = driver.findElements(
@@ -289,14 +292,16 @@ try {
 	 * @param currency type of currency
 	 */
 	public void Currency(String currency) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCurrencyType_Input", currency);
+		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCurrencyType_Input");
+		if(!value.equals(currency)) {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCurrencyType_Input");
 		WebDriverWait wait =new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCurrencyType_DropDown']/div/ul/li[1]")));
-		wait.until(ExpectedConditions.invisibilityOf(driver.findElement(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCurrencyType_DropDown']/div/ul//li[text()='" + currency + "']"))));
-		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlCurrencyType_DropDown']/div/ul//li[text()='" + currency + "']");
+			pages.Utill().click_element(
+					"//*[@id='ctl00_ContentPlaceHolder1_ddlCurrencyType_DropDown']/div/ul//li[text()='" + currency + "']");
 		pages.Utill().wait_until_loader_is_invisible(100);
+		}
 	}
 
 	/**
@@ -305,13 +310,14 @@ try {
 	 * @param period limit
 	 */
 	public void Period(String period) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_Input", period);
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_DropDown']/div/ul/li[1]")));
-		pages.Utill()
-				.click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_DropDown']/div/ul//li[text()='"
-						+ period + "']");
+		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_Input");
+		if(!value.equals(period)) {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_Input");
+			pages.Utill()
+			.click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_DropDown']/div/ul//li[text()='"
+					+ period + "']");
 		pages.Utill().wait_until_loader_is_invisible(100);
+		}
 	}
 
 	/**
@@ -320,12 +326,15 @@ try {
 	 * @param type of employment
 	 */
 	public void TypeOfEmployment(String type) {
+		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmploymentType_Input");
+		if(!value.equals(type)) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlEmploymentType_Input", type);
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentType_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentType_DropDown']/div/ul//li[text()='" + type + "']");
+			pages.Utill().click_element(
+					"//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentType_DropDown']/div/ul//li[text()='" + type + "']");
 		pages.Utill().wait_until_loader_is_invisible(100);
+		}
 	}
 
 	/**
@@ -352,12 +361,15 @@ try {
 	 * @param type relation ship with employee
 	 */
 	public void Relationship(String type) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlRelationship1_Input", type);
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlRelationship1_Input");
+		if(!value.equals(type)) {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlRelationship1_Input");
+		new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship1_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship1_DropDown']/div/ul//li[text()='" + type + "']");
 		pages.Utill().wait_until_loader_is_invisible(100);
+		}
 	}
 
 	/**
@@ -392,7 +404,7 @@ try {
 	 * 
 	 * @param email email id of contact person 1
 	 */
-	public void ontactPerson1EmailID1(String email) {
+	public void ContactPerson1EmailID1(String email) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson1EmailID1", email);
 	}
 
@@ -438,12 +450,15 @@ try {
 	 * @param type relation ship with employee
 	 */
 	public void Relationship2(String type) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlRelationship2_Input", type);
+		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlRelationship2_Input");
+		if(!value.equals(type)) {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlRelationship2_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship2_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship2_DropDown']/div/ul//li[text()='" + type + "']");
 		pages.Utill().wait_until_loader_is_invisible(100);
+		}
 	}
 
 	/**
@@ -478,7 +493,7 @@ try {
 	 * 
 	 * @param email email id of contact person 1
 	 */
-	public void ontactPerson2EmailID1(String email) {
+	public void ContactPerson2EmailID1(String email) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson2EmailID1", email);
 	}
 
@@ -632,9 +647,50 @@ public void currentEmployment() throws Exception{
 	this.EmpFromDate(pro.getProperty("cEmploymentFromDate"));
 	this.EmpToDate(pro.getProperty("cEmploymentToDate"));
 	this.LastCTC(pro.getProperty("cEmploymentLastCTC"));
-//	this.Currency(pro.getProperty("cEmploymentCurrency"));
-//	this.Period(pro.getProperty("cEmploymentPeriod"));
-//	this.TypeOfEmployment(pro.getProperty("cEmploymentTypeOfEmployment"));
+	this.Currency(pro.getProperty("cEmploymentCurrency"));
+	this.Period(pro.getProperty("cEmploymentPeriod"));
+	this.TypeOfEmployment(pro.getProperty("cEmploymentTypeOfEmployment"));
+	this.ContactPerson1Name(pro.getProperty("cPersonName"));
+	this.ContactPerson1Designation(pro.getProperty("cPersonDesignation"));
+	this.Relationship(pro.getProperty("cPersonRelationship"));
+	this.ContactPerson1ContactNo1(pro.getProperty("cPersonContactNo1"));
+	this.ContactPerson1ContactNo2(pro.getProperty("cPersonContactNo2"));
+	this.ContactPerson1EmailID1(pro.getProperty("cPersonEmailID1"));
+	this.ContactPerson1EmailID2(pro.getProperty("cPersonEmailID2"));
+	this.ContactPerson1FaxNo1(pro.getProperty("cPersonFaxNo"));
+	this.ReasonForLeaving(pro.getProperty("cReasonForLeaving"));
+	this.Comments(pro.getProperty("cComments"));
+//	this.save();
+	this.submit();
+	
+}
+public void perviousoneEmployment() throws Exception{
+	Properties pro = pages.Utill().dedata("employment");
+	this.employementcheck();
+	this.Component("Previous Employment");
+	this.CompanyName(pro.getProperty("pEmployerName"));
+	this.NameasperEmployersRecord(pro.getProperty("pEmployerNameasperEmployers"));
+	this.EmployeeID(pro.getProperty("pEmploymentEmployeeID"));
+	this.EmpDesignation(pro.getProperty("pEmploymentDesignation"));
+	this.EmpDepartment(pro.getProperty("pEmploymentDepartment"));
+	this.EmpFromDate(pro.getProperty("pEmploymentFromDate"));
+	this.EmpToDate(pro.getProperty("pEmploymentToDate"));
+	this.LastCTC(pro.getProperty("pEmploymentLastCTC"));
+	this.Currency(pro.getProperty("pEmploymentCurrency"));
+	this.Period(pro.getProperty("pEmploymentPeriod"));
+	this.TypeOfEmployment(pro.getProperty("pEmploymentTypeOfEmployment"));
+	this.ContactPerson1Name(pro.getProperty("pPersonName"));
+	this.ContactPerson1Designation(pro.getProperty("pPersonDesignation"));
+	this.Relationship(pro.getProperty("pPersonRelationship"));
+	this.ContactPerson1ContactNo1(pro.getProperty("pPersonContactNo1"));
+	this.ContactPerson1ContactNo2(pro.getProperty("pPersonContactNo2"));
+	this.ContactPerson1EmailID1(pro.getProperty("pPersonEmailID1"));
+	this.ContactPerson1EmailID2(pro.getProperty("pPersonEmailID2"));
+	this.ContactPerson1FaxNo1(pro.getProperty("pPersonFaxNo"));
+	this.ReasonForLeaving(pro.getProperty("pReasonForLeaving"));
+	this.Comments(pro.getProperty("pComments"));
+//	this.save();
+	this.submit();
 	
 }
 

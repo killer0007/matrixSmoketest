@@ -19,7 +19,8 @@ public class Database extends DataEntryPage {
 	 */
 	public void databasecheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[5]/a/span/span/span");
+//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[5]/a/span/span/span");
+		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='DataBase']");
 		pages.Utill().SwitchFramebyIndex(4);
 	}
 	/**

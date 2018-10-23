@@ -1,6 +1,8 @@
 package dataEntry;
 
 import java.util.List;
+import java.util.Properties;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebElement;
@@ -23,7 +25,8 @@ public class Reference extends DataEntryPage {
 	 */
 	public void referencecheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[4]/a/span/span/span");
+//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[4]/a/span/span/span");
+		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Reference']");
 		pages.Utill().SwitchFramebyIndex(3);
 	}
 	/**
@@ -81,12 +84,15 @@ public class Reference extends DataEntryPage {
 	 * @param type of reference
 	 */
 	public void ReferenceType(String type) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlReferType_Input", type);
+		String value=pages.Utill().get_text("ctl00_ContentPlaceHolder1_ddlReferType_Input");
+		if(!value.equals(type)) {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlReferType_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlReferType_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlReferType_DropDown']/div/ul/li//text()='"+type+"'");
 		pages.Utill().wait_until_loader_is_invisible(100);
+		}
 	}
 	/**
 	 * Takes name as input and pass it to Referrer name field
@@ -243,5 +249,16 @@ public class Reference extends DataEntryPage {
 	 */
 	public void CepComments(String comments) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtRefReportYTR", comments);
+	}
+	public void referenceone() throws Exception {
+		Properties pro = pages.Utill().dedata("reference");
+		this.referencecheck();
+		this.ReferenceType(pro.getProperty(""));
+		this.RefName(pro.getProperty(""));
+		this.RefDesignation(pro.getProperty(""));
+		this.RefContactNo(pro.getProperty(""));
+		this.RefEmailId(pro.getProperty(""));
+		this.RefAddressLine1(pro.getProperty(""));
+//		this.r
 	}
 }

@@ -42,6 +42,7 @@ public class BaseClass {
 //			driver = new ChromeDriver();
 			driver = new ChromeDriver(chromoption);
 			Dimension d = new Dimension(1382, 744);
+			driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 			driver.manage().window().setSize(d);
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
