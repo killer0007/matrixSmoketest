@@ -6,7 +6,7 @@
 <!-- 		<class name="testCases.CandidatecaseSP" /> -->
 <!-- 			<class name="testCases.Matrixflow" /> -->
 <!-- 			<class name="testCases.UrlNavigation" /> -->
-			<class name="testCases.MainTest2" />
+			<class name="testCases.Registration" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

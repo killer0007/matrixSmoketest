@@ -7,7 +7,12 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
@@ -69,21 +74,76 @@ public class Registration {
 	public void Login() throws Exception {
 		pages.loginpage().Login(getvalue("uname"));
 
-		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
+//		Assert.assertEquals(pages.Utill().find("ctl00_lblUsername").getText(), "Demotl");
 
 	}
 
-	@Test(priority = 2, enabled = true, dependsOnMethods = "Login")
-	public void caseregistration() throws Exception {
+//	@Test(priority = 2, enabled = false, dependsOnMethods = "Login")
+//	public void caseregistration() throws Exception {
+//		candid = pages.Utill().candidateid();
+//		candidateName = pages.Utill().candidateName();
+////		for (int i = 0; i < 70; i++) {
+//			pages.CaseRegistration().caseRegistration(getvalue("clientname"), candid, candidateName);
+////			Assert.assertEquals(re, "Registered Successfully.");
+////		}
+
+//	}
+	@Test(priority = 3, enabled = true, dependsOnMethods = "Login")
+	public void newcase() throws Exception {
 		candid = pages.Utill().candidateid();
 		candidateName = pages.Utill().candidateName();
-		for (int i = 0; i < 3; i++) {
-			String re = pages.CaseRegistration().caseRegistration(getvalue("clientname"), candid, candidateName);
-			Assert.assertEquals(re, "Registered Successfully.");
+		driver.get("http://192.168.2.16/MatexTesting/Matrix/CRTCaseRegistration.aspx");
+		String xp = "ctl00_ContentPlaceHolder1_CaseRegistrationUC";
+
+		pages.Utill().input_text(xp + "_txtClientName", getvalue("clientname"));
+		pages.Wait().waitForVisibilityOfData(xp + "_ace1_completionListElem", 5);
+		pages.Utill().click_element(".//*[text()='" + getvalue("clientname") + "']");
+		Select sel = new Select(pages.Utill().find(xp + "_TypeofMedium"));
+		sel.selectByIndex(1);
+		for (int i = 0; i < 1000; i++) {
+
+			System.err.println(i);
+			try {
+				sel = new Select(pages.Utill().find(xp + "_ddlSubGroup"));
+				sel.selectByIndex(1);
+			} catch (Exception e) {
+
+			}
+
+			pages.Utill().input_text(xp + "_Case_CandidateName", candidateName);
+			pages.Utill().input_text(xp + "_Case_CandidateId", Integer.toString(candid));
+			pages.Utill().input_text(xp + "_Case_EmployeeId", "43232");
+			pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_CaseRegistrationUC_TypeofMedium", "SoftCopy");
+			try {
+			pages.Utill().click_element(
+					"ctl00_ContentPlaceHolder1_CaseRegistrationUC_grdSubcheck_ctl01_chkAllSubcheckSelect");
+			}
+			 catch (WebDriverException e) {
+					// TODO: handle exception
+					pages.Utill().click_element("ok");
+					pages.Utill().click_element("ctl00_ContentPlaceHolder1_CaseRegistrationUC_grdSubcheck_ctl01_chkAllSubcheckSelect");
+				}
+		try {
+			pages.Utill().click_element("ctl00_ContentPlaceHolder1_CaseRegistrationUC_btnRegisterCase");
+			pages.Utill().wait_until_loader_is_invisible();
+		} catch (WebDriverException e) {
+			// TODO: handle exception
+			pages.Utill().click_element("ok");
+			pages.Utill().click_element("ctl00_ContentPlaceHolder1_CaseRegistrationUC_btnRegisterCase");
 		}
-		
-		
+			WebDriverWait w = new WebDriverWait(driver, 100);
+			w.until(ExpectedConditions.presenceOfElementLocated(By.id("ok")));
+			String result = pages.Utill().get_text("//*[@class='m_content']");
+			try {
+				pages.Utill().click_element("ok");
+			} catch (WebDriverException e) {
+				// TODO: handle exception
+				pages.Utill().click_element("ok");
+			}
+		}
+
 	}
+
 	@AfterMethod
 	public void tearDown(ITestResult result, Method method) throws IOException {
 
@@ -103,15 +163,15 @@ public class Registration {
 	@AfterTest
 	public void teardown() {
 		// pages.loginpage().Logout();
-		driver.close();
+//		driver.close();
 	}
 
 	@AfterSuite
 	public void afterSuite() {
-		SendAttachmentInEmail email = new SendAttachmentInEmail();
-		email.sendPDFReportByGMail("gopinath.n@kadambatechnologies.com", "KILLER@007", "gopinathvijay7@gmail.com", "PDF Report", "");
+//		SendAttachmentInEmail email = new SendAttachmentInEmail();
+//		email.sendPDFReportByGMail("gopinath.n@kadambatechnologies.com", "KILLER@007", "gopinathvijay7@gmail.com", "PDF Report", "");
 		extent.flush();
-		driver.quit();
+//		driver.quit();
 		// SendAttachmentInEmail email = new SendAttachmentInEmail();
 		// email.sendhtmlemail();
 

@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,7 +23,7 @@ public class Caseregistration {
 		pages = new Pages(driver, logger);
 	}
 
-	public String caseRegistration(String clientName, int cadID, String cadName) throws Exception {
+	public void caseRegistration(String clientName, int cadID, String cadName) throws Exception {
 
 		String xp = "ctl00_ContentPlaceHolder1_CaseRegistrationUC";
 		pages.Utill().click_element("//*[text()='Dashboard']");
@@ -32,6 +33,9 @@ public class Caseregistration {
 		pages.Utill().click_element(".//*[text()='" + clientName + "']");
 		Select sel = new Select(pages.Utill().find(xp + "_TypeofMedium"));
 		sel.selectByIndex(1);
+		for (int i = 0; i < 1000; i++) {
+			
+		System.err.println(i);
 		try {
 			sel = new Select(pages.Utill().find(xp + "_ddlSubGroup"));
 			sel.selectByIndex(1);
@@ -44,12 +48,25 @@ public class Caseregistration {
 		pages.Utill().input_text(xp + "_Case_CandidateId", Integer.toString(cadID));
 		pages.Utill().input_text(xp + "_Case_EmployeeId", "43232");
 		pages.Utill().select_by_label("ctl00_ContentPlaceHolder1_CaseRegistrationUC_TypeofMedium", "SoftCopy");
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_CaseRegistrationUC_btnRegister");
+		try {
+			pages.Utill().click_element("ctl00_ContentPlaceHolder1_CaseRegistrationUC_btnRegister");
+		} catch (WebDriverException e) {
+			// TODO: handle exception
+			pages.Utill().click_element("ok");
+			pages.Utill().click_element("ctl00_ContentPlaceHolder1_CaseRegistrationUC_btnRegister");
+		}
+//		pages.Utill().click_element("ctl00_ContentPlaceHolder1_CaseRegistrationUC_btnRegister");
 		WebDriverWait w = new WebDriverWait(driver, 10);
 		w.until(ExpectedConditions.presenceOfElementLocated(By.id("ok")));
 		String result = pages.Utill().get_text("//*[@class='m_content']");
-		pages.Utill().click_element("ok");
-		return result;
+		try {
+			pages.Utill().click_element("ok");
+		} catch (WebDriverException e) {
+			// TODO: handle exception
+			pages.Utill().click_element("ok");
+		}
+		}
+//		return result;
 	}
 
 	public void navigateTo(String header, String menu) throws Exception {

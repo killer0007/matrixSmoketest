@@ -49,8 +49,8 @@
 				<configuration>
 					<suiteXmlFiles>
 						<!-- TestNG suite XML files -->
-						<!-- <suiteXmlFile>smokeTest.xml</suiteXmlFile> -->
-						<suiteXmlFile>${testSuite}.xml</suiteXmlFile>
+						<suiteXmlFile>smokeTest.xml</suiteXmlFile>
+<!-- 						<suiteXmlFile>${testSuite}.xml</suiteXmlFile> -->
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
