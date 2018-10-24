@@ -1,6 +1,7 @@
 package dataEntry;
 
 import java.util.List;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
@@ -106,13 +107,17 @@ public class Credit extends DataEntryPage{
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
+		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlcreditComponent_Input");
+		if(!value.trim().equals(component)) {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlcreditComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill()
 					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlcreditComponent_DropDown']/div/ul//li[text()='"
 							+ component + "']");
+			pages.Utill().wait_until_loader_is_invisible(100);
 		} else {
 			throw new NotFoundException(component);
+		}
 		}
 	}
 
@@ -148,10 +153,12 @@ public class Credit extends DataEntryPage{
 	 */
 	public void subIDComponent(String component) {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCreditId_Input");
-		
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
+				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCreditId_DropDown']/div/ul/li[1]")));
 			pages.Utill()
-					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlCreditId_DropDown']/div/ul/li//text()='"
-							+ component + "'");
+					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlCreditId_DropDown']/div/ul//li[text()='"
+							+ component + "']");
+			pages.Utill().wait_until_loader_is_invisible(100);
 	}
 	/**
 	 * Takes name as input Pass it to name On Id
@@ -260,5 +267,46 @@ public void Notapplicable() {
  */
 public void Notapplicablecomm(String comments) {
 	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+}
+/**
+ * click submit button on credit data entry
+ * @throws Exception WebDriverException
+ */
+public void submit() throws Exception{
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCreditSaveSubmit_input");
+	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().SwitchDefault();	
+	pages.Utill().confirmAlert();
+}
+/**
+ * performs click action on save button
+ */
+public void save() throws Exception {
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCreditSave_input");
+	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().confirmAlert();
+}
+/**
+ * Takes no as input and pass it to Enrollment number
+ * @param no Enrollment number
+ */
+public void EnrollmentNo(String no) {
+	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCreditEnrollId1", no);
+}
+public void Creditone() throws Exception{
+	Properties pro = pages.Utill().dedata("credit");
+	this.creditcheck();
+	this.subIDComponent(pro.getProperty("ID"));
+	this.NameonID(pro.getProperty("NameonID"));
+	this.IDNumber(pro.getProperty("IDNumber"));
+	this.IssueDate(pro.getProperty("IssueDate"));
+	this.ExpiryDate(pro.getProperty("ExpiryDate"));
+	this.State();
+	this.City();
+		if (pro.getProperty("ID").equals("Aadhaar Card")) {
+			this.EnrollmentNo(pro.getProperty("EnrollmentNo"));
+		}
+	this.comments(pro.getProperty("comments"));
+	this.submit();
 }
 }

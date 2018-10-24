@@ -1,28 +1,14 @@
 package maintest2;
 
-import static org.junit.Assert.assertTrue;
-import static org.testng.Assert.assertEquals;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import org.testng.asserts.SoftAssert;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -94,7 +80,7 @@ public class Basic {
 
 	@Test(priority=4, enabled=true)
 	public void dataEntry() throws Exception{
-		refno="HDFC000584";
+		refno="HDFC000601";
 		pages.DataEntry().datanentry();
 		pages.Utill().click_element("//*[text()='"+refno+"']");
 		pages.Utill().wait_until_loader_is_invisible(100);
@@ -109,7 +95,15 @@ public class Basic {
 //		pages.DeEducation().UGone();
 //		pages.DeEmployment().currentEmployment();
 //		pages.DeEmployment().perviousoneEmployment();
-
+//	pages.DeReference().referenceone();
+//	pages.DeDatabase().database();
+//	pages.DeCriminal().CurrentAddress("Address -Current Address");
+//	pages.DeCriminal().PermanentAddress("Address -Permanent");
+//	pages.DeCredit().Creditone();
+//		pages.DeCourt().CurrentAddress("Address - Current Address");
+//		pages.DeCourt().PermanentAddress("Address - Permanent");
+		pages.DeId().Passport();
+		pages.DeId().AadharCard();
 	}
 
 

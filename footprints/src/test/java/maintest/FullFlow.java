@@ -137,6 +137,16 @@ public class FullFlow extends Design{
 		pages.DeEducation().UGone();
 		pages.DeEmployment().currentEmployment();
 		pages.DeEmployment().perviousoneEmployment();
+		pages.DeReference().referenceone();
+		pages.DeDatabase().database();
+		pages.DeCriminal().CurrentAddress("Address -Current Address");
+		pages.DeCriminal().PermanentAddress("Address -Permanent");
+		pages.DeCredit().Creditone();
+		pages.DeCourt().CurrentAddress("Address - Current Address");
+		pages.DeCourt().PermanentAddress("Address - Permanent");
+		pages.DeId().Passport();
+		pages.DeId().AadharCard();
+		
 	}
 	/**
 	 * Takes test Result as input and Log the results into reports
@@ -161,8 +171,8 @@ public class FullFlow extends Design{
 	public void teardown() throws Exception {
 		System.out.println("----------------------------------------------");
 		System.out.println(refno);
-		if (driver != null)
-			driver.quit();
+//		if (driver != null)
+//			driver.quit();
 	}
 
 	/**

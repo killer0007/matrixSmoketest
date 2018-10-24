@@ -1,5 +1,7 @@
 package dataEntry;
 
+import java.util.Properties;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -38,10 +40,13 @@ public class Database extends DataEntryPage {
 	 */
 	public void subIDComponent(String component) {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIDComponent_Input");
-		
+//		pages.Utill().sleep(1000);
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
+				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIDComponent_DropDown']/div/ul/li[1]")));
 			pages.Utill()
 					.click_element("//div[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIDComponent_DropDown']/div/ul//li[text()='"
 							+ component + "']");
+			pages.Utill().wait_until_loader_is_invisible(100);
 	}
 	
 	/**
@@ -83,7 +88,7 @@ public void Country() {
 	new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCountry_DropDown']/div/ul/li[1]")));
 	pages.Utill().click_element(
-			"//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCountry_DropDown']/div/ul/li//text()='India'");
+			"//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCountry_DropDown']/div/ul//li[text()='India']");
 	pages.Utill().wait_until_loader_is_invisible(100);
 }
 }
@@ -95,7 +100,7 @@ public void State() {
 	new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_DropDown']/div/ul/li[1]")));
 	pages.Utill().click_element(
-			"//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_DropDown']/div/ul/li//text()='Tamil Nadu'");
+			"//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_DropDown']/div/ul//li[text()='Tamil Nadu']");
 	pages.Utill().wait_until_loader_is_invisible(100);
 }
 
@@ -109,6 +114,13 @@ public void City() {
 	pages.Utill().click_element(
 			"//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCity_DropDown']/div/ul//li[text()='Chennai']");
 	pages.Utill().wait_until_loader_is_invisible(100);
+}
+/**
+ * Takes no as input and pass it to Enrollment number
+ * @param no Enrollment number
+ */
+public void EnrollmentNo(String no) {
+	pages.Utill().input_text("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseEnrollid", no);
 }
 /**
  * comments
@@ -151,5 +163,41 @@ public void Notapplicable() {
  */
 public void Notapplicablecomm(String comments) {
 	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+}
+/**
+ * click submit button on database data entry
+ * @throws Exception WebDriverException
+ */
+public void submit() throws Exception{
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnDataBaseSaveSubmit_input");
+	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().SwitchDefault();
+	pages.Utill().confirmAlert();
+}
+/**
+ * performs click action on save button
+ */
+public void save() throws Exception {
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnDataBaseSave_input");
+	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().confirmAlert();
+}
+/**
+ * Takes input from database.properties file and pass it to database data entry
+ * @throws Exception webdriver exception
+ */
+public void database() throws Exception {
+	Properties pro = pages.Utill().dedata("database");
+	this.databasecheck();
+	this.subIDComponent(pro.getProperty("IdType"));
+	this.NameonID(pro.getProperty("NameonID"));
+	this.IDNumber(pro.getProperty("IDNumber"));
+	this.IssueDate(pro.getProperty("IssueDate"));
+	this.ExpiryDate(pro.getProperty("ExpiryDate"));
+	this.State();
+	this.City();
+	this.EnrollmentNo(pro.getProperty("EnrollmentNo"));
+	this.comments(pro.getProperty("comments"));
+	this.submit();
 }
 }

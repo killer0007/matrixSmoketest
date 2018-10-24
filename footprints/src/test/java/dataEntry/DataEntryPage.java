@@ -102,5 +102,11 @@ abstract class DataEntryPage {
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 public abstract void document();
-	
+public abstract void submit() throws Exception;	
+public abstract void save() throws Exception;
+public abstract void ReportInsuff();
+public abstract void Insuffcomm(String comments);
+public abstract void Notapplicable();
+public abstract void Notapplicablecomm(String comments);
 }
+

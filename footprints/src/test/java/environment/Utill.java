@@ -430,6 +430,7 @@ public String getvalue(String id) {
  * Switching default frame
  */
 	public void SwitchDefault() {
+		
 		driver.switchTo().defaultContent();
 		logger.log(Status.PASS, "switching to default frame");
 	}
@@ -820,8 +821,8 @@ public String getvalue(String id) {
  * @throws Exception when alert not found
  */
 	public String confirmAlert() throws Exception {
-		By loc = By.xpath("//*[text()='OK']");
-		WebDriverWait wait = new WebDriverWait(driver, 130);
+		By loc = By.xpath("//span[text()='OK']");
+		WebDriverWait wait = new WebDriverWait(driver, 50);
 		wait.until(ExpectedConditions.presenceOfElementLocated(loc));
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(loc)));
 		String msg = this.get_text("class:rwDialogText");
@@ -1055,5 +1056,17 @@ public String getvalue(String id) {
 		FileInputStream fis = new FileInputStream(new File("./src\\test\\resources\\testdata\\verification\\"+filename+".properties"));
 		pro.load(fis);
 		return pro;
+	}
+	/**
+	 * Takes time in miilli second as input and pass hte thread
+	 * @param time time in milli seconds
+	 */
+	public void sleep(long time) {
+		try {
+			Thread.sleep(time);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

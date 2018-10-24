@@ -389,7 +389,7 @@ public class Address extends DataEntryPage {
 	public void submit() throws Exception{
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressSubmit_input");
 		pages.Utill().wait_until_loader_is_invisible(100);
-//		pages.Utill().SwitchDefault();
+		pages.Utill().SwitchDefault();
 		pages.Utill().confirmAlert();
 	}
 	/**

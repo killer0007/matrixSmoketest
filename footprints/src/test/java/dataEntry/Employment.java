@@ -296,7 +296,7 @@ try {
 		if(!value.equals(currency)) {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCurrencyType_Input");
 		WebDriverWait wait =new WebDriverWait(driver, 10);
-		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+		wait.until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCurrencyType_DropDown']/div/ul/li[1]")));
 			pages.Utill().click_element(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlCurrencyType_DropDown']/div/ul//li[text()='" + currency + "']");
@@ -312,7 +312,9 @@ try {
 	public void Period(String period) {
 		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_Input");
 		if(!value.equals(period)) {
+			
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_Input");
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_DropDown']/div/ul/li[1]")));
 			pages.Utill()
 			.click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_DropDown']/div/ul//li[text()='"
 					+ period + "']");
@@ -329,7 +331,7 @@ try {
 		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmploymentType_Input");
 		if(!value.equals(type)) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlEmploymentType_Input", type);
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentType_DropDown']/div/ul/li[1]")));
 			pages.Utill().click_element(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentType_DropDown']/div/ul//li[text()='" + type + "']");
@@ -623,8 +625,13 @@ try {
 	 * @throws Exception WebDriverException
 	 */
 	public void submit() throws Exception{
+		int count=driver.findElements(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul/li")).size();
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEmploymentSubmit_input");
 		pages.Utill().wait_until_loader_is_invisible(100);
+		//System.out.println("-----------count--------"+count);
+		if(count==2) {
+			pages.Utill().SwitchDefault();	
+		}
 		pages.Utill().confirmAlert();
 	}
 	/**
@@ -635,6 +642,10 @@ try {
 		pages.Utill().wait_until_loader_is_invisible(100);
 		pages.Utill().confirmAlert();
 	}
+	/**
+	 * Takes input from employment.properties file and pass it to employment data entry of current employment
+	 * @throws Exception webdriver exception
+	 */
 public void currentEmployment() throws Exception{
 	Properties pro = pages.Utill().dedata("employment");
 	this.employementcheck();
@@ -664,6 +675,10 @@ public void currentEmployment() throws Exception{
 	this.submit();
 	
 }
+/**
+ * Takes input from employment.properties file and pass it to employment data entry of previous employment
+ * @throws Exception webdriver exception
+ */
 public void perviousoneEmployment() throws Exception{
 	Properties pro = pages.Utill().dedata("employment");
 	this.employementcheck();

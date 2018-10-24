@@ -1,6 +1,7 @@
 package dataEntry;
 
 import java.util.List;
+import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
@@ -42,13 +43,17 @@ public class Id extends DataEntryPage {
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
+		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlIdComponent_Input");
+		if(!value.trim().equals(component)) {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlIdComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill()
 					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlIdComponent_DropDown']/div/ul/li//text()='"
 							+ component + "'");
+			pages.Utill().wait_until_loader_is_invisible(100);
 		} else {
 			throw new NotFoundException(component);
+		}
 		}
 	}
 
@@ -68,6 +73,7 @@ public class Id extends DataEntryPage {
 				String t = list.get(i).getText();
 				if (t.equals(component)) {
 					re = true;
+					break;
 				} else {
 					re = false;
 				}
@@ -203,5 +209,61 @@ public void Notapplicable() {
  */
 public void Notapplicablecomm(String comments) {
 	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+}
+/**
+ * click submit button on id data entry
+ * @throws Exception WebDriverException
+ */
+public void submit() throws Exception{
+	int count=driver.findElements(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlIdComponent_DropDown']/div/ul/li")).size();
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnIdSaveSubmit_input");
+	pages.Utill().wait_until_loader_is_invisible(100);
+	if(count==2) {
+		pages.Utill().SwitchDefault();	
+	}
+	pages.Utill().confirmAlert();
+}
+/**
+ * performs click action on save button
+ */
+public void save() throws Exception {
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnIdSave_input");
+	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().confirmAlert();
+}
+/**
+ * Takes input from id.properties file and pass it to id check data entry of passport
+ * @throws Exception webdriver exception
+ */
+public void Passport()throws Exception {
+	Properties pro = pages.Utill().dedata("id");
+	this.idcheck();
+	this.Component("Passport");
+	this.NameonID(pro.getProperty("PNameonID"));
+	this.IDNumber(pro.getProperty("PIDNumber"));
+	this.IssueDate(pro.getProperty("PIssueDate"));
+	this.ExpiryDate(pro.getProperty("PExpiryDate"));
+	this.State();
+	this.City();
+	this.comments(pro.getProperty("Pcomments"));
+	this.submit();
+}
+/**
+ * Takes input from id.properties file and pass it to id check data entry of Aadhar card
+ * @throws Exception webdriver exception
+ */
+public void AadharCard()throws Exception {
+	Properties pro = pages.Utill().dedata("id");
+	this.idcheck();
+	this.Component("Aadhaar Card");
+//	this.NameonID(pro.getProperty("NameonID"));
+//	this.IDNumber(pro.getProperty("IDNumber"));
+//	this.IssueDate(pro.getProperty("IssueDate"));
+//	this.ExpiryDate(pro.getProperty("ExpiryDate"));
+//	this.State();
+//	this.City();
+//	this.EnrollmentNo(pro.getProperty("EnrollmentNo"));
+//	this.comments(pro.getProperty("comments"));
+	this.submit();
 }
 }

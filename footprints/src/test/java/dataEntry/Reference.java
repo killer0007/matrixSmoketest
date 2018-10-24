@@ -84,13 +84,13 @@ public class Reference extends DataEntryPage {
 	 * @param type of reference
 	 */
 	public void ReferenceType(String type) {
-		String value=pages.Utill().get_text("ctl00_ContentPlaceHolder1_ddlReferType_Input");
+		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlReferType_Input");
 		if(!value.equals(type)) {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlReferType_Input");
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlReferType_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlReferType_DropDown']/div/ul/li//text()='"+type+"'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlReferType_DropDown']/div/ul//li[text()='"+type+"']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 		}
 	}
@@ -139,7 +139,7 @@ public class Reference extends DataEntryPage {
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlOrgName_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlOrgName_DropDown']/div/ul/li//text()='"+name+"'");
+				"//*[@id='ctl00_ContentPlaceHolder1_ddlOrgName_DropDown']/div/ul//li[text()='"+name+"']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 	/**
@@ -273,6 +273,15 @@ public class Reference extends DataEntryPage {
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlRefererCity_DropDown']/div/ul//li[text()='Chennai']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
+	
+	/**
+	 * Takes pincode as input and pass it to pincode field
+	 * 
+	 * @param pincode pincode of address
+	 */
+	public void OrgPincode(String pincode) {
+		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtOrgPincode", pincode);
+	}
 	/**
 	 * Takes pincode as input and pass it to pincode field
 	 * 
@@ -281,17 +290,45 @@ public class Reference extends DataEntryPage {
 	public void RefPincode(String pincode) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtRefererPincode", pincode);
 	}
+	/**
+	 * click submit button on reference data entry
+	 * @throws Exception WebDriverException
+	 */
+	public void submit() throws Exception{
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnRefSaveSubmit_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().SwitchDefault();
+		pages.Utill().confirmAlert();
+	}
+	/**
+	 * performs click action on save button
+	 */
+	public void save() throws Exception {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnRefSave_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().confirmAlert();
+	}
+/**
+ * Takes input from reference.properties file and pass it to education data entry of reference one
+ * @throws Exception webdriver
+ */
 	public void referenceone() throws Exception {
 		Properties pro = pages.Utill().dedata("reference");
 		this.referencecheck();
-		this.ReferenceType(pro.getProperty(""));
-		this.RefName(pro.getProperty(""));
-		this.RefDesignation(pro.getProperty(""));
-		this.RefContactNo(pro.getProperty(""));
-		this.RefEmailId(pro.getProperty(""));
-		this.RefAddressLine1(pro.getProperty(""));
+		this.ReferenceType(pro.getProperty("ReferenceType"));
+		this.RefName(pro.getProperty("ReferrerName"));
+		this.RefDesignation(pro.getProperty("ReferrerDesignation"));
+		this.RefContactNo(pro.getProperty("ReferrerContactNo"));
+		this.RefEmailId(pro.getProperty("ReferrerEmailId"));
+		this.RefAddressLine1(pro.getProperty("ReferrerAddressLine1"));
 		this.RefState();
 		this.RefCity();
-//		this.pin
+		this.RefPincode(pro.getProperty("ReferrerPincode"));
+		this.OrganizationName(pro.getProperty("Organizationname"));
+		this.OrganizationAddressLine1(pro.getProperty("OrganizationAddressLine1"));
+		this.OrgPincode(pro.getProperty("OrganizationPinCode"));
+		this.LandMark(pro.getProperty("OrganizationLandmark"));
+		this.Comments(pro.getProperty("Comments"));
+		this.submit();
 	}
 }

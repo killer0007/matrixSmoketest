@@ -1,6 +1,7 @@
 package dataEntry;
 
 import java.util.List;
+import java.util.Properties;
 
 import javax.activity.InvalidActivityException;
 
@@ -42,13 +43,17 @@ public class Court extends DataEntryPage{
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
+		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCourtComponent_Input");
+		if(!value.trim().equals(component)) {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCourtComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill()
 					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlCourtComponent_DropDown']/div/ul//li[text()='"
 							+ component + "']");
+			pages.Utill().wait_until_loader_is_invisible(100);
 		} else {
 			throw new NotFoundException(component);
+		}
 		}
 	}
 
@@ -59,7 +64,8 @@ public class Court extends DataEntryPage{
 	 * @return true when component valid
 	 */
 	private boolean verifyddvalue(String component) {
-
+//		pages.Utill().sleep(1000);
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtComponent_DropDown']/div/ul/li[1]")));
 		List<WebElement> list = driver
 				.findElements(By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_ddlCourtComponent_DropDown']/div/ul/li"));
 		if (list.size() > 0) {
@@ -68,6 +74,7 @@ public class Court extends DataEntryPage{
 				String t = list.get(i).getText();
 				if (t.equals(component)) {
 					re = true;
+					break;
 				} else {
 					re = false;
 				}
@@ -85,13 +92,21 @@ public class Court extends DataEntryPage{
 	 * @param i 1 for SAME check 0 for OTHERS check
 	 * @throws InvalidActivityException invalid data 0 and 1 only acceptable
 	 */
-	public void CopyComponentDatafrom(byte i) throws InvalidActivityException {
+	public void CopyComponentDatafrom(int i, String component) throws InvalidActivityException {
 		if (i == 1) {
 			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtCourtCopySame_1");
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCourtSameAs_Input");
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(pages.Utill().find("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtSameAs_DropDown']/div/ul/li[1]")));
+		pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtSameAs_DropDown']/div/ul//li[text()='"+component+"']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 		}
 		else if (i == 0) {
 			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtCourtCopySame_0");
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCourtCopy_Input");
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(pages.Utill().find("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtCopy_DropDown']/div/ul/li[1]")));
+		pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtCopy_DropDown']/div/ul//li[text()='"+component+"']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 		}
 		
@@ -180,7 +195,7 @@ public class Court extends DataEntryPage{
 	 * 
 	 * @param comments address comments
 	 */
-	public void comments(String comments) {
+	public void Comments(String comments) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCourtComments", comments);
 	}
 
@@ -216,5 +231,52 @@ public class Court extends DataEntryPage{
 	 */
 	public void Notapplicablecomm(String comments) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+	}
+	/**
+	 * click submit button on reference data entry
+	 * @throws Exception WebDriverException
+	 */
+	public void submit() throws Exception{
+//		int count=driver.findElements(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtComponent_DropDown']/div/ul/li")).size();
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCourtSubmit_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+//		if(count==2) {
+			pages.Utill().SwitchDefault();	
+//		}
+		pages.Utill().confirmAlert();
+	}
+	/**
+	 * performs click action on save button
+	 */
+	public void save() throws Exception {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCourtAdd_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().confirmAlert();
+	}
+	/**
+	 * Takes the input from court.properties file and pass it to current address court
+	 * @param component name which check data to be imported
+	 * @throws Exception webdriver exception
+	 */
+	public void CurrentAddress(String component) throws Exception{
+		Properties pro = pages.Utill().dedata("court");
+		this.courtcheck();
+		this.Component("Current Address Court Check");
+		this.CopyComponentDatafrom(0,component);
+		this.Comments(pro.getProperty("currentcommments"));
+		this.submit();
+	}
+	/**
+	 * Takes the input from court.properties file and pass it to previous address criminal
+	 * @param component name which check data to be imported
+	 * @throws Exception webdriver exception
+	 */
+	public void PermanentAddress(String component) throws Exception {
+		Properties pro = pages.Utill().dedata("court");
+		this.courtcheck();
+		this.Component("Permanent Court Check");
+		this.CopyComponentDatafrom(0,component);
+		this.Comments(pro.getProperty("permanentcomments"));
+		this.submit();
 	}
 }

@@ -196,11 +196,11 @@ try {
 	 * @param Program name of Program
 	 */
 	public void TypeOfProgram(String Program) {
-		System.out.println(Program);
+		//System.out.println(Program);
 		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input");
 		if(!value.equals(Program.trim())) {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input");
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_DropDown']/div/ul/li[1]")));
 		pages.Utill().click_element(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_DropDown']/div/ul//li[text()='"+Program+"']");
@@ -297,8 +297,14 @@ try {
 	 * @throws Exception WebDriverException
 	 */
 	public void submit() throws Exception{
+		int count=driver.findElements(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationComponent_DropDown']/div/ul/li")).size();
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEducationSaveSubmit_input");
 		pages.Utill().wait_until_loader_is_invisible(100);
+		//System.out.println("-----------count--------"+count);
+		if(count==2) {
+			pages.Utill().SwitchDefault();	
+		}
+//		 
 		pages.Utill().confirmAlert();
 	}
 	/**
@@ -309,7 +315,10 @@ try {
 		pages.Utill().wait_until_loader_is_invisible(100);
 		pages.Utill().confirmAlert();
 	}
-
+/**
+ * Takes input from education.properties file and pass it to education data entry of 12th
+ * @throws Exception webdriver exception
+ */
 	public void twelveth() throws Exception {
 		this.educationcheck();
 		Properties pro = pages.Utill().dedata("education");
@@ -329,6 +338,10 @@ try {
 //		this.save();
 		this.submit();
 	}
+	/**
+	 * Takes input from education.properties file and pass it to education data entry of UG1
+	 * @throws Exception webdriver exception
+	 */
 	public void UGone() throws Exception {
 		this.educationcheck();
 		Properties pro = pages.Utill().dedata("education");
