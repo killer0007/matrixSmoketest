@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 public class Education extends DataEntryPage {
 	/**
@@ -315,7 +316,66 @@ try {
 		pages.Utill().wait_until_loader_is_invisible(100);
 		pages.Utill().confirmAlert();
 	}
+	/**
+	 * Performs click action on add document button in document upload screen
+	 */
+	public void AddDocument() {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_btnEducationAddDocument_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
+	
+	/**
+	 * Takes document type as input and checks for given document type available in upload screen
+	 * @param doctype type of document
+	 * @return true when document ype was available
+	 */
+	public boolean isvaliddoctype(String doctype) {
+		boolean re =false;
+	pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_gviewEducationDocument_ctl00__0']/td[2]", 10);
+		String path="//*[@id='ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_gviewEducationDocument_ctl00']/tbody/tr/td[2]";
+		List<WebElement> list =driver.findElements(By.xpath(path));
+		
+		if(list.size()>0) {
+			for (int i = 0; i < list.size(); i++) {
+				String t=list.get(i).getText().trim();
+				logger.log(Status.INFO, t);
+				if(t.equals(doctype)) {
+					re=true;
+					break;
+				}
+			}
+		}
+		else {
+			logger.log(Status.FAIL, "no element found");
+		}
+		return re;
+	}
+	/**
+	 * Takes document type and file as input and uploads the document
+	 * @param doctype type of document
+	 * @param file file name
+	 */
+	public void UploadDocument(String doctype, String file) {
+		if(this.isvaliddoctype(doctype)) {
+		pages.Utill().input_text("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
+		super.WaitforFileUpdate(doctype, file);
+		this.AddDocument();
+		pages.Utill().wait_until_loader_is_invisible(100);
+		}
+		else {
+			throw new NotFoundException(doctype);
+		}
+		
+	}
+	/**
+	 * Perform close action on close button in document upload popup
+	 */
+	public void docclose() {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_btnEducationDocumentCancel_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
 /**
+ * 
  * Takes input from education.properties file and pass it to education data entry of 12th
  * @throws Exception webdriver exception
  */
@@ -332,9 +392,12 @@ try {
 		this.CandidateNameinCertificate(pro.getProperty("CandidateNameinCertificate"));
 		this.Enrollment(pro.getProperty("Enrollment"));
 		this.Percentage(pro.getProperty("CGPA"));
-		this.CourseCommencementYear(pro.getProperty("CourseCommencementYear"));
-		this.CourseCompletionYear(pro.getProperty("CourseCompletionYear"));
+		this.CourseCommencementYear(pages.Utill().FormateDate(pro.getProperty("CourseCommencementYear")));
+		this.CourseCompletionYear(pages.Utill().FormateDate(pro.getProperty("CourseCompletionYear")));
 		this.Comments(pro.getProperty("Comments"));
+		this.document();
+		this.UploadDocument("Mark Sheet", pro.getProperty("twelveth"));
+		this.docclose();
 //		this.save();
 		this.submit();
 	}
@@ -348,7 +411,7 @@ try {
 		this.Component("UG1");
 		this.InstituteName(pro.getProperty("UG1InstituteName"));
 		this.InstituteAddressLine1(pro.getProperty("UG1InstituteAddressLine1"));
-		this.BoardAddressLine1(pro.getProperty("UG1BoardAddressLine1"));
+		//this.BoardAddressLine1(pro.getProperty("UG1BoardAddressLine1"));
 		this.NameOfCourse(pro.getProperty("UG1NameOfCourse"));
 		this.MajorSubject(pro.getProperty("UG1MajorSubject"));
 		this.TypeOfProgram(pro.getProperty("UG1TypeOfProgram"));
@@ -358,6 +421,9 @@ try {
 		this.CourseCommencementYear(pro.getProperty("UG1CourseCommencementYear"));
 		this.CourseCompletionYear(pro.getProperty("UG1CourseCompletionYear"));
 		this.Comments(pro.getProperty("UG1Comments"));
+		this.document();
+		this.UploadDocument("Degree Certificate", pro.getProperty("ugone"));
+		this.docclose();
 //		this.save();
 		this.submit();
 	}

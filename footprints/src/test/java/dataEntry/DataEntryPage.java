@@ -1,6 +1,11 @@
 package dataEntry;
 
+import java.io.File;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
 
@@ -101,6 +106,17 @@ abstract class DataEntryPage {
 				"//*[@id='ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_RadTabStripForHistory']/div//li[2]");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
+	/**
+	 * Takes doctype and file name as input and waits for given document to upload
+	 * @param doctype type of document
+	 * @param filepath file to upload
+	 */
+	public void WaitforFileUpdate(String doctype,String filepath) {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		String file=new File(filepath).getName();
+		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[text()='"+doctype+"']/../td[5]//div/ul/li[1]/span/span"), file));
+	}
+	
 public abstract void document();
 public abstract void submit() throws Exception;	
 public abstract void save() throws Exception;

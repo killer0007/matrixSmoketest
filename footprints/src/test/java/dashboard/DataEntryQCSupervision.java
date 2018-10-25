@@ -1,33 +1,31 @@
 package dashboard;
 
 import org.openqa.selenium.WebDriver;
-
 import com.aventstack.extentreports.ExtentTest;
-
 import environment.BaseClass;
 import environment.Pages;
 
-public class DataEntrySupervision {
+public class DataEntryQCSupervision {
 	WebDriver driver;
 	ExtentTest logger;
 	Pages pages;
 
 	/**
-	 * This is class for Data Entry Supervision Stage
+	 * This is class for Data Entry QC Supervision Stage
 	 * 
 	 * @param logger logger instance
 	 */
-	public DataEntrySupervision(ExtentTest logger) {
+	public DataEntryQCSupervision(ExtentTest logger) {
 		driver = BaseClass.getWebDriver();
 		this.logger = logger;
 		pages = new Pages(logger);
 	}
 
 	/**
-	 * select data entry supervision from stages dropdown
+	 * select data entry supervision QC from stages dropdown
 	 */
-	public void datanentrysupervision() {
-		pages.Utill().select_by_value("ddlAct", "1");
+	public void datanentryqcsupervision() {
+		pages.Utill().select_by_value("ddlAct", "3");
 		pages.Utill().wait_until_loader_is_invisible(50);
 	}
 
@@ -155,17 +153,17 @@ public class DataEntrySupervision {
 	public void assigngetnext(String refno) throws Exception {
 		this.search(refno);
 		if(pages.Utill().getSelectedvalue("//select[@ng-model='Emp.Priority']").equals("Normal")) {
-			pages.Utill().select_by_label("//select[@ng-model='Emp.Priority']", "High");
-			pages.Utill().wait_until_loader_is_invisible(20);
-			pages.Utill().click_element("xpath:html/body/div[3]/div/div/table/tbody/tr[3]/td/button[1]");
-			pages.Utill().wait_until_loader_is_invisible(20);
-			}
+		pages.Utill().select_by_label("//select[@ng-model='Emp.Priority']", "High");
+		pages.Utill().wait_until_loader_is_invisible(20);
+		pages.Utill().click_element("xpath:html/body/div[3]/div/div/table/tbody/tr[3]/td/button[1]");
+		pages.Utill().wait_until_loader_is_invisible(20);
+		}
 		pages.Utill().select_by_label("Reserverfor", "demoempl");
-		pages.DataEntry().datanentry();
+		pages.DataEntryQC().datanentryqc();
 		pages.Utill().click_element("btnGetNext");
 		pages.Utill().wait_until_loader_is_invisible(40);
 		pages.Utill().click_element("imgHome");
 		pages.Utill().wait_until_loader_is_invisible(40);
-		this.datanentrysupervision();
+		this.datanentryqcsupervision();
 	}
 }

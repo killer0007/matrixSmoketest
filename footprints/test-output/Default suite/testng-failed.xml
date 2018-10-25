@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]">
-  <test name="Default test(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="maintest.FullFlow">
+      <class name="maintest2.Basic">
         <methods>
-          <include name="beforetest"/>
-          <include name="beforeSuit"/>
           <include name="setup"/>
-          <include name="afterSuite"/>
-          <include name="Login"/>
-          <include name="dataEntryAssign"/>
-          <include name="caseregistration"/>
-          <include name="dataEntry"/>
           <include name="tearDown"/>
           <include name="teardown"/>
+          <include name="beforeSuit"/>
+          <include name="afterSuite"/>
+          <include name="dataEntry"/>
+          <include name="beforetest"/>
         </methods>
-      </class> <!-- maintest.FullFlow -->
+      </class> <!-- maintest2.Basic -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 public class Employment extends DataEntryPage {
 
@@ -643,6 +644,64 @@ try {
 		pages.Utill().confirmAlert();
 	}
 	/**
+	 * Performs click action on add document button in document upload screen
+	 */
+	public void AddDocument() {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_btnEmploymentAddDocument_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
+	
+	/**
+	 * Takes document type as input and checks for given document type available in upload screen
+	 * @param doctype type of document
+	 * @return true when document ype was available
+	 */
+	public boolean isvaliddoctype(String doctype) {
+		pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_grdviewEmploymentDocument_ctl00__0']/td[2]", 10);
+		boolean re =false;
+		String path="//*[@id='ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_grdviewEmploymentDocument_ctl00']/tbody/tr/td[2]";
+		List<WebElement> list =driver.findElements(By.xpath(path));
+		if(list.size()>0) {
+			for (int i = 0; i < list.size(); i++) {
+				String t=list.get(i).getText().trim();
+				logger.log(Status.INFO, t);
+				if(t.equals(doctype)) {
+					re=true;
+					break;
+				}
+			}
+		}
+		else {
+			logger.log(Status.FAIL, "no element found");
+		}
+		return re;
+	}
+	/**
+	 * Takes document type and file as input and uploads the document
+	 * @param doctype type of document
+	 * @param file file name
+	 */
+	public void UploadDocument(String doctype, String file) {
+		if(this.isvaliddoctype(doctype)) {
+		pages.Utill().input_text("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
+		super.WaitforFileUpdate(doctype, file);
+		this.AddDocument();
+		pages.Utill().wait_until_loader_is_invisible(100);
+		}
+		else {
+			throw new NotFoundException(doctype);
+		}
+		
+	}
+	/**
+	 * Perform close action on close button in document upload popup
+	 */
+	public void docclose() {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_btnEmploymentDocumentClose_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
+
+	/**
 	 * Takes input from employment.properties file and pass it to employment data entry of current employment
 	 * @throws Exception webdriver exception
 	 */
@@ -670,6 +729,9 @@ public void currentEmployment() throws Exception{
 	this.ContactPerson1EmailID2(pro.getProperty("cPersonEmailID2"));
 	this.ContactPerson1FaxNo1(pro.getProperty("cPersonFaxNo"));
 	this.ReasonForLeaving(pro.getProperty("cReasonForLeaving"));
+	this.document();
+	this.UploadDocument("Offer Letter", pro.getProperty("currentemp"));
+	this.docclose();
 	this.Comments(pro.getProperty("cComments"));
 //	this.save();
 	this.submit();
@@ -703,6 +765,9 @@ public void perviousoneEmployment() throws Exception{
 	this.ContactPerson1EmailID2(pro.getProperty("pPersonEmailID2"));
 	this.ContactPerson1FaxNo1(pro.getProperty("pPersonFaxNo"));
 	this.ReasonForLeaving(pro.getProperty("pReasonForLeaving"));
+	this.document();
+	this.UploadDocument("Relieving Letter", pro.getProperty("preemp"));
+	this.docclose();
 	this.Comments(pro.getProperty("pComments"));
 //	this.save();
 	this.submit();

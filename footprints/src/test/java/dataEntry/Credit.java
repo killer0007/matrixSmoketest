@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 public class Credit extends DataEntryPage{
 
@@ -293,6 +294,68 @@ public void save() throws Exception {
 public void EnrollmentNo(String no) {
 	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCreditEnrollId1", no);
 }
+
+/**
+ * Performs click action on add document button in document upload screen
+ */
+public void AddDocument() {
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_btnCreditAddDocument_input");
+	pages.Utill().wait_until_loader_is_invisible(100);
+}
+
+/**
+ * Takes document type as input and checks for given document type available in upload screen
+ * @param doctype type of document
+ * @return true when document ype was available
+ */
+public boolean isvaliddoctype(String doctype) {
+pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_grdviewCreditDocument_ctl00__0']/td[2]", 10);
+	boolean re =false;
+	String path="//*[@id='ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_grdviewCreditDocument_ctl00']/tbody/tr/td[2]";
+	List<WebElement> list =driver.findElements(By.xpath(path));
+	if(list.size()>0) {
+		for (int i = 0; i < list.size(); i++) {
+			String t=list.get(i).getText().trim();
+			logger.log(Status.INFO, t);
+			if(t.equals(doctype)) {
+				re=true;
+				break;
+			}
+		}
+	}
+	else {
+		logger.log(Status.FAIL, "no element found");
+	}
+	return re;
+}
+/**
+ * Takes document type and file as input and uploads the document
+ * @param doctype type of document
+ * @param file file name
+ */
+public void UploadDocument(String doctype, String file) {
+	if(this.isvaliddoctype(doctype)) {
+	pages.Utill().input_text("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
+	super.WaitforFileUpdate(doctype, file);
+	this.AddDocument();
+	pages.Utill().wait_until_loader_is_invisible(100);
+	}
+	else {
+		throw new NotFoundException(doctype);
+	}
+	
+}
+/**
+ * Perform close action on close button in document upload popup
+ */
+public void docclose() {
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_btnCreditDocumentCancel_input");
+	pages.Utill().wait_until_loader_is_invisible(100);
+}
+/**
+ * takes input from credit.properties file and completes the data entry
+ * @throws Exception webDriverException
+ */
 public void Creditone() throws Exception{
 	Properties pro = pages.Utill().dedata("credit");
 	this.creditcheck();
@@ -306,6 +369,9 @@ public void Creditone() throws Exception{
 		if (pro.getProperty("ID").equals("Aadhaar Card")) {
 			this.EnrollmentNo(pro.getProperty("EnrollmentNo"));
 		}
+		this.document();
+		this.UploadDocument("Aadhaar Id - Front", pro.getProperty("Aadhardoc"));
+		this.docclose();
 	this.comments(pro.getProperty("comments"));
 	this.submit();
 }

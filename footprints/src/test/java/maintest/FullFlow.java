@@ -1,7 +1,7 @@
 package maintest;
 
-import static org.junit.Assert.assertEquals;
 
+import static org.testng.Assert.assertEquals;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -19,6 +20,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import dashboard.DataEntrySupervision;
+import dataEntryQC.Address;
 import environment.*;
 
 public class FullFlow extends Design{
@@ -128,7 +130,7 @@ public class FullFlow extends Design{
 		pages.Utill().click_element("//*[text()='"+refno+"']");
 		pages.Utill().wait_until_loader_is_invisible(100);
 		HashMap<String, String> casedetails =pages.DbConnection().getLastCase(ProjectName);
-		System.out.println(casedetails);
+		logger.log(Status.INFO, casedetails.toString());
 		assertEquals(casedetails.get("firstname"), pages.CaseInformation().FirstName());
 		assertEquals(casedetails.get("lastname"), pages.CaseInformation().LastName());
 		pages.DeAddress().CurrentAddress();
@@ -146,8 +148,32 @@ public class FullFlow extends Design{
 		pages.DeCourt().PermanentAddress("Address - Permanent");
 		pages.DeId().Passport();
 		pages.DeId().AadharCard();
+		pages.Utill().wait_until_loader_is_invisible(100);
 		
 	}
+	@Test(priority=5, enabled=true, dependsOnMethods="dataEntry")
+	public void dataEntryQCAssign() throws Exception{
+		pages.DataEntryQCSupervision().datanentryqcsupervision();
+		pages.DataEntryQCSupervision().assigngetnext(refno);
+		
+	}
+	@Test(priority=6, enabled=true, dependsOnMethods="dataEntryQCAssign")
+	public void dataEntryqc() throws Exception{
+		pages.DataEntryQC().datanentryqc();	
+		//pages.DataEntryQC().search(refno);
+		pages.DataEntryQC().selectcase(refno);
+		Address add= new Address(logger);
+		add.addresscheck();
+		HashMap<String , String> actual=add.alldata("Current Address");
+		HashMap<String , String> expected=add.filedata();
+		SoftAssert sf = new SoftAssert();
+		if(actual.equals(expected))
+			sf.assertTrue(true, actual.toString());
+		else 
+			logger.log(Status.FAIL, actual.toString());
+		
+	}
+
 	/**
 	 * Takes test Result as input and Log the results into reports
 	 */
@@ -171,8 +197,8 @@ public class FullFlow extends Design{
 	public void teardown() throws Exception {
 		System.out.println("----------------------------------------------");
 		System.out.println(refno);
-//		if (driver != null)
-//			driver.quit();
+		if (driver != null)
+			driver.quit();
 	}
 
 	/**

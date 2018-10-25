@@ -1,9 +1,13 @@
 package maintest2;
 
 
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +19,8 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+
+import dataEntryQC.Address;
 import environment.BaseClass;
 import environment.Pages;
 import environment.Utill;
@@ -80,30 +86,22 @@ public class Basic {
 
 	@Test(priority=4, enabled=true)
 	public void dataEntry() throws Exception{
-		refno="HDFC000601";
-		pages.DataEntry().datanentry();
-		pages.Utill().click_element("//*[text()='"+refno+"']");
-		pages.Utill().wait_until_loader_is_invisible(100);
-//		HashMap<String, String> casedetails =pages.DbConnection().getLastCase(ProjectName);
-//		System.out.println(casedetails);
-//		assertEquals(casedetails.get("firstname"), pages.CaseInformation().FirstName());
-//		assertEquals(casedetails.get("lastname"), pages.CaseInformation().LastName());
-//		pages.DeAddress().CurrentAddress();
-//		pages.DeAddress().sameascurrent("Permanent","Current Address");
-//		pages.DeEducation().educationcheck();
-//		pages.DeEducation().twelveth();
-//		pages.DeEducation().UGone();
-//		pages.DeEmployment().currentEmployment();
-//		pages.DeEmployment().perviousoneEmployment();
-//	pages.DeReference().referenceone();
-//	pages.DeDatabase().database();
-//	pages.DeCriminal().CurrentAddress("Address -Current Address");
-//	pages.DeCriminal().PermanentAddress("Address -Permanent");
-//	pages.DeCredit().Creditone();
-//		pages.DeCourt().CurrentAddress("Address - Current Address");
-//		pages.DeCourt().PermanentAddress("Address - Permanent");
-		pages.DeId().Passport();
-		pages.DeId().AadharCard();
+		refno="HDFC000616";
+pages.DataEntryQC().datanentryqc();
+pages.DataEntryQC().selectcase(refno);
+Address add= new Address(logger);
+add.addresscheck();
+HashMap<String , String> actual=add.alldata("Current Address");
+HashMap<String , String> expected=add.filedata();
+
+	System.out.println(actual);
+	System.out.println(expected);
+	
+
+
+
+
+		
 	}
 
 

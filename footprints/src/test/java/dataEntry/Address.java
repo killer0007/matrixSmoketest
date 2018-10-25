@@ -1,9 +1,8 @@
 package dataEntry;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Properties;
-
 import javax.activity.InvalidActivityException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
@@ -11,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 public class Address extends DataEntryPage {
 
@@ -51,7 +51,7 @@ public class Address extends DataEntryPage {
 
 		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[1]/span";
-		if (this.isDoctypeValid(doctype)) {
+		if (this.isvaliddoctype(doctype)) {
 			return pages.Utill().get_text(path).trim().replaceAll("[0-9]", "");
 		} else {
 			throw new NotFoundException(doctype);
@@ -63,33 +63,10 @@ public class Address extends DataEntryPage {
 	 */
 	public void docclose() {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnDocumentCancel_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 
-	/**
-	 * Takes Document Type as input checks the given document type available in
-	 * upload popup
-	 * 
-	 * @param doctype Type of Document in upload popup
-	 * @return boolean true means document type valid, false means invalid document
-	 *         type
-	 */
-	public boolean isDoctypeValid(String doctype) {
-		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00']/tbody/tr/td[2]";
-		List<WebElement> list = driver.findElements(By.xpath(path));
-		if (list.size() > 0) {
-			List<String> doc = new ArrayList<String>();
-			for (int i = 0; i < list.size(); i++) {
-				doc.add(list.get(i).getText().trim());
-			}
-			if (doc.contains(doctype)) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-	}
+	
 
 	/**
 	 * Takes Document type as input Perform download action on document
@@ -99,7 +76,7 @@ public class Address extends DataEntryPage {
 	public void downloaddoc(String doctype) {
 		String path = "//*[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[4]/input";
-		if (this.isDoctypeValid(doctype)) {
+		if (this.isvaliddoctype(doctype)) {
 			pages.Utill().click_element(path);
 		} else {
 			throw new NotFoundException(doctype);
@@ -110,6 +87,7 @@ public class Address extends DataEntryPage {
 	 * Takes component name as input and select from dropdwon
 	 * 
 	 * @param component sub component name
+	 * @throws Exception webdriverException
 	 */
 	public void Component(String component) throws Exception{
 		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlComponent_Input");
@@ -160,7 +138,7 @@ public class Address extends DataEntryPage {
 	 * Takes int as input and perform click action
 	 * 
 	 * @param i 1 for SAME check 0 for OTHERS check
-	 * @throws InvalidActivityException invalid data 0 and 1 only acceptable
+	 * @throws Exception invalid data 0 and 1 only acceptable
 	 */
 	public void CopyComponentDatafrom(int i, String component) throws Exception {
 		
@@ -401,6 +379,56 @@ public class Address extends DataEntryPage {
 		pages.Utill().confirmAlert();
 	}
 	/**
+	 * Performs click action on add document button in document upload screen
+	 */
+	public void AddDocument() {
+		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnAddDocument_input");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
+	
+	/**
+	 * Takes document type as input and checks for given document type available in upload screen
+	 * @param doctype type of document
+	 * @return true when document ype was available
+	 */
+	public boolean isvaliddoctype(String doctype) {
+		boolean re =false;
+		pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00__0']/td[2]", 10);
+		String path="//table[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00']/tbody/tr/td[2]";
+		List<WebElement> list =driver.findElements(By.xpath(path));
+		if(list.size()>0) {
+			for (int i = 0; i < list.size(); i++) {
+				String t=list.get(i).getText().trim();
+				logger.log(Status.INFO, t);
+				if(t.equals(doctype)) {
+					re=true;
+					break;
+				}
+			}
+		}
+		else {
+			logger.log(Status.FAIL, "no element found");
+		}
+		return re;
+	}
+	/**
+	 * Takes document type and file as input and uploads the document
+	 * @param doctype type of document
+	 * @param file file name
+	 */
+	public void UploadDocument(String doctype, String file) {
+		if(this.isvaliddoctype(doctype)) {
+		pages.Utill().input_text("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
+		super.WaitforFileUpdate(doctype, file);
+		this.AddDocument();
+		pages.Utill().wait_until_loader_is_invisible(100);
+		}
+		else {
+			throw new NotFoundException(doctype);
+		}
+		
+	}
+	/**
 	 * Takes input from address.properties file and pass it to address data entry
 	 * @throws Exception WebDriverException
 	 */
@@ -413,8 +441,8 @@ public class Address extends DataEntryPage {
 		this.City();
 		this.Pincode(pro.getProperty("Pincode"));
 		this.LandMark(pro.getProperty("Landmark"));
-		this.FromDate(pro.getProperty("FromDate"));
-		this.ToDate(pro.getProperty("ToDate"));
+		this.FromDate(pages.Utill().FormateDate(pro.getProperty("FromDate")));
+		this.ToDate(pages.Utill().FormateDate(pro.getProperty("ToDate")));
 		this.isRented(true);
 		this.Name(pro.getProperty("LandLordName"));
 		this.LandlordAddress(pro.getProperty("LandLordAddressLine1"));
@@ -423,6 +451,9 @@ public class Address extends DataEntryPage {
 		this.LandLordPincode(pro.getProperty("LandLordPincode"));
 		this.LandLordLandMark(pro.getProperty("LandLordLandmark"));
 		this.ContactNo(pro.getProperty("LandLordContactNo"));
+		this.document();
+		this.UploadDocument("Address Proof", pro.getProperty("currentAddressproof"));
+		this.docclose();
 		this.comments(pro.getProperty("Comments"));
 		this.submit();
 //		this.save();
@@ -435,9 +466,13 @@ public class Address extends DataEntryPage {
 	 * @throws Exception WebDriverException
 	 */
 	public void sameascurrent(String component, String sourcecomponent) throws Exception {
+		Properties pro=pages.Utill().dedata("address");
 		this.addresscheck();
 		this.Component(component);
 		this.CopyComponentDatafrom(1, sourcecomponent);
+		this.document();
+		this.UploadDocument("Address Proof", pro.getProperty("PerAddressproof"));
+		this.docclose();
 		this.comments(pages.Utill().dedata("address").getProperty("permanentcomments"));
 //		this.save();
 		this.submit();

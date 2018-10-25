@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 public class Id extends DataEntryPage {
 	/**
@@ -101,6 +102,14 @@ public class Id extends DataEntryPage {
 	 */
 	public void NameonID(String name) {
 		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtIdName", name);
+	}
+	/**
+	 * returns name on id
+	 * @return name on ID card
+	 */
+	public String NameonID() {
+		String name=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtIdName");
+		return name;
 	}
 	/**
 	 * Takes id card number as input and pass it to ID Number
@@ -232,6 +241,63 @@ public void save() throws Exception {
 	pages.Utill().confirmAlert();
 }
 /**
+ * Performs click action on add document button in document upload screen
+ */
+public void AddDocument() {
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmCaseIdDocuments_C_btnIdAddDocument_input");
+	pages.Utill().wait_until_loader_is_invisible(100);
+}
+
+/**
+ * Takes document type as input and checks for given document type available in upload screen
+ * @param doctype type of document
+ * @return true when document ype was available
+ */
+public boolean isvaliddoctype(String doctype) {
+pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_rwmCaseIdDocuments_C_grdviewIdDocument_ctl00__0']/td[2]", 10);
+	boolean re =false;
+	String path="//*[@id='ctl00_ContentPlaceHolder1_rwmCaseIdDocuments_C_grdviewIdDocument_ctl00']/tbody/tr/td[2]";
+	List<WebElement> list =driver.findElements(By.xpath(path));
+	if(list.size()>0) {
+		for (int i = 0; i < list.size(); i++) {
+			String t=list.get(i).getText().trim();
+			logger.log(Status.INFO, t);
+			if(t.equals(doctype)) {
+				re=true;
+				break;
+			}
+		}
+	}
+	else {
+		logger.log(Status.FAIL, "no element found");
+	}
+	return re;
+}
+/**
+ * Takes document type and file as input and uploads the document
+ * @param doctype type of document
+ * @param file file name
+ */
+public void UploadDocument(String doctype, String file) {
+	if(this.isvaliddoctype(doctype)) {
+	pages.Utill().input_text("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
+	super.WaitforFileUpdate(doctype, file);
+	this.AddDocument();
+	pages.Utill().wait_until_loader_is_invisible(100);
+	}
+	else {
+		throw new NotFoundException(doctype);
+	}
+	
+}
+/**
+ * Perform close action on close button in document upload popup
+ */
+public void docclose() {
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmCaseIdDocuments_C_btnIdDocumentCancel_input");
+	pages.Utill().wait_until_loader_is_invisible(100);
+}
+/**
  * Takes input from id.properties file and pass it to id check data entry of passport
  * @throws Exception webdriver exception
  */
@@ -245,6 +311,9 @@ public void Passport()throws Exception {
 	this.ExpiryDate(pro.getProperty("PExpiryDate"));
 	this.State();
 	this.City();
+	this.document();
+	this.UploadDocument("Passport Scan - Front", pro.getProperty("passportdoc"));
+	this.docclose();
 	this.comments(pro.getProperty("Pcomments"));
 	this.submit();
 }
@@ -256,14 +325,16 @@ public void AadharCard()throws Exception {
 	Properties pro = pages.Utill().dedata("id");
 	this.idcheck();
 	this.Component("Aadhaar Card");
-//	this.NameonID(pro.getProperty("NameonID"));
-//	this.IDNumber(pro.getProperty("IDNumber"));
-//	this.IssueDate(pro.getProperty("IssueDate"));
-//	this.ExpiryDate(pro.getProperty("ExpiryDate"));
-//	this.State();
-//	this.City();
-//	this.EnrollmentNo(pro.getProperty("EnrollmentNo"));
-//	this.comments(pro.getProperty("comments"));
+	if(!(this.NameonID().length()>1)) {
+	this.NameonID(pro.getProperty("NameonID"));
+	this.IDNumber(pro.getProperty("IDNumber"));
+	this.IssueDate(pro.getProperty("IssueDate"));
+	this.ExpiryDate(pro.getProperty("ExpiryDate"));
+	this.State();
+	this.City();
+	this.EnrollmentNo(pro.getProperty("EnrollmentNo"));
+	this.comments(pro.getProperty("comments"));
+	}
 	this.submit();
 }
 }

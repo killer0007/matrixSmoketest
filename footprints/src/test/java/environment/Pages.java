@@ -17,7 +17,9 @@ public class Pages {
 	private CaseTracker casetracker;
 	private CaseOwnerInsuffClear CaseOwnerInsuffClear;
 	private DataEntrySupervision DataEntrySupervision;
+	private DataEntryQCSupervision DataEntryQCSupervision;
 	private DataEntry dataentry;
+	private DataEntryQC dataentryqc;
 	private dataEntry.Address address;
 	private dataEntry.Education education;
 	private dataEntry.Employment employement;
@@ -111,6 +113,13 @@ public class Pages {
 
 	public dataEntry.Id DeId() {
 		return (id == null) ? id = new dataEntry.Id(logger) : id;
+	}
+	public DataEntryQCSupervision DataEntryQCSupervision() {
+		return (DataEntryQCSupervision == null) ? DataEntryQCSupervision = new DataEntryQCSupervision(logger)
+				: DataEntryQCSupervision;
+	}
+	public DataEntryQC DataEntryQC() {
+		return (dataentryqc == null) ? dataentryqc = new DataEntryQC(logger) : dataentryqc;
 	}
 	public CEP CEP() {
 		return (cep == null) ? cep = new CEP(logger) : cep;

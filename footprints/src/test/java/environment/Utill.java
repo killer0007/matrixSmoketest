@@ -1,4 +1,5 @@
 package environment;
+
 /**
  * @author Gopinath N
  */
@@ -12,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -55,10 +57,12 @@ public class Utill {
 	WebDriver driver;
 	ExtentTest logger;
 	protected final Pages pages;
-/**
- * constructor to initiatize webdriver and logger 
- * @param logger logger instance
- */
+
+	/**
+	 * constructor to initiatize webdriver and logger
+	 * 
+	 * @param logger logger instance
+	 */
 	public Utill(ExtentTest logger) {
 		driver = BaseClass.getWebDriver();
 		this.logger = logger;
@@ -67,6 +71,7 @@ public class Utill {
 
 	/**
 	 * Takes the webdriver and return the path of screen shot to be taken
+	 * 
 	 * @param driver instance of webdriver
 	 * @return screenshot path
 	 */
@@ -88,15 +93,11 @@ public class Utill {
 	}
 
 	/**
-	 * Take the locator value and return the webelement
-	 * mention locators as follow
-	 * xpath=xpath:value
-	 * name=name:value
-	 * cssSelector=css:value
-	 * linkText=linkText:value
-	 * partialLinkText=partiallink:value
-	 * className=class:value
-	 * id=value
+	 * Take the locator value and return the webelement mention locators as follow
+	 * xpath=xpath:value name=name:value cssSelector=css:value
+	 * linkText=linkText:value partialLinkText=partiallink:value
+	 * className=class:value id=value
+	 * 
 	 * @param path path of locator
 	 * @return WebElement of given path
 	 */
@@ -131,6 +132,7 @@ public class Utill {
 	/**
 	 * Takes the locator value and string value as input and pass the string value
 	 * to Locater same as sendkeys in webdriver
+	 * 
 	 * @param path locator of input text
 	 * @param text text for input
 	 */
@@ -141,6 +143,7 @@ public class Utill {
 
 	/**
 	 * Takes the locater value as input and return the inner text for that locator
+	 * 
 	 * @param path locator of element
 	 * @return Inner text value as String
 	 */
@@ -165,12 +168,18 @@ public class Utill {
 		return msg;
 
 	}
-public String getvalue(String id) {
-	return this.find(id).getAttribute("value").trim();
-}
+
+	public String getvalue(String id) {
+		String val=this.find(id).getAttribute("value").trim();
+		logger.log(Status.PASS, "getting value from locator : "+id+" , "+val);
+		return val;
+	}
+
 	/**
-	 * Takes the Locater value and String value as input and select the given string value from select option
-	 * @param path locator of select dropdown
+	 * Takes the Locater value and String value as input and select the given string
+	 * value from select option
+	 * 
+	 * @param path  locator of select dropdown
 	 * @param value value of select dropdown
 	 */
 	public void select_by_label(String path, String value) {
@@ -180,9 +189,17 @@ public String getvalue(String id) {
 
 	}
 
+	public String getSelectedvalue(String locator) {
+		Select sel = new Select(this.find(locator));
+		return sel.getFirstSelectedOption().getText();
+
+	}
+
 	/**
-	 * Takes the Locater value and String value as input and select the given string value from select option 
-	 * @param path locator of select dropdown
+	 * Takes the Locater value and String value as input and select the given string
+	 * value from select option
+	 * 
+	 * @param path  locator of select dropdown
 	 * @param value value of select dropdown
 	 */
 	public void select_by_value(String path, String value) {
@@ -194,6 +211,7 @@ public String getvalue(String id) {
 
 	/**
 	 * Takes the locator value and file name as input and upload the file
+	 * 
 	 * @param path locator
 	 * @param file file directory
 	 * @throws Exception when file not found
@@ -205,6 +223,7 @@ public String getvalue(String id) {
 
 	/**
 	 * Takes the locator value as input and perform click option
+	 * 
 	 * @param path locator
 	 */
 	public void click_element(String path) {
@@ -213,7 +232,8 @@ public String getvalue(String id) {
 	}
 
 	/**
-	 * generates random integer which is used as candidateid 
+	 * generates random integer which is used as candidateid
+	 * 
 	 * @return random number
 	 */
 	public int candidateid() {
@@ -224,6 +244,7 @@ public String getvalue(String id) {
 
 	/**
 	 * return name as String used for candidate name in portal
+	 * 
 	 * @return candidate name
 	 */
 	public String candidateName() {
@@ -244,6 +265,7 @@ public String getvalue(String id) {
 
 	/**
 	 * generate random email id and returns it
+	 * 
 	 * @return email id
 	 */
 	public String getemail() {
@@ -254,6 +276,7 @@ public String getvalue(String id) {
 
 	/**
 	 * generates random 10 digit mobile number and return it
+	 * 
 	 * @return mobile number
 	 */
 	public String mobileno() {
@@ -266,8 +289,10 @@ public String getvalue(String id) {
 	}
 
 	/**
-	 * takes the table id, row number and column number as input and returns the cell value
-	 * @param id locator of table
+	 * takes the table id, row number and column number as input and returns the
+	 * cell value
+	 * 
+	 * @param id  locator of table
 	 * @param row row number
 	 * @param col column number
 	 * @return cell value as string
@@ -292,7 +317,8 @@ public String getvalue(String id) {
 	}
 
 	/**
-	 * Takes the xpath as input and return the matching xpath count 
+	 * Takes the xpath as input and return the matching xpath count
+	 * 
 	 * @param path locator
 	 * @return count of matching xpath
 	 */
@@ -303,6 +329,7 @@ public String getvalue(String id) {
 
 	/**
 	 * Takes the xpath as input and return the list of webelements
+	 * 
 	 * @param path locator
 	 * @return list of webelements
 	 */
@@ -314,6 +341,7 @@ public String getvalue(String id) {
 
 	/**
 	 * return the current page title as string
+	 * 
 	 * @return page title
 	 */
 	public String getTitle() {
@@ -323,8 +351,10 @@ public String getvalue(String id) {
 	}
 
 	/**
-	 * Takes locator value and style attribute as input and return the value of that attribute
-	 * @param id locator
+	 * Takes locator value and style attribute as input and return the value of that
+	 * attribute
+	 * 
+	 * @param id        locator
 	 * @param attribute value
 	 * @return value of give attribute as string
 	 */
@@ -334,6 +364,7 @@ public String getvalue(String id) {
 
 	/**
 	 * Takes the url as input and navigates to that URL
+	 * 
 	 * @param url domain name
 	 */
 	public void GoTo(String url) {
@@ -342,22 +373,27 @@ public String getvalue(String id) {
 		System.out.println(driver.getTitle());
 		logger.log(Status.INFO, driver.getTitle());
 	}
-/**
- * returns the current date
- * @return current date
- */
+
+	/**
+	 * returns the current date
+	 * 
+	 * @return current date
+	 */
 	public String getcurrentdate() {
 		SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
 		Date currentMonth = new Date();
 		return df.format(currentMonth).toString();
 
 	}
-/**
- * Takes Dropdown locator id and inner text as input and click the inner text value
- * @param id locator
- * @param value select text
- * @throws Exception when select dropwdown not found
- */
+
+	/**
+	 * Takes Dropdown locator id and inner text as input and click the inner text
+	 * value
+	 * 
+	 * @param id    locator
+	 * @param value select text
+	 * @throws Exception when select dropwdown not found
+	 */
 	public void search_and_select(String id, String value) throws Exception {
 		this.click_element(".//*[@id='" + id + "']/a");
 		this.input_text(".//*[@id='" + id + "']//div/div/input", value);
@@ -365,20 +401,24 @@ public String getvalue(String id) {
 		this.click_element(".//*[@id='" + id + "']/div/ul/li");
 
 	}
-/**
- * returns current date and time
- * @return current date and time in yyyy_MM_dd_HH_mm_ss formate
- */
+
+	/**
+	 * returns current date and time
+	 * 
+	 * @return current date and time in yyyy_MM_dd_HH_mm_ss formate
+	 */
 	public static String getdatetime() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
 		LocalDateTime now = LocalDateTime.now();
 		return dtf.format(now); // 2016/11/16 12:08:43
 		// return "mmmmm";
 	}
-/**
- * generate the random date of birth and returns it
- * @return date of birth generated randomly
- */
+
+	/**
+	 * generate the random date of birth and returns it
+	 * 
+	 * @return date of birth generated randomly
+	 */
 	public String getdob() {
 		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		Random random = new Random();
@@ -388,10 +428,12 @@ public String getvalue(String id) {
 		LocalDate randomBirthDate = LocalDate.ofEpochDay(randomDay);
 		return df.format(randomBirthDate).toString();
 	}
-/**
- * Takes web locator value as input and perform mouse over on it
- * @param id locator
- */
+
+	/**
+	 * Takes web locator value as input and perform mouse over on it
+	 * 
+	 * @param id locator
+	 */
 	public void mouseover(String id) {
 		Actions action = new Actions(driver);
 		action.moveToElement(this.find(id));
@@ -399,55 +441,66 @@ public String getvalue(String id) {
 		logger.log(Status.PASS, "performing mouse over on :" + id);
 		action = null;
 	}
-/**
- * Takes the frame index id as input and switch the frame 
- * @param index frame index
- */
+
+	/**
+	 * Takes the frame index id as input and switch the frame
+	 * 
+	 * @param index frame index
+	 */
 	public void SwitchFramebyIndex(int index) {
 		driver.switchTo().frame(index);
 		logger.log(Status.PASS, "switching frame by index " + index);
 
 	}
-/**
- * Takes the index of window as input and switch window based on index
- * @param index window index
- */
+
+	/**
+	 * Takes the index of window as input and switch window based on index
+	 * 
+	 * @param index window index
+	 */
 	public void switchWindow(int index) {
 		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(index).toString());
 	}
-/**
- * Takes locator value as input and performs scroll to that element 
- * @param id locator
- */
+
+	/**
+	 * Takes locator value as input and performs scroll to that element
+	 * 
+	 * @param id locator
+	 */
 	public void scrollTo(String id) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView(true);", this.find(id));
 		logger.log(Status.PASS, "scrolling into view of :" + id);
 
 	}
-/**
- * Switching default frame
- */
+
+	/**
+	 * Switching default frame
+	 */
 	public void SwitchDefault() {
-		
+
 		driver.switchTo().defaultContent();
 		logger.log(Status.PASS, "switching to default frame");
 	}
-/**
- * Takes the java script as input and execute it
- * @param script java script
- */
+
+	/**
+	 * Takes the java script as input and execute it
+	 * 
+	 * @param script java script
+	 */
 	public void executescript(String script) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript(script);
 	}
-/**
- * Takes locator value and file name as input and upload file using robot class
- * @param id locator
- * @param filename file directory
- * @throws Exception when file not found
- */
+
+	/**
+	 * Takes locator value and file name as input and upload file using robot class
+	 * 
+	 * @param id       locator
+	 * @param filename file directory
+	 * @throws Exception when file not found
+	 */
 	public void FileUpload(String id, String filename) throws Exception {
 		this.click_element(id);
 		Thread.sleep(1000);
@@ -462,11 +515,13 @@ public String getvalue(String id) {
 		robot.keyRelease(KeyEvent.VK_ENTER);
 		// System.out.println("end");
 	}
-/**
- * Takes the filename as input and upload it 
- * @param filename file directory
- * @throws Exception when file not found
- */
+
+	/**
+	 * Takes the filename as input and upload it
+	 * 
+	 * @param filename file directory
+	 * @throws Exception when file not found
+	 */
 	public void FileUpload(String filename) throws Exception {
 		Thread.sleep(1000);
 		setClipboardData(filename);
@@ -480,19 +535,21 @@ public String getvalue(String id) {
 		robot.keyRelease(KeyEvent.VK_ENTER);
 		// System.out.println("end");
 	}
-/**
- * Takes the string as input and copy the input to clipboard
- * @param string text to copy
- */
+
+	/**
+	 * Takes the string as input and copy the input to clipboard
+	 * 
+	 * @param string text to copy
+	 */
 	public void setClipboardData(String string) {
 		// StringSelection is a class that can be used for copy and paste operations.
 		StringSelection stringSelection = new StringSelection(string);
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
 	}
 
-/**
- * switch to alert and accept it
- */
+	/**
+	 * switch to alert and accept it
+	 */
 	public void alert_shouldbe_present() {
 		Alert alert = driver.switchTo().alert();
 		String te = alert.getText();
@@ -500,11 +557,14 @@ public String getvalue(String id) {
 		alert.accept();
 		logger.log(Status.PASS, "Alet accepted");
 	}
-/**
- * Takes the check box id as input and checks whether checkbox is selected or not
- * @param id locator
- * @throws Exception when check box is not selected
- */
+
+	/**
+	 * Takes the check box id as input and checks whether checkbox is selected or
+	 * not
+	 * 
+	 * @param id locator
+	 * @throws Exception when check box is not selected
+	 */
 	public void checkbox_shouldbe_selected(String id) throws Exception {
 		boolean b = this.find("id").isSelected();
 		logger.log(Status.PASS, "check box selected state is : " + b);
@@ -512,11 +572,14 @@ public String getvalue(String id) {
 			throw new Exception("check box not selected");
 		}
 	}
-/**
- * Takes the check box id as input and checks whether checkbox is selected or not
- * @param id locator
- * @throws Exception when check box was selected
- */
+
+	/**
+	 * Takes the check box id as input and checks whether checkbox is selected or
+	 * not
+	 * 
+	 * @param id locator
+	 * @throws Exception when check box was selected
+	 */
 	public void checkbox_shouldnotbe_selected(String id) throws Exception {
 		boolean b = this.find("id").isSelected();
 		logger.log(Status.PASS, "check box selected state is : " + b);
@@ -524,84 +587,103 @@ public String getvalue(String id) {
 			throw new Exception("check box selected");
 		}
 	}
-/**
- * Takes web locator as input and return true when input is selected
- * @param path locator
- * @return if selected true else false
- */
+
+	/**
+	 * Takes web locator as input and return true when input is selected
+	 * 
+	 * @param path locator
+	 * @return if selected true else false
+	 */
 	public boolean isSelected(String path) {
 		return this.find(path).isSelected();
 	}
-/**
- * Takes web locator as input and return true when input is displayed
- * @param path locator
- * @return if displayed true else false
- */
+
+	/**
+	 * Takes web locator as input and return true when input is displayed
+	 * 
+	 * @param path locator
+	 * @return if displayed true else false
+	 */
 	public boolean isDisplayed(String path) {
 		return this.find(path).isDisplayed();
 	}
+
 	/**
 	 * Takes web locator as input and return true when input is enabled
+	 * 
 	 * @param path locator
 	 * @return if enabled true else false
 	 */
 	public boolean isEnabled(String path) {
 		return this.find(path).isEnabled();
 	}
-/**
- * Takes web locator value as input and clear the text from the input field
- * @param id locator
- */
+
+	/**
+	 * Takes web locator value as input and clear the text from the input field
+	 * 
+	 * @param id locator
+	 */
 	public void clear_element_text(String id) {
 		this.find(id).clear();
 		logger.log(Status.PASS, "text cleared for : " + id);
 	}
-/**
- * Takes locator of link as input and perform click function
- * @param link locator
- */
+
+	/**
+	 * Takes locator of link as input and perform click function
+	 * 
+	 * @param link locator
+	 */
 	public void click_link(String link) {
 		driver.findElement(By.linkText(link)).click();
 		logger.log(Status.PASS, "Clicking link : " + link);
 
 	}
-/**
- * Takes the element locator as input and wait 20 secs until element is clickable
- * @param path locator
- */
+
+	/**
+	 * Takes the element locator as input and wait 20 secs until element is
+	 * clickable
+	 * 
+	 * @param path locator
+	 */
 	public void wait_until_element_isclickable(String path) {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(this.find(path)));
 	}
-/**
- * closed all browsers opened by webdriver
- */
+
+	/**
+	 * closed all browsers opened by webdriver
+	 */
 	public void close_all_browsers() {
 		driver.quit();
 		logger.log(Status.PASS, "all browsers are closed ");
 	}
-/**
- * closes the current window of browser opened by webdriver
- */
+
+	/**
+	 * closes the current window of browser opened by webdriver
+	 */
 	public void close_browser() {
 		driver.close();
 		logger.log(Status.PASS, "browser closed ");
 	}
-/**
- * Takes the element locator value as input and performs double click on it
- * @param id locator
- */
+
+	/**
+	 * Takes the element locator value as input and performs double click on it
+	 * 
+	 * @param id locator
+	 */
 	public void double_click_element(String id) {
 		WebElement ele = this.find(id);
 		Actions action = new Actions(driver);
 		action.doubleClick(ele).build().perform();
 		logger.log(Status.PASS, "double clicking in element : " + id);
 	}
-/**
- * Takes element locator as input and check whether element is enabled or not 
- * @param id locator
- * @throws Exception when element is not enabled or disabled
- */
+
+	/**
+	 * Takes element locator as input and check whether element is enabled or not
+	 * 
+	 * @param id locator
+	 * @throws Exception when element is not enabled or disabled
+	 */
 	public void element_shouldbe_enabled(String id) throws Exception {
 		boolean b = this.find(id).isEnabled();
 		logger.log(Status.PASS, "element enabled status is : " + b);
@@ -609,11 +691,13 @@ public String getvalue(String id) {
 			throw new Exception(id + "  webelement not enabled");
 		}
 	}
-/** 
- * Takes element locator as input and check whether element is disabled or not
- * @param id locator
- * @throws Exception when element is not disabled or enabled
- */
+
+	/**
+	 * Takes element locator as input and check whether element is disabled or not
+	 * 
+	 * @param id locator
+	 * @throws Exception when element is not disabled or enabled
+	 */
 	public void element_shouldbe_disabled(String id) throws Exception {
 		boolean b = this.find(id).isDisplayed();
 		logger.log(Status.PASS, "element enabled status is : " + b);
@@ -623,11 +707,13 @@ public String getvalue(String id) {
 			throw new Exception(id + "  webelement not enabled");
 		}
 	}
-/**
- * Takes element locator as input and check whether element is focused or not
- * @param id locator
- * @throws Exception when element is not focused
- */
+
+	/**
+	 * Takes element locator as input and check whether element is focused or not
+	 * 
+	 * @param id locator
+	 * @throws Exception when element is not focused
+	 */
 	public void element_shouldbe_focused(String id) throws Exception {
 		WebElement ele = this.find(id);
 		boolean b = ele == driver.switchTo().activeElement();
@@ -641,11 +727,13 @@ public String getvalue(String id) {
 		logger.log(Status.PASS, id + "  : is focused");
 
 	}
-/**
- * Takes element locator as input and check whether element is visible or not
- * @param id  locator
- * @throws Exception when element is not visible
- */
+
+	/**
+	 * Takes element locator as input and check whether element is visible or not
+	 * 
+	 * @param id locator
+	 * @throws Exception when element is not visible
+	 */
 	public void element_shouldbe_visible(String id) throws Exception {
 		String css = this.find(id).getCssValue("display");
 		if (css.equalsIgnoreCase("none")) {
@@ -655,12 +743,15 @@ public String getvalue(String id) {
 		logger.log(Status.PASS, id + "  is visible");
 
 	}
-/**
- * Takes the element locator value and text as input and check whether element contains the given text
- * @param id locator
- * @param text inner text
- * @throws Exception when element not contains given text
- */
+
+	/**
+	 * Takes the element locator value and text as input and check whether element
+	 * contains the given text
+	 * 
+	 * @param id   locator
+	 * @param text inner text
+	 * @throws Exception when element not contains given text
+	 */
 	public void element_should_contains(String id, String text) throws Exception {
 		String t = this.get_text(id);
 		if (t.contains(text)) {
@@ -670,10 +761,12 @@ public String getvalue(String id) {
 			throw new Exception(id + "  contains text as : " + t);
 		}
 	}
+
 	/**
 	 * Takes element locator as input and check whether element is visible or not
-	 * @param id  locator
-	 * @throws Exception when element is  visible
+	 * 
+	 * @param id locator
+	 * @throws Exception when element is visible
 	 */
 	public void element_shouldnotbe_visible(String id) throws Exception {
 		String css = this.find(id).getCssValue("display");
@@ -683,11 +776,14 @@ public String getvalue(String id) {
 		}
 		logger.log(Status.PASS, id + "  is not visible");
 	}
+
 	/**
-	 * Takes the element locator value and text as input and check whether element contains the given text
-	 * @param id locator
+	 * Takes the element locator value and text as input and check whether element
+	 * contains the given text
+	 * 
+	 * @param id   locator
 	 * @param text text which contains
-	 * @throws Exception when element  contains given text
+	 * @throws Exception when element contains given text
 	 */
 	public void element_shouldnot_contains(String id, String text) throws Exception {
 		String t = this.get_text(id);
@@ -698,22 +794,28 @@ public String getvalue(String id) {
 			throw new Exception(id + "  contains text as : " + t);
 		}
 	}
-/**
- * Takes element locator value and attribute of element as input and return the vlule of given attribute
- * @param id locator
- * @param attribute attribute name
- * @return value for given attribute
- */
+
+	/**
+	 * Takes element locator value and attribute of element as input and return the
+	 * vlule of given attribute
+	 * 
+	 * @param id        locator
+	 * @param attribute attribute name
+	 * @return value for given attribute
+	 */
 	public String get_element_attribute(String id, String attribute) {
 		String attri = this.find(id).getAttribute(attribute);
 		logger.log(Status.PASS, "getting value of : " + id + attribute);
 		return attri;
 	}
-/**
- * Takes dropdown id and time out unit as input and wait untill dropdown values to be loaded
- * @param path locator
- * @param TimeOut time units in secs
- */
+
+	/**
+	 * Takes dropdown id and time out unit as input and wait untill dropdown values
+	 * to be loaded
+	 * 
+	 * @param path    locator
+	 * @param TimeOut time units in secs
+	 */
 	public void wait_until_dropdownload(String path, int TimeOut) {
 		try {
 			final String id = path;
@@ -741,10 +843,12 @@ public String getvalue(String id) {
 			// System.out.println("done");
 		}
 	}
-/**
- * Takes time time unit as input and wait untill the loader is invisble
- * @param TimeOut time unit in secs
- */
+
+	/**
+	 * Takes time time unit as input and wait untill the loader is invisble
+	 * 
+	 * @param TimeOut time unit in secs
+	 */
 	public void wait_until_loader_is_invisible(int TimeOut) {
 		try {
 			FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
@@ -769,20 +873,25 @@ public String getvalue(String id) {
 //			System.out.println("done");
 		}
 	}
-/**
- * Takes element locator value and timeout as input and wait for element is invisible
- * @param path locator
- * @param Timeout time unit in secs
- */
+
+	/**
+	 * Takes element locator value and timeout as input and wait for element is
+	 * invisible
+	 * 
+	 * @param path    locator
+	 * @param Timeout time unit in secs
+	 */
 	public void wait_until_element_isvisible(String path, int Timeout) {
 		WebDriverWait wait = new WebDriverWait(driver, Timeout);
 		wait.until(ExpectedConditions.visibilityOf(this.find(path)));
 	}
-/**
- * takes the URL of image as input and return true when given URL has image
- * @param url of image
- * @return true when URL has Image
- */
+
+	/**
+	 * takes the URL of image as input and return true when given URL has image
+	 * 
+	 * @param url of image
+	 * @return true when URL has Image
+	 */
 	public boolean isimage(String url) {
 		try {
 			Image image = ImageIO.read(new URL(url));
@@ -798,28 +907,34 @@ public String getvalue(String id) {
 			return false;
 		}
 	}
-/**
- * gets the cookies of current session and return it
- * @return cookies as set object
- */
+
+	/**
+	 * gets the cookies of current session and return it
+	 * 
+	 * @return cookies as set object
+	 */
 	public Set<Cookie> getcookies() {
 		return driver.manage().getCookies();
 	}
-/**
- * Takes Cookies as input and add it to current browser session
- * @param allcookie contains set of cookies 
- */
+
+	/**
+	 * Takes Cookies as input and add it to current browser session
+	 * 
+	 * @param allcookie contains set of cookies
+	 */
 	public void importcookies(Set<Cookie> allcookie) {
 		for (Cookie cookie : allcookie) {
 			driver.manage().addCookie(cookie);
 		}
 
 	}
-/**
- * Accepts the portal alerts and return the text in that alert
- * @return alerttext text in the alert box
- * @throws Exception when alert not found
- */
+
+	/**
+	 * Accepts the portal alerts and return the text in that alert
+	 * 
+	 * @return alerttext text in the alert box
+	 * @throws Exception when alert not found
+	 */
 	public String confirmAlert() throws Exception {
 		By loc = By.xpath("//span[text()='OK']");
 		WebDriverWait wait = new WebDriverWait(driver, 50);
@@ -830,8 +945,10 @@ public String getvalue(String id) {
 		return msg.trim();
 
 	}
+
 	/**
-	 * return name as String used for last name in portal 
+	 * return name as String used for last name in portal
+	 * 
 	 * @return lastName
 	 */
 	public String lastName() {
@@ -850,11 +967,12 @@ public String getvalue(String id) {
 		return answersList.get(3);
 	}
 
-/**
- * Takes list of checks as input and return only the address check in that list
- * @param allchecks list of check
- * @return addresscheck as list
- */
+	/**
+	 * Takes list of checks as input and return only the address check in that list
+	 * 
+	 * @param allchecks list of check
+	 * @return addresscheck as list
+	 */
 	public List<String> getAddressChecks(List<String> allchecks) {
 		List<String> address = new ArrayList<String>();
 		for (int i = 0; i < 6; i++) {
@@ -862,8 +980,11 @@ public String getvalue(String id) {
 		}
 		return address;
 	}
+
 	/**
-	 * Takes list of checks as input and return only the education check in that list
+	 * Takes list of checks as input and return only the education check in that
+	 * list
+	 * 
 	 * @param allchecks list of check
 	 * @return educationcheck as list
 	 */
@@ -874,8 +995,11 @@ public String getvalue(String id) {
 		}
 		return education;
 	}
+
 	/**
-	 * Takes list of checks as input and return only the employment check in that list
+	 * Takes list of checks as input and return only the employment check in that
+	 * list
+	 * 
 	 * @param allchecks list of check
 	 * @return employmentcheck as list
 	 */
@@ -886,8 +1010,11 @@ public String getvalue(String id) {
 		}
 		return emp;
 	}
+
 	/**
-	 * Takes list of checks as input and return only the reference check in that list
+	 * Takes list of checks as input and return only the reference check in that
+	 * list
+	 * 
 	 * @param allchecks list of check
 	 * @return referencecheck as list
 	 */
@@ -898,8 +1025,10 @@ public String getvalue(String id) {
 		}
 		return ref;
 	}
+
 	/**
 	 * Takes list of checks as input and return only the id check in that list
+	 * 
 	 * @param allchecks list of check
 	 * @return idcheck as list
 	 */
@@ -910,8 +1039,10 @@ public String getvalue(String id) {
 		}
 		return id;
 	}
+
 	/**
 	 * Takes list of checks as input and return only the criminal check in that list
+	 * 
 	 * @param allchecks list of check
 	 * @return criminalcheck as list
 	 */
@@ -922,8 +1053,10 @@ public String getvalue(String id) {
 		}
 		return cri;
 	}
+
 	/**
 	 * Takes list of checks as input and return only the court check in that list
+	 * 
 	 * @param allchecks list of check
 	 * @return courtcheck as list
 	 */
@@ -934,8 +1067,10 @@ public String getvalue(String id) {
 		}
 		return court;
 	}
+
 	/**
 	 * Takes list of checks as input and return only the drug check in that list
+	 * 
 	 * @param allchecks list of check
 	 * @return drugcheck as list
 	 */
@@ -946,42 +1081,50 @@ public String getvalue(String id) {
 		}
 		return drug;
 	}
-/**
- * Takes the date as input and change the formate
- * @param date 2007-04-29
- * @return date dd/mm/yyyy
- */
+
+	/**
+	 * Takes the date as input and change the formate
+	 * 
+	 * @param date 2007-04-29
+	 * @return date dd/mm/yyyy
+	 */
 	public String formatedob(String date) {
 		// String date ="2007-04-29";
 		// yyyy-mm-dd
 		return date.substring(8, 10) + "/" + date.substring(5, 7) + "/" + date.substring(0, 4);
 
 	}
-/**
- * close the current tab
- */
+
+	/**
+	 * close the current tab
+	 */
 	public void closetab() {
 		driver.close();
 	}
-/**
- * used for case tracker wait utill data loads to case tracker table
- * @param xpath path of table
- * @param timeout time for wait
- */
+
+	/**
+	 * used for case tracker wait utill data loads to case tracker table
+	 * 
+	 * @param xpath   path of table
+	 * @param timeout time for wait
+	 */
 	public void wait_element_has_text(String xpath, long timeout) {
 		final String paths = xpath;
 		(new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver d) {
-				System.out.println("waiting for data");
+//				System.out.println("waiting for data");
+				logger.log(Status.INFO, "waiting for data");
 				return d.findElement(By.xpath(paths)).getText().length() != 0;
 			}
 		});
 	}
-/**
- * takes File object as input and delete the files inside the folder
- * @param folder folder path to be delete
- * @throws IOException when folder not found in given directory
- */
+
+	/**
+	 * takes File object as input and delete the files inside the folder
+	 * 
+	 * @param folder folder path to be delete
+	 * @throws IOException when folder not found in given directory
+	 */
 	public void deleteFiles(File folder) throws IOException {
 		File[] files = folder.listFiles();
 		for (File file : files) {
@@ -994,12 +1137,14 @@ public String getvalue(String id) {
 			}
 		}
 	}
-/**
- * takes the File object as input and return the filename inside the folder
- * @param folder path of file
- * @return filename inside the folder
- * @throws Exception when file empty
- */
+
+	/**
+	 * takes the File object as input and return the filename inside the folder
+	 * 
+	 * @param folder path of file
+	 * @return filename inside the folder
+	 * @throws Exception when file empty
+	 */
 	public String isfileexist(File folder) throws Exception {
 		Thread.sleep(2000);
 		File[] files = folder.listFiles();
@@ -1012,53 +1157,65 @@ public String getvalue(String id) {
 			return null;
 		}
 	}
-/**
- * Takes file path as input and return the file name in that path
- * @param FilePath directory
- * @return filename name filtered from file path
- */
+
+	/**
+	 * Takes file path as input and return the file name in that path
+	 * 
+	 * @param FilePath directory
+	 * @return filename name filtered from file path
+	 */
 	public String FilterFileName(String FilePath) {
 		return FilePath.substring(FilePath.lastIndexOf("\\")).replace("\\", "");
 	}
 
 	/**
-	 * Takes webelement and file out put path as input
-	 * takes the screen shot and save it to given file path
-	 * @param cap WebElement
+	 * Takes webelement and file out put path as input takes the screen shot and
+	 * save it to given file path
+	 * 
+	 * @param cap            WebElement
 	 * @param fileoutputpath file path
 	 * @throws IOException File not found
 	 */
 	public void screenshot(WebElement cap, String fileoutputpath) throws IOException {
-		 Screenshot screenshot = new AShot().takeScreenshot(driver, 
-				cap);
-				ImageIO.write(screenshot.getImage(), "PNG", new File(fileoutputpath));	
+		Screenshot screenshot = new AShot().takeScreenshot(driver, cap);
+		ImageIO.write(screenshot.getImage(), "PNG", new File(fileoutputpath));
 	}
+
 	/**
-	 * Takes file name as input and return file property object from data entry test data
+	 * Takes file name as input and return file property object from data entry test
+	 * data
+	 * 
 	 * @param filename file name in data entry test data
 	 * @return property file object
 	 * @throws Exception file not found
 	 */
 	public Properties dedata(String filename) throws Exception {
 		Properties pro = new Properties();
-		FileInputStream fis = new FileInputStream(new File("./src\\test\\resources\\testdata\\dataentry\\"+filename+".properties"));
+		FileInputStream fis = new FileInputStream(
+				new File("./src\\test\\resources\\testdata\\dataentry\\" + filename + ".properties"));
 		pro.load(fis);
 		return pro;
 	}
+
 	/**
-	 * Takes file name as input and return file property object from verification test data
+	 * Takes file name as input and return file property object from verification
+	 * test data
+	 * 
 	 * @param filename file name in verification test data
 	 * @return property file object
 	 * @throws Exception file not found
 	 */
 	public Properties veridata(String filename) throws Exception {
 		Properties pro = new Properties();
-		FileInputStream fis = new FileInputStream(new File("./src\\test\\resources\\testdata\\verification\\"+filename+".properties"));
+		FileInputStream fis = new FileInputStream(
+				new File("./src\\test\\resources\\testdata\\verification\\" + filename + ".properties"));
 		pro.load(fis);
 		return pro;
 	}
+
 	/**
 	 * Takes time in miilli second as input and pass hte thread
+	 * 
 	 * @param time time in milli seconds
 	 */
 	public void sleep(long time) {
@@ -1068,5 +1225,10 @@ public String getvalue(String id) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public String FormateDate(String date) throws ParseException{
+		SimpleDateFormat df = new SimpleDateFormat("MM/yyyy");
+		Date d=df.parse(date);
+		return new SimpleDateFormat("MMMM yyyy").format(d).toString();
 	}
 }
