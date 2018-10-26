@@ -213,8 +213,8 @@ private boolean verifyddvalue(String component) throws Exception {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnDocumentCancel_input");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
-public HashMap<String, String> alldata(String component) throws Exception{
-	this.Component(component);
+public HashMap<String, String> CurrentAddress() throws Exception{
+	this.Component("Current Address");
 	HashMap<String , String> map=new HashMap<String, String>();
 	map.put("Component", this.Component());
 	map.put("AddressLine1", this.AddressLine1());
@@ -239,9 +239,36 @@ public HashMap<String, String> alldata(String component) throws Exception{
 	this.docclose();
 	return map;
 }
-public HashMap<String, String> filedata() throws Exception{
+public HashMap<String, String> PermanentAdress() throws Exception{
+	this.Component("Permanent");
+	HashMap<String , String> map=new HashMap<String, String>();
+	map.put("Component", this.Component());
+	map.put("AddressLine1", this.AddressLine1());
+	map.put("Country", this.Country());
+	map.put("State", this.State());
+	map.put("City", this.City());
+	map.put("Pincode", this.Pincode());
+	map.put("Landmark", this.Landmark());
+	map.put("FromDate", this.FromDate());
+	map.put("ToDate", this.ToDate());
+	map.put("LandLordName", this.LandLordName());
+	map.put("LandLordAddressLine1", this.LandLordAddressLine1());
+	map.put("LandLordCountry", this.LandLordCountry());
+	map.put("LandLordState", this.LandLordState());
+	map.put("LandLordCity", this.LandLordCity());
+	map.put("LandLordPincode", this.LandLordPincode());
+	map.put("LandLordLandmark", this.LandLordLandmark());
+	map.put("LandLordContactNo", this.LandLordContactNo());
+	map.put("permanentcomments", this.Comments());
+	this.document();
+	map.put("PerAddressproof", this.getDocumentName("Address Proof"));
+	this.docclose();
+	return map;
+}
+public HashMap<String, String> filedata(String component) throws Exception{
 	HashMap<String , String> map=new HashMap<String, String>();
 	Properties pro= pages.Utill().dedata("address");
+	if(component.equals("Current Address")) {
 	map.put("Component", "Current Address");
 	map.put("AddressLine1", pro.getProperty("AddressLine1"));
 	map.put("Country", pro.getProperty("Country"));
@@ -262,5 +289,30 @@ public HashMap<String, String> filedata() throws Exception{
 	map.put("Comments", pro.getProperty("Comments"));
 	map.put("currentAddressproof", new File(pro.getProperty("currentAddressproof")).getName().replaceAll(" ", ""));
 	return map;
+	}
+	else if(component.equals("Permanent")) {
+		map.put("Component", "Permanent");
+		map.put("AddressLine1", pro.getProperty("AddressLine1"));
+		map.put("Country", pro.getProperty("Country"));
+		map.put("State", pro.getProperty("State"));
+		map.put("City", pro.getProperty("City"));
+		map.put("Pincode", pro.getProperty("Pincode"));
+		map.put("Landmark", pro.getProperty("Landmark"));
+		map.put("FromDate", pro.getProperty("FromDate"));
+		map.put("ToDate", pro.getProperty("ToDate"));
+		map.put("LandLordName", pro.getProperty("LandLordName"));
+		map.put("LandLordAddressLine1", pro.getProperty("LandLordAddressLine1"));
+		map.put("LandLordCountry", pro.getProperty("LandLordCountry"));
+		map.put("LandLordState", pro.getProperty("LandLordState"));
+		map.put("LandLordCity", pro.getProperty("LandLordCity"));
+		map.put("LandLordPincode", pro.getProperty("LandLordPincode"));
+		map.put("LandLordLandmark", pro.getProperty("LandLordLandmark"));
+		map.put("LandLordContactNo", pro.getProperty("LandLordContactNo"));
+		map.put("permanentcomments", pro.getProperty("permanentcomments"));
+		map.put("PerAddressproof", new File(pro.getProperty("PerAddressproof")).getName().replaceAll(" ", ""));
+		return map;
+	}
+	else
+		throw new NotFoundException();
 }
 }

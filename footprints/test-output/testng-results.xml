@@ -1,118 +1,308 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="9" passed="9">
   <reporter-output>
-    <line>
-      <![CDATA[About to begin executing Test Default test]]>
-    </line>
-    <line>
-      <![CDATA[Test Method resides in maintest2.Basic]]>
-    </line>
-    <line>
-      <![CDATA[Test Status: Pass]]>
-    </line>
-    <line>
-      <![CDATA[Test Method resides in maintest2.Basic]]>
-    </line>
-    <line>
-      <![CDATA[Test Status: Pass]]>
-    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="39246" started-at="2018-10-25T12:28:16Z" finished-at="2018-10-25T12:28:55Z">
+  <suite name="Default suite" duration-ms="804896" started-at="2018-10-26T13:21:46Z" finished-at="2018-10-26T13:35:11Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="39246" started-at="2018-10-25T12:28:16Z" finished-at="2018-10-25T12:28:55Z">
-      <class name="maintest2.Basic">
-        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest2.Basic@ecd4b]" name="beforeSuit" is-config="true" duration-ms="134" started-at="2018-10-25T12:28:16Z" finished-at="2018-10-25T12:28:16Z">
+    <test name="Default test" duration-ms="804896" started-at="2018-10-26T13:21:46Z" finished-at="2018-10-26T13:35:11Z">
+      <class name="maintest.FullFlow">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest.FullFlow@1fffcd7]" name="beforeSuit" is-config="true" duration-ms="140" started-at="2018-10-26T13:21:46Z" finished-at="2018-10-26T13:21:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuit -->
-        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest2.Basic@ecd4b]" name="beforetest" is-config="true" duration-ms="4548" started-at="2018-10-25T12:28:16Z" finished-at="2018-10-25T12:28:20Z">
+        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest.FullFlow@1fffcd7]" name="beforetest" is-config="true" duration-ms="5328" started-at="2018-10-26T13:21:46Z" finished-at="2018-10-26T13:21:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforetest -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@ecd4b]" name="setup" is-config="true" duration-ms="16" started-at="2018-10-25T12:28:20Z" finished-at="2018-10-25T12:28:20Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="setup" is-config="true" duration-ms="10" started-at="2018-10-26T13:21:52Z" finished-at="2018-10-26T13:21:52Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest2.Basic.Login() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.FullFlow.Login() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="Login()[pri:1, instance:maintest2.Basic@ecd4b]" name="Login" duration-ms="9743" started-at="2018-10-25T12:28:20Z" finished-at="2018-10-25T12:28:30Z">
+        <test-method status="PASS" signature="Login()[pri:1, instance:maintest.FullFlow@1fffcd7]" name="Login" duration-ms="8556" started-at="2018-10-26T13:21:52Z" finished-at="2018-10-26T13:22:00Z">
           <reporter-output>
-            <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
-            </line>
-            <line>
-              <![CDATA[Test Status: Pass]]>
-            </line>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@ecd4b]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-25T12:28:30Z" finished-at="2018-10-25T12:28:30Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-10-26T13:22:00Z" finished-at="2018-10-26T13:22:00Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest2.Basic.dataEntry() throws java.lang.Exception]]>
+                <![CDATA[[TestResult name=Login status=SUCCESS method=FullFlow.Login()[pri:1, instance:maintest.FullFlow@1fffcd7] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.FullFlow.Login() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="caseregistration()[pri:2, instance:maintest.FullFlow@1fffcd7]" name="caseregistration" duration-ms="35823" started-at="2018-10-26T13:22:00Z" depends-on-methods="maintest.FullFlow.Login" finished-at="2018-10-26T13:22:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- caseregistration -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-26T13:22:00Z" finished-at="2018-10-26T13:22:00Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.FullFlow.caseregistration() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="dataEntry()[pri:4, instance:maintest2.Basic@ecd4b]" name="dataEntry" duration-ms="24909" started-at="2018-10-25T12:28:30Z" finished-at="2018-10-25T12:28:55Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-10-26T13:22:36Z" finished-at="2018-10-26T13:22:36Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=caseregistration status=SUCCESS method=FullFlow.caseregistration()[pri:2, instance:maintest.FullFlow@1fffcd7] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.FullFlow.caseregistration() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
-            <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
-            </line>
-            <line>
-              <![CDATA[Test Status: Pass]]>
-            </line>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-26T13:22:36Z" finished-at="2018-10-26T13:22:36Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.FullFlow.dataEntryAssign() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="dataEntryAssign()[pri:3, instance:maintest.FullFlow@1fffcd7]" name="dataEntryAssign" duration-ms="121113" started-at="2018-10-26T13:22:36Z" depends-on-methods="maintest.FullFlow.caseregistration" finished-at="2018-10-26T13:24:37Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dataEntryAssign -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-26T13:24:37Z" finished-at="2018-10-26T13:24:37Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=dataEntryAssign status=SUCCESS method=FullFlow.dataEntryAssign()[pri:3, instance:maintest.FullFlow@1fffcd7] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.FullFlow.dataEntryAssign() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="dataEntry()[pri:4, instance:maintest.FullFlow@1fffcd7]" name="dataEntry" duration-ms="482431" started-at="2018-10-26T13:24:37Z" depends-on-methods="maintest.FullFlow.dataEntryAssign" finished-at="2018-10-26T13:32:39Z">
+          <reporter-output>
           </reporter-output>
         </test-method> <!-- dataEntry -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@ecd4b]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-25T12:28:30Z" finished-at="2018-10-25T12:28:30Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-26T13:24:37Z" finished-at="2018-10-26T13:24:37Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Login status=SUCCESS method=Basic.Login()[pri:1, instance:maintest2.Basic@ecd4b] output=Test Method resides in maintest2.Basic]]]>
+                <![CDATA[public void maintest.FullFlow.dataEntry() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="dataEntryQCAssign()[pri:5, instance:maintest.FullFlow@1fffcd7]" name="dataEntryQCAssign" duration-ms="61847" started-at="2018-10-26T13:32:40Z" depends-on-methods="maintest.FullFlow.dataEntry" finished-at="2018-10-26T13:33:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- dataEntryQCAssign -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-26T13:32:40Z" finished-at="2018-10-26T13:32:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=dataEntry status=SUCCESS method=FullFlow.dataEntry()[pri:4, instance:maintest.FullFlow@1fffcd7] output={null}]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest2.Basic.Login() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.FullFlow.dataEntry() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@ecd4b]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-25T12:28:55Z" finished-at="2018-10-25T12:28:55Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-26T13:32:40Z" finished-at="2018-10-26T13:32:40Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=dataEntry status=SUCCESS method=Basic.dataEntry()[pri:4, instance:maintest2.Basic@ecd4b] output=Test Method resides in maintest2.Basic]]]>
+                <![CDATA[public void maintest.FullFlow.dataEntryQCAssign() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-26T13:33:41Z" finished-at="2018-10-26T13:33:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.FullFlow.AddressDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="AddressDEQC()[pri:6, instance:maintest.FullFlow@1fffcd7]" name="AddressDEQC" duration-ms="26925" started-at="2018-10-26T13:33:41Z" depends-on-methods="maintest.FullFlow.dataEntryQCAssign" finished-at="2018-10-26T13:34:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AddressDEQC -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-26T13:33:41Z" finished-at="2018-10-26T13:33:41Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=dataEntryQCAssign status=SUCCESS method=FullFlow.dataEntryQCAssign()[pri:5, instance:maintest.FullFlow@1fffcd7] output={null}]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest2.Basic.dataEntry() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.FullFlow.dataEntryQCAssign() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest2.Basic@ecd4b]" name="teardown" is-config="true" duration-ms="0" started-at="2018-10-25T12:28:55Z" finished-at="2018-10-25T12:28:55Z">
+        <test-method status="PASS" signature="EducationDEQC()[pri:7, instance:maintest.FullFlow@1fffcd7]" name="EducationDEQC" duration-ms="25997" started-at="2018-10-26T13:34:08Z" depends-on-methods="maintest.FullFlow.dataEntryQCAssign" finished-at="2018-10-26T13:34:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EducationDEQC -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-26T13:34:08Z" finished-at="2018-10-26T13:34:08Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.FullFlow.EducationDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-26T13:34:08Z" finished-at="2018-10-26T13:34:08Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=AddressDEQC status=SUCCESS method=FullFlow.AddressDEQC()[pri:6, instance:maintest.FullFlow@1fffcd7] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.FullFlow.AddressDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="EmploymentDEQC()[pri:8, instance:maintest.FullFlow@1fffcd7]" name="EmploymentDEQC" duration-ms="26554" started-at="2018-10-26T13:34:34Z" depends-on-methods="maintest.FullFlow.dataEntryQCAssign" finished-at="2018-10-26T13:35:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EmploymentDEQC -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="setup" is-config="true" duration-ms="0" started-at="2018-10-26T13:34:34Z" finished-at="2018-10-26T13:34:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.FullFlow.EmploymentDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-26T13:34:34Z" finished-at="2018-10-26T13:34:34Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=EducationDEQC status=SUCCESS method=FullFlow.EducationDEQC()[pri:7, instance:maintest.FullFlow@1fffcd7] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.FullFlow.EducationDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-10-26T13:35:01Z" finished-at="2018-10-26T13:35:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=EmploymentDEQC status=SUCCESS method=FullFlow.EmploymentDEQC()[pri:8, instance:maintest.FullFlow@1fffcd7] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.FullFlow.EmploymentDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="setup" is-config="true" duration-ms="1" started-at="2018-10-26T13:35:01Z" finished-at="2018-10-26T13:35:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.FullFlow.ReferenceDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="ReferenceDEQC()[pri:9, instance:maintest.FullFlow@1fffcd7]" name="ReferenceDEQC" duration-ms="9569" started-at="2018-10-26T13:35:01Z" depends-on-methods="maintest.FullFlow.dataEntryQCAssign" finished-at="2018-10-26T13:35:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ReferenceDEQC -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.FullFlow@1fffcd7]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-10-26T13:35:10Z" finished-at="2018-10-26T13:35:10Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=ReferenceDEQC status=SUCCESS method=FullFlow.ReferenceDEQC()[pri:9, instance:maintest.FullFlow@1fffcd7] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.FullFlow.ReferenceDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest.FullFlow@1fffcd7]" name="teardown" is-config="true" duration-ms="655" started-at="2018-10-26T13:35:10Z" finished-at="2018-10-26T13:35:11Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest2.Basic@ecd4b]" name="afterSuite" is-config="true" duration-ms="279" started-at="2018-10-25T12:28:55Z" finished-at="2018-10-25T12:28:55Z">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest.FullFlow@1fffcd7]" name="afterSuite" is-config="true" duration-ms="353" started-at="2018-10-26T13:35:11Z" finished-at="2018-10-26T13:35:11Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- maintest2.Basic -->
+      </class> <!-- maintest.FullFlow -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

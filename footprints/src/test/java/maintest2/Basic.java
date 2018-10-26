@@ -1,6 +1,5 @@
 package maintest2;
 
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
@@ -21,6 +20,9 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import dataEntryQC.Address;
+import dataEntryQC.Education;
+import dataEntryQC.Employment;
+import dataEntryQC.Reference;
 import environment.BaseClass;
 import environment.Pages;
 import environment.Utill;
@@ -84,26 +86,32 @@ public class Basic {
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
 	}
 
-	@Test(priority=4, enabled=true)
-	public void dataEntry() throws Exception{
-		refno="HDFC000616";
-pages.DataEntryQC().datanentryqc();
-pages.DataEntryQC().selectcase(refno);
-Address add= new Address(logger);
-add.addresscheck();
-HashMap<String , String> actual=add.alldata("Current Address");
-HashMap<String , String> expected=add.filedata();
-
-	System.out.println(actual);
-	System.out.println(expected);
-	
-
-
-
-
-		
+	@Test(priority = 4, enabled = true)
+	public void dataEntry() throws Exception {
+		refno = "HDFC000629";
+		pages.DataEntryQC().datanentryqc();
+		pages.DataEntryQC().selectcase(refno);
+		Education edu= new Education(logger);
+		edu.educationcheck();
+		HashMap<String , String> actual=edu.twelveth();
+		HashMap<String , String> expected=edu.filedata("12th");
+		HashMap<String , String> Peractual=edu.ugone();
+		HashMap<String , String> Perexpected=edu.filedata("UG1");
+		pages.Utill().SwitchDefault();
+		if(actual.equals(expected) && Peractual.equals(Perexpected)) {
+			
+			System.out.println("pass");
+		}
+		else {
+			System.out.println("failed");
+		}
+		if(Peractual.equals(Perexpected)) {
+				System.out.println("pass");
 	}
-
+	else {
+		System.out.println("failed");
+	}
+	}
 
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {

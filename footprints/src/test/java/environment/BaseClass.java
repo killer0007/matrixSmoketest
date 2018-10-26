@@ -37,9 +37,8 @@ public class BaseClass {
 //					config.put("plugins.always_open_pdf_externally", true);
 			chromoption.setExperimentalOption("prefs", config);
 			chromoption.addArguments("--disable-notifications");
-//			chromoption.setHeadless(true);
+			chromoption.setHeadless(true);
 //			chromoption.addArguments("start-maximized");
-//			driver = new ChromeDriver();
 			driver = new ChromeDriver(chromoption);
 			Dimension d = new Dimension(1382, 744);
 			driver.manage().window().setSize(d);

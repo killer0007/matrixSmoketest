@@ -384,9 +384,9 @@ public class Reference extends DataEntryPage {
 		this.RefCity();
 		this.RefPincode(pro.getProperty("ReferrerPincode"));
 		this.OrganizationName(pro.getProperty("Organizationname"));
-		this.OrganizationAddressLine1(pro.getProperty("OrganizationAddressLine1"));
-		this.OrgPincode(pro.getProperty("OrganizationPinCode"));
-		this.LandMark(pro.getProperty("OrganizationLandmark"));
+		//this.OrganizationAddressLine1(pro.getProperty("OrganizationAddressLine1"));
+		//this.OrgPincode(pro.getProperty("OrganizationPinCode"));
+		//this.LandMark(pro.getProperty("OrganizationLandmark"));
 		this.document();
 		this.UploadDocument("Others", pro.getProperty("refonedoc"));
 		this.docclose();

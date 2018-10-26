@@ -68,6 +68,7 @@ public class Utill {
 		this.logger = logger;
 		pages = new Pages(logger);
 	}
+	
 
 	/**
 	 * Takes the webdriver and return the path of screen shot to be taken

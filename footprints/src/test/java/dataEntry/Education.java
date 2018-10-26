@@ -418,8 +418,8 @@ try {
 		this.CandidateNameinCertificate(pro.getProperty("UG1CandidateNameinCertificate"));
 		this.Enrollment(pro.getProperty("UG1Enrollment"));
 		this.Percentage(pro.getProperty("UG1CGPA"));
-		this.CourseCommencementYear(pro.getProperty("UG1CourseCommencementYear"));
-		this.CourseCompletionYear(pro.getProperty("UG1CourseCompletionYear"));
+		this.CourseCommencementYear(pages.Utill().FormateDate(pro.getProperty("UG1CourseCommencementYear")));
+		this.CourseCompletionYear(pages.Utill().FormateDate(pro.getProperty("UG1CourseCompletionYear")));
 		this.Comments(pro.getProperty("UG1Comments"));
 		this.document();
 		this.UploadDocument("Degree Certificate", pro.getProperty("ugone"));
