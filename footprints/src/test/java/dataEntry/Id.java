@@ -49,8 +49,8 @@ public class Id extends DataEntryPage {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlIdComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill()
-					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlIdComponent_DropDown']/div/ul/li//text()='"
-							+ component + "'");
+					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlIdComponent_DropDown']/div/ul//li[text()='"
+							+ component + "']");
 			pages.Utill().wait_until_loader_is_invisible(100);
 		} else {
 			throw new NotFoundException(component);

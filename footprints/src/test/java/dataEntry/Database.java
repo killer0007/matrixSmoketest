@@ -100,7 +100,7 @@ public void Country() {
  * select tamil nadu as state
  */
 public void State() {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_Input", "tamil nadu");
+	pages.Utill().input_text("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_Input","Tamil Nadu");
 	new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_DropDown']/div/ul/li[1]")));
 	pages.Utill().click_element(
@@ -112,7 +112,7 @@ public void State() {
  * select chennai as city
  */
 public void City() {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCity_Input", "chennai");
+	pages.Utill().input_text("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCity_Input","chennai");
 	new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCity_DropDown']/div/ul/li[1]")));
 	pages.Utill().click_element(

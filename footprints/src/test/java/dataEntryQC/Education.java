@@ -1,7 +1,7 @@
 package dataEntryQC;
 
 import java.io.File;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Properties;
 import org.openqa.selenium.By;
@@ -285,9 +285,9 @@ public class Education extends DataEntryQCPage {
 	public String Comments() {
 		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_txtEducationAdditionalComments");
 	}
-	public HashMap<String, String> twelveth() throws Exception{
+	public LinkedHashMap<String, String> twelveth() throws Exception{
 		this.Component("12th");
-		HashMap<String , String> map=new HashMap<String, String>();
+		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
 		map.put("Component", this.Component());
 		map.put("InstituteName", this.InstituteName());
 		map.put("InstituteAddressLine1", this.InstituteAddressLine1());
@@ -311,11 +311,12 @@ public class Education extends DataEntryQCPage {
 		this.document();
 		map.put("twelveth", this.getDocumentName("Mark Sheet"));
 		this.docclose();
+		this.submit();
 		return map;
 	}
-	public HashMap<String, String> ugone() throws Exception{
+	public LinkedHashMap<String, String> ugone() throws Exception{
 		this.Component("UG1");
-		HashMap<String , String> map=new HashMap<String, String>();
+		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
 		map.put("Component", this.Component());
 		map.put("UG1InstituteName", this.InstituteName());
 		map.put("UG1InstituteAddressLine1", this.InstituteAddressLine1());
@@ -339,10 +340,11 @@ public class Education extends DataEntryQCPage {
 		this.document();
 		map.put("ugone", this.getDocumentName("Degree Certificate"));
 		this.docclose();
+		this.submit();
 		return map;
 	}
-	public HashMap<String, String> filedata(String component) throws Exception{
-		HashMap<String , String> map=new HashMap<String, String>();
+	public LinkedHashMap<String, String> filedata(String component) throws Exception{
+		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
 		Properties pro= pages.Utill().dedata("education");
 		if(component.equals("12th")) {
 		map.put("Component", "12th");

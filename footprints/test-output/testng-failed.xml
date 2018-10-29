@@ -3,17 +3,23 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="maintest2.Basic">
+      <class name="maintest.FullFlow">
         <methods>
+          <include name="dataEntryQCAssign"/>
           <include name="setup"/>
-          <include name="tearDown"/>
-          <include name="teardown"/>
-          <include name="beforeSuit"/>
           <include name="afterSuite"/>
-          <include name="dataEntry"/>
+          <include name="teardown"/>
+          <include name="IdDEQC"/>
+          <include name="VerificationSupervisor"/>
           <include name="beforetest"/>
+          <include name="beforeSuit"/>
+          <include name="Login"/>
+          <include name="dataEntryAssign"/>
+          <include name="caseregistration"/>
+          <include name="dataEntry"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- maintest2.Basic -->
+      </class> <!-- maintest.FullFlow -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

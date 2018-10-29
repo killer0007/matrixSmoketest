@@ -1,25 +1,17 @@
 package dataEntryQC;
 
 import java.io.File;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Properties;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-import environment.BaseClass;
-import environment.Pages;
+public class Address extends DataEntryQCPage {
 
-public class Address {
-	WebDriver driver;
-	ExtentTest logger;
-	Pages pages;
 
 	/**
 	 * This is class for address in data entryqc
@@ -27,9 +19,8 @@ public class Address {
 	 * @param logger logger instance
 	 */
 	public Address(ExtentTest logger) {
-		driver = BaseClass.getWebDriver();
-		this.logger = logger;
-		pages = new Pages(logger);
+	
+	super(logger);
 	}
 public void addresscheck() {
 	pages.Utill().SwitchDefault();
@@ -213,9 +204,9 @@ private boolean verifyddvalue(String component) throws Exception {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnDocumentCancel_input");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
-public HashMap<String, String> CurrentAddress() throws Exception{
+public LinkedHashMap<String, String> CurrentAddress() throws Exception{
 	this.Component("Current Address");
-	HashMap<String , String> map=new HashMap<String, String>();
+	LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
 	map.put("Component", this.Component());
 	map.put("AddressLine1", this.AddressLine1());
 	map.put("Country", this.Country());
@@ -237,11 +228,12 @@ public HashMap<String, String> CurrentAddress() throws Exception{
 	this.document();
 	map.put("currentAddressproof", this.getDocumentName("Address Proof"));
 	this.docclose();
+	this.submit();
 	return map;
 }
-public HashMap<String, String> PermanentAdress() throws Exception{
+public LinkedHashMap<String, String> PermanentAdress() throws Exception{
 	this.Component("Permanent");
-	HashMap<String , String> map=new HashMap<String, String>();
+	LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
 	map.put("Component", this.Component());
 	map.put("AddressLine1", this.AddressLine1());
 	map.put("Country", this.Country());
@@ -263,10 +255,11 @@ public HashMap<String, String> PermanentAdress() throws Exception{
 	this.document();
 	map.put("PerAddressproof", this.getDocumentName("Address Proof"));
 	this.docclose();
+	this.submit();
 	return map;
 }
-public HashMap<String, String> filedata(String component) throws Exception{
-	HashMap<String , String> map=new HashMap<String, String>();
+public LinkedHashMap<String, String> filedata(String component) throws Exception{
+	LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
 	Properties pro= pages.Utill().dedata("address");
 	if(component.equals("Current Address")) {
 	map.put("Component", "Current Address");
@@ -314,5 +307,54 @@ public HashMap<String, String> filedata(String component) throws Exception{
 	}
 	else
 		throw new NotFoundException();
+}
+/**
+ * click report insuff button
+ */
+public void ReportInsuff() {
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkAddressInsuff");
+}
+
+/**
+ * Takes insufff comments as input and pass it
+ * 
+ * @param comments insuff raise comments
+ */
+public void Insuffcomm(String comments) {
+	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressInsuffRemark", comments);
+}
+
+/**
+ * click not applicable button
+ */
+public void Notapplicable() {
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
+}
+
+/**
+ * Takes not applicable comments as input and pass it
+ * 
+ * @param comments not applicable comments
+ */
+public void Notapplicablecomm(String comments) {
+	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+}
+/**
+ * click submit button on address data entry
+ * @throws Exception WebDriverException
+ */
+public void submit() throws Exception{
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressSubmit_input");
+	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().SwitchDefault();
+	pages.Utill().confirmAlert();
+}
+/**
+ * performs click action on save button
+ */
+public void save() throws Exception {
+	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressAdd_input");
+	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().confirmAlert();
 }
 }

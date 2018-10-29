@@ -1,12 +1,10 @@
 package maintest2;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
@@ -18,11 +16,9 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.mysql.cj.protocol.StandardSocketFactory;
 
-import dataEntryQC.Address;
-import dataEntryQC.Education;
-import dataEntryQC.Employment;
-import dataEntryQC.Reference;
+import dataEntryQC.*;
 import environment.BaseClass;
 import environment.Pages;
 import environment.Utill;
@@ -88,29 +84,32 @@ public class Basic {
 
 	@Test(priority = 4, enabled = true)
 	public void dataEntry() throws Exception {
-		refno = "HDFC000629";
+		refno = "HDFC000630";
 		pages.DataEntryQC().datanentryqc();
 		pages.DataEntryQC().selectcase(refno);
-		Education edu= new Education(logger);
-		edu.educationcheck();
-		HashMap<String , String> actual=edu.twelveth();
-		HashMap<String , String> expected=edu.filedata("12th");
-		HashMap<String , String> Peractual=edu.ugone();
-		HashMap<String , String> Perexpected=edu.filedata("UG1");
+		Id id = new Id(logger);
+		id.idcheck();
+		LinkedHashMap<String, String> actual = id.Aadharcard();
+		LinkedHashMap<String, String> expected = id.filedata("Aadhaar Card");
+		id.idcheck();
+		LinkedHashMap<String, String> passactual = id.PassPort();
+		LinkedHashMap<String, String> passexpected = id.filedata("Passport");
 		pages.Utill().SwitchDefault();
-		if(actual.equals(expected) && Peractual.equals(Perexpected)) {
+
+		pages.Utill().SwitchDefault();
+		System.out.println(actual);
+		System.out.println(expected);
+		if(actual.equals(expected) && passactual.equals(passexpected)) {
 			
-			System.out.println("pass");
+			System.err.println("pass");
+			
 		}
 		else {
+			
 			System.out.println("failed");
+			
 		}
-		if(Peractual.equals(Perexpected)) {
-				System.out.println("pass");
-	}
-	else {
-		System.out.println("failed");
-	}
+		
 	}
 
 	@AfterMethod(alwaysRun = true)

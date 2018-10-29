@@ -1,14 +1,12 @@
 package dataEntryQC;
 
 import java.io.File;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Properties;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebElement;
-
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
@@ -264,8 +262,8 @@ public class Reference extends DataEntryQCPage {
 	public String Comments() {
 		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_txtRefComments");
 	}
-	public HashMap<String, String> Referenceone() throws Exception{
-		HashMap<String , String> map=new HashMap<String, String>();
+	public LinkedHashMap<String, String> Referenceone() throws Exception{
+		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
 		map.put("Component", this.Component());
 		map.put("ReferenceType", this.ReferenceType());
 		map.put("ReferrerName", this.ReferrerName());
@@ -285,10 +283,11 @@ public class Reference extends DataEntryQCPage {
 		this.document();
 		map.put("refonedoc", this.getDocumentName("Others"));
 		this.docclose();
+		this.submit();
 		return map;
 	}
-	public HashMap<String, String> filedata() throws Exception{
-		HashMap<String , String> map=new HashMap<String, String>();
+	public LinkedHashMap<String, String> filedata() throws Exception{
+		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
 		Properties pro= pages.Utill().dedata("reference");
 		map.put("Component", "Reference 1");
 		map.put("ReferenceType", pro.getProperty("ReferenceType"));

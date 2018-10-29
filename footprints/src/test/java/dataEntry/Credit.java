@@ -196,7 +196,7 @@ public void ExpiryDate(String date) {
 public void Country() {
 	boolean re=false;
 	if(re) {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCreditIssueCountry_Input", "India");
+	pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCreditIssueCountry_Input","India");
 	new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCreditIssueCountry_DropDown']/div/ul/li[1]")));
 	pages.Utill().click_element(
@@ -208,7 +208,7 @@ public void Country() {
  * select tamil nadu as state
  */
 public void State() {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCreditIssueState_Input", "tamil nadu");
+	pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCreditIssueState_Input", "Tamil Nadu");
 	new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCreditIssueState_DropDown']/div/ul/li[1]")));
 	pages.Utill().click_element(
@@ -220,7 +220,7 @@ public void State() {
  * select chennai as city
  */
 public void City() {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCreditIssueCity_Input", "chennai");
+	pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCreditIssueCity_Input", "Chennai");
 	new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCreditIssueCity_DropDown']/div/ul/li[1]")));
 	pages.Utill().click_element(

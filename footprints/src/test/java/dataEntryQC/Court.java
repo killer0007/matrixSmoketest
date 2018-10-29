@@ -1,19 +1,20 @@
-package dataEntry;
+package dataEntryQC;
 
+import java.io.File;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Properties;
-
-import javax.activity.InvalidActivityException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-public class Court extends DataEntryPage{
+public class Court extends DataEntryQCPage{
 	/**
 	 * This is class for Court page in data entry
 	 * 
@@ -27,7 +28,6 @@ public class Court extends DataEntryPage{
 	 */
 	public void courtcheck() {
 		pages.Utill().SwitchDefault();
-//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[8]/a/span/span/span");
 		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Court']");
 		pages.Utill().SwitchFramebyIndex(7);
 	}
@@ -86,121 +86,6 @@ public class Court extends DataEntryPage{
 		}
 
 	}
-
-	/**
-	 * Takes int as input and perform click action
-	 * 
-	 * @param i 1 for SAME check 0 for OTHERS check
-	 * @param component sub component name
-	 * @throws InvalidActivityException invalid data 0 and 1 only acceptable
-	 */
-	public void CopyComponentDatafrom(int i, String component) throws InvalidActivityException {
-		if (i == 1) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtCourtCopySame_1");
-		pages.Utill().wait_until_loader_is_invisible(100);
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCourtSameAs_Input");
-		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(pages.Utill().find("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtSameAs_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtSameAs_DropDown']/div/ul//li[text()='"+component+"']");
-		pages.Utill().wait_until_loader_is_invisible(100);
-		}
-		else if (i == 0) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtCourtCopySame_0");
-		pages.Utill().wait_until_loader_is_invisible(100);
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCourtCopy_Input");
-		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(pages.Utill().find("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtCopy_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtCopy_DropDown']/div/ul//li[text()='"+component+"']");
-		pages.Utill().wait_until_loader_is_invisible(100);
-		}
-		
-		else
-			throw new InvalidActivityException(Integer.toString(i));
-	}
-
-	/**
-	 * Takes address line 1 as input and pass it to address field
-	 * 
-	 * @param address line 1
-	 */
-	public void AddressLine1(String address) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCourtAddress", address);
-	}
-
-	/**
-	 * select tamil nadu as state
-	 */
-	public void State() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCourtState_Input","Tamil Nadu");
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlCourtState_DropDown']/div/ul//li[text()='Tamil Nadu']");
-		pages.Utill().wait_until_loader_is_invisible(100);
-	}
-
-	/**
-	 * select chennai as city
-	 */
-	public void City() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCourtCity_Input", "Chennai");
-		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlAddressState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
-				"//*[@id='ctl00_ContentPlaceHolder1_ddlCourtCity_DropDown']/div/ul//li[text()='Chennai']");
-		pages.Utill().wait_until_loader_is_invisible(100);
-	}
-
-	/**
-	 * Takes pincode as input and pass it to pincode field
-	 * 
-	 * @param pincode pincode of address
-	 */
-	public void Pincode(String pincode) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCourtPincode", pincode);
-	}
-
-	/**
-	 * Takes Landmark as input and pass it to Landmark field
-	 * 
-	 * @param Landmark landmark near to address
-	 */
-	public void LandMark(String Landmark) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCourtLandmark", Landmark);
-	}
-
-	/**
-	 * Takes date as input date should be mm/yyyy format
-	 * 
-	 * @param date from date of address
-	 */
-	public void FromDate(String date) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCourtFromDate_dateInput", date);
-	}
-
-	/**
-	 * Takes date as input date should be mm/yyyy format
-	 * 
-	 * @param date To date of address
-	 */
-	public void ToDate(String date) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCourtToDate_dateInput", date);
-	}
-
-	/**
-	 * Perform click action on till date
-	 */
-	public void TillDate() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkTillDate");
-		pages.Utill().wait_until_loader_is_invisible(100);
-	}
-	/**
-	 * comments
-	 * 
-	 * @param comments address comments
-	 */
-	public void Comments(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCourtComments", comments);
-	}
-
 	/**
 	 * click report insuff button
 	 */
@@ -313,35 +198,132 @@ public class Court extends DataEntryPage{
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 	/**
-	 * Takes the input from court.properties file and pass it to current address court
-	 * @param component name which check data to be imported
-	 * @throws Exception webdriver exception
+	 * Takes Document type as input and return the name of uploaded document
+	 * 
+	 * @param doctype Type of Document
+	 * @return document name
 	 */
-	public void CurrentAddress(String component) throws Exception{
-		Properties pro = pages.Utill().dedata("court");
-		this.courtcheck();
-		this.Component("Current Address Court Check");
-		this.CopyComponentDatafrom(0,component);
-		this.document();
-		this.UploadDocument("Address Proof", pro.getProperty("currentAddressproof"));
-		this.docclose();
-		this.Comments(pro.getProperty("currentcommments"));
-		this.submit();
+	public String getDocumentName(String doctype) {
+		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmCourtDocument_C_grdCourtDocumentList_ctl00']//*[text()='"
+				+ doctype + "']/../td[5]//td[1]/span";
+		if (this.isvaliddoctype(doctype)) {
+			return pages.Utill().get_text(path).trim().replaceAll("[0-9]", "");
+		} else {
+			throw new NotFoundException(doctype);
+		}
 	}
-	/**
-	 * Takes the input from court.properties file and pass it to previous address criminal
-	 * @param component name which check data to be imported
-	 * @throws Exception webdriver exception
-	 */
-	public void PermanentAddress(String component) throws Exception {
-		Properties pro = pages.Utill().dedata("court");
-		this.courtcheck();
-		this.Component("Permanent Court Check");
-		this.CopyComponentDatafrom(0,component);
+
+	public String Component() {
+		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCourtComponent_Input");
+	}
+
+	public String AddressLine1() {
+		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCourtAddress");
+	}
+
+	public String Country() {
+		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCourtCountry_Input");
+	}
+
+	public String State() {
+		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCourtState_Input");
+	}
+
+	public String City() {
+		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCourtCity_Input");
+	}
+
+	public String Pincode() {
+		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCourtPincode");
+	}
+
+	public String Landmark() {
+		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCourtLandmark");
+	}
+
+	public String FromDate() {
+		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCourtFromDate_dateInput");
+	}
+
+	public String ToDate() {
+		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCourtToDate_dateInput");
+	}
+
+	public String Comments() {
+		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCourtComments");
+	}
+	public LinkedHashMap<String, String> CurrentAddress() throws Exception{
+		this.Component("Current Address Court Check");
+		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("AddressLine1", this.AddressLine1());
+		map.put("Country", this.Country());
+		map.put("State", this.State());
+		map.put("City", this.City());
+		map.put("Pincode", this.Pincode());
+		map.put("Landmark", this.Landmark());
+		map.put("FromDate", this.FromDate());
+		map.put("ToDate", this.ToDate());
+		map.put("currentcommments", this.Comments());
 		this.document();
-		this.UploadDocument("Address Proof", pro.getProperty("perAddressproof"));
+		map.put("currentAddressproof", this.getDocumentName("Address Proof"));
 		this.docclose();
-		this.Comments(pro.getProperty("permanentcomments"));
 		this.submit();
+		return map;
+	}
+	public LinkedHashMap<String, String> PermanentAdress() throws Exception{
+		this.Component("Permanent Court Check");
+		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("AddressLine1", this.AddressLine1());
+		map.put("Country", this.Country());
+		map.put("State", this.State());
+		map.put("City", this.City());
+		map.put("Pincode", this.Pincode());
+		map.put("Landmark", this.Landmark());
+		map.put("FromDate", this.FromDate());
+		map.put("ToDate", this.ToDate());
+		map.put("permanentcomments", this.Comments());
+		this.document();
+		map.put("perAddressproof", this.getDocumentName("Address Proof"));
+		this.docclose();
+		this.submit();
+		return map;
+	}
+	public LinkedHashMap<String, String> filedata(String component) throws Exception{
+		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+		Properties pro= pages.Utill().dedata("address");
+		Properties court= pages.Utill().dedata("court");
+		if(component.equals("Current Address Court Check")) {
+		map.put("Component", "Current Address Court Check");
+		map.put("AddressLine1", pro.getProperty("AddressLine1"));
+		map.put("Country", pro.getProperty("Country"));
+		map.put("State", pro.getProperty("State"));
+		map.put("City", pro.getProperty("City"));
+		map.put("Pincode", pro.getProperty("Pincode"));
+		map.put("Landmark", pro.getProperty("Landmark"));
+		map.put("FromDate", pro.getProperty("FromDate"));
+		map.put("ToDate", pro.getProperty("ToDate"));
+		map.put("currentcommments", court.getProperty("currentcommments"));
+		map.put("currentAddressproof", new File(court.getProperty("currentAddressproof")).getName().replaceAll(" ", ""));
+		return map;
+		}
+		else if(component.equals("Permanent Court Check")) {
+			map.put("Component", "Permanent Court Check");
+			map.put("AddressLine1", pro.getProperty("AddressLine1"));
+			map.put("Country", pro.getProperty("Country"));
+			map.put("State", pro.getProperty("State"));
+			map.put("City", pro.getProperty("City"));
+			map.put("Pincode", pro.getProperty("Pincode"));
+			map.put("Landmark", pro.getProperty("Landmark"));
+			map.put("FromDate", pro.getProperty("FromDate"));
+			map.put("ToDate", pro.getProperty("ToDate"));
+			map.put("permanentcomments", court.getProperty("permanentcomments"));
+			map.put("perAddressproof", new File(court.getProperty("perAddressproof")).getName().replaceAll(" ", ""));
+
+			return map;
+		}
+		else
+			throw new NotFoundException();
 	}
 }
