@@ -7,28 +7,29 @@ import com.aventstack.extentreports.ExtentTest;
 import environment.BaseClass;
 import environment.Pages;
 
-public class VerificationSupervisor {
+public class Verification {
 	WebDriver driver;
 	ExtentTest logger;
 	Pages pages;
 
 	/**
-	 * This is class for Case Registration Stage
-	 * 
+	 * This is class for Data Entry Stage
+	 *
 	 * @param logger logger instance
 	 */
-	public VerificationSupervisor(ExtentTest logger) {
+	public Verification(ExtentTest logger) {
+		
 		driver = BaseClass.getWebDriver();
 		this.logger = logger;
 		pages = new Pages(logger);
 	}
 
 	/**
-	 * select Case Registration from stages dropdown
+	 * select data entry from stages dropdown
 	 */
-	public void verificationsupervisor() {
-		pages.Utill().select_by_value("ddlAct", "5");
-		pages.Utill().wait_until_loader_is_invisible(100);
+	public void verification() {
+		pages.Utill().select_by_value("ddlAct", "6");
+		pages.Utill().wait_until_loader_is_invisible(50);
 	}
 	public void CaseRefNo(String refno) {
 		pages.Utill().input_text("txtCaserefNo", refno);
@@ -53,21 +54,14 @@ public class VerificationSupervisor {
 	public void RegisteredBy(String registeredBy) {
 		pages.Utill().select_by_label("//select[@ng-model='PanelHomePageModal.ddlWorkflowTypeModal']", registeredBy);
 	}
-	public void  WorkstartFrom(String date) {
-		pages.Utill().input_text("txtfromdate", date);
-	}
-	public void  WorkstartTo(String date) {
-		pages.Utill().input_text("txtTodate", date);
-	}
-	public void Status(String status) {
-		pages.Utill().select_by_label("//select[@ng-model='PanelHomePageModal.ddlstagestatus']", status);
-	}
+	
 	public void Checks(String check) {
 		String value=pages.Utill().getSelectedvalue("//select[@ng-model='PanelHomePageModal.ddlCheckTypeModal']");
 		if(!value.equals(check)) {
 			pages.Utill().select_by_label("//select[@ng-model='PanelHomePageModal.ddlCheckTypeModal']", check);
 			pages.Utill().wait_until_loader_is_invisible(100);
 		}
+		
 	}
 	public void Components(String component) {
 		String value=pages.Utill().getSelectedvalue("//select[@ng-model='PanelHomePageModal.ddlComponentModal']");
@@ -80,7 +74,7 @@ public class VerificationSupervisor {
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 	public void Search() {
-		pages.Utill().click_element("btnsearch");
+		pages.Utill().click_element("Button3");
 		pages.Utill().wait_until_loader_is_invisible(100);
 	}
 	public void Search(String refno) {
@@ -93,21 +87,31 @@ public class VerificationSupervisor {
 		this.Components(component);
 		this.Search();
 	}
-	public void assigngetnext(String refno, String check,String component) {
-		this.Search(refno, check, component);
-		if(pages.Utill().getSelectedvalue("//select[@ng-model='Emp.Priority']").equals("Normal")) {
-			pages.Utill().select_by_label("//select[@ng-model='Emp.Priority']", "High");
-			pages.Utill().wait_until_loader_is_invisible(20);
-			pages.Utill().click_element("xpath:html/body/div[3]/div/div/table/tbody/tr[3]/td/button[1]");
-			pages.Utill().wait_until_loader_is_invisible(20);
-			}
-			pages.Utill().select_by_label("Reserverfor", "demoempl");
-			pages.Utill().wait_until_loader_is_invisible(100);
-			pages.Verification().verification();
-			pages.Verification().GetNext();
-			pages.VerificationSupervisor().verificationsupervisor();
-			
+	public void VRInitiateStatus(String status) {
+		String value=pages.Utill().getSelectedvalue("//select[@ng-model='PanelHomePageModal.ddlInitiation']");
+		if(!value.equals(status)) {
+		pages.Utill().select_by_label("//select[@ng-model='PanelHomePageModal.ddlInitiation']", status);
+		pages.Utill().wait_until_loader_is_invisible(100);
+		}
 	}
-
-	
+	public void GetNext() {
+		pages.Utill().click_element("btnGetNext");
+		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click_element("imgHome");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
+	public void Select(String refno) {
+		pages.Utill().click_element("//span[text()='"+refno+"']");
+		pages.Utill().wait_until_loader_is_invisible(100);
+	}
+	public void CurrentAddress(String refno) {
+		this.VRInitiateStatus("Verification Confirmation Pending");
+		this.Search(refno, "Address", "Current Address");
+		this.Select(refno);
+	}
+	public void Permanent(String refno) {
+		this.VRInitiateStatus("Verification Confirmation Pending");
+		this.Search(refno, "Address", "Permanent");
+		this.Select(refno);
+	}
 }

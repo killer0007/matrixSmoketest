@@ -1,7 +1,7 @@
 package maintest;
 
-import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -109,7 +109,7 @@ public class SPcasereg extends Design {
 		if (title.equals("Case Registration")) {
 			assertTrue(true);
 		} else {
-			assertTrue(title, false);
+			assertTrue(false, title);
 		}
 	}
 
@@ -123,7 +123,7 @@ public class SPcasereg extends Design {
 		if (result.equals("1px solid rgb(255, 0, 0)")) {
 			assertTrue(true);
 		} else {
-			assertTrue(result, false);
+			assertTrue(false, result);
 		}
 	}
 
@@ -136,7 +136,7 @@ public class SPcasereg extends Design {
 		if (result.equals("1px solid rgb(255, 0, 0)")) {
 			assertTrue(true);
 		} else {
-			assertTrue(result, false);
+			assertTrue(false, result);
 		}
 	}
 
@@ -149,7 +149,7 @@ public class SPcasereg extends Design {
 		if (result.equals("1px solid rgb(255, 0, 0)")) {
 			assertTrue(true);
 		} else {
-			assertTrue(result, false);
+			assertTrue(false, result);
 		}
 
 	}
@@ -164,7 +164,7 @@ public class SPcasereg extends Design {
 		if (result.equals("rgb(213, 25, 35)")) {
 			assertTrue(true);
 		} else {
-			assertTrue(result, false);
+			assertTrue(false, result);
 		}
 	}
 
@@ -177,7 +177,7 @@ public class SPcasereg extends Design {
 		if (result.equals("rgb(213, 25, 35)")) {
 			assertTrue(true);
 		} else {
-			assertTrue(result, false);
+			assertTrue(false, result);
 		}
 	}
 
@@ -191,7 +191,7 @@ public class SPcasereg extends Design {
 		if (result.equals("rgb(213, 25, 35)")) {
 			assertTrue(true);
 		} else {
-			assertTrue(result, false);
+			assertTrue(false, result);
 		}
 	}
 
@@ -206,7 +206,7 @@ public class SPcasereg extends Design {
 		if (result.equals("rgb(213, 25, 35)")) {
 			assertTrue(true);
 		} else {
-			assertTrue(result, false);
+			assertTrue(false, result);
 		}
 	}
 
@@ -221,7 +221,7 @@ public class SPcasereg extends Design {
 		if (result.equals("rgb(213, 25, 35)")) {
 			assertTrue(true);
 		} else {
-			assertTrue(result, false);
+			assertTrue(false, result);
 		}
 	}
 
@@ -1008,7 +1008,8 @@ public class SPcasereg extends Design {
 		if (before.equals(after)) {
 			assertTrue(true);
 		} else {
-			assertTrue(after, false);
+			assertTrue(false, after);
+			
 		}
 
 	}
@@ -1036,7 +1037,7 @@ public class SPcasereg extends Design {
 		if (contract.size() == count) {
 			assertTrue(true);
 		} else {
-			assertTrue(Integer.toString(count), false);
+			assertTrue(false, Integer.toString(count));
 		}
 
 	}
@@ -1187,7 +1188,7 @@ public class SPcasereg extends Design {
 		if (refno.equals(no)) {
 			assertTrue(true);
 		} else {
-			assertTrue(refno + " not found", false);
+			assertTrue(false, refno + " not found");
 		}
 	}
 

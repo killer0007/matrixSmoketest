@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
@@ -16,12 +16,11 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.mysql.cj.protocol.StandardSocketFactory;
-
-import dataEntryQC.*;
 import environment.BaseClass;
 import environment.Pages;
 import environment.Utill;
+import verification.Address;
+import verification.VerificationInitiate;
 
 @Listeners(environment.Listener.class)
 public class Basic {
@@ -84,31 +83,21 @@ public class Basic {
 
 	@Test(priority = 4, enabled = true)
 	public void dataEntry() throws Exception {
-		refno = "HDFC000630";
-		pages.DataEntryQC().datanentryqc();
-		pages.DataEntryQC().selectcase(refno);
-		Id id = new Id(logger);
-		id.idcheck();
-		LinkedHashMap<String, String> actual = id.Aadharcard();
-		LinkedHashMap<String, String> expected = id.filedata("Aadhaar Card");
-		id.idcheck();
-		LinkedHashMap<String, String> passactual = id.PassPort();
-		LinkedHashMap<String, String> passexpected = id.filedata("Passport");
-		pages.Utill().SwitchDefault();
+	
+		refno = "HDFC000640";
+		pages.Verification().verification();
+		pages.Home().Logout();
+		pages.Login().userLogin("demov", "Paws@123");
+		pages.Verification().verification();
+//		pages.Verification().CurrentAddress(refno);	
+		Address add = new Address(logger);
+//		add.Verification();
+		pages.Verification().Permanent(refno);	
+		add.Verification();
+//		pages.Home().Logout();
+//		pages.Login().userLogin("demoempl", "Pass$$123");
 
-		pages.Utill().SwitchDefault();
-		System.out.println(actual);
-		System.out.println(expected);
-		if(actual.equals(expected) && passactual.equals(passexpected)) {
-			
-			System.err.println("pass");
-			
-		}
-		else {
-			
-			System.out.println("failed");
-			
-		}
+		
 		
 	}
 
@@ -149,5 +138,25 @@ public class Basic {
 	@AfterSuite
 	public void afterSuite() {
 		extent.flush();
+	}
+	public static Map<String, String> mode(){
+		Map<String, String> map = new HashMap<>();
+		map.put("Permanent", "In Person");
+		map.put("Current Address", "In Person");
+		map.put("12th", "Email (Preffered)");
+		map.put("UG1", "Email (Preffered)");
+		map.put("Current/Latest Employment", "Email");
+		map.put("Previous Employment", "Email");
+		map.put("Reference 1", "Phone");
+		map.put("Current Address Criminal Check", "In Person");
+		map.put("Permanent Criminal Check", "In Person");
+		map.put("Current Address Court Check", "In Person");
+		map.put("Permanent Court Check", "In Person");
+		map.put("Database", "Online");
+		map.put("Credit Check 1", "Online");
+		map.put("Passport", "Online");
+		map.put("Aadhaar Card", "Online");
+		map.put("Panel1", "In Person");
+		return map;
 	}
 }

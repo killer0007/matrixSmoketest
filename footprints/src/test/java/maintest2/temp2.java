@@ -1,58 +1,33 @@
 package maintest2;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Properties;
+import java.util.Map;
 
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
-import org.apache.pdfbox.text.PDFTextStripper;
-import org.apache.pdfbox.text.PDFTextStripperByArea;
-import org.openqa.selenium.NotFoundException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfWriter;
 
 public class temp2 {
 
-	public static void main(String arg[]) throws Exception {
-		temp2 t = new temp2();
-		
-		t.reader();
+	static public void main(String[] args) throws Exception {
+		System.out.println(getcurrentdate());
+
 	}
-	public void reader() throws Exception {
 
-        try (PDDocument document = PDDocument.load(new File("C:\\Users\\admin\\Downloads\\pdf.pdf"))) {
+	public static String getcurrentdate() {
+		SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		Date currentMonth = new Date();
+		return df.format(currentMonth).toString();
 
-            document.getClass();
-
-            if (!document.isEncrypted()) {
-			
-                PDFTextStripperByArea stripper = new PDFTextStripperByArea();
-                stripper.setSortByPosition(true);
-
-                PDFTextStripper tStripper = new PDFTextStripper();
-
-                String pdfFileInText = tStripper.getText(document);
-                //System.out.println("Text:" + st);
-
-				// split by whitespace
-                String lines[] = pdfFileInText.split("\\r?\\n");
-                for (String line : lines) {
-                    System.out.println(line);
-                }
-
-            }
-
-        }
 	}
-	
+
 }
-

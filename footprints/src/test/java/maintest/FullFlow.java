@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
@@ -19,8 +20,9 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import dashboard.DataEntrySupervision;
-import dataEntryQC.*;
 import environment.*;
+import verification.*;
+import verification.VerificationInitiate;
 @Listeners(environment.Listener.class)
 public class FullFlow extends Design {
 
@@ -167,7 +169,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 6, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void AddressDEQC() throws Exception {
-		Address add = new Address(logger);
+		dataEntryQC.Address add = new dataEntryQC.Address(logger);
 		add.addresscheck();
 		LinkedHashMap<String, String> actual = add.CurrentAddress();
 		LinkedHashMap<String, String> expected = add.filedata("Current Address");
@@ -188,7 +190,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 7, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void EducationDEQC() throws Exception {
-		Education edu = new Education(logger);
+		dataEntryQC.Education edu = new dataEntryQC.Education(logger);
 		edu.educationcheck();
 		LinkedHashMap<String, String> actual = edu.twelveth();
 		LinkedHashMap<String, String> expected = edu.filedata("12th");
@@ -209,7 +211,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 8, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void EmploymentDEQC() throws Exception {
-		Employment emp = new Employment(logger);
+		dataEntryQC.Employment emp = new dataEntryQC.Employment(logger);
 		emp.employmentcheck();
 		LinkedHashMap<String, String> actual = emp.CurrentEmp();
 		LinkedHashMap<String, String> expected = emp.filedata("Current/Latest Employment");
@@ -230,7 +232,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 9, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void ReferenceDEQC() throws Exception {
-		Reference ref = new Reference(logger);
+		dataEntryQC.Reference ref = new dataEntryQC.Reference(logger);
 		ref.referencecheck();
 		LinkedHashMap<String, String> actual = ref.Referenceone();
 		LinkedHashMap<String, String> expected = ref.filedata();
@@ -246,7 +248,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 10, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void DataBaseDEQC() throws Exception {
-		Database db = new Database(logger);
+		dataEntryQC.Database db = new dataEntryQC.Database(logger);
 		db.databasecheck();
 		LinkedHashMap<String, String> actual = db.database();
 		LinkedHashMap<String, String> expected = db.filedata();
@@ -262,7 +264,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 11, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void CriminalDEQC() throws Exception {
-		Criminal criminal = new Criminal(logger);
+		dataEntryQC.Criminal criminal = new dataEntryQC.Criminal(logger);
 		criminal.criminalcheck();
 		LinkedHashMap<String, String> actual = criminal.CurrentAddress();
 		LinkedHashMap<String, String> Perexpected = criminal.filedata("Permanent Criminal Check");
@@ -283,7 +285,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 12, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void CreditDEQC() throws Exception {
-		Credit credit = new Credit(logger);
+		dataEntryQC.Credit credit = new dataEntryQC.Credit(logger);
 		credit.creditcheck();
 		LinkedHashMap<String, String> actual = credit.credit();
 		LinkedHashMap<String, String> expected = credit.filedata();
@@ -299,7 +301,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 13, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void CourtDEQC() throws Exception {
-		Court court = new Court(logger);
+		dataEntryQC.Court court = new dataEntryQC.Court(logger);
 		court.courtcheck();
 		LinkedHashMap<String, String> actual = court.CurrentAddress();
 		LinkedHashMap<String, String> expected = court.filedata("Current Address Court Check");	
@@ -319,7 +321,7 @@ public class FullFlow extends Design {
 	}
 	@Test(priority = 14, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void IdDEQC() throws Exception {
-		Id id = new Id(logger);
+		dataEntryQC.Id id = new dataEntryQC.Id(logger);
 		id.idcheck();
 		LinkedHashMap<String, String> actual = id.Aadharcard();
 		LinkedHashMap<String, String> expected = id.filedata("Aadhaar Card");
@@ -341,7 +343,48 @@ public class FullFlow extends Design {
 	public void VerificationSupervisor() throws Exception {
 		pages.Utill().wait_until_loader_is_invisible(100);
 		pages.VerificationSupervisor().verificationsupervisor();
+		pages.VerificationSupervisor().assigngetnext(refno, "ID", "Aadhaar Card");
+	}
+	@Test(priority = 16, enabled = true, dependsOnMethods = "VerificationSupervisor")
+	public void VerificationIntiation() throws Exception {
+		VerificationInitiate ver= new VerificationInitiate(logger);
+		Map<String, String> data=mode();
+		pages.Verification().verification();
+		pages.Home().Logout();
+		pages.Login().userLogin("demov", "Paws@123");
+		pages.Verification().verification();
+		ver.Initiate(refno, "Current Address", data.get("Current Address"));
+		ver.Initiate(refno, "Permanent", data.get("Permanent"));
+		pages.Home().Logout();
+		pages.Login().userLogin("demoempl", "Pass$$123");
+		pages.Verification().verification();
+		ver.Initiate(refno, "12th", data.get("12th"));
+		ver.Initiate(refno, "UG1", data.get("UG1"));
+		ver.Initiate(refno, "Current/Latest Employment", data.get("Current/Latest Employment"));
+		ver.Initiate(refno, "Previous Employment", data.get("Previous Employment"));
+		ver.Initiate(refno, "Reference 1", data.get("Reference 1"));
+		ver.Initiate(refno, "Current Address Criminal Check", data.get("Current Address Criminal Check"));
+		ver.Initiate(refno, "Permanent Criminal Check", data.get("Permanent Criminal Check"));
+		ver.Initiate(refno, "Current Address Court Check", data.get("Current Address Court Check"));
+		ver.Initiate(refno, "Permanent Court Check", data.get("Permanent Court Check"));
+		ver.Initiate(refno, "Credit Check 1", data.get("Credit Check 1"));
+		ver.Initiate(refno, "Passport", data.get("Passport"));
+		ver.Initiate(refno, "Aadhaar Card", data.get("Aadhaar Card"));
 		
+	}
+	@Test(priority = 17, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void AddressVerification() throws Exception {
+		pages.Home().Logout();
+		pages.Login().userLogin("demov", "Paws@123");
+		pages.Verification().verification();
+		pages.Verification().CurrentAddress(refno);	
+		Address add = new Address(logger);
+		add.Verification();
+		pages.Verification().Permanent(refno);	
+		add.Verification();
+		pages.Home().Logout();
+		pages.Login().userLogin("demoempl", "Pass$$123");
+		pages.Verification().verification();
 	}
 	/**
 	 * Takes test Result as input and Log the results into reports
@@ -377,5 +420,24 @@ public class FullFlow extends Design {
 	public void afterSuite() {
 		extent.flush();
 	}
-
+	private static Map<String, String> mode(){
+		Map<String, String> map = new HashMap<>();
+		map.put("Permanent", "In Person");
+		map.put("Current Address", "In Person");
+		map.put("12th", "Email (Preffered)");
+		map.put("UG1", "Email (Preffered)");
+		map.put("Current/Latest Employment", "Email");
+		map.put("Previous Employment", "Email");
+		map.put("Reference 1", "Phone");
+		map.put("Current Address Criminal Check", "In Person");
+		map.put("Permanent Criminal Check", "In Person");
+		map.put("Current Address Court Check", "In Person");
+		map.put("Permanent Court Check", "In Person");
+		map.put("Database", "Online");
+		map.put("Credit Check 1", "Online");
+		map.put("Passport", "Online");
+		map.put("Aadhaar Card", "Online");
+		map.put("Panel1", "In Person");
+		return map;
+	}
 }

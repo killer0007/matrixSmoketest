@@ -32,6 +32,7 @@ public class Pages {
 	private CEP cep;
 	private dataEntry.CaseInformation caseinformation;
 	private VerificationSupervisor verificationsupervisor;
+	private Verification verification;
 
 	public Pages(ExtentTest logger) {
 		this.logger = logger;
@@ -130,5 +131,8 @@ public class Pages {
 	}
 	public VerificationSupervisor VerificationSupervisor() {
 		return (verificationsupervisor == null) ? verificationsupervisor = new VerificationSupervisor(logger) : verificationsupervisor;
+	}
+	public Verification Verification() {
+		return (verification == null) ? verification = new Verification(logger) : verification;
 	}
 }

@@ -58,8 +58,6 @@ public class CaseRegistration {
 	 */
 	public void selectClient(String name) throws InterruptedException {
 		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlClient_Input");
-		pages.Utill().wait_element_has_text("", 10);
-
 		try {
 			pages.Utill().click_element("//li[text()='" + name + "']");
 		} catch (ElementNotVisibleException e) {

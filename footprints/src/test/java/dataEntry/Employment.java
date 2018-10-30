@@ -767,6 +767,8 @@ public void perviousoneEmployment() throws Exception{
 	this.ReasonForLeaving(pro.getProperty("pReasonForLeaving"));
 	this.document();
 	this.UploadDocument("Relieving Letter", pro.getProperty("preemp"));
+	this.UploadDocument("Offer Letter", pro.getProperty("preemp"));
+	this.UploadDocument("Pay Slip", pro.getProperty("preemp"));
 	this.docclose();
 	this.Comments(pro.getProperty("pComments"));
 //	this.save();

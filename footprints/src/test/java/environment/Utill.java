@@ -104,6 +104,7 @@ public class Utill {
 	 */
 	public WebElement find(String path) {
 		// try {
+		if(!path.isEmpty() || !path.equals(null)) {
 		if (path.startsWith("./") || path.startsWith("/") || path.startsWith("(//")) {
 			// logger.info("performing actions on " + path);
 			return driver.findElement(By.xpath(path));
@@ -127,6 +128,10 @@ public class Utill {
 			return driver.findElement(By.className(loc[1]));
 		} else {
 			return driver.findElement(By.id(path));
+		}
+		}
+		else {
+			throw new NullPointerException(path);
 		}
 	}
 
@@ -386,7 +391,12 @@ public class Utill {
 		return df.format(currentMonth).toString();
 
 	}
+	public String getcurrentdate(String format) {
+		SimpleDateFormat df = new SimpleDateFormat(format);
+		Date currentMonth = new Date();
+		return df.format(currentMonth).toString();
 
+	}
 	/**
 	 * Takes Dropdown locator id and inner text as input and click the inner text
 	 * value
@@ -936,7 +946,7 @@ public class Utill {
 	 * @return alerttext text in the alert box
 	 * @throws Exception when alert not found
 	 */
-	public String confirmAlert() throws Exception {
+	public String confirmAlert() {
 		By loc = By.xpath("//span[text()='OK']");
 		WebDriverWait wait = new WebDriverWait(driver, 50);
 		wait.until(ExpectedConditions.presenceOfElementLocated(loc));
@@ -1197,6 +1207,7 @@ public class Utill {
 		pro.load(fis);
 		return pro;
 	}
+	
 
 	/**
 	 * Takes file name as input and return file property object from verification
@@ -1206,11 +1217,16 @@ public class Utill {
 	 * @return property file object
 	 * @throws Exception file not found
 	 */
-	public Properties veridata(String filename) throws Exception {
+	public Properties veridata(String filename)  {
 		Properties pro = new Properties();
+		try {
 		FileInputStream fis = new FileInputStream(
 				new File("./src\\test\\resources\\testdata\\verification\\" + filename + ".properties"));
 		pro.load(fis);
+		}
+		catch (Exception e) {
+			logger.log(Status.FAIL,e.toString());
+		}
 		return pro;
 	}
 

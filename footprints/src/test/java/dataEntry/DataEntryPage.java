@@ -111,7 +111,7 @@ abstract class DataEntryPage {
 	 * @param doctype type of document
 	 * @param filepath file to upload
 	 */
-	public void WaitforFileUpdate(String doctype,String filepath) {
+	synchronized public void WaitforFileUpdate(String doctype,String filepath) {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		String file=new File(filepath).getName();
 		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[text()='"+doctype+"']/../td[5]//div/ul/li[1]/span/span"), file));

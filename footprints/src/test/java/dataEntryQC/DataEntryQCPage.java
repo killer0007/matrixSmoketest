@@ -12,7 +12,7 @@ import com.aventstack.extentreports.ExtentTest;
 import environment.BaseClass;
 import environment.Pages;
 
-abstract class DataEntryQCPage {
+public abstract class DataEntryQCPage {
 	WebDriver driver;
 	ExtentTest logger;
 	Pages pages;
