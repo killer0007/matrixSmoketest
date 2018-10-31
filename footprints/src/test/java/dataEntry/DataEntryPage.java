@@ -8,14 +8,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 
 import environment.BaseClass;
 import environment.Pages;
 
 abstract class DataEntryPage {
-	WebDriver driver;
-	ExtentTest logger;
-	Pages pages;
+	protected WebDriver driver;
+	protected ExtentTest logger;
+	protected Pages pages;
 
 	public DataEntryPage(ExtentTest logger) {
 		driver = BaseClass.getWebDriver();
@@ -27,8 +28,8 @@ abstract class DataEntryPage {
 	 */
 	public void history() {
 
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnHistoryPage_input");
-		pages.Utill().wait_until_loader_is_invisible(50);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnHistoryPage_input");
+		pages.Utill().waitUntilLoaderisInvisible(50);
 	}
 	/**
 	 * returns name who raised insuff
@@ -36,7 +37,7 @@ abstract class DataEntryPage {
 	 */
 	public String getraisedBy() {
 		return pages.Utill()
-				.get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblRaisedBy")
+				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblRaisedBy")
 				.trim();
 	}
 	/**
@@ -45,7 +46,7 @@ abstract class DataEntryPage {
 	 */
 	public String getraisedStage() {
 		return pages.Utill()
-				.get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblRaiseState")
+				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblRaiseState")
 				.trim();
 	}
 	/**
@@ -54,7 +55,7 @@ abstract class DataEntryPage {
 	 */
 	public String getraisedComments() {
 		return pages.Utill()
-				.get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblRaisedRemarks")
+				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblRaisedRemarks")
 				.trim();
 	}
 	/**
@@ -63,7 +64,7 @@ abstract class DataEntryPage {
 	 */
 	public String getclearedBy() {
 		return pages.Utill()
-				.get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblClearedByName")
+				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblClearedByName")
 				.trim();
 	}
 	/**
@@ -72,14 +73,14 @@ abstract class DataEntryPage {
 	 */
 	public String getclearedComments() {
 		return pages.Utill()
-				.get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblClearComments")
+				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblClearComments")
 				.trim();
 	}
 	/**
 	 * Performs click action on close button in document upload popup
 	 */
 	public void close() {
-		pages.Utill().click_element("//a[@class='rwCloseButton']");
+		pages.Utill().click("//a[@class='rwCloseButton']");
 	}
 	/**
 	 * returns document name which uploaded for insuff clear
@@ -87,34 +88,37 @@ abstract class DataEntryPage {
 	 */
 	public String historyDocument() {
 		String dc = pages.Utill()
-				.get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblDoc");
+				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblDoc");
 		return dc.replaceAll("[0-9]", "");
 	}
 /**
  * Performs click action on insuff tab in history popup
  */
 	public void Insuff() {
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_RadTabStripForHistory']/div//li[1]");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Performs click action on Redo tab in history popup
 	 */
 	public void Redo() {
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_RadTabStripForHistory']/div//li[2]");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Takes doctype and file name as input and waits for given document to upload
 	 * @param doctype type of document
 	 * @param filepath file to upload
 	 */
-	synchronized public void WaitforFileUpdate(String doctype,String filepath) {
+	public void WaitforFileUpdate(String doctype,String filepath) {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		String file=new File(filepath).getName();
 		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[text()='"+doctype+"']/../td[5]//div/ul/li[1]/span/span"), file));
+		String name =pages.Utill().getText("//*[text()='"+doctype+"']/../td[5]//div/ul/li[1]/span/span");
+		logger.log(Status.INFO, name);
+		System.out.println("----------------------------"+name+"---------------");
 	}
 	
 public abstract void document();

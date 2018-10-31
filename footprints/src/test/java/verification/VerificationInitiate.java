@@ -20,36 +20,36 @@ public class VerificationInitiate {
 		pages = new Pages(logger);
 	}
 	public void InitiationMode(String mode) {
-		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input");
+		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input");
 		if(!value.trim().equals(mode)) {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input");
 		if (verifyddvalue(mode)) {
 			pages.Utill()
-					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_DropDown']/div/ul//li[text()='"
+					.click("//div[@id='ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_DropDown']/div/ul//li[text()='"
 							+ mode + "']");
-			pages.Utill().wait_until_loader_is_invisible(100);
+			pages.Utill().waitUntilLoaderisInvisible(100);
 		} else {
 			throw new NotFoundException(mode);
 		}
 		}
 	}
 	public void Initiate() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnInitiate_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnInitiate_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().SwitchDefault();
 		pages.Utill().confirmAlert();
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	public void EmpInitiate() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnInitiate_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnInitiate_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		this.RecipientMailID("gopinath.n@kadambatechnologies.com");
 		pages.Utill().SwitchDefault();
 		pages.Utill().confirmAlert();
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	private boolean verifyddvalue(String mode){
-		pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_DropDown']/div/ul/li[1]", 10);
+		pages.Utill().waitUntilElementHasText("//*[@id='ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_DropDown']/div/ul/li[1]", 10);
 		List<WebElement> list = driver
 				.findElements(By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_DropDown']/div/ul/li"));
 		if (list.size() > 0) {
@@ -68,56 +68,56 @@ public class VerificationInitiate {
 	}
 	public void idcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='ID']");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='ID']");
 		pages.Utill().SwitchFramebyIndex(9);
 	}
 	public void creditcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Credit']");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Credit']");
 		pages.Utill().SwitchFramebyIndex(6);
 	}
 	public void addresscheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Address']");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Address']");
 		pages.Utill().SwitchFramebyIndex(0);
 	}
 	public void courtcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Court']");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Court']");
 		pages.Utill().SwitchFramebyIndex(7);
 	}
 	public void criminalcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Criminal']");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Criminal']");
 		pages.Utill().SwitchFramebyIndex(5);
 	}
 	public void databasecheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='DataBase']");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='DataBase']");
 		pages.Utill().SwitchFramebyIndex(4);
 	}
 	public void educationcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Education']");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Education']");
 		pages.Utill().SwitchFramebyIndex(1);
 	}
 	public void employmentcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Employment']");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Employment']");
 		pages.Utill().SwitchFramebyIndex(2);;
 	}
 	public void referencecheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Reference']");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Reference']");
 		pages.Utill().SwitchFramebyIndex(3);
 	}
 	public void RecipientMailID(String emailid) {
 		pages.Utill().sleep(500);
-		pages.Utill().clear_element_text("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_txt_vr_recipentMailid");
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_txt_vr_recipentMailid", emailid);
-		pages.Utill().clear_element_text("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_txt_cc_mailid");
+		pages.Utill().clearElementText("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_txt_vr_recipentMailid");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_txt_vr_recipentMailid", emailid);
+		pages.Utill().clearElementText("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_txt_cc_mailid");
 		pages.Utill().sleep(800);
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_btnSendmailid_input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_btnSendmailid_input");
 	}
 public void Initiate(String refno, String component, String mode) {
 		System.out.println("Verification Initiation : "+component);

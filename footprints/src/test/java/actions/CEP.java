@@ -20,10 +20,10 @@ public class CEP extends ActionPage {
 	 * Selects the CEP clear option from dropdown
 	 */
 	public void CEPClear() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlAct_Input");
-		pages.Utill().wait_until_element_isvisible("//div[@id='ctl00_ContentPlaceHolder1_ddlAct_DropDown']//li[1]", 10);
-		pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlAct_DropDown']//li[4]");
-		pages.Utill().wait_until_loader_is_invisible(50);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlAct_Input");
+		pages.Utill().waitUntilElementisVisible("//div[@id='ctl00_ContentPlaceHolder1_ddlAct_DropDown']//li[1]", 10);
+		pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlAct_DropDown']//li[4]");
+		pages.Utill().waitUntilLoaderisInvisible(50);
 	}
 
 	/**
@@ -32,15 +32,15 @@ public class CEP extends ActionPage {
 	 * @return case refno
 	 */
 	public String getrefNo() {
-		return pages.Utill().get_text("//table[@id='ctl00_ContentPlaceHolder1_grdTaskList_ctl00']/tbody/tr[1]/td[5]");
+		return pages.Utill().getText("//table[@id='ctl00_ContentPlaceHolder1_grdTaskList_ctl00']/tbody/tr[1]/td[5]");
 	}
 
 	/**
 	 * Performs click action on Add Document button
 	 */
 	public void addDocument() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rdwClearCEP_C_btnAddDocument");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rdwClearCEP_C_btnAddDocument");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class CEP extends ActionPage {
 	 * @param comments clear comments
 	 */
 	public void clearComments(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_rdwClearCEP_C_txtClearedRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_rdwClearCEP_C_txtClearedRemarks", comments);
 	}
 
 	/**
@@ -60,9 +60,9 @@ public class CEP extends ActionPage {
 	 * @throws Exception when case reference number not found
 	 */
 	public void clearComments(String refno, String comments) throws Exception {
-		pages.Utill().click_element("(//td[text()='" + refno + "'])[2]");
-		pages.Utill().wait_until_loader_is_invisible(100);
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_rdwClearCEP_C_txtClearedRemarks", comments);
+		pages.Utill().click("(//td[text()='" + refno + "'])[2]");
+		pages.Utill().waitUntilLoaderisInvisible(100);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_rdwClearCEP_C_txtClearedRemarks", comments);
 		this.submit();
 	}
 
@@ -72,8 +72,8 @@ public class CEP extends ActionPage {
 	 * @throws Exception when alert not present
 	 */
 	public void submit() throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rdwClearCEP_C_ButtonSubmit_input");
-//		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rdwClearCEP_C_ButtonSubmit_input");
+//		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().confirmAlert();
 	}
 
@@ -81,8 +81,8 @@ public class CEP extends ActionPage {
 	 * performs click action on close button
 	 */
 	public void close() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rdwClearCEP_C_ButtonClose_input");
-//		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rdwClearCEP_C_ButtonClose_input");
+//		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class CEP extends ActionPage {
 	 * @throws Exception when file not found
 	 */
 	public void upload(String doctype, String file) throws Exception {
-		pages.Utill().input_text("//td[text()='" + doctype + "']/../td[6]//span/input[2]", file);
+		pages.Utill().sendKeys("//td[text()='" + doctype + "']/../td[6]//span/input[2]", file);
 		Thread.sleep(1000);
 		this.addDocument();
 	}
@@ -109,8 +109,8 @@ public class CEP extends ActionPage {
 	 * @throws Exception when file not found
 	 */
 	public void upload(String refno, String doctype, String file) throws Exception {
-		pages.Utill().click_element("//td[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("//td[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		this.upload(doctype, file);
 		this.submit();
 
@@ -127,8 +127,8 @@ public class CEP extends ActionPage {
 	 * @throws Exception when file not found
 	 */
 	public void upload(String refno, String comments, String doctype, String file) throws Exception {
-		pages.Utill().click_element("(//td[text()='" + refno + "'])[2]");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("(//td[text()='" + refno + "'])[2]");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		try {
 			this.clearComments(comments);
 		} catch (StaleElementReferenceException e) {

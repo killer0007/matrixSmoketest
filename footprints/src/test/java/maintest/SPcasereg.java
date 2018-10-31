@@ -39,12 +39,12 @@ public class SPcasereg extends Design {
 	ExtentReports extent;
 	Pages pages;
 	Properties config;
-	protected String ClientName = null;
-	protected String ContractName = null;
-	protected String ProjectName = null;
-	protected String CandidateName = null;
-	protected String CandidateId = null;
-	protected String lastname = null;
+	protected String clientName = null;
+	protected String contractName = null;
+	protected String projectName = null;
+	protected String candidateName = null;
+	protected String candidateId = null;
+	protected String lastName = null;
 	protected String refno = null;
 	protected String uname = null;
 
@@ -70,9 +70,9 @@ public class SPcasereg extends Design {
 		config = BaseClass.getlocator();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(config.getProperty("url"));
-		ClientName = config.getProperty("clientname");
-		ProjectName = config.getProperty("projectname");
-		ContractName = config.getProperty("contractname");
+		clientName = config.getProperty("clientname");
+		projectName = config.getProperty("projectname");
+		contractName = config.getProperty("contractname");
 //		uname = config.getProperty("uname");
 
 	}
@@ -92,7 +92,7 @@ public class SPcasereg extends Design {
 	 * Login action
 	 */
 	@Test(priority = 1, enabled = true, groups = { "smoketest", "smoketest", "spcase registration", "insuff" })
-	public void Login() throws Exception {
+	public void login() throws Exception {
 		uname = config.getProperty("uname");
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
 	}
@@ -233,29 +233,29 @@ public class SPcasereg extends Design {
 	@Test(priority = 11, enabled = true, groups = { "smoketest", "spcase registration" })
 	public void TC_SPCR_010() throws Exception {
 		// pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		for (int i = 0; i < contract.size(); i++) {
 			pages.CaseRegistration().selectcheck(contract.get(i).toString());
 		}
 		pages.CaseRegistration().save();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		refno = pages.DcaseRegistration().getrefno(candidateName, lastName);
 		logger.log(Status.INFO, refno);
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
@@ -297,17 +297,17 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_011() throws Exception {
 		refno = null;
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().candidateName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, true);
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		contract.remove("Current/Latest Employment");
 		contract.remove("Previous Employment");
 		contract.remove("Previous Employment 2");
@@ -320,12 +320,12 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().save();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		refno = pages.DcaseRegistration().getrefno(candidateName, lastName);
 		System.out.println("case refference no is : " + refno);
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
@@ -373,17 +373,17 @@ public class SPcasereg extends Design {
 	@Test(priority = 13, enabled = true, groups = { "spcase registration" })
 	public void TC_SPCR_012() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		List<String> address = pages.Utill().getAddressChecks(contract);
 		for (int i = 0; i < address.size(); i++) {
 			pages.CaseRegistration().selectcheck(address.get(i).toString());
@@ -391,12 +391,12 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().save();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		refno = pages.DcaseRegistration().getrefno(candidateName, lastName);
 		logger.log(Status.INFO, refno);
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
@@ -435,17 +435,17 @@ public class SPcasereg extends Design {
 	@Test(priority = 14, enabled = true, groups = { "spcase registration" })
 	public void TC_SPCR_013() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		List<String> education = pages.Utill().getEducationChecks(contract);
 		for (int i = 0; i < education.size(); i++) {
 			pages.CaseRegistration().selectcheck(education.get(i).toString());
@@ -453,12 +453,12 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().save();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		refno = pages.DcaseRegistration().getrefno(candidateName, lastName);
 		logger.log(Status.INFO, refno);
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
@@ -496,17 +496,17 @@ public class SPcasereg extends Design {
 	@Test(priority = 15, enabled = true, groups = { "spcase registration" })
 	public void TC_SPCR_014() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		List<String> emp = pages.Utill().getEducationChecks(contract);
 		for (int i = 0; i < emp.size(); i++) {
 			pages.CaseRegistration().selectcheck(emp.get(i).toString());
@@ -514,12 +514,12 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().save();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		refno = pages.DcaseRegistration().getrefno(candidateName, lastName);
 		logger.log(Status.INFO, refno);
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
@@ -557,17 +557,17 @@ public class SPcasereg extends Design {
 	@Test(priority = 16, enabled = true, groups = { "spcase registration" })
 	public void TC_SPCR_015() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		List<String> ref = pages.Utill().getReferenceChecks(contract);
 		for (int i = 0; i < ref.size(); i++) {
 			pages.CaseRegistration().selectcheck(ref.get(i).toString());
@@ -575,12 +575,12 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().save();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		refno = pages.DcaseRegistration().getrefno(candidateName, lastName);
 		logger.log(Status.INFO, refno);
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
@@ -618,17 +618,17 @@ public class SPcasereg extends Design {
 	@Test(priority = 17, enabled = true, groups = { "spcase registration" })
 	public void TC_SPCR_016() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		List<String> id = pages.Utill().getIdChecks(contract);
 		for (int i = 0; i < id.size(); i++) {
 			pages.CaseRegistration().selectcheck(id.get(i).toString());
@@ -636,12 +636,12 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().save();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		refno = pages.DcaseRegistration().getrefno(candidateName, lastName);
 		logger.log(Status.INFO, refno);
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
@@ -679,17 +679,17 @@ public class SPcasereg extends Design {
 	@Test(priority = 18, enabled = true, groups = { "spcase registration" })
 	public void TC_SPCR_017() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		List<String> criminal = pages.Utill().getCriminalChecks(contract);
 		for (int i = 0; i < criminal.size(); i++) {
 			pages.CaseRegistration().selectcheck(criminal.get(i).toString());
@@ -697,12 +697,12 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().save();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		refno = pages.DcaseRegistration().getrefno(candidateName, lastName);
 		logger.log(Status.INFO, refno);
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
@@ -740,17 +740,17 @@ public class SPcasereg extends Design {
 	@Test(priority = 19, enabled = true, groups = { "spcase registration" })
 	public void TC_SPCR_018() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		List<String> court = pages.Utill().getCourtChecks(contract);
 		for (int i = 0; i < court.size(); i++) {
 			pages.CaseRegistration().selectcheck(court.get(i).toString());
@@ -758,12 +758,12 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().save();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		refno = pages.DcaseRegistration().getrefno(candidateName, lastName);
 		logger.log(Status.INFO, refno);
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
@@ -801,17 +801,17 @@ public class SPcasereg extends Design {
 	@Test(priority = 20, enabled = true, groups = { "spcase registration" })
 	public void TC_SPCR_019() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		List<String> drug = pages.Utill().getDrugChecks(contract);
 		for (int i = 0; i < drug.size(); i++) {
 			pages.CaseRegistration().selectcheck(drug.get(i).toString());
@@ -819,12 +819,12 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().save();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		refno = pages.DcaseRegistration().getrefno(candidateName, lastName);
 		logger.log(Status.INFO, refno);
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
@@ -862,15 +862,15 @@ public class SPcasereg extends Design {
 	@Test(priority = 21, enabled = true, groups = { "spcase registration" })
 	public void TC_SPCR_020() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
 		// List<String> contract =
 		// pages.DbConnection().getcontractdetails(ContractName);
@@ -882,12 +882,12 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().save();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		refno = pages.DcaseRegistration().getrefno(candidateName, lastName);
 		logger.log(Status.INFO, refno);
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
@@ -925,15 +925,15 @@ public class SPcasereg extends Design {
 	@Test(priority = 22, enabled = true, groups = { "spcase registration" })
 	public void TC_SPCR_021() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
 		// List<String> contract =
 		// pages.DbConnection().getcontractdetails(ContractName);
@@ -945,12 +945,12 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().save();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DcaseRegistration().getrefno(CandidateName, lastname);
+		refno = pages.DcaseRegistration().getrefno(candidateName, lastName);
 		logger.log(Status.INFO, refno);
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
@@ -988,23 +988,23 @@ public class SPcasereg extends Design {
 	@Test(priority = 23, enabled = true, groups = { "smoketest", "spcase registration" })
 	public void TC_SPCR_022() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		for (int i = 0; i < 4; i++) {
 			pages.CaseRegistration().selectcheck(contract.get(i).toString());
 		}
-		String before = pages.DbConnection().getLastrefno(ProjectName);
+		String before = pages.DbConnection().getLastrefno(projectName);
 		pages.CaseRegistration().cancel();
-		String after = pages.DbConnection().getLastrefno(ProjectName);
+		String after = pages.DbConnection().getLastrefno(projectName);
 		if (before.equals(after)) {
 			assertTrue(true);
 		} else {
@@ -1022,17 +1022,17 @@ public class SPcasereg extends Design {
 	@Test(priority = 24, enabled = true, groups = { "smoketest", "spcase registration" })
 	public void TC_SPCR_023() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		int count = pages.CaseRegistration().getCheckCount();
 		if (contract.size() == count) {
 			assertTrue(true);
@@ -1050,7 +1050,7 @@ public class SPcasereg extends Design {
 	@Test(priority = 25, enabled = true, groups = { "smoketest", "spcase registration" })
 	public void TC_SPCR_024() throws Exception {
 		List<String> components = pages.CaseRegistration().getDisplayedComponents();
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		pages.Home().homepage();
 		if (contract.containsAll(components)) {
 			assertTrue(true);
@@ -1067,17 +1067,17 @@ public class SPcasereg extends Design {
 	@Test(priority = 26, enabled = true, groups = { "smoketest", "spcase registration" })
 	public void TC_SPCR_025() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().candidateName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, true);
-		List<String> contract = pages.DbConnection().getcontractdetails(ContractName);
+		List<String> contract = pages.DbConnection().getcontractdetails(contractName);
 		contract.remove("Current/Latest Employment");
 		contract.remove("Previous Employment");
 		contract.remove("Previous Employment 2");
@@ -1102,15 +1102,15 @@ public class SPcasereg extends Design {
 	@Test(priority = 27, enabled = true, groups = { "smoketest", "spcase registration" })
 	public void TC_SPCR_026() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().candidateName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
 		pages.CaseRegistration().selectcheck("Current/Latest Employment");
 		pages.CaseRegistration().clickfresher(true);
@@ -1132,17 +1132,17 @@ public class SPcasereg extends Design {
 	 */
 	@Test(priority = 28, enabled = true, groups = { "smoketest", "spcase registration" })
 	public void TC_SPCR_027() throws Exception {
-		HashMap<String, String> data = pages.DbConnection().getLastCase(ProjectName);
+		HashMap<String, String> data = pages.DbConnection().getLastCase(projectName);
 		pages.Home().clickRegister();
-		CandidateName = data.get("firstname");
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = data.get("lastname");
+		candidateName = data.get("firstname");
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = data.get("lastname");
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		datas.put("DateofBirth", pages.Utill().formatedob(data.get("DateofBirth")));
 		pages.CaseRegistration().registercase(datas);
 		String msg = pages.Utill().confirmAlert();
@@ -1164,15 +1164,15 @@ public class SPcasereg extends Design {
 	public void TC_SPINF_001() throws Exception {
 		CaseOwnerInsuffClear cs = pages.CaseOwnerInsuffClear();
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().candidateName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
 		pages.CaseRegistration().selectcheck("Permanent");
 		pages.CaseRegistration().selectcheck("Current Address");
@@ -1182,7 +1182,7 @@ public class SPcasereg extends Design {
 		pages.Home().homepage();
 		pages.Home().Actions();
 		cs.caseOwner();
-		refno = pages.DbConnection().getLastrefno(ProjectName);
+		refno = pages.DbConnection().getLastrefno(projectName);
 		cs.search(refno, "sp");
 		String no = cs.getrefNo();
 		if (refno.equals(no)) {
@@ -1209,10 +1209,10 @@ public class SPcasereg extends Design {
 		pages.DataEntrySupervision().assigngetnext(refno);
 		pages.DcaseRegistration().caseRegistration();
 		Thread.sleep(1500);
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 	}
 
 	/**
@@ -1268,15 +1268,15 @@ public class SPcasereg extends Design {
 	@Test(priority = 34, enabled = true, dependsOnMethods = "TC_SPINF_005", alwaysRun = true, groups = { "insuff" })
 	public void TC_SPINF_006() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().candidateName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
 		pages.CaseRegistration().selectcheck("Permanent");
 		pages.CaseRegistration().selectcheck("Current Address");
@@ -1284,7 +1284,7 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DbConnection().getLastrefno(ProjectName);
+		refno = pages.DbConnection().getLastrefno(projectName);
 		pages.Home().CaseTracker();
 		assertEquals(pages.CaseTracker().getCurrentStage(refno, "Permanent"),
 				"Insuff Raised - Case Registration Pending");
@@ -1328,10 +1328,10 @@ public class SPcasereg extends Design {
 	@Test(priority = 36, enabled = true, dependsOnMethods = "TC_SPINF_006", groups = { "insuff" })
 	public void TC_SPINF_008() throws Exception {
 
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		assertTrue(pages.CaseRegistration().isSelected("Current Address"));
 		assertTrue(!pages.CaseRegistration().isEnabled("Current Address"));
 	}
@@ -1383,15 +1383,15 @@ public class SPcasereg extends Design {
 				"Current Address Criminal Check", "Current Address Court Check", "Credit Check 1", "Panel1",
 				"Database" };
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().candidateName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
 		for (int i = 0; i < checks.length; i++) {
 			pages.CaseRegistration().selectcheck(checks[i].toString());
@@ -1400,7 +1400,7 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DbConnection().getLastrefno(ProjectName);
+		refno = pages.DbConnection().getLastrefno(projectName);
 //			refno="HDFC000308";
 		pages.Home().Actions();
 		pages.CaseOwnerInsuffClear().search(refno, "sp");
@@ -1525,10 +1525,10 @@ public class SPcasereg extends Design {
 		pages.CaseOwnerInsuffClear().uploadMultiplecom(checks);
 
 		pages.Home().workStage();
-		pages.Utill().click_element("//span[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(5);
+		pages.Utill().click("//span[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(5);
 		pages.CaseRegistration().addEditComponent();
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
@@ -1750,8 +1750,8 @@ public class SPcasereg extends Design {
 			logger.fail(e.getMessage(), MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 		} finally {
 			pages.Utill().SwitchDefault();
-			pages.Utill().click_element("imgHome");
-			pages.Utill().wait_until_loader_is_invisible(100);
+			pages.Utill().click("imgHome");
+			pages.Utill().waitUntilLoaderisInvisible(100);
 			sf.assertAll();
 		}
 
@@ -1770,18 +1770,18 @@ public class SPcasereg extends Design {
 		String[] notapplicable = { "Permanent", "12th", "Previous Employment", "Reference 2", "PAN Card",
 				"Permanent Criminal Check", "Permanent Court Check" };
 		pages.CaseRegistration().casereg();
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 //		Thread.sleep(3000);
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().candidateName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
 		for (int i = 0; i < checks.length; i++) {
 			pages.CaseRegistration().selectcheck(checks[i].toString());
@@ -1794,7 +1794,7 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DbConnection().getLastrefno(ProjectName);
+		refno = pages.DbConnection().getLastrefno(projectName);
 		pages.Home().CaseTracker();
 		pages.CaseTracker().search(refno);
 		pages.CaseTracker().clickcase(refno);
@@ -1857,15 +1857,15 @@ public class SPcasereg extends Design {
 		String[] checks = { "Current Address", "UG1", "Previous Employment", "Reference 3" };
 		String[] cep = { "Current/Latest Employment", "Previous Employment 2", "Reference 1", "Reference 2" };
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().candidateName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
 		for (int i = 0; i < checks.length; i++) {
 			pages.CaseRegistration().selectcheck(checks[i].toString());
@@ -1877,7 +1877,7 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DbConnection().getLastrefno(ProjectName);
+		refno = pages.DbConnection().getLastrefno(projectName);
 		pages.Home().CaseTracker();
 		pages.CaseTracker().search(refno);
 		pages.CaseTracker().clickcase(refno);
@@ -1979,7 +1979,7 @@ public class SPcasereg extends Design {
 		String expected = this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
 		assertEquals(actual, expected);
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("imgHome");
+		pages.Utill().click("imgHome");
 	}
 
 	/**
@@ -1991,15 +1991,15 @@ public class SPcasereg extends Design {
 	public void TC_SPDOC_001() throws Exception {
 		pages.CaseRegistration().casereg();
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().candidateName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
 		pages.CaseRegistration().addEditComponent();
 		pages.CaseRegistration().uploadcaseDoc("Authorization Letter",
@@ -2033,23 +2033,23 @@ public class SPcasereg extends Design {
 	@Test(priority = 65, enabled = true, dependsOnMethods = "TC_SPDOC_002")
 	public void TC_SPDOC_003() throws Exception {
 		pages.CaseRegistration().uploadcaseDoc();
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		if (pages.CaseRegistration().isDoctypeValid("Credit Form", 1)) {
-			pages.Utill().input_text(
+			pages.Utill().sendKeys(
 					"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='Credit Form']/../td[5]//div/ul/li/span/input[2]",
 					BaseClass.getlocator().getProperty("creditinsuffdoc"));
 		} else
 			throw new NotFoundException("Credit Form");
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnAddCaseDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(50);
-		pages.Utill().click_element(
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnAddCaseDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(50);
+		pages.Utill().click(
 				"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='Credit Form']/../td[6]//td[2]/input");
 		pages.Utill().confirmAlert();
-		pages.Utill().wait_until_loader_is_invisible(50);
+		pages.Utill().waitUntilLoaderisInvisible(50);
 		int count = driver.findElements(By.xpath(
 				"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='Credit Form']/../td[5]//span"))
 				.size();
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel");
 		assertTrue(count > 1);
 	}
 
@@ -2060,10 +2060,10 @@ public class SPcasereg extends Design {
 	 */
 	@Test(priority = 66, enabled = true, dependsOnMethods = "TC_SPDOC_003")
 	public void TC_SPDOC_004() throws Exception {
-		pages.Utill().click_element("//td[text()='Permanent']/../td[10]//input[1]");
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().click("//td[text()='Permanent']/../td[10]//input[1]");
+		pages.Utill().waitUntilLoaderisInvisible(10);
 		if (pages.CaseRegistration().isDoctypeValid("Others", 0)) {
-			pages.Utill().input_text(
+			pages.Utill().sendKeys(
 					"//table[@id='ctl00_ContentPlaceHolder1_rdmAddDoc_C_grdDocumentList_ctl00']//td[text()='Others']/../td[6]//input[2]",
 					BaseClass.getlocator().getProperty("creditinsuffdoc"));
 		} else
@@ -2084,7 +2084,7 @@ public class SPcasereg extends Design {
 	@Test(priority = 67, enabled = true, dependsOnMethods = "TC_SPDOC_004")
 	public void TC_SPDOC_005() throws Exception {
 		pages.DataEntrySupervision().datanentrysupervision();
-		refno = pages.DbConnection().getLastrefno(ProjectName);
+		refno = pages.DbConnection().getLastrefno(projectName);
 		pages.DataEntrySupervision().assigngetnext(refno);
 		pages.DataEntry().datanentry();
 		pages.DataEntry().search(refno);
@@ -2126,7 +2126,7 @@ public class SPcasereg extends Design {
 		pages.CaseInformation().CaseDocument();
 		pages.CaseInformation().documentDownload("Authorization Letter");
 		pages.CaseInformation().cancel();
-		String actual = pages.Utill().isfileexist(file);
+		String actual = pages.Utill().isFileExist(file);
 		String expected = this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
 		assertEquals(actual, expected);
 	}
@@ -2145,9 +2145,9 @@ public class SPcasereg extends Design {
 		pages.DeAddress().document();
 		pages.DeAddress().downloaddoc("Address Proof");
 		pages.DeAddress().docclose();
-		String actual = pages.Utill().isfileexist(file);
+		String actual = pages.Utill().isFileExist(file);
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("imgHome");
+		pages.Utill().click("imgHome");
 		String expected = this.FilterFileName(BaseClass.getlocator().getProperty("addressinsuffdoc"));
 		assertEquals(actual, expected);
 	}
@@ -2165,7 +2165,7 @@ public class SPcasereg extends Design {
 			String pagesource = driver.getPageSource();
 			if (pagesource.contains("Images/message.png")) {
 				logger.log(Status.WARNING, "Your last session was terminated");
-				pages.Utill().click_element("ctl00_ContentPlaceHolder1_urls");
+				pages.Utill().click("ctl00_ContentPlaceHolder1_urls");
 				pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
 			} else if (pagesource.contains("ctl00_ContentPlaceHolder1_txtUserName")) {
 				logger.log(Status.WARNING, "Your last session was closed by user");
@@ -2173,7 +2173,7 @@ public class SPcasereg extends Design {
 			} else {
 				logger.log(Status.WARNING, method.getName() + " navigating to home page due to error");
 				driver.get(config.getProperty("url") + "/Web/dashboard.aspx");
-				pages.Utill().wait_until_loader_is_invisible(80);
+				pages.Utill().waitUntilLoaderisInvisible(80);
 				List<String> windows = new ArrayList<String>(driver.getWindowHandles());
 				if (windows.size() > 1) {
 					for (int i = 1; i < windows.size(); i++) {
@@ -2196,7 +2196,7 @@ public class SPcasereg extends Design {
 	@AfterTest(alwaysRun = true)
 	public void teardown() throws Exception {
 		if (driver != null)
-			driver.quit();
+			pages.Utill().closeAllBrowsers();
 	}
 
 	/**

@@ -32,30 +32,30 @@ abstract class ActionPage {
 	 * @throws Exception when given case source not found in dropwdown
 	 */
 	public void caseSource(String source) throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlWorkflowType_Input");
-		pages.Utill().wait_until_element_isvisible(
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlWorkflowType_Input");
+		pages.Utill().waitUntilElementisVisible(
 				"//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[1]", 10);
 		Thread.sleep(1000);
 		switch (source.toLowerCase()) {
 		case "sp":
-			pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[1]");
+			pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[1]");
 			break;
 		case "candidate":
-			pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[2]");
+			pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[2]");
 			break;
 		case "client":
-			pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[3]");
+			pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[3]");
 			break;
 		case "bulk":
-			pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[4]");
+			pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[4]");
 			break;
 		case "iverify":
-			pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[5]");
+			pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[5]");
 			break;
 		default:
 			throw new InvalidSelectorException(source + " not found in list");
 		}
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 	}
 
 	/**
@@ -64,8 +64,8 @@ abstract class ActionPage {
 	 * @param refno case reference number
 	 */
 	public void caserefno(String refno) {
-		pages.Utill().clear_element_text("ctl00_ContentPlaceHolder1_TextBoxCaseReference");
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_TextBoxCaseReference", refno);
+		pages.Utill().clearElementText("ctl00_ContentPlaceHolder1_TextBoxCaseReference");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_TextBoxCaseReference", refno);
 	}
 
 	/**
@@ -74,7 +74,7 @@ abstract class ActionPage {
 	 * @param firstname candidate first name
 	 */
 	public void firstName(String firstname) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_TextBoxFirstName", firstname);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_TextBoxFirstName", firstname);
 	}
 
 	/**
@@ -83,15 +83,15 @@ abstract class ActionPage {
 	 * @param lastname candidate last name
 	 */
 	public void lastName(String lastname) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_TextBoxLastName", lastname);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_TextBoxLastName", lastname);
 	}
 
 	/**
 	 * click on the search button and wait until loader is invisible
 	 */
 	public void search() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnSearch");
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnSearch");
+		pages.Utill().waitUntilLoaderisInvisible(10);
 	}
 
 	/*

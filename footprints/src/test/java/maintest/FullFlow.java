@@ -22,7 +22,6 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import dashboard.DataEntrySupervision;
 import environment.*;
 import verification.*;
-import verification.VerificationInitiate;
 @Listeners(environment.Listener.class)
 public class FullFlow extends Design {
 
@@ -32,12 +31,12 @@ public class FullFlow extends Design {
 	ExtentReports extent;
 	Pages pages;
 	Properties config;
-	protected String ClientName = null;
-	protected String ContractName = null;
-	protected String ProjectName = null;
-	protected String CandidateName = null;
-	protected String CandidateId = null;
-	protected String lastname = null;
+	protected String clientName = null;
+	protected String contractName = null;
+	protected String projectName = null;
+	protected String candidateName = null;
+	protected String candidateId = null;
+	protected String lastName = null;
 	protected String refno = null;
 	protected String uname = null;
 
@@ -63,9 +62,9 @@ public class FullFlow extends Design {
 		config = BaseClass.getlocator();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(config.getProperty("url"));
-		ClientName = config.getProperty("clientname");
-		ProjectName = config.getProperty("projectname");
-		ContractName = config.getProperty("contractname");
+		clientName = config.getProperty("clientname");
+		projectName = config.getProperty("projectname");
+		contractName = config.getProperty("contractname");
 //		uname = config.getProperty("uname");
 
 	}
@@ -85,7 +84,7 @@ public class FullFlow extends Design {
 	 * Login action
 	 */
 	@Test(priority = 1, enabled = true)
-	public void Login() throws Exception {
+	public void login() throws Exception {
 		uname = config.getProperty("uname");
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
 	}
@@ -95,18 +94,18 @@ public class FullFlow extends Design {
 	 * 
 	 * @throws Exception WebDriverException
 	 */
-	@Test(priority = 2, enabled = true, dependsOnMethods = "Login")
+	@Test(priority = 2, enabled = true, dependsOnMethods = "login")
 	public void caseregistration() throws Exception {
 		pages.Home().clickRegister();
-		CandidateName = pages.Utill().candidateName();
-		CandidateId = Integer.toString(pages.Utill().candidateid());
-		lastname = pages.Utill().lastName();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", CandidateName);
-		datas.put("CandidateId", CandidateId);
-		datas.put("ClientName", ClientName);
-		datas.put("ProjectName", ProjectName);
-		datas.put("lastname", lastname);
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
 		pages.CaseRegistration().registercase(datas, false);
 		String[] components = pages.CaseRegistration().getcomponents();
 		for (int i = 0; i < components.length; i++) {
@@ -124,7 +123,7 @@ public class FullFlow extends Design {
 	 */
 	@Test(priority = 3, enabled = true, dependsOnMethods = "caseregistration")
 	public void dataEntryAssign() throws Exception {
-		refno = pages.DbConnection().getLastrefno(ProjectName);
+		refno = pages.DbConnection().getLastrefno(projectName);
 		DataEntrySupervision des = pages.DataEntrySupervision();
 		des.datanentrysupervision();
 		des.assigngetnext(refno);
@@ -133,9 +132,9 @@ public class FullFlow extends Design {
 	@Test(priority = 4, enabled = true, dependsOnMethods = "dataEntryAssign")
 	public void dataEntry() throws Exception {
 		pages.DataEntry().datanentry();
-		pages.Utill().click_element("//*[text()='" + refno + "']");
-		pages.Utill().wait_until_loader_is_invisible(100);
-		HashMap<String, String> casedetails = pages.DbConnection().getLastCase(ProjectName);
+		pages.Utill().click("//*[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(100);
+		HashMap<String, String> casedetails = pages.DbConnection().getLastCase(projectName);
 		logger.log(Status.INFO, casedetails.toString());
 		assertEquals(casedetails.get("firstname"), pages.CaseInformation().FirstName());
 		assertEquals(casedetails.get("lastname"), pages.CaseInformation().LastName());
@@ -154,7 +153,7 @@ public class FullFlow extends Design {
 		pages.DeCourt().PermanentAddress("Address - Permanent");
 		pages.DeId().Passport();
 		pages.DeId().AadharCard();
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 
 	}
 
@@ -341,7 +340,7 @@ public class FullFlow extends Design {
 	}
 	@Test(priority = 15, enabled = true, dependsOnMethods = "IdDEQC")
 	public void VerificationSupervisor() throws Exception {
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.VerificationSupervisor().verificationsupervisor();
 		pages.VerificationSupervisor().assigngetnext(refno, "ID", "Aadhaar Card");
 	}
@@ -385,6 +384,96 @@ public class FullFlow extends Design {
 		pages.Home().Logout();
 		pages.Login().userLogin("demoempl", "Pass$$123");
 		pages.Verification().verification();
+		pages.Home().CaseTracker();
+		String stage=pages.CaseTracker().getCurrentStage(refno, "Current Address");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+	}
+
+	@Test(priority = 18, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void EducationVerification() throws Exception {
+		Education edu = new Education(logger);
+		pages.Verification().verification();
+		pages.Verification().twelveth(refno);
+		edu.Verification();
+		pages.Verification().UGone(refno);
+		edu.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "12th");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+	}
+	@Test(priority = 19, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void EmploymentVerification() throws Exception {
+		Employment emp = new Employment(logger);
+		pages.Verification().verification();
+		pages.Verification().CurrentEmployment(refno);
+		emp.Verification();
+		pages.Verification().PreviousEmployment(refno);
+		emp.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "Previous Employment");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+	}
+	@Test(priority = 20, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void ReferenceVerification() throws Exception {
+		Reference ref = new Reference(logger);
+		pages.Verification().verification();
+		pages.Verification().Reference(refno);
+		ref.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "Reference 1");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+	}
+	@Test(priority = 21, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void DatabaseVerification() throws Exception {
+		Database db = new Database(logger);
+		pages.Verification().verification();
+		pages.Verification().Database(refno);
+		db.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "Database");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+	}
+	@Test(priority = 22, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void CriminalVerification() throws Exception {
+		Criminal criminal = new Criminal(logger);
+		pages.Verification().verification();
+		pages.Verification().CurrentAddressCriminalCheck(refno);
+		criminal.Verification();
+		pages.Verification().PermanentCriminalCheck(refno);
+		criminal.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "Current Address Criminal Check");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+	}
+	@Test(priority = 23, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void CreditVerification() throws Exception {
+		Credit cri = new Credit(logger);
+		pages.Verification().verification();
+		pages.Verification().Credit(refno);
+		cri.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "Credit Check 1");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+	}
+	@Test(priority = 24, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void CourtVerification() throws Exception {
+		Court court = new Court(logger);
+		pages.Verification().verification();
+		pages.Verification().CurrentAddressCourtCheck(refno);
+		court.Verification();
+		pages.Verification().PermanentCourtCheck(refno);
+		court.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "Current Address Court Check");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
 	}
 	/**
 	 * Takes test Result as input and Log the results into reports
@@ -396,6 +485,7 @@ public class FullFlow extends Design {
 			logger.fail(result.getThrowable().getMessage(),
 					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 			logger.log(Status.INFO, refno);
+			pages.Utill().GoTo("http://192.168.2.17:97/Web/dashboard.aspx");
 		} else {
 			logger.pass(method.getName() + " completed");
 		}
@@ -410,7 +500,7 @@ public class FullFlow extends Design {
 		System.out.println("----------------------------------------------");
 		System.out.println(refno);
 		if (driver != null)
-			driver.quit();
+			pages.Utill().closeAllBrowsers();
 	}
 
 	/**

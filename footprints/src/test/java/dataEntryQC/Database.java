@@ -20,8 +20,8 @@ public class Database extends DataEntryQCPage{
 	 */
 	public void databasecheck() {
 		pages.Utill().SwitchDefault();
-//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[5]/a/span/span/span");
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='DataBase']");
+//		pages.Utill().click("//*[@id='tabStrip']/div/ul/li[5]/a/span/span/span");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='DataBase']");
 		pages.Utill().SwitchFramebyIndex(4);
 	}
 	/**
@@ -29,8 +29,8 @@ public class Database extends DataEntryQCPage{
 	 */
 	@Override
 	public void document() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnDataBaseDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnDataBaseDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -38,8 +38,8 @@ public class Database extends DataEntryQCPage{
 	 * @throws Exception WebDriverException
 	 */
 	public void submit() throws Exception{
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnDataBaseSaveSubmit_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnDataBaseSaveSubmit_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().SwitchDefault();
 		pages.Utill().confirmAlert();
 	}
@@ -47,8 +47,8 @@ public class Database extends DataEntryQCPage{
 	 * performs click action on save button
 	 */
 	public void save() throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnDataBaseSave_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnDataBaseSave_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().confirmAlert();
 	}
 
@@ -56,8 +56,8 @@ public class Database extends DataEntryQCPage{
 	 * click report insuff button
 	 */
 	public void ReportInsuff() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkDataBaseInSuff");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkDataBaseInSuff");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -66,15 +66,15 @@ public class Database extends DataEntryQCPage{
 	 * @param comments insuff raise comments
 	 */
 	public void Insuffcomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtDataBaseInSuffComments", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtDataBaseInSuffComments", comments);
 	}
 
 	/**
 	 * click not applicable button
 	 */
 	public void Notapplicable() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -83,7 +83,7 @@ public class Database extends DataEntryQCPage{
 	 * @param comments not applicable comments
 	 */
 	public void Notapplicablecomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 	}
 	/**
 	 * Takes Document type as input and return the name of uploaded document
@@ -96,7 +96,7 @@ public class Database extends DataEntryQCPage{
 		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmDataBaseDocuments_C_gviewDataBaseDocuments_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[1]/span";
 		if (this.isvaliddoctype(doctype)) {
-			return pages.Utill().get_text(path).trim().replaceAll("[0-9]", "");
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -109,7 +109,7 @@ public class Database extends DataEntryQCPage{
 	 * @return true when document ype was available
 	 */
 	public boolean isvaliddoctype(String doctype) {
-		pages.Utill().wait_element_has_text(
+		pages.Utill().waitUntilElementHasText(
 				"//*[@id='ctl00_ContentPlaceHolder1_rwmDataBaseDocuments_C_gviewDataBaseDocuments_ctl00__0']/td[2]", 10);
 		boolean re = false;
 		String path = "//*[@id='ctl00_ContentPlaceHolder1_rwmDataBaseDocuments_C_gviewDataBaseDocuments_ctl00']/tbody/tr/td[2]";
@@ -133,15 +133,15 @@ public class Database extends DataEntryQCPage{
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmDataBaseDocuments_C_btnDataBaseDocumentCancels_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmDataBaseDocuments_C_btnDataBaseDocumentCancels_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Performs click action on add document button in document upload screen
 	 */
 	public void AddDocument() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmDataBaseDocuments_C_btnDataBaseAddDocuments_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmDataBaseDocuments_C_btnDataBaseAddDocuments_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Takes document type and file as input and uploads the document
@@ -150,10 +150,10 @@ public class Database extends DataEntryQCPage{
 	 */
 	public void UploadDocument(String doctype, String file) {
 		if(this.isvaliddoctype(doctype)) {
-		pages.Utill().input_text("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
+		pages.Utill().sendKeys("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
 		super.WaitforFileUpdate(doctype, file);
 		this.AddDocument();
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 		else {
 			throw new NotFoundException(doctype);
@@ -162,43 +162,43 @@ public class Database extends DataEntryQCPage{
 	}
 
 	public String IdType() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIDComponent_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIDComponent_Input");
 	}
 
 	public String NameonID() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseNameOnID");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseNameOnID");
 	}
 
 	public String IDNumber() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseIDNumber");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseIDNumber");
 	}
 
 	public String IssueDate() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseIssueDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseIssueDate_dateInput");
 	}
 
 	public String ExpiryDate() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseExpiryDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseExpiryDate_dateInput");
 	}
 
 	public String CountryofIssue() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCountry_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCountry_Input");
 	}
 
 	public String StateofIssue() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_Input");
 	}
 
 	public String CityofIssue() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCity_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCity_Input");
 	}
 
 	public String EnrollmentNo() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseEnrollid");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseEnrollid");
 	}
 
 	public String comments() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtDataBaseComments");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDataBaseComments");
 	}
 	public LinkedHashMap<String, String> database() throws Exception{
 		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();

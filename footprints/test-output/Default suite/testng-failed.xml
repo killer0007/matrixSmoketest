@@ -5,22 +5,26 @@
     <classes>
       <class name="maintest.FullFlow">
         <methods>
-          <include name="CourtDEQC"/>
           <include name="dataEntryQCAssign"/>
+          <include name="DatabaseVerification"/>
           <include name="setup"/>
           <include name="afterSuite"/>
           <include name="AddressVerification"/>
+          <include name="CriminalVerification"/>
           <include name="VerificationIntiation"/>
           <include name="teardown"/>
           <include name="IdDEQC"/>
           <include name="VerificationSupervisor"/>
           <include name="beforetest"/>
           <include name="beforeSuit"/>
-          <include name="Login"/>
           <include name="dataEntryAssign"/>
+          <include name="CourtVerification"/>
           <include name="caseregistration"/>
+          <include name="CreditVerification"/>
           <include name="dataEntry"/>
+          <include name="login"/>
           <include name="tearDown"/>
+          <include name="ReferenceVerification"/>
         </methods>
       </class> <!-- maintest.FullFlow -->
     </classes>

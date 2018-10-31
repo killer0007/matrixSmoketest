@@ -35,18 +35,18 @@ public class CaseTracker {
 	 * @param refno Case Reference Number
 	 */
 	public void search(String refno) {
-		pages.Utill().click_element("searchBox");
-		pages.Utill().input_text("searchBox", refno);
+		pages.Utill().click("searchBox");
+		pages.Utill().sendKeys("searchBox", refno);
 		this.search();
-		// pages.Utill().wait_until_loader_is_invisible(10);
+		// pages.Utill().waitUntilLoaderisInvisible(10);
 	}
 
 	/**
 	 * Performs click action on search button
 	 */
 	public void search() {
-		pages.Utill().click_element("//span[text()=' Search']");
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().click("//span[text()=' Search']");
+		pages.Utill().waitUntilLoaderisInvisible(10);
 	}
 
 	/**
@@ -55,8 +55,8 @@ public class CaseTracker {
 	 * @param refno Case Reference Number
 	 */
 	public void clickcase(String refno) {
-		pages.Utill().click_element("linkText:" + refno);
-		pages.Utill().wait_element_has_text(
+		pages.Utill().click("linkText:" + refno);
+		pages.Utill().waitUntilElementHasText(
 				"//div[@class='modal-content']//table[@id='grdTaskList']/tbody/tr[1]/td[1]/span", 10);
 
 	}
@@ -70,7 +70,7 @@ public class CaseTracker {
 	 */
 	public String getCurrentStage(String componentName) {
 
-		return pages.Utill().get_text("//span[text()='" + componentName + "']/../../td[5]");
+		return pages.Utill().getText("//span[text()='" + componentName + "']/../../td[5]");
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class CaseTracker {
 	 */
 	public String responsiblePerson(String componentName) {
 
-		return pages.Utill().get_text("//span[text()='" + componentName + "']/../../td[6]").trim();
+		return pages.Utill().getText("//span[text()='" + componentName + "']/../../td[6]").trim();
 	}
 
 	/**
@@ -163,8 +163,8 @@ public class CaseTracker {
 	 * closes the case tracker window
 	 */
 	public void cancel() {
-//		pages.Utill().click_element("//button[@class='close']");
-		pages.Utill().closetab();
+//		pages.Utill().click("//button[@class='close']");
+		pages.Utill().closeTab();
 		pages.Utill().switchWindow(0);
 	}
 

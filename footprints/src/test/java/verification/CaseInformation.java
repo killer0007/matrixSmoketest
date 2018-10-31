@@ -33,16 +33,16 @@ public class CaseInformation {
 	 * @throws Exception when confirmation alert not found
 	 */
 	public void edit() throws Exception {
-		pages.Utill().click_element("btnCaseSave_input");
+		pages.Utill().click("btnCaseSave_input");
 		pages.Utill().confirmAlert();
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * Perform click action on CaseDocument button
 	 */
 	public void CaseDocument() {
-		pages.Utill().click_element("btnCaseDocument");
+		pages.Utill().click("btnCaseDocument");
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class CaseInformation {
 		String path = "//table[@id='rwmCaseDocuments_C_gviewCaseDocuments_ctl00']//*[text()='" + doctype
 				+ "']/../td[5]//td[1]/span";
 		if (this.isDoctypeValid(doctype)) {
-			return pages.Utill().get_text(path).trim().replaceAll("[0-9]", "");
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -70,7 +70,7 @@ public class CaseInformation {
 		String path = "//table[@id='rwmCaseDocuments_C_gviewCaseDocuments_ctl00']//*[text()='" + doctype
 				+ "']/../td[5]//td[4]/input";
 		if (this.isDoctypeValid(doctype)) {
-			pages.Utill().click_element(path);
+			pages.Utill().click(path);
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -105,7 +105,7 @@ public class CaseInformation {
 	 * Performs click action on cancel button in document upload popup
 	 */
 	public void cancel() {
-		pages.Utill().click_element("rwmCaseDocuments_C_btnCaseDocumentCancels");
+		pages.Utill().click("rwmCaseDocuments_C_btnCaseDocumentCancels");
 	}
 	/**
 	 * Return Client name
@@ -113,112 +113,112 @@ public class CaseInformation {
 	 */
 	public String Client() {
 		
-		return pages.Utill().getvalue("txtClientName");
+		return pages.Utill().getValue("txtClientName");
 	}
 	/**
 	 * Return Project name
 	 * @return Project Project name
 	 */
 	public String Project() {
-		return pages.Utill().getvalue("txtProjectName");
+		return pages.Utill().getValue("txtProjectName");
 	}
 	/**
 	 * Return Case Owner
 	 * @return name Case Owner name
 	 */
 	public String CaseOwner() {
-		return pages.Utill().getvalue("txtCaseOwner");
+		return pages.Utill().getValue("txtCaseOwner");
 	}
 	/**
 	 * Return First Name
 	 * @return Name First Name
 	 */
 	public String FirstName() {
-		return pages.Utill().getvalue("txtFirstName");
+		return pages.Utill().getValue("txtFirstName");
 	}
 	/**
 	 * Return Last Name
 	 * @return Name Last Name
 	 */
 	public String LastName() {
-		return pages.Utill().getvalue("txtLastName");
+		return pages.Utill().getValue("txtLastName");
 	}
 	/**
 	 * Return dob
 	 * @return dob date of birth
 	 */
 	public String dob() {
-		return pages.Utill().getvalue("txtDateofBirth");
+		return pages.Utill().getValue("txtDateofBirth");
 	}
 	/**
 	 * Return Email
 	 * @return id Email id
 	 */
 	public String Email() {
-		return pages.Utill().getvalue("txtEmail");
+		return pages.Utill().getValue("txtEmail");
 	}
 	/**
 	 * Return Father First Name 
 	 * @return name Father First Name 
 	 */
 	public String FatherFirstName () {
-		return pages.Utill().getvalue("txtFatherFirstName");
+		return pages.Utill().getValue("txtFatherFirstName");
 	}
 	/**
 	 * Return Father Last Name 
 	 * @return name Father Last Name 
 	 */
 	public String FatherLastName () {
-		return pages.Utill().getvalue("txtFatherLastName");
+		return pages.Utill().getValue("txtFatherLastName");
 	}
 	/**
 	 * Return LinkedIn ID
 	 * @return id LinkedIn ID
 	 */
 	public String LinkedInID() {
-		return pages.Utill().getvalue("txtLinkedIn");
+		return pages.Utill().getValue("txtLinkedIn");
 	}
 	/**
 	 * Return Nationality
 	 * @return name Nationality
 	 */
 	public String Nationality() {
-		return pages.Utill().getvalue("txtNationality");
+		return pages.Utill().getValue("txtNationality");
 	}
 	/**
 	 * Return LandLine Number
 	 * @return number LandLine Number
 	 */
 	public String LandLineNumber() {
-		return pages.Utill().getvalue("txtLandLine");
+		return pages.Utill().getValue("txtLandLine");
 	}
 	/**
 	 * Return Mobile Number
 	 * @return number Mobile Number
 	 */
 	public String MobileNumber() {
-		return pages.Utill().getvalue("txtMobileNumber1");
+		return pages.Utill().getValue("txtMobileNumber1");
 	}
 	/**
 	 * Return Emergency Contact Number
 	 * @return number Emergency Contact Number
 	 */
 	public String EmergencyContactNumber() {
-		return pages.Utill().getvalue("txtMobileNumberSecond");
+		return pages.Utill().getValue("txtMobileNumberSecond");
 	}
 	/**
 	 * Return Emergency Contact Person
 	 * @return name Emergency Contact Person
 	 */
 	public String EmergencyContactPerson() {
-		return pages.Utill().getvalue("txtCntPerson");
+		return pages.Utill().getValue("txtCntPerson");
 	}
 	/**
 	 * Return candidate ID
 	 * @return id candidate ID
 	 */
 	public String candidateID() {
-		return pages.Utill().getvalue("txtClientCandidateID");
+		return pages.Utill().getValue("txtClientCandidateID");
 	}
 	
 }

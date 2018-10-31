@@ -24,7 +24,7 @@ public class Address extends DataEntryQCPage {
 	}
 public void addresscheck() {
 	pages.Utill().SwitchDefault();
-	pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Address']");
+	pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Address']");
 	pages.Utill().SwitchFramebyIndex(0);
 }
 /**
@@ -34,17 +34,17 @@ public void addresscheck() {
  * @throws Exception webdriverException
  */
 public void Component(String component) throws Exception{
-	String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlComponent_Input");
+	String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlComponent_Input");
 	if(!value.trim().equals(component)) {
-	pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlComponent_Input");
+	pages.Utill().click("ctl00_ContentPlaceHolder1_ddlComponent_Input");
 	if (verifyddvalue(component)) {
 		pages.Utill()
-				.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlComponent_DropDown']/div/ul//li[text()='"
+				.click("//div[@id='ctl00_ContentPlaceHolder1_ddlComponent_DropDown']/div/ul//li[text()='"
 						+ component + "']");
 	} else {
 		throw new NotFoundException(component);
 	}
-	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	
 }
@@ -79,75 +79,75 @@ private boolean verifyddvalue(String component) throws Exception {
 }
 
 	public String Component() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlComponent_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlComponent_Input");
 	}
 
 	public String AddressLine1() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressAddress");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressAddress");
 	}
 
 	public String Country() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlAddressCountry_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressCountry_Input");
 	}
 
 	public String State() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlAddressState_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressState_Input");
 	}
 
 	public String City() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlAddressCity_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressCity_Input");
 	}
 
 	public String Pincode() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressPincode");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressPincode");
 	}
 
 	public String Landmark() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressLandMark");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressLandMark");
 	}
 
 	public String FromDate() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressFromDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressFromDate_dateInput");
 	}
 
 	public String ToDate() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressToDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressToDate_dateInput");
 	}
 
 	public String LandLordName() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressLandLordName");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressLandLordName");
 	}
 
 	public String LandLordAddressLine1() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressLandLordAddress");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressLandLordAddress");
 	}
 
 	public String LandLordCountry() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlLandLordCountry_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlLandLordCountry_Input");
 	}
 
 	public String LandLordState() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlLandLordState_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlLandLordState_Input");
 	}
 
 	public String LandLordCity() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlLandLordCity_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlLandLordCity_Input");
 	}
 
 	public String LandLordPincode() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtLandLordPincode");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtLandLordPincode");
 	}
 
 	public String LandLordLandmark() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtLandLordLandmark");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtLandLordLandmark");
 	}
 
 	public String LandLordContactNo() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressLandLordContactNo");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressLandLordContactNo");
 	}
 
 	public String Comments() {
-		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_txtAddressComments");
+		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtAddressComments");
 	}
 	/**
 	 * Takes Document type as input and return the name of uploaded document
@@ -160,7 +160,7 @@ private boolean verifyddvalue(String component) throws Exception {
 		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[1]/span";
 		if (this.isvaliddoctype(doctype)) {
-			return pages.Utill().get_text(path).trim().replaceAll("[0-9]", "");
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -172,7 +172,7 @@ private boolean verifyddvalue(String component) throws Exception {
 	 */
 	public boolean isvaliddoctype(String doctype) {
 		boolean re =false;
-		pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00__0']/td[2]", 10);
+		pages.Utill().waitUntilElementHasText("//*[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00__0']/td[2]", 10);
 		String path="//table[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00']/tbody/tr/td[2]";
 		List<WebElement> list =driver.findElements(By.xpath(path));
 		if(list.size()>0) {
@@ -194,15 +194,15 @@ private boolean verifyddvalue(String component) throws Exception {
 	 * Perform click action on Document button
 	 */
 	public void document() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnAddressDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnDocumentCancel_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnDocumentCancel_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 public LinkedHashMap<String, String> CurrentAddress() throws Exception{
 	this.Component("Current Address");
@@ -312,7 +312,7 @@ public LinkedHashMap<String, String> filedata(String component) throws Exception
  * click report insuff button
  */
 public void ReportInsuff() {
-	pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkAddressInsuff");
+	pages.Utill().click("ctl00_ContentPlaceHolder1_chkAddressInsuff");
 }
 
 /**
@@ -321,14 +321,14 @@ public void ReportInsuff() {
  * @param comments insuff raise comments
  */
 public void Insuffcomm(String comments) {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressInsuffRemark", comments);
+	pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressInsuffRemark", comments);
 }
 
 /**
  * click not applicable button
  */
 public void Notapplicable() {
-	pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
+	pages.Utill().click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
 }
 
 /**
@@ -337,15 +337,15 @@ public void Notapplicable() {
  * @param comments not applicable comments
  */
 public void Notapplicablecomm(String comments) {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+	pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 }
 /**
  * click submit button on address data entry
  * @throws Exception WebDriverException
  */
 public void submit() throws Exception{
-	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressSubmit_input");
-	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().click("ctl00_ContentPlaceHolder1_btnAddressSubmit_input");
+	pages.Utill().waitUntilLoaderisInvisible(100);
 	pages.Utill().SwitchDefault();
 	pages.Utill().confirmAlert();
 }
@@ -353,8 +353,8 @@ public void submit() throws Exception{
  * performs click action on save button
  */
 public void save() throws Exception {
-	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressAdd_input");
-	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().click("ctl00_ContentPlaceHolder1_btnAddressAdd_input");
+	pages.Utill().waitUntilLoaderisInvisible(100);
 	pages.Utill().confirmAlert();
 }
 }

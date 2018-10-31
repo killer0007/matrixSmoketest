@@ -28,8 +28,8 @@ public class Address extends DataEntryPage {
 	 */
 	public void addresscheck() {
 		pages.Utill().SwitchDefault();
-//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[1]/a/span/span/span");
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Address']");
+//		pages.Utill().click("//*[@id='tabStrip']/div/ul/li[1]/a/span/span/span");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Address']");
 		pages.Utill().SwitchFramebyIndex(0);
 	}
 
@@ -37,8 +37,8 @@ public class Address extends DataEntryPage {
 	 * Perform click action on Document button
 	 */
 	public void document() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnAddressDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -52,7 +52,7 @@ public class Address extends DataEntryPage {
 		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[1]/span";
 		if (this.isvaliddoctype(doctype)) {
-			return pages.Utill().get_text(path).trim().replaceAll("[0-9]", "");
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -62,8 +62,8 @@ public class Address extends DataEntryPage {
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnDocumentCancel_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnDocumentCancel_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	
@@ -77,7 +77,7 @@ public class Address extends DataEntryPage {
 		String path = "//*[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[4]/input";
 		if (this.isvaliddoctype(doctype)) {
-			pages.Utill().click_element(path);
+			pages.Utill().click(path);
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -90,17 +90,17 @@ public class Address extends DataEntryPage {
 	 * @throws Exception webdriverException
 	 */
 	public void Component(String component) throws Exception{
-		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlComponent_Input");
+		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlComponent_Input");
 		if(!value.trim().equals(component)) {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlComponent_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill()
-					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlComponent_DropDown']/div/ul//li[text()='"
+					.click("//div[@id='ctl00_ContentPlaceHolder1_ddlComponent_DropDown']/div/ul//li[text()='"
 							+ component + "']");
 		} else {
 			throw new NotFoundException(component);
 		}
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 	}
 
@@ -143,20 +143,20 @@ public class Address extends DataEntryPage {
 	public void CopyComponentDatafrom(int i, String component) throws Exception {
 		
 		if (i == 1) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtCopySame_1");
-		pages.Utill().wait_until_loader_is_invisible(100);
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlSameAs_Input");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_rbtCopySame_1");
+		pages.Utill().waitUntilLoaderisInvisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlSameAs_Input");
 		Thread.sleep(1000);
-		pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlSameAs_DropDown']/div/ul//li[text()='"+component+"']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlSameAs_DropDown']/div/ul//li[text()='"+component+"']");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 		else if (i == 0) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtCopySame_0");
-		pages.Utill().wait_until_loader_is_invisible(100);
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCopy_Input");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_rbtCopySame_0");
+		pages.Utill().waitUntilLoaderisInvisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlCopy_Input");
 		Thread.sleep(1000);
-		pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlCopy_DropDown']/div/ul//li[text()='"+component+"']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlCopy_DropDown']/div/ul//li[text()='"+component+"']");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 }
 		else
 			throw new InvalidActivityException(Integer.toString(i));
@@ -168,31 +168,31 @@ public class Address extends DataEntryPage {
 	 * @param address address line 1
 	 */
 	public void AddressLine1(String address) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressAddress", address);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressAddress", address);
 	}
 
 	/**
 	 * select tamil nadu as state
 	 */
 	public void State() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlAddressState_Input", "tamil nadu");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlAddressState_Input", "tamil nadu");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlAddressState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlAddressState_DropDown']/div/ul//li[text()='Tamil Nadu']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * select chennai as city
 	 */
 	public void City() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlAddressCity_Input", "chennai");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlAddressCity_Input", "chennai");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlAddressCity_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlAddressCity_DropDown']/div/ul//li[text()='Chennai']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -201,7 +201,7 @@ public class Address extends DataEntryPage {
 	 * @param pincode pincode of address
 	 */
 	public void Pincode(String pincode) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressPincode", pincode);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressPincode", pincode);
 	}
 
 	/**
@@ -210,7 +210,7 @@ public class Address extends DataEntryPage {
 	 * @param Landmark landmark near to address
 	 */
 	public void LandMark(String Landmark) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressLandMark", Landmark);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressLandMark", Landmark);
 	}
 
 	/**
@@ -219,7 +219,7 @@ public class Address extends DataEntryPage {
 	 * @param date from date of address
 	 */
 	public void FromDate(String date) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressFromDate_dateInput", date);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressFromDate_dateInput", date);
 	}
 
 	/**
@@ -228,15 +228,15 @@ public class Address extends DataEntryPage {
 	 * @param date To date of address
 	 */
 	public void ToDate(String date) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressToDate_dateInput", date);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressToDate_dateInput", date);
 	}
 
 	/**
 	 * Perform click action on till date
 	 */
 	public void TillDate() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkTillDate");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkTillDate");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -246,10 +246,10 @@ public class Address extends DataEntryPage {
 	 */
 	public void isRented(boolean option) {
 		if (option)
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbResidenceType_0");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_rbResidenceType_0");
 		else
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbResidenceType_1");
-		pages.Utill().wait_until_loader_is_invisible(100);
+			pages.Utill().click("ctl00_ContentPlaceHolder1_rbResidenceType_1");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -257,7 +257,7 @@ public class Address extends DataEntryPage {
 	 * @param name land lard name
 	 */
 	public void Name(String name) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressLandLordName", name);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressLandLordName", name);
 	}
 
 	/**
@@ -266,31 +266,31 @@ public class Address extends DataEntryPage {
 	 * @param address landlord address
 	 */
 	public void LandlordAddress(String address) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressLandLordAddress", address);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressLandLordAddress", address);
 	}
 
 	/**
 	 * select tamil nadu as state
 	 */
 	public void LandLordState() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlLandLordState_Input", "tamil nadu");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlLandLordState_Input", "tamil nadu");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlLandLordState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlLandLordState_DropDown']/div/ul//li[text()='Tamil Nadu']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * select chennai as city
 	 */
 	public void LandLordCity() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlLandLordCity_Input", "chennai");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlLandLordCity_Input", "chennai");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlLandLordCity_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlLandLordCity_DropDown']/div/ul//li[text()='Chennai']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -299,7 +299,7 @@ public class Address extends DataEntryPage {
 	 * @param pincode pincode of address
 	 */
 	public void LandLordPincode(String pincode) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtLandLordPincode", pincode);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtLandLordPincode", pincode);
 	}
 
 	/**
@@ -308,7 +308,7 @@ public class Address extends DataEntryPage {
 	 * @param Landmark landmark near to address
 	 */
 	public void LandLordLandMark(String Landmark) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtLandLordLandmark", Landmark);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtLandLordLandmark", Landmark);
 	}
 
 	/**
@@ -317,7 +317,7 @@ public class Address extends DataEntryPage {
 	 * @param number contact number
 	 */
 	public void ContactNo(String number) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressLandLordContactNo", number);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressLandLordContactNo", number);
 	}
 
 	/**
@@ -326,14 +326,14 @@ public class Address extends DataEntryPage {
 	 * @param comments address comments
 	 */
 	public void comments(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressComments", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressComments", comments);
 	}
 
 	/**
 	 * click report insuff button
 	 */
 	public void ReportInsuff() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkAddressInsuff");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkAddressInsuff");
 	}
 
 	/**
@@ -342,14 +342,14 @@ public class Address extends DataEntryPage {
 	 * @param comments insuff raise comments
 	 */
 	public void Insuffcomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressInsuffRemark", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressInsuffRemark", comments);
 	}
 
 	/**
 	 * click not applicable button
 	 */
 	public void Notapplicable() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
 	}
 
 	/**
@@ -358,15 +358,15 @@ public class Address extends DataEntryPage {
 	 * @param comments not applicable comments
 	 */
 	public void Notapplicablecomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 	}
 	/**
 	 * click submit button on address data entry
 	 * @throws Exception WebDriverException
 	 */
 	public void submit() throws Exception{
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressSubmit_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnAddressSubmit_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().SwitchDefault();
 		pages.Utill().confirmAlert();
 	}
@@ -374,16 +374,16 @@ public class Address extends DataEntryPage {
 	 * performs click action on save button
 	 */
 	public void save() throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressAdd_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnAddressAdd_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().confirmAlert();
 	}
 	/**
 	 * Performs click action on add document button in document upload screen
 	 */
 	public void AddDocument() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnAddDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnAddDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	
 	/**
@@ -393,7 +393,7 @@ public class Address extends DataEntryPage {
 	 */
 	public boolean isvaliddoctype(String doctype) {
 		boolean re =false;
-		pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00__0']/td[2]", 10);
+		pages.Utill().waitUntilElementHasText("//*[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00__0']/td[2]", 10);
 		String path="//table[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00']/tbody/tr/td[2]";
 		List<WebElement> list =driver.findElements(By.xpath(path));
 		if(list.size()>0) {
@@ -418,10 +418,11 @@ public class Address extends DataEntryPage {
 	 */
 	public void UploadDocument(String doctype, String file) {
 		if(this.isvaliddoctype(doctype)) {
-		pages.Utill().input_text("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
+		pages.Utill().sendKeys("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
 		super.WaitforFileUpdate(doctype, file);
+		
 		this.AddDocument();
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 		else {
 			throw new NotFoundException(doctype);

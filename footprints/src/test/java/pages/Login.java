@@ -28,7 +28,7 @@ public class Login {
 	 * @param uname Login user name
 	 */
 	public void setUserName(String uname) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtUserName", uname);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtUserName", uname);
 	}
 
 	/**
@@ -37,14 +37,14 @@ public class Login {
 	 * @param pass Login password
 	 */
 	public void setPassword(String pass) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtPassword", pass);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtPassword", pass);
 	}
 
 	/**
 	 * Performs click action in Login button
 	 */
 	public void clickLogin() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnLogin");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnLogin");
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class Login {
 	 * @return boolean true means valid user
 	 */
 	public boolean verifyProjectName(String name) {
-		if (pages.Utill().get_text("ctl00_lblHeader").equals(name)) {
+		if (pages.Utill().getText("ctl00_lblHeader").equals(name)) {
 			return true;
 		} else {
 			return false;
@@ -67,14 +67,14 @@ public class Login {
 	 * @return true when valid image
 	 */
 	public boolean verifyLogo() {
-		return pages.Utill().isimage("http://192.168.2.17:97/Images/c360_logo_green.png");
+		return pages.Utill().isImage("http://192.168.2.17:97/Images/c360_logo_green.png");
 	}
 
 	/**
 	 * Performs click action on forgot password link
 	 */
 	public void clickForgorpassword() {
-		pages.Utill().click_link("Forgot Password");
+		pages.Utill().clickLink("Forgot Password");
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class Login {
 		this.setUserName(name);
 		this.setPassword(pass);
 		this.clickLogin();
-		pages.Utill().wait_until_loader_is_invisible(40);
+		pages.Utill().waitUntilLoaderisInvisible(40);
 	}
 
 }

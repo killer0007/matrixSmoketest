@@ -20,8 +20,8 @@ public class Address extends Verification {
 
 	public void addresscheck() {
 		pages.Utill().SwitchDefault();
-//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[1]/a/span/span/span");
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Address']");
+//		pages.Utill().click("//*[@id='tabStrip']/div/ul/li[1]/a/span/span/span");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Address']");
 		pages.Utill().SwitchFramebyIndex(0);
 	}
 
@@ -29,8 +29,8 @@ public class Address extends Verification {
 	 * Perform click action on Document button
 	 */
 	public void document() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnAddressDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class Address extends Verification {
 		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[1]/span";
 		if (this.isvaliddoctype(doctype)) {
-			return pages.Utill().get_text(path).trim().replaceAll("[0-9]", "");
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -54,8 +54,8 @@ public class Address extends Verification {
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnDocumentCancel_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnDocumentCancel_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class Address extends Verification {
 		String path = "//*[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[4]/input";
 		if (this.isvaliddoctype(doctype)) {
-			pages.Utill().click_element(path);
+			pages.Utill().click(path);
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -80,17 +80,17 @@ public class Address extends Verification {
 	 * @throws Exception webdriverException
 	 */
 	public void Component(String component) throws Exception {
-		String value = pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlComponent_Input");
+		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlComponent_Input");
 		if (!value.trim().equals(component)) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlComponent_Input");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlComponent_Input");
 			if (verifyddvalue(component)) {
-				pages.Utill().click_element(
+				pages.Utill().click(
 						"//div[@id='ctl00_ContentPlaceHolder1_ddlComponent_DropDown']/div/ul//li[text()='" + component
 								+ "']");
 			} else {
 				throw new NotFoundException(component);
 			}
-			pages.Utill().wait_until_loader_is_invisible(100);
+			pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 	}
 
@@ -130,31 +130,31 @@ public class Address extends Verification {
 	 * @param address address line 1
 	 */
 	public void AddressLine1(String address) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressAddress", address);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressAddress", address);
 	}
 
 	/**
 	 * select tamil nadu as state
 	 */
 	public void State() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlAddressState_Input", "tamil nadu");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlAddressState_Input", "tamil nadu");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlAddressState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlAddressState_DropDown']/div/ul//li[text()='Tamil Nadu']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * select chennai as city
 	 */
 	public void City() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlAddressCity_Input", "chennai");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlAddressCity_Input", "chennai");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlAddressCity_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlAddressCity_DropDown']/div/ul//li[text()='Chennai']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class Address extends Verification {
 	 * @param pincode pincode of address
 	 */
 	public void Pincode(String pincode) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressPincode", pincode);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressPincode", pincode);
 	}
 	
 	/**
@@ -172,7 +172,7 @@ public class Address extends Verification {
 	 * @param Landmark landmark near to address
 	 */
 	public void LandMark(String Landmark) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressLandMark", Landmark);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressLandMark", Landmark);
 	}
 
 	/**
@@ -181,7 +181,7 @@ public class Address extends Verification {
 	 * @param date from date of address
 	 */
 	public void FromDate(String date) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressFromDate_dateInput", date);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressFromDate_dateInput", date);
 	}
 
 	/**
@@ -190,15 +190,15 @@ public class Address extends Verification {
 	 * @param date To date of address
 	 */
 	public void ToDate(String date) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressToDate_dateInput", date);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressToDate_dateInput", date);
 	}
 
 	/**
 	 * Perform click action on till date
 	 */
 	public void TillDate() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkTillDate");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkTillDate");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -208,10 +208,10 @@ public class Address extends Verification {
 	 */
 	public void isRented(boolean option) {
 		if (option)
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbResidenceType_0");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_rbResidenceType_0");
 		else
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbResidenceType_1");
-		pages.Utill().wait_until_loader_is_invisible(100);
+			pages.Utill().click("ctl00_ContentPlaceHolder1_rbResidenceType_1");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -220,7 +220,7 @@ public class Address extends Verification {
 	 * @param name land lard name
 	 */
 	public void Name(String name) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressLandLordName", name);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressLandLordName", name);
 	}
 
 	/**
@@ -229,31 +229,31 @@ public class Address extends Verification {
 	 * @param address landlord address
 	 */
 	public void LandlordAddress(String address) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressLandLordAddress", address);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressLandLordAddress", address);
 	}
 
 	/**
 	 * select tamil nadu as state
 	 */
 	public void LandLordState() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlLandLordState_Input", "tamil nadu");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlLandLordState_Input", "tamil nadu");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlLandLordState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlLandLordState_DropDown']/div/ul//li[text()='Tamil Nadu']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * select chennai as city
 	 */
 	public void LandLordCity() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlLandLordCity_Input", "chennai");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlLandLordCity_Input", "chennai");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlLandLordCity_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlLandLordCity_DropDown']/div/ul//li[text()='Chennai']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -262,7 +262,7 @@ public class Address extends Verification {
 	 * @param pincode pincode of address
 	 */
 	public void LandLordPincode(String pincode) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtLandLordPincode", pincode);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtLandLordPincode", pincode);
 	}
 
 	/**
@@ -271,7 +271,7 @@ public class Address extends Verification {
 	 * @param Landmark landmark near to address
 	 */
 	public void LandLordLandMark(String Landmark) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtLandLordLandmark", Landmark);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtLandLordLandmark", Landmark);
 	}
 
 	/**
@@ -280,7 +280,7 @@ public class Address extends Verification {
 	 * @param number contact number
 	 */
 	public void ContactNo(String number) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressLandLordContactNo", number);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressLandLordContactNo", number);
 	}
 
 	/**
@@ -289,14 +289,14 @@ public class Address extends Verification {
 	 * @param comments address comments
 	 */
 	public void comments(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressComments", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressComments", comments);
 	}
 
 	/**
 	 * click report insuff button
 	 */
 	public void ReportInsuff() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkAddressInsuff");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkAddressInsuff");
 	}
 
 	/**
@@ -305,7 +305,7 @@ public class Address extends Verification {
 	 * @param comments insuff raise comments
 	 */
 	public void Insuffcomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressInsuffRemark", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressInsuffRemark", comments);
 	}
 
 	/**
@@ -314,19 +314,19 @@ public class Address extends Verification {
 	 * @throws Exception WebDriverException
 	 */
 	public void submit() throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressSubmit_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnAddressSubmit_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().SwitchDefault();
 		pages.Utill().confirmAlert();
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * performs click action on save button
 	 */
 	public void save() throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnAddressAdd_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnAddressAdd_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().confirmAlert();
 	}
 
@@ -334,8 +334,8 @@ public class Address extends Verification {
 	 * Performs click action on add document button in document upload screen
 	 */
 	public void AddDocument() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnAddDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnAddDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -347,7 +347,7 @@ public class Address extends Verification {
 	 */
 	public boolean isvaliddoctype(String doctype) {
 		boolean re = false;
-		pages.Utill().wait_element_has_text(
+		pages.Utill().waitUntilElementHasText(
 				"//*[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00__0']/td[2]", 10);
 		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmAddressDocument_C_grdDocumentList_ctl00']/tbody/tr/td[2]";
 		List<WebElement> list = driver.findElements(By.xpath(path));
@@ -374,10 +374,10 @@ public class Address extends Verification {
 	 */
 	public void UploadDocument(String doctype, String file) {
 		if (this.isvaliddoctype(doctype)) {
-			pages.Utill().input_text("//*[text()='" + doctype + "']/../td[5]//span/input[2]", file);
+			pages.Utill().sendKeys("//*[text()='" + doctype + "']/../td[5]//span/input[2]", file);
 			super.WaitforFileUpdate(doctype, file);
 			this.AddDocument();
-			pages.Utill().wait_until_loader_is_invisible(100);
+			pages.Utill().waitUntilLoaderisInvisible(100);
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -385,178 +385,178 @@ public class Address extends Verification {
 	}
 
 	public void RespondentName(String name) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressRespondentName", name);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressRespondentName", name);
 	}
 
 	public String RespondentName() {
-		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_txtAddressRespondentName");
+		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtAddressRespondentName");
 	}
 
 	public void RelationshipToCandidate(String relationship) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressRespondentDesignation", relationship);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressRespondentDesignation", relationship);
 	}
 
 	public String RelationshipToCandidate() {
-		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_txtAddressRespondentDesignation");
+		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtAddressRespondentDesignation");
 	}
 
 	public void Ver_Comments(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressVerifierComments", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressVerifierComments", comments);
 	}
 
 	public String Ver_Comments() {
-		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_txtAddressVerifierComments");
+		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtAddressVerifierComments");
 	}
 
 	public void ComponentStatus(String status) {
-		String value = pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlAddressVerifierTypeofRevert_Input");
+		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressVerifierTypeofRevert_Input");
 		if (!value.equals(status.trim())) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlAddressVerifierTypeofRevert_Input");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlAddressVerifierTypeofRevert_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 					"//div[@id='ctl00_ContentPlaceHolder1_ddlAddressVerifierTypeofRevert_DropDown']/div/ul/li[1]")));
-			pages.Utill().click_element(
+			pages.Utill().click(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlAddressVerifierTypeofRevert_DropDown']/div/ul//li[text()='"
 							+ status + "']");
 		}
 	}
 
 	public String ComponentStatus() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlAddressVerifierTypeofRevert_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressVerifierTypeofRevert_Input");
 	}
 
 	public void ModeOfInitiation(String mode) {
-		String value = pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlAddressModeOfInitiation_Input");
+		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressModeOfInitiation_Input");
 		if (!value.equals(mode.trim())) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlAddressModeOfInitiation_Input");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlAddressModeOfInitiation_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By
 					.xpath("//div[@id='ctl00_ContentPlaceHolder1_ddlAddressModeOfInitiation_DropDown']/div/ul/li[1]")));
-			pages.Utill().click_element(
+			pages.Utill().click(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlAddressModeOfInitiation_DropDown']/div/ul//li[text()='"
 							+ mode + "']");
 		}
 	}
 
 	public String ModeOfInitiation() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlAddressModeOfInitiation_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressModeOfInitiation_Input");
 	}
 
 	public void DateOfInitiation(String date) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressDateOfInitiation", date);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressDateOfInitiation", date);
 	}
 
 	public String DateOfInitiation() {
-		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_txtAddressDateOfInitiation");
+		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtAddressDateOfInitiation");
 	}
 
 	public void ModeOfVerification(String mode) {
-		String value = pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlAddressModeOfVerification_Input");
+		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressModeOfVerification_Input");
 		if (!value.equals(mode.trim())) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlAddressModeOfVerification_Input");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlAddressModeOfVerification_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 					"//div[@id='ctl00_ContentPlaceHolder1_ddlAddressModeOfVerification_DropDown']/div/ul/li[1]")));
-			pages.Utill().click_element(
+			pages.Utill().click(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlAddressModeOfVerification_DropDown']/div/ul//li[text()='"
 							+ mode + "']");
 		}
 	}
 
 	public String ModeOfVerification() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlAddressModeOfVerification_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressModeOfVerification_Input");
 	}
 
 	public void DateOfVerification(String date) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtAddressDateOfVerification", date);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtAddressDateOfVerification", date);
 	}
 
 	public String DateOfVerification() {
-		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_txtAddressDateOfVerification");
+		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtAddressDateOfVerification");
 	}
 
 	public void ServiceProvider(String name) {
-		String value = pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
+		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
 		if (!value.equals(name.trim())) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 					"//div[@id='ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_DropDown']/div/ul/li[1]")));
-			pages.Utill().click_element(
+			pages.Utill().click(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_DropDown']/div/ul//li[text()='"
 							+ name + "']");
 		}
 	}
 
 	public String ServiceProvider() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
 	}
 	public String Component() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlComponent_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlComponent_Input");
 	}
 
 	public String AddressLine1() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressAddress");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressAddress");
 	}
 
 	public String Country() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlAddressCountry_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressCountry_Input");
 	}
 
 	public String getState() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlAddressState_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressState_Input");
 	}
 
 	public String getCity() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlAddressCity_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressCity_Input");
 	}
 
 	public String Pincode() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressPincode");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressPincode");
 	}
 
 	public String Landmark() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressLandMark");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressLandMark");
 	}
 
 	public String FromDate() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressFromDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressFromDate_dateInput");
 	}
 
 	public String ToDate() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressToDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressToDate_dateInput");
 	}
 
 	public String LandLordName() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressLandLordName");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressLandLordName");
 	}
 
 	public String LandLordAddressLine1() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressLandLordAddress");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressLandLordAddress");
 	}
 
 	public String LandLordCountry() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlLandLordCountry_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlLandLordCountry_Input");
 	}
 
 	public String getLandLordState() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlLandLordState_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlLandLordState_Input");
 	}
 
 	public String getLandLordCity() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlLandLordCity_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlLandLordCity_Input");
 	}
 
 	public String LandLordPincode() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtLandLordPincode");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtLandLordPincode");
 	}
 
 	public String LandLordLandmark() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtLandLordLandmark");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtLandLordLandmark");
 	}
 
 	public String LandLordContactNo() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtAddressLandLordContactNo");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressLandLordContactNo");
 	}
 
 	public String Comments() {
-		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_txtAddressComments");
+		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtAddressComments");
 	}
 	
 	public void Verification() throws Exception {
@@ -576,9 +576,9 @@ public class Address extends Verification {
 		this.Ver_Comments(pro.getProperty("verComments"));
 		this.ComponentStatus(pro.getProperty("ComponentStatus"));
 		this.ModeOfInitiation(pro.getProperty("ModeOfInitiation"));
-		this.DateOfInitiation(pages.Utill().getcurrentdate("dd/MM/yyyy"));
+		this.DateOfInitiation(pages.Utill().getCurrentDate("dd/MM/yyyy"));
 		this.ModeOfVerification(pro.getProperty("ModeOfVerification"));
-		this.DateOfVerification(pages.Utill().getcurrentdate("dd/MM/yyyy"));
+		this.DateOfVerification(pages.Utill().getCurrentDate("dd/MM/yyyy"));
 		this.submit();
 	}
 	public Map<String, String> VerificationData(){

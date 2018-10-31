@@ -21,8 +21,8 @@ public class Reference extends DataEntryQCPage {
 	 * @throws Exception WebDriverException
 	 */
 	public void submit() throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnRefSaveSubmit_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnRefSaveSubmit_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().SwitchDefault();
 		pages.Utill().confirmAlert();
 	}
@@ -31,8 +31,8 @@ public class Reference extends DataEntryQCPage {
 	 * performs click action on save button
 	 */
 	public void save() throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnRefSave_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnRefSave_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().confirmAlert();
 	}
 
@@ -40,8 +40,8 @@ public class Reference extends DataEntryQCPage {
 	 * click report insuff button
 	 */
 	public void ReportInsuff() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_CheckRefReportInsuff");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_CheckRefReportInsuff");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -50,15 +50,15 @@ public class Reference extends DataEntryQCPage {
 	 * @param comments insuff raise comments
 	 */
 	public void Insuffcomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtRefReportInsuff", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtRefReportInsuff", comments);
 	}
 
 	/**
 	 * click not applicable button
 	 */
 	public void Notapplicable() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -67,7 +67,7 @@ public class Reference extends DataEntryQCPage {
 	 * @param comments not applicable comments
 	 */
 	public void Notapplicablecomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class Reference extends DataEntryQCPage {
 		String path = "//table[@id='ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_grdDocumentList_Ref_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[1]/span";
 		if (this.isvaliddoctype(doctype)) {
-			return pages.Utill().get_text(path).trim().replaceAll("[0-9]", "");
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -95,7 +95,7 @@ public class Reference extends DataEntryQCPage {
 	 * @return true when document ype was available
 	 */
 	public boolean isvaliddoctype(String doctype) {
-		pages.Utill().wait_element_has_text(
+		pages.Utill().waitUntilElementHasText(
 				"//*[@id='ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_grdDocumentList_Ref_ctl00__0']/td[2]", 10);
 		boolean re = false;
 		String path = "//*[@id='ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_grdDocumentList_Ref_ctl00']/tbody/tr/td[2]";
@@ -119,8 +119,8 @@ public class Reference extends DataEntryQCPage {
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_btnDocumentClose_Ref_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_btnDocumentClose_Ref_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -128,8 +128,8 @@ public class Reference extends DataEntryQCPage {
 	 */
 	public void referencecheck() {
 		pages.Utill().SwitchDefault();
-//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[4]/a/span/span/span");
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Reference']");
+//		pages.Utill().click("//*[@id='tabStrip']/div/ul/li[4]/a/span/span/span");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Reference']");
 		pages.Utill().SwitchFramebyIndex(3);
 	}
 
@@ -138,8 +138,8 @@ public class Reference extends DataEntryQCPage {
 	 */
 	@Override
 	public void document() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnRefDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnRefDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -148,9 +148,9 @@ public class Reference extends DataEntryQCPage {
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlRefType_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlRefType_Input");
 		if (verifyddvalue(component)) {
-			pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlRefType_DropDown']/div/ul//li[text()='"
+			pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlRefType_DropDown']/div/ul//li[text()='"
 					+ component + "']");
 		} else {
 			throw new NotFoundException(component);
@@ -188,79 +188,79 @@ public class Reference extends DataEntryQCPage {
 	}
 
 	public String Component() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlRefType_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlRefType_Input");
 	}
 
 	public String ReferenceType() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlReferType_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlReferType_Input");
 	}
 
 	public String ReferrerName() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtReferenceName");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtReferenceName");
 	}
 
 	public String ReferrerDesignation() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtRefDes");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtRefDes");
 	}
 
 	public String ReferrerContactNo() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtRefContactNo1");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtRefContactNo1");
 	}
 
 	public String ReferrerEmailId() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtRefEmailId1");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtRefEmailId1");
 	}
 
 	public String ReferrerAddressLine1() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtRefererDoorStreet");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtRefererDoorStreet");
 	}
 
 	public String ReferrerCountry() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlRefererCountry_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlRefererCountry_Input");
 	}
 
 	public String ReferrerState() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlRefererState_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlRefererState_Input");
 	}
 
 	public String ReferrerCity() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlRefererCity_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlRefererCity_Input");
 	}
 
 	public String ReferrerPincode() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtRefererPincode");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtRefererPincode");
 	}
 
 	public String Organizationname() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlOrgName_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlOrgName_Input");
 	}
 
 	public String OrganizationAddressLine1() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtOrgDoorNo");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtOrgDoorNo");
 	}
 
 	public String OrganizationCountry() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlRefCountry_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlRefCountry_Input");
 	}
 
 	public String OrganizationState() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlRefState_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlRefState_Input");
 	}
 
 	public String OrganizationCity() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlRefCity_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlRefCity_Input");
 	}
 
 	public String OrganizationPinCode() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtOrgPincode");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtOrgPincode");
 	}
 
 	public String OrganizationLandmark() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtOrgLandmark");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtOrgLandmark");
 	}
 
 	public String Comments() {
-		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_txtRefComments");
+		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtRefComments");
 	}
 	public LinkedHashMap<String, String> Referenceone() throws Exception{
 		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();

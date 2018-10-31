@@ -26,16 +26,16 @@ public class Credit extends DataEntryPage{
 	 */
 	public void creditcheck() {
 		pages.Utill().SwitchDefault();
-//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[7]/a/span/span/span");
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Credit']");
+//		pages.Utill().click("//*[@id='tabStrip']/div/ul/li[7]/a/span/span/span");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Credit']");
 		pages.Utill().SwitchFramebyIndex(6);
 	}
 /**
  * Performs click action on History button
  */
 	public void history() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnHistoryPage_input");
-		pages.Utill().wait_until_loader_is_invisible(50);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnHistoryPage_input");
+		pages.Utill().waitUntilLoaderisInvisible(50);
 	}
 	/**
 	 * returns name who raised insuff
@@ -43,7 +43,7 @@ public class Credit extends DataEntryPage{
 	 */
 	public String getraisedBy() {
 		return pages.Utill()
-				.get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdCreditInsuffHistory_ctl00_ctl04_lblRaisedBy")
+				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdCreditInsuffHistory_ctl00_ctl04_lblRaisedBy")
 				.trim();
 	}
 /**
@@ -52,7 +52,7 @@ public class Credit extends DataEntryPage{
  */
 	public String getraisedStage() {
 		return pages.Utill()
-				.get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdCreditInsuffHistory_ctl00_ctl04_lblRaiseState")
+				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdCreditInsuffHistory_ctl00_ctl04_lblRaiseState")
 				.trim();
 	}
 /**
@@ -61,7 +61,7 @@ public class Credit extends DataEntryPage{
  */
 	public String getraisedComments() {
 		return pages.Utill()
-				.get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdCreditInsuffHistory_ctl00_ctl04_lblRaisedRemarks")
+				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdCreditInsuffHistory_ctl00_ctl04_lblRaisedRemarks")
 				.trim();
 	}
 /**
@@ -70,7 +70,7 @@ public class Credit extends DataEntryPage{
  */
 	public String getclearedBy() {
 		return pages.Utill()
-				.get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdCreditInsuffHistory_ctl00_ctl04_lblClearedByName")
+				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdCreditInsuffHistory_ctl00_ctl04_lblClearedByName")
 				.trim();
 	}
 	/**
@@ -79,28 +79,28 @@ public class Credit extends DataEntryPage{
 	 */
 	public String getclearedComments() {
 		return pages.Utill()
-				.get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdCreditInsuffHistory_ctl00_ctl04_lblClearComments")
+				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdCreditInsuffHistory_ctl00_ctl04_lblClearComments")
 				.trim();
 	}
 	/**
 	 * Performs click action on close button in document upload popup
 	 */
 	public void close() {
-		pages.Utill().click_element("//a[@class='rwCloseButton']");
+		pages.Utill().click("//a[@class='rwCloseButton']");
 	}
 	/**
 	 * returns document name which uploaded for insuff clear
 	 * @return document name
 	 */
 	public String historyDocument() {
-		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdCreditInsuffHistory_ctl00_ctl04_lblDoc").replaceAll("[0-9]", "");
+		return pages.Utill().getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdCreditInsuffHistory_ctl00_ctl04_lblDoc").replaceAll("[0-9]", "");
 	}
 	/**
 	 * Performs click action on Document button
 	 */
 	public void document() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCreditAddDocuments_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnCreditAddDocuments_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Takes component name as input and select from dropdwon
@@ -108,14 +108,14 @@ public class Credit extends DataEntryPage{
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
-		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlcreditComponent_Input");
+		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlcreditComponent_Input");
 		if(!value.trim().equals(component)) {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlcreditComponent_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlcreditComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill()
-					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlcreditComponent_DropDown']/div/ul//li[text()='"
+					.click("//div[@id='ctl00_ContentPlaceHolder1_ddlcreditComponent_DropDown']/div/ul//li[text()='"
 							+ component + "']");
-			pages.Utill().wait_until_loader_is_invisible(100);
+			pages.Utill().waitUntilLoaderisInvisible(100);
 		} else {
 			throw new NotFoundException(component);
 		}
@@ -153,41 +153,41 @@ public class Credit extends DataEntryPage{
 	 * @param component sub id component name
 	 */
 	public void subIDComponent(String component) {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCreditId_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlCreditId_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCreditId_DropDown']/div/ul/li[1]")));
 			pages.Utill()
-					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlCreditId_DropDown']/div/ul//li[text()='"
+					.click("//div[@id='ctl00_ContentPlaceHolder1_ddlCreditId_DropDown']/div/ul//li[text()='"
 							+ component + "']");
-			pages.Utill().wait_until_loader_is_invisible(100);
+			pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Takes name as input Pass it to name On Id
 	 * @param name on ID card
 	 */
 	public void NameonID(String name) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCreditIdName", name);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCreditIdName", name);
 	}
 	/**
 	 * Takes id card number as input and pass it to ID Number
 	 * @param number on Id card
 	 */
 public void IDNumber(String number) {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCreditIdNumber", number);
+	pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCreditIdNumber", number);
 	}
 /**
  * Takes name as input and pass it to issue date (dd/mm/yyy)
  * @param date ID card issued date
  */
 public void IssueDate(String date) {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCreditIdIssueDate_dateInput", date);
+	pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCreditIdIssueDate_dateInput", date);
 }
 /**
  * Takes name as input and pass it to Expiry date (dd/mm/yyy)
  * @param date ID card Expiry date
  */
 public void ExpiryDate(String date) {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCreditIdExpireDate_dateInput", date);
+	pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCreditIdExpireDate_dateInput", date);
 }
 /**
  * select India as country 
@@ -196,36 +196,36 @@ public void ExpiryDate(String date) {
 public void Country() {
 	boolean re=false;
 	if(re) {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCreditIssueCountry_Input","India");
+	pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlCreditIssueCountry_Input","India");
 	new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCreditIssueCountry_DropDown']/div/ul/li[1]")));
-	pages.Utill().click_element(
+	pages.Utill().click(
 			"//*[@id='ctl00_ContentPlaceHolder1_ddlCreditIssueCountry_DropDown']/div/ul/li//text()='India'");
-	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().waitUntilLoaderisInvisible(100);
 }
 }
 /**
  * select tamil nadu as state
  */
 public void State() {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCreditIssueState_Input", "Tamil Nadu");
+	pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlCreditIssueState_Input", "Tamil Nadu");
 	new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCreditIssueState_DropDown']/div/ul/li[1]")));
-	pages.Utill().click_element(
+	pages.Utill().click(
 			"//*[@id='ctl00_ContentPlaceHolder1_ddlCreditIssueState_DropDown']/div/ul//li[text()='Tamil Nadu']");
-	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().waitUntilLoaderisInvisible(100);
 }
 
 /**
  * select chennai as city
  */
 public void City() {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCreditIssueCity_Input", "Chennai");
+	pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlCreditIssueCity_Input", "Chennai");
 	new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCreditIssueCity_DropDown']/div/ul/li[1]")));
-	pages.Utill().click_element(
+	pages.Utill().click(
 			"//*[@id='ctl00_ContentPlaceHolder1_ddlCreditIssueCity_DropDown']/div/ul//li[text()='Chennai']");
-	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().waitUntilLoaderisInvisible(100);
 }
 /**
  * comments
@@ -233,15 +233,15 @@ public void City() {
  * @param comments address comments
  */
 public void comments(String comments) {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCreditComments", comments);
+	pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCreditComments", comments);
 }
 
 /**
  * click report insuff button
  */
 public void ReportInsuff() {
-	pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkCreditInsuff");
-	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().click("ctl00_ContentPlaceHolder1_chkCreditInsuff");
+	pages.Utill().waitUntilLoaderisInvisible(100);
 }
 
 /**
@@ -250,15 +250,15 @@ public void ReportInsuff() {
  * @param comments insuff raise comments
  */
 public void Insuffcomm(String comments) {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCreditInsuffRemarks", comments);
+	pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCreditInsuffRemarks", comments);
 }
 
 /**
  * click not applicable button
  */
 public void Notapplicable() {
-	pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
-	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
+	pages.Utill().waitUntilLoaderisInvisible(100);
 }
 
 /**
@@ -267,15 +267,15 @@ public void Notapplicable() {
  * @param comments not applicable comments
  */
 public void Notapplicablecomm(String comments) {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+	pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 }
 /**
  * click submit button on credit data entry
  * @throws Exception WebDriverException
  */
 public void submit() throws Exception{
-	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCreditSaveSubmit_input");
-	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().click("ctl00_ContentPlaceHolder1_btnCreditSaveSubmit_input");
+	pages.Utill().waitUntilLoaderisInvisible(100);
 	pages.Utill().SwitchDefault();	
 	pages.Utill().confirmAlert();
 }
@@ -283,8 +283,8 @@ public void submit() throws Exception{
  * performs click action on save button
  */
 public void save() throws Exception {
-	pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCreditSave_input");
-	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().click("ctl00_ContentPlaceHolder1_btnCreditSave_input");
+	pages.Utill().waitUntilLoaderisInvisible(100);
 	pages.Utill().confirmAlert();
 }
 /**
@@ -292,15 +292,15 @@ public void save() throws Exception {
  * @param no Enrollment number
  */
 public void EnrollmentNo(String no) {
-	pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCreditEnrollId1", no);
+	pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCreditEnrollId1", no);
 }
 
 /**
  * Performs click action on add document button in document upload screen
  */
 public void AddDocument() {
-	pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_btnCreditAddDocument_input");
-	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().click("ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_btnCreditAddDocument_input");
+	pages.Utill().waitUntilLoaderisInvisible(100);
 }
 
 /**
@@ -309,7 +309,7 @@ public void AddDocument() {
  * @return true when document ype was available
  */
 public boolean isvaliddoctype(String doctype) {
-pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_grdviewCreditDocument_ctl00__0']/td[2]", 10);
+pages.Utill().waitUntilElementHasText("//*[@id='ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_grdviewCreditDocument_ctl00__0']/td[2]", 10);
 	boolean re =false;
 	String path="//*[@id='ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_grdviewCreditDocument_ctl00']/tbody/tr/td[2]";
 	List<WebElement> list =driver.findElements(By.xpath(path));
@@ -335,10 +335,10 @@ pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_rwmCaseC
  */
 public void UploadDocument(String doctype, String file) {
 	if(this.isvaliddoctype(doctype)) {
-	pages.Utill().input_text("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
+	pages.Utill().sendKeys("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
 	super.WaitforFileUpdate(doctype, file);
 	this.AddDocument();
-	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	else {
 		throw new NotFoundException(doctype);
@@ -349,8 +349,8 @@ public void UploadDocument(String doctype, String file) {
  * Perform close action on close button in document upload popup
  */
 public void docclose() {
-	pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_btnCreditDocumentCancel_input");
-	pages.Utill().wait_until_loader_is_invisible(100);
+	pages.Utill().click("ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_btnCreditDocumentCancel_input");
+	pages.Utill().waitUntilLoaderisInvisible(100);
 }
 /**
  * takes input from credit.properties file and completes the data entry

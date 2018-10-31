@@ -24,9 +24,9 @@ public class Casereg extends Home {
 	 * Select case registration from the actions dropwdown
 	 */
 	public void Action() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlAct_Input");
-		pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlAct_DropDown']/div/ul/li[8]");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlAct_Input");
+		pages.Utill().click("//*[@id='ctl00_ContentPlaceHolder1_ddlAct_DropDown']/div/ul/li[8]");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -35,22 +35,22 @@ public class Casereg extends Home {
 	 * @param refno case reference number
 	 */
 	public void clientrefno(String refno) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_TextBoxClientReference", refno);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_TextBoxClientReference", refno);
 	}
 
 	/**
 	 * Click search button
 	 */
 	public void Search() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnSearch");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnSearch");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * click Register New Case button
 	 */
 	public void Registercase() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ButtonRegisterNewCase_input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ButtonRegisterNewCase_input");
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class Casereg extends Home {
 	 */
 	public String getRefno() {
 		return pages.Utill()
-				.get_text("//tr[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[4]");
+				.getText("//tr[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[4]");
 	}
 
 	/**
@@ -82,15 +82,15 @@ public class Casereg extends Home {
 	 * @throws InterruptedException Time out interruption
 	 */
 	public void selectProject(String projectName) throws InterruptedException {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlProject_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlProject_Input");
 		Thread.sleep(1000);
 		try {
-			pages.Utill().click_element("//li[text()='" + projectName + "']");
+			pages.Utill().click("//li[text()='" + projectName + "']");
 		} catch (ElementNotVisibleException e) {
 			Thread.sleep(1000);
-			pages.Utill().click_element("//li[text()='" + projectName + "']");
+			pages.Utill().click("//li[text()='" + projectName + "']");
 		}
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class Casereg extends Home {
 	 * @param fname candidate first name
 	 */
 	public void FirstName(String fname) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtFirstName", fname);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtFirstName", fname);
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class Casereg extends Home {
 	 * @param lname candidate Last name
 	 */
 	public void LastName(String lname) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtLastName", lname);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtLastName", lname);
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class Casereg extends Home {
 	 * @param dob candidate date of birth
 	 */
 	public void DOB(String dob) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtDateofBirth_dateInput", dob);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtDateofBirth_dateInput", dob);
 	}
 
 	/**
@@ -127,7 +127,7 @@ public class Casereg extends Home {
 	 * @param fname candidates Father first name
 	 */
 	public void FatherFirstName(String fname) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtFatherFirstName", fname);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtFatherFirstName", fname);
 	}
 
 	/**
@@ -137,7 +137,7 @@ public class Casereg extends Home {
 	 * @param lname candidates Father last name
 	 */
 	public void FatherLastName(String lname) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtFatherLastName", lname);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtFatherLastName", lname);
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class Casereg extends Home {
 	 */
 
 	public void CandidateID(String id) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtClientCandidateID", id);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtClientCandidateID", id);
 	}
 
 	/**
@@ -156,7 +156,7 @@ public class Casereg extends Home {
 	 * @param email Candidate Email ID
 	 */
 	public void Email(String email) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtEmail", email);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEmail", email);
 	}
 
 	/**
@@ -165,7 +165,7 @@ public class Casereg extends Home {
 	 * @param linkedin LinkedIn ID
 	 */
 	public void LinkedIn(String linkedin) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtLinkedIn", linkedin);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtLinkedIn", linkedin);
 	}
 
 	/**
@@ -174,7 +174,7 @@ public class Casereg extends Home {
 	 * @param nation Nationality
 	 */
 	public void Nationality(String nation) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtNationality", nation);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtNationality", nation);
 	}
 
 	/**
@@ -184,7 +184,7 @@ public class Casereg extends Home {
 	 * @param no Landline Number
 	 */
 	public void LandlineNumber(String no) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtLandLine", no);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtLandLine", no);
 	}
 
 	/**
@@ -193,7 +193,7 @@ public class Casereg extends Home {
 	 * @param no Mobile Number
 	 */
 	public void MobileNumber(String no) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtMobileNumberFirst", no);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtMobileNumberFirst", no);
 	}
 
 	/**
@@ -203,7 +203,7 @@ public class Casereg extends Home {
 	 * @param no Emergency Contact Number
 	 */
 	public void EmergencyContactNumber(String no) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtMobileNumberSecond", no);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtMobileNumberSecond", no);
 	}
 
 	/**
@@ -213,7 +213,7 @@ public class Casereg extends Home {
 	 * @param name Emergency Contact Person
 	 */
 	public void EmergencyContactPerson(String name) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson", name);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson", name);
 	}
 
 	/**
@@ -224,11 +224,11 @@ public class Casereg extends Home {
 	 */
 	public void clickfresher(boolean value) {
 		if (value) {
-			pages.Utill().executescript(
+			pages.Utill().executeScript(
 					"document.getElementById('ctl00_ContentPlaceHolder1_rblFresher_0').checked='checked'");
 
 		} else {
-			pages.Utill().executescript(
+			pages.Utill().executeScript(
 					"document.getElementById('ctl00_ContentPlaceHolder1_rblFresher_1').checked='checked'");
 		}
 	}
@@ -241,12 +241,12 @@ public class Casereg extends Home {
 	 * @throws Exception except male and female any input given it throws
 	 */
 	public void gender(String gender) throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlGender_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlGender_Input");
 		Thread.sleep(1000);
 		if (gender.equalsIgnoreCase("male")) {
-			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']/div/ul/li[2]");
+			pages.Utill().click("//*[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']/div/ul/li[2]");
 		} else if (gender.equalsIgnoreCase("female")) {
-			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']/div/ul/li[3]");
+			pages.Utill().click("//*[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']/div/ul/li[3]");
 		} else {
 			throw new NotFoundException(gender);
 		}
@@ -261,14 +261,14 @@ public class Casereg extends Home {
 	 *                   throws
 	 */
 	public void maritalStatus(String status) throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input");
 		Thread.sleep(2000);
 		if (status.equalsIgnoreCase("Single")) {
-			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']/div/ul/li[2]");
+			pages.Utill().click("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']/div/ul/li[2]");
 		} else if (status.equalsIgnoreCase("married")) {
-			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']/div/ul/li[3]");
+			pages.Utill().click("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']/div/ul/li[3]");
 		} else if (status.equalsIgnoreCase("divorced")) {
-			pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']/div/ul/li[4]");
+			pages.Utill().click("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']/div/ul/li[4]");
 		} else {
 			throw new NotFoundException(status);
 		}
@@ -280,36 +280,36 @@ public class Casereg extends Home {
 	 * @return Attachment Availability Documents not attached
 	 */
 	public String AttachementAvailability() {
-		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_lblDisplayAttachmentAvailability");
+		return pages.Utill().getText("ctl00_ContentPlaceHolder1_lblDisplayAttachmentAvailability");
 	}
 
 	/**
 	 * Performs click action on all component(s) radio button
 	 */
 	public void AllComponents() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtnAllComponents");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rbtnAllComponents");
 	}
 
 	/**
 	 * Performs click action on selected component(s) radio button
 	 */
 	public void SelectedComponents() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtnSelectedComponents");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rbtnSelectedComponents");
 	}
 
 	/**
 	 * Performs click action on Register button
 	 */
 	public void Register() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnRegister_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnRegister_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * Performs click action on Cancel button
 	 */
 	public void Cancel() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCancel_input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnCancel_input");
 	}
 
 	/**
@@ -368,8 +368,8 @@ public class Casereg extends Home {
 	 * @param componentName sub component name
 	 */
 	public void clickupload(String componentName) {
-		pages.Utill().click_element("//td[text()='" + componentName + "']/../td[10]//input[1]");
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().click("//td[text()='" + componentName + "']/../td[10]//input[1]");
+		pages.Utill().waitUntilLoaderisInvisible(10);
 	}
 
 	/**
@@ -383,7 +383,7 @@ public class Casereg extends Home {
 	public String getDocumentName(String componentName, String doctype) {
 		this.clickupload(componentName);
 		String docname = pages.Utill()
-				.get_text("//table[@id='ctl00_ContentPlaceHolder1_rdmAddDoc_C_grdDocumentList_ctl00']//td[text()='"
+				.getText("//table[@id='ctl00_ContentPlaceHolder1_rdmAddDoc_C_grdDocumentList_ctl00']//td[text()='"
 						+ doctype + "']/../td[6]//span");
 		this.docupClose();
 		return docname.replaceAll("[0-9]", "");
@@ -394,15 +394,15 @@ public class Casereg extends Home {
 	 * Performs click action on Upload Documents
 	 */
 	public void uploadcaseDoc() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCaseDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnCaseDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * Performs click action on cancel icon in upload popup
 	 */
 	public void docupClose() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rdmAddDoc_C_btnDocumentCancel");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rdmAddDoc_C_btnDocumentCancel");
 
 	}
 
@@ -410,7 +410,7 @@ public class Casereg extends Home {
 	 * Performs click action on close button in component document upload popup
 	 */
 	public void ComponentDocClose() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel_input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel_input");
 	}
 
 	/**
@@ -422,17 +422,17 @@ public class Casereg extends Home {
 	 */
 	public void uploadcaseDoc(String doctype, String fileName) {
 		this.uploadcaseDoc();
-//		pages.Utill().wait_until_loader_is_invisible(100);
+//		pages.Utill().waitUntilLoaderisInvisible(100);
 		if (this.isDoctypeValid(doctype, 1)) {
-			pages.Utill().input_text(
+			pages.Utill().sendKeys(
 					"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='"
 							+ doctype + "']/../td[5]//div/ul/li/span/input[2]",
 					fileName);
 		} else
 			throw new NotFoundException(doctype);
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnAddCaseDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(50);
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnAddCaseDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(50);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel");
 
 	}
 
@@ -446,11 +446,11 @@ public class Casereg extends Home {
 		if (this.isDoctypeValid(doctype, 0)) {
 			String path = "//*[@id='ctl00_ContentPlaceHolder1_rdmAddDoc_C_grdDocumentList_ctl00']//td[text()='"
 					+ doctype + "']/../td[7]//td[2]/input";
-			pages.Utill().click_element(path);
+			pages.Utill().click(path);
 		} else
 			throw new NotFoundException(doctype);
 		pages.Utill().confirmAlert();
-		pages.Utill().wait_until_loader_is_invisible(50);
+		pages.Utill().waitUntilLoaderisInvisible(50);
 
 	}
 
@@ -464,11 +464,11 @@ public class Casereg extends Home {
 		if (this.isDoctypeValid(doctype, 1)) {
 			String path = "//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='"
 					+ doctype + "']/../td[6]//td[2]/input";
-			pages.Utill().click_element(path);
+			pages.Utill().click(path);
 		} else
 			throw new NotFoundException(doctype);
 		pages.Utill().confirmAlert();
-		pages.Utill().wait_until_loader_is_invisible(50);
+		pages.Utill().waitUntilLoaderisInvisible(50);
 	}
 
 	/**
@@ -479,15 +479,15 @@ public class Casereg extends Home {
 	 */
 	public String getuploadcaseDoc(String doctype) {
 		this.uploadcaseDoc();
-//		pages.Utill().wait_until_loader_is_invisible(100);
+//		pages.Utill().waitUntilLoaderisInvisible(100);
 		String docname = null;
 		if (this.isDoctypeValid(doctype, 1)) {
-			docname = pages.Utill().get_text(
+			docname = pages.Utill().getText(
 					"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='"
 							+ doctype + "']/../td[5]//span");
 		} else
 			throw new NotFoundException(doctype);
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel");
 		return docname.replaceAll("[0-9]", "");
 	}
 
@@ -499,9 +499,9 @@ public class Casereg extends Home {
 	 * @throws NotFoundException when given document type not found
 	 */
 	public void upload(String file, String doctype) throws NotFoundException {
-//		pages.Utill().input_text("//td[text()='" + doctype + "']/following-sibling::td[3]//@value='Select'", file);
+//		pages.Utill().sendKeys("//td[text()='" + doctype + "']/following-sibling::td[3]//@value='Select'", file);
 		if (this.isDoctypeValid(doctype, 0)) {
-			pages.Utill().input_text(
+			pages.Utill().sendKeys(
 					"//table[@id='ctl00_ContentPlaceHolder1_rdmAddDoc_C_grdDocumentList_ctl00']//td[text()='" + doctype
 							+ "']/../td[6]//input[2]",
 					file);
@@ -535,7 +535,7 @@ public class Casereg extends Home {
 	 * @return count Components Count
 	 */
 	public int getCheckCount() {
-		return Integer.parseInt(pages.Utill().get_text("ctl00_ContentPlaceHolder1_lblComponentCount"));
+		return Integer.parseInt(pages.Utill().getText("ctl00_ContentPlaceHolder1_lblComponentCount"));
 	}
 
 	/**
@@ -567,7 +567,7 @@ public class Casereg extends Home {
 	 * @param componentname name of sub component
 	 */
 	public void selectcheck(String componentname) {
-		pages.Utill().click_element("//td[text()='" + componentname + "']/../td[2]//input");
+		pages.Utill().click("//td[text()='" + componentname + "']/../td[2]//input");
 	}
 
 	/**
@@ -578,8 +578,8 @@ public class Casereg extends Home {
 	 * @param remarks       not applicable remarks
 	 */
 	public void notApplicable(String componentname, String remarks) {
-		pages.Utill().click_element("//td[text()='" + componentname + "']/../td[6]//input");
-		pages.Utill().input_text("//td[text()='" + componentname + "']/../td[6]//textarea", remarks);
+		pages.Utill().click("//td[text()='" + componentname + "']/../td[6]//input");
+		pages.Utill().sendKeys("//td[text()='" + componentname + "']/../td[6]//textarea", remarks);
 	}
 
 	/**
@@ -590,8 +590,8 @@ public class Casereg extends Home {
 	 * @param comments      insuff raise comments
 	 */
 	public void raiseInsuff(String componentname, String comments) {
-		pages.Utill().click_element("//td[text()='" + componentname + "']/../td[7]//input");
-		pages.Utill().input_text("//td[text()='" + componentname + "']/../td[7]//textarea", comments);
+		pages.Utill().click("//td[text()='" + componentname + "']/../td[7]//input");
+		pages.Utill().sendKeys("//td[text()='" + componentname + "']/../td[7]//textarea", comments);
 	}
 
 	/**
@@ -603,9 +603,9 @@ public class Casereg extends Home {
 	 * @param releasedate   CEP release date
 	 */
 	public void cep(String componentname, String comments, String releasedate) {
-		pages.Utill().click_element("//td[text()='" + componentname + "']/../td[8]//input");
-		pages.Utill().input_text("//td[text()='" + componentname + "']/../td[8]//textarea", comments);
-		pages.Utill().input_text(
+		pages.Utill().click("//td[text()='" + componentname + "']/../td[8]//input");
+		pages.Utill().sendKeys("//td[text()='" + componentname + "']/../td[8]//textarea", comments);
+		pages.Utill().sendKeys(
 				"//td[text()='" + componentname + "']/../td[8]//tbody/tr/td/div/table/tbody/tr/td/span/input[1]",
 				releasedate);
 	}
@@ -618,12 +618,12 @@ public class Casereg extends Home {
 public HashMap<String, String> getcasedetails() { 
 //	String tableid="ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_GridData";
 	HashMap<String, String> data = new HashMap<String, String>();
-	String caserefno=pages.Utill().get_text("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[4]");
-	String clientrefno=pages.Utill().get_text("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[5]");
-	String candidatename=pages.Utill().get_text("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[6]");
-	String dob=pages.Utill().get_text("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[7]");
-	String recievedon=pages.Utill().get_text("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[9]");
-	String duedate=pages.Utill().get_text("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[11]");
+	String caserefno=pages.Utill().getText("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[4]");
+	String clientrefno=pages.Utill().getText("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[5]");
+	String candidatename=pages.Utill().getText("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[6]");
+	String dob=pages.Utill().getText("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[7]");
+	String recievedon=pages.Utill().getText("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[9]");
+	String duedate=pages.Utill().getText("//*[@id='ctl00_ContentPlaceHolder1_grdClientRegisteredCaseList_ctl00__0']/td[11]");
 	data.put("caserefno", caserefno);
 	data.put("clientrefno", clientrefno);
 	data.put("candidatename", candidatename);

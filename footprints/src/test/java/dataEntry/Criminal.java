@@ -27,8 +27,8 @@ public class Criminal extends DataEntryPage {
 	 */
 	public void criminalcheck() {
 		pages.Utill().SwitchDefault();
-//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[6]/a/span/span/span");
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Criminal']");
+//		pages.Utill().click("//*[@id='tabStrip']/div/ul/li[6]/a/span/span/span");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Criminal']");
 		pages.Utill().SwitchFramebyIndex(5);
 	}
 	/**
@@ -36,8 +36,8 @@ public class Criminal extends DataEntryPage {
 	 */
 	@Override
 	public void document() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCriminalDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnCriminalDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Takes component name as input and select from dropdwon
@@ -45,15 +45,15 @@ public class Criminal extends DataEntryPage {
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
-		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCriminalComponent_Input");
+		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCriminalComponent_Input");
 		if(!value.trim().equals(component)) {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCriminalComponent_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlCriminalComponent_Input");
 		if (verifyddvalue(component)) {
 			
 			pages.Utill()
-					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlCriminalComponent_DropDown']/div/ul//li[text()='"
+					.click("//div[@id='ctl00_ContentPlaceHolder1_ddlCriminalComponent_DropDown']/div/ul//li[text()='"
 							+ component + "']");
-			pages.Utill().wait_until_loader_is_invisible(100);
+			pages.Utill().waitUntilLoaderisInvisible(100);
 		} else {
 			throw new NotFoundException(component);
 		}
@@ -97,20 +97,21 @@ public class Criminal extends DataEntryPage {
 	 */
 	public void CopyComponentDatafrom(int i, String component) throws InvalidActivityException {
 		if (i == 1) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtCriminalCopySame_1");
-		pages.Utill().wait_until_loader_is_invisible(100);
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCriminalSameAs_Input");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_rbtCriminalCopySame_1");
+		pages.Utill().waitUntilLoaderisInvisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlCriminalSameAs_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(pages.Utill().find("//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalSameAs_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalSameAs_DropDown']/div/ul//li[text()='"+component+"']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalSameAs_DropDown']/div/ul//li[text()='"+component+"']");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 		else if (i == 0) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_rbtCriminalCopySame_0");
-		pages.Utill().wait_until_loader_is_invisible(100);
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCriminalCopy_Input");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_rbtCriminalCopySame_0");
+		pages.Utill().waitUntilLoaderisInvisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlCriminalCopy_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(pages.Utill().find("//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalCopy_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalCopy_DropDown']/div/ul//li[text()='"+component+"']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().sleep(200);
+		pages.Utill().click("//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalCopy_DropDown']/div/ul//li[text()='"+component+"']");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 		
 		else
@@ -123,31 +124,31 @@ public class Criminal extends DataEntryPage {
 	 * @param address line 1
 	 */
 	public void AddressLine1(String address) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCriminalAddress", address);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCriminalAddress", address);
 	}
 
 	/**
 	 * select tamil nadu as state
 	 */
 	public void State() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCriminalState_Input","Tamil Nadu");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlCriminalState_Input","Tamil Nadu");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalState_DropDown']/div/ul//li[text()='Tamil Nadu']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * select chennai as city
 	 */
 	public void City() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlCriminalCity_Input", "Chennai");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlCriminalCity_Input", "Chennai");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlAddressState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalCity_DropDown']/div/ul//li[text()='Chennai']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -156,7 +157,7 @@ public class Criminal extends DataEntryPage {
 	 * @param pincode pincode of address
 	 */
 	public void Pincode(String pincode) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCriminalPincode", pincode);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCriminalPincode", pincode);
 	}
 
 	/**
@@ -165,7 +166,7 @@ public class Criminal extends DataEntryPage {
 	 * @param Landmark landmark near to address
 	 */
 	public void LandMark(String Landmark) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCriminalLandmark", Landmark);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCriminalLandmark", Landmark);
 	}
 
 	/**
@@ -174,7 +175,7 @@ public class Criminal extends DataEntryPage {
 	 * @param date from date of address
 	 */
 	public void FromDate(String date) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCriminalFromDate_dateInput", date);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCriminalFromDate_dateInput", date);
 	}
 
 	/**
@@ -183,15 +184,15 @@ public class Criminal extends DataEntryPage {
 	 * @param date To date of address
 	 */
 	public void ToDate(String date) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCriminalToDate_dateInput", date);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCriminalToDate_dateInput", date);
 	}
 
 	/**
 	 * Perform click action on till date
 	 */
 	public void TillDate() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkTillDate");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkTillDate");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * comments
@@ -199,15 +200,15 @@ public class Criminal extends DataEntryPage {
 	 * @param comments address comments
 	 */
 	public void comments(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCriminalComments", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCriminalComments", comments);
 	}
 
 	/**
 	 * click report insuff button
 	 */
 	public void ReportInsuff() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkCriminalInsuff");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkCriminalInsuff");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -216,15 +217,15 @@ public class Criminal extends DataEntryPage {
 	 * @param comments insuff raise comments
 	 */
 	public void Insuffcomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCriminalInsuffRemark", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCriminalInsuffRemark", comments);
 	}
 
 	/**
 	 * click not applicable button
 	 */
 	public void Notapplicable() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -233,29 +234,29 @@ public class Criminal extends DataEntryPage {
 	 * @param comments not applicable comments
 	 */
 	public void Notapplicablecomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 	}
 	/**
 	 * Takes police station name as input and pass it to text field 
 	 * @param stationName police station name
 	 */
 	public void PoliceStation(String stationName) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtPoliceStation", stationName);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtPoliceStation", stationName);
 	}
 	/**
 	 * additional comments
 	 * @param comments additional comments
 	 */
 	public void Comments(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCriminalComments", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCriminalComments", comments);
 	}
 	/**
 	 * click submit button on reference data entry
 	 * @throws Exception WebDriverException
 	 */
 	public void submit() throws Exception{
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCriminalSubmit_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnCriminalSubmit_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().SwitchDefault();	
 		pages.Utill().confirmAlert();
 	}
@@ -263,16 +264,16 @@ public class Criminal extends DataEntryPage {
 	 * performs click action on save button
 	 */
 	public void save() throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCriminalAdd_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnCriminalAdd_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().confirmAlert();
 	}
 	/**
 	 * Performs click action on add document button in document upload screen
 	 */
 	public void AddDocument() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmCriminalDocument_C_btnCriminalAddDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmCriminalDocument_C_btnCriminalAddDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	
 	/**
@@ -281,7 +282,7 @@ public class Criminal extends DataEntryPage {
 	 * @return true when document ype was available
 	 */
 	public boolean isvaliddoctype(String doctype) {
-	pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_rwmCriminalDocument_C_grdCriminalDocumentList_ctl00__0']/td[2]", 10);
+	pages.Utill().waitUntilElementHasText("//*[@id='ctl00_ContentPlaceHolder1_rwmCriminalDocument_C_grdCriminalDocumentList_ctl00__0']/td[2]", 10);
 		boolean re =false;
 		String path="//*[@id='ctl00_ContentPlaceHolder1_rwmCriminalDocument_C_grdCriminalDocumentList_ctl00']/tbody/tr/td[2]";
 		List<WebElement> list =driver.findElements(By.xpath(path));
@@ -307,10 +308,10 @@ public class Criminal extends DataEntryPage {
 	 */
 	public void UploadDocument(String doctype, String file) {
 		if(this.isvaliddoctype(doctype)) {
-		pages.Utill().input_text("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
+		pages.Utill().sendKeys("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
 		super.WaitforFileUpdate(doctype, file);
 		this.AddDocument();
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 		else {
 			throw new NotFoundException(doctype);
@@ -321,8 +322,8 @@ public class Criminal extends DataEntryPage {
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmCriminalDocument_C_btnCriminalDocumentCancel_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmCriminalDocument_C_btnCriminalDocumentCancel_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Takes the input from criminal.properties file and pass it to current address criminal

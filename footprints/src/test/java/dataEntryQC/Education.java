@@ -22,7 +22,7 @@ public class Education extends DataEntryQCPage {
 
 	public void educationcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Education']");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Education']");
 		pages.Utill().SwitchFramebyIndex(1);
 	}
 
@@ -33,14 +33,14 @@ public class Education extends DataEntryQCPage {
 	 * @throws Exception webdriverException
 	 */
 	public void Component(String component) {
-		String value = pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
+		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
 		if (!value.trim().equals(component)) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
 			if (verifyddvalue(component)) {
-				pages.Utill().click_element(
+				pages.Utill().click(
 						"//div[@id='ctl00_ContentPlaceHolder1_ddlEducationComponent_DropDown']/div/ul//li[text()='"
 								+ component + "']");
-				pages.Utill().wait_until_loader_is_invisible(100);
+				pages.Utill().waitUntilLoaderisInvisible(100);
 			} else {
 				throw new NotFoundException(component);
 			}
@@ -91,7 +91,7 @@ public class Education extends DataEntryQCPage {
 		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_gviewEducationDocument_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[1]/span";
 		if (this.isvaliddoctype(doctype)) {
-			return pages.Utill().get_text(path).trim().replaceAll("[0-9]", "");
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -106,7 +106,7 @@ public class Education extends DataEntryQCPage {
 	 */
 	public boolean isvaliddoctype(String doctype) {
 		boolean re = false;
-		pages.Utill().wait_element_has_text(
+		pages.Utill().waitUntilElementHasText(
 				"//*[@id='ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_gviewEducationDocument_ctl00__0']/td[2]",
 				10);
 		String path = "//*[@id='ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_gviewEducationDocument_ctl00']/tbody/tr/td[2]";
@@ -131,17 +131,17 @@ public class Education extends DataEntryQCPage {
 	 * Performs click action on Document button
 	 */
 	public void document() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEducationAddDocuments_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEducationAddDocuments_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_btnEducationDocumentCancel_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -153,8 +153,8 @@ public class Education extends DataEntryQCPage {
 		int count = driver
 				.findElements(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationComponent_DropDown']/div/ul/li"))
 				.size();
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEducationSaveSubmit_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEducationSaveSubmit_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		// System.out.println("-----------count--------"+count);
 		if (count == 2) {
 			pages.Utill().SwitchDefault();
@@ -167,8 +167,8 @@ public class Education extends DataEntryQCPage {
 	 * performs click action on save button
 	 */
 	public void save() throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEducationSave_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEducationSave_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().confirmAlert();
 	}
 
@@ -176,8 +176,8 @@ public class Education extends DataEntryQCPage {
 	 * click report insuff button
 	 */
 	public void ReportInsuff() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkEducationInsuff");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkEducationInsuff");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -186,15 +186,15 @@ public class Education extends DataEntryQCPage {
 	 * @param comments insuff raise comments
 	 */
 	public void Insuffcomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtEducationInsuffRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationInsuffRemarks", comments);
 	}
 
 	/**
 	 * click not applicable button
 	 */
 	public void Notapplicable() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -203,87 +203,87 @@ public class Education extends DataEntryQCPage {
 	 * @param comments not applicable comments
 	 */
 	public void Notapplicablecomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 	}
 
 	public String Component() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
 	}
 
 	public String InstituteName() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationInstitute_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationInstitute_Input");
 	}
 
 	public String InstituteAddressLine1() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtEducationInstituteDoorNoStreet");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationInstituteDoorNoStreet");
 	}
 
 	public String InstituteCountry() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationInstituteCountry_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationInstituteCountry_Input");
 	}
 
 	public String InstituteState() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationInstituteState_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationInstituteState_Input");
 	}
 
 	public String InstituteCity() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationInstituteCity_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationInstituteCity_Input");
 	}
 
 	public String BoardName() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationBoard_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationBoard_Input");
 	}
 
 	public String BoardAddressLine1() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtEducationBoardDoorNoStreet");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationBoardDoorNoStreet");
 	}
 
 	public String BoardCountry() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationBoardCountry_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationBoardCountry_Input");
 	}
 
 	public String BoardState() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationBoardState_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationBoardState_Input");
 	}
 
 	public String BoardCity() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationBoardCity_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationBoardCity_Input");
 	}
 
 	public String NameOfCourse() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtEducationNameOfCourse");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationNameOfCourse");
 	}
 
 	public String MajorSubject() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtEducationTypeOfMajor");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationTypeOfMajor");
 	}
 
 	public String TypeOfProgram() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input");
 	}
 
 	public String CandidateNameinCertificate() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtEducationCandidateNameInCertificate");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationCandidateNameInCertificate");
 	}
 
 	public String Enrollment() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtEducationEnrollmentRegisterNo");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationEnrollmentRegisterNo");
 	}
 
 	public String CGPA() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtEducationCGPA");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationCGPA");
 	}
 
 	public String CourseCommencementYear() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtEducationCourseCommenceDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationCourseCommenceDate_dateInput");
 	}
 
 	public String CourseCompletionYear() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtEducationCourseCompletionDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationCourseCompletionDate_dateInput");
 	}
 
 	public String Comments() {
-		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_txtEducationAdditionalComments");
+		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEducationAdditionalComments");
 	}
 	public LinkedHashMap<String, String> twelveth() throws Exception{
 		this.Component("12th");

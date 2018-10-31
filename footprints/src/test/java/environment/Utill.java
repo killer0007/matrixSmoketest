@@ -142,7 +142,7 @@ public class Utill {
 	 * @param path locator of input text
 	 * @param text text for input
 	 */
-	public void input_text(String path, String text) {
+	public void sendKeys(String path, String text) {
 		this.find(path).sendKeys(text);
 		logger.log(Status.PASS, "Typing text '" + text + "' into text field '" + path + "'.");
 	}
@@ -153,7 +153,7 @@ public class Utill {
 	 * @param path locator of element
 	 * @return Inner text value as String
 	 */
-	public String get_text(String path) {
+	public String getText(String path) {
 		String msg = this.find(path).getText();
 		int c = 0;
 		while (msg.equals(null) || msg.isEmpty()) {
@@ -175,7 +175,7 @@ public class Utill {
 
 	}
 
-	public String getvalue(String id) {
+	public String getValue(String id) {
 		String val=this.find(id).getAttribute("value").trim();
 		logger.log(Status.PASS, "getting value from locator : "+id+" , "+val);
 		return val;
@@ -188,14 +188,14 @@ public class Utill {
 	 * @param path  locator of select dropdown
 	 * @param value value of select dropdown
 	 */
-	public void select_by_label(String path, String value) {
+	public void selectByLabel(String path, String value) {
 		Select sel = new Select(this.find(path));
 		sel.selectByVisibleText(value);
 		logger.log(Status.PASS, "Selecting options from selection list '" + path + "' by label " + value + ".");
 
 	}
 
-	public String getSelectedvalue(String locator) {
+	public String getSelectedValue(String locator) {
 		Select sel = new Select(this.find(locator));
 		return sel.getFirstSelectedOption().getText();
 
@@ -208,7 +208,7 @@ public class Utill {
 	 * @param path  locator of select dropdown
 	 * @param value value of select dropdown
 	 */
-	public void select_by_value(String path, String value) {
+	public void selectByValue(String path, String value) {
 		Select sel = new Select(this.find(path));
 		sel.selectByValue(value);
 		logger.log(Status.PASS, "Selecting options from selection list '" + path + "' by label " + value + ".");
@@ -222,8 +222,8 @@ public class Utill {
 	 * @param file file directory
 	 * @throws Exception when file not found
 	 */
-	public void choose_file(String path, String file) throws Exception {
-		this.input_text(path, file);
+	public void chooseFile(String path, String file) throws Exception {
+		this.sendKeys(path, file);
 		logger.log(Status.PASS, "uploading file");
 	}
 
@@ -232,7 +232,7 @@ public class Utill {
 	 * 
 	 * @param path locator
 	 */
-	public void click_element(String path) {
+	public void click(String path) {
 		this.find(path).click();
 		logger.log(Status.PASS, "Clicking element '" + path + "'");
 	}
@@ -274,7 +274,7 @@ public class Utill {
 	 * 
 	 * @return email id
 	 */
-	public String getemail() {
+	public String getEmail() {
 		DataFactory df = new DataFactory();
 		return df.getEmailAddress();
 
@@ -304,7 +304,7 @@ public class Utill {
 	 * @return cell value as string
 	 * @throws Exception when table not found
 	 */
-	public String GetTableCellValue(String id, int row, int col) throws Exception {
+	public String getTableCellValue(String id, int row, int col) throws Exception {
 		try {
 			String re = find("//table[@id='" + id + "']/tbody/tr[" + row + "]/td[" + col + "]").getText();
 
@@ -328,7 +328,7 @@ public class Utill {
 	 * @param path locator
 	 * @return count of matching xpath
 	 */
-	public int Get_Matching_xpath_count(String path) {
+	public int getMatchingXpathCount(String path) {
 		logger.log(Status.PASS, "getting xpath count for " + path);
 		return driver.findElements(By.xpath(path)).size();
 	}
@@ -339,7 +339,7 @@ public class Utill {
 	 * @param path locator
 	 * @return list of webelements
 	 */
-	public List<WebElement> Get_webelement_list(String path) {
+	public List<WebElement> getWebelementList(String path) {
 		List<WebElement> li = driver.findElements(By.xpath(path));
 		logger.log(Status.PASS, "getting webelement list of :" + path);
 		return li;
@@ -364,7 +364,7 @@ public class Utill {
 	 * @param attribute value
 	 * @return value of give attribute as string
 	 */
-	public String getcssvalue(String id, String attribute) {
+	public String getCssValue(String id, String attribute) {
 		return this.find(id).getCssValue(attribute);
 	}
 
@@ -375,6 +375,7 @@ public class Utill {
 	 */
 	public void GoTo(String url) {
 		driver.navigate().to(url);
+		this.waitUntilLoaderisInvisible(100);
 		logger.log(Status.INFO, "navigating to " + url);
 		System.out.println(driver.getTitle());
 		logger.log(Status.INFO, driver.getTitle());
@@ -385,13 +386,13 @@ public class Utill {
 	 * 
 	 * @return current date
 	 */
-	public String getcurrentdate() {
+	public String getCurrentDate() {
 		SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
 		Date currentMonth = new Date();
 		return df.format(currentMonth).toString();
 
 	}
-	public String getcurrentdate(String format) {
+	public String getCurrentDate(String format) {
 		SimpleDateFormat df = new SimpleDateFormat(format);
 		Date currentMonth = new Date();
 		return df.format(currentMonth).toString();
@@ -405,11 +406,11 @@ public class Utill {
 	 * @param value select text
 	 * @throws Exception when select dropwdown not found
 	 */
-	public void search_and_select(String id, String value) throws Exception {
-		this.click_element(".//*[@id='" + id + "']/a");
-		this.input_text(".//*[@id='" + id + "']//div/div/input", value);
+	public void searchAndSelect(String id, String value) throws Exception {
+		this.click(".//*[@id='" + id + "']/a");
+		this.sendKeys(".//*[@id='" + id + "']//div/div/input", value);
 		Thread.sleep(1000);
-		this.click_element(".//*[@id='" + id + "']/div/ul/li");
+		this.click(".//*[@id='" + id + "']/div/ul/li");
 
 	}
 
@@ -418,7 +419,7 @@ public class Utill {
 	 * 
 	 * @return current date and time in yyyy_MM_dd_HH_mm_ss formate
 	 */
-	public static String getdatetime() {
+	public static String getDateTime() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
 		LocalDateTime now = LocalDateTime.now();
 		return dtf.format(now); // 2016/11/16 12:08:43
@@ -430,7 +431,7 @@ public class Utill {
 	 * 
 	 * @return date of birth generated randomly
 	 */
-	public String getdob() {
+	public String getDob() {
 		DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		Random random = new Random();
 		int minDay = (int) LocalDate.of(1990, 1, 1).toEpochDay();
@@ -445,7 +446,7 @@ public class Utill {
 	 * 
 	 * @param id locator
 	 */
-	public void mouseover(String id) {
+	public void mouseOver(String id) {
 		Actions action = new Actions(driver);
 		action.moveToElement(this.find(id));
 		action.build().perform();
@@ -500,7 +501,7 @@ public class Utill {
 	 * 
 	 * @param script java script
 	 */
-	public void executescript(String script) {
+	public void executeScript(String script) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript(script);
 	}
@@ -513,7 +514,7 @@ public class Utill {
 	 * @throws Exception when file not found
 	 */
 	public void FileUpload(String id, String filename) throws Exception {
-		this.click_element(id);
+		this.click(id);
 		Thread.sleep(1000);
 		setClipboardData(filename);
 		Robot robot = new Robot();
@@ -561,7 +562,7 @@ public class Utill {
 	/**
 	 * switch to alert and accept it
 	 */
-	public void alert_shouldbe_present() {
+	public void alertShouldbePresent() {
 		Alert alert = driver.switchTo().alert();
 		String te = alert.getText();
 		logger.log(Status.PASS, "alert text is : " + te);
@@ -576,7 +577,7 @@ public class Utill {
 	 * @param id locator
 	 * @throws Exception when check box is not selected
 	 */
-	public void checkbox_shouldbe_selected(String id) throws Exception {
+	public void checkboxShouldbeSelected(String id) throws Exception {
 		boolean b = this.find("id").isSelected();
 		logger.log(Status.PASS, "check box selected state is : " + b);
 		if (!b) {
@@ -591,7 +592,7 @@ public class Utill {
 	 * @param id locator
 	 * @throws Exception when check box was selected
 	 */
-	public void checkbox_shouldnotbe_selected(String id) throws Exception {
+	public void checkboxShouldNotbeSelected(String id) throws Exception {
 		boolean b = this.find("id").isSelected();
 		logger.log(Status.PASS, "check box selected state is : " + b);
 		if (b) {
@@ -634,7 +635,7 @@ public class Utill {
 	 * 
 	 * @param id locator
 	 */
-	public void clear_element_text(String id) {
+	public void clearElementText(String id) {
 		this.find(id).clear();
 		logger.log(Status.PASS, "text cleared for : " + id);
 	}
@@ -644,7 +645,7 @@ public class Utill {
 	 * 
 	 * @param link locator
 	 */
-	public void click_link(String link) {
+	public void clickLink(String link) {
 		driver.findElement(By.linkText(link)).click();
 		logger.log(Status.PASS, "Clicking link : " + link);
 
@@ -656,7 +657,7 @@ public class Utill {
 	 * 
 	 * @param path locator
 	 */
-	public void wait_until_element_isclickable(String path) {
+	public void waitUntilElemenisClickable(String path) {
 		WebDriverWait wait = new WebDriverWait(driver, 20);
 		wait.until(ExpectedConditions.elementToBeClickable(this.find(path)));
 	}
@@ -664,7 +665,7 @@ public class Utill {
 	/**
 	 * closed all browsers opened by webdriver
 	 */
-	public void close_all_browsers() {
+	public void closeAllBrowsers() {
 		driver.quit();
 		logger.log(Status.PASS, "all browsers are closed ");
 	}
@@ -672,7 +673,7 @@ public class Utill {
 	/**
 	 * closes the current window of browser opened by webdriver
 	 */
-	public void close_browser() {
+	public void closeBrowser() {
 		driver.close();
 		logger.log(Status.PASS, "browser closed ");
 	}
@@ -682,7 +683,7 @@ public class Utill {
 	 * 
 	 * @param id locator
 	 */
-	public void double_click_element(String id) {
+	public void doubleClick(String id) {
 		WebElement ele = this.find(id);
 		Actions action = new Actions(driver);
 		action.doubleClick(ele).build().perform();
@@ -695,7 +696,7 @@ public class Utill {
 	 * @param id locator
 	 * @throws Exception when element is not enabled or disabled
 	 */
-	public void element_shouldbe_enabled(String id) throws Exception {
+	public void elementShouldbeEnabled(String id) throws Exception {
 		boolean b = this.find(id).isEnabled();
 		logger.log(Status.PASS, "element enabled status is : " + b);
 		if (!b) {
@@ -709,7 +710,7 @@ public class Utill {
 	 * @param id locator
 	 * @throws Exception when element is not disabled or enabled
 	 */
-	public void element_shouldbe_disabled(String id) throws Exception {
+	public void elementShouldbeDisabled(String id) throws Exception {
 		boolean b = this.find(id).isDisplayed();
 		logger.log(Status.PASS, "element enabled status is : " + b);
 
@@ -725,7 +726,7 @@ public class Utill {
 	 * @param id locator
 	 * @throws Exception when element is not focused
 	 */
-	public void element_shouldbe_focused(String id) throws Exception {
+	public void elementShouldbeFocused(String id) throws Exception {
 		WebElement ele = this.find(id);
 		boolean b = ele == driver.switchTo().activeElement();
 
@@ -745,7 +746,7 @@ public class Utill {
 	 * @param id locator
 	 * @throws Exception when element is not visible
 	 */
-	public void element_shouldbe_visible(String id) throws Exception {
+	public void elementShouldbeVisible(String id) throws Exception {
 		String css = this.find(id).getCssValue("display");
 		if (css.equalsIgnoreCase("none")) {
 			logger.log(Status.FAIL, id + "  is not visible");
@@ -763,8 +764,8 @@ public class Utill {
 	 * @param text inner text
 	 * @throws Exception when element not contains given text
 	 */
-	public void element_should_contains(String id, String text) throws Exception {
-		String t = this.get_text(id);
+	public void elementShouldContains(String id, String text) throws Exception {
+		String t = this.getText(id);
 		if (t.contains(text)) {
 			logger.log(Status.PASS, id + " contains expected text");
 		} else {
@@ -779,7 +780,7 @@ public class Utill {
 	 * @param id locator
 	 * @throws Exception when element is visible
 	 */
-	public void element_shouldnotbe_visible(String id) throws Exception {
+	public void elementShouldNotbeVisible(String id) throws Exception {
 		String css = this.find(id).getCssValue("display");
 		if (!(css.equalsIgnoreCase("none"))) {
 			logger.log(Status.FAIL, id + "  is visible");
@@ -796,8 +797,8 @@ public class Utill {
 	 * @param text text which contains
 	 * @throws Exception when element contains given text
 	 */
-	public void element_shouldnot_contains(String id, String text) throws Exception {
-		String t = this.get_text(id);
+	public void elementShouldNotContains(String id, String text) throws Exception {
+		String t = this.getText(id);
 		if (!(t.contains(text))) {
 			logger.log(Status.PASS, id + " contains expected text");
 		} else {
@@ -814,7 +815,7 @@ public class Utill {
 	 * @param attribute attribute name
 	 * @return value for given attribute
 	 */
-	public String get_element_attribute(String id, String attribute) {
+	public String getElementAttribute(String id, String attribute) {
 		String attri = this.find(id).getAttribute(attribute);
 		logger.log(Status.PASS, "getting value of : " + id + attribute);
 		return attri;
@@ -827,7 +828,7 @@ public class Utill {
 	 * @param path    locator
 	 * @param TimeOut time units in secs
 	 */
-	public void wait_until_dropdownload(String path, int TimeOut) {
+	public void waitUntilDropdownload(String path, int TimeOut) {
 		try {
 			final String id = path;
 			// Thread.sleep(1500);
@@ -860,7 +861,7 @@ public class Utill {
 	 * 
 	 * @param TimeOut time unit in secs
 	 */
-	public void wait_until_loader_is_invisible(int TimeOut) {
+	public void waitUntilLoaderisInvisible(int TimeOut) {
 		try {
 			FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
 					.pollingEvery(Duration.ofMillis(200)).ignoring(StaleElementReferenceException.class);
@@ -892,7 +893,7 @@ public class Utill {
 	 * @param path    locator
 	 * @param Timeout time unit in secs
 	 */
-	public void wait_until_element_isvisible(String path, int Timeout) {
+	public void waitUntilElementisVisible(String path, int Timeout) {
 		WebDriverWait wait = new WebDriverWait(driver, Timeout);
 		wait.until(ExpectedConditions.visibilityOf(this.find(path)));
 	}
@@ -903,7 +904,7 @@ public class Utill {
 	 * @param url of image
 	 * @return true when URL has Image
 	 */
-	public boolean isimage(String url) {
+	public boolean isImage(String url) {
 		try {
 			Image image = ImageIO.read(new URL(url));
 			if (image != null) {
@@ -924,7 +925,7 @@ public class Utill {
 	 * 
 	 * @return cookies as set object
 	 */
-	public Set<Cookie> getcookies() {
+	public Set<Cookie> getCookies() {
 		return driver.manage().getCookies();
 	}
 
@@ -933,7 +934,7 @@ public class Utill {
 	 * 
 	 * @param allcookie contains set of cookies
 	 */
-	public void importcookies(Set<Cookie> allcookie) {
+	public void importCookies(Set<Cookie> allcookie) {
 		for (Cookie cookie : allcookie) {
 			driver.manage().addCookie(cookie);
 		}
@@ -951,7 +952,7 @@ public class Utill {
 		WebDriverWait wait = new WebDriverWait(driver, 50);
 		wait.until(ExpectedConditions.presenceOfElementLocated(loc));
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(loc)));
-		String msg = this.get_text("class:rwDialogText");
+		String msg = this.getText("class:rwDialogText");
 		driver.findElement(loc).click();
 		return msg.trim();
 
@@ -1109,7 +1110,7 @@ public class Utill {
 	/**
 	 * close the current tab
 	 */
-	public void closetab() {
+	public void closeTab() {
 		driver.close();
 	}
 
@@ -1119,7 +1120,7 @@ public class Utill {
 	 * @param xpath   path of table
 	 * @param timeout time for wait
 	 */
-	public void wait_element_has_text(String xpath, long timeout) {
+	public void waitUntilElementHasText(String xpath, long timeout) {
 		final String paths = xpath;
 		(new WebDriverWait(driver, timeout)).until(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver d) {
@@ -1156,7 +1157,7 @@ public class Utill {
 	 * @return filename inside the folder
 	 * @throws Exception when file empty
 	 */
-	public String isfileexist(File folder) throws Exception {
+	public String isFileExist(File folder) throws Exception {
 		Thread.sleep(2000);
 		File[] files = folder.listFiles();
 		if (files[0].isFile()) {

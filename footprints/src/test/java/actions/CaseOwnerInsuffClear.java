@@ -20,18 +20,18 @@ public class CaseOwnerInsuffClear extends ActionPage {
 	 */
 
 	public void caseOwner() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlAct_Input");
-		pages.Utill().wait_until_element_isvisible("//div[@id='ctl00_ContentPlaceHolder1_ddlAct_DropDown']//li[1]", 10);
-		pages.Utill().click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlAct_DropDown']//li[1]");
-		pages.Utill().wait_until_loader_is_invisible(50);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlAct_Input");
+		pages.Utill().waitUntilElementisVisible("//div[@id='ctl00_ContentPlaceHolder1_ddlAct_DropDown']//li[1]", 10);
+		pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlAct_DropDown']//li[1]");
+		pages.Utill().waitUntilLoaderisInvisible(50);
 	}
 
 	/**
 	 * perform click action on clear button in list
 	 */
 	public void openCase() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_grdTaskList_ctl00_ctl04_btnClearInsuff");
-		pages.Utill().wait_until_loader_is_invisible(60);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_grdTaskList_ctl00_ctl04_btnClearInsuff");
+		pages.Utill().waitUntilLoaderisInvisible(60);
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class CaseOwnerInsuffClear extends ActionPage {
 	 * @return insuff raised comments
 	 */
 	public String getComments(String componentname) {
-		return pages.Utill().get_text(
+		return pages.Utill().getText(
 				"//table[@id='ctl00_ContentPlaceHolder1_rdwInsuffClearWindow_C_grdInsuffClear_ctl00']//td[text()='"
 						+ componentname + "']/../td[27]");
 	}
@@ -54,7 +54,7 @@ public class CaseOwnerInsuffClear extends ActionPage {
 	 * @return name of stage
 	 */
 	public String getRaisedFrom(String componentname) {
-		return pages.Utill().get_text(
+		return pages.Utill().getText(
 				"//table[@id='ctl00_ContentPlaceHolder1_rdwInsuffClearWindow_C_grdInsuffClear_ctl00']//td[text()='"
 						+ componentname + "']/../td[29]");
 	}
@@ -67,7 +67,7 @@ public class CaseOwnerInsuffClear extends ActionPage {
 	 */
 	public void clearComments(String componentname, String comments) {
 		this.select(componentname);
-		pages.Utill().input_text(
+		pages.Utill().sendKeys(
 				"//table[@id='ctl00_ContentPlaceHolder1_rdwInsuffClearWindow_C_grdInsuffClear_ctl00']//td[text()='"
 						+ componentname + "']/../td[30]/input",
 				comments);
@@ -79,24 +79,24 @@ public class CaseOwnerInsuffClear extends ActionPage {
 	 * @param componentname like current address, permanent etc.,
 	 */
 	private void upload(String componentname) {
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//table[@id='ctl00_ContentPlaceHolder1_rdwInsuffClearWindow_C_grdInsuffClear_ctl00']//td[text()='"
 						+ componentname + "']/../td[32]//input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * Performs click action on clear insuff button
 	 */
 	public void clear() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rdwInsuffClearWindow_C_btnClear_input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rdwInsuffClearWindow_C_btnClear_input");
 	}
 
 	/**
 	 * Performs click action on cancel button
 	 */
 	public void cancel() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rdwInsuffClearWindow_C_btnCancel_input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rdwInsuffClearWindow_C_btnCancel_input");
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class CaseOwnerInsuffClear extends ActionPage {
 	 */
 
 	private void select(String componentname) {
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//table[@id='ctl00_ContentPlaceHolder1_rdwInsuffClearWindow_C_grdInsuffClear_ctl00']//td[text()='"
 						+ componentname + "']/../td[1]//input");
 	}
@@ -118,7 +118,7 @@ public class CaseOwnerInsuffClear extends ActionPage {
 	 * @return name who raised insuff
 	 */
 	public String rasiedBy(String componentname) {
-		return pages.Utill().get_text(
+		return pages.Utill().getText(
 				"//table[@id='ctl00_ContentPlaceHolder1_rdwInsuffClearWindow_C_grdInsuffClear_ctl00']//td[text()='"
 						+ componentname + "']/../td[23]");
 	}
@@ -132,7 +132,7 @@ public class CaseOwnerInsuffClear extends ActionPage {
 	 */
 	private void upload(String doctype, String filename) throws Exception {
 		Thread.sleep(1000);
-		pages.Utill().input_text(
+		pages.Utill().sendKeys(
 				"//table[@id='ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_grdUploadDocuments_ctl00']//td[text()='"
 						+ doctype + "']/../td[6]/div/ul/li/span/input[2]",
 				filename);
@@ -160,15 +160,15 @@ public class CaseOwnerInsuffClear extends ActionPage {
 	 * @return reference number
 	 */
 	public String getrefNo() {
-		return pages.Utill().get_text("//table[@id='ctl00_ContentPlaceHolder1_grdTaskList_ctl00']/tbody/tr[1]/td[5]");
+		return pages.Utill().getText("//table[@id='ctl00_ContentPlaceHolder1_grdTaskList_ctl00']/tbody/tr[1]/td[5]");
 	}
 
 	/**
 	 * performs the click action on Add Document button and closes the upload popup
 	 */
 	private void addDocument() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_btnSubmitAddedDocument");
-		pages.Utill().wait_until_loader_is_invisible(70);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rdwDocumentUpload_C_btnSubmitAddedDocument");
+		pages.Utill().waitUntilLoaderisInvisible(70);
 		this.close();
 	}
 
@@ -239,7 +239,7 @@ public class CaseOwnerInsuffClear extends ActionPage {
 	 * performs the click action on close button
 	 */
 	public void close() {
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//div[@id='RadWindowWrapper_ctl00_ContentPlaceHolder1_rdwDocumentUpload']//tr//td//span[contains(text(),'Close')]");
 		;
 	}

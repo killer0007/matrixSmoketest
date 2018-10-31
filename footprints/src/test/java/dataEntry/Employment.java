@@ -26,8 +26,8 @@ public class Employment extends DataEntryPage {
 	 */
 	public void employementcheck() {
 		pages.Utill().SwitchDefault();
-//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[3]/a/span/span/span");
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Employment']");
+//		pages.Utill().click("//*[@id='tabStrip']/div/ul/li[3]/a/span/span/span");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Employment']");
 		pages.Utill().SwitchFramebyIndex(2);
 	}
 
@@ -35,9 +35,9 @@ public class Employment extends DataEntryPage {
 	 * Performs click action in Cep tab in Document screen
 	 */
 	public void Cep() {
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_RadTabStripForHistory']/div//li[3]");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -47,7 +47,7 @@ public class Employment extends DataEntryPage {
 	 */
 	public String CepgetraisedBy() {
 		return pages.Utill()
-				.get_text(
+				.getText(
 						"ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_gviewEmploymentCEPClear_ctl00_ctl04_lblRaisedBy")
 				.trim();
 	}
@@ -58,7 +58,7 @@ public class Employment extends DataEntryPage {
 	 * @return stage name
 	 */
 	public String CepgetraisedStage() {
-		return pages.Utill().get_text(
+		return pages.Utill().getText(
 				"ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_gviewEmploymentCEPClear_ctl00_ctl04_lblRaiseState")
 				.trim();
 	}
@@ -69,7 +69,7 @@ public class Employment extends DataEntryPage {
 	 * @return CEP raised comments
 	 */
 	public String CepgetraisedComments() {
-		return pages.Utill().get_text(
+		return pages.Utill().getText(
 				"ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_gviewEmploymentCEPClear_ctl00_ctl04_lblRaisedRemarks")
 				.trim();
 	}
@@ -80,7 +80,7 @@ public class Employment extends DataEntryPage {
 	 * @return name employee name
 	 */
 	public String CepgetclearedBy() {
-		return pages.Utill().get_text(
+		return pages.Utill().getText(
 				"ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_gviewEmploymentCEPClear_ctl00_ctl04_lblClearedByName")
 				.trim();
 	}
@@ -91,7 +91,7 @@ public class Employment extends DataEntryPage {
 	 * @return comments CEP clear
 	 */
 	public String CepgetclearedComments() {
-		return pages.Utill().get_text(
+		return pages.Utill().getText(
 				"ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_gviewEmploymentCEPClear_ctl00_ctl04_lblClearComments")
 				.trim();
 	}
@@ -103,7 +103,7 @@ public class Employment extends DataEntryPage {
 	 */
 	public String CephistoryDocument() {
 		String dc = pages.Utill()
-				.get_text("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_gviewEmploymentCEPClear_ctl00_ctl04_lblDoc");
+				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_gviewEmploymentCEPClear_ctl00_ctl04_lblDoc");
 		return dc.replaceAll("[0-9]", "");
 
 	}
@@ -113,8 +113,8 @@ public class Employment extends DataEntryPage {
 	 */
 	@Override
 	public void document() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEmploymentDocumentUpload_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEmploymentDocumentUpload_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -123,14 +123,14 @@ public class Employment extends DataEntryPage {
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
-		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
+		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
 		if(!value.trim().equals(component)) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
 			if (verifyddvalue(component)) {
-				pages.Utill().click_element(
+				pages.Utill().click(
 						"//div[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul//li[text()='"
 								+ component + "']");
-				pages.Utill().wait_until_loader_is_invisible(100);
+				pages.Utill().waitUntilLoaderisInvisible(100);
 			} else {
 				throw new NotFoundException(component);
 			}
@@ -176,12 +176,12 @@ try {
 	 * @param name name of Company
 	 */
 	public void CompanyName(String name) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlEmploymentCompany_Input", name);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlEmploymentCompany_Input", name);
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentCompany_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentCompany_DropDown']/div/ul//li[text()='" + name + "']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -190,31 +190,31 @@ try {
 	 * @param address line 1
 	 */
 	public void CompanyAddressLine1(String address) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtOfficeDetails", address);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtOfficeDetails", address);
 	}
 
 	/**
 	 * select tamil nadu as Company state
 	 */
 	public void CompanyState() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlEmployementState_Input", "tamil nadu");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlEmployementState_Input", "tamil nadu");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployementState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlEmployementState_DropDown']/div/ul//li[text()='Tamil Nadu']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * select chennai as Company city
 	 */
 	public void CompanyCity() {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlEmployementCity_Input", "chennai");
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlEmployementCity_Input", "chennai");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployementCity_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlEmployementCity_DropDown']/div/ul//li[text()='Chennai']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -223,7 +223,7 @@ try {
 	 * @param name of candidate as per employer record
 	 */
 	public void NameasperEmployersRecord(String name) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtnameEmpRec", name);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtnameEmpRec", name);
 	}
 
 	/**
@@ -232,7 +232,7 @@ try {
 	 * @param id employee ID
 	 */
 	public void EmployeeID(String id) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtEmployeeID", id);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEmployeeID", id);
 	}
 
 	/**
@@ -241,7 +241,7 @@ try {
 	 * @param designation Employee Designation
 	 */
 	public void EmpDesignation(String designation) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtEmployeeDesignation", designation);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEmployeeDesignation", designation);
 	}
 
 	/**
@@ -250,7 +250,7 @@ try {
 	 * @param department Employee Department name
 	 */
 	public void EmpDepartment(String department) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtEmployeeDepartment", department);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEmployeeDepartment", department);
 	}
 
 	/**
@@ -259,7 +259,7 @@ try {
 	 * @param date date of join
 	 */
 	public void EmpFromDate(String date) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtFromDate_dateInput", date);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtFromDate_dateInput", date);
 	}
 
 	/**
@@ -267,15 +267,15 @@ try {
 	 * @param date date of releaving
 	 */
 	public void EmpToDate(String date) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtToDate_dateInput", date);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtToDate_dateInput", date);
 	}
 
 	/**
 	 * set Till date as to date in employement date
 	 */
 	public void TillDate() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkTillDate");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkTillDate");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -284,7 +284,7 @@ try {
 	 * @param ctc last CTC
 	 */
 	public void LastCTC(String ctc) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtLastSalaryDrawn", ctc);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtLastSalaryDrawn", ctc);
 	}
 
 	/**
@@ -293,15 +293,15 @@ try {
 	 * @param currency type of currency
 	 */
 	public void Currency(String currency) {
-		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCurrencyType_Input");
+		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCurrencyType_Input");
 		if(!value.equals(currency)) {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCurrencyType_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlCurrencyType_Input");
 		WebDriverWait wait =new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCurrencyType_DropDown']/div/ul/li[1]")));
-			pages.Utill().click_element(
+			pages.Utill().click(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlCurrencyType_DropDown']/div/ul//li[text()='" + currency + "']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 	}
 
@@ -311,15 +311,15 @@ try {
 	 * @param period limit
 	 */
 	public void Period(String period) {
-		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_Input");
+		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_Input");
 		if(!value.equals(period)) {
 			
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_DropDown']/div/ul/li[1]")));
 			pages.Utill()
-			.click_element("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_DropDown']/div/ul//li[text()='"
+			.click("//*[@id='ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_DropDown']/div/ul//li[text()='"
 					+ period + "']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 	}
 
@@ -329,14 +329,14 @@ try {
 	 * @param type of employment
 	 */
 	public void TypeOfEmployment(String type) {
-		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmploymentType_Input");
+		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmploymentType_Input");
 		if(!value.equals(type)) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_ddlEmploymentType_Input", type);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlEmploymentType_Input", type);
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentType_DropDown']/div/ul/li[1]")));
-			pages.Utill().click_element(
+			pages.Utill().click(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentType_DropDown']/div/ul//li[text()='" + type + "']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 	}
 
@@ -346,7 +346,7 @@ try {
 	 * @param name contact person name
 	 */
 	public void ContactPerson1Name(String name) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson1Name", name);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson1Name", name);
 	}
 
 	/**
@@ -355,7 +355,7 @@ try {
 	 * @param designation contact person designation
 	 */
 	public void ContactPerson1Designation(String designation) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson1Designation", designation);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson1Designation", designation);
 	}
 
 	/**
@@ -364,14 +364,14 @@ try {
 	 * @param type relation ship with employee
 	 */
 	public void Relationship(String type) {
-		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlRelationship1_Input");
+		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlRelationship1_Input");
 		if(!value.equals(type)) {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlRelationship1_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlRelationship1_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship1_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship1_DropDown']/div/ul//li[text()='" + type + "']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 	}
 
@@ -381,7 +381,7 @@ try {
 	 * @param name person one name
 	 */
 	public void ContactPerson1IfOthers(String name) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson1IfOthers", name);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson1IfOthers", name);
 	}
 
 	/**
@@ -390,7 +390,7 @@ try {
 	 * @param no number of contact person 1
 	 */
 	public void ContactPerson1ContactNo1(String no) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo1", no);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo1", no);
 	}
 
 	/**
@@ -399,7 +399,7 @@ try {
 	 * @param no number of contact person 2
 	 */
 	public void ContactPerson1ContactNo2(String no) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo2", no);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo2", no);
 	}
 
 	/**
@@ -408,7 +408,7 @@ try {
 	 * @param email email id of contact person 1
 	 */
 	public void ContactPerson1EmailID1(String email) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson1EmailID1", email);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson1EmailID1", email);
 	}
 
 	/**
@@ -417,7 +417,7 @@ try {
 	 * @param email email id of contact person 1
 	 */
 	public void ContactPerson1EmailID2(String email) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson1EmailID2", email);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson1EmailID2", email);
 	}
 
 	/**
@@ -426,7 +426,7 @@ try {
 	 * @param fax email id of contact person 1
 	 */
 	public void ContactPerson1FaxNo1(String fax) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson1FaxNo1", fax);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson1FaxNo1", fax);
 	}
 
 	/**
@@ -435,7 +435,7 @@ try {
 	 * @param name contact person name
 	 */
 	public void ContactPerson2Name(String name) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson2Name", name);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson2Name", name);
 	}
 
 	/**
@@ -444,7 +444,7 @@ try {
 	 * @param designation contact person designation
 	 */
 	public void ContactPerson2Designation(String designation) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson2Designation", designation);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson2Designation", designation);
 	}
 
 	/**
@@ -453,14 +453,14 @@ try {
 	 * @param type relation ship with employee
 	 */
 	public void Relationship2(String type) {
-		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlRelationship2_Input");
+		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlRelationship2_Input");
 		if(!value.equals(type)) {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlRelationship2_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlRelationship2_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship2_DropDown']/div/ul/li[1]")));
-		pages.Utill().click_element(
+		pages.Utill().click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlRelationship2_DropDown']/div/ul//li[text()='" + type + "']");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 	}
 
@@ -470,7 +470,7 @@ try {
 	 * @param name person 2
 	 */
 	public void ContactPerson2IfOthers(String name) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson2IfOthers", name);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson2IfOthers", name);
 	}
 
 	/**
@@ -479,7 +479,7 @@ try {
 	 * @param no number of contact person 1
 	 */
 	public void ContactPerson2ContactNo1(String no) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson2ContactNo1", no);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson2ContactNo1", no);
 	}
 
 	/**
@@ -488,7 +488,7 @@ try {
 	 * @param no number of contact person 2
 	 */
 	public void ContactPerson2ContactNo2(String no) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo2", no);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo2", no);
 	}
 
 	/**
@@ -497,7 +497,7 @@ try {
 	 * @param email email id of contact person 1
 	 */
 	public void ContactPerson2EmailID1(String email) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson2EmailID1", email);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson2EmailID1", email);
 	}
 
 	/**
@@ -506,7 +506,7 @@ try {
 	 * @param email email id of contact person 1
 	 */
 	public void ContactPerson2EmailID2(String email) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson2EmailID2", email);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson2EmailID2", email);
 	}
 
 	/**
@@ -515,7 +515,7 @@ try {
 	 * @param fax email id of contact person 1
 	 */
 	public void ContactPerson2FaxNo1(String fax) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtContactPerson2FaxNo1", fax);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson2FaxNo1", fax);
 	}
 
 	/**
@@ -524,7 +524,7 @@ try {
 	 * @param reason for job change
 	 */
 	public void ReasonForLeaving(String reason) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtReasonOfLeaving", reason);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtReasonOfLeaving", reason);
 	}
 
 	/**
@@ -535,11 +535,11 @@ try {
 	 */
 	public void Everterminated(String answer) {
 		if (answer.contains("yes")) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_RadioButtonListTerminatedOrLaidOff_0");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_RadioButtonListTerminatedOrLaidOff_0");
 		} else if (answer.contains("no")) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_RadioButtonListTerminatedOrLaidOff_1");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_RadioButtonListTerminatedOrLaidOff_1");
 		}
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -548,7 +548,7 @@ try {
 	 * @param reason for job
 	 */
 	public void Reasons(String reason) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtTerminatedOrLaidOffComments", reason);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtTerminatedOrLaidOffComments", reason);
 	}
 
 	/**
@@ -557,15 +557,15 @@ try {
 	 * @param comments additional comments
 	 */
 	public void Comments(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCommentsIfAny", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCommentsIfAny", comments);
 	}
 
 	/**
 	 * click report insuff button
 	 */
 	public void ReportInsuff() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkEmploymentInsuff");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkEmploymentInsuff");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -574,15 +574,15 @@ try {
 	 * @param comments insuff raise comments
 	 */
 	public void Insuffcomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtEmploymentInsuffRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEmploymentInsuffRemarks", comments);
 	}
 
 	/**
 	 * click not applicable button
 	 */
 	public void Notapplicable() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -591,15 +591,15 @@ try {
 	 * @param comments not applicable comments
 	 */
 	public void Notapplicablecomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 	}
 
 	/**
 	 * click cep raise check box
 	 */
 	public void cep() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkCanVerifyNow");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkCanVerifyNow");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -608,7 +608,7 @@ try {
 	 * @param date date of relieve
 	 */
 	public void cepRelievingDate(String date) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtRelievingDate_dateInput", date);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtRelievingDate_dateInput", date);
 
 	}
 
@@ -618,7 +618,7 @@ try {
 	 * @param comments ecp raise comments
 	 */
 	public void CepComments(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtEmploymentCEPRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEmploymentCEPRemarks", comments);
 	}
 
 	/**
@@ -627,8 +627,8 @@ try {
 	 */
 	public void submit() throws Exception{
 		int count=driver.findElements(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul/li")).size();
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEmploymentSubmit_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEmploymentSubmit_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		//System.out.println("-----------count--------"+count);
 		if(count==2) {
 			pages.Utill().SwitchDefault();	
@@ -639,16 +639,16 @@ try {
 	 * performs click action on save button
 	 */
 	public void save() throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEmploymentSave_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEmploymentSave_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().confirmAlert();
 	}
 	/**
 	 * Performs click action on add document button in document upload screen
 	 */
 	public void AddDocument() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_btnEmploymentAddDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_btnEmploymentAddDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	
 	/**
@@ -657,7 +657,7 @@ try {
 	 * @return true when document ype was available
 	 */
 	public boolean isvaliddoctype(String doctype) {
-		pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_grdviewEmploymentDocument_ctl00__0']/td[2]", 10);
+		pages.Utill().waitUntilElementHasText("//*[@id='ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_grdviewEmploymentDocument_ctl00__0']/td[2]", 10);
 		boolean re =false;
 		String path="//*[@id='ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_grdviewEmploymentDocument_ctl00']/tbody/tr/td[2]";
 		List<WebElement> list =driver.findElements(By.xpath(path));
@@ -683,10 +683,10 @@ try {
 	 */
 	public void UploadDocument(String doctype, String file) {
 		if(this.isvaliddoctype(doctype)) {
-		pages.Utill().input_text("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
+		pages.Utill().sendKeys("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
 		super.WaitforFileUpdate(doctype, file);
 		this.AddDocument();
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 		else {
 			throw new NotFoundException(doctype);
@@ -697,8 +697,8 @@ try {
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_btnEmploymentDocumentClose_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_btnEmploymentDocumentClose_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**

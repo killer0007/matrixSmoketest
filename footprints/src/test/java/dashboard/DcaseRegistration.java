@@ -27,8 +27,8 @@ public class DcaseRegistration {
 	 * select Case Registration from stages dropdown
 	 */
 	public void caseRegistration() {
-		pages.Utill().select_by_value("ddlAct", "0");
-		pages.Utill().wait_until_loader_is_invisible(50);
+		pages.Utill().selectByValue("ddlAct", "0");
+		pages.Utill().waitUntilLoaderisInvisible(50);
 	}
 
 	/**
@@ -37,7 +37,7 @@ public class DcaseRegistration {
 	 * @param firstname candidate First Name
 	 */
 	public void firstname(String firstname) {
-		pages.Utill().input_text("txtFirstName", firstname);
+		pages.Utill().sendKeys("txtFirstName", firstname);
 	}
 
 	/**
@@ -46,7 +46,7 @@ public class DcaseRegistration {
 	 * @param lastname candidate Last Name
 	 */
 	public void lasttname(String lastname) {
-		pages.Utill().input_text("txtLastName", lastname);
+		pages.Utill().sendKeys("txtLastName", lastname);
 	}
 
 	/**
@@ -55,7 +55,7 @@ public class DcaseRegistration {
 	 * @param no caserefno
 	 */
 	public void caserefno(String no) {
-		pages.Utill().input_text("txtCaserefNo", no);
+		pages.Utill().sendKeys("txtCaserefNo", no);
 	}
 
 	/**
@@ -64,7 +64,7 @@ public class DcaseRegistration {
 	 * @param no clientrefno
 	 */
 	public void clientrefno(String no) {
-		pages.Utill().input_text("txtClientrefNo", no);
+		pages.Utill().sendKeys("txtClientrefNo", no);
 	}
 
 	/**
@@ -73,8 +73,8 @@ public class DcaseRegistration {
 	 * @param name Client Name
 	 */
 	public void client(String name) {
-		pages.Utill().select_by_label("//select[@ng-model='PanelHomePageModal.ddlFilteredClientModal']", name);
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredClientModal']", name);
+		pages.Utill().waitUntilLoaderisInvisible(10);
 	}
 
 	/**
@@ -83,15 +83,15 @@ public class DcaseRegistration {
 	 * @param name Project Name
 	 */
 	public void project(String name) {
-		pages.Utill().select_by_label("//select[@ng-model='PanelHomePageModal.ddlFilteredprojectMadal']", name);
+		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredprojectMadal']", name);
 	}
 
 	/**
 	 * Performs click action on search button
 	 */
 	public void search() {
-		pages.Utill().click_element("btnsearch");
-		pages.Utill().wait_until_loader_is_invisible(10);
+		pages.Utill().click("btnsearch");
+		pages.Utill().waitUntilLoaderisInvisible(10);
 	}
 
 	/**
@@ -107,7 +107,7 @@ public class DcaseRegistration {
 		this.firstname(firstname);
 		this.lasttname(lastname);
 		this.search();
-		String no = pages.Utill().GetTableCellValue("grdTaskList", 1, 2);
+		String no = pages.Utill().getTableCellValue("grdTaskList", 1, 2);
 
 		return no;
 	}

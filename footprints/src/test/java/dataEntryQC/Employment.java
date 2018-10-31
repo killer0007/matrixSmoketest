@@ -20,8 +20,8 @@ public class Employment extends DataEntryQCPage {
 	 */
 	public void employmentcheck() {
 		pages.Utill().SwitchDefault();
-//	pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[3]/a/span/span/span");
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Employment']");
+//	pages.Utill().click("//*[@id='tabStrip']/div/ul/li[3]/a/span/span/span");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Employment']");
 		pages.Utill().SwitchFramebyIndex(2);
 	}
 
@@ -31,14 +31,14 @@ public class Employment extends DataEntryQCPage {
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
-		String value = pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
+		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
 		if (!value.trim().equals(component)) {
-			pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
+			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
 			if (verifyddvalue(component)) {
-				pages.Utill().click_element(
+				pages.Utill().click(
 						"//div[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul//li[text()='"
 								+ component + "']");
-				pages.Utill().wait_until_loader_is_invisible(100);
+				pages.Utill().waitUntilLoaderisInvisible(100);
 			} else {
 				throw new NotFoundException(component);
 			}
@@ -83,8 +83,8 @@ public class Employment extends DataEntryQCPage {
 	 */
 	@Override
 	public void document() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEmploymentDocumentUpload_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEmploymentDocumentUpload_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -97,8 +97,8 @@ public class Employment extends DataEntryQCPage {
 				.findElements(
 						By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul/li"))
 				.size();
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEmploymentSubmit_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEmploymentSubmit_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		// System.out.println("-----------count--------"+count);
 		if (count == 2) {
 			pages.Utill().SwitchDefault();
@@ -110,8 +110,8 @@ public class Employment extends DataEntryQCPage {
 	 * performs click action on save button
 	 */
 	public void save() throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnEmploymentSave_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEmploymentSave_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().confirmAlert();
 	}
 
@@ -119,8 +119,8 @@ public class Employment extends DataEntryQCPage {
 	 * click report insuff button
 	 */
 	public void ReportInsuff() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkEmploymentInsuff");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkEmploymentInsuff");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -129,15 +129,15 @@ public class Employment extends DataEntryQCPage {
 	 * @param comments insuff raise comments
 	 */
 	public void Insuffcomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtEmploymentInsuffRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEmploymentInsuffRemarks", comments);
 	}
 
 	/**
 	 * click not applicable button
 	 */
 	public void Notapplicable() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -146,7 +146,7 @@ public class Employment extends DataEntryQCPage {
 	 * @param comments not applicable comments
 	 */
 	public void Notapplicablecomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class Employment extends DataEntryQCPage {
 		String path = "//table[@id='ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_grdviewEmploymentDocument_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[1]/span";
 		if (this.isvaliddoctype(doctype)) {
-			return pages.Utill().get_text(path).trim().replaceAll("[0-9]", "");
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -171,8 +171,8 @@ public class Employment extends DataEntryQCPage {
 	 */
 	public void docclose() {
 		pages.Utill()
-				.click_element("ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_btnEmploymentDocumentClose_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+				.click("ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_btnEmploymentDocumentClose_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -183,7 +183,7 @@ public class Employment extends DataEntryQCPage {
 	 * @return true when document ype was available
 	 */
 	public boolean isvaliddoctype(String doctype) {
-		pages.Utill().wait_element_has_text(
+		pages.Utill().waitUntilElementHasText(
 				"//*[@id='ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_grdviewEmploymentDocument_ctl00__0']/td[2]",
 				10);
 		boolean re = false;
@@ -205,115 +205,115 @@ public class Employment extends DataEntryQCPage {
 	}
 
 	public String Component() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
 	}
 
 	public String EmployerName() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmploymentCompany_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmploymentCompany_Input");
 	}
 
 	public String EmployerAddressLIne1() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtOfficeDetails");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtOfficeDetails");
 	}
 
 	public String EmployerCountry() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmploymentCountry_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmploymentCountry_Input");
 	}
 
 	public String EmployerState() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmployementState_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmployementState_Input");
 	}
 
 	public String EmployerCity() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmployementCity_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmployementCity_Input");
 	}
 
 	public String EmployerNameasperEmployers() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtnameEmpRec");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtnameEmpRec");
 	}
 
 	public String EmploymentEmployeeID() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtEmployeeID");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEmployeeID");
 	}
 
 	public String EmploymentDesignation() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtEmployeeDesignation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEmployeeDesignation");
 	}
 
 	public String EmploymentDepartment() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtEmployeeDepartment");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEmployeeDepartment");
 	}
 
 	public String EmploymentFromDate() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtFromDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtFromDate_dateInput");
 	}
 
 	public String EmploymentToDate() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtToDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtToDate_dateInput");
 	}
 
 	public String EmploymentLastCTC() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtLastSalaryDrawn");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtLastSalaryDrawn");
 	}
 
 	public String EmploymentCurrency() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCurrencyType_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCurrencyType_Input");
 	}
 
 	public String EmploymentPeriod() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_Input");
 	}
 
 	public String EmploymentTypeOfEmployment() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlEmploymentType_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmploymentType_Input");
 	}
 
 	public String PersonName() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtContactPerson1Name");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1Name");
 	}
 
 	public String PersonDesignation() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtContactPerson1Designation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1Designation");
 	}
 
 	public String PersonRelationship() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlRelationship1_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlRelationship1_Input");
 	}
 
 	public String PersonIfOther() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtContactPerson1IfOthers");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1IfOthers");
 	}
 
 	public String PersonContactNo1() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo1");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo1");
 	}
 
 	public String PersonContactNo2() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo2");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo2");
 	}
 
 	public String PersonEmailID1() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtContactPerson1EmailID1");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1EmailID1");
 	}
 
 	public String PersonEmailID2() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtContactPerson1EmailID2");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1EmailID2");
 	}
 
 	public String PersonFaxNo() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtContactPerson1FaxNo1");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1FaxNo1");
 	}
 
 	public String ReasonForLeaving() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtReasonOfLeaving");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtReasonOfLeaving");
 	}
 
 	public String Reason() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtTerminatedOrLaidOffComments");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtTerminatedOrLaidOffComments");
 	}
 
 	public String Comments() {
-		return pages.Utill().get_text("ctl00_ContentPlaceHolder1_txtCommentsIfAny");
+		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCommentsIfAny");
 	}
 	public LinkedHashMap<String, String> CurrentEmp() throws Exception{
 		this.Component("Current/Latest Employment");

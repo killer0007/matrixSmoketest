@@ -28,15 +28,15 @@ public class Court extends DataEntryQCPage{
 	 */
 	public void courtcheck() {
 		pages.Utill().SwitchDefault();
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Court']");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Court']");
 		pages.Utill().SwitchFramebyIndex(7);
 	}
 	/**
 	 * Perform click action on Document button
 	 */
 	public void document() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCourtDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnCourtDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Takes component name as input and select from dropdwon
@@ -44,14 +44,14 @@ public class Court extends DataEntryQCPage{
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
-		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCourtComponent_Input");
+		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCourtComponent_Input");
 		if(!value.trim().equals(component)) {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCourtComponent_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlCourtComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill()
-					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlCourtComponent_DropDown']/div/ul//li[text()='"
+					.click("//div[@id='ctl00_ContentPlaceHolder1_ddlCourtComponent_DropDown']/div/ul//li[text()='"
 							+ component + "']");
-			pages.Utill().wait_until_loader_is_invisible(100);
+			pages.Utill().waitUntilLoaderisInvisible(100);
 		} else {
 			throw new NotFoundException(component);
 		}
@@ -90,8 +90,8 @@ public class Court extends DataEntryQCPage{
 	 * click report insuff button
 	 */
 	public void ReportInsuff() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkCourtInsuff");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkCourtInsuff");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -100,15 +100,15 @@ public class Court extends DataEntryQCPage{
 	 * @param comments insuff raise comments
 	 */
 	public void Insuffcomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCourtInsuffRemark", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCourtInsuffRemark", comments);
 	}
 
 	/**
 	 * click not applicable button
 	 */
 	public void Notapplicable() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -117,7 +117,7 @@ public class Court extends DataEntryQCPage{
 	 * @param comments not applicable comments
 	 */
 	public void Notapplicablecomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 	}
 	/**
 	 * click submit button on reference data entry
@@ -125,8 +125,8 @@ public class Court extends DataEntryQCPage{
 	 */
 	public void submit() throws Exception{
 //		int count=driver.findElements(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtComponent_DropDown']/div/ul/li")).size();
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCourtSubmit_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnCourtSubmit_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 //		if(count==2) {
 			pages.Utill().SwitchDefault();	
 //		}
@@ -136,16 +136,16 @@ public class Court extends DataEntryQCPage{
 	 * performs click action on save button
 	 */
 	public void save() throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCourtAdd_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnCourtAdd_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().confirmAlert();
 	}
 	/**
 	 * Performs click action on add document button in document upload screen
 	 */
 	public void AddDocument() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmCourtDocument_C_btnCourtAddDocument_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmCourtDocument_C_btnCourtAddDocument_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	
 	/**
@@ -154,7 +154,7 @@ public class Court extends DataEntryQCPage{
 	 * @return true when document ype was available
 	 */
 	public boolean isvaliddoctype(String doctype) {
-	pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_rwmCourtDocument_C_grdCourtDocumentList_ctl00__0']/td[2]", 10);
+	pages.Utill().waitUntilElementHasText("//*[@id='ctl00_ContentPlaceHolder1_rwmCourtDocument_C_grdCourtDocumentList_ctl00__0']/td[2]", 10);
 		boolean re =false;
 		String path="//*[@id='ctl00_ContentPlaceHolder1_rwmCourtDocument_C_grdCourtDocumentList_ctl00']/tbody/tr/td[2]";
 		List<WebElement> list =driver.findElements(By.xpath(path));
@@ -180,10 +180,10 @@ public class Court extends DataEntryQCPage{
 	 */
 	public void UploadDocument(String doctype, String file) {
 		if(this.isvaliddoctype(doctype)) {
-		pages.Utill().input_text("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
+		pages.Utill().sendKeys("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
 		super.WaitforFileUpdate(doctype, file);
 		this.AddDocument();
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		}
 		else {
 			throw new NotFoundException(doctype);
@@ -194,8 +194,8 @@ public class Court extends DataEntryQCPage{
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmCourtDocument_C_btnCourtDocumentCancel_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmCourtDocument_C_btnCourtDocumentCancel_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Takes Document type as input and return the name of uploaded document
@@ -207,50 +207,50 @@ public class Court extends DataEntryQCPage{
 		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmCourtDocument_C_grdCourtDocumentList_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[1]/span";
 		if (this.isvaliddoctype(doctype)) {
-			return pages.Utill().get_text(path).trim().replaceAll("[0-9]", "");
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
 		} else {
 			throw new NotFoundException(doctype);
 		}
 	}
 
 	public String Component() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCourtComponent_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCourtComponent_Input");
 	}
 
 	public String AddressLine1() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCourtAddress");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCourtAddress");
 	}
 
 	public String Country() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCourtCountry_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCourtCountry_Input");
 	}
 
 	public String State() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCourtState_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCourtState_Input");
 	}
 
 	public String City() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCourtCity_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCourtCity_Input");
 	}
 
 	public String Pincode() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCourtPincode");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCourtPincode");
 	}
 
 	public String Landmark() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCourtLandmark");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCourtLandmark");
 	}
 
 	public String FromDate() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCourtFromDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCourtFromDate_dateInput");
 	}
 
 	public String ToDate() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCourtToDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCourtToDate_dateInput");
 	}
 
 	public String Comments() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCourtComments");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCourtComments");
 	}
 	public LinkedHashMap<String, String> CurrentAddress() throws Exception{
 		this.Component("Current Address Court Check");

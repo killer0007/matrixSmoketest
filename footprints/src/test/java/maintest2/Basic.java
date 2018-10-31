@@ -1,5 +1,7 @@
 package maintest2;
 
+import static org.testng.Assert.assertEquals;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -19,8 +21,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import environment.BaseClass;
 import environment.Pages;
 import environment.Utill;
-import verification.Address;
-import verification.VerificationInitiate;
+import verification.*;
 
 @Listeners(environment.Listener.class)
 public class Basic {
@@ -84,20 +85,16 @@ public class Basic {
 	@Test(priority = 4, enabled = true)
 	public void dataEntry() throws Exception {
 	
-		refno = "HDFC000640";
+		refno = "HDFC000644";
+		Credit cri = new Credit(logger);
 		pages.Verification().verification();
-		pages.Home().Logout();
-		pages.Login().userLogin("demov", "Paws@123");
-		pages.Verification().verification();
-//		pages.Verification().CurrentAddress(refno);	
-		Address add = new Address(logger);
-//		add.Verification();
-		pages.Verification().Permanent(refno);	
-		add.Verification();
-//		pages.Home().Logout();
-//		pages.Login().userLogin("demoempl", "Pass$$123");
-
-		
+		pages.Verification().Credit(refno);
+		cri.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "Credit Check 1");
+		pages.CaseTracker().cancel();
+		System.out.println(stage);
+//		assertEquals(stage, "Report Generation Assignment Pending");
 		
 	}
 

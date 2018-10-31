@@ -28,16 +28,16 @@ public class Credit extends DataEntryQCPage{
 	 */
 	public void creditcheck() {
 		pages.Utill().SwitchDefault();
-//		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li[7]/a/span/span/span");
-		pages.Utill().click_element("//*[@id='tabStrip']/div/ul/li//span[text()='Credit']");
+//		pages.Utill().click("//*[@id='tabStrip']/div/ul/li[7]/a/span/span/span");
+		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Credit']");
 		pages.Utill().SwitchFramebyIndex(6);
 	}
 	/**
 	 * Performs click action on Document button
 	 */
 	public void document() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCreditAddDocuments_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnCreditAddDocuments_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Takes component name as input and select from dropdwon
@@ -45,14 +45,14 @@ public class Credit extends DataEntryQCPage{
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
-		String value=pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlcreditComponent_Input");
+		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlcreditComponent_Input");
 		if(!value.trim().equals(component)) {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlcreditComponent_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlcreditComponent_Input");
 		if (verifyddvalue(component)) {
 			pages.Utill()
-					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlcreditComponent_DropDown']/div/ul//li[text()='"
+					.click("//div[@id='ctl00_ContentPlaceHolder1_ddlcreditComponent_DropDown']/div/ul//li[text()='"
 							+ component + "']");
-			pages.Utill().wait_until_loader_is_invisible(100);
+			pages.Utill().waitUntilLoaderisInvisible(100);
 		} else {
 			throw new NotFoundException(component);
 		}
@@ -90,21 +90,21 @@ public class Credit extends DataEntryQCPage{
 	 * @param component sub id component name
 	 */
 	public void subIDComponent(String component) {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_ddlCreditId_Input");
+		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlCreditId_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCreditId_DropDown']/div/ul/li[1]")));
 			pages.Utill()
-					.click_element("//div[@id='ctl00_ContentPlaceHolder1_ddlCreditId_DropDown']/div/ul//li[text()='"
+					.click("//div[@id='ctl00_ContentPlaceHolder1_ddlCreditId_DropDown']/div/ul//li[text()='"
 							+ component + "']");
-			pages.Utill().wait_until_loader_is_invisible(100);
+			pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * click submit button on credit data entry
 	 * @throws Exception WebDriverException
 	 */
 	public void submit() throws Exception{
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCreditSaveSubmit_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnCreditSaveSubmit_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().SwitchDefault();	
 		pages.Utill().confirmAlert();
 	}
@@ -112,16 +112,16 @@ public class Credit extends DataEntryQCPage{
 	 * performs click action on save button
 	 */
 	public void save() throws Exception {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_btnCreditSave_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnCreditSave_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().confirmAlert();
 	}
 	/**
 	 * click report insuff button
 	 */
 	public void ReportInsuff() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkCreditInsuff");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkCreditInsuff");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -130,15 +130,15 @@ public class Credit extends DataEntryQCPage{
 	 * @param comments insuff raise comments
 	 */
 	public void Insuffcomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtCreditInsuffRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtCreditInsuffRemarks", comments);
 	}
 
 	/**
 	 * click not applicable button
 	 */
 	public void Notapplicable() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class Credit extends DataEntryQCPage{
 	 * @param comments not applicable comments
 	 */
 	public void Notapplicablecomm(String comments) {
-		pages.Utill().input_text("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 	}
 	
 	/**
@@ -156,7 +156,7 @@ public class Credit extends DataEntryQCPage{
 	 * @return true when document ype was available
 	 */
 	public boolean isvaliddoctype(String doctype) {
-	pages.Utill().wait_element_has_text("//*[@id='ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_grdviewCreditDocument_ctl00__0']/td[2]", 10);
+	pages.Utill().waitUntilElementHasText("//*[@id='ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_grdviewCreditDocument_ctl00__0']/td[2]", 10);
 		boolean re =false;
 		String path="//*[@id='ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_grdviewCreditDocument_ctl00']/tbody/tr/td[2]";
 		List<WebElement> list =driver.findElements(By.xpath(path));
@@ -180,8 +180,8 @@ public class Credit extends DataEntryQCPage{
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		pages.Utill().click_element("ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_btnCreditDocumentCancel_input");
-		pages.Utill().wait_until_loader_is_invisible(100);
+		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_btnCreditDocumentCancel_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Takes Document type as input and return the name of uploaded document
@@ -194,54 +194,54 @@ public class Credit extends DataEntryQCPage{
 		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_grdviewCreditDocument_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[1]/span";
 		if (this.isvaliddoctype(doctype)) {
-			return pages.Utill().get_text(path).trim().replaceAll("[0-9]", "");
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
 		} else {
 			throw new NotFoundException(doctype);
 		}
 	}
 
 	public String Component() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlcreditComponent_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlcreditComponent_Input");
 	}
 
 	public String ID() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCreditId_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCreditId_Input");
 	}
 
 	public String NameonID() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCreditIdName");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCreditIdName");
 	}
 
 	public String IDNumber() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCreditIdNumber");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCreditIdNumber");
 	}
 
 	public String IssueDate() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCreditIdIssueDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCreditIdIssueDate_dateInput");
 	}
 
 	public String ExpiryDate() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCreditIdExpireDate_dateInput");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCreditIdExpireDate_dateInput");
 	}
 
 	public String CountryofIssue() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCreditIssueCountry_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCreditIssueCountry_Input");
 	}
 
 	public String StateofIssue() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCreditIssueState_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCreditIssueState_Input");
 	}
 
 	public String CityofIssue() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_ddlCreditIssueCity_Input");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCreditIssueCity_Input");
 	}
 
 	public String EnrollmentNo() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCreditEnrollId1");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCreditEnrollId1");
 	}
 
 	public String comments() {
-		return pages.Utill().getvalue("ctl00_ContentPlaceHolder1_txtCreditComments");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCreditComments");
 	}
 	
 	public LinkedHashMap<String, String> credit() throws Exception{
