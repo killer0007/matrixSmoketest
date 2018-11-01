@@ -427,6 +427,7 @@ public class Address extends Verification {
 	public void ModeOfInitiation(String mode) {
 		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressModeOfInitiation_Input");
 		if (!value.equals(mode.trim())) {
+			pages.Utill().sleep(300);
 			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlAddressModeOfInitiation_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By
 					.xpath("//div[@id='ctl00_ContentPlaceHolder1_ddlAddressModeOfInitiation_DropDown']/div/ul/li[1]")));
@@ -451,6 +452,7 @@ public class Address extends Verification {
 	public void ModeOfVerification(String mode) {
 		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlAddressModeOfVerification_Input");
 		if (!value.equals(mode.trim())) {
+			pages.Utill().sleep(300);
 			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlAddressModeOfVerification_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 					"//div[@id='ctl00_ContentPlaceHolder1_ddlAddressModeOfVerification_DropDown']/div/ul/li[1]")));

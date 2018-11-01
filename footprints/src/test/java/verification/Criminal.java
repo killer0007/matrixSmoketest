@@ -373,6 +373,7 @@ public class Criminal extends Verification {
 	public void ModeOfInitiation(String mode) {
 		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCriminalModeOfInitiation_Input");
 		if (!value.equals(mode.trim())) {
+			pages.Utill().sleep(300);
 			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlCriminalModeOfInitiation_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By
 					.xpath("//div[@id='ctl00_ContentPlaceHolder1_ddlCriminalModeOfInitiation_DropDown']/div/ul/li[1]")));
@@ -397,6 +398,7 @@ public class Criminal extends Verification {
 	public void ModeOfVerification(String mode) {
 		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCriminalModeOfVerification_Input");
 		if (!value.equals(mode.trim())) {
+			pages.Utill().sleep(300);
 			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlCriminalModeOfVerification_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 					"//div[@id='ctl00_ContentPlaceHolder1_ddlCriminalModeOfVerification_DropDown']/div/ul/li[1]")));

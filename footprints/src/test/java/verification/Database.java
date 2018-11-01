@@ -26,7 +26,6 @@ public class Database extends Verification {
 	 */
 	public void databasecheck() {
 		pages.Utill().SwitchDefault();
-//		pages.Utill().click("//*[@id='tabStrip']/div/ul/li[5]/a/span/span/span");
 		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='DataBase']");
 		pages.Utill().SwitchFramebyIndex(4);
 	}

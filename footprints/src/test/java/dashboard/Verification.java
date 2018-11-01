@@ -172,4 +172,19 @@ public class Verification {
 		this.Search(refno, "Credit", "Credit Check 1");
 		this.Select(refno);
 	}
+	public void Passport(String refno) {
+		this.VRInitiateStatus("Verification Confirmation Pending");
+		this.Search(refno, "ID", "Passport");
+		this.Select(refno);
+	}
+	public void AadhaarCard(String refno) {
+		this.VRInitiateStatus("Verification Confirmation Pending");
+		this.Search(refno, "ID", "Aadhaar Card");
+		this.Select(refno);
+	}
+	public void Panel1(String refno) {
+		this.VRInitiateStatus("Verification Confirmation Pending");
+		this.Search(refno, "Drug & Medical", "Panel1");
+		this.Select(refno);
+	}
 }

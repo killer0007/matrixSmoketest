@@ -8,6 +8,7 @@ class number extends Thread{
 			num++;
 		}
 		System.out.println(num);
+		
 	}
 	
 }

@@ -394,6 +394,7 @@ public class Court extends Verification {
 	public void ModeOfInitiation(String mode) {
 		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCourtModeOfInitiation_Input");
 		if (!value.equals(mode.trim())) {
+			pages.Utill().sleep(300);
 			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlCourtModeOfInitiation_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 					By.xpath("//div[@id='ctl00_ContentPlaceHolder1_ddlCourtModeOfInitiation_DropDown']/div/ul/li[1]")));
@@ -418,6 +419,7 @@ public class Court extends Verification {
 	public void ModeOfVerification(String mode) {
 		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCourtModeOfVerification_Input");
 		if (!value.equals(mode.trim())) {
+			pages.Utill().sleep(300);
 			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlCourtModeOfVerification_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By
 					.xpath("//div[@id='ctl00_ContentPlaceHolder1_ddlCourtModeOfVerification_DropDown']/div/ul/li[1]")));

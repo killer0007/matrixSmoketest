@@ -43,7 +43,7 @@ public class BaseClass {
 			Dimension d = new Dimension(1382, 744);
 			driver.manage().window().setSize(d);
 			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
 		}
 		return driver;
 	}

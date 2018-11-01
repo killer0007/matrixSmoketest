@@ -475,6 +475,32 @@ public class FullFlow extends Design {
 		pages.CaseTracker().cancel();
 		assertEquals(stage, "Report Generation Assignment Pending");
 	}
+	@Test(priority = 25, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void IDVerification() throws Exception {
+		Id id = new Id(logger);
+		pages.Verification().verification();
+		pages.Verification().Passport(refno);
+		id.Verification();
+		pages.Verification().AadhaarCard(refno);
+		id.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "Passport");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+	}
+
+	@Test(priority = 26, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void DrugVerification() throws Exception {
+		Drug drug = new Drug(logger);
+		pages.Verification().verification();
+		pages.Verification().Panel1(refno);
+		drug.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "Panel1");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+
+	}
 	/**
 	 * Takes test Result as input and Log the results into reports
 	 */

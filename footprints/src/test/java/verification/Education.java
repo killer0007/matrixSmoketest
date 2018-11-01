@@ -497,6 +497,7 @@ public class Education extends Verification {
 	public void ModeOfInitiation(String mode) {
 		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationModeOfInitiation_Input");
 		if (!value.equals(mode.trim())) {
+			pages.Utill().sleep(300);
 			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlEducationModeOfInitiation_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By
 					.xpath("//div[@id='ctl00_ContentPlaceHolder1_ddlEducationModeOfInitiation_DropDown']/div/ul/li[1]")));
@@ -521,6 +522,7 @@ public class Education extends Verification {
 	public void ModeOfVerification(String mode) {
 		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationModeOfVerification_Input");
 		if (!value.equals(mode.trim())) {
+			pages.Utill().sleep(300);
 			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlEducationModeOfVerification_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 					"//div[@id='ctl00_ContentPlaceHolder1_ddlEducationModeOfVerification_DropDown']/div/ul/li[1]")));

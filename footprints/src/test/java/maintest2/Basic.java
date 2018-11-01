@@ -86,15 +86,14 @@ public class Basic {
 	public void dataEntry() throws Exception {
 	
 		refno = "HDFC000644";
-		Credit cri = new Credit(logger);
+		Drug drug = new Drug(logger);
 		pages.Verification().verification();
-		pages.Verification().Credit(refno);
-		cri.Verification();
+		pages.Verification().Panel1(refno);
+		drug.Verification();
 		pages.Home().CaseTracker();
-		String stage = pages.CaseTracker().getCurrentStage(refno, "Credit Check 1");
+		String stage = pages.CaseTracker().getCurrentStage(refno, "Panel1");
 		pages.CaseTracker().cancel();
-		System.out.println(stage);
-//		assertEquals(stage, "Report Generation Assignment Pending");
+		assertEquals(stage, "Report Generation Assignment Pending");
 		
 	}
 
