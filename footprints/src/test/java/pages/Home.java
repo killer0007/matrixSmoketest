@@ -8,8 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import com.aventstack.extentreports.ExtentTest;
-
-import environment.BaseClass;
 import environment.Pages;
 
 public class Home {
@@ -21,10 +19,10 @@ public class Home {
 	 * 
 	 * @param logger logger instance
 	 */
-	public Home(ExtentTest logger) {
-		driver = BaseClass.getWebDriver();
+	public Home(WebDriver driver,ExtentTest logger) {
+		this.driver = driver;
 		this.logger = logger;
-		pages = new Pages(logger);
+		pages = new Pages(driver,logger);
 	}
 /**
  * Performs click action on Logout button

@@ -15,7 +15,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class BaseClass {
 
-	static WebDriver driver;
+	WebDriver driver;
 	static Properties loc;
 	static Properties val;
 /**
@@ -23,7 +23,7 @@ public class BaseClass {
  * @return WebDriver instance
  * @throws Exception WebDriver exception
  */
-	public static WebDriver getDriver() throws Exception{
+	public WebDriver getDriver() throws Exception{
 		if (driver == null) {
 			String downloadFilepath = getlocator().getProperty("downloadFilepath");
 			String chrome_path = getlocator().getProperty("chromedriver");
@@ -37,7 +37,7 @@ public class BaseClass {
 //					config.put("plugins.always_open_pdf_externally", true);
 			chromoption.setExperimentalOption("prefs", config);
 			chromoption.addArguments("--disable-notifications");
-			chromoption.setHeadless(true);
+//			chromoption.setHeadless(true);
 //			chromoption.addArguments("start-maximized");
 			driver = new ChromeDriver(chromoption);
 			Dimension d = new Dimension(1382, 744);
@@ -47,9 +47,7 @@ public class BaseClass {
 		}
 		return driver;
 	}
-	public static WebDriver getWebDriver() {
-		return driver;
-	}
+	
 /**
  * Read the config.properties file and return property object
  * @return Properties config gile property

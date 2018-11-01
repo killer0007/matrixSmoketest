@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,8 +14,8 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
 public class Drug extends Verification {
-	public Drug(ExtentTest logger) {
-		super(logger);
+	public Drug(WebDriver driver,ExtentTest logger) {
+		super(driver,logger);
 	}
 
 	public void drugCheck() {

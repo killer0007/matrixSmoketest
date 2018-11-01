@@ -6,6 +6,7 @@ import java.util.Properties;
 import javax.activity.InvalidActivityException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,8 +20,8 @@ public class Address extends DataEntryPage {
 	 * 
 	 * @param logger logger instance
 	 */
-	public Address(ExtentTest logger) {
-		super(logger);
+	public Address(WebDriver driver, ExtentTest logger) {
+		super(driver,logger);
 	}
 
 	/**

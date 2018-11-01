@@ -1,10 +1,7 @@
 package dashboard;
 
 import org.openqa.selenium.WebDriver;
-
 import com.aventstack.extentreports.ExtentTest;
-
-import environment.BaseClass;
 import environment.Pages;
 
 public class VerificationSupervisor {
@@ -17,10 +14,10 @@ public class VerificationSupervisor {
 	 * 
 	 * @param logger logger instance
 	 */
-	public VerificationSupervisor(ExtentTest logger) {
-		driver = BaseClass.getWebDriver();
+	public VerificationSupervisor(WebDriver driver, ExtentTest logger) {
+		this.driver=driver;
 		this.logger = logger;
-		pages = new Pages(logger);
+		pages = new Pages(driver,logger);
 	}
 
 	/**
@@ -105,9 +102,9 @@ public class VerificationSupervisor {
 			pages.Utill().waitUntilLoaderisInvisible(100);
 			pages.Verification().verification();
 			pages.Verification().GetNext();
-			pages.VerificationSupervisor().verificationsupervisor();
+			this.verificationsupervisor();
 			
 	}
-
+	
 	
 }

@@ -7,6 +7,7 @@ import javax.activity.InvalidActivityException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,8 +20,8 @@ public class Court extends DataEntryPage{
 	 * 
 	 * @param logger logger instance
 	 */
-	public Court(ExtentTest logger) {
-		super(logger);
+	public Court(WebDriver driver, ExtentTest logger) {
+		super(driver,logger);
 	}
 	/**
 	 * Select Court tab and switch to Court frame

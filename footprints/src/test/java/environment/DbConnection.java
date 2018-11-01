@@ -21,7 +21,7 @@ public class DbConnection {
 	 * @return List of sub component
 	 * @throws Exception when SQL connection failed
 	 */
-	
+	 
 	public synchronized List<String> getcontractdetails(String contractname) throws Exception {
 		List<String> result = new ArrayList<String>();
 		String id = null;

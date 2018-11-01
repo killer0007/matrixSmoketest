@@ -3,8 +3,6 @@ package dashboard;
 import org.openqa.selenium.WebDriver;
 
 import com.aventstack.extentreports.ExtentTest;
-
-import environment.BaseClass;
 import environment.Pages;
 
 public class Verification {
@@ -17,11 +15,11 @@ public class Verification {
 	 *
 	 * @param logger logger instance
 	 */
-	public Verification(ExtentTest logger) {
+	public Verification(WebDriver driver, ExtentTest logger) {
 		
-		driver = BaseClass.getWebDriver();
+		this.driver=driver;
 		this.logger = logger;
-		pages = new Pages(logger);
+		pages = new Pages(driver,logger);
 	}
 
 	/**

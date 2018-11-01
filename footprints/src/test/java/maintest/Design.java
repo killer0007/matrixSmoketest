@@ -13,5 +13,5 @@ abstract class Design {
 	public abstract void login() throws InterruptedException, Exception ;
 	public abstract void tearDown(ITestResult result, Method method) throws IOException;
 	public abstract void teardown() throws Exception;
-	public abstract void afterSuite();
+	public abstract void afterSuite(); 
 }

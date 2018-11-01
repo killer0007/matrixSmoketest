@@ -5,13 +5,18 @@ import static org.testng.Assert.assertEquals;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -54,7 +59,7 @@ public class Basic {
 
 	@BeforeTest
 	public void beforetest() throws Exception {
-		driver = BaseClass.getDriver();
+		driver = new BaseClass().getDriver();
 		config = BaseClass.getlocator();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(config.getProperty("url"));
@@ -69,7 +74,7 @@ public class Basic {
 		logger = extent.createTest(method.getName());
 		logger.pass(method.getName() + " Started");
 		logger.assignAuthor("Gopinath");
-		pages = new Pages(logger);
+		pages = new Pages(driver,logger);
 
 	}
 
@@ -85,16 +90,22 @@ public class Basic {
 	@Test(priority = 4, enabled = true)
 	public void dataEntry() throws Exception {
 	
-		refno = "HDFC000644";
-		Drug drug = new Drug(logger);
-		pages.Verification().verification();
-		pages.Verification().Panel1(refno);
-		drug.Verification();
+		refno = "HDFC000642";
+//	pages.ReportGenerationSupervision().reportGenerationSupervision();
+//	pages.ReportGenerationSupervision().assigngetnext(refno);;
+		List<String> components= new ArrayList<String>(Arrays.asList(pages.CaseRegistration().getcomponents()));
 		pages.Home().CaseTracker();
-		String stage = pages.CaseTracker().getCurrentStage(refno, "Panel1");
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		SoftAssert sf = new SoftAssert();
+		List<HashMap<String, String>> data =pages.CaseTracker().getcasedata();
+		for (HashMap<String, String> d:data) {
+			if(components.contains(d.get("ComponentName"))) {
+				sf.assertEquals(d.get("CurrentStage"), "Report Generation Pending");
+			}
+		}
 		pages.CaseTracker().cancel();
-		assertEquals(stage, "Report Generation Assignment Pending");
-		
+		sf.assertAll();
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -135,24 +146,5 @@ public class Basic {
 	public void afterSuite() {
 		extent.flush();
 	}
-	public static Map<String, String> mode(){
-		Map<String, String> map = new HashMap<>();
-		map.put("Permanent", "In Person");
-		map.put("Current Address", "In Person");
-		map.put("12th", "Email (Preffered)");
-		map.put("UG1", "Email (Preffered)");
-		map.put("Current/Latest Employment", "Email");
-		map.put("Previous Employment", "Email");
-		map.put("Reference 1", "Phone");
-		map.put("Current Address Criminal Check", "In Person");
-		map.put("Permanent Criminal Check", "In Person");
-		map.put("Current Address Court Check", "In Person");
-		map.put("Permanent Court Check", "In Person");
-		map.put("Database", "Online");
-		map.put("Credit Check 1", "Online");
-		map.put("Passport", "Online");
-		map.put("Aadhaar Card", "Online");
-		map.put("Panel1", "In Person");
-		return map;
-	}
+	
 }

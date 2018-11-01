@@ -5,14 +5,19 @@ import static org.testng.Assert.assertTrue;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.testng.asserts.SoftAssert;
+
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -58,7 +63,7 @@ public class FullFlow extends Design {
 	 */
 	@BeforeTest(alwaysRun = true)
 	public void beforetest() throws Exception {
-		driver = BaseClass.getDriver();
+		driver = new BaseClass().getDriver();
 		config = BaseClass.getlocator();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(config.getProperty("url"));
@@ -77,7 +82,7 @@ public class FullFlow extends Design {
 		logger = extent.createTest(method.getName());
 		logger.pass(method.getName() + " Started");
 		logger.assignAuthor("Gopinath");
-		pages = new Pages(logger);
+		pages = new Pages(driver,logger);
 	}
 
 	/**
@@ -168,7 +173,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 6, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void AddressDEQC() throws Exception {
-		dataEntryQC.Address add = new dataEntryQC.Address(logger);
+		dataEntryQC.Address add = new dataEntryQC.Address(driver,logger);
 		add.addresscheck();
 		LinkedHashMap<String, String> actual = add.CurrentAddress();
 		LinkedHashMap<String, String> expected = add.filedata("Current Address");
@@ -189,7 +194,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 7, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void EducationDEQC() throws Exception {
-		dataEntryQC.Education edu = new dataEntryQC.Education(logger);
+		dataEntryQC.Education edu = new dataEntryQC.Education(driver,logger);
 		edu.educationcheck();
 		LinkedHashMap<String, String> actual = edu.twelveth();
 		LinkedHashMap<String, String> expected = edu.filedata("12th");
@@ -210,7 +215,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 8, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void EmploymentDEQC() throws Exception {
-		dataEntryQC.Employment emp = new dataEntryQC.Employment(logger);
+		dataEntryQC.Employment emp = new dataEntryQC.Employment(driver,logger);
 		emp.employmentcheck();
 		LinkedHashMap<String, String> actual = emp.CurrentEmp();
 		LinkedHashMap<String, String> expected = emp.filedata("Current/Latest Employment");
@@ -231,7 +236,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 9, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void ReferenceDEQC() throws Exception {
-		dataEntryQC.Reference ref = new dataEntryQC.Reference(logger);
+		dataEntryQC.Reference ref = new dataEntryQC.Reference(driver,logger);
 		ref.referencecheck();
 		LinkedHashMap<String, String> actual = ref.Referenceone();
 		LinkedHashMap<String, String> expected = ref.filedata();
@@ -247,7 +252,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 10, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void DataBaseDEQC() throws Exception {
-		dataEntryQC.Database db = new dataEntryQC.Database(logger);
+		dataEntryQC.Database db = new dataEntryQC.Database(driver,logger);
 		db.databasecheck();
 		LinkedHashMap<String, String> actual = db.database();
 		LinkedHashMap<String, String> expected = db.filedata();
@@ -263,7 +268,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 11, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void CriminalDEQC() throws Exception {
-		dataEntryQC.Criminal criminal = new dataEntryQC.Criminal(logger);
+		dataEntryQC.Criminal criminal = new dataEntryQC.Criminal(driver,logger);
 		criminal.criminalcheck();
 		LinkedHashMap<String, String> actual = criminal.CurrentAddress();
 		LinkedHashMap<String, String> Perexpected = criminal.filedata("Permanent Criminal Check");
@@ -284,7 +289,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 12, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void CreditDEQC() throws Exception {
-		dataEntryQC.Credit credit = new dataEntryQC.Credit(logger);
+		dataEntryQC.Credit credit = new dataEntryQC.Credit(driver,logger);
 		credit.creditcheck();
 		LinkedHashMap<String, String> actual = credit.credit();
 		LinkedHashMap<String, String> expected = credit.filedata();
@@ -300,7 +305,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 13, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void CourtDEQC() throws Exception {
-		dataEntryQC.Court court = new dataEntryQC.Court(logger);
+		dataEntryQC.Court court = new dataEntryQC.Court(driver,logger);
 		court.courtcheck();
 		LinkedHashMap<String, String> actual = court.CurrentAddress();
 		LinkedHashMap<String, String> expected = court.filedata("Current Address Court Check");	
@@ -320,7 +325,7 @@ public class FullFlow extends Design {
 	}
 	@Test(priority = 14, enabled = true, dependsOnMethods = "dataEntryQCAssign")
 	public void IdDEQC() throws Exception {
-		dataEntryQC.Id id = new dataEntryQC.Id(logger);
+		dataEntryQC.Id id = new dataEntryQC.Id(driver,logger);
 		id.idcheck();
 		LinkedHashMap<String, String> actual = id.Aadharcard();
 		LinkedHashMap<String, String> expected = id.filedata("Aadhaar Card");
@@ -346,7 +351,7 @@ public class FullFlow extends Design {
 	}
 	@Test(priority = 16, enabled = true, dependsOnMethods = "VerificationSupervisor")
 	public void VerificationIntiation() throws Exception {
-		VerificationInitiate ver= new VerificationInitiate(logger);
+		VerificationInitiate ver= new VerificationInitiate(driver,logger);
 		Map<String, String> data=mode();
 		pages.Verification().verification();
 		pages.Home().Logout();
@@ -377,7 +382,7 @@ public class FullFlow extends Design {
 		pages.Login().userLogin("demov", "Paws@123");
 		pages.Verification().verification();
 		pages.Verification().CurrentAddress(refno);	
-		Address add = new Address(logger);
+		Address add = new Address(driver,logger);
 		add.Verification();
 		pages.Verification().Permanent(refno);	
 		add.Verification();
@@ -392,7 +397,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 18, enabled = true, dependsOnMethods = "VerificationIntiation")
 	public void EducationVerification() throws Exception {
-		Education edu = new Education(logger);
+		Education edu = new Education(driver,logger);
 		pages.Verification().verification();
 		pages.Verification().twelveth(refno);
 		edu.Verification();
@@ -405,7 +410,7 @@ public class FullFlow extends Design {
 	}
 	@Test(priority = 19, enabled = true, dependsOnMethods = "VerificationIntiation")
 	public void EmploymentVerification() throws Exception {
-		Employment emp = new Employment(logger);
+		Employment emp = new Employment(driver,logger);
 		pages.Verification().verification();
 		pages.Verification().CurrentEmployment(refno);
 		emp.Verification();
@@ -418,7 +423,7 @@ public class FullFlow extends Design {
 	}
 	@Test(priority = 20, enabled = true, dependsOnMethods = "VerificationIntiation")
 	public void ReferenceVerification() throws Exception {
-		Reference ref = new Reference(logger);
+		Reference ref = new Reference(driver,logger);
 		pages.Verification().verification();
 		pages.Verification().Reference(refno);
 		ref.Verification();
@@ -429,7 +434,7 @@ public class FullFlow extends Design {
 	}
 	@Test(priority = 21, enabled = true, dependsOnMethods = "VerificationIntiation")
 	public void DatabaseVerification() throws Exception {
-		Database db = new Database(logger);
+		Database db = new Database(driver,logger);
 		pages.Verification().verification();
 		pages.Verification().Database(refno);
 		db.Verification();
@@ -440,7 +445,7 @@ public class FullFlow extends Design {
 	}
 	@Test(priority = 22, enabled = true, dependsOnMethods = "VerificationIntiation")
 	public void CriminalVerification() throws Exception {
-		Criminal criminal = new Criminal(logger);
+		Criminal criminal = new Criminal(driver,logger);
 		pages.Verification().verification();
 		pages.Verification().CurrentAddressCriminalCheck(refno);
 		criminal.Verification();
@@ -453,7 +458,7 @@ public class FullFlow extends Design {
 	}
 	@Test(priority = 23, enabled = true, dependsOnMethods = "VerificationIntiation")
 	public void CreditVerification() throws Exception {
-		Credit cri = new Credit(logger);
+		Credit cri = new Credit(driver,logger);
 		pages.Verification().verification();
 		pages.Verification().Credit(refno);
 		cri.Verification();
@@ -464,7 +469,7 @@ public class FullFlow extends Design {
 	}
 	@Test(priority = 24, enabled = true, dependsOnMethods = "VerificationIntiation")
 	public void CourtVerification() throws Exception {
-		Court court = new Court(logger);
+		Court court = new Court(driver,logger);
 		pages.Verification().verification();
 		pages.Verification().CurrentAddressCourtCheck(refno);
 		court.Verification();
@@ -477,7 +482,7 @@ public class FullFlow extends Design {
 	}
 	@Test(priority = 25, enabled = true, dependsOnMethods = "VerificationIntiation")
 	public void IDVerification() throws Exception {
-		Id id = new Id(logger);
+		Id id = new Id(driver,logger);
 		pages.Verification().verification();
 		pages.Verification().Passport(refno);
 		id.Verification();
@@ -491,7 +496,7 @@ public class FullFlow extends Design {
 
 	@Test(priority = 26, enabled = true, dependsOnMethods = "VerificationIntiation")
 	public void DrugVerification() throws Exception {
-		Drug drug = new Drug(logger);
+		Drug drug = new Drug(driver,logger);
 		pages.Verification().verification();
 		pages.Verification().Panel1(refno);
 		drug.Verification();
@@ -500,6 +505,24 @@ public class FullFlow extends Design {
 		pages.CaseTracker().cancel();
 		assertEquals(stage, "Report Generation Assignment Pending");
 
+	}
+	@Test(priority = 27, enabled = true, dependsOnMethods = "DrugVerification")
+	public void ReportGenerationSupervision() throws Exception {
+		pages.ReportGenerationSupervision().reportGenerationSupervision();
+		pages.ReportGenerationSupervision().assigngetnext(refno);
+		List<String> components= new ArrayList<String>(Arrays.asList(pages.CaseRegistration().getcomponents()));
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		SoftAssert sf = new SoftAssert();
+		List<HashMap<String, String>> data =pages.CaseTracker().getcasedata();
+		for (HashMap<String, String> d:data) {
+			if(components.contains(d.get("ComponentName"))) {
+				sf.assertEquals(d.get("CurrentStage"), "Report Generation Pending");
+			}
+		}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
 	}
 	/**
 	 * Takes test Result as input and Log the results into reports

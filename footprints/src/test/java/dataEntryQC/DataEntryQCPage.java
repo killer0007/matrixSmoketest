@@ -1,15 +1,11 @@
 package dataEntryQC;
 
 import java.io.File;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.aventstack.extentreports.ExtentTest;
-
-import environment.BaseClass;
 import environment.Pages;
 
 public abstract class DataEntryQCPage {
@@ -17,10 +13,10 @@ public abstract class DataEntryQCPage {
 	ExtentTest logger;
 	Pages pages;
 
-	public DataEntryQCPage(ExtentTest logger) {
-		driver = BaseClass.getWebDriver();
+	public DataEntryQCPage(WebDriver driver,ExtentTest logger) {
+		this.driver = driver;
 		this.logger = logger;
-		pages = new Pages(logger);
+		pages = new Pages(driver,logger);
 	}
 	/**
 	 * Performs click action on History button

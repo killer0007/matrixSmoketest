@@ -2,10 +2,7 @@ package actions;
 
 import org.openqa.selenium.InvalidSelectorException;
 import org.openqa.selenium.WebDriver;
-
 import com.aventstack.extentreports.ExtentTest;
-
-import environment.BaseClass;
 import environment.Pages;
 
 abstract class ActionPage {
@@ -19,10 +16,10 @@ abstract class ActionPage {
 	 * @param driver webdriver instance
 	 * @param logger logger instance
 	 */
-	public ActionPage(ExtentTest logger) {
-		driver = BaseClass.getWebDriver();
+	public ActionPage(WebDriver driver, ExtentTest logger) {
+		this.driver = driver;
 		this.logger = logger;
-		pages = new Pages(logger);
+		pages = new Pages(driver,logger);
 	}
 
 	/**

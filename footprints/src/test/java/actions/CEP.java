@@ -1,6 +1,8 @@
 package actions;
 
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
+
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
@@ -11,8 +13,8 @@ public class CEP extends ActionPage {
 	 * 
 	 * @param logger logger instance
 	 */
-	public CEP(ExtentTest logger) {
-		super(logger);
+	public CEP(WebDriver driver, ExtentTest logger) {
+		super(driver,logger);
 
 	}
 

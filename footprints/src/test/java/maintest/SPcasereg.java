@@ -66,7 +66,7 @@ public class SPcasereg extends Design {
 	 */
 	@BeforeTest(alwaysRun = true)
 	public void beforetest() throws Exception {
-		driver = BaseClass.getDriver();
+		driver = new BaseClass().getDriver();
 		config = BaseClass.getlocator();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(config.getProperty("url"));
@@ -85,7 +85,7 @@ public class SPcasereg extends Design {
 		logger = extent.createTest(method.getName());
 		logger.pass(method.getName() + " Started");
 		logger.assignAuthor("Gopinath");
-		pages = new Pages(logger);
+		pages = new Pages(driver,logger);
 	}
 
 	/**
@@ -1980,6 +1980,7 @@ public class SPcasereg extends Design {
 		assertEquals(actual, expected);
 		pages.Utill().SwitchDefault();
 		pages.Utill().click("imgHome");
+		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
 
 	/**

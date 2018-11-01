@@ -2,8 +2,6 @@ package dashboard;
 
 import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
-
-import environment.BaseClass;
 import environment.Pages;
 
 public class DataEntry {
@@ -16,11 +14,11 @@ public class DataEntry {
 	 *
 	 * @param logger logger instance
 	 */
-	public DataEntry(ExtentTest logger) {
+	public DataEntry(WebDriver driver, ExtentTest logger) {
 		
-		driver = BaseClass.getWebDriver();
+		this.driver=driver;
 		this.logger = logger;
-		pages = new Pages(logger);
+		pages = new Pages(driver,logger);
 	}
 
 	/**

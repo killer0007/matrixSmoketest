@@ -18,7 +18,7 @@ public class Listener implements ITestListener {
 
 		Reporter.log("About to begin executing Test " + test.getName(), true);
 
-	}
+	} 
 
 	// This belongs to ITestListener and will execute, once the Test set/batch is finished
 

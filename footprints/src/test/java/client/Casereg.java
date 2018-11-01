@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.aventstack.extentreports.ExtentTest;
 
@@ -16,8 +17,8 @@ public class Casereg extends Home {
 	 * 
 	 * @param logger logger instance
 	 */
-	public Casereg(ExtentTest logger) {
-		super(logger);
+	public Casereg(WebDriver driver, ExtentTest logger) {
+		super(driver,logger);
 	}
 
 	/**

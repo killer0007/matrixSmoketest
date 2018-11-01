@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
@@ -16,8 +17,8 @@ public class Id extends DataEntryQCPage{
 	 * 
 	 * @param logger logger instance
 	 */
-	public Id(ExtentTest logger) {
-		super(logger);
+	public Id(WebDriver driver,ExtentTest logger) {
+		super(driver,logger);
 	}
 	/**
 	 * Select Id tab and switch to Id frame

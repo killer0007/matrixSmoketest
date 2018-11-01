@@ -2,7 +2,6 @@ package dashboard;
 
 import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
-import environment.BaseClass;
 import environment.Pages;
 
 public class DataEntryQCSupervision {
@@ -15,10 +14,10 @@ public class DataEntryQCSupervision {
 	 * 
 	 * @param logger logger instance
 	 */
-	public DataEntryQCSupervision(ExtentTest logger) {
-		driver = BaseClass.getWebDriver();
+	public DataEntryQCSupervision(WebDriver driver, ExtentTest logger) {
+		this.driver=driver;
 		this.logger = logger;
-		pages = new Pages(logger);
+		pages = new Pages(driver,logger);
 	}
 
 	/**

@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,8 +18,8 @@ public class Database extends DataEntryPage {
 	 * 
 	 * @param logger logger instance
 	 */
-	public Database(ExtentTest logger) {
-		super(logger);
+	public Database(WebDriver driver, ExtentTest logger) {
+		super(driver,logger);
 	}
 	/**
 	 * Select Database tab and switch to Database frame

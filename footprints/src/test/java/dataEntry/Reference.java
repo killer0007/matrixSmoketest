@@ -5,6 +5,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -18,8 +19,8 @@ public class Reference extends DataEntryPage {
 	 * 
 	 * @param logger logger instance
 	 */
-	public Reference(ExtentTest logger) {
-		super(logger);
+	public Reference(WebDriver driver, ExtentTest logger) {
+		super(driver,logger);
 	}
 	/**
 	 * Select Reference tab and switch to Reference frame

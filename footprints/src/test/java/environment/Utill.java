@@ -63,10 +63,10 @@ public class Utill {
 	 * 
 	 * @param logger logger instance
 	 */
-	public Utill(ExtentTest logger) {
-		driver = BaseClass.getWebDriver();
+	public Utill(WebDriver driver,ExtentTest logger) {
+		this.driver =driver;
 		this.logger = logger;
-		pages = new Pages(logger);
+		pages = new Pages(driver,logger);
 	}
 	
 

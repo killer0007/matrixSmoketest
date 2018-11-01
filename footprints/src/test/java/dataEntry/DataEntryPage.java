@@ -6,11 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-
-import environment.BaseClass;
 import environment.Pages;
 
 abstract class DataEntryPage {
@@ -18,10 +15,10 @@ abstract class DataEntryPage {
 	protected ExtentTest logger;
 	protected Pages pages;
 
-	public DataEntryPage(ExtentTest logger) {
-		driver = BaseClass.getWebDriver();
+	public DataEntryPage(WebDriver driver,ExtentTest logger) {
+		this.driver=driver;
 		this.logger = logger;
-		pages = new Pages(logger);
+		pages = new Pages(driver,logger);
 	}
 	/**
 	 * Performs click action on History button

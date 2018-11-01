@@ -3,18 +3,14 @@ package pages;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-
-import environment.BaseClass;
 import environment.Pages;
 
 public class CaseRegistration {
@@ -27,10 +23,10 @@ public class CaseRegistration {
 	 * 
 	 * @param logger logger instance
 	 */
-	public CaseRegistration(ExtentTest logger) {
-		driver = BaseClass.getWebDriver();
+	public CaseRegistration(WebDriver driver,ExtentTest logger) {
+		this.driver = driver;
 		this.logger = logger;
-		pages = new Pages(logger);
+		pages = new Pages(driver,logger);
 	}
 
 	/**
