@@ -313,7 +313,7 @@ public void addDBCheck() {
 	}
 
 	public String VerifierName() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtDataBaseVerifierName");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierName");
 	}
 
 	public void VerifierDesignation(String relationship) {
@@ -321,7 +321,7 @@ public void addDBCheck() {
 	}
 
 	public String VerifierDesignation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtDataBaseVerifierDesignation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierDesignation");
 	}
 
 	public void VerifierContactNo(String relationship) {
@@ -329,7 +329,7 @@ public void addDBCheck() {
 	}
 
 	public String VerifierContactNo() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtDataBaseVerifierContactNo");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierContactNo");
 	}
 
 	public void VerifierEmail(String relationship) {
@@ -337,7 +337,7 @@ public void addDBCheck() {
 	}
 
 	public String VerifierEmail() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtDataBaseVerifierEmailID");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierEmailID");
 	}
 
 	public void Ver_Comments(String comments) {
@@ -345,7 +345,7 @@ public void addDBCheck() {
 	}
 
 	public String Ver_Comments() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtDataBaseVerifierComments");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierComments");
 	}
 
 	public void ComponentStatus(String status) {

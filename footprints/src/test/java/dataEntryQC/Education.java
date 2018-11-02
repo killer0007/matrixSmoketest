@@ -3,6 +3,7 @@ package dataEntryQC;
 import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
@@ -286,9 +287,9 @@ public class Education extends DataEntryQCPage {
 	public String Comments() {
 		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEducationAdditionalComments");
 	}
-	public LinkedHashMap<String, String> twelveth() throws Exception{
+	public Map<String, String> twelveth() throws Exception{
 		this.Component("12th");
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		map.put("Component", this.Component());
 		map.put("InstituteName", this.InstituteName());
 		map.put("InstituteAddressLine1", this.InstituteAddressLine1());
@@ -315,9 +316,9 @@ public class Education extends DataEntryQCPage {
 		this.submit();
 		return map;
 	}
-	public LinkedHashMap<String, String> ugone() throws Exception{
+	public Map<String, String> ugone() throws Exception{
 		this.Component("UG1");
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		map.put("Component", this.Component());
 		map.put("UG1InstituteName", this.InstituteName());
 		map.put("UG1InstituteAddressLine1", this.InstituteAddressLine1());
@@ -344,8 +345,8 @@ public class Education extends DataEntryQCPage {
 		this.submit();
 		return map;
 	}
-	public LinkedHashMap<String, String> filedata(String component) throws Exception{
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+	public Map<String, String> filedata(String component) throws Exception{
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		Properties pro= pages.Utill().dedata("education");
 		if(component.equals("12th")) {
 		map.put("Component", "12th");

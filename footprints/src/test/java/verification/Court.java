@@ -1,6 +1,9 @@
 package verification;
 
+import java.io.File;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
@@ -257,7 +260,21 @@ public class Court extends Verification {
 		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmCourtDocument_C_btnCourtDocumentCancel_input");
 		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
-
+	/**
+	 * Takes Document type as input and return the name of uploaded document
+	 * 
+	 * @param doctype Type of Document
+	 * @return document name
+	 */
+	public String getDocumentName(String doctype) {
+		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmCourtDocument_C_grdCourtDocumentList_ctl00']//*[text()='"
+				+ doctype + "']/../td[5]//td[1]/span";
+		if (this.isvaliddoctype(doctype)) {
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
+		} else {
+			throw new NotFoundException(doctype);
+		}
+	}
 	public void Proceedings(String name) {
 		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlProceeding_Input");
 		if (value.equals(name)) {
@@ -357,7 +374,7 @@ public class Court extends Verification {
 	}
 
 	public String RespondentName() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCourtRespondentName");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCourtRespondentName");
 	}
 
 	public void RelationshipToCandidate(String relationship) {
@@ -365,7 +382,7 @@ public class Court extends Verification {
 	}
 
 	public String RelationshipToCandidate() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCourtRespondentDesignation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCourtRespondentDesignation");
 	}
 
 	public void Ver_Comments(String comments) {
@@ -373,7 +390,7 @@ public class Court extends Verification {
 	}
 
 	public String Ver_Comments() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCourtVerifierComments");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCourtVerifierComments");
 	}
 
 	public void ComponentStatus(String status) {
@@ -414,7 +431,7 @@ public class Court extends Verification {
 	}
 
 	public String DateOfInitiation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCourtDateOfInitiation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCourtDateOfInitiation");
 	}
 
 	public void ModeOfVerification(String mode) {
@@ -439,7 +456,7 @@ public class Court extends Verification {
 	}
 
 	public String DateOfVerification() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCourtDateOfVerification");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCourtDateOfVerification");
 	}
 
 	public void ServiceProvider(String name) {
@@ -479,5 +496,120 @@ public class Court extends Verification {
 		this.ModeOfVerification(pro.getProperty("ModeOfVerification"));
 		this.DateOfVerification(pages.Utill().getCurrentDate("dd/MM/yyyy"));
 		this.submit();
+	}
+	public Map<String, String> CurrentAddress() throws Exception{
+		this.courtcheck();
+		this.Component("Current Address Court Check");
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("AddressLine1", this.AddressLine1());
+		map.put("Country", this.Country());
+		map.put("State", this.getState());
+		map.put("City", this.getCity());
+		map.put("Pincode", this.Pincode());
+		map.put("Landmark", this.Landmark());
+		map.put("FromDate", this.FromDate());
+		map.put("ToDate", this.ToDate());
+		map.put("currentcommments", this.Comments());
+		this.document();
+		map.put("currentAddressproof", this.getDocumentName("Verification Report"));
+		this.docclose();
+		map.put("RespondentName", this.RespondentName());
+		map.put("RelationshipToCandidate", this.RelationshipToCandidate());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		map.put("DateOfInitiation", this.DateOfInitiation());
+		map.put("ModeOfVerification", this.ModeOfVerification());
+		map.put("DateOfVerification", this.DateOfVerification());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	public Map<String, String> PermanentAdress() throws Exception{
+		this.courtcheck();
+		this.Component("Permanent Court Check");
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("AddressLine1", this.AddressLine1());
+		map.put("Country", this.Country());
+		map.put("State", this.getState());
+		map.put("City", this.getCity());
+		map.put("Pincode", this.Pincode());
+		map.put("Landmark", this.Landmark());
+		map.put("FromDate", this.FromDate());
+		map.put("ToDate", this.ToDate());
+		map.put("permanentcomments", this.Comments());
+		this.document();
+		map.put("perAddressproof", this.getDocumentName("Verification Report"));
+		this.docclose();
+		map.put("RespondentName", this.RespondentName());
+		map.put("RelationshipToCandidate", this.RelationshipToCandidate());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		map.put("DateOfInitiation", this.DateOfInitiation());
+		map.put("ModeOfVerification", this.ModeOfVerification());
+		map.put("DateOfVerification", this.DateOfVerification());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	public Map<String, String> filedata() throws Exception{
+		String date = pages.Utill().getCurrentDate("dd/MM/yyyy");
+		String component=this.Component();
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		Properties pro= pages.Utill().dedata("address");
+		Properties court= pages.Utill().veridata("court");
+		if(component.equals("Current Address Court Check")) {
+		map.put("Component", "Current Address Court Check");
+		map.put("AddressLine1", pro.getProperty("AddressLine1"));
+		map.put("Country", pro.getProperty("Country"));
+		map.put("State", pro.getProperty("State"));
+		map.put("City", pro.getProperty("City"));
+		map.put("Pincode", pro.getProperty("Pincode"));
+		map.put("Landmark", pro.getProperty("Landmark"));
+		map.put("FromDate", pro.getProperty("FromDate"));
+		map.put("ToDate", pro.getProperty("ToDate"));
+		map.put("currentcommments", court.getProperty("currentcommments"));
+		map.put("currentAddressproof", new File(court.getProperty("currentAddressproof")).getName().replaceAll(" ", ""));
+		map.put("RespondentName", court.getProperty("RespondentName"));
+		map.put("RelationshipToCandidate", court.getProperty("RelationshipToCandidate"));
+		map.put("Ver_Comments", court.getProperty("verComments"));
+		map.put("ComponentStatus", court.getProperty("ComponentStatus"));
+		map.put("ModeOfInitiation", court.getProperty("ModeOfInitiation"));
+		map.put("DateOfInitiation", date);
+		map.put("ModeOfVerification", court.getProperty("ModeOfVerification"));
+		map.put("DateOfVerification", date);
+		map.put("ServiceProvider", court.getProperty("ServiceProvider"));
+		logger.log(Status.INFO, map.toString());
+		return map;
+		}
+		else if(component.equals("Permanent Court Check")) {
+			map.put("Component", "Permanent Court Check");
+			map.put("AddressLine1", pro.getProperty("AddressLine1"));
+			map.put("Country", pro.getProperty("Country"));
+			map.put("State", pro.getProperty("State"));
+			map.put("City", pro.getProperty("City"));
+			map.put("Pincode", pro.getProperty("Pincode"));
+			map.put("Landmark", pro.getProperty("Landmark"));
+			map.put("FromDate", pro.getProperty("FromDate"));
+			map.put("ToDate", pro.getProperty("ToDate"));
+			map.put("permanentcomments", court.getProperty("permanentcomments"));
+			map.put("perAddressproof", new File(court.getProperty("perAddressproof")).getName().replaceAll(" ", ""));
+			map.put("RespondentName", court.getProperty("RespondentName"));
+			map.put("RelationshipToCandidate", court.getProperty("RelationshipToCandidate"));
+			map.put("Ver_Comments", court.getProperty("verComments"));
+			map.put("ComponentStatus", court.getProperty("ComponentStatus"));
+			map.put("ModeOfInitiation", court.getProperty("ModeOfInitiation"));
+			map.put("DateOfInitiation", date);
+			map.put("ModeOfVerification", court.getProperty("ModeOfVerification"));
+			map.put("DateOfVerification", date);
+			map.put("ServiceProvider", court.getProperty("ServiceProvider"));
+			logger.log(Status.INFO, map.toString());
+			return map;
+		}
+		else
+			throw new NotFoundException();
 	}
 }

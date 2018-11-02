@@ -1,6 +1,9 @@
 package verification;
 
+import java.io.File;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.activity.InvalidActivityException;
@@ -294,6 +297,22 @@ public class Criminal extends Verification {
 		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmCriminalDocument_C_btnCriminalDocumentCancel_input");
 		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
+	/**
+	 * Takes Document type as input and return the name of uploaded document
+	 * 
+	 * @param doctype Type of Document
+	 * @return document name
+	 */
+	public String getDocumentName(String doctype) {
+
+		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmCriminalDocument_C_grdCriminalDocumentList_ctl00']//*[text()='"
+				+ doctype + "']/../td[5]//td[1]/span";
+		if (this.isvaliddoctype(doctype)) {
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
+		} else {
+			throw new NotFoundException(doctype);
+		}
+	}
 	public String Component() {
 		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCriminalComponent_Input");
 	}
@@ -342,7 +361,7 @@ public class Criminal extends Verification {
 	}
 
 	public String RespondentName() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCriminalRespondentName");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCriminalRespondentName");
 	}
 
 	
@@ -352,7 +371,7 @@ public class Criminal extends Verification {
 	}
 
 	public String Ver_Comments() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCriminalVerifierComments");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCriminalVerifierComments");
 	}
 
 	public void ComponentStatus(String status) {
@@ -393,7 +412,7 @@ public class Criminal extends Verification {
 	}
 
 	public String DateOfInitiation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCriminalDateOfInitiation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCriminalDateOfInitiation");
 	}
 
 	public void ModeOfVerification(String mode) {
@@ -418,7 +437,7 @@ public class Criminal extends Verification {
 	}
 
 	public String DateOfVerification() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCriminalDateOfVerification");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCriminalDateOfVerification");
 	}
 
 	public void ServiceProvider(String name) {
@@ -456,5 +475,121 @@ public class Criminal extends Verification {
 		this.ModeOfVerification(pro.getProperty("ModeOfVerification"));
 		this.DateOfVerification(pages.Utill().getCurrentDate("dd/MM/yyyy"));
 		this.submit();
+	}
+	public Map<String, String> CurrentAddress() throws Exception{
+		this.criminalcheck();
+		this.Component("Current Address Criminal Check");
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("AddressLine1", this.AddressLine1());
+		map.put("Country", this.Country());
+		map.put("State", this.getState());
+		map.put("City", this.getCity());
+		map.put("Pincode", this.Pincode());
+		map.put("Landmark", this.Landmark());
+		map.put("FromDate", this.FromDate());
+		map.put("ToDate", this.ToDate());
+		map.put("cpolicestation", this.PoliceStation());
+		map.put("ccomments", this.Comments());
+		this.document();
+		map.put("currentAddressproof", this.getDocumentName("Verification Report"));
+		this.docclose();
+		map.put("RespondentName", this.RespondentName());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		map.put("DateOfInitiation", this.DateOfInitiation());
+		map.put("ModeOfVerification", this.ModeOfVerification());
+		map.put("DateOfVerification", this.DateOfVerification());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	public Map<String, String> PermanentAdress() throws Exception{
+		this.criminalcheck();
+		this.Component("Permanent Criminal Check");
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("AddressLine1", this.AddressLine1());
+		map.put("Country", this.Country());
+		map.put("State", this.getState());
+		map.put("City", this.getCity());
+		map.put("Pincode", this.Pincode());
+		map.put("Landmark", this.Landmark());
+		map.put("FromDate", this.FromDate());
+		map.put("ToDate", this.ToDate());
+		map.put("ppolicestation", this.PoliceStation());
+		map.put("pcomments", this.Comments());
+		this.document();
+		map.put("perAddressproof", this.getDocumentName("Verification Report"));
+		this.docclose();
+		map.put("RespondentName", this.RespondentName());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		map.put("DateOfInitiation", this.DateOfInitiation());
+		map.put("ModeOfVerification", this.ModeOfVerification());
+		map.put("DateOfVerification", this.DateOfVerification());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	public Map<String, String> filedata() throws Exception{
+	String date= pages.Utill().getCurrentDate("dd/MM/yyyy");
+		String component=this.Component();
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		Properties pro= pages.Utill().dedata("address");
+		Properties cri= pages.Utill().veridata("criminal");
+		if(component.equals("Current Address Criminal Check")) {
+		map.put("Component", "Current Address Criminal Check");
+		map.put("AddressLine1", pro.getProperty("AddressLine1"));
+		map.put("Country", pro.getProperty("Country"));
+		map.put("State", pro.getProperty("State"));
+		map.put("City", pro.getProperty("City"));
+		map.put("Pincode", pro.getProperty("Pincode"));
+		map.put("Landmark", pro.getProperty("Landmark"));
+		map.put("FromDate", pro.getProperty("FromDate"));
+		map.put("ToDate", pro.getProperty("ToDate"));
+		map.put("cpolicestation", cri.getProperty("cpolicestation"));
+		map.put("ccomments", cri.getProperty("ccomments"));
+		map.put("currentAddressproof", new File(cri.getProperty("currentAddressproof")).getName().replaceAll(" ", ""));
+		map.put("RespondentName", cri.getProperty("RespondentName"));
+		map.put("Ver_Comments", cri.getProperty("verComments"));
+		map.put("ComponentStatus", cri.getProperty("ComponentStatus"));
+		map.put("ModeOfInitiation", cri.getProperty("ModeOfInitiation"));
+		map.put("DateOfInitiation", date);
+		map.put("ModeOfVerification", cri.getProperty("ModeOfVerification"));
+		map.put("DateOfVerification", date);
+		map.put("ServiceProvider", cri.getProperty("ServiceProvider"));
+		logger.log(Status.INFO, map.toString());
+		return map;
+		}
+		else if(component.equals("Permanent Criminal Check")) {
+			map.put("Component", "Permanent Criminal Check");
+			map.put("AddressLine1", pro.getProperty("AddressLine1"));
+			map.put("Country", pro.getProperty("Country"));
+			map.put("State", pro.getProperty("State"));
+			map.put("City", pro.getProperty("City"));
+			map.put("Pincode", pro.getProperty("Pincode"));
+			map.put("Landmark", pro.getProperty("Landmark"));
+			map.put("FromDate", pro.getProperty("FromDate"));
+			map.put("ToDate", pro.getProperty("ToDate"));
+			map.put("ppolicestation", cri.getProperty("ppolicestation"));
+			map.put("pcomments", cri.getProperty("pcomments"));
+			map.put("perAddressproof", new File(cri.getProperty("perAddressproof")).getName().replaceAll(" ", ""));
+			map.put("RespondentName", cri.getProperty("RespondentName"));
+			map.put("Ver_Comments", cri.getProperty("verComments"));
+			map.put("ComponentStatus", cri.getProperty("ComponentStatus"));
+			map.put("ModeOfInitiation", cri.getProperty("ModeOfInitiation"));
+			map.put("DateOfInitiation", date);
+			map.put("ModeOfVerification", cri.getProperty("ModeOfVerification"));
+			map.put("DateOfVerification", date);
+			map.put("ServiceProvider", cri.getProperty("ServiceProvider"));
+			logger.log(Status.INFO, map.toString());
+
+			return map;
+		}
+		else
+			throw new NotFoundException();
 	}
 }

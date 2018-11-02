@@ -5,18 +5,12 @@ import static org.testng.Assert.assertEquals;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
-import org.testng.asserts.SoftAssert;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -89,25 +83,20 @@ public class Basic {
 
 	@Test(priority = 4, enabled = true)
 	public void dataEntry() throws Exception {
+		refno = "HDFC000670";
+		pages.ReportGeneration().reportGeneration();
+		pages.ReportGeneration().Search(refno);
+		pages.ReportGeneration().Select(refno);
+		Drug drug = new Drug(driver, logger);
+		Map<String, String> actual=drug.drug();
+		Map<String, String> expected=drug.filedata();
+		assertEquals(actual, expected);
+		System.out.println(actual);
+		System.out.println(expected);
 	
-		refno = "HDFC000642";
-//	pages.ReportGenerationSupervision().reportGenerationSupervision();
-//	pages.ReportGenerationSupervision().assigngetnext(refno);;
-		List<String> components= new ArrayList<String>(Arrays.asList(pages.CaseRegistration().getcomponents()));
-		pages.Home().CaseTracker();
-		pages.CaseTracker().search(refno);
-		pages.CaseTracker().clickcase(refno);
-		SoftAssert sf = new SoftAssert();
-		List<HashMap<String, String>> data =pages.CaseTracker().getcasedata();
-		for (HashMap<String, String> d:data) {
-			if(components.contains(d.get("ComponentName"))) {
-				sf.assertEquals(d.get("CurrentStage"), "Report Generation Pending");
-			}
-		}
-		pages.CaseTracker().cancel();
-		sf.assertAll();
+		
 	}
-
+	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {

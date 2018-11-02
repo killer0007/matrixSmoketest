@@ -3,6 +3,7 @@ package dataEntryQC;
 import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
@@ -263,8 +264,8 @@ public class Reference extends DataEntryQCPage {
 	public String Comments() {
 		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtRefComments");
 	}
-	public LinkedHashMap<String, String> Referenceone() throws Exception{
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+	public Map<String, String> Referenceone() throws Exception{
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		map.put("Component", this.Component());
 		map.put("ReferenceType", this.ReferenceType());
 		map.put("ReferrerName", this.ReferrerName());
@@ -287,8 +288,8 @@ public class Reference extends DataEntryQCPage {
 		this.submit();
 		return map;
 	}
-	public LinkedHashMap<String, String> filedata() throws Exception{
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+	public Map<String, String> filedata() throws Exception{
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		Properties pro= pages.Utill().dedata("reference");
 		map.put("Component", "Reference 1");
 		map.put("ReferenceType", pro.getProperty("ReferenceType"));

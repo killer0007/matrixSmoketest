@@ -3,6 +3,7 @@ package dataEntryQC;
 import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -253,9 +254,9 @@ public class Court extends DataEntryQCPage{
 	public String Comments() {
 		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCourtComments");
 	}
-	public LinkedHashMap<String, String> CurrentAddress() throws Exception{
+	public Map<String, String> CurrentAddress() throws Exception{
 		this.Component("Current Address Court Check");
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		map.put("Component", this.Component());
 		map.put("AddressLine1", this.AddressLine1());
 		map.put("Country", this.Country());
@@ -272,9 +273,9 @@ public class Court extends DataEntryQCPage{
 		this.submit();
 		return map;
 	}
-	public LinkedHashMap<String, String> PermanentAdress() throws Exception{
+	public Map<String, String> PermanentAdress() throws Exception{
 		this.Component("Permanent Court Check");
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		map.put("Component", this.Component());
 		map.put("AddressLine1", this.AddressLine1());
 		map.put("Country", this.Country());
@@ -291,8 +292,8 @@ public class Court extends DataEntryQCPage{
 		this.submit();
 		return map;
 	}
-	public LinkedHashMap<String, String> filedata(String component) throws Exception{
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+	public Map<String, String> filedata(String component) throws Exception{
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		Properties pro= pages.Utill().dedata("address");
 		Properties court= pages.Utill().dedata("court");
 		if(component.equals("Current Address Court Check")) {

@@ -1,6 +1,9 @@
 package verification;
 
+import java.io.File;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -300,6 +303,22 @@ public class Reference extends Verification {
 		
 	}
 	/**
+	 * Takes Document type as input and return the name of uploaded document
+	 * 
+	 * @param doctype Type of Document
+	 * @return document name
+	 */
+	public String getDocumentName(String doctype) {
+
+		String path = "//table[@id='ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_grdDocumentList_Ref_ctl00']//*[text()='"
+				+ doctype + "']/../td[5]//td[1]/span";
+		if (this.isvaliddoctype(doctype)) {
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
+		} else {
+			throw new NotFoundException(doctype);
+		}
+	}
+	/**
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
@@ -387,7 +406,7 @@ public class Reference extends Verification {
 	}
 
 	public String RespondentName() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtRefNameOfRespondent");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtRefNameOfRespondent");
 	}
 
 	public void RespondentDesignation(String relationship) {
@@ -395,14 +414,14 @@ public class Reference extends Verification {
 	}
 
 	public String RespondentDesignation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtRefRespondentDesignation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtRefRespondentDesignation");
 	}
 	public void RespondentContactNo(String relationship) {
 		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtRefRespondentContactNoEmail", relationship);
 	}
 
 	public String RespondentContactNo() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtRefRespondentContactNoEmail");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtRefRespondentContactNoEmail");
 	}
 	
 	public void Ver_Comments(String comments) {
@@ -410,7 +429,7 @@ public class Reference extends Verification {
 	}
 
 	public String Ver_Comments() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtRefVerifierRemarks");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtRefVerifierRemarks");
 	}
 
 	public void ComponentStatus(String status) {
@@ -451,7 +470,7 @@ public class Reference extends Verification {
 	}
 
 	public String DateOfInitiation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtModeOfInitiationdate");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtModeOfInitiationdate");
 	}
 
 	public void ModeOfVerification(String mode) {
@@ -476,7 +495,7 @@ public class Reference extends Verification {
 	}
 
 	public String DateOfVerification() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtModeOfVerificationDate");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtModeOfVerificationDate");
 	}
 
 	public void ServiceProvider(String name) {
@@ -511,4 +530,73 @@ public class Reference extends Verification {
 		this.DateOfVerification(pages.Utill().getCurrentDate("dd/MM/yyyy"));
 		this.submit();
 	}
+	public Map<String, String> Referenceone() throws Exception{
+		this.referencecheck();
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("ReferenceType", this.ReferenceType());
+		map.put("ReferrerName", this.ReferrerName());
+		map.put("ReferrerDesignation", this.ReferrerDesignation());
+		map.put("ReferrerContactNo", this.ReferrerContactNo());
+		map.put("ReferrerEmailId", this.ReferrerEmailId());
+		map.put("ReferrerAddressLine1", this.ReferrerAddressLine1());
+		map.put("ReferrerCountry", this.ReferrerCountry());
+		map.put("ReferrerState", this.ReferrerState());
+		map.put("ReferrerCity", this.ReferrerCity());
+		map.put("ReferrerPincode", this.ReferrerPincode());
+		map.put("Organizationname", this.Organizationname());
+		map.put("OrganizationCountry", this.OrganizationCountry());
+		map.put("OrganizationState", this.getOrganizationState());
+		map.put("OrganizationCity", this.getOrganizationCity());
+		map.put("Comments", this.Comments());
+		this.document();
+		map.put("refonedoc", this.getDocumentName("Verification Report"));
+		this.docclose();
+		map.put("RespondentName", this.RespondentName());
+		map.put("RespondentDesignation", this.RespondentDesignation());
+		map.put("RespondentContactNo", this.RespondentContactNo());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		map.put("DateOfInitiation", this.DateOfInitiation());
+		map.put("ModeOfVerification", this.ModeOfVerification());
+		map.put("DateOfVerification", this.DateOfVerification());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	public Map<String, String> filedata() throws Exception{
+		String date =pages.Utill().getCurrentDate("dd/MM/yyyy");
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		Properties pro= pages.Utill().veridata("reference");
+		map.put("Component", "Reference 1");
+		map.put("ReferenceType", pro.getProperty("ReferenceType"));
+		map.put("ReferrerName", pro.getProperty("ReferrerName"));
+		map.put("ReferrerDesignation", pro.getProperty("ReferrerDesignation"));
+		map.put("ReferrerContactNo", pro.getProperty("ReferrerContactNo"));
+		map.put("ReferrerEmailId", pro.getProperty("ReferrerEmailId"));
+		map.put("ReferrerAddressLine1", pro.getProperty("ReferrerAddressLine1"));
+		map.put("ReferrerCountry", pro.getProperty("ReferrerCountry"));
+		map.put("ReferrerState", pro.getProperty("ReferrerState"));
+		map.put("ReferrerCity", pro.getProperty("ReferrerCity"));
+		map.put("ReferrerPincode", pro.getProperty("ReferrerPincode"));
+		map.put("Organizationname", pro.getProperty("Organizationname"));
+		map.put("OrganizationCountry", pro.getProperty("OrganizationCountry"));
+		map.put("OrganizationState", pro.getProperty("OrganizationState"));
+		map.put("OrganizationCity", pro.getProperty("OrganizationCity"));
+		map.put("Comments", pro.getProperty("Comments"));
+		map.put("refonedoc", new File(pro.getProperty("refonedoc")).getName().replaceAll(" ", ""));
+		map.put("RespondentName", pro.getProperty("RespondentName"));
+		map.put("RespondentDesignation", pro.getProperty("RespondentDesignation"));
+		map.put("RespondentContactNo", pro.getProperty("RespondentContactNo"));
+		map.put("Ver_Comments", pro.getProperty("verComments"));
+		map.put("ComponentStatus", pro.getProperty("ComponentStatus"));
+		map.put("ModeOfInitiation", pro.getProperty("ModeOfInitiation"));
+		map.put("DateOfInitiation", date);
+		map.put("ModeOfVerification", pro.getProperty("ModeOfVerification"));
+		map.put("DateOfVerification", date);
+		map.put("ServiceProvider", pro.getProperty("ServiceProvider"));
+		logger.log(Status.INFO, map.toString());
+		return map;
+		}
 }

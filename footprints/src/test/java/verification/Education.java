@@ -1,6 +1,9 @@
 package verification;
 
+import java.io.File;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -360,7 +363,22 @@ public class Education extends Verification {
 		}
 
 	}
+	/**
+	 * Takes Document type as input and return the name of uploaded document
+	 * 
+	 * @param doctype Type of Document
+	 * @return document name
+	 */
+	public String getDocumentName(String doctype) {
 
+		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_gviewEducationDocument_ctl00']//*[text()='"
+				+ doctype + "']/../td[5]//td[1]/span";
+		if (this.isvaliddoctype(doctype)) {
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
+		} else {
+			throw new NotFoundException(doctype);
+		}
+	}
 	/**
 	 * Perform close action on close button in document upload popup
 	 */
@@ -453,7 +471,7 @@ public class Education extends Verification {
 	}
 
 	public String RespondentName() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEducationNameOftheRespondent");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationNameOftheRespondent");
 	}
 
 	public void RespondentDesignation(String relationship) {
@@ -461,7 +479,7 @@ public class Education extends Verification {
 	}
 
 	public String RespondentDesignation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEducationRespondentDesignation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationRespondentDesignation");
 	}
 	public void RespondentContactNo(String relationship) {
 		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationRespondentContactNoEmailID", relationship);
@@ -476,7 +494,7 @@ public class Education extends Verification {
 	}
 
 	public String Ver_Comments() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEducationVerifierRemarks");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationVerifierRemarks");
 	}
 
 	public void ComponentStatus(String status) {
@@ -517,7 +535,7 @@ public class Education extends Verification {
 	}
 
 	public String DateOfInitiation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEducationDateOfInitiation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationDateOfInitiation");
 	}
 
 	public void ModeOfVerification(String mode) {
@@ -542,7 +560,7 @@ public class Education extends Verification {
 	}
 
 	public String DateOfVerification() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEducationDateOfVerification");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationDateOfVerification");
 	}
 
 	public void ServiceProvider(String name) {
@@ -582,5 +600,165 @@ public class Education extends Verification {
 		this.ModeOfVerification(pro.getProperty("ModeOfVerification"));
 		this.DateOfVerification(pages.Utill().getCurrentDate("dd/MM/yyyy"));
 		this.submit();
+	}
+	public Map<String, String> twelveth() throws Exception{
+		this.educationcheck();
+		this.Component("12th");
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("InstituteName", this.InstituteName());
+//		map.put("InstituteAddressLine1", this.InstituteAddressLine1());
+		map.put("InstituteCountry", this.InstituteCountry());
+		map.put("InstituteState", this.getInstituteState());
+		map.put("InstituteCity", this.getInstituteCity());
+		map.put("BoardName", this.BoardName());
+//		map.put("BoardAddressLine1", this.BoardAddressLine1());
+		map.put("BoardCountry", this.BoardCountry());
+		map.put("BoardState", this.getBoardState());
+		map.put("BoardCity", this.getBoardCity());
+		map.put("NameOfCourse", this.NameOfCourse());
+		map.put("MajorSubject", this.MajorSubject());
+		map.put("TypeOfProgram", this.TypeOfProgram());
+		map.put("CandidateNameinCertificate", this.CandidateNameinCertificate());
+		map.put("Enrollment", this.Enrollment());
+		map.put("CGPA", this.CGPA());
+		map.put("CourseCommencementYear", this.CourseCommencementYear());
+		map.put("CourseCompletionYear", this.CourseCompletionYear());
+		map.put("Comments", this.Comments());
+		this.document();
+		map.put("twelveth", this.getDocumentName("Verification Report"));
+		this.docclose();
+		map.put("RespondentName", this.RespondentName());
+		map.put("RespondentDesignation", this.RespondentDesignation());
+		map.put("RespondentContactNo", this.RespondentContactNo());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		map.put("DateOfInitiation", this.DateOfInitiation());
+		map.put("ModeOfVerification", this.ModeOfVerification());
+		map.put("DateOfVerification", this.DateOfVerification());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	public Map<String, String> ugone() throws Exception{
+		this.educationcheck();
+		this.Component("UG1");
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("UG1InstituteName", this.InstituteName());
+//		map.put("UG1InstituteAddressLine1", this.InstituteAddressLine1());
+		map.put("UG1InstituteCountry", this.InstituteCountry());
+		map.put("UG1InstituteState", this.getInstituteState());
+		map.put("UG1InstituteCity", this.getInstituteCity());
+		map.put("UG1BoardName", this.BoardName());
+		map.put("UG1BoardAddressLine1", this.BoardAddressLine1());
+		map.put("UG1BoardCountry", this.BoardCountry());
+		map.put("UG1BoardState", this.getBoardState());
+		map.put("UG1BoardCity", this.getBoardCity());
+		map.put("UG1NameOfCourse", this.NameOfCourse());
+		map.put("UG1MajorSubject", this.MajorSubject());
+		map.put("UG1TypeOfProgram", this.TypeOfProgram());
+		map.put("UG1CandidateNameinCertificate", this.CandidateNameinCertificate());
+		map.put("UG1Enrollment", this.Enrollment());
+		map.put("UG1CGPA", this.CGPA());
+		map.put("UG1CourseCommencementYear", this.CourseCommencementYear());
+		map.put("UG1CourseCompletionYear", this.CourseCompletionYear());
+		map.put("UG1Comments", this.Comments());
+		this.document();
+		map.put("ugone", this.getDocumentName("Verification Report"));
+		this.docclose();
+		map.put("RespondentName", this.RespondentName());
+		map.put("RespondentDesignation", this.RespondentDesignation());
+		map.put("RespondentContactNo", this.RespondentContactNo());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		map.put("DateOfInitiation", this.DateOfInitiation());
+		map.put("ModeOfVerification", this.ModeOfVerification());
+		map.put("DateOfVerification", this.DateOfVerification());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	public Map<String, String> filedata() throws Exception{
+		String date=pages.Utill().getCurrentDate("dd/MM/yyyy");
+		String component=this.Component();
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		Properties pro= pages.Utill().veridata("education");
+		if(component.equals("12th")) {
+		map.put("Component", "12th");
+		map.put("InstituteName", pro.getProperty("InstituteName"));
+//		map.put("InstituteAddressLine1", pro.getProperty("InstituteAddressLine1"));
+		map.put("InstituteCountry", pro.getProperty("InstituteCountry"));
+		map.put("InstituteState", pro.getProperty("InstituteState"));
+		map.put("InstituteCity", pro.getProperty("InstituteCity"));
+		map.put("BoardName", pro.getProperty("BoardName"));
+//		map.put("BoardAddressLine1", pro.getProperty("BoardAddressLine1"));
+		map.put("BoardCountry", pro.getProperty("BoardCountry"));
+		map.put("BoardState", pro.getProperty("BoardState"));
+		map.put("BoardCity", pro.getProperty("BoardCity"));
+		map.put("NameOfCourse", pro.getProperty("NameOfCourse"));
+		map.put("MajorSubject", pro.getProperty("MajorSubject"));
+		map.put("TypeOfProgram", pro.getProperty("TypeOfProgram").trim());
+		map.put("CandidateNameinCertificate", pro.getProperty("CandidateNameinCertificate"));
+		map.put("Enrollment", pro.getProperty("Enrollment"));
+		map.put("CGPA", pro.getProperty("CGPA"));
+		map.put("CourseCommencementYear", pro.getProperty("CourseCommencementYear"));
+		map.put("CourseCompletionYear", pro.getProperty("CourseCompletionYear"));
+		map.put("Comments", pro.getProperty("Comments"));
+		map.put("twelveth", new File(pro.getProperty("twelveth")).getName().replaceAll(" ", ""));
+		map.put("RespondentName", pro.getProperty("RespondentName"));
+		map.put("RespondentDesignation", pro.getProperty("RespondentDesignation"));
+		map.put("RespondentContactNo", pro.getProperty("RespondentContactNo"));
+		map.put("Ver_Comments", pro.getProperty("verComments"));
+		map.put("ComponentStatus", pro.getProperty("ComponentStatus"));
+		map.put("ModeOfInitiation", pro.getProperty("ModeOfInitiation"));
+		map.put("DateOfInitiation", date);
+		map.put("ModeOfVerification", pro.getProperty("ModeOfVerification"));
+		map.put("DateOfVerification", date);
+		map.put("ServiceProvider", pro.getProperty("ServiceProvider"));
+		logger.log(Status.INFO, map.toString());
+		return map;
+		}
+		
+	
+	else if(component.equals("UG1")) {
+		map.put("Component", "UG1");
+		map.put("UG1InstituteName", pro.getProperty("UG1InstituteName"));
+//		map.put("UG1InstituteAddressLine1", pro.getProperty("UG1InstituteAddressLine1"));
+		map.put("UG1InstituteCountry", pro.getProperty("UG1InstituteCountry"));
+		map.put("UG1InstituteState", pro.getProperty("UG1InstituteState"));
+		map.put("UG1InstituteCity", pro.getProperty("UG1InstituteCity"));
+		map.put("UG1BoardName", pro.getProperty("UG1BoardName"));
+		map.put("UG1BoardAddressLine1", pro.getProperty("UG1BoardAddressLine1"));
+		map.put("UG1BoardCountry", pro.getProperty("UG1BoardCountry"));
+		map.put("UG1BoardState", pro.getProperty("UG1BoardState"));
+		map.put("UG1BoardCity", pro.getProperty("UG1BoardCity"));
+		map.put("UG1NameOfCourse", pro.getProperty("UG1NameOfCourse"));
+		map.put("UG1MajorSubject", pro.getProperty("UG1MajorSubject"));
+		map.put("UG1TypeOfProgram", pro.getProperty("UG1TypeOfProgram").trim());
+		map.put("UG1CandidateNameinCertificate", pro.getProperty("UG1CandidateNameinCertificate"));
+		map.put("UG1Enrollment", pro.getProperty("UG1Enrollment"));
+		map.put("UG1CGPA", pro.getProperty("UG1CGPA"));
+		map.put("UG1CourseCommencementYear", pro.getProperty("UG1CourseCommencementYear"));
+		map.put("UG1CourseCompletionYear", pro.getProperty("UG1CourseCompletionYear"));
+		map.put("UG1Comments", pro.getProperty("UG1Comments"));
+		map.put("ugone", new File(pro.getProperty("ugone")).getName().replaceAll(" ", ""));
+		map.put("RespondentName", pro.getProperty("RespondentName"));
+		map.put("RespondentDesignation", pro.getProperty("RespondentDesignation"));
+		map.put("RespondentContactNo", pro.getProperty("RespondentContactNo"));
+		map.put("Ver_Comments", pro.getProperty("verComments"));
+		map.put("ComponentStatus", pro.getProperty("ComponentStatus"));
+		map.put("ModeOfInitiation", pro.getProperty("ModeOfInitiation"));
+		map.put("DateOfInitiation", date);
+		map.put("ModeOfVerification", pro.getProperty("ModeOfVerification"));
+		map.put("DateOfVerification", date);
+		map.put("ServiceProvider", pro.getProperty("ServiceProvider"));
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	else
+		throw new NotFoundException();
 	}
 }

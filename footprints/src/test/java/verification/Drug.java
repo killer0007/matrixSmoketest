@@ -1,6 +1,9 @@
 package verification;
 
+import java.io.File;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -29,7 +32,7 @@ public class Drug extends Verification {
 	}
 
 	public String RespondentName() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtDrugMedicalRespondentName");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDrugMedicalRespondentName");
 	}
 
 	public void RespondentDesignation(String relationship) {
@@ -37,7 +40,7 @@ public class Drug extends Verification {
 	}
 
 	public String RespondentDesignation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtDrugMedicalRespondentDesignation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDrugMedicalRespondentDesignation");
 	}
 
 	public void RespondentContactNo(String relationship) {
@@ -45,7 +48,7 @@ public class Drug extends Verification {
 	}
 
 	public String RespondentContactNo() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtRespondentContactNoEmail");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtRespondentContactNoEmail");
 	}
 
 	public void Ver_Comments(String comments) {
@@ -53,7 +56,7 @@ public class Drug extends Verification {
 	}
 
 	public String Ver_Comments() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtDrugMedicalVerifierComments");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDrugMedicalVerifierComments");
 	}
 
 	public void ComponentStatus(String status) {
@@ -94,7 +97,7 @@ public class Drug extends Verification {
 	}
 
 	public String DateOfInitiation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtDrugMedicalDateOfInitiation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDrugMedicalDateOfInitiation");
 	}
 
 	public void ModeOfVerification(String mode) {
@@ -119,7 +122,7 @@ public class Drug extends Verification {
 	}
 
 	public String DateOfVerification() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtDrugMedicalDateOfVerification");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDrugMedicalDateOfVerification");
 	}
 
 	public void ServiceProvider(String name) {
@@ -287,6 +290,22 @@ public class Drug extends Verification {
 		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Utill().confirmAlert();
 	}
+	/**
+	 * Takes Document type as input and return the name of uploaded document
+	 * 
+	 * @param doctype Type of Document
+	 * @return document name
+	 */
+	public String getDocumentName(String doctype) {
+
+		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmDurgMedicalDocuments_C_gviewDrugMedicalDocuments_ctl00']//*[text()='"
+				+ doctype + "']/../td[5]//td[1]/span";
+		if (this.isvaliddoctype(doctype)) {
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
+		} else {
+			throw new NotFoundException(doctype);
+		}
+	}
 	public void Verification() throws Exception {
 		Properties pro = pages.Utill().veridata("drug");
 		this.drugCheck();
@@ -304,5 +323,49 @@ public class Drug extends Verification {
 		this.ModeOfVerification(pro.getProperty("ModeOfVerification"));
 		this.DateOfVerification(pages.Utill().getCurrentDate("dd/MM/yyyy"));
 		this.submit();
+	}
+	public Map<String, String> drug() throws Exception{
+		this.drugCheck();
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		this.document();
+		map.put("panel1", this.getDocumentName("Verification Report"));
+		this.docclose();
+		map.put("DrugTest", pages.Utill().getText("//tr[@id='ctl00_ContentPlaceHolder1_gviewDrugCheckElement_ctl00__0']/td[3]"));
+		map.put("Result", pages.Utill().getText("//tr[@id='ctl00_ContentPlaceHolder1_gviewDrugCheckElement_ctl00__0']/td[4]"));
+		map.put("Comments", pages.Utill().getText("//tr[@id='ctl00_ContentPlaceHolder1_gviewDrugCheckElement_ctl00__0']/td[5]"));
+		map.put("RespondentName", this.RespondentName());
+		map.put("RespondentDesignation", this.RespondentDesignation());
+		map.put("RespondentContactNo", this.RespondentContactNo());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		map.put("DateOfInitiation", this.DateOfInitiation());
+		map.put("ModeOfVerification", this.ModeOfVerification());
+		map.put("DateOfVerification", this.DateOfVerification());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	public Map<String, String> filedata() throws Exception{
+		String date=pages.Utill().getCurrentDate("dd/MM/yyyy");
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		Properties pro= pages.Utill().veridata("drug");
+		map.put("panel1", new File(pro.getProperty("panel1")).getName().replaceAll(" ", ""));
+		map.put("DrugTest", pro.getProperty("DrugTest"));
+		map.put("Result", pro.getProperty("Result"));
+		map.put("Comments", pro.getProperty("Comments"));
+		map.put("RespondentName", pro.getProperty("RespondentName"));
+		map.put("RespondentDesignation", pro.getProperty("RespondentDesignation"));
+		map.put("RespondentContactNo", pro.getProperty("RespondentContactNo"));
+		map.put("Ver_Comments", pro.getProperty("verComments"));
+		map.put("ComponentStatus", pro.getProperty("ComponentStatus"));
+		map.put("ModeOfInitiation", pro.getProperty("ModeOfInitiation"));
+		map.put("DateOfInitiation", date);
+		map.put("ModeOfVerification", pro.getProperty("ModeOfVerification"));
+		map.put("DateOfVerification", date);
+		map.put("ServiceProvider", pro.getProperty("ServiceProvider"));
+		logger.log(Status.INFO, map.toString());
+		return map;
+		
 	}
 }

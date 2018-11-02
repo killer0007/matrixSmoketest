@@ -1,6 +1,9 @@
 package verification;
 
+import java.io.File;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -39,6 +42,22 @@ public class Employment extends Verification{
 	public void document() {
 		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEmploymentDocumentUpload_input");
 		pages.Utill().waitUntilLoaderisInvisible(100);
+	}
+	/**
+	 * Takes Document type as input and return the name of uploaded document
+	 * 
+	 * @param doctype Type of Document
+	 * @return document name
+	 */
+	public String getDocumentName(String doctype) {
+
+		String path = "//table[@id='ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_grdviewEmploymentDocument_ctl00']//*[text()='"
+				+ doctype + "']/../td[5]//td[1]/span";
+		if (this.isvaliddoctype(doctype)) {
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
+		} else {
+			throw new NotFoundException(doctype);
+		}
 	}
 
 	/**
@@ -675,7 +694,7 @@ try {
 	}
 
 	public String RespondentName() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEmploymentRespondentName");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEmploymentRespondentName");
 	}
 
 	public void RespondentDesignation(String relationship) {
@@ -683,14 +702,14 @@ try {
 	}
 
 	public String RespondentDesignation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEmploymentRespondentDesignation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEmploymentRespondentDesignation");
 	}
 	public void RespondentContactNo(String relationship) {
 		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEmploymentRespondentContactNoEmailID", relationship);
 	}
 
 	public String RespondentContactNo() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEmploymentRespondentContactNoEmailID");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEmploymentRespondentContactNoEmailID");
 	}
 	
 	public void Ver_Comments(String comments) {
@@ -698,7 +717,7 @@ try {
 	}
 
 	public String Ver_Comments() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEmploymentVerifierRemarks");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEmploymentVerifierRemarks");
 	}
 
 	public void ComponentStatus(String status) {
@@ -739,7 +758,7 @@ try {
 	}
 
 	public String DateOfInitiation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEmploymentDateOfInitiation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEmploymentDateOfInitiation");
 	}
 
 	public void ModeOfVerification(String mode) {
@@ -764,7 +783,7 @@ try {
 	}
 
 	public String DateOfVerification() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEmploymentDateOfVerification");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEmploymentDateOfVerification");
 	}
 
 	public void ServiceProvider(String name) {
@@ -804,5 +823,190 @@ try {
 		this.ModeOfVerification(pro.getProperty("ModeOfVerification"));
 		this.DateOfVerification(pages.Utill().getCurrentDate("dd/MM/yyyy"));
 		this.submit();
+	}
+	public Map<String, String> CurrentEmp() throws Exception{
+		this.employementcheck();
+		this.Component("Current/Latest Employment");
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("cEmployerName", this.EmployerName());
+		map.put("cEmployerAddressLIne1", this.EmployerAddressLIne1());
+		map.put("cEmployerCountry", this.EmployerCountry());
+		map.put("cEmployerState", this.EmployerState());
+		map.put("cEmployerCity", this.EmployerCity());
+		//map.put("cEmployerNameasperEmployers", this.EmployerNameasperEmployers());
+		map.put("cEmploymentEmployeeID", this.EmploymentEmployeeID());
+		map.put("cEmploymentDesignation", this.EmploymentDesignation());
+		map.put("cEmploymentDepartment", this.EmploymentDepartment());
+		map.put("cEmploymentFromDate", this.EmploymentFromDate());
+		map.put("cEmploymentToDate", this.EmploymentToDate());
+		map.put("cEmploymentLastCTC", this.EmploymentLastCTC());
+		map.put("cEmploymentCurrency", this.EmploymentCurrency());
+		map.put("cEmploymentPeriod", this.EmploymentPeriod());
+		map.put("cEmploymentTypeOfEmployment", this.EmploymentTypeOfEmployment());
+		map.put("cPersonName", this.PersonName());
+		map.put("cPersonDesignation", this.PersonDesignation());
+		map.put("cPersonRelationship", this.PersonRelationship());
+		map.put("cPersonContactNo1", this.PersonContactNo1());
+		map.put("cPersonContactNo2", this.PersonContactNo2());
+		map.put("cPersonEmailID1", this.PersonEmailID1());
+		map.put("cPersonEmailID2", this.PersonEmailID2());
+		map.put("cPersonFaxNo", this.PersonFaxNo());
+		map.put("cReasonForLeaving", this.ReasonForLeaving());
+		map.put("cComments", this.Comments());
+		this.document();
+		map.put("currentemp", this.getDocumentName("Verification Report"));
+		this.docclose();
+		map.put("RespondentName", this.RespondentName());
+		map.put("RespondentDesignation", this.RespondentDesignation());
+		map.put("RespondentContactNo", this.RespondentContactNo());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		map.put("DateOfInitiation", this.DateOfInitiation());
+		map.put("ModeOfVerification", this.ModeOfVerification());
+		map.put("DateOfVerification", this.DateOfVerification());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	public Map<String, String> PerviousEmp() throws Exception{
+		this.employementcheck();
+		this.Component("Previous Employment");
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("Component", this.Component());
+		map.put("pEmployerName", this.EmployerName());
+		map.put("pEmployerAddressLIne1", this.EmployerAddressLIne1());
+		map.put("pEmployerCountry", this.EmployerCountry());
+		map.put("pEmployerState", this.EmployerState());
+		map.put("pEmployerCity", this.EmployerCity());
+		//map.put("pEmployerNameasperEmployers", this.EmployerNameasperEmployers());
+		map.put("pEmploymentEmployeeID", this.EmploymentEmployeeID());
+		map.put("pEmploymentDesignation", this.EmploymentDesignation());
+		map.put("pEmploymentDepartment", this.EmploymentDepartment());
+		map.put("pEmploymentFromDate", this.EmploymentFromDate());
+		map.put("pEmploymentToDate", this.EmploymentToDate());
+		map.put("pEmploymentLastCTC", this.EmploymentLastCTC());
+		map.put("pEmploymentCurrency", this.EmploymentCurrency());
+		map.put("pEmploymentPeriod", this.EmploymentPeriod());
+		map.put("pEmploymentTypeOfEmployment", this.EmploymentTypeOfEmployment());
+		map.put("pPersonName", this.PersonName());
+		map.put("pPersonDesignation", this.PersonDesignation());
+		map.put("pPersonRelationship", this.PersonRelationship());
+		map.put("pPersonContactNo1", this.PersonContactNo1());
+		map.put("pPersonContactNo2", this.PersonContactNo2());
+		map.put("pPersonEmailID1", this.PersonEmailID1());
+		map.put("pPersonEmailID2", this.PersonEmailID2());
+		map.put("pPersonFaxNo", this.PersonFaxNo());
+		map.put("pReasonForLeaving", this.ReasonForLeaving());
+		map.put("pComments", this.Comments());
+		this.document();
+		map.put("preemp", this.getDocumentName("Verification Report"));
+		this.docclose();
+		map.put("RespondentName", this.RespondentName());
+		map.put("RespondentDesignation", this.RespondentDesignation());
+		map.put("RespondentContactNo", this.RespondentContactNo());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		map.put("DateOfInitiation", this.DateOfInitiation());
+		map.put("ModeOfVerification", this.ModeOfVerification());
+		map.put("DateOfVerification", this.DateOfVerification());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	public Map<String, String> filedata() throws Exception{
+		String date=pages.Utill().getCurrentDate("dd/MM/yyyy");
+		String component=this.Component();
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		Properties pro= pages.Utill().veridata("employment");
+		if(component.equals("Current/Latest Employment")) {
+		map.put("Component", "Current/Latest Employment");
+		map.put("cEmployerName", pro.getProperty("cEmployerName"));
+		map.put("cEmployerAddressLIne1", pro.getProperty("cEmployerAddressLIne1"));
+		map.put("cEmployerCountry", pro.getProperty("cEmployerCountry"));
+		map.put("cEmployerState", pro.getProperty("cEmployerState"));
+		map.put("cEmployerCity", pro.getProperty("cEmployerCity"));
+		//map.put("cEmployerNameasperEmployers", pro.getProperty("cEmployerNameasperEmployers"));
+		map.put("cEmploymentEmployeeID", pro.getProperty("cEmploymentEmployeeID"));
+		map.put("cEmploymentDesignation", pro.getProperty("cEmploymentDesignation"));
+		map.put("cEmploymentDepartment", pro.getProperty("cEmploymentDepartment"));
+		map.put("cEmploymentFromDate", pro.getProperty("cEmploymentFromDate"));
+		map.put("cEmploymentToDate", pro.getProperty("cEmploymentToDate"));
+		map.put("cEmploymentLastCTC", pro.getProperty("cEmploymentLastCTC"));
+		map.put("cEmploymentCurrency", pro.getProperty("cEmploymentCurrency"));
+		map.put("cEmploymentPeriod", pro.getProperty("cEmploymentPeriod"));
+		map.put("cEmploymentTypeOfEmployment", pro.getProperty("cEmploymentTypeOfEmployment"));
+		map.put("cPersonName", pro.getProperty("cPersonName"));
+		map.put("cPersonDesignation", pro.getProperty("cPersonDesignation"));
+		map.put("cPersonRelationship", pro.getProperty("cPersonRelationship"));
+		map.put("cPersonContactNo1", pro.getProperty("cPersonContactNo1"));
+		map.put("cPersonContactNo2", pro.getProperty("cPersonContactNo2"));
+		map.put("cPersonEmailID1", pro.getProperty("cPersonEmailID1"));
+		map.put("cPersonEmailID2", pro.getProperty("cPersonEmailID2"));
+		map.put("cPersonFaxNo", pro.getProperty("cPersonFaxNo"));
+		map.put("cReasonForLeaving", pro.getProperty("cReasonForLeaving"));
+		map.put("cComments", pro.getProperty("cComments"));
+		map.put("currentemp", new File(pro.getProperty("currentemp")).getName().replaceAll(" ", ""));
+		map.put("RespondentName", pro.getProperty("RespondentName"));
+		map.put("RespondentDesignation", pro.getProperty("RespondentDesignation"));
+		map.put("RespondentContactNo", pro.getProperty("RespondentContactNo"));
+		map.put("Ver_Comments", pro.getProperty("verComments"));
+		map.put("ComponentStatus", pro.getProperty("ComponentStatus"));
+		map.put("ModeOfInitiation", pro.getProperty("ModeOfInitiation"));
+		map.put("DateOfInitiation", date);
+		map.put("ModeOfVerification", pro.getProperty("ModeOfVerification"));
+		map.put("DateOfVerification", date);
+		map.put("ServiceProvider", pro.getProperty("ServiceProvider"));
+		logger.log(Status.INFO, map.toString());
+		return map;
+		}
+		
+	
+	else if(component.equals("Previous Employment")) {
+		map.put("Component", "Previous Employment");
+		map.put("pEmployerName", pro.getProperty("pEmployerName"));
+		map.put("pEmployerAddressLIne1", pro.getProperty("pEmployerAddressLIne1"));
+		map.put("pEmployerCountry", pro.getProperty("pEmployerCountry"));
+		map.put("pEmployerState", pro.getProperty("pEmployerState"));
+		map.put("pEmployerCity", pro.getProperty("pEmployerCity"));
+		//map.put("pEmployerNameasperEmployers", pro.getProperty("pEmployerNameasperEmployers"));
+		map.put("pEmploymentEmployeeID", pro.getProperty("pEmploymentEmployeeID"));
+		map.put("pEmploymentDesignation", pro.getProperty("pEmploymentDesignation"));
+		map.put("pEmploymentDepartment", pro.getProperty("pEmploymentDepartment"));
+		map.put("pEmploymentFromDate", pro.getProperty("pEmploymentFromDate"));
+		map.put("pEmploymentToDate", pro.getProperty("pEmploymentToDate"));
+		map.put("pEmploymentLastCTC", pro.getProperty("pEmploymentLastCTC"));
+		map.put("pEmploymentCurrency", pro.getProperty("pEmploymentCurrency"));
+		map.put("pEmploymentPeriod", pro.getProperty("pEmploymentPeriod"));
+		map.put("pEmploymentTypeOfEmployment", pro.getProperty("pEmploymentTypeOfEmployment"));
+		map.put("pPersonName", pro.getProperty("pPersonName"));
+		map.put("pPersonDesignation", pro.getProperty("pPersonDesignation"));
+		map.put("pPersonRelationship", pro.getProperty("pPersonRelationship"));
+		map.put("pPersonContactNo1", pro.getProperty("pPersonContactNo1"));
+		map.put("pPersonContactNo2", pro.getProperty("pPersonContactNo2"));
+		map.put("pPersonEmailID1", pro.getProperty("pPersonEmailID1"));
+		map.put("pPersonEmailID2", pro.getProperty("pPersonEmailID2"));
+		map.put("pPersonFaxNo", pro.getProperty("pPersonFaxNo"));
+		map.put("pReasonForLeaving", pro.getProperty("pReasonForLeaving"));
+		map.put("pComments", pro.getProperty("pComments"));
+		map.put("preemp", new File(pro.getProperty("preemp")).getName().replaceAll(" ", ""));
+		map.put("RespondentName", pro.getProperty("RespondentName"));
+		map.put("RespondentDesignation", pro.getProperty("RespondentDesignation"));
+		map.put("RespondentContactNo", pro.getProperty("RespondentContactNo"));
+		map.put("Ver_Comments", pro.getProperty("verComments"));
+		map.put("ComponentStatus", pro.getProperty("ComponentStatus"));
+		map.put("ModeOfInitiation", pro.getProperty("ModeOfInitiation"));
+		map.put("DateOfInitiation", date);
+		map.put("ModeOfVerification", pro.getProperty("ModeOfVerification"));
+		map.put("DateOfVerification", date);
+		map.put("ServiceProvider", pro.getProperty("ServiceProvider"));
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	else
+		throw new NotFoundException();
 	}
 }

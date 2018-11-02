@@ -3,6 +3,7 @@ package dataEntryQC;
 import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
@@ -240,9 +241,9 @@ public class Id extends DataEntryQCPage{
 	public String comments() {
 		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtIdComments");
 	}
-	public LinkedHashMap<String, String> Aadharcard() throws Exception{
+	public Map<String, String> Aadharcard() throws Exception{
 		this.Component("Aadhaar Card");
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		map.put("Component", this.Component());
 		map.put("NameonID", this.NameonID());
 		map.put("IDNumber", this.IDNumber());
@@ -259,9 +260,9 @@ public class Id extends DataEntryQCPage{
 		this.submit();
 		return map;
 	}
-	public LinkedHashMap<String, String> PassPort() throws Exception{
+	public Map<String, String> PassPort() throws Exception{
 		this.Component("Passport");
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		map.put("Component", this.Component());
 		map.put("PNameonID", this.NameonID());
 		map.put("PIDNumber", this.IDNumber());
@@ -277,8 +278,8 @@ public class Id extends DataEntryQCPage{
 		this.submit();
 		return map;
 	}
-	public LinkedHashMap<String, String> filedata(String component) throws Exception{
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+	public Map<String, String> filedata(String component) throws Exception{
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		Properties pro= pages.Utill().dedata("id");
 		if(component.equals("Aadhaar Card")) {
 		map.put("Component", "Aadhaar Card");

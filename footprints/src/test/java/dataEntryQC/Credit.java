@@ -3,6 +3,7 @@ package dataEntryQC;
 import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -245,8 +246,8 @@ public class Credit extends DataEntryQCPage{
 		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCreditComments");
 	}
 	
-	public LinkedHashMap<String, String> credit() throws Exception{
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+	public Map<String, String> credit() throws Exception{
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		map.put("Component", this.Component());
 		map.put("ID", this.ID());
 		map.put("NameonID", this.NameonID());
@@ -264,8 +265,8 @@ public class Credit extends DataEntryQCPage{
 		this.submit();
 		return map;
 	}
-	public LinkedHashMap<String, String> filedata() throws Exception{
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+	public Map<String, String> filedata() throws Exception{
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		Properties pro= pages.Utill().dedata("credit");
 		map.put("Component", "Credit Check 1");
 		map.put("ID", pro.getProperty("ID"));

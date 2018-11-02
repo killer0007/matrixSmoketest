@@ -3,6 +3,7 @@ package dataEntryQC;
 import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
@@ -316,9 +317,9 @@ public class Employment extends DataEntryQCPage {
 	public String Comments() {
 		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCommentsIfAny");
 	}
-	public LinkedHashMap<String, String> CurrentEmp() throws Exception{
+	public Map<String, String> CurrentEmp() throws Exception{
 		this.Component("Current/Latest Employment");
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		map.put("Component", this.Component());
 		map.put("cEmployerName", this.EmployerName());
 		map.put("cEmployerAddressLIne1", this.EmployerAddressLIne1());
@@ -351,9 +352,9 @@ public class Employment extends DataEntryQCPage {
 		this.submit();
 		return map;
 	}
-	public LinkedHashMap<String, String> PerviousEmp() throws Exception{
+	public Map<String, String> PerviousEmp() throws Exception{
 		this.Component("Previous Employment");
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		map.put("Component", this.Component());
 		map.put("Component", this.Component());
 		map.put("pEmployerName", this.EmployerName());
@@ -387,8 +388,8 @@ public class Employment extends DataEntryQCPage {
 		this.submit();
 		return map;
 	}
-	public LinkedHashMap<String, String> filedata(String component) throws Exception{
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+	public Map<String, String> filedata(String component) throws Exception{
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		Properties pro= pages.Utill().dedata("employment");
 		if(component.equals("Current/Latest Employment")) {
 		map.put("Component", "Current/Latest Employment");

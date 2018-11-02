@@ -1,5 +1,6 @@
 package verification;
 
+import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -390,7 +391,7 @@ public class Address extends Verification {
 	}
 
 	public String RespondentName() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtAddressRespondentName");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressRespondentName");
 	}
 
 	public void RelationshipToCandidate(String relationship) {
@@ -398,7 +399,7 @@ public class Address extends Verification {
 	}
 
 	public String RelationshipToCandidate() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtAddressRespondentDesignation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressRespondentDesignation");
 	}
 
 	public void Ver_Comments(String comments) {
@@ -406,7 +407,7 @@ public class Address extends Verification {
 	}
 
 	public String Ver_Comments() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtAddressVerifierComments");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressVerifierComments");
 	}
 
 	public void ComponentStatus(String status) {
@@ -447,7 +448,7 @@ public class Address extends Verification {
 	}
 
 	public String DateOfInitiation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtAddressDateOfInitiation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressDateOfInitiation");
 	}
 
 	public void ModeOfVerification(String mode) {
@@ -472,7 +473,7 @@ public class Address extends Verification {
 	}
 
 	public String DateOfVerification() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtAddressDateOfVerification");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtAddressDateOfVerification");
 	}
 
 	public void ServiceProvider(String name) {
@@ -584,9 +585,150 @@ public class Address extends Verification {
 		this.DateOfVerification(pages.Utill().getCurrentDate("dd/MM/yyyy"));
 		this.submit();
 	}
-	public Map<String, String> VerificationData(){
-		Map<String, String> map = new LinkedHashMap<>();
-		
+	public Map<String, String> CurrentAddress() throws Exception{
+		this.addresscheck();
+		this.Component("Current Address");
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("AddressLine1", this.AddressLine1());
+		map.put("Country", this.Country());
+		map.put("State", this.getState());
+		map.put("City", this.getCity());
+		map.put("Pincode", this.Pincode());
+		map.put("Landmark", this.Landmark());
+		map.put("FromDate", this.FromDate());
+		map.put("ToDate", this.ToDate());
+		map.put("LandLordName", this.LandLordName());
+		map.put("LandLordAddressLine1", this.LandLordAddressLine1());
+		map.put("LandLordCountry", this.LandLordCountry());
+		map.put("LandLordState", this.getLandLordState());
+		map.put("LandLordCity", this.getLandLordCity());
+		map.put("LandLordPincode", this.LandLordPincode());
+		map.put("LandLordLandmark", this.LandLordLandmark());
+		map.put("LandLordContactNo", this.LandLordContactNo());
+		map.put("Comments", this.Comments());
+		this.document();
+		map.put("currentAddressproof", this.getDocumentName("Verification Report"));
+		this.docclose();
+		map.put("RespondentName", this.RespondentName());
+		map.put("RelationshipToCandidate", this.RelationshipToCandidate());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		map.put("DateOfInitiation", this.DateOfInitiation());
+		map.put("ModeOfVerification", this.ModeOfVerification());
+		map.put("DateOfVerification", this.DateOfVerification());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
 		return map;
+	}
+	public Map<String, String> PermanentAdress() throws Exception{
+		this.addresscheck();
+		this.Component("Permanent");
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("AddressLine1", this.AddressLine1());
+		map.put("Country", this.Country());
+		map.put("State", this.getState());
+		map.put("City", this.getCity());
+		map.put("Pincode", this.Pincode());
+		map.put("Landmark", this.Landmark());
+		map.put("FromDate", this.FromDate());
+		map.put("ToDate", this.ToDate());
+		map.put("LandLordName", this.LandLordName());
+		map.put("LandLordAddressLine1", this.LandLordAddressLine1());
+		map.put("LandLordCountry", this.LandLordCountry());
+		map.put("LandLordState", this.getLandLordState());
+		map.put("LandLordCity", this.getLandLordCity());
+		map.put("LandLordPincode", this.LandLordPincode());
+		map.put("LandLordLandmark", this.LandLordLandmark());
+		map.put("LandLordContactNo", this.LandLordContactNo());
+		map.put("permanentcomments", this.Comments());
+		this.document();
+		map.put("PerAddressproof", this.getDocumentName("Verification Report"));
+		this.docclose();
+		map.put("RespondentName", this.RespondentName());
+		map.put("RelationshipToCandidate", this.RelationshipToCandidate());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		map.put("DateOfInitiation", this.DateOfInitiation());
+		map.put("ModeOfVerification", this.ModeOfVerification());
+		map.put("DateOfVerification", this.DateOfVerification());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	public Map<String, String> filedata() throws Exception{
+		String date=pages.Utill().getCurrentDate("dd/MM/yyyy");
+		String component=this.Component();
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		Properties pro= pages.Utill().veridata("address");
+		if(component.equals("Current Address")) {
+		map.put("Component", "Current Address");
+		map.put("AddressLine1", pro.getProperty("AddressLine1"));
+		map.put("Country", pro.getProperty("Country"));
+		map.put("State", pro.getProperty("State"));
+		map.put("City", pro.getProperty("City"));
+		map.put("Pincode", pro.getProperty("Pincode"));
+		map.put("Landmark", pro.getProperty("Landmark"));
+		map.put("FromDate", pro.getProperty("FromDate"));
+		map.put("ToDate", pro.getProperty("ToDate"));
+		map.put("LandLordName", pro.getProperty("LandLordName"));
+		map.put("LandLordAddressLine1", pro.getProperty("LandLordAddressLine1"));
+		map.put("LandLordCountry", pro.getProperty("LandLordCountry"));
+		map.put("LandLordState", pro.getProperty("LandLordState"));
+		map.put("LandLordCity", pro.getProperty("LandLordCity"));
+		map.put("LandLordPincode", pro.getProperty("LandLordPincode"));
+		map.put("LandLordLandmark", pro.getProperty("LandLordLandmark"));
+		map.put("LandLordContactNo", pro.getProperty("LandLordContactNo"));
+		map.put("Comments", pro.getProperty("Comments"));
+		map.put("currentAddressproof", new File(pro.getProperty("currentAddressproof")).getName().replaceAll(" ", ""));
+		map.put("RespondentName", pro.getProperty("RespondentName"));
+		map.put("RelationshipToCandidate", pro.getProperty("RelationshipToCandidate"));
+		map.put("Ver_Comments", pro.getProperty("verComments"));
+		map.put("ComponentStatus", pro.getProperty("ComponentStatus"));
+		map.put("ModeOfInitiation", pro.getProperty("ModeOfInitiation"));
+		map.put("DateOfInitiation", date);
+		map.put("ModeOfVerification", pro.getProperty("ModeOfVerification"));
+		map.put("DateOfVerification", date);
+		map.put("ServiceProvider", pro.getProperty("ServiceProvider"));
+		logger.log(Status.INFO, map.toString());
+		return map;
+		}
+		else if(component.equals("Permanent")) {
+			map.put("Component", "Permanent");
+			map.put("AddressLine1", pro.getProperty("AddressLine1"));
+			map.put("Country", pro.getProperty("Country"));
+			map.put("State", pro.getProperty("State"));
+			map.put("City", pro.getProperty("City"));
+			map.put("Pincode", pro.getProperty("Pincode"));
+			map.put("Landmark", pro.getProperty("Landmark"));
+			map.put("FromDate", pro.getProperty("FromDate"));
+			map.put("ToDate", pro.getProperty("ToDate"));
+			map.put("LandLordName", pro.getProperty("LandLordName"));
+			map.put("LandLordAddressLine1", pro.getProperty("LandLordAddressLine1"));
+			map.put("LandLordCountry", pro.getProperty("LandLordCountry"));
+			map.put("LandLordState", pro.getProperty("LandLordState"));
+			map.put("LandLordCity", pro.getProperty("LandLordCity"));
+			map.put("LandLordPincode", pro.getProperty("LandLordPincode"));
+			map.put("LandLordLandmark", pro.getProperty("LandLordLandmark"));
+			map.put("LandLordContactNo", pro.getProperty("LandLordContactNo"));
+			map.put("permanentcomments", pro.getProperty("permanentcomments"));
+			map.put("PerAddressproof", new File(pro.getProperty("PerAddressproof")).getName().replaceAll(" ", ""));
+			map.put("RespondentName", pro.getProperty("RespondentName"));
+			map.put("RelationshipToCandidate", pro.getProperty("RelationshipToCandidate"));
+			map.put("Ver_Comments", pro.getProperty("verComments"));
+			map.put("ComponentStatus", pro.getProperty("ComponentStatus"));
+			map.put("ModeOfInitiation", pro.getProperty("ModeOfInitiation"));
+			map.put("DateOfInitiation", date);
+			map.put("ModeOfVerification", pro.getProperty("ModeOfVerification"));
+			map.put("DateOfVerification", date);
+			map.put("ServiceProvider", pro.getProperty("ServiceProvider"));
+			logger.log(Status.INFO, map.toString());
+			return map;
+		}
+		else
+			throw new NotFoundException();
 	}
 }

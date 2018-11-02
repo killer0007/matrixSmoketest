@@ -5,30 +5,29 @@
 	<!-- <listeners> -->
 	<!-- <listener class-name = "environment.CustomReporter" /> -->
 	<!-- </listeners> -->
-	<test thread-count="1" name="insuff">
-<!-- 		<groups> -->
-<!-- 			<run> -->
-<!-- 				<include name="not applicable"/> -->
-<!-- 			</run> -->
-<!-- 		</groups> -->
+	
+	<test name="ServiceProviderCaseRegistration">
 		<classes>
-			<!-- <class name="MAINTEST.SPCASEREG"> -->
-			<class name="maintest.FullFlow"/>
-
 			<class name="maintest.SPcasereg">
 				<methods>
-				<exclude name ="TC_SPCR_012" />
-				<exclude name ="TC_SPCR_013" />
-				<exclude name ="TC_SPCR_014" />
-				<exclude name ="TC_SPCR_015" />
-				<exclude name ="TC_SPCR_016" />
-				<exclude name ="TC_SPCR_017" />
-				<exclude name ="TC_SPCR_018" />
-				<exclude name ="TC_SPCR_019" />
-				<exclude name ="TC_SPCR_020" />
-				<exclude name ="TC_SPCR_021" />
+					<exclude name="TC_SPCR_012" />
+					<exclude name="TC_SPCR_013" />
+					<exclude name="TC_SPCR_014" />
+					<exclude name="TC_SPCR_015" />
+					<exclude name="TC_SPCR_016" />
+					<exclude name="TC_SPCR_017" />
+					<exclude name="TC_SPCR_018" />
+					<exclude name="TC_SPCR_019" />
+					<exclude name="TC_SPCR_020" />
+					<exclude name="TC_SPCR_021" />
 				</methods>
 			</class>
+		</classes>
+	</test>
+	<test name="FullFlow">
+		<classes>
+			<!-- <class name="MAINTEST.SPCASEREG"> -->
+			<class name="maintest.FullFlow" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

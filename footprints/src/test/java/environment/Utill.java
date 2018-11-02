@@ -471,7 +471,7 @@ public class Utill {
 	 * @param index window index
 	 */
 	public void switchWindow(int index) {
-		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		List<String> tabs = new ArrayList<String>(driver.getWindowHandles());
 		driver.switchTo().window(tabs.get(index).toString());
 	}
 
@@ -1160,14 +1160,15 @@ public class Utill {
 	public String isFileExist(File folder) throws Exception {
 		Thread.sleep(2000);
 		File[] files = folder.listFiles();
-		if (files[0].isFile()) {
-			String name = files[0].getName();
-//				System.out.println("file name is :"+name);
-//				System.out.println("parent name :"+files[0].getAbsolutePath());
-			return name.replaceAll("[0-9]", "");
-		} else {
+		if (files.length > 0) {
+			if (files[0].isFile()) {
+				String name = files[0].getName();
+				return name.replaceAll("[0-9]", "");
+			} else {
+				return null;
+			}
+		} else
 			return null;
-		}
 	}
 
 	/**

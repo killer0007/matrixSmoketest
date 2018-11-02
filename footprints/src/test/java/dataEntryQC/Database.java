@@ -3,6 +3,7 @@ package dataEntryQC;
 import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
@@ -201,8 +202,8 @@ public class Database extends DataEntryQCPage{
 	public String comments() {
 		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDataBaseComments");
 	}
-	public LinkedHashMap<String, String> database() throws Exception{
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+	public Map<String, String> database() throws Exception{
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		map.put("IdType", this.IdType());
 		map.put("NameonID", this.NameonID());
 		map.put("IDNumber", this.IDNumber());
@@ -219,8 +220,8 @@ public class Database extends DataEntryQCPage{
 		this.submit();
 		return map;
 	}
-	public LinkedHashMap<String, String> filedata() throws Exception{
-		LinkedHashMap<String , String> map=new LinkedHashMap<String, String>();
+	public Map<String, String> filedata() throws Exception{
+		Map<String , String> map=new LinkedHashMap<String, String>();
 		Properties pro= pages.Utill().dedata("database");
 		map.put("IdType", pro.getProperty("IdType"));
 		map.put("NameonID", pro.getProperty("NameonID"));

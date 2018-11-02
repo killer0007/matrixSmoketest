@@ -1,6 +1,9 @@
 package verification;
 
+import java.io.File;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.By;
@@ -233,6 +236,22 @@ public class Credit extends Verification {
 		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_btnCreditAddDocument_input");
 		pages.Utill().waitUntilLoaderisInvisible(100);
 	}
+	/**
+	 * Takes Document type as input and return the name of uploaded document
+	 * 
+	 * @param doctype Type of Document
+	 * @return document name
+	 */
+	public String getDocumentName(String doctype) {
+
+		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmCaseCreditDocuments_C_grdviewCreditDocument_ctl00']//*[text()='"
+				+ doctype + "']/../td[5]//td[1]/span";
+		if (this.isvaliddoctype(doctype)) {
+			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
+		} else {
+			throw new NotFoundException(doctype);
+		}
+	}
 
 	/**
 	 * Takes document type as input and checks for given document type available in
@@ -338,7 +357,7 @@ public class Credit extends Verification {
 	}
 
 	public String VerifierName() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCreidtVerifierName");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCreidtVerifierName");
 	}
 
 	public void VerifierDesignation(String relationship) {
@@ -346,7 +365,7 @@ public class Credit extends Verification {
 	}
 
 	public String VerifierDesignation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCreditVerifierDesignation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCreditVerifierDesignation");
 	}
 
 	public void VerifierContactNo(String relationship) {
@@ -354,7 +373,7 @@ public class Credit extends Verification {
 	}
 
 	public String VerifierContactNo() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCreditVerifierNo");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCreditVerifierNo");
 	}
 
 	public void VerifierEmail(String relationship) {
@@ -362,7 +381,7 @@ public class Credit extends Verification {
 	}
 
 	public String VerifierEmail() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCredtiVerifierEmail");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCredtiVerifierEmail");
 	}
 
 	public void Ver_Comments(String comments) {
@@ -370,7 +389,7 @@ public class Credit extends Verification {
 	}
 
 	public String Ver_Comments() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCreditVerfierComments");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCreditVerfierComments");
 	}
 
 	public void ComponentStatus(String status) {
@@ -411,7 +430,7 @@ public class Credit extends Verification {
 	}
 
 	public String DateOfInitiation() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCreditDateOfInitiation");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCreditDateOfInitiation");
 	}
 
 	public void ModeOfVerification(String mode) {
@@ -436,7 +455,7 @@ public class Credit extends Verification {
 	}
 
 	public String DateOfVerification() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCreditDateOfVerification");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtCreditDateOfVerification");
 	}
 	public void ServiceProvider(String name) {
 		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
@@ -472,4 +491,65 @@ public class Credit extends Verification {
 		this.DateOfVerification(pages.Utill().getCurrentDate("dd/MM/yyyy"));
 		this.submit();
 	}
+	public Map<String, String> credit() throws Exception{
+		this.creditcheck();
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		map.put("Component", this.Component());
+		map.put("ID", this.ID());
+		map.put("NameonID", this.NameonID());
+		map.put("IDNumber", this.IDNumber());
+		map.put("IssueDate", this.IssueDate());
+		map.put("ExpiryDate", this.ExpiryDate());
+		map.put("CountryofIssue", this.CountryofIssue());
+		map.put("StateofIssue", this.StateofIssue());
+		map.put("CityofIssue", this.CityofIssue());
+		map.put("EnrollmentNo", this.EnrollmentNo());
+		map.put("comments", this.comments());
+		this.document();
+		map.put("Aadhardoc", this.getDocumentName("Verification Report"));
+		this.docclose();
+		map.put("VerifierName", this.VerifierName());
+		map.put("VerifierDesignation", this.VerifierDesignation());
+		map.put("VerifierContactNo", this.VerifierContactNo());
+		map.put("VerifierEmail", this.VerifierEmail());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		map.put("DateOfInitiation", this.DateOfInitiation());
+		map.put("ModeOfVerification", this.ModeOfVerification());
+		map.put("DateOfVerification", this.DateOfVerification());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	public Map<String, String> filedata() throws Exception{
+		String date=pages.Utill().getCurrentDate("dd/MM/yyyy");
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		Properties pro= pages.Utill().veridata("credit");
+		map.put("Component", "Credit Check 1");
+		map.put("ID", pro.getProperty("ID"));
+		map.put("NameonID", pro.getProperty("NameonID"));
+		map.put("IDNumber", pro.getProperty("IDNumber"));
+		map.put("IssueDate", pro.getProperty("IssueDate"));
+		map.put("ExpiryDate", pro.getProperty("ExpiryDate"));
+		map.put("CountryofIssue", pro.getProperty("CountryofIssue"));
+		map.put("StateofIssue", pro.getProperty("StateofIssue"));
+		map.put("CityofIssue", pro.getProperty("CityofIssue"));
+		map.put("EnrollmentNo", pro.getProperty("EnrollmentNo"));
+		map.put("comments", pro.getProperty("comments"));
+		map.put("Aadhardoc", new File(pro.getProperty("Aadhardoc")).getName().replaceAll(" ", ""));
+		map.put("VerifierName", pro.getProperty("VerifierName"));
+		map.put("VerifierDesignation", pro.getProperty("VerifierDesignation"));
+		map.put("VerifierContactNo", pro.getProperty("VerifierContactNo"));
+		map.put("VerifierEmail", pro.getProperty("VerifierEmail"));
+		map.put("Ver_Comments", pro.getProperty("verComments"));
+		map.put("ComponentStatus", pro.getProperty("ComponentStatus"));
+		map.put("ModeOfInitiation", pro.getProperty("ModeOfInitiation"));
+		map.put("DateOfInitiation", date);
+		map.put("ModeOfVerification", pro.getProperty("ModeOfVerification"));
+		map.put("DateOfVerification", date);
+		map.put("ServiceProvider", pro.getProperty("ServiceProvider"));
+		logger.log(Status.INFO, map.toString());
+		return map;
+		}
 }

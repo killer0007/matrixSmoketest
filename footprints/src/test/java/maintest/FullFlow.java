@@ -8,7 +8,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -175,11 +174,11 @@ public class FullFlow extends Design {
 	public void AddressDEQC() throws Exception {
 		dataEntryQC.Address add = new dataEntryQC.Address(driver,logger);
 		add.addresscheck();
-		LinkedHashMap<String, String> actual = add.CurrentAddress();
-		LinkedHashMap<String, String> expected = add.filedata("Current Address");
+		Map<String, String> actual = add.CurrentAddress();
+		Map<String, String> expected = add.filedata("Current Address");
 		add.addresscheck();
-		LinkedHashMap<String, String> Peractual = add.PermanentAdress();
-		LinkedHashMap<String, String> Perexpected = add.filedata("Permanent");
+		Map<String, String> Peractual = add.PermanentAdress();
+		Map<String, String> Perexpected = add.filedata("Permanent");
 		pages.Utill().SwitchDefault();
 		if (actual.equals(expected) && Peractual.equals(Perexpected)) {
 			logger.log(Status.PASS, actual.toString());
@@ -196,11 +195,11 @@ public class FullFlow extends Design {
 	public void EducationDEQC() throws Exception {
 		dataEntryQC.Education edu = new dataEntryQC.Education(driver,logger);
 		edu.educationcheck();
-		LinkedHashMap<String, String> actual = edu.twelveth();
-		LinkedHashMap<String, String> expected = edu.filedata("12th");
+		Map<String, String> actual = edu.twelveth();
+		Map<String, String> expected = edu.filedata("12th");
 		edu.educationcheck();
-		LinkedHashMap<String, String> Peractual = edu.ugone();
-		LinkedHashMap<String, String> Perexpected = edu.filedata("UG1");
+		Map<String, String> Peractual = edu.ugone();
+		Map<String, String> Perexpected = edu.filedata("UG1");
 		pages.Utill().SwitchDefault();
 		if (actual.equals(expected) && Peractual.equals(Perexpected)) {
 			logger.log(Status.PASS, actual.toString());
@@ -217,11 +216,11 @@ public class FullFlow extends Design {
 	public void EmploymentDEQC() throws Exception {
 		dataEntryQC.Employment emp = new dataEntryQC.Employment(driver,logger);
 		emp.employmentcheck();
-		LinkedHashMap<String, String> actual = emp.CurrentEmp();
-		LinkedHashMap<String, String> expected = emp.filedata("Current/Latest Employment");
+		Map<String, String> actual = emp.CurrentEmp();
+		Map<String, String> expected = emp.filedata("Current/Latest Employment");
 		emp.employmentcheck();
-		LinkedHashMap<String, String> Peractual = emp.PerviousEmp();
-		LinkedHashMap<String, String> Perexpected = emp.filedata("Previous Employment");
+		Map<String, String> Peractual = emp.PerviousEmp();
+		Map<String, String> Perexpected = emp.filedata("Previous Employment");
 		pages.Utill().SwitchDefault();
 		if (actual.equals(expected) && Peractual.equals(Perexpected)) {
 			logger.log(Status.PASS, actual.toString());
@@ -238,8 +237,8 @@ public class FullFlow extends Design {
 	public void ReferenceDEQC() throws Exception {
 		dataEntryQC.Reference ref = new dataEntryQC.Reference(driver,logger);
 		ref.referencecheck();
-		LinkedHashMap<String, String> actual = ref.Referenceone();
-		LinkedHashMap<String, String> expected = ref.filedata();
+		Map<String, String> actual = ref.Referenceone();
+		Map<String, String> expected = ref.filedata();
 		pages.Utill().SwitchDefault();
 		if (actual.equals(expected)) {
 			logger.log(Status.PASS, actual.toString());
@@ -254,8 +253,8 @@ public class FullFlow extends Design {
 	public void DataBaseDEQC() throws Exception {
 		dataEntryQC.Database db = new dataEntryQC.Database(driver,logger);
 		db.databasecheck();
-		LinkedHashMap<String, String> actual = db.database();
-		LinkedHashMap<String, String> expected = db.filedata();
+		Map<String, String> actual = db.database();
+		Map<String, String> expected = db.filedata();
 		pages.Utill().SwitchDefault();
 		if (actual.equals(expected)) {
 			logger.log(Status.PASS, actual.toString());
@@ -270,11 +269,11 @@ public class FullFlow extends Design {
 	public void CriminalDEQC() throws Exception {
 		dataEntryQC.Criminal criminal = new dataEntryQC.Criminal(driver,logger);
 		criminal.criminalcheck();
-		LinkedHashMap<String, String> actual = criminal.CurrentAddress();
-		LinkedHashMap<String, String> Perexpected = criminal.filedata("Permanent Criminal Check");
+		Map<String, String> actual = criminal.CurrentAddress();
+		Map<String, String> Perexpected = criminal.filedata("Permanent Criminal Check");
 		criminal.criminalcheck();
-		LinkedHashMap<String, String> Peractual = criminal.PermanentAdress();	
-		LinkedHashMap<String, String> expected = criminal.filedata("Current Address Criminal Check");
+		Map<String, String> Peractual = criminal.PermanentAdress();	
+		Map<String, String> expected = criminal.filedata("Current Address Criminal Check");
 		pages.Utill().SwitchDefault();
 		if (actual.equals(expected) && Peractual.equals(Perexpected)) {
 			logger.log(Status.PASS, actual.toString());
@@ -291,8 +290,8 @@ public class FullFlow extends Design {
 	public void CreditDEQC() throws Exception {
 		dataEntryQC.Credit credit = new dataEntryQC.Credit(driver,logger);
 		credit.creditcheck();
-		LinkedHashMap<String, String> actual = credit.credit();
-		LinkedHashMap<String, String> expected = credit.filedata();
+		Map<String, String> actual = credit.credit();
+		Map<String, String> expected = credit.filedata();
 		pages.Utill().SwitchDefault();
 		if (actual.equals(expected)) {
 			logger.log(Status.PASS, actual.toString());
@@ -307,11 +306,11 @@ public class FullFlow extends Design {
 	public void CourtDEQC() throws Exception {
 		dataEntryQC.Court court = new dataEntryQC.Court(driver,logger);
 		court.courtcheck();
-		LinkedHashMap<String, String> actual = court.CurrentAddress();
-		LinkedHashMap<String, String> expected = court.filedata("Current Address Court Check");	
+		Map<String, String> actual = court.CurrentAddress();
+		Map<String, String> expected = court.filedata("Current Address Court Check");	
 		court.courtcheck();
-		LinkedHashMap<String, String> Peractual = court.PermanentAdress();
-		LinkedHashMap<String, String> Perexpected = court.filedata("Permanent Court Check");
+		Map<String, String> Peractual = court.PermanentAdress();
+		Map<String, String> Perexpected = court.filedata("Permanent Court Check");
 		pages.Utill().SwitchDefault();
 		if (actual.equals(expected) && Peractual.equals(Perexpected)) {
 			logger.log(Status.PASS, actual.toString());
@@ -327,11 +326,11 @@ public class FullFlow extends Design {
 	public void IdDEQC() throws Exception {
 		dataEntryQC.Id id = new dataEntryQC.Id(driver,logger);
 		id.idcheck();
-		LinkedHashMap<String, String> actual = id.Aadharcard();
-		LinkedHashMap<String, String> expected = id.filedata("Aadhaar Card");
+		Map<String, String> actual = id.Aadharcard();
+		Map<String, String> expected = id.filedata("Aadhaar Card");
 		id.idcheck();
-		LinkedHashMap<String, String> passactual = id.PassPort();
-		LinkedHashMap<String, String> passexpected = id.filedata("Passport");
+		Map<String, String> passactual = id.PassPort();
+		Map<String, String> passexpected = id.filedata("Passport");
 		pages.Utill().SwitchDefault();
 		if (actual.equals(expected) && passactual.equals(passexpected)) {
 			logger.log(Status.PASS, actual.toString());
@@ -523,6 +522,94 @@ public class FullFlow extends Design {
 		}
 		pages.CaseTracker().cancel();
 		sf.assertAll();
+	}
+	@Test(priority = 28, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
+	public void AddressReportGeneration() throws Exception {
+		pages.ReportGeneration().reportGeneration();
+		pages.ReportGeneration().Search(refno);
+		pages.ReportGeneration().Select(refno);
+		Address add = new Address(driver, logger);
+		Map<String, String> actual=add.CurrentAddress();
+		Map<String, String> expected=add.filedata();
+		assertEquals(actual, expected);
+		Map<String, String> peractual=add.PermanentAdress();
+		Map<String, String> perexpected=add.filedata();
+		assertEquals(peractual, perexpected);
+	}
+	@Test(priority = 29, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
+	public void EducationReportGeneration() throws Exception {
+		Education edu = new Education(driver, logger);
+		Map<String, String> actual=edu.twelveth();
+		Map<String, String> expected=edu.filedata();
+		assertEquals(actual, expected);
+		Map<String, String> peractual=edu.ugone();
+		Map<String, String> perexpected=edu.filedata();
+		assertEquals(peractual, perexpected);
+	}
+	@Test(priority = 30, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
+	public void EmploymentReportGeneration() throws Exception {
+		Employment emp = new Employment(driver, logger);
+		Map<String, String> actual=emp.CurrentEmp();
+		Map<String, String> expected=emp.filedata();
+		assertEquals(actual, expected);
+		Map<String, String> peractual=emp.PerviousEmp();
+		Map<String, String> perexpected=emp.filedata();
+		assertEquals(peractual, perexpected);
+	}
+	@Test(priority = 31, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
+	public void ReferenceReportGeneration() throws Exception {
+		Reference ref = new Reference(driver, logger);
+		Map<String, String> actual=ref.Referenceone();
+		Map<String, String> expected=ref.filedata();
+		assertEquals(actual, expected);
+	}
+	@Test(priority = 32, enabled = false, dependsOnMethods = "ReportGenerationSupervision")
+	public void DatabaseReportGeneration() throws Exception {
+		
+	}
+	@Test(priority = 33, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
+	public void CriminalReportGeneration() throws Exception {
+		Criminal criminal = new Criminal(driver, logger);
+		Map<String, String> actual=criminal.CurrentAddress();
+		Map<String, String> expected=criminal.filedata();
+		assertEquals(actual, expected);
+		Map<String, String> peractual=criminal.PermanentAdress();
+		Map<String, String> perexpected=criminal.filedata();
+		assertEquals(peractual, perexpected);
+	}
+	@Test(priority = 34, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
+	public void CreditReportGeneration() throws Exception {
+		Credit credit = new Credit(driver, logger);
+		Map<String, String> actual=credit.credit();
+		Map<String, String> expected=credit.filedata();
+		assertEquals(actual, expected);
+	}
+	@Test(priority = 35, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
+	public void CourtReportGeneration() throws Exception {
+		Court court = new Court(driver, logger);
+		Map<String, String> actual=court.CurrentAddress();
+		Map<String, String> expected=court.filedata();
+		assertEquals(actual, expected);
+		Map<String, String> peractual=court.PermanentAdress();
+		Map<String, String> perexpected=court.filedata();
+		assertEquals(peractual, perexpected);
+	}
+	@Test(priority = 36, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
+	public void DrugReportGeneration() throws Exception {
+		Drug drug = new Drug(driver, logger);
+		Map<String, String> actual=drug.drug();
+		Map<String, String> expected=drug.filedata();
+		assertEquals(actual, expected);
+	}
+	@Test(priority = 37, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
+	public void IdReportGeneration() throws Exception {
+		Id id = new Id(driver, logger);
+		Map<String, String> actual=id.PassPort();
+		Map<String, String> expected=id.filedata();
+		assertEquals(actual, expected);
+		Map<String, String> peractual=id.Aadharcard();
+		Map<String, String> perexpected=id.filedata();
+		assertEquals(peractual, perexpected);
 	}
 	/**
 	 * Takes test Result as input and Log the results into reports
