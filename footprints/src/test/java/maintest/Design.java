@@ -6,7 +6,7 @@ import java.lang.reflect.Method;
 
 import org.testng.ITestResult;
 
-abstract class Design {
+abstract class Design   { 
 	public abstract void beforeSuit();
 	public abstract void beforetest() throws FileNotFoundException, IOException, Exception;
 	public abstract void setup(Method method) throws FileNotFoundException, IOException;

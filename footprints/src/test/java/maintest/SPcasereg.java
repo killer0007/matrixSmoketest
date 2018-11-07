@@ -1599,14 +1599,11 @@ public class SPcasereg extends Design {
 			String doc = pages.DeEmployment().historyDocument();
 			String expected = this.FilterFileName(BaseClass.getlocator().getProperty("empinsuffdoc"));
 			sf.assertEquals(doc, expected);
-//			sf.assertTrue((doc.equals("employment.pdf")), doc);
 		} catch (Exception e) {
-			// TODO: handle exception
 		} finally {
 			pages.DeEmployment().close();
 			sf.assertAll();
 		}
-
 	}
 
 	/**
@@ -2119,7 +2116,7 @@ public class SPcasereg extends Design {
 	 * 
 	 * @throws Exception WebDriver Exception
 	 */
-	@Test(priority = 69, enabled = true, dependsOnMethods = "TC_SPDOC_006")
+	@Test(priority = 69, enabled = false, dependsOnMethods = "TC_SPDOC_006")
 	public void TC_SPDOC_007() throws Exception {
 		File file = new File(BaseClass.getlocator().getProperty("downloadFilepath"));
 		pages.Utill().deleteFiles(file);
@@ -2137,7 +2134,7 @@ public class SPcasereg extends Design {
 	 * 
 	 * @throws Exception WebDriver Exception
 	 */
-	@Test(priority = 70, enabled = true, dependsOnMethods = "TC_SPDOC_007")
+	@Test(priority = 70, enabled = false, dependsOnMethods = "TC_SPDOC_007")
 	public void TC_SPDOC_008() throws Exception {
 		File file = new File(BaseClass.getlocator().getProperty("downloadFilepath"));
 		pages.Utill().deleteFiles(file);

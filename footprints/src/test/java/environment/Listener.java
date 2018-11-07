@@ -7,14 +7,14 @@ import org.testng.ITestNGMethod;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
-public class Listener implements ITestListener {
+public class Listener implements ITestListener { 
 
 	// This belongs to ISuiteListener and will execute before the Suite start
-
+ 
 	
 	// This belongs to ITestListener and will execute before starting of Test set/batch 
 
-	public void onStart(ITestContext test) {
+	public void onStart(ITestContext test) { 
 
 		Reporter.log("About to begin executing Test " + test.getName(), true);
 

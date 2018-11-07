@@ -1,11 +1,18 @@
 package dashboard;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.aventstack.extentreports.ExtentTest;
 import environment.Pages;
 
-public class ReportGeneration {
+public class ReportGeneration  {
 	WebDriver driver;
 	ExtentTest logger;
 	Pages pages;
@@ -70,5 +77,56 @@ public class ReportGeneration {
 	public void Select(String refno) {
 		pages.Utill().click("//span[text()='"+refno+"']");
 		pages.Utill().waitUntilLoaderisInvisible(100);
+	}
+	public void GenerateReport() {
+		pages.Utill().click("btnReportGenerate");
+	}
+	public List<String> getReportComponents() {
+		List<WebElement> name=driver.findElements(By.xpath("//*[@id='rwReportComponent_C_grdReportComponent_ctl00']/tbody/tr/td[7]"));
+		List<String> component=new ArrayList<>();
+		for (int i = 0; i < name.size(); i++) {
+			component.add(name.get(i).getText().toString().trim());
+		}
+		return component;
+	}
+	public void GenerateReportCheckbox() {
+		pages.Utill().click("rwReportComponent_C_grdReportComponent_ctl00_ctl02_ctl00_chkReportSelectSelectCheckBox");
+	}
+	public void ReportComments(String comments) {
+		pages.Utill().SwitchFramebyId("rwReportComponent_C_txtReportComment_contentIframe");
+		pages.Utill().sendKeys("/html/body", comments);
+	}
+	public void ReportTemplate(String TempName) {
+		String value=pages.Utill().getValue("rwReportComponent_C_ddlTemplate_Input");
+		if(!value.equals(TempName)) {
+		pages.Utill().click("rwReportComponent_C_ddlTemplate_Input");
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
+				By.xpath("//*[@id='rwReportComponent_C_ddlTemplate_DropDown']/div/ul/li[1]")));
+			pages.Utill().click(
+					"//*[@id='rwReportComponent_C_ddlTemplate_DropDown']/div/ul//li[text()='" + TempName + "']");
+			pages.Utill().sleep(500);
+		}
+	}
+	public void CaseStatus(String TempName) {
+		String value=pages.Utill().getValue("rwReportComponent_C_ddlCaseStatus_Input");
+		if(!value.equals(TempName)) {
+		pages.Utill().click("rwReportComponent_C_ddlCaseStatus_Input");
+		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
+				By.xpath("//*[@id='rwReportComponent_C_ddlCaseStatus_DropDown']/div/ul/li[1]")));
+			pages.Utill().click(
+					"//*[@id='rwReportComponent_C_ddlCaseStatus_DropDown']/div/ul//li[text()='" + TempName + "']");
+			pages.Utill().sleep(500);
+		}
+	}
+	public void previewReport() {
+		pages.Utill().click("rwReportComponent_C_btnRptPreview_input");
+	}
+	public void submit() {
+		pages.Utill().click("rwReportComponent_C_btnSubmitReport_input");
+		pages.Utill().confirmAlert();
+		pages.Utill().waitUntilLoaderisInvisible(100);
+	}
+	public void close() {
+		pages.Utill().click("class:rwCloseButton");
 	}
 }

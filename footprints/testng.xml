@@ -5,7 +5,12 @@
 	<!-- <listeners> -->
 	<!-- <listener class-name = "environment.CustomReporter" /> -->
 	<!-- </listeners> -->
-	
+	<test name="FullFlow">
+		<classes>
+			<!-- <class name="MAINTEST.SPCASEREG"> -->
+			<class name="maintest.FullFlow" />
+		</classes>
+	</test> <!-- Test -->
 	<test name="ServiceProviderCaseRegistration">
 		<classes>
 			<class name="maintest.SPcasereg">
@@ -24,10 +29,5 @@
 			</class>
 		</classes>
 	</test>
-	<test name="FullFlow">
-		<classes>
-			<!-- <class name="MAINTEST.SPCASEREG"> -->
-			<class name="maintest.FullFlow" />
-		</classes>
-	</test> <!-- Test -->
+	
 </suite> <!-- Suite -->

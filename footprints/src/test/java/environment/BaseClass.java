@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class BaseClass {
+public class BaseClass  {
 
 	WebDriver driver;
 	static Properties loc;
@@ -21,7 +21,7 @@ public class BaseClass {
 /**
  * Creates webdriver and returns the instance
  * @return WebDriver instance
- * @throws Exception WebDriver exception
+ * @throws Exception WebDriver exception 
  */
 	public WebDriver getDriver() throws Exception{
 		if (driver == null) {
@@ -37,6 +37,7 @@ public class BaseClass {
 //					config.put("plugins.always_open_pdf_externally", true);
 			chromoption.setExperimentalOption("prefs", config);
 			chromoption.addArguments("--disable-notifications");
+//			chromoption.addArguments("--disable-gpu");
 //			chromoption.setHeadless(true);
 //			chromoption.addArguments("start-maximized");
 			driver = new ChromeDriver(chromoption);

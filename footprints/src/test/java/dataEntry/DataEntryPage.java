@@ -1,14 +1,17 @@
 package dataEntry;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import environment.Pages;
+import environment.Utill;
 
 abstract class DataEntryPage {
 	protected WebDriver driver;
@@ -115,6 +118,11 @@ abstract class DataEntryPage {
 		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[text()='"+doctype+"']/../td[5]//div/ul/li[1]/span/span"), file));
 		String name =pages.Utill().getText("//*[text()='"+doctype+"']/../td[5]//div/ul/li[1]/span/span");
 		logger.log(Status.INFO, name);
+		try {
+			logger.info(name, MediaEntityBuilder.createScreenCaptureFromPath(Utill.getScreenshot(driver)).build());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		System.out.println("----------------------------"+name+"---------------");
 	}
 	

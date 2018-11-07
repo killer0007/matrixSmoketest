@@ -1,13 +1,33 @@
 package maintest2;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
+import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.net.URI;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
+
+import javax.imageio.ImageIO;
+
+import org.apache.pdfbox.io.RandomAccessRead;
+import org.apache.pdfbox.pdfparser.PDFParser;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -17,10 +37,14 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import dashboard.ReportGeneration;
 import environment.BaseClass;
 import environment.Pages;
 import environment.Utill;
-import verification.*;
+import ru.yandex.qatools.ashot.AShot;
+import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.screentaker.ViewportPastingStrategy;
+
 
 @Listeners(environment.Listener.class)
 public class Basic {
@@ -31,12 +55,12 @@ public class Basic {
 	ExtentReports extent;
 	Pages pages;
 	Properties config;
-	protected String ContractName = null;
-	protected String ClientName = null;
-	protected String ProjectName = null;
-	protected String CandidateName = null;
-	protected String CandidateId = null;
-	protected String lastname = null;
+	protected String contractName = null;
+	protected String clientName = null;
+	protected String projectName = null;
+	protected String candidateName = null;
+	protected String candidateId = null;
+	protected String lastName = null;
 	protected String refno = null;
 	protected String uname = null;
 
@@ -57,9 +81,9 @@ public class Basic {
 		config = BaseClass.getlocator();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 		driver.get(config.getProperty("url"));
-		ContractName = config.getProperty("contractname");
-		ClientName = config.getProperty("clientname");
-		ProjectName = config.getProperty("projectname");
+		contractName = config.getProperty("contractname");
+		clientName = config.getProperty("clientname");
+		projectName = config.getProperty("projectname");
 
 	}
 
@@ -84,19 +108,29 @@ public class Basic {
 	@Test(priority = 4, enabled = true)
 	public void dataEntry() throws Exception {
 		refno = "HDFC000670";
-		pages.ReportGeneration().reportGeneration();
-		pages.ReportGeneration().Search(refno);
-		pages.ReportGeneration().Select(refno);
-		Drug drug = new Drug(driver, logger);
-		Map<String, String> actual=drug.drug();
-		Map<String, String> expected=drug.filedata();
-		assertEquals(actual, expected);
-		System.out.println(actual);
-		System.out.println(expected);
-	
+		ReportGeneration rg=pages.ReportGeneration();
+		rg.reportGeneration();
+		rg.Search(refno);
+		rg.Select(refno);
+		screenshot();
+//		rg.GenerateReport();
+//		List<String> op=rg.getReportComponents();
+//		List<String> components = new ArrayList<>(Arrays.asList(pages.CaseRegistration().getcomponents()));
+//		Collections.sort(op);
+//		Collections.sort(components);
+//		assertEquals(op, components);
+//		rg.GenerateReportCheckbox();
+//		rg.ReportComments("completed");
+//		pages.Utill().SwitchDefault();
+//		rg.ReportTemplate("New Standard Template");
+//		rg.CaseStatus("Clear");
+//		rg.previewReport();
+//		pages.Utill().switchWindow(1);
+//		System.out.println(driver.getCurrentUrl());
 		
 	}
 	
+
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
@@ -135,5 +169,16 @@ public class Basic {
 	public void afterSuite() {
 		extent.flush();
 	}
-	
+	private String FilterFileName(String FilePath) {
+		return FilePath.substring(FilePath.lastIndexOf("\\")).replace("\\", "");
+	}
+	private void screenshot() throws IOException {
+		String path = System.getProperty("user.dir") + "/Screenshot/" + System.currentTimeMillis() + ".png";
+		final Screenshot screenshot = new AShot().shootingStrategy(
+                new ViewportPastingStrategy(1000)).takeScreenshot(driver);
+        final BufferedImage image = screenshot.getImage();
+        ImageIO.write(image, "PNG", new File(path));
+
+
+	}
 }

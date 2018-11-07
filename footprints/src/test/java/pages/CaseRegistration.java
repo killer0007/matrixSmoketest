@@ -701,6 +701,7 @@ public class CaseRegistration {
 		}
 
 		List<WebElement> list = driver.findElements(By.xpath(path));
+		pages.Utill().sleep(1000);
 //		System.out.println("length is  : "+list.size());
 		if (list.size() > 0) {
 			List<String> doc = new ArrayList<String>();

@@ -16,7 +16,7 @@ public class Pages {
 	private Home home;
 	private CaseRegistration caseregistration;
 	private DcaseRegistration dcaseregistration;
-	private DbConnection db;
+	private DbConnection db; 
 	private CaseTracker casetracker;
 	private CaseOwnerInsuffClear CaseOwnerInsuffClear;
 	private DataEntrySupervision DataEntrySupervision;

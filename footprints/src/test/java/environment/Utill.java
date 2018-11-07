@@ -8,6 +8,7 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -52,6 +53,7 @@ import com.aventstack.extentreports.Status;
 import environment.Pages;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
+import ru.yandex.qatools.ashot.screentaker.ViewportPastingStrategy;
 
 public class Utill {
 	WebDriver driver;
@@ -76,7 +78,7 @@ public class Utill {
 	 * @param driver instance of webdriver
 	 * @return screenshot path
 	 */
-	public static synchronized String getScreenshot(WebDriver driver) {
+	public static synchronized String getScreenshotparital(WebDriver driver) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 
 		File src = ts.getScreenshotAs(OutputType.FILE);
@@ -90,6 +92,21 @@ public class Utill {
 			System.out.println("Capture Failed " + e.getMessage());
 		}
 
+		return path;
+	}
+	/**
+	 * Takes the webdriver and return the path of screen shot to be taken
+	 * 
+	 * @param driver instance of webdriver
+	 * @return screenshot path
+	 * @throws IOException 
+	 */
+	public static synchronized String getScreenshot(WebDriver driver) throws IOException {
+		String path = System.getProperty("user.dir") + "/Screenshot/" + System.currentTimeMillis() + ".png";
+		final Screenshot screenshot = new AShot().shootingStrategy(
+                new ViewportPastingStrategy(1000)).takeScreenshot(driver);
+        final BufferedImage image = screenshot.getImage();
+        ImageIO.write(image, "PNG", new File(path));
 		return path;
 	}
 
@@ -462,6 +479,16 @@ public class Utill {
 	public void SwitchFramebyIndex(int index) {
 		driver.switchTo().frame(index);
 		logger.log(Status.PASS, "switching frame by index " + index);
+
+	}
+	/**
+	 * Takes the frame  id as input and switch the frame
+	 * 
+	 * @param id frame index
+	 */
+	public void SwitchFramebyId(String id) {
+		driver.switchTo().frame(id);
+		logger.log(Status.PASS, "switching frame by id " + id);
 
 	}
 
@@ -1241,7 +1268,6 @@ public class Utill {
 		try {
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

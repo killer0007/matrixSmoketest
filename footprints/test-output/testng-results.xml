@@ -17,20 +17,20 @@
       <![CDATA[Test Status: Pass]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="44259" started-at="2018-11-02T10:58:29Z" finished-at="2018-11-02T10:59:13Z">
+  <suite name="Default suite" duration-ms="36563" started-at="2018-11-07T12:37:36Z" finished-at="2018-11-07T12:38:13Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="44259" started-at="2018-11-02T10:58:29Z" finished-at="2018-11-02T10:59:13Z">
+    <test name="Default test" duration-ms="36563" started-at="2018-11-07T12:37:36Z" finished-at="2018-11-07T12:38:13Z">
       <class name="maintest2.Basic">
-        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest2.Basic@ebc39e]" name="beforeSuit" is-config="true" duration-ms="137" started-at="2018-11-02T10:58:28Z" finished-at="2018-11-02T10:58:29Z">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest2.Basic@100df86]" name="beforeSuit" is-config="true" duration-ms="267" started-at="2018-11-07T12:37:36Z" finished-at="2018-11-07T12:37:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuit -->
-        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest2.Basic@ebc39e]" name="beforetest" is-config="true" duration-ms="4204" started-at="2018-11-02T10:58:29Z" finished-at="2018-11-02T10:58:33Z">
+        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest2.Basic@100df86]" name="beforetest" is-config="true" duration-ms="5151" started-at="2018-11-07T12:37:36Z" finished-at="2018-11-07T12:37:41Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforetest -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@ebc39e]" name="setup" is-config="true" duration-ms="16" started-at="2018-11-02T10:58:33Z" finished-at="2018-11-02T10:58:33Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@100df86]" name="setup" is-config="true" duration-ms="14" started-at="2018-11-07T12:37:41Z" finished-at="2018-11-07T12:37:41Z">
           <params>
             <param index="0">
               <value>
@@ -41,7 +41,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="Login()[pri:1, instance:maintest2.Basic@ebc39e]" name="Login" duration-ms="10461" started-at="2018-11-02T10:58:33Z" finished-at="2018-11-02T10:58:43Z">
+        <test-method status="PASS" signature="Login()[pri:1, instance:maintest2.Basic@100df86]" name="Login" duration-ms="13331" started-at="2018-11-07T12:37:41Z" finished-at="2018-11-07T12:37:55Z">
           <reporter-output>
             <line>
               <![CDATA[Test Method resides in maintest2.Basic]]>
@@ -51,11 +51,32 @@
             </line>
           </reporter-output>
         </test-method> <!-- Login -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@ebc39e]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-02T10:58:43Z" finished-at="2018-11-02T10:58:43Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@100df86]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-07T12:37:55Z" finished-at="2018-11-07T12:37:55Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=Login status=SUCCESS method=Basic.Login()[pri:1, instance:maintest2.Basic@ebc39e] output=Test Method resides in maintest2.Basic]]]>
+                <![CDATA[public void maintest2.Basic.dataEntry() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="dataEntry()[pri:4, instance:maintest2.Basic@100df86]" name="dataEntry" duration-ms="18047" started-at="2018-11-07T12:37:55Z" finished-at="2018-11-07T12:38:13Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest2.Basic]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- dataEntry -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@100df86]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-07T12:37:55Z" finished-at="2018-11-07T12:37:55Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Login status=SUCCESS method=Basic.Login()[pri:1, instance:maintest2.Basic@100df86] output=Test Method resides in maintest2.Basic]]]>
               </value>
             </param>
             <param index="1">
@@ -67,32 +88,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@ebc39e]" name="setup" is-config="true" duration-ms="1" started-at="2018-11-02T10:58:43Z" finished-at="2018-11-02T10:58:43Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest2.Basic@100df86]" name="teardown" is-config="true" duration-ms="0" started-at="2018-11-07T12:38:13Z" finished-at="2018-11-07T12:38:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@100df86]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-07T12:38:13Z" finished-at="2018-11-07T12:38:13Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest2.Basic.dataEntry() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="dataEntry()[pri:4, instance:maintest2.Basic@ebc39e]" name="dataEntry" duration-ms="29552" started-at="2018-11-02T10:58:43Z" finished-at="2018-11-02T10:59:13Z">
-          <reporter-output>
-            <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
-            </line>
-            <line>
-              <![CDATA[Test Status: Pass]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- dataEntry -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@ebc39e]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-02T10:59:13Z" finished-at="2018-11-02T10:59:13Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=dataEntry status=SUCCESS method=Basic.dataEntry()[pri:4, instance:maintest2.Basic@ebc39e] output=Test Method resides in maintest2.Basic]]]>
+                <![CDATA[[TestResult name=dataEntry status=SUCCESS method=Basic.dataEntry()[pri:4, instance:maintest2.Basic@100df86] output=Test Method resides in maintest2.Basic]]]>
               </value>
             </param>
             <param index="1">
@@ -104,11 +108,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest2.Basic@ebc39e]" name="teardown" is-config="true" duration-ms="0" started-at="2018-11-02T10:59:13Z" finished-at="2018-11-02T10:59:13Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest2.Basic@ebc39e]" name="afterSuite" is-config="true" duration-ms="293" started-at="2018-11-02T10:59:13Z" finished-at="2018-11-02T10:59:13Z">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest2.Basic@100df86]" name="afterSuite" is-config="true" duration-ms="249" started-at="2018-11-07T12:38:13Z" finished-at="2018-11-07T12:38:13Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class DbConnection {
+public class DbConnection { 
 	public static void main(String[] args) throws Exception{
 		DbConnection d = new DbConnection();
 		System.out.println(d.getLastrefno("demo client1234"));
@@ -21,7 +21,7 @@ public class DbConnection {
 	 * @return List of sub component
 	 * @throws Exception when SQL connection failed
 	 */
-	 
+	  
 	public synchronized List<String> getcontractdetails(String contractname) throws Exception {
 		List<String> result = new ArrayList<String>();
 		String id = null;
@@ -49,7 +49,7 @@ public class DbConnection {
 	 */
 	public  String getLastrefno(String project) throws Exception {
 //	select top 1 refno from tblcasemaster where projectshortname='demo client1234' order by id desc
-		String result = null;
+		String result = null; 
 		final String url = "jdbc:sqlserver://192.168.2.17:1433;" + "databaseName=FP_Checks360_V2.1s_Testing" + "";
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 		Connection conn = DriverManager.getConnection(url, "Sa", "Sql@123");
