@@ -34,7 +34,7 @@ public class BaseClass  {
 			config.put("download.default_directory", downloadFilepath);
 			config.put("download.prompt_for_download", false);
 			config.put("download.directory_upgrade", true);
-//					config.put("plugins.always_open_pdf_externally", true);
+					config.put("plugins.always_open_pdf_externally", true);
 			chromoption.setExperimentalOption("prefs", config);
 			chromoption.addArguments("--disable-notifications");
 //			chromoption.addArguments("--disable-gpu");

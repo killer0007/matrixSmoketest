@@ -84,4 +84,35 @@ public class ReportGenerationSupervision {
 			this.reportGenerationSupervision();
 			
 	}
+	/**
+	 * Performs click action in assign button
+	 */
+	public void assign() {
+		pages.Utill().click("btnBulkAllocation");
+		pages.Utill().waitUntilLoaderisInvisible(60);
+
+	}
+	/**
+	 * Takes employee Name as input and assign the case to given employee
+	 * 
+	 * @param empname Employename
+	 * @throws Exception employe not found in list
+	 */
+	public void assign(String empname) throws Exception {
+		pages.Utill().click("chkboxsingle");
+		this.assign();
+		//int count = pages.DbConnection().getAssignedCount(empname);
+		//pages.Utill().selectByLabel("ddlFilteredTMforAllocation", empname + " (" + count + ")");
+		pages.Utill().click("ddlFilteredTMforAllocation");
+		pages.Utill().click(".//*[@id='ddlFilteredTMforAllocation']//option[contains(text(),'"+empname+"')]");
+		pages.Utill().click("//div[@class='modal-dialog modal-lg']//button[text()='Ok']");
+		Thread.sleep(1000);
+		pages.Utill().click("//div[@class='modal-content']//button[contains(text(),'Yes')]");
+		pages.Utill().waitUntilLoaderisInvisible(100);
+	}
+	
+	public void assign(String refno,String empname) throws Exception {
+		this.Search(refno);
+		this.assign(empname);
+	}
 }

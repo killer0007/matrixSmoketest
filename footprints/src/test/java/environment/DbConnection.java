@@ -11,7 +11,7 @@ import java.util.List;
 public class DbConnection { 
 	public static void main(String[] args) throws Exception{
 		DbConnection d = new DbConnection();
-		System.out.println(d.getLastrefno("demo client1234"));
+		System.out.println(d.getAssignedCount("demoempl"));
 	}
 	/**
 	 * Takes contract name as input and return list if sub components in that
@@ -97,22 +97,21 @@ public class DbConnection {
 	 * @return count assigned case count
 	 * @throws Exception when SQL connection failed
 	 */
-	public synchronized int getAssignedCount() throws Exception {
+	public synchronized int getAssignedCount(String name) throws Exception {
 		String re = null;
 		final String url = "jdbc:sqlserver://192.168.2.17:1433;" + "databaseName=FP_Checks360_V2.1s_Testing" + "";
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
 		Connection conn = DriverManager.getConnection(url, "Sa", "Sql@123");
 		Statement st = conn.createStatement();
-		// select count(distinct(caseid)) as count from tblCaseComponents where
-		// assignedto=(select id from tblemployeemaster where ldapusername='demoempl')
-		// and status=3
-		String query = "select count(distinct(caseid)) as count from tblCaseComponents where assignedto=2270 and status in (3,15,20,21,39,40,152,158,159,166,173,174) and deleted=0 and NotRequired=0";
+		//select count(distinct(caseid)) as count from tblCaseComponents where assignedto=(select id  from tblemployeemaster where LDAPUserName='demoempl' and serviceprovidershortname!='Null') and status in (3,15,20,21,39,40,152,158,159,166,173,174) and deleted=0 and NotRequired=0
+		//String query = "select count(distinct(caseid)) as count from tblCaseComponents where assignedto=2270 and status in (3,15,20,21,39,40,152,158,159,166,173,174) and deleted=0 and NotRequired=0";
+		String query="select count(distinct(caseid)) as count from tblCaseComponents where assignedto=(select id  from tblemployeemaster where LDAPUserName='"+name+"' and serviceprovidershortname!='Null') and status in (3,15,20,21,39,40,152,158,159,166,173,174) and deleted=0 and NotRequired=0";
 		ResultSet out = st.executeQuery(query);
 		while (out.next()) {
 			re = out.getString("count");
 		}
 		conn.close();
-		System.out.println(re);
+		//System.out.println(re);
 		return Integer.parseInt(re);
 
 	}

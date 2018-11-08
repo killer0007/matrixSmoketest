@@ -130,7 +130,8 @@ public class FullFlow extends Design {
 		refno = pages.DbConnection().getLastrefno(projectName);
 		DataEntrySupervision des = pages.DataEntrySupervision();
 		des.datanentrysupervision();
-		des.assigngetnext(refno);
+		//des.assigngetnext(refno);
+		des.assign(refno, "demoempl");
 	}
 
 	@Test(priority = 4, enabled = true, dependsOnMethods = "dataEntryAssign")
@@ -164,7 +165,8 @@ public class FullFlow extends Design {
 	@Test(priority = 5, enabled = true, dependsOnMethods = "dataEntry")
 	public void dataEntryQCAssign() throws Exception {
 		pages.DataEntryQCSupervision().datanentryqcsupervision();
-		pages.DataEntryQCSupervision().assigngetnext(refno);
+//		pages.DataEntryQCSupervision().assigngetnext(refno);
+		pages.DataEntryQCSupervision().assign(refno, "demoempl");
 		pages.DataEntryQC().datanentryqc();
 		pages.DataEntryQC().selectcase(refno);
 
@@ -346,7 +348,9 @@ public class FullFlow extends Design {
 	public void VerificationSupervisor() throws Exception {
 		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.VerificationSupervisor().verificationsupervisor();
-		pages.VerificationSupervisor().assigngetnext(refno, "ID", "Aadhaar Card");
+		
+		pages.VerificationSupervisor().assign(refno, "demoempl");
+		//pages.VerificationSupervisor().assigngetnext(refno, "ID", "Aadhaar Card");
 	}
 	@Test(priority = 16, enabled = true, dependsOnMethods = "VerificationSupervisor")
 	public void VerificationIntiation() throws Exception {
@@ -508,7 +512,8 @@ public class FullFlow extends Design {
 	@Test(priority = 27, enabled = true, dependsOnMethods = "DrugVerification")
 	public void ReportGenerationSupervision() throws Exception {
 		pages.ReportGenerationSupervision().reportGenerationSupervision();
-		pages.ReportGenerationSupervision().assigngetnext(refno);
+		//pages.ReportGenerationSupervision().assigngetnext(refno);
+		pages.ReportGenerationSupervision().assign(refno, "demoempl");
 		List<String> components= new ArrayList<String>(Arrays.asList(pages.CaseRegistration().getcomponents()));
 		pages.Home().CaseTracker();
 		pages.CaseTracker().search(refno);

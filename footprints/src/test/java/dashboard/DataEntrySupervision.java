@@ -89,8 +89,10 @@ public class DataEntrySupervision {
 	public void assign(String empname) throws Exception {
 		pages.Utill().click("chkboxsingle");
 		this.assign();
-		int count = pages.DbConnection().getAssignedCount();
-		pages.Utill().selectByLabel("ddlFilteredTMforAllocation", empname + " (" + count + ")");
+		//int count = pages.DbConnection().getAssignedCount(empname);
+		//pages.Utill().selectByLabel("ddlFilteredTMforAllocation", empname + " (" + count + ")");
+		pages.Utill().click("ddlFilteredTMforAllocation");
+		pages.Utill().click(".//*[@id='ddlFilteredTMforAllocation']//option[contains(text(),'"+empname+"')]");
 		pages.Utill().click("//div[@class='modal-dialog modal-lg']//button[text()='Ok']");
 		Thread.sleep(1000);
 		pages.Utill().click("//div[@class='modal-content']//button[contains(text(),'Yes')]");

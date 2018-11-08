@@ -1197,6 +1197,26 @@ public class Utill {
 		} else
 			return null;
 	}
+	/**
+	 * takes the File object as input and return the filename inside the folder
+	 * 
+	 * @param folder path of file
+	 * @return filename inside the folder
+	 * @throws Exception when file empty
+	 */
+	public String getFileName(File folder) throws Exception {
+		Thread.sleep(2000);
+		File[] files = folder.listFiles();
+		if (files.length > 0) {
+			if (files[0].isFile()) {
+				String name = files[0].getName();
+				return name;
+			} else {
+				return null;
+			}
+		} else
+			return null;
+	}
 
 	/**
 	 * Takes file path as input and return the file name in that path

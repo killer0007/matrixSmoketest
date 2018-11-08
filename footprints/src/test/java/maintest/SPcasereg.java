@@ -1205,8 +1205,8 @@ public class SPcasereg extends Design {
 		pages.Utill().confirmAlert();
 		pages.Home().workStage();
 		pages.DataEntrySupervision().datanentrysupervision();
-//		pages.DataEntrySupervision().assign(refno, uname);
-		pages.DataEntrySupervision().assigngetnext(refno);
+		pages.DataEntrySupervision().assign(refno, uname);
+//		pages.DataEntrySupervision().assigngetnext(refno);
 		pages.DcaseRegistration().caseRegistration();
 		Thread.sleep(1500);
 		pages.Utill().click("//span[text()='" + refno + "']");
@@ -1534,8 +1534,8 @@ public class SPcasereg extends Design {
 		pages.Home().homepage();
 		// assing
 		pages.DataEntrySupervision().datanentrysupervision();
-//		pages.DataEntrySupervision().assign(refno, "demoempl");
-		pages.DataEntrySupervision().assigngetnext(refno);
+		pages.DataEntrySupervision().assign(refno, uname);
+//		pages.DataEntrySupervision().assigngetnext(refno);
 		pages.DataEntry().datanentry();
 		pages.DataEntry().search(refno);
 		pages.DataEntry().selectcase(refno);
@@ -1953,7 +1953,8 @@ public class SPcasereg extends Design {
 		pages.Home().workStage();
 
 		pages.DataEntrySupervision().datanentrysupervision();
-		pages.DataEntrySupervision().assigngetnext(refno);
+//		pages.DataEntrySupervision().assigngetnext(refno);
+		pages.DataEntrySupervision().assign(refno, uname);
 		pages.DataEntry().datanentry();
 		pages.DataEntry().search(refno);
 		pages.DataEntry().selectcase(refno);
@@ -2083,7 +2084,8 @@ public class SPcasereg extends Design {
 	public void TC_SPDOC_005() throws Exception {
 		pages.DataEntrySupervision().datanentrysupervision();
 		refno = pages.DbConnection().getLastrefno(projectName);
-		pages.DataEntrySupervision().assigngetnext(refno);
+//		pages.DataEntrySupervision().assigngetnext(refno);
+		pages.DataEntrySupervision().assign(refno, uname);
 		pages.DataEntry().datanentry();
 		pages.DataEntry().search(refno);
 		

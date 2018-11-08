@@ -84,6 +84,15 @@ public class VerificationSupervisor {
 		this.CaseRefNo(refno);
 		this.Search();
 	}
+	/**
+	 * Performs click action in assign button
+	 */
+	public void assign() {
+		pages.Utill().click("btnBulkAllocation");
+		pages.Utill().waitUntilLoaderisInvisible(60);
+
+	}
+
 	public void Search(String refno, String check,String component) {
 		this.CaseRefNo(refno);
 		this.Checks(check);
@@ -106,5 +115,15 @@ public class VerificationSupervisor {
 			
 	}
 	
-	
+	public void assign(String refno, String epmName) {
+		this.Search(refno);
+		pages.Utill().click("chkboxallselect");
+		this.assign();
+		pages.Utill().click("ddlFilteredTMforAllocation");
+		pages.Utill().click(".//*[@id='ddlFilteredTMforAllocation']//option[contains(text(),'"+epmName+"')]");
+		pages.Utill().click("//div[@class='modal-dialog modal-lg']//button[text()='Ok']");
+		pages.Utill().sleep(1000);
+		pages.Utill().click("//div[@class='modal-content']//button[contains(text(),'Yes')]");
+		pages.Utill().waitUntilLoaderisInvisible(100);
+	}
 }

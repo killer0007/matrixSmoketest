@@ -102,9 +102,11 @@ public class ReportGeneration  {
 		pages.Utill().click("rwReportComponent_C_ddlTemplate_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//*[@id='rwReportComponent_C_ddlTemplate_DropDown']/div/ul/li[1]")));
+		pages.Utill().sleep(500);
 			pages.Utill().click(
 					"//*[@id='rwReportComponent_C_ddlTemplate_DropDown']/div/ul//li[text()='" + TempName + "']");
-			pages.Utill().sleep(500);
+		//	System.out.println("//*[@id='rwReportComponent_C_ddlTemplate_DropDown']/div/ul//li[text()='" + TempName + "']");
+			
 		}
 	}
 	public void CaseStatus(String TempName) {
@@ -113,9 +115,10 @@ public class ReportGeneration  {
 		pages.Utill().click("rwReportComponent_C_ddlCaseStatus_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//*[@id='rwReportComponent_C_ddlCaseStatus_DropDown']/div/ul/li[1]")));
+		pages.Utill().sleep(500);
 			pages.Utill().click(
 					"//*[@id='rwReportComponent_C_ddlCaseStatus_DropDown']/div/ul//li[text()='" + TempName + "']");
-			pages.Utill().sleep(500);
+			
 		}
 	}
 	public void previewReport() {
