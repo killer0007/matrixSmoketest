@@ -486,7 +486,7 @@ public class Education extends Verification {
 	}
 
 	public String RespondentContactNo() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEducationRespondentContactNoEmailID");
+		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationRespondentContactNoEmailID");
 	}
 	
 	public void Ver_Comments(String comments) {

@@ -13,7 +13,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class BaseClass  {
+public class BaseClass {
 
 	WebDriver driver;
 	static Properties loc;
@@ -34,11 +34,11 @@ public class BaseClass  {
 			config.put("download.default_directory", downloadFilepath);
 			config.put("download.prompt_for_download", false);
 			config.put("download.directory_upgrade", true);
-					config.put("plugins.always_open_pdf_externally", true);
+//					config.put("plugins.always_open_pdf_externally", true);
 			chromoption.setExperimentalOption("prefs", config);
 			chromoption.addArguments("--disable-notifications");
-//			chromoption.addArguments("--disable-gpu");
-//			chromoption.setHeadless(true);
+			chromoption.addArguments("--disable-gpu");
+			chromoption.setHeadless(true);
 //			chromoption.addArguments("start-maximized");
 			driver = new ChromeDriver(chromoption);
 			Dimension d = new Dimension(1382, 744);

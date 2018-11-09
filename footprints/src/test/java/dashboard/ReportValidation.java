@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
 import environment.Pages;
 
-public class ReportGeneration  {
+public class ReportValidation  {
 	WebDriver driver;
 	ExtentTest logger;
 	Pages pages;
@@ -22,15 +22,15 @@ public class ReportGeneration  {
 	 *
 	 * @param logger logger instance
 	 */
-	public ReportGeneration(WebDriver driver, ExtentTest logger) {
+	public ReportValidation(WebDriver driver, ExtentTest logger) {
 		this.driver=driver;
 		this.logger = logger;
 		pages = new Pages(driver,logger);
 	}
-	public void reportGeneration() {
+	public void reportValidation() {
 		String stage=pages.Utill().getValue("ddlAct");
-		if(!stage.equals("8")) {
-			pages.Utill().selectByValue("ddlAct", "8");
+		if(!stage.equals("10")) {
+			pages.Utill().selectByValue("ddlAct", "10");
 			pages.Utill().waitUntilLoaderisInvisible(50);
 		}	
 	}

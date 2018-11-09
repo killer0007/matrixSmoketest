@@ -24,10 +24,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 import java.util.Set;
+import java.util.StringTokenizer;
 import java.util.function.Function;
 import org.openqa.selenium.JavascriptExecutor;
 import javax.imageio.ImageIO;
@@ -59,7 +62,6 @@ public class Utill {
 	WebDriver driver;
 	ExtentTest logger;
 	protected final Pages pages;
-
 	/**
 	 * constructor to initiatize webdriver and logger
 	 * 
@@ -1176,7 +1178,25 @@ public class Utill {
 			}
 		}
 	}
-
+	/**
+	 * Takes driver, time, and file path as input and wait for file download in given path
+	 * @param driver webdriver instance
+	 * @param time timeout in seconds
+	 * @param file file path
+	 */
+	public void waitForDownload(WebDriver driver,long time,String fileName) {
+		final String path=fileName;
+		final File file = new File(path);
+		final File [] files=file.listFiles();
+		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(time)).pollingEvery(Duration.ofMillis(200));
+		wait.until(new Function<WebDriver, Boolean>() {
+			@Override
+			public Boolean apply(WebDriver t) {
+				if(files.length>0) return true;
+				else return false;
+			}
+		});
+	}
 	/**
 	 * takes the File object as input and return the filename inside the folder
 	 * 
@@ -1295,5 +1315,16 @@ public class Utill {
 		SimpleDateFormat df = new SimpleDateFormat("MM/yyyy");
 		Date d=df.parse(date);
 		return new SimpleDateFormat("MMMM yyyy").format(d).toString();
+	}
+	public Map<String, String> pageOne(StringTokenizer token) {
+		Map<String, String> data = new LinkedHashMap<>();
+		while(token.hasMoreTokens()) {
+			String next=token.nextToken();
+			if(next.contains(":") && !next.contains("ISO")) {
+				String [] s= next.split(":");
+				data.put(s[0].trim(), s[1].trim());
+			}
+		}
+		return data;
 	}
 }

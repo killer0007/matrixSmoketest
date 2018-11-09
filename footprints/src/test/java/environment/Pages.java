@@ -38,6 +38,8 @@ public class Pages {
 	private Verification verification;
 	private ReportGenerationSupervision reportGenerationSupervision;
 	private ReportGeneration reportGeneration;
+	private ReportValidationSupervision reportValidationSupervision;
+	private ReportValidation reportValidation;
 	private WebDriver driver;
 
 	public Pages(WebDriver driver, ExtentTest logger) {
@@ -148,6 +150,12 @@ public class Pages {
 	}
 	public ReportGeneration ReportGeneration() {
 		return (reportGeneration == null) ? reportGeneration = new ReportGeneration(driver, logger) : reportGeneration;
+	}
+	public ReportValidationSupervision ReportValidationSupervision() {
+		return (reportValidationSupervision == null) ? reportValidationSupervision = new ReportValidationSupervision(driver, logger) : reportValidationSupervision;
+	}
+	public ReportValidation ReportValidation() {
+		return (reportValidation == null) ? reportValidation = new ReportValidation(driver, logger) : reportValidation;
 	}
 	
 }

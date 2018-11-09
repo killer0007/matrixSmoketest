@@ -52,6 +52,7 @@ public class Id extends Verification {
 		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlIdComponent_Input");
 		if (!value.trim().equals(component)) {
 			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlIdComponent_Input");
+			pages.Utill().sleep(500);
 			if (verifyddvalue(component)) {
 				pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlIdComponent_DropDown']/div/ul//li[text()='"
 						+ component + "']");

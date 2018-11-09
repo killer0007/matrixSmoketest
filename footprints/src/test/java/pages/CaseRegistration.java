@@ -227,6 +227,7 @@ public class CaseRegistration {
 	public void addEditComponent() {
 		pages.Utill().click("ctl00_ContentPlaceHolder1_btnAddComponent_input");
 		pages.Utill().waitUntilLoaderisInvisible(10);
+		pages.Utill().sleep(500);
 	}
 
 	/**

@@ -5,20 +5,14 @@
     <classes>
       <class name="maintest2.Basic">
         <methods>
-          <include name="TC_SPDOC_004"/>
-          <include name="tearDown"/>
-          <include name="beforeSuit"/>
-          <include name="TC_SPDOC_007"/>
-          <include name="TC_SPDOC_008"/>
-          <include name="TC_SPDOC_005"/>
-          <include name="beforetest"/>
-          <include name="TC_SPDOC_006"/>
-          <include name="TC_SPDOC_003"/>
           <include name="setup"/>
-          <include name="TC_SPDOC_001"/>
+          <include name="tearDown"/>
+          <include name="Login"/>
           <include name="teardown"/>
-          <include name="TC_SPDOC_002"/>
+          <include name="beforeSuit"/>
           <include name="afterSuite"/>
+          <include name="dataEntry"/>
+          <include name="beforetest"/>
         </methods>
       </class> <!-- maintest2.Basic -->
     </classes>

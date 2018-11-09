@@ -7,23 +7,27 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.StringTokenizer;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.parser.PdfTextExtractor;
 import dashboard.DataEntrySupervision;
+import dashboard.ReportGeneration;
 import environment.*;
 import verification.*;
 @Listeners(environment.Listener.class)
@@ -43,6 +47,7 @@ public class FullFlow extends Design {
 	protected String lastName = null;
 	protected String refno = null;
 	protected String uname = null;
+	private String pdfName=null;
 
 	/**
 	 * Initializing extent report objects
@@ -615,6 +620,73 @@ public class FullFlow extends Design {
 		Map<String, String> peractual=id.Aadharcard();
 		Map<String, String> perexpected=id.filedata();
 		assertEquals(peractual, perexpected);
+	}
+	@Test(priority = 38, enabled = true, dependsOnMethods = "IdReportGeneration")
+	public void ReportGenerationSubmit() throws Exception {
+		ReportGeneration reportgeneration=pages.ReportGeneration();
+		reportgeneration.GenerateReport();
+		List<String> op=reportgeneration.getReportComponents();
+		List<String> components = new ArrayList<>(Arrays.asList(pages.CaseRegistration().getcomponents()));
+		Collections.sort(op);
+		Collections.sort(components);
+		assertEquals(op, components);
+		reportgeneration.GenerateReportCheckbox();
+		reportgeneration.ReportComments("completed");
+		reportgeneration.ReportTemplate("New Standard Template");
+		reportgeneration.CaseStatus("Clear");
+		reportgeneration.previewReport();
+		pages.Utill().switchWindow(1);
+		String source=driver.getPageSource();
+		boolean re=true;
+		if(!source.contains("report/ReportViewer.aspx")) {
+			logger.fail("", MediaEntityBuilder.createScreenCaptureFromPath(Utill.getScreenshot(driver)).build());
+			re=false;
+		}
+		pages.Utill().closeTab();
+		pages.Utill().switchWindow(0);
+		reportgeneration.submit();
+		assertTrue(re);
+	}
+	
+	@Test(priority = 38, enabled = true, dependsOnMethods = "ReportGenerationSubmit")
+	public void ReportValidationSupervisor() throws Exception {
+		pages.ReportValidationSupervision().reportValidationSupervision();
+		pages.ReportValidationSupervision().assign(refno, "demoempl");
+		List<String> components= new ArrayList<String>(Arrays.asList(pages.CaseRegistration().getcomponents()));
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		SoftAssert sf = new SoftAssert();
+		List<HashMap<String, String>> data =pages.CaseTracker().getcasedata();
+		for (HashMap<String, String> d:data) {
+			if(components.contains(d.get("ComponentName"))) {
+				sf.assertEquals(d.get("CurrentStage"), "Report Generation QC Pending");
+			}
+		}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
+	}
+	@Test(priority = 40, enabled = true, dependsOnMethods = "ReportValidationSupervisor")
+	public void ReportValidation() throws Exception {
+		pages.ReportValidation().reportValidation();
+		pages.ReportValidation().Search(refno);
+		pages.ReportValidation().Select(refno);
+		pages.ReportGeneration().GenerateReport();
+	}
+	@Test(priority = 39, enabled = false, alwaysRun=true,dependsOnMethods = "ReportGenerationSubmit")
+	public void readPdfIndex() throws Exception {
+		if(pdfName!=null) {
+			String path=config.getProperty("downloadFilepath")+"\\\\"+pdfName;
+			PdfReader reader = new PdfReader(path);
+			String text = PdfTextExtractor.getTextFromPage(reader, 3);
+			System.out.println(text);
+			reader.close();
+			StringTokenizer token = new StringTokenizer(text,"\n");
+			Map<String, String> out=pages.Utill().pageOne(token);
+			System.out.println(out);
+		}
+		else
+			assertEquals(null, "pdf file name");
 	}
 	/**
 	 * Takes test Result as input and Log the results into reports

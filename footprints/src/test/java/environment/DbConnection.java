@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class DbConnection { 
+public class DbConnection  { 
 	public static void main(String[] args) throws Exception{
 		DbConnection d = new DbConnection();
 		System.out.println(d.getAssignedCount("demoempl"));
@@ -20,7 +20,7 @@ public class DbConnection {
 	 * @param contractname contract name
 	 * @return List of sub component
 	 * @throws Exception when SQL connection failed
-	 */
+	 */ 
 	  
 	public synchronized List<String> getcontractdetails(String contractname) throws Exception {
 		List<String> result = new ArrayList<String>();
