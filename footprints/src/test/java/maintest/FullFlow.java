@@ -624,6 +624,7 @@ public class FullFlow extends Design {
 	@Test(priority = 38, enabled = true, dependsOnMethods = "IdReportGeneration")
 	public void ReportGenerationSubmit() throws Exception {
 		ReportGeneration reportgeneration=pages.ReportGeneration();
+		pages.Utill().SwitchDefault();
 		reportgeneration.GenerateReport();
 		List<String> op=reportgeneration.getReportComponents();
 		List<String> components = new ArrayList<>(Arrays.asList(pages.CaseRegistration().getcomponents()));
