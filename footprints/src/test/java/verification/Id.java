@@ -598,4 +598,12 @@ public class Id extends Verification {
 		else
 			throw new NotFoundException();
 	}
+	public void ReportComments() {
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnIdAddComments");
+		pages.Utill().waitUntilLoaderisInvisible(100);
+	}
+	public void CloseReportComments() {
+		pages.Utill().click("ModalClose");
+		pages.Utill().sleep(500);
+	}
 }

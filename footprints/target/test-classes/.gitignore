@@ -1,10 +1,6 @@
-/environment/
 /actions/
-/client/
-/dashboard/
-/dataEntry/
-/dataEntryQC/
+/environment/
 /maintest/
 /maintest2/
-/pages/
+/dataEntry/
 /verification/

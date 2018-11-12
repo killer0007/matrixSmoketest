@@ -92,6 +92,8 @@ public class ReportGeneration  {
 	public void GenerateReportCheckbox() {
 		pages.Utill().click("rwReportComponent_C_grdReportComponent_ctl00_ctl02_ctl00_chkReportSelectSelectCheckBox");
 	}
+	
+
 	public void ReportComments(String comments) {
 		pages.Utill().SwitchFramebyId("rwReportComponent_C_txtReportComment_contentIframe");
 		pages.Utill().sendKeys("/html/body", comments);

@@ -81,6 +81,12 @@ public class ReportValidation  {
 	public void GenerateReport() {
 		pages.Utill().click("btnReportGenerate");
 	}
+	public void PublishReport() {
+		pages.Utill().click("rwReportComponent_C_btnPublishReport_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
+		pages.Utill().confirmAlert();
+		pages.Utill().waitUntilLoaderisInvisible(100);
+	}
 	public List<String> getReportComponents() {
 		List<WebElement> name=driver.findElements(By.xpath("//*[@id='rwReportComponent_C_grdReportComponent_ctl00']/tbody/tr/td[7]"));
 		List<String> component=new ArrayList<>();

@@ -1,8 +1,9 @@
 package verification;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
@@ -394,5 +395,31 @@ public void addDBCheck() {
 		this.Ver_Comments(pro.getProperty("verComments"));
 		this.ComponentStatus(pro.getProperty("ComponentStatus"));
 		this.submit();
+	}
+	public Map<String, String> databasedata() throws Exception{	
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		map.put("VerifierName", this.VerifierName());
+		map.put("VerifierDesignation", this.VerifierDesignation());
+		map.put("VerifierContactNo", this.VerifierContactNo());
+		map.put("VerifierEmail", this.VerifierEmail());
+		map.put("Ver_Comments", this.Ver_Comments());
+		map.put("ComponentStatus", this.ComponentStatus());
+		map.put("ServiceProvider", this.ServiceProvider());
+		logger.log(Status.INFO, map.toString());
+		return map;
+	}
+	public Map<String, String> filedata() throws Exception{
+		Map<String , String> map=new LinkedHashMap<String, String>();
+		Properties pro= pages.Utill().veridata("database");
+		map.put("VerifierName", pro.getProperty("VerifierName"));
+		map.put("VerifierDesignation", pro.getProperty("VerifierDesignation"));
+		map.put("VerifierContactNo", pro.getProperty("VerifierContactNo"));
+		map.put("VerifierEmail", pro.getProperty("VerifierEmail"));
+		map.put("Ver_Comments", pro.getProperty("verComments"));
+		map.put("ComponentStatus", pro.getProperty("ComponentStatus"));
+		map.put("ServiceProvider", pro.getProperty("ServiceProvider"));
+		logger.log(Status.INFO, map.toString());
+		return map;
+		
 	}
 }

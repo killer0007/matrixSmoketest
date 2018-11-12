@@ -28,4 +28,16 @@ public abstract class Verification {
 		String file=new File(filepath).getName();
 		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[text()='"+doctype+"']/../td[5]//div/ul/li[1]/span/span"), file));
 	}
+	public void UpdateReportComments() {
+		int count=driver.findElements(By.xpath("//*[@id='accordion']/div")).size();
+		
+		for (int i = 1; i < count; i++) {
+			if(i>1) {
+				pages.Utill().click("//*[@id='accordion']/div["+Integer.toString(i)+"]//b");	
+			}
+			
+			String info=pages.Utill().getText("//*[@id='accordion']/div["+Integer.toString(i)+"]//td[2]/span");
+			pages.Utill().sendKeys("//*[@id='accordion']/div["+Integer.toString(i)+"]//div[3]/div/p/..", info);
+		}
+	}
 }

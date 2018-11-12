@@ -552,4 +552,12 @@ public class Credit extends Verification {
 		logger.log(Status.INFO, map.toString());
 		return map;
 		}
+	public void ReportComments() {
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnCreditAddComments_input");
+		pages.Utill().waitUntilLoaderisInvisible(100);
+	}
+	public void CloseReportComments() {
+		pages.Utill().click("ModalClose");
+		pages.Utill().sleep(500);
+	}
 }

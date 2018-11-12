@@ -28,6 +28,7 @@ import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.parser.PdfTextExtractor;
 import dashboard.DataEntrySupervision;
 import dashboard.ReportGeneration;
+import dashboard.ReportValidation;
 import environment.*;
 import verification.*;
 @Listeners(environment.Listener.class)
@@ -540,9 +541,17 @@ public class FullFlow extends Design {
 		pages.ReportGeneration().Select(refno);
 		Address add = new Address(driver, logger);
 		Map<String, String> actual=add.CurrentAddress();
+		add.ReportComments();
+		add.UpdateReportComments();
+		add.CloseReportComments();
+		add.save();
 		Map<String, String> expected=add.filedata();
 		assertEquals(actual, expected);
 		Map<String, String> peractual=add.PermanentAdress();
+		add.ReportComments();
+		add.UpdateReportComments();
+		add.CloseReportComments();
+		add.save();
 		Map<String, String> perexpected=add.filedata();
 		assertEquals(peractual, perexpected);
 	}
@@ -550,9 +559,17 @@ public class FullFlow extends Design {
 	public void EducationReportGeneration() throws Exception {
 		Education edu = new Education(driver, logger);
 		Map<String, String> actual=edu.twelveth();
+		edu.ReportComments();
+		edu.UpdateReportComments();
+		edu.CloseReportComments();
+		edu.save();
 		Map<String, String> expected=edu.filedata();
 		assertEquals(actual, expected);
 		Map<String, String> peractual=edu.ugone();
+		edu.ReportComments();
+		edu.UpdateReportComments();
+		edu.CloseReportComments();
+		edu.save();
 		Map<String, String> perexpected=edu.filedata();
 		assertEquals(peractual, perexpected);
 	}
@@ -560,9 +577,17 @@ public class FullFlow extends Design {
 	public void EmploymentReportGeneration() throws Exception {
 		Employment emp = new Employment(driver, logger);
 		Map<String, String> actual=emp.CurrentEmp();
+		emp.ReportComments();
+		emp.UpdateReportComments();
+		emp.CloseReportComments();
+		emp.save();
 		Map<String, String> expected=emp.filedata();
 		assertEquals(actual, expected);
 		Map<String, String> peractual=emp.PerviousEmp();
+		emp.ReportComments();
+		emp.UpdateReportComments();
+		emp.CloseReportComments();
+		emp.save();
 		Map<String, String> perexpected=emp.filedata();
 		assertEquals(peractual, perexpected);
 	}
@@ -581,9 +606,17 @@ public class FullFlow extends Design {
 	public void CriminalReportGeneration() throws Exception {
 		Criminal criminal = new Criminal(driver, logger);
 		Map<String, String> actual=criminal.CurrentAddress();
+		criminal.ReportComments();
+		criminal.UpdateReportComments();
+		criminal.CloseReportComments();
+		criminal.save();
 		Map<String, String> expected=criminal.filedata();
 		assertEquals(actual, expected);
 		Map<String, String> peractual=criminal.PermanentAdress();
+		criminal.ReportComments();
+		criminal.UpdateReportComments();
+		criminal.CloseReportComments();
+		criminal.save();
 		Map<String, String> perexpected=criminal.filedata();
 		assertEquals(peractual, perexpected);
 	}
@@ -591,6 +624,10 @@ public class FullFlow extends Design {
 	public void CreditReportGeneration() throws Exception {
 		Credit credit = new Credit(driver, logger);
 		Map<String, String> actual=credit.credit();
+		credit.ReportComments();
+		credit.UpdateReportComments();
+		credit.CloseReportComments();
+		credit.save();
 		Map<String, String> expected=credit.filedata();
 		assertEquals(actual, expected);
 	}
@@ -598,9 +635,17 @@ public class FullFlow extends Design {
 	public void CourtReportGeneration() throws Exception {
 		Court court = new Court(driver, logger);
 		Map<String, String> actual=court.CurrentAddress();
+		court.ReportComments();
+		court.UpdateReportComments();
+		court.CloseReportComments();
+		court.save();
 		Map<String, String> expected=court.filedata();
 		assertEquals(actual, expected);
 		Map<String, String> peractual=court.PermanentAdress();
+		court.ReportComments();
+		court.UpdateReportComments();
+		court.CloseReportComments();
+		court.save();
 		Map<String, String> perexpected=court.filedata();
 		assertEquals(peractual, perexpected);
 	}
@@ -615,9 +660,17 @@ public class FullFlow extends Design {
 	public void IdReportGeneration() throws Exception {
 		Id id = new Id(driver, logger);
 		Map<String, String> actual=id.PassPort();
+		id.ReportComments();
+		id.UpdateReportComments();
+		id.CloseReportComments();
+		id.save();
 		Map<String, String> expected=id.filedata();
 		assertEquals(actual, expected);
 		Map<String, String> peractual=id.Aadharcard();
+		id.ReportComments();
+		id.UpdateReportComments();
+		id.CloseReportComments();
+		id.save();
 		Map<String, String> perexpected=id.filedata();
 		assertEquals(peractual, perexpected);
 	}
@@ -635,18 +688,18 @@ public class FullFlow extends Design {
 		reportgeneration.ReportComments("completed");
 		reportgeneration.ReportTemplate("New Standard Template");
 		reportgeneration.CaseStatus("Clear");
-		reportgeneration.previewReport();
-		pages.Utill().switchWindow(1);
-		String source=driver.getPageSource();
-		boolean re=true;
-		if(!source.contains("report/ReportViewer.aspx")) {
-			logger.fail("", MediaEntityBuilder.createScreenCaptureFromPath(Utill.getScreenshot(driver)).build());
-			re=false;
-		}
-		pages.Utill().closeTab();
-		pages.Utill().switchWindow(0);
+//		reportgeneration.previewReport();
+//		pages.Utill().switchWindow(1);
+//		String source=driver.getPageSource();
+//		boolean re=true;
+//		if(!source.contains("report/ReportViewer.aspx")) {
+//			logger.fail("", MediaEntityBuilder.createScreenCaptureFromPath(Utill.getScreenshot(driver)).build());
+//			re=false;
+//		}
+//		pages.Utill().closeTab();
+//		pages.Utill().switchWindow(0);
 		reportgeneration.submit();
-		assertTrue(re);
+//		assertTrue(re);
 	}
 	
 	@Test(priority = 38, enabled = true, dependsOnMethods = "ReportGenerationSubmit")
@@ -669,10 +722,25 @@ public class FullFlow extends Design {
 	}
 	@Test(priority = 40, enabled = true, dependsOnMethods = "ReportValidationSupervisor")
 	public void ReportValidation() throws Exception {
-		pages.ReportValidation().reportValidation();
-		pages.ReportValidation().Search(refno);
-		pages.ReportValidation().Select(refno);
-		pages.ReportGeneration().GenerateReport();
+		List<String> components= new ArrayList<String>(Arrays.asList(pages.CaseRegistration().getcomponents()));
+		ReportValidation reportValidation=pages.ReportValidation();
+		reportValidation.reportValidation();
+		reportValidation.Search(refno);
+		reportValidation.Select(refno);
+		reportValidation.GenerateReport();
+		reportValidation.PublishReport();
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		SoftAssert sf = new SoftAssert();
+		List<HashMap<String, String>> data =pages.CaseTracker().getcasedata();
+		for (HashMap<String, String> d:data) {
+			if(components.contains(d.get("ComponentName"))) {
+				sf.assertEquals(d.get("CurrentStage"), "Closed");
+			}
+		}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
 	}
 	@Test(priority = 39, enabled = false, alwaysRun=true,dependsOnMethods = "ReportGenerationSubmit")
 	public void readPdfIndex() throws Exception {

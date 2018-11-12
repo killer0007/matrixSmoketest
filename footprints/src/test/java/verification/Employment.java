@@ -1009,4 +1009,25 @@ try {
 	else
 		throw new NotFoundException();
 	}
+	public void ReportComments() {
+		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEmploymentAddComments");
+		pages.Utill().waitUntilLoaderisInvisible(100);
+	}
+	public void CloseReportComments() {
+		pages.Utill().click("ModalClose");
+		pages.Utill().sleep(500);
+	}
+	public void UpdateReportComments() {
+		int count=driver.findElements(By.xpath("//*[@id='accordion']/div")).size();
+		
+		for (int i = 1; i < count-1; i++) {
+			if(i>1) {
+				pages.Utill().click("//*[@id='accordion']/div["+Integer.toString(i)+"]//b");	
+			}		
+			String info=pages.Utill().getText("//*[@id='accordion']/div["+Integer.toString(i)+"]//td[1]/span");
+			pages.Utill().sendKeys("//*[@id='accordion']/div["+Integer.toString(i)+"]//td[2]//div[3]/div/p/..", info);
+			String info2=pages.Utill().getText("//*[@id='accordion']/div["+Integer.toString(i)+"]//td[3]/span");
+			pages.Utill().sendKeys("//*[@id='accordion']/div["+Integer.toString(i)+"]//td[4]//div[3]/div/p/..", info2);
+		}
+	}
 }

@@ -7,11 +7,10 @@
         <methods>
           <include name="setup"/>
           <include name="tearDown"/>
-          <include name="Login"/>
           <include name="teardown"/>
           <include name="beforeSuit"/>
           <include name="afterSuite"/>
-          <include name="dataEntry"/>
+          <include name="AddressReportGeneration"/>
           <include name="beforetest"/>
         </methods>
       </class> <!-- maintest2.Basic -->
