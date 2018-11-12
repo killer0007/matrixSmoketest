@@ -397,6 +397,7 @@ public void addDBCheck() {
 		this.submit();
 	}
 	public Map<String, String> databasedata() throws Exception{	
+		this.databasecheck();
 		Map<String , String> map=new LinkedHashMap<String, String>();
 		map.put("VerifierName", this.VerifierName());
 		map.put("VerifierDesignation", this.VerifierDesignation());

@@ -113,6 +113,8 @@ public class Basic {
 		Map<String, String> actual=db.databasedata();
 		Map<String, String> expected=db.filedata();
 		assertEquals(actual, expected);
+		System.out.println(actual);
+		System.out.println(expected);
 	}
 
 

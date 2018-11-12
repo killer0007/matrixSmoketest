@@ -1,6 +1,8 @@
-/actions/
-/environment/
-/maintest/
 /maintest2/
-/dataEntry/
+/dashboard/
+/environment/
+/pages/
 /verification/
+/dataEntry/
+/dataEntryQC/
+/maintest/

@@ -598,9 +598,12 @@ public class FullFlow extends Design {
 		Map<String, String> expected=ref.filedata();
 		assertEquals(actual, expected);
 	}
-	@Test(priority = 32, enabled = false, dependsOnMethods = "ReportGenerationSupervision")
+	@Test(priority = 32, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
 	public void DatabaseReportGeneration() throws Exception {
-		
+		Database db = new Database(driver, logger);
+		Map<String, String> actual=db.databasedata();
+		Map<String, String> expected=db.filedata();
+		assertEquals(actual, expected);
 	}
 	@Test(priority = 33, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
 	public void CriminalReportGeneration() throws Exception {
