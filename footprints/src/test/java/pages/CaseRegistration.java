@@ -1,5 +1,6 @@
 package pages;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,14 +10,17 @@ import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import environment.Pages;
 
 public class CaseRegistration {
-	WebDriver driver;
-	ExtentTest logger;
-	Pages pages;
+	public WebDriver driver;
+	public ExtentTest logger;
+	public Pages pages;
 
 	/**
 	 * This is class for Service Provider case registration
@@ -379,6 +383,7 @@ public class CaseRegistration {
 					"//table[@id='ctl00_ContentPlaceHolder1_rwCaseDocument_C_grdCaseDocument_ctl00']//td[text()='"
 							+ doctype + "']/../td[5]//div/ul/li/span/input[2]",
 					fileName);
+			this.WaitforFileUpdate(doctype, fileName);
 		} else
 			throw new NotFoundException(doctype);
 		pages.Utill().click("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnAddCaseDocument_input");
@@ -386,7 +391,24 @@ public class CaseRegistration {
 		pages.Utill().click("ctl00_ContentPlaceHolder1_rwCaseDocument_C_btnCaseDocumentCancel");
 
 	}
-
+	/**
+	 * Takes doctype and file name as input and waits for given document to upload
+	 * @param doctype type of document
+	 * @param filepath file to upload
+	 */
+	public void WaitforFileUpdate(String doctype,String filepath) {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		String file=new File(filepath).getName();
+		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[text()='"+doctype+"']/../td[5]//div/ul/li[1]/span/span"), file));
+		String name =pages.Utill().getText("//*[text()='"+doctype+"']/../td[5]//div/ul/li[1]/span/span");
+		logger.log(Status.INFO, name);
+//		try {
+//			logger.info(name, MediaEntityBuilder.createScreenCaptureFromPath(Utill.getScreenshot(driver)).build());
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println("----------------------------"+name+"---------------");
+	}
 	/**
 	 * Takes document type as input and delete the uploaded document
 	 * 
@@ -636,7 +658,7 @@ public class CaseRegistration {
 		casereg.selectProject(data.get("ProjectName"));
 		casereg.FirstName(data.get("CandidateName"));
 		casereg.LastName(data.get("lastname"));
-		casereg.DOB(data.get("DateofBirth"));
+		casereg.DOB(pages.Utill().getDob());
 		casereg.gender("male");
 		casereg.Email(data.get("CandidateName") + "@ggmail.com");
 		casereg.FatherFirstName("fname");
@@ -727,4 +749,5 @@ public class CaseRegistration {
 		String [] compoents= {"Permanent","Current Address","12th","UG1","Current/Latest Employment","Previous Employment","Reference 1","Aadhaar Card","Passport","Current Address Criminal Check","Permanent Criminal Check","Current Address Court Check","Permanent Court Check","Credit Check 1","Panel1","Database"};
 		return compoents;
 	}
+	
 }

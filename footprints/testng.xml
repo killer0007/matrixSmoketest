@@ -8,7 +8,7 @@
 	<test name="FullFlow">
 		<classes>
 			<!-- <class name="MAINTEST.SPCASEREG"> -->
-			<class name="maintest.FullFlow" />
+			<class name="maintest.ClientCaseReg" />
 		</classes>
 	</test> <!-- Test -->
 <!-- 	<test name="ServiceProviderCaseRegistration"> -->

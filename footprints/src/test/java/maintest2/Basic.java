@@ -24,7 +24,8 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-
+import client.Casereg;
+import dashboard.DataEntrySupervision;
 import dashboard.ReportGeneration;
 import dashboard.ReportValidation;
 import environment.BaseClass;
@@ -75,7 +76,7 @@ public class Basic {
 		driver = new BaseClass().getDriver();
 		config = BaseClass.getlocator();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.get(config.getProperty("url"));
+		driver.get(config.getProperty("url")+"/clientLogin.aspx");
 		contractName = config.getProperty("contractname");
 		clientName = config.getProperty("clientname");
 		projectName = config.getProperty("projectname");
@@ -97,26 +98,51 @@ public class Basic {
 	@Test(priority = 1, enabled = true)
 	public void Login() throws Exception {
 		uname = config.getProperty("uname");
-		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+		pages.Login().userLogin(config.getProperty("clientuname"), config.getProperty("clientpass"));
 		//pages.Verification().verification();
 	}
 
 	
-	@Test(priority = 4, enabled = true)
-	public void dataEntry() throws Exception {
-		refno = "HDFC000734";
-		ReportGeneration reportgeneration=pages.ReportGeneration();
-		reportgeneration.reportGeneration();
-		reportgeneration.Search(refno);
-		reportgeneration.Select(refno);
-		Database db = new Database(driver, logger);
-		Map<String, String> actual=db.databasedata();
-		Map<String, String> expected=db.filedata();
-		assertEquals(actual, expected);
-		System.out.println(actual);
-		System.out.println(expected);
+	@Test(priority = 2, enabled = true)
+	public void casereg() throws Exception {
+		Casereg casereg= new Casereg(driver, logger);
+		casereg.casereg();
+		casereg.Registercase();
+		candidateName = pages.Utill().candidateName();
+		candidateId = Integer.toString(pages.Utill().candidateid());
+		lastName = pages.Utill().lastName();
+		Map<String, String> datas= new HashMap<>();
+		datas.put("CandidateName", candidateName);
+		datas.put("CandidateId", candidateId);
+		datas.put("ProjectName", projectName);
+		datas.put("lastname", lastName);
+		datas.put("doctype", "Authorization Letter");
+		datas.put("filename", config.getProperty("casedoc"));
+		casereg.registercase(datas);
+		String[] components = pages.CaseRegistration().getcomponents();
+		for (int i = 0; i < components.length; i++) {
+			casereg.selectcheck(components[i].toString());
+		}
+		casereg.Register();
+		String info=pages.Utill().confirmAlert();
+		String [] l = info.split(" ");
+		refno=l[l.length-1];
+		pages.Home().homepage();
+		casereg.casereg();
+		casereg.Search(refno);
+		Map<String, String> casedata=casereg.getcasedetails();
+		String actual=casedata.get("caserefno");
+		assertEquals(actual, refno);
 	}
-
+	@Test(priority = 3, enabled = true)
+	public void dataentry() throws Exception {
+		pages.Home().Logout();
+		driver.get(config.getProperty("url"));
+		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+		DataEntrySupervision des = pages.DataEntrySupervision();
+		des.datanentrysupervision();
+		des.assign(refno, "demoempl");
+	}
 
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {

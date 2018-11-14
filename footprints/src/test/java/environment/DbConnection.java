@@ -11,7 +11,7 @@ import java.util.List;
 public class DbConnection  { 
 	public static void main(String[] args) throws Exception{
 		DbConnection d = new DbConnection();
-		System.out.println(d.getAssignedCount("demoempl"));
+		System.out.println(d.getLastrefno("demo client1234"));
 	}
 	/**
 	 * Takes contract name as input and return list if sub components in that

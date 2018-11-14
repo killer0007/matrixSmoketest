@@ -2,23 +2,28 @@ package maintest2;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.util.Iterator;
 
+import javax.swing.JOptionPane;
+
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class temp2 {
 
 	public static void main(String[] args) throws Exception{
-		String path="C:\\Users\\admin\\Downloads\\Sample-Sales-Data.xlsx";
-		FileInputStream fis = new FileInputStream(new File(path));
-		XSSFWorkbook wb = new XSSFWorkbook(fis);
-		XSSFSheet sheet=wb.getSheetAt(0);
-		Row row = sheet.getRow(0);
-		Cell cell= row.getCell(0);
-		System.out.println(cell.getStringCellValue());
-		wb.close();
+		 String RNO=JOptionPane.showInputDialog("Enter the Reference No:");
+		  String WF=JOptionPane.showInputDialog("Enter the Workflow No (1.Candidate 2.Client 3.Employee  4.Bulk):");  
+		  System.out.println(RNO);
+		  System.out.println(WF);
+		  
 	}
 
 }

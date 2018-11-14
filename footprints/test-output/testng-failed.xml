@@ -10,7 +10,7 @@
           <include name="teardown"/>
           <include name="beforeSuit"/>
           <include name="afterSuite"/>
-          <include name="AddressReportGeneration"/>
+          <include name="dataEntry"/>
           <include name="beforetest"/>
         </methods>
       </class> <!-- maintest2.Basic -->
