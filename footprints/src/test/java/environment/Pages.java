@@ -48,19 +48,19 @@ public class Pages {
 	}
 
 	public Utill Utill() {
-		return (utill == null) ? utill = new Utill(driver, logger) : utill;
+		return (utill == null) ? utill = new Utill(driver,logger) : utill;
 	}
 
 	public Login Login() {
-		return (login == null) ? login = new Login(driver, logger) : login;
+		return (login == null) ? login = new Login(driver,logger) : login;
 	}
 
 	public Home Home() {
-		return (home == null) ? home = new Home(driver, logger) : home;
+		return (home == null) ? home = new Home(driver,logger) : home;
 	}
 
 	public CaseRegistration CaseRegistration() {
-		return (caseregistration == null) ? caseregistration = new CaseRegistration(driver, logger) : caseregistration;
+		return (caseregistration == null) ? caseregistration = new CaseRegistration(driver,logger) : caseregistration;
 	}
 
 	public DcaseRegistration DcaseRegistration() {
@@ -73,7 +73,7 @@ public class Pages {
 	}
 
 	public CaseTracker CaseTracker() {
-		return (casetracker == null) ? casetracker = new CaseTracker(driver, logger) : casetracker;
+		return (casetracker == null) ? casetracker = new CaseTracker(driver,logger) : casetracker;
 	}
 
 	public CaseOwnerInsuffClear CaseOwnerInsuffClear() {
@@ -91,39 +91,39 @@ public class Pages {
 	}
 
 	public dataEntry.Address DeAddress() {
-		return (address == null) ? address = new dataEntry.Address(driver, logger) : address;
+		return (address == null) ? address = new dataEntry.Address(driver,logger) : address;
 	}
 
 	public dataEntry.Education DeEducation() {
-		return (education == null) ? education = new dataEntry.Education(driver, logger) : education;
+		return (education == null) ? education = new dataEntry.Education(driver,logger) : education;
 	}
 
 	public dataEntry.Employment DeEmployment() {
-		return (employement == null) ? employement = new dataEntry.Employment(driver, logger) : employement;
+		return (employement == null) ? employement = new dataEntry.Employment(driver,logger) : employement;
 	}
 
 	public dataEntry.Reference DeReference() {
-		return (reference == null) ? reference = new dataEntry.Reference(driver, logger) : reference;
+		return (reference == null) ? reference = new dataEntry.Reference(driver,logger) : reference;
 	}
 
 	public dataEntry.Database DeDatabase() {
-		return (database == null) ? database = new dataEntry.Database(driver, logger) : database;
+		return (database == null) ? database = new dataEntry.Database(driver,logger) : database;
 	}
 
 	public dataEntry.Criminal DeCriminal() {
-		return (criminal == null) ? criminal = new dataEntry.Criminal(driver, logger) : criminal;
+		return (criminal == null) ? criminal = new dataEntry.Criminal(driver,logger) : criminal;
 	}
 
 	public dataEntry.Credit DeCredit() {
-		return (credit == null) ? credit = new dataEntry.Credit(driver, logger) : credit;
+		return (credit == null) ? credit = new dataEntry.Credit(driver,logger) : credit;
 	}
 
 	public dataEntry.Court DeCourt() {
-		return (court == null) ? court = new dataEntry.Court(driver, logger) : court;
+		return (court == null) ? court = new dataEntry.Court(driver,logger) : court;
 	}
 
 	public dataEntry.Id DeId() {
-		return (id == null) ? id = new dataEntry.Id(driver, logger) : id;
+		return (id == null) ? id = new dataEntry.Id(driver,logger) : id;
 	}
 	public DataEntryQCSupervision DataEntryQCSupervision() {
 		return (DataEntryQCSupervision == null) ? DataEntryQCSupervision = new DataEntryQCSupervision(driver, logger)

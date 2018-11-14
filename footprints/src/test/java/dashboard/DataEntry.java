@@ -2,31 +2,23 @@ package dashboard;
 
 import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
-import environment.Pages;
+import environment.Utill;
 
-public class DataEntry {
-	WebDriver driver;
-	ExtentTest logger;
-	Pages pages;
-
+public class DataEntry extends Utill{
 	/**
 	 * This is class for Data Entry Stage
-	 *
 	 * @param logger logger instance
 	 */
 	public DataEntry(WebDriver driver, ExtentTest logger) {
-		
-		this.driver=driver;
-		this.logger = logger;
-		pages = new Pages(driver,logger);
+		super(driver,logger);
 	}
 
 	/**
 	 * select data entry from stages dropdown
 	 */
 	public void datanentry() {
-		pages.Utill().selectByValue("ddlAct", "2");
-		pages.Utill().waitUntilLoaderisInvisible(50);
+		selectByValue("ddlAct", "2");
+		waitUntilLoaderisInvisible(50);
 	}
 
 	/**
@@ -35,7 +27,7 @@ public class DataEntry {
 	 * @param firstname candidate First Name
 	 */
 	public void firstname(String firstname) {
-		pages.Utill().sendKeys("txtFirstName", firstname);
+		sendKeys("txtFirstName", firstname);
 	}
 
 	/**
@@ -44,7 +36,7 @@ public class DataEntry {
 	 * @param lastname candidate Last Name
 	 */
 	public void lasttname(String lastname) {
-		pages.Utill().sendKeys("txtLastName", lastname);
+		sendKeys("txtLastName", lastname);
 	}
 
 	/**
@@ -53,7 +45,7 @@ public class DataEntry {
 	 * @param no caserefno
 	 */
 	public void caserefno(String no) {
-		pages.Utill().sendKeys("txtCaserefNo", no);
+		sendKeys("txtCaserefNo", no);
 	}
 
 	/**
@@ -62,7 +54,7 @@ public class DataEntry {
 	 * @param no clientrefno
 	 */
 	public void clientrefno(String no) {
-		pages.Utill().sendKeys("txtClientrefNo", no);
+		sendKeys("txtClientrefNo", no);
 	}
 
 	/**
@@ -71,8 +63,8 @@ public class DataEntry {
 	 * @param name Client Name
 	 */
 	public void client(String name) {
-		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredClientModal']", name);
-		pages.Utill().waitUntilLoaderisInvisible(10);
+		selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredClientModal']", name);
+		waitUntilLoaderisInvisible(10);
 	}
 
 	/**
@@ -81,15 +73,15 @@ public class DataEntry {
 	 * @param name Project Name
 	 */
 	public void project(String name) {
-		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredprojectMadal']", name);
+		selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredprojectMadal']", name);
 	}
 
 	/**
 	 * Performs click action on search button
 	 */
 	public void search() {
-		pages.Utill().click("btnsearch");
-		pages.Utill().waitUntilLoaderisInvisible(10);
+		click("btnsearch");
+		waitUntilLoaderisInvisible(10);
 	}
 
 	/**
@@ -111,9 +103,9 @@ public class DataEntry {
 	 */
 	public String getSearchResult(String refno) {
 		this.search(refno);
-		String re = pages.Utill().getText("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
+		String re = getText("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
 		if (re.equals(null))
-			re = pages.Utill().getText("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
+			re = getText("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
 		return re;
 
 	}
@@ -131,7 +123,7 @@ public class DataEntry {
 		this.firstname(firstname);
 		this.lasttname(lastname);
 		this.search();
-		String no = pages.Utill().getTableCellValue("grdTaskList", 1, 2);
+		String no = getTableCellValue("grdTaskList", 1, 2);
 		return no;
 	}
 
@@ -141,8 +133,8 @@ public class DataEntry {
 	 * @param refno Case Reference number
 	 */
 	public void selectcase(String refno) {
-		pages.Utill().click("//span[text()='" + refno + "']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("//span[text()='" + refno + "']");
+		waitUntilLoaderisInvisible(100);
 	}
 
 }

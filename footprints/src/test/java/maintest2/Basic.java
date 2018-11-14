@@ -3,6 +3,7 @@ package maintest2;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -25,6 +26,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import client.Casereg;
+import client.ViewCandidateFinalReport;
 import dashboard.DataEntrySupervision;
 import dashboard.ReportGeneration;
 import dashboard.ReportValidation;
@@ -76,7 +78,8 @@ public class Basic {
 		driver = new BaseClass().getDriver();
 		config = BaseClass.getlocator();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-		driver.get(config.getProperty("url")+"/clientLogin.aspx");
+//		driver.get(config.getProperty("url")+"/clientLogin.aspx");
+		driver.get(config.getProperty("url"));
 		contractName = config.getProperty("contractname");
 		clientName = config.getProperty("clientname");
 		projectName = config.getProperty("projectname");
@@ -96,54 +99,141 @@ public class Basic {
 	 * Login action
 	 */
 	@Test(priority = 1, enabled = true)
-	public void Login() throws Exception {
+	public void login() throws Exception {
 		uname = config.getProperty("uname");
-		pages.Login().userLogin(config.getProperty("clientuname"), config.getProperty("clientpass"));
+		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
 		//pages.Verification().verification();
 	}
 
 	
-	@Test(priority = 2, enabled = true)
+	@Test(priority = 2, enabled = false)
 	public void casereg() throws Exception {
-		Casereg casereg= new Casereg(driver, logger);
-		casereg.casereg();
-		casereg.Registercase();
+		refno="HDFC000739";
+		ViewCandidateFinalReport cr = new ViewCandidateFinalReport(driver,logger);
+		cr.viewcandidatefinalreport();
+		cr.clientrefno(refno);
+		if(cr.getSearchResult().equals(refno)) {
+			cr.ViewReport();
+			cr.deleteFiles(new File(config.getProperty("downloadFilepath")));
+			cr.Download();
+			cr.Cancel();
+		}
+		
+	}
+	@Test(priority = 2, enabled = true, dependsOnMethods = "login")
+	public void caseregistration() throws Exception {
+		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
-		Map<String, String> datas= new HashMap<>();
+		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
 		datas.put("CandidateId", candidateId);
+		datas.put("ClientName", clientName);
 		datas.put("ProjectName", projectName);
 		datas.put("lastname", lastName);
-		datas.put("doctype", "Authorization Letter");
-		datas.put("filename", config.getProperty("casedoc"));
-		casereg.registercase(datas);
+		pages.CaseRegistration().registercase(datas, false);
 		String[] components = pages.CaseRegistration().getcomponents();
 		for (int i = 0; i < components.length; i++) {
-			casereg.selectcheck(components[i].toString());
+			pages.CaseRegistration().selectcheck(components[i].toString());
 		}
-		casereg.Register();
-		String info=pages.Utill().confirmAlert();
-		String [] l = info.split(" ");
-		refno=l[l.length-1];
+		pages.CaseRegistration().submit();
+		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		casereg.casereg();
-		casereg.Search(refno);
-		Map<String, String> casedata=casereg.getcasedetails();
-		String actual=casedata.get("caserefno");
-		assertEquals(actual, refno);
 	}
-	@Test(priority = 3, enabled = true)
-	public void dataentry() throws Exception {
-		pages.Home().Logout();
-		driver.get(config.getProperty("url"));
-		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+
+	/**
+	 * data entry assign
+	 * 
+	 * @throws Exception WebDriverException
+	 */
+	@Test(priority = 3, enabled = true, dependsOnMethods = "caseregistration")
+	public void dataEntryAssign() throws Exception {
+		refno = pages.DbConnection().getLastrefno(projectName);
 		DataEntrySupervision des = pages.DataEntrySupervision();
 		des.datanentrysupervision();
+		//des.assigngetnext(refno);
 		des.assign(refno, "demoempl");
 	}
 
+
+	@Test(priority = 4, enabled = true, dependsOnMethods = "dataEntryAssign")
+	public void dataEntry() throws Exception {
+		pages.DataEntry().datanentry();
+		pages.Utill().click("//*[text()='" + refno + "']");
+		pages.Utill().waitUntilLoaderisInvisible(100);
+		HashMap<String, String> casedetails = pages.DbConnection().getLastCase(projectName);
+		logger.log(Status.INFO, casedetails.toString());
+		assertEquals(casedetails.get("firstname"), pages.CaseInformation().FirstName());
+		assertEquals(casedetails.get("lastname"), pages.CaseInformation().LastName());
+		pages.DeAddress().CurrentAddress();
+		pages.DeAddress().sameascurrent("Permanent", "Current Address");
+		pages.DeEducation().twelveth();
+		pages.DeEducation().UGone();
+		pages.DeEmployment().currentEmployment();
+		pages.DeEmployment().perviousoneEmployment();
+		pages.DeReference().referenceone();
+		pages.DeDatabase().database();
+		pages.DeCriminal().CurrentAddress("Address -Current Address");
+		pages.DeCriminal().PermanentAddress("Address -Permanent");
+		pages.DeCredit().Creditone();
+		pages.DeCourt().CurrentAddress("Address - Current Address");
+		pages.DeCourt().PermanentAddress("Address - Permanent");
+		pages.DeId().Passport();
+		pages.DeId().AadharCard();
+		pages.Utill().waitUntilLoaderisInvisible(100);
+
+	}
+	@Test(priority = 5, enabled = true, dependsOnMethods = "dataEntry")
+	public void dataEntryQCAssign() throws Exception {
+		pages.DataEntryQCSupervision().datanentryqcsupervision();
+//		pages.DataEntryQCSupervision().assigngetnext(refno);
+		pages.DataEntryQCSupervision().assign(refno, "demoempl");
+		pages.DataEntryQC().datanentryqc();
+		pages.DataEntryQC().selectcase(refno);
+
+	}
+
+	@Test(priority = 6, enabled = true, dependsOnMethods = "dataEntryQCAssign")
+	public void AddressDEQC() throws Exception {
+		dataEntryQC.Address add = new dataEntryQC.Address(driver,logger);
+		add.addresscheck();
+		Map<String, String> actual = add.getCurrentAddress();
+		Map<String, String> expected = add.filedata("Current Address");
+		add.addresscheck();
+		Map<String, String> Peractual = add.PermanentAdress();
+		Map<String, String> Perexpected = add.filedata("Permanent");
+		pages.Utill().SwitchDefault();
+		if (actual.equals(expected) && Peractual.equals(Perexpected)) {
+			logger.log(Status.PASS, actual.toString());
+			logger.log(Status.PASS, Peractual.toString());
+			assertTrue(true, actual.toString());
+		} else {
+			logger.log(Status.FAIL, actual.toString());
+			logger.log(Status.FAIL, Peractual.toString());
+			assertTrue(false, actual.toString());
+		}
+	}
+	@Test(priority = 13, enabled = true, dependsOnMethods = "dataEntryQCAssign")
+	public void CourtDEQC() throws Exception {
+		dataEntryQC.Court court = new dataEntryQC.Court(driver,logger);
+		court.courtcheck();
+		Map<String, String> actual = court.CurrentAddress();
+		Map<String, String> expected = court.filedata("Current Address Court Check");	
+		court.courtcheck();
+		Map<String, String> Peractual = court.PermanentAdress();
+		Map<String, String> Perexpected = court.filedata("Permanent Court Check");
+		pages.Utill().SwitchDefault();
+		if (actual.equals(expected) && Peractual.equals(Perexpected)) {
+			logger.log(Status.PASS, actual.toString());
+			logger.log(Status.PASS, Peractual.toString());
+			assertTrue(true, actual.toString());
+		} else {
+			logger.log(Status.FAIL, actual.toString());
+			logger.log(Status.FAIL, Peractual.toString());
+			assertTrue(false, actual.toString());
+		}
+	}
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {

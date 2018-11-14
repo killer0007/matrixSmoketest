@@ -1,5 +1,6 @@
 package verification;
 
+import java.io.File;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-public class Database extends Verification {
+public class Database extends dataEntryQC.Database implements Verification {
 	/**
 	 * This is class for Database page in data entry
 	 * 
@@ -27,17 +28,17 @@ public class Database extends Verification {
 	 * Select Database tab and switch to Database frame
 	 */
 	public void databasecheck() {
-		pages.Utill().SwitchDefault();
-		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='DataBase']");
-		pages.Utill().SwitchFramebyIndex(4);
+		SwitchDefault();
+		click("//*[@id='tabStrip']/div/ul/li//span[text()='DataBase']");
+		SwitchFramebyIndex(4);
 	}
 
 	/**
 	 * Performs click action on Document button
 	 */
 	public void document() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnDataBaseDocument_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_btnDataBaseDocument_input");
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -46,14 +47,14 @@ public class Database extends Verification {
 	 * @param component sub id component name
 	 */
 	public void subIDComponent(String component) {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIDComponent_Input");
-//		pages.Utill().sleep(1000);
+		click("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIDComponent_Input");
+//		sleep(1000);
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 				"//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIDComponent_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//div[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIDComponent_DropDown']/div/ul//li[text()='"
 						+ component + "']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -62,7 +63,7 @@ public class Database extends Verification {
 	 * @param name on ID card
 	 */
 	public void NameonID(String name) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseNameOnID", name);
+		sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseNameOnID", name);
 	}
 
 	/**
@@ -71,7 +72,7 @@ public class Database extends Verification {
 	 * @param number on Id card
 	 */
 	public void IDNumber(String number) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseIDNumber", number);
+		sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseIDNumber", number);
 	}
 
 	/**
@@ -80,7 +81,7 @@ public class Database extends Verification {
 	 * @param date ID card issued date
 	 */
 	public void IssueDate(String date) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseIssueDate_dateInput", date);
+		sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseIssueDate_dateInput", date);
 	}
 
 	/**
@@ -89,7 +90,7 @@ public class Database extends Verification {
 	 * @param date ID card Expiry date
 	 */
 	public void ExpiryDate(String date) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseExpiryDate_dateInput", date);
+		sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseExpiryDate_dateInput", date);
 	}
 
 	/**
@@ -100,12 +101,12 @@ public class Database extends Verification {
 	public void Country() {
 		boolean re = false;
 		if (re) {
-			pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCountry_Input", "India");
+			sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCountry_Input", "India");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(
 					"//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCountry_DropDown']/div/ul/li[1]")));
-			pages.Utill().click(
+			click(
 					"//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCountry_DropDown']/div/ul//li[text()='India']");
-			pages.Utill().waitUntilLoaderisInvisible(100);
+			waitUntilLoaderisInvisible(100);
 		}
 	}
 
@@ -113,24 +114,24 @@ public class Database extends Verification {
 	 * select tamil nadu as state
 	 */
 	public void State() {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_Input", "Tamil Nadu");
+		sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_Input", "Tamil Nadu");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(
 				"//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_DropDown']/div/ul//li[text()='Tamil Nadu']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * select chennai as city
 	 */
 	public void City() {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCity_Input", "chennai");
+		sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCity_Input", "chennai");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(
 				"//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCity_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCity_DropDown']/div/ul//li[text()='Chennai']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -139,7 +140,7 @@ public class Database extends Verification {
 	 * @param no Enrollment number
 	 */
 	public void EnrollmentNo(String no) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseEnrollid", no);
+		sendKeys("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseEnrollid", no);
 	}
 
 	/**
@@ -148,7 +149,7 @@ public class Database extends Verification {
 	 * @param comments address comments
 	 */
 	public void comments(String comments) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtDataBaseComments", comments);
+		sendKeys("ctl00_ContentPlaceHolder1_txtDataBaseComments", comments);
 	}
 
 	/**
@@ -157,28 +158,28 @@ public class Database extends Verification {
 	 * @throws Exception WebDriverException
 	 */
 	public void submit() throws Exception {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnDataBaseSaveSubmit_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-		pages.Utill().SwitchDefault();
-		pages.Utill().confirmAlert();
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_btnDataBaseSaveSubmit_input");
+		waitUntilLoaderisInvisible(100);
+		SwitchDefault();
+		confirmAlert();
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * performs click action on save button
 	 */
 	public void save() throws Exception {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnDataBaseSave_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-		pages.Utill().confirmAlert();
+		click("ctl00_ContentPlaceHolder1_btnDataBaseSave_input");
+		waitUntilLoaderisInvisible(100);
+		confirmAlert();
 	}
 
 	/**
 	 * Performs click action on add document button in document upload screen
 	 */
 	public void AddDocument() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmDataBaseDocuments_C_btnDataBaseAddDocuments_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_rwmDataBaseDocuments_C_btnDataBaseAddDocuments_input");
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -189,7 +190,7 @@ public class Database extends Verification {
 	 * @return true when document ype was available
 	 */
 	public boolean isvaliddoctype(String doctype) {
-		pages.Utill().waitUntilElementHasText(
+		waitUntilElementHasText(
 				"//*[@id='ctl00_ContentPlaceHolder1_rwmDataBaseDocuments_C_gviewDataBaseDocuments_ctl00__0']/td[2]",
 				10);
 		boolean re = false;
@@ -218,10 +219,10 @@ public class Database extends Verification {
 	 */
 	public void UploadDocument(String doctype, String file) {
 		if (this.isvaliddoctype(doctype)) {
-			pages.Utill().sendKeys("//*[text()='" + doctype + "']/../td[5]//span/input[2]", file);
+			sendKeys("//*[text()='" + doctype + "']/../td[5]//span/input[2]", file);
 			super.WaitforFileUpdate(doctype, file);
 			this.AddDocument();
-			pages.Utill().waitUntilLoaderisInvisible(100);
+			waitUntilLoaderisInvisible(100);
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -232,155 +233,155 @@ public class Database extends Verification {
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmDataBaseDocuments_C_btnDataBaseDocumentCancels_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_rwmDataBaseDocuments_C_btnDataBaseDocumentCancels_input");
+		waitUntilLoaderisInvisible(100);
 	}
 
 	public String IdType() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIDComponent_Input");
+		return getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIDComponent_Input");
 	}
 
 	public String NameonID() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseNameOnID");
+		return getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseNameOnID");
 	}
 
 	public String IDNumber() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseIDNumber");
+		return getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseIDNumber");
 	}
 
 	public String IssueDate() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseIssueDate_dateInput");
+		return getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseIssueDate_dateInput");
 	}
 
 	public String ExpiryDate() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseExpiryDate_dateInput");
+		return getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseExpiryDate_dateInput");
 	}
 
 	public String CountryofIssue() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCountry_Input");
+		return getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCountry_Input");
 	}
 
 	public String StateofIssue() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_Input");
+		return getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueState_Input");
 	}
 
 	public String CityofIssue() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCity_Input");
+		return getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_ddlDataBaseIssueCity_Input");
 	}
 
 	public String EnrollmentNo() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseEnrollid");
+		return getValue("ctl00_ContentPlaceHolder1_dockIDDetails_C_txtDataBaseEnrollid");
 	}
 
 	public String comments() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDataBaseComments");
+		return getValue("ctl00_ContentPlaceHolder1_txtDataBaseComments");
 	}
 public void group(String groupName) {
-	String group=pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseGroup_Input");
+	String group=getValue("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseGroup_Input");
 	if(!group.equals(groupName)) {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseGroup_Input");
+		click("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseGroup_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//div[@id='ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseGroup_DropDown']/div/ul/li[1]")));
-		pages.Utill().click("//*[@id='ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseGroup_DropDown']/div/ul//li[text()='"
+		click("//*[@id='ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseGroup_DropDown']/div/ul//li[text()='"
 				+ groupName + "']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 }
 public void tag(String tagName) {
-	String tag=pages.Utill().getValue("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseTag_Input");
+	String tag=getValue("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseTag_Input");
 	if(!tag.equals(tagName)) {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseTag_Input");
+		click("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseTag_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//div[@id='ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseTag_DropDown']/div/ul/li[1]")));
-		pages.Utill().click("//*[@id='ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseTag_DropDown']/div/ul//li[text()='"
+		click("//*[@id='ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_ddlDataBaseTag_DropDown']/div/ul//li[text()='"
 				+ tagName + "']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 }
 public void addDBCheck() {
 	String tagName="Record Found";
-		pages.Utill().click("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_gviewDataBaseElements_ctl00_ctl04_ddlDataBaseResult_Input");
+		click("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_gviewDataBaseElements_ctl00_ctl04_ddlDataBaseResult_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//div[@id='ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_gviewDataBaseElements_ctl00_ctl04_ddlDataBaseResult_DropDown']/div/ul/li[1]")));
-		pages.Utill().click("//*[@id='ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_gviewDataBaseElements_ctl00_ctl04_ddlDataBaseResult_DropDown']/div/ul//li[text()='"
+		click("//*[@id='ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_gviewDataBaseElements_ctl00_ctl04_ddlDataBaseResult_DropDown']/div/ul//li[text()='"
 				+ tagName + "']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_gviewDataBaseElements_ctl00_ctl04_txtDataBaseComments", "found");
-		pages.Utill().click("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_gviewDataBaseElements_ctl00_ctl04_imgBtnDataBaseOk");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
+		sendKeys("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_gviewDataBaseElements_ctl00_ctl04_txtDataBaseComments", "found");
+		click("ctl00_ContentPlaceHolder1_dockDataBaseDetails_C_gviewDataBaseElements_ctl00_ctl04_imgBtnDataBaseOk");
+		waitUntilLoaderisInvisible(100);
 }
 	public void VerifierName(String name) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtDataBaseVerifierName", name);
+		sendKeys("ctl00_ContentPlaceHolder1_txtDataBaseVerifierName", name);
 	}
 
 	public String VerifierName() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierName");
+		return getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierName");
 	}
 
 	public void VerifierDesignation(String relationship) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtDataBaseVerifierDesignation", relationship);
+		sendKeys("ctl00_ContentPlaceHolder1_txtDataBaseVerifierDesignation", relationship);
 	}
 
 	public String VerifierDesignation() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierDesignation");
+		return getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierDesignation");
 	}
 
 	public void VerifierContactNo(String relationship) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtDataBaseVerifierContactNo", relationship);
+		sendKeys("ctl00_ContentPlaceHolder1_txtDataBaseVerifierContactNo", relationship);
 	}
 
 	public String VerifierContactNo() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierContactNo");
+		return getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierContactNo");
 	}
 
 	public void VerifierEmail(String relationship) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtDataBaseVerifierEmailID", relationship);
+		sendKeys("ctl00_ContentPlaceHolder1_txtDataBaseVerifierEmailID", relationship);
 	}
 
 	public String VerifierEmail() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierEmailID");
+		return getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierEmailID");
 	}
 
 	public void Ver_Comments(String comments) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtDataBaseVerifierComments", comments);
+		sendKeys("ctl00_ContentPlaceHolder1_txtDataBaseVerifierComments", comments);
 	}
 
 	public String Ver_Comments() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierComments");
+		return getValue("ctl00_ContentPlaceHolder1_txtDataBaseVerifierComments");
 	}
 
 	public void ComponentStatus(String status) {
-		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlDataBaseVerifierMark_Input");
+		String value = getValue("ctl00_ContentPlaceHolder1_ddlDataBaseVerifierMark_Input");
 		if (!value.equals(status.trim())) {
-			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlDataBaseVerifierMark_Input");
+			click("ctl00_ContentPlaceHolder1_ddlDataBaseVerifierMark_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 					By.xpath("//div[@id='ctl00_ContentPlaceHolder1_ddlDataBaseVerifierMark_DropDown']/div/ul/li[1]")));
-			pages.Utill().click("//*[@id='ctl00_ContentPlaceHolder1_ddlDataBaseVerifierMark_DropDown']/div/ul//li[text()='"
+			click("//*[@id='ctl00_ContentPlaceHolder1_ddlDataBaseVerifierMark_DropDown']/div/ul//li[text()='"
 					+ status + "']");
 		}
 	}
 
 	public String ComponentStatus() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlDataBaseVerifierMark_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlDataBaseVerifierMark_Input");
 	}
 
 	public void ServiceProvider(String name) {
-		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
+		String value = getValue("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
 		if (!value.equals(name.trim())) {
-			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
+			click("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 					"//div[@id='ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_DropDown']/div/ul/li[1]")));
-			pages.Utill().click(
+			click(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_DropDown']/div/ul//li[text()='"
 							+ name + "']");
 		}
 	}
 
 	public String ServiceProvider() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
 	}
 	public void Verification() throws Exception {
-		Properties pro = pages.Utill().veridata("database");
+		Properties pro = veridata("database");
 		this.databasecheck();
 		this.group("Felony Check");
 		this.tag("FELONY TAG");
@@ -411,7 +412,7 @@ public void addDBCheck() {
 	}
 	public Map<String, String> filedata() throws Exception{
 		Map<String , String> map=new LinkedHashMap<String, String>();
-		Properties pro= pages.Utill().veridata("database");
+		Properties pro= veridata("database");
 		map.put("VerifierName", pro.getProperty("VerifierName"));
 		map.put("VerifierDesignation", pro.getProperty("VerifierDesignation"));
 		map.put("VerifierContactNo", pro.getProperty("VerifierContactNo"));
@@ -422,5 +423,20 @@ public void addDBCheck() {
 		logger.log(Status.INFO, map.toString());
 		return map;
 		
+	}
+	
+
+	@Override
+	public void UpdateReportComments() {
+		int count = driver.findElements(By.xpath("//*[@id='accordion']/div")).size();
+
+		for (int i = 1; i < count; i++) {
+			if (i > 1) {
+				click("//*[@id='accordion']/div[" + Integer.toString(i) + "]//b");
+			}
+			String info = getText("//*[@id='accordion']/div[" + Integer.toString(i) + "]//td[2]/span");
+			sendKeys("//*[@id='accordion']/div[" + Integer.toString(i) + "]//div[3]/div/p/..", info);
+		}
+
 	}
 }

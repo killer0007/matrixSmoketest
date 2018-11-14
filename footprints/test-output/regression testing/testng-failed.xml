@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [regression testing]">
+  <test thread-count="5" name="FullFlow(failed)">
+    <classes>
+      <class name="maintest.FullFlow">
+        <methods>
+          <include name="CourtReportGeneration"/>
+          <include name="dataEntryQCAssign"/>
+          <include name="CreditReportGeneration"/>
+          <include name="ReferenceReportGeneration"/>
+          <include name="ReportValidationSupervisor"/>
+          <include name="teardown"/>
+          <include name="EducationReportGeneration"/>
+          <include name="VerificationSupervisor"/>
+          <include name="DrugReportGeneration"/>
+          <include name="IdReportGeneration"/>
+          <include name="beforeSuit"/>
+          <include name="dataEntryAssign"/>
+          <include name="caseregistration"/>
+          <include name="dataEntry"/>
+          <include name="login"/>
+          <include name="ReportGenerationSupervision"/>
+          <include name="DatabaseVerification"/>
+          <include name="setup"/>
+          <include name="afterSuite"/>
+          <include name="ReportGenerationSubmit"/>
+          <include name="CriminalReportGeneration"/>
+          <include name="ReportValidation"/>
+          <include name="AddressReportGeneration"/>
+          <include name="VerificationIntiation"/>
+          <include name="IdDEQC"/>
+          <include name="EmploymentReportGeneration"/>
+          <include name="DrugVerification"/>
+          <include name="beforetest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- maintest.FullFlow -->
+    </classes>
+  </test> <!-- FullFlow(failed) -->
+</suite> <!-- Failed suite [regression testing] -->

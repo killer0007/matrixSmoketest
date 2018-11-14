@@ -1,0 +1,599 @@
+<html>
+<head>
+<title>TestNG:  FullFlow</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>FullFlow</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>40/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Wed Nov 14 12:20:04 IST 2018</td>
+</tr>
+<tr><td>Total time:</td><td>3012 seconds (3012875 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='maintest.ClientCaseReg.AddressDEQC()'><b>AddressDEQC</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-16125494" onClick='toggleBox("Output-16125494", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-16125494" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-16125494">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>35</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.AddressReportGeneration()'><b>AddressReportGeneration</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-372212" onClick='toggleBox("Output-372212", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-372212" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-372212">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>81</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.AddressVerification()'><b>AddressVerification</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-27076534" onClick='toggleBox("Output-27076534", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-27076534" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-27076534">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>162</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.CourtDEQC()'><b>CourtDEQC</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-17184473" onClick='toggleBox("Output-17184473", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-17184473" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-17184473">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>30</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.CourtReportGeneration()'><b>CourtReportGeneration</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-15220983" onClick='toggleBox("Output-15220983", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-15220983" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-15220983">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>45</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.CourtVerification()'><b>CourtVerification</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-4325598" onClick='toggleBox("Output-4325598", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-4325598" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-4325598">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>107</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.CreditDEQC()'><b>CreditDEQC</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-12052887" onClick='toggleBox("Output-12052887", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-12052887" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-12052887">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>11</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.CreditReportGeneration()'><b>CreditReportGeneration</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-26826732" onClick='toggleBox("Output-26826732", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-26826732" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-26826732">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>18</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.CreditVerification()'><b>CreditVerification</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-9819273" onClick='toggleBox("Output-9819273", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-9819273" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-9819273">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>53</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.CriminalDEQC()'><b>CriminalDEQC</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-23978554" onClick='toggleBox("Output-23978554", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-23978554" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-23978554">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>31</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.CriminalReportGeneration()'><b>CriminalReportGeneration</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-33148435" onClick='toggleBox("Output-33148435", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-33148435" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-33148435">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>46</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.CriminalVerification()'><b>CriminalVerification</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-9149959" onClick='toggleBox("Output-9149959", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-9149959" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-9149959">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>95</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.DataBaseDEQC()'><b>DataBaseDEQC</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-8640028" onClick='toggleBox("Output-8640028", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-8640028" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-8640028">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.DatabaseReportGeneration()'><b>DatabaseReportGeneration</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-9273449" onClick='toggleBox("Output-9273449", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-9273449" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-9273449">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>2</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.DatabaseVerification()'><b>DatabaseVerification</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-30926225" onClick='toggleBox("Output-30926225", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-30926225" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-30926225">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>67</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.DrugReportGeneration()'><b>DrugReportGeneration</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-15154352" onClick='toggleBox("Output-15154352", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-15154352" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-15154352">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>8</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.DrugVerification()'><b>DrugVerification</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-30170809" onClick='toggleBox("Output-30170809", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-30170809" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-30170809">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>66</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.EducationDEQC()'><b>EducationDEQC</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-3831301" onClick='toggleBox("Output-3831301", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-3831301" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-3831301">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>28</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.EducationReportGeneration()'><b>EducationReportGeneration</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-8749522" onClick='toggleBox("Output-8749522", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-8749522" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-8749522">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>61</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.EducationVerification()'><b>EducationVerification</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-16746837" onClick='toggleBox("Output-16746837", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-16746837" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-16746837">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>108</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.EmploymentDEQC()'><b>EmploymentDEQC</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-31129168" onClick='toggleBox("Output-31129168", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-31129168" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-31129168">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>27</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.EmploymentReportGeneration()'><b>EmploymentReportGeneration</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-1246934" onClick='toggleBox("Output-1246934", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1246934" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1246934">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>79</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.EmploymentVerification()'><b>EmploymentVerification</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-996522" onClick='toggleBox("Output-996522", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-996522" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-996522">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>101</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.IDVerification()'><b>IDVerification</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-7958952" onClick='toggleBox("Output-7958952", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-7958952" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-7958952">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>88</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.IdDEQC()'><b>IdDEQC</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-14272582" onClick='toggleBox("Output-14272582", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-14272582" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-14272582">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>26</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.IdReportGeneration()'><b>IdReportGeneration</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-12589069" onClick='toggleBox("Output-12589069", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-12589069" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-12589069">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>40</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.ReferenceDEQC()'><b>ReferenceDEQC</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-21171321" onClick='toggleBox("Output-21171321", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-21171321" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-21171321">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>13</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.ReferenceReportGeneration()'><b>ReferenceReportGeneration</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-9441702" onClick='toggleBox("Output-9441702", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-9441702" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-9441702">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>9</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.ReferenceVerification()'><b>ReferenceVerification</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-3805714" onClick='toggleBox("Output-3805714", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-3805714" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-3805714">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>54</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.ReportGenerationSubmit()'><b>ReportGenerationSubmit</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-15004538" onClick='toggleBox("Output-15004538", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-15004538" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-15004538">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>24</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.ReportGenerationSupervision()'><b>ReportGenerationSupervision</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-21448392" onClick='toggleBox("Output-21448392", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-21448392" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-21448392">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>63</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.ReportValidation()'><b>ReportValidation</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-7671836" onClick='toggleBox("Output-7671836", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-7671836" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-7671836">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>58</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.ReportValidationSupervisor()'><b>ReportValidationSupervisor</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-11505860" onClick='toggleBox("Output-11505860", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-11505860" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-11505860">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>38</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.VerificationIntiation()'><b>VerificationIntiation</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-24541555" onClick='toggleBox("Output-24541555", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-24541555" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-24541555">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>515</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.VerificationSupervisor()'><b>VerificationSupervisor</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-24546893" onClick='toggleBox("Output-24546893", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-24546893" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-24546893">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>36</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.caseregistration()'><b>caseregistration</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-16872690" onClick='toggleBox("Output-16872690", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-16872690" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-16872690">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>104</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.dataEntry()'><b>dataEntry</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-9318627" onClick='toggleBox("Output-9318627", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-9318627" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-9318627">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>502</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.dataEntryAssign()'><b>dataEntryAssign</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-28986886" onClick='toggleBox("Output-28986886", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-28986886" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-28986886">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>78</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.dataEntryQCAssign()'><b>dataEntryQCAssign</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-8087439" onClick='toggleBox("Output-8087439", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-8087439" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-8087439">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>56</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+<tr>
+<td title='maintest.ClientCaseReg.login()'><b>login</b><br>Test class: maintest.ClientCaseReg<br/>
+<a href="#Output-20431361" onClick='toggleBox("Output-20431361", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-20431361" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-20431361">
+Test Method resides in maintest.ClientCaseReg<br/>
+Test Status: Pass<br/>
+</div>
+</td>
+<td></td>
+<td>6</td>
+<td>maintest.ClientCaseReg@f777e8</td></tr>
+</table><p>
+</body>
+</html>

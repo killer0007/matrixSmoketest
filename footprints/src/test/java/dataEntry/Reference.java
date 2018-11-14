@@ -2,7 +2,6 @@ package dataEntry;
 
 import java.util.List;
 import java.util.Properties;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
@@ -26,18 +25,18 @@ public class Reference extends DataEntryPage {
 	 * Select Reference tab and switch to Reference frame
 	 */
 	public void referencecheck() {
-		pages.Utill().SwitchDefault();
-//		pages.Utill().click("//*[@id='tabStrip']/div/ul/li[4]/a/span/span/span");
-		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Reference']");
-		pages.Utill().SwitchFramebyIndex(3);
+		SwitchDefault();
+//		click("//*[@id='tabStrip']/div/ul/li[4]/a/span/span/span");
+		click("//*[@id='tabStrip']/div/ul/li//span[text()='Reference']");
+		SwitchFramebyIndex(3);
 	}
 	/**
 	 * Perform click action on Document button
 	 */
 	@Override
 	public void document() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnRefDocument_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_btnRefDocument_input");
+		waitUntilLoaderisInvisible(100);
 	}
 	
 	/**
@@ -46,10 +45,9 @@ public class Reference extends DataEntryPage {
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlRefType_Input");
+		click("ctl00_ContentPlaceHolder1_ddlRefType_Input");
 		if (verifyddvalue(component)) {
-			pages.Utill()
-					.click("//div[@id='ctl00_ContentPlaceHolder1_ddlRefType_DropDown']/div/ul//li[text()='"
+			click("//div[@id='ctl00_ContentPlaceHolder1_ddlRefType_DropDown']/div/ul//li[text()='"
 							+ component + "']");
 		} else {
 			throw new NotFoundException(component);
@@ -86,14 +84,14 @@ public class Reference extends DataEntryPage {
 	 * @param type of reference
 	 */
 	public void ReferenceType(String type) {
-		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlReferType_Input");
+		String value=getValue("ctl00_ContentPlaceHolder1_ddlReferType_Input");
 		if(!value.equals(type)) {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlReferType_Input");
+		click("ctl00_ContentPlaceHolder1_ddlReferType_Input");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlReferType_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlReferType_DropDown']/div/ul//li[text()='"+type+"']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 		}
 	}
 	/**
@@ -101,35 +99,35 @@ public class Reference extends DataEntryPage {
 	 * @param name referrer name
 	 */
 	public void RefName(String name) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtReferenceName", name);
+		sendKeys("ctl00_ContentPlaceHolder1_txtReferenceName", name);
 	}
 	/**
 	 * Takes designation as input and pass it to designation field
 	 * @param designation referrer designation
 	 */
 	public void RefDesignation(String designation) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtRefDes", designation);
+		sendKeys("ctl00_ContentPlaceHolder1_txtRefDes", designation);
 	}
 	/**
 	 * Takes contact no as input and pass it to contact no field
 	 * @param contactno referrer contact no
 	 */
 	public void	RefContactNo(String contactno) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtRefContactNo1", contactno);
+		sendKeys("ctl00_ContentPlaceHolder1_txtRefContactNo1", contactno);
 	}
 	/**
 	 * Takes email id as input and pass it to email id field
 	 * @param emailid referrer email id
 	 */
 	public void RefEmailId(String emailid) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtRefEmailId1", emailid);
+		sendKeys("ctl00_ContentPlaceHolder1_txtRefEmailId1", emailid);
 	}
 	/**
 	 * Takes address id as input and pass it to address line1 field
 	 * @param address referrer address
 	 */
 	public void RefAddressLine1(String address) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtRefererDoorStreet", address);
+		sendKeys("ctl00_ContentPlaceHolder1_txtRefererDoorStreet", address);
 	}
 	/**
 	 * Takes Organization name as input and pass it
@@ -137,12 +135,12 @@ public class Reference extends DataEntryPage {
 	 * @param name name of institution
 	 */
 	public void OrganizationName(String name) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlOrgName_Input", name);
+		sendKeys("ctl00_ContentPlaceHolder1_ddlOrgName_Input", name);
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlOrgName_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlOrgName_DropDown']/div/ul//li[text()='"+name+"']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Takes Organization address line 1 as input and pass it to address field
@@ -150,38 +148,38 @@ public class Reference extends DataEntryPage {
 	 * @param address address of organization
 	 */
 	public void OrganizationAddressLine1(String address) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtOrgDoorNo", address);
+		sendKeys("ctl00_ContentPlaceHolder1_txtOrgDoorNo", address);
 	}
 
 	/**
 	 * select tamil nadu as Organization state
 	 */
 	public void OrganizationState() {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlRefState_Input", "tamil nadu");
+		sendKeys("ctl00_ContentPlaceHolder1_ddlRefState_Input", "tamil nadu");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlRefState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlRefState_DropDown']/div/ul//li[text()='Tamil Nadu']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * select chennai as Organization city
 	 */
 	public void OrganizationCity() {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlRefCity_Input", "chennai");
+		sendKeys("ctl00_ContentPlaceHolder1_ddlRefCity_Input", "chennai");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlRefCity_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlRefCity_DropDown']/div/ul//li[text()='Chennai']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Takes landmark as input and pass it to landmark
 	 * @param landmark for institute
 	 */
 	public void LandMark(String landmark) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtOrgLandmark", landmark);
+		sendKeys("ctl00_ContentPlaceHolder1_txtOrgLandmark", landmark);
 	}
 	/**
 	 * additional comments
@@ -189,15 +187,15 @@ public class Reference extends DataEntryPage {
 	 * @param comments additional comments
 	 */
 	public void Comments(String comments) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtRefComments", comments);
+		sendKeys("ctl00_ContentPlaceHolder1_txtRefComments", comments);
 	}
 
 	/**
 	 * click report insuff button
 	 */
 	public void ReportInsuff() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_CheckRefReportInsuff");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_CheckRefReportInsuff");
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -206,15 +204,15 @@ public class Reference extends DataEntryPage {
 	 * @param comments insuff raise comments
 	 */
 	public void Insuffcomm(String comments) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtRefReportInsuff", comments);
+		sendKeys("ctl00_ContentPlaceHolder1_txtRefReportInsuff", comments);
 	}
 
 	/**
 	 * click not applicable button
 	 */
 	public void Notapplicable() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -223,15 +221,15 @@ public class Reference extends DataEntryPage {
 	 * @param comments not applicable comments
 	 */
 	public void Notapplicablecomm(String comments) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
+		sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
 	}
 
 	/**
 	 * click cep raise check box
 	 */
 	public void cep() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_CheckRefReportYTR");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_CheckRefReportYTR");
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -240,7 +238,7 @@ public class Reference extends DataEntryPage {
 	 * @param date date of relieve
 	 */
 	public void cepRelievingDate(String date) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtExpectedRelievingDate_dateInput_wrapper", date);
+		sendKeys("ctl00_ContentPlaceHolder1_txtExpectedRelievingDate_dateInput_wrapper", date);
 
 	}
 
@@ -250,30 +248,30 @@ public class Reference extends DataEntryPage {
 	 * @param comments ecp raise comments
 	 */
 	public void CepComments(String comments) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtRefReportYTR", comments);
+		sendKeys("ctl00_ContentPlaceHolder1_txtRefReportYTR", comments);
 	}
 	/**
 	 * select tamil nadu as state
 	 */
 	public void RefState() {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlRefererState_Input", "tamil nadu");
+		sendKeys("ctl00_ContentPlaceHolder1_ddlRefererState_Input", "tamil nadu");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlRefererState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlRefererState_DropDown']/div/ul//li[text()='Tamil Nadu']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * select chennai as city
 	 */
 	public void RefCity() {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlRefererCity_Input", "chennai");
+		sendKeys("ctl00_ContentPlaceHolder1_ddlRefererCity_Input", "chennai");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlRefererCity_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlRefererCity_DropDown']/div/ul//li[text()='Chennai']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 	
 	/**
@@ -282,7 +280,7 @@ public class Reference extends DataEntryPage {
 	 * @param pincode pincode of address
 	 */
 	public void OrgPincode(String pincode) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtOrgPincode", pincode);
+		sendKeys("ctl00_ContentPlaceHolder1_txtOrgPincode", pincode);
 	}
 	/**
 	 * Takes pincode as input and pass it to pincode field
@@ -290,32 +288,32 @@ public class Reference extends DataEntryPage {
 	 * @param pincode pincode of address
 	 */
 	public void RefPincode(String pincode) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtRefererPincode", pincode);
+		sendKeys("ctl00_ContentPlaceHolder1_txtRefererPincode", pincode);
 	}
 	/**
 	 * click submit button on reference data entry
 	 * @throws Exception WebDriverException
 	 */
 	public void submit() throws Exception{
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnRefSaveSubmit_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-		pages.Utill().SwitchDefault();
-		pages.Utill().confirmAlert();
+		click("ctl00_ContentPlaceHolder1_btnRefSaveSubmit_input");
+		waitUntilLoaderisInvisible(100);
+		SwitchDefault();
+		confirmAlert();
 	}
 	/**
 	 * performs click action on save button
 	 */
 	public void save() throws Exception {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnRefSave_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-		pages.Utill().confirmAlert();
+		click("ctl00_ContentPlaceHolder1_btnRefSave_input");
+		waitUntilLoaderisInvisible(100);
+		confirmAlert();
 	}
 	/**
 	 * Performs click action on add document button in document upload screen
 	 */
 	public void AddDocument() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_btnAddDocument_Ref_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_btnAddDocument_Ref_input");
+		waitUntilLoaderisInvisible(100);
 	}
 	
 	/**
@@ -324,7 +322,7 @@ public class Reference extends DataEntryPage {
 	 * @return true when document ype was available
 	 */
 	public boolean isvaliddoctype(String doctype) {
-	pages.Utill().waitUntilElementHasText("//*[@id='ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_grdDocumentList_Ref_ctl00__0']/td[2]", 10);
+	waitUntilElementHasText("//*[@id='ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_grdDocumentList_Ref_ctl00__0']/td[2]", 10);
 		boolean re =false;
 		String path="//*[@id='ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_grdDocumentList_Ref_ctl00']/tbody/tr/td[2]";
 		List<WebElement> list =driver.findElements(By.xpath(path));
@@ -350,10 +348,10 @@ public class Reference extends DataEntryPage {
 	 */
 	public void UploadDocument(String doctype, String file) {
 		if(this.isvaliddoctype(doctype)) {
-		pages.Utill().sendKeys("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
+		sendKeys("//*[text()='"+doctype+"']/../td[5]//span/input[2]", file);
 		super.WaitforFileUpdate(doctype, file);
 		this.AddDocument();
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 		}
 		else {
 			throw new NotFoundException(doctype);
@@ -364,8 +362,8 @@ public class Reference extends DataEntryPage {
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_btnDocumentClose_Ref_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_btnDocumentClose_Ref_input");
+		waitUntilLoaderisInvisible(100);
 		
 	}
 
@@ -374,7 +372,7 @@ public class Reference extends DataEntryPage {
  * @throws Exception webdriver
  */
 	public void referenceone() throws Exception {
-		Properties pro = pages.Utill().dedata("reference");
+		Properties pro = dedata("reference");
 		this.referencecheck();
 		this.ReferenceType(pro.getProperty("ReferenceType"));
 		this.RefName(pro.getProperty("ReferrerName"));

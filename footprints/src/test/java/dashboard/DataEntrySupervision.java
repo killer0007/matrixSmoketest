@@ -2,30 +2,25 @@ package dashboard;
 
 import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
-import environment.Pages;
+import environment.Utill;
 
-public class DataEntrySupervision {
-	WebDriver driver;
-	ExtentTest logger;
-	Pages pages;
-
+public class DataEntrySupervision extends Utill{
+	
 	/**
 	 * This is class for Data Entry Supervision Stage
 	 * 
 	 * @param logger logger instance
 	 */
 	public DataEntrySupervision(WebDriver driver, ExtentTest logger) {
-		this.driver=driver;
-		this.logger = logger;
-		pages = new Pages(driver,logger);
+		super (driver,logger);
 	}
 
 	/**
 	 * select data entry supervision from stages dropdown
 	 */
 	public void datanentrysupervision() {
-		pages.Utill().selectByValue("ddlAct", "1");
-		pages.Utill().waitUntilLoaderisInvisible(50);
+		selectByValue("ddlAct", "1");
+		waitUntilLoaderisInvisible(50);
 	}
 
 	/**
@@ -34,7 +29,7 @@ public class DataEntrySupervision {
 	 * @param caserefno Case Reference number
 	 */
 	public void view(String caserefno) {
-		pages.Utill().click("//span[text()='" + caserefno + "']/../following-sibling::td[14]/a");
+		click("//span[text()='" + caserefno + "']/../following-sibling::td[14]/a");
 	}
 
 	/**
@@ -43,16 +38,16 @@ public class DataEntrySupervision {
 	 * @param refno caserefno
 	 */
 	public void caserefno(String refno) {
-		pages.Utill().clearElementText("txtCaserefNo");
-		pages.Utill().sendKeys("txtCaserefNo", refno);
+		clearElementText("txtCaserefNo");
+		sendKeys("txtCaserefNo", refno);
 	}
 
 	/**
 	 * Performs click action on search button
 	 */
 	public void search() {
-		pages.Utill().click("btnsearch");
-		pages.Utill().waitUntilLoaderisInvisible(60);
+		click("btnsearch");
+		waitUntilLoaderisInvisible(60);
 
 	}
 
@@ -65,9 +60,9 @@ public class DataEntrySupervision {
 	 */
 	public String getSearchResult(String refno) {
 		this.search(refno);
-		String re = pages.Utill().getText("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
+		String re = getText("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
 		if (re.equals(null))
-			re = pages.Utill().getText("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
+			re = getText("//*[@id='grdTaskList']/tbody/tr/td[2]/span").trim();
 		return re;
 	}
 
@@ -75,8 +70,8 @@ public class DataEntrySupervision {
 	 * Performs click action in assign button
 	 */
 	public void assign() {
-		pages.Utill().click("btnBulkAllocation");
-		pages.Utill().waitUntilLoaderisInvisible(60);
+		click("btnBulkAllocation");
+		waitUntilLoaderisInvisible(60);
 
 	}
 
@@ -87,16 +82,16 @@ public class DataEntrySupervision {
 	 * @throws Exception employe not found in list
 	 */
 	public void assign(String empname) throws Exception {
-		pages.Utill().click("chkboxsingle");
+		click("chkboxsingle");
 		this.assign();
 		//int count = pages.DbConnection().getAssignedCount(empname);
-		//pages.Utill().selectByLabel("ddlFilteredTMforAllocation", empname + " (" + count + ")");
-		pages.Utill().click("ddlFilteredTMforAllocation");
-		pages.Utill().click(".//*[@id='ddlFilteredTMforAllocation']//option[contains(text(),'"+empname+"')]");
-		pages.Utill().click("//div[@class='modal-dialog modal-lg']//button[text()='Ok']");
+		//selectByLabel("ddlFilteredTMforAllocation", empname + " (" + count + ")");
+		click("ddlFilteredTMforAllocation");
+		click(".//*[@id='ddlFilteredTMforAllocation']//option[contains(text(),'"+empname+"')]");
+		click("//div[@class='modal-dialog modal-lg']//button[text()='Ok']");
 		Thread.sleep(1000);
-		pages.Utill().click("//div[@class='modal-content']//button[contains(text(),'Yes')]");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("//div[@class='modal-content']//button[contains(text(),'Yes')]");
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -132,17 +127,17 @@ public class DataEntrySupervision {
 	 * @param comments  insuff raise comments
 	 */
 	public void raiseinsuff(String checkname, String comments) {
-		pages.Utill().sendKeys("//span[text()='" + checkname + " ']/..//following-sibling::td[3]//td[1]/input",
+		sendKeys("//span[text()='" + checkname + " ']/..//following-sibling::td[3]//td[1]/input",
 				comments);
-		pages.Utill().click("//span[text()='" + checkname + " ']/..//following-sibling::td[3]//td[2]/input");
-		pages.Utill().click("//input[@value='OK']");
+		click("//span[text()='" + checkname + " ']/..//following-sibling::td[3]//td[2]/input");
+		click("//input[@value='OK']");
 	}
 
 	/**
 	 * Perform close action in popup
 	 */
 	public void close() {
-		pages.Utill().click("//span[text()='×']");
+		click("//span[text()='×']");
 	}
 
 	/**
@@ -153,18 +148,18 @@ public class DataEntrySupervision {
 	 */
 	public void assigngetnext(String refno) throws Exception {
 		this.search(refno);
-		if(pages.Utill().getSelectedValue("//select[@ng-model='Emp.Priority']").equals("Normal")) {
-			pages.Utill().selectByLabel("//select[@ng-model='Emp.Priority']", "High");
-			pages.Utill().waitUntilLoaderisInvisible(20);
-			pages.Utill().click("xpath:html/body/div[3]/div/div/table/tbody/tr[3]/td/button[1]");
-			pages.Utill().waitUntilLoaderisInvisible(20);
+		if(getSelectedValue("//select[@ng-model='Emp.Priority']").equals("Normal")) {
+			selectByLabel("//select[@ng-model='Emp.Priority']", "High");
+			waitUntilLoaderisInvisible(20);
+			click("xpath:html/body/div[3]/div/div/table/tbody/tr[3]/td/button[1]");
+			waitUntilLoaderisInvisible(20);
 			}
-		pages.Utill().selectByLabel("Reserverfor", "demoempl");
-		pages.DataEntry().datanentry();
-		pages.Utill().click("btnGetNext");
-		pages.Utill().waitUntilLoaderisInvisible(40);
-		pages.Utill().click("imgHome");
-		pages.Utill().waitUntilLoaderisInvisible(40);
+		selectByLabel("Reserverfor", "demoempl");
+		new DataEntry(driver,logger).datanentry();
+		click("btnGetNext");
+		waitUntilLoaderisInvisible(40);
+		click("imgHome");
+		waitUntilLoaderisInvisible(40);
 		this.datanentrysupervision();
 	}
 }

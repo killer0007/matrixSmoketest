@@ -15,7 +15,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class BaseClass {
 
-	WebDriver driver;
+	public WebDriver driver;
 	static Properties loc;
 	static Properties val;
 /**

@@ -5,13 +5,19 @@
     <classes>
       <class name="maintest2.Basic">
         <methods>
-          <include name="setup"/>
           <include name="tearDown"/>
-          <include name="teardown"/>
+          <include name="caseregistration"/>
+          <include name="AddressDEQC"/>
           <include name="beforeSuit"/>
+          <include name="login"/>
+          <include name="dataEntryAssign"/>
+          <include name="beforetest"/>
+          <include name="setup"/>
+          <include name="teardown"/>
           <include name="afterSuite"/>
           <include name="dataEntry"/>
-          <include name="beforetest"/>
+          <include name="CourtDEQC"/>
+          <include name="dataEntryQCAssign"/>
         </methods>
       </class> <!-- maintest2.Basic -->
     </classes>

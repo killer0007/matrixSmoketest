@@ -8,22 +8,18 @@ import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.aventstack.extentreports.ExtentTest;
-import environment.Pages;
+import environment.Utill;
 
-public class CaseTracker {
-	WebDriver driver;
+public class CaseTracker extends Utill{
 	ExtentTest logger;
-	Pages pages;
 
 	/**
 	 * This is class for CaseTracker Page
 	 * 
 	 * @param logger logger instance
 	 */
-	public CaseTracker(WebDriver driver,ExtentTest logger) {
-		this.driver = driver;
-		this.logger = logger;
-		pages = new Pages(driver,logger);
+	public CaseTracker(WebDriver driver, ExtentTest logger) {
+		super(driver,logger);
 	}
 
 	/**
@@ -33,18 +29,18 @@ public class CaseTracker {
 	 * @param refno Case Reference Number
 	 */
 	public void search(String refno) {
-		pages.Utill().click("searchBox");
-		pages.Utill().sendKeys("searchBox", refno);
+		click("searchBox");
+		sendKeys("searchBox", refno);
 		this.search();
-		// pages.Utill().waitUntilLoaderisInvisible(10);
+		// waitUntilLoaderisInvisible(10);
 	}
 
 	/**
 	 * Performs click action on search button
 	 */
 	public void search() {
-		pages.Utill().click("//span[text()=' Search']");
-		pages.Utill().waitUntilLoaderisInvisible(10);
+		click("//span[text()=' Search']");
+		waitUntilLoaderisInvisible(10);
 	}
 
 	/**
@@ -53,8 +49,8 @@ public class CaseTracker {
 	 * @param refno Case Reference Number
 	 */
 	public void clickcase(String refno) {
-		pages.Utill().click("linkText:" + refno);
-		pages.Utill().waitUntilElementHasText(
+		click("linkText:" + refno);
+		waitUntilElementHasText(
 				"//div[@class='modal-content']//table[@id='grdTaskList']/tbody/tr[1]/td[1]/span", 10);
 
 	}
@@ -68,7 +64,7 @@ public class CaseTracker {
 	 */
 	public String getCurrentStage(String componentName) {
 
-		return pages.Utill().getText("//span[text()='" + componentName + "']/../../td[5]");
+		return getText("//span[text()='" + componentName + "']/../../td[5]");
 	}
 
 	/**
@@ -94,7 +90,7 @@ public class CaseTracker {
 	 */
 	public String responsiblePerson(String componentName) {
 
-		return pages.Utill().getText("//span[text()='" + componentName + "']/../../td[6]").trim();
+		return getText("//span[text()='" + componentName + "']/../../td[6]").trim();
 	}
 
 	/**
@@ -161,9 +157,9 @@ public class CaseTracker {
 	 * closes the case tracker window
 	 */
 	public void cancel() {
-//		pages.Utill().click("//button[@class='close']");
-		pages.Utill().closeTab();
-		pages.Utill().switchWindow(0);
+//		click("//button[@class='close']");
+		closeTab();
+		switchWindow(0);
 	}
 
 	/**

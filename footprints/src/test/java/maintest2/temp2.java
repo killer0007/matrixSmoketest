@@ -23,7 +23,6 @@ public class temp2 {
 		  String WF=JOptionPane.showInputDialog("Enter the Workflow No (1.Candidate 2.Client 3.Employee  4.Bulk):");  
 		  System.out.println(RNO);
 		  System.out.println(WF);
-		  
 	}
 
 }

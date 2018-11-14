@@ -7,48 +7,45 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import com.aventstack.extentreports.ExtentTest;
 import environment.Pages;
+import environment.Utill;
 
-public class VerificationInitiate {
-	WebDriver driver;
-	ExtentTest logger;
+public class VerificationInitiate extends Utill {
 	Pages pages;
-
 	public VerificationInitiate(WebDriver driver,ExtentTest logger) {
-		this.driver = driver;
-		this.logger = logger;
-		pages = new Pages(driver,logger);
+		super(driver,logger);
+		pages=new Pages(driver, logger);
 	}
 	public void InitiationMode(String mode) {
-		String value=pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input");
+		String value=getValue("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input");
 		if(!value.trim().equals(mode)) {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input");
+		click("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input");
 		if (verifyddvalue(mode)) {
 			pages.Utill()
 					.click("//div[@id='ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_DropDown']/div/ul//li[text()='"
 							+ mode + "']");
-			pages.Utill().waitUntilLoaderisInvisible(100);
+			waitUntilLoaderisInvisible(100);
 		} else {
 			throw new NotFoundException(mode);
 		}
 		}
 	}
 	public void Initiate() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnInitiate_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-		pages.Utill().SwitchDefault();
-		pages.Utill().confirmAlert();
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_btnInitiate_input");
+		waitUntilLoaderisInvisible(100);
+		SwitchDefault();
+		confirmAlert();
+		waitUntilLoaderisInvisible(100);
 	}
 	public void EmpInitiate() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnInitiate_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_btnInitiate_input");
+		waitUntilLoaderisInvisible(100);
 		this.RecipientMailID("gopinath.n@kadambatechnologies.com");
-		pages.Utill().SwitchDefault();
-		pages.Utill().confirmAlert();
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		SwitchDefault();
+		confirmAlert();
+		waitUntilLoaderisInvisible(100);
 	}
 	private boolean verifyddvalue(String mode){
-		pages.Utill().waitUntilElementHasText("//*[@id='ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_DropDown']/div/ul/li[1]", 10);
+		waitUntilElementHasText("//*[@id='ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_DropDown']/div/ul/li[1]", 10);
 		List<WebElement> list = driver
 				.findElements(By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_DropDown']/div/ul/li"));
 		if (list.size() > 0) {
@@ -66,57 +63,57 @@ public class VerificationInitiate {
 		}
 	}
 	public void idcheck() {
-		pages.Utill().SwitchDefault();
-		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='ID']");
-		pages.Utill().SwitchFramebyIndex(9);
+		SwitchDefault();
+		click("//*[@id='tabStrip']/div/ul/li//span[text()='ID']");
+		SwitchFramebyIndex(9);
 	}
 	public void creditcheck() {
-		pages.Utill().SwitchDefault();
-		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Credit']");
-		pages.Utill().SwitchFramebyIndex(6);
+		SwitchDefault();
+		click("//*[@id='tabStrip']/div/ul/li//span[text()='Credit']");
+		SwitchFramebyIndex(6);
 	}
 	public void addresscheck() {
-		pages.Utill().SwitchDefault();
-		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Address']");
-		pages.Utill().SwitchFramebyIndex(0);
+		SwitchDefault();
+		click("//*[@id='tabStrip']/div/ul/li//span[text()='Address']");
+		SwitchFramebyIndex(0);
 	}
 	public void courtcheck() {
-		pages.Utill().SwitchDefault();
-		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Court']");
-		pages.Utill().SwitchFramebyIndex(7);
+		SwitchDefault();
+		click("//*[@id='tabStrip']/div/ul/li//span[text()='Court']");
+		SwitchFramebyIndex(7);
 	}
 	public void criminalcheck() {
-		pages.Utill().SwitchDefault();
-		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Criminal']");
-		pages.Utill().SwitchFramebyIndex(5);
+		SwitchDefault();
+		click("//*[@id='tabStrip']/div/ul/li//span[text()='Criminal']");
+		SwitchFramebyIndex(5);
 	}
 	public void databasecheck() {
-		pages.Utill().SwitchDefault();
-		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='DataBase']");
-		pages.Utill().SwitchFramebyIndex(4);
+		SwitchDefault();
+		click("//*[@id='tabStrip']/div/ul/li//span[text()='DataBase']");
+		SwitchFramebyIndex(4);
 	}
 	public void educationcheck() {
-		pages.Utill().SwitchDefault();
-		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Education']");
-		pages.Utill().SwitchFramebyIndex(1);
+		SwitchDefault();
+		click("//*[@id='tabStrip']/div/ul/li//span[text()='Education']");
+		SwitchFramebyIndex(1);
 	}
 	public void employmentcheck() {
-		pages.Utill().SwitchDefault();
-		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Employment']");
-		pages.Utill().SwitchFramebyIndex(2);;
+		SwitchDefault();
+		click("//*[@id='tabStrip']/div/ul/li//span[text()='Employment']");
+		SwitchFramebyIndex(2);;
 	}
 	public void referencecheck() {
-		pages.Utill().SwitchDefault();
-		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Reference']");
-		pages.Utill().SwitchFramebyIndex(3);
+		SwitchDefault();
+		click("//*[@id='tabStrip']/div/ul/li//span[text()='Reference']");
+		SwitchFramebyIndex(3);
 	}
 	public void RecipientMailID(String emailid) {
-		pages.Utill().sleep(500);
-		pages.Utill().clearElementText("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_txt_vr_recipentMailid");
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_txt_vr_recipentMailid", emailid);
-		pages.Utill().clearElementText("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_txt_cc_mailid");
-		pages.Utill().sleep(800);
-		pages.Utill().click("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_btnSendmailid_input");
+		sleep(500);
+		clearElementText("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_txt_vr_recipentMailid");
+		sendKeys("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_txt_vr_recipentMailid", emailid);
+		clearElementText("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_txt_cc_mailid");
+		sleep(800);
+		click("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_btnSendmailid_input");
 	}
 public void Initiate(String refno, String component, String mode) {
 		System.out.println("Verification Initiation : "+component);

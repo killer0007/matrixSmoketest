@@ -2,12 +2,10 @@ package dashboard;
 
 import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
-import environment.Pages;
+import environment.Utill;
 
-public class ReportGenerationSupervision {
-	WebDriver driver;
-	ExtentTest logger;
-	Pages pages;
+public class ReportGenerationSupervision extends Utill{
+
 
 	/**
 	 * This is class for Data Entry Stage
@@ -15,55 +13,53 @@ public class ReportGenerationSupervision {
 	 * @param logger logger instance
 	 */
 	public ReportGenerationSupervision(WebDriver driver, ExtentTest logger) {
-		this.driver=driver;
-		this.logger = logger;
-		pages = new Pages(driver,logger);
+		super(driver,logger);
 	}
 	public void reportGenerationSupervision() {
-		String stage=pages.Utill().getValue("ddlAct");
+		String stage=getValue("ddlAct");
 		if(!stage.equals("7")) {
-			pages.Utill().selectByValue("ddlAct", "7");
-			pages.Utill().waitUntilLoaderisInvisible(50);
+			selectByValue("ddlAct", "7");
+			waitUntilLoaderisInvisible(50);
 		}	
 	}
 	public void CaseRefNo(String refno) {
-		pages.Utill().sendKeys("txtCaserefNo", refno);
+		sendKeys("txtCaserefNo", refno);
 	}
 	
 	public void ClientRefNo(String refno) {
-		pages.Utill().sendKeys("txtClientrefNo", refno);
+		sendKeys("txtClientrefNo", refno);
 	}
 	public void  FirstName(String name) {
-		pages.Utill().sendKeys("txtFirstName", name);
+		sendKeys("txtFirstName", name);
 	}
 	public void  LastName(String name) {
-		pages.Utill().sendKeys("txtLastName", name);
+		sendKeys("txtLastName", name);
 	}
 	public void Client(String clientName) {
-		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredClientModal']", clientName);
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredClientModal']", clientName);
+		waitUntilLoaderisInvisible(100);
 	}
 	public void Project(String project) {
-		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredprojectMadal']", project);
+		selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredprojectMadal']", project);
 	}
 	public void RegisteredBy(String registeredBy) {
-		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlWorkflowTypeModal']", registeredBy);
+		selectByLabel("//select[@ng-model='PanelHomePageModal.ddlWorkflowTypeModal']", registeredBy);
 	}
 	public void ReportStatus(String status) {
-		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlstagestatus']", status);
+		selectByLabel("//select[@ng-model='PanelHomePageModal.ddlstagestatus']", status);
 	}
 	public void  WorkstartFrom(String date) {
-		pages.Utill().sendKeys("txtfromdate", date);
+		sendKeys("txtfromdate", date);
 	}
 	public void  WorkstartTo(String date) {
-		pages.Utill().sendKeys("txtTodate", date);
+		sendKeys("txtTodate", date);
 	}
 	public void Status(String status) {
-		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlstagestatus']", status);
+		selectByLabel("//select[@ng-model='PanelHomePageModal.ddlstagestatus']", status);
 	}
 	public void Search() {
-		pages.Utill().click("btnsearch");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("btnsearch");
+		waitUntilLoaderisInvisible(100);
 	}
 	public void Search(String refno) {
 		this.CaseRefNo(refno);
@@ -71,16 +67,17 @@ public class ReportGenerationSupervision {
 	}
 	public void assigngetnext(String refno) {
 		this.Search(refno);
-		if(pages.Utill().getSelectedValue("//select[@ng-model='Emp.Priority']").equals("Normal")) {
-			pages.Utill().selectByLabel("//select[@ng-model='Emp.Priority']", "High");
-			pages.Utill().waitUntilLoaderisInvisible(20);
-			pages.Utill().click("xpath:html/body/div[3]/div/div/table/tbody/tr[3]/td/button[1]");
-			pages.Utill().waitUntilLoaderisInvisible(20);
+		if(getSelectedValue("//select[@ng-model='Emp.Priority']").equals("Normal")) {
+			selectByLabel("//select[@ng-model='Emp.Priority']", "High");
+			waitUntilLoaderisInvisible(20);
+			click("xpath:html/body/div[3]/div/div/table/tbody/tr[3]/td/button[1]");
+			waitUntilLoaderisInvisible(20);
 			}
-			pages.Utill().selectByLabel("Reserverfor", "demoempl");
-			pages.Utill().waitUntilLoaderisInvisible(100);
-			pages.ReportGeneration().reportGeneration();
-			pages.ReportGeneration().GetNext();
+			selectByLabel("Reserverfor", "demoempl");
+			waitUntilLoaderisInvisible(100);
+			ReportGeneration rg = new ReportGeneration(driver, logger);
+			rg.reportGeneration();
+			rg.GetNext();
 			this.reportGenerationSupervision();
 			
 	}
@@ -88,8 +85,8 @@ public class ReportGenerationSupervision {
 	 * Performs click action in assign button
 	 */
 	public void assign() {
-		pages.Utill().click("btnBulkAllocation");
-		pages.Utill().waitUntilLoaderisInvisible(60);
+		click("btnBulkAllocation");
+		waitUntilLoaderisInvisible(60);
 
 	}
 	/**
@@ -99,16 +96,16 @@ public class ReportGenerationSupervision {
 	 * @throws Exception employe not found in list
 	 */
 	public void assign(String empname) throws Exception {
-		pages.Utill().click("chkboxsingle");
+		click("chkboxsingle");
 		this.assign();
 		//int count = pages.DbConnection().getAssignedCount(empname);
-		//pages.Utill().selectByLabel("ddlFilteredTMforAllocation", empname + " (" + count + ")");
-		pages.Utill().click("ddlFilteredTMforAllocation");
-		pages.Utill().click(".//*[@id='ddlFilteredTMforAllocation']//option[contains(text(),'"+empname+"')]");
-		pages.Utill().click("//div[@class='modal-dialog modal-lg']//button[text()='Ok']");
+		//selectByLabel("ddlFilteredTMforAllocation", empname + " (" + count + ")");
+		click("ddlFilteredTMforAllocation");
+		click(".//*[@id='ddlFilteredTMforAllocation']//option[contains(text(),'"+empname+"')]");
+		click("//div[@class='modal-dialog modal-lg']//button[text()='Ok']");
 		Thread.sleep(1000);
-		pages.Utill().click("//div[@class='modal-content']//button[contains(text(),'Yes')]");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("//div[@class='modal-content']//button[contains(text(),'Yes')]");
+		waitUntilLoaderisInvisible(100);
 	}
 	
 	public void assign(String refno,String empname) throws Exception {

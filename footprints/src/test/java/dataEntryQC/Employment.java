@@ -2,154 +2,19 @@ package dataEntryQC;
 
 import java.io.File;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 
-public class Employment extends DataEntryQCPage {
+
+public class Employment extends dataEntry.Employment {
 	public Employment(WebDriver driver,ExtentTest logger) {
 		super(driver,logger);
 	}
 
-	/**
-	 * Select Employment tab and switch to Employment frame
-	 */
-	public void employmentcheck() {
-		pages.Utill().SwitchDefault();
-//	pages.Utill().click("//*[@id='tabStrip']/div/ul/li[3]/a/span/span/span");
-		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Employment']");
-		pages.Utill().SwitchFramebyIndex(2);
-	}
-
-	/**
-	 * Takes component name as input and select from dropdwon
-	 * 
-	 * @param component sub component name
-	 */
-	public void Component(String component) {
-		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
-		if (!value.trim().equals(component)) {
-			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
-			if (verifyddvalue(component)) {
-				pages.Utill().click(
-						"//div[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul//li[text()='"
-								+ component + "']");
-				pages.Utill().waitUntilLoaderisInvisible(100);
-			} else {
-				throw new NotFoundException(component);
-			}
-		}
-
-	}
-
-	/**
-	 * Takes component name as input and checks given name exist in dropwdown or not
-	 * 
-	 * @param component sub component name
-	 * @return true when component valid
-	 */
-	private boolean verifyddvalue(String component) {
-		try {
-			Thread.sleep(1500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		List<WebElement> list = driver.findElements(
-				By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul/li"));
-		if (list.size() > 0) {
-			boolean re = false;
-			for (int i = 0; i < list.size(); i++) {
-				String t = list.get(i).getText();
-				if (t.equals(component)) {
-					re = true;
-					break;
-				} else {
-					re = false;
-				}
-			}
-			return re;
-		} else {
-			return false;
-		}
-
-	}
-
-	/**
-	 * Performs click action on Document button
-	 */
-	@Override
-	public void document() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEmploymentDocumentUpload_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-	}
-
-	/**
-	 * click submit button on employment data entry
-	 * 
-	 * @throws Exception WebDriverException
-	 */
-	public void submit() throws Exception {
-		int count = driver
-				.findElements(
-						By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEmploymentComponent_DropDown']/div/ul/li"))
-				.size();
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEmploymentSubmit_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-		// System.out.println("-----------count--------"+count);
-		if (count == 2) {
-			pages.Utill().SwitchDefault();
-		}
-		pages.Utill().confirmAlert();
-	}
-
-	/**
-	 * performs click action on save button
-	 */
-	public void save() throws Exception {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEmploymentSave_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-		pages.Utill().confirmAlert();
-	}
-
-	/**
-	 * click report insuff button
-	 */
-	public void ReportInsuff() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_chkEmploymentInsuff");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-	}
-
-	/**
-	 * Takes insufff comments as input and pass it
-	 * 
-	 * @param comments insuff raise comments
-	 */
-	public void Insuffcomm(String comments) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEmploymentInsuffRemarks", comments);
-	}
-
-	/**
-	 * click not applicable button
-	 */
-	public void Notapplicable() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_chkComponentNotApplicable");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-	}
-
-	/**
-	 * Takes not applicable comments as input and pass it
-	 * 
-	 * @param comments not applicable comments
-	 */
-	public void Notapplicablecomm(String comments) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtComponentNotApplicableRemarks", comments);
-	}
+	
 
 	/**
 	 * Takes Document type as input and return the name of uploaded document
@@ -162,160 +27,123 @@ public class Employment extends DataEntryQCPage {
 		String path = "//table[@id='ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_grdviewEmploymentDocument_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[1]/span";
 		if (this.isvaliddoctype(doctype)) {
-			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
+			return getText(path).trim().replaceAll("[0-9]", "");
 		} else {
 			throw new NotFoundException(doctype);
 		}
 	}
 
-	/**
-	 * Perform close action on close button in document upload popup
-	 */
-	public void docclose() {
-		pages.Utill()
-				.click("ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_btnEmploymentDocumentClose_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-	}
-
-	/**
-	 * Takes document type as input and checks for given document type available in
-	 * upload screen
-	 * 
-	 * @param doctype type of document
-	 * @return true when document ype was available
-	 */
-	public boolean isvaliddoctype(String doctype) {
-		pages.Utill().waitUntilElementHasText(
-				"//*[@id='ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_grdviewEmploymentDocument_ctl00__0']/td[2]",
-				10);
-		boolean re = false;
-		String path = "//*[@id='ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_grdviewEmploymentDocument_ctl00']/tbody/tr/td[2]";
-		List<WebElement> list = driver.findElements(By.xpath(path));
-		if (list.size() > 0) {
-			for (int i = 0; i < list.size(); i++) {
-				String t = list.get(i).getText().trim();
-				logger.log(Status.INFO, t);
-				if (t.equals(doctype)) {
-					re = true;
-					break;
-				}
-			}
-		} else {
-			logger.log(Status.FAIL, "no element found");
-		}
-		return re;
-	}
-
+	
 	public String Component() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEmploymentComponent_Input");
 	}
 
 	public String EmployerName() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmploymentCompany_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEmploymentCompany_Input");
 	}
 
 	public String EmployerAddressLIne1() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtOfficeDetails");
+		return getValue("ctl00_ContentPlaceHolder1_txtOfficeDetails");
 	}
 
 	public String EmployerCountry() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmploymentCountry_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEmploymentCountry_Input");
 	}
 
 	public String EmployerState() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmployementState_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEmployementState_Input");
 	}
 
 	public String EmployerCity() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmployementCity_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEmployementCity_Input");
 	}
 
 	public String EmployerNameasperEmployers() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtnameEmpRec");
+		return getValue("ctl00_ContentPlaceHolder1_txtnameEmpRec");
 	}
 
 	public String EmploymentEmployeeID() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEmployeeID");
+		return getValue("ctl00_ContentPlaceHolder1_txtEmployeeID");
 	}
 
 	public String EmploymentDesignation() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEmployeeDesignation");
+		return getValue("ctl00_ContentPlaceHolder1_txtEmployeeDesignation");
 	}
 
 	public String EmploymentDepartment() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEmployeeDepartment");
+		return getValue("ctl00_ContentPlaceHolder1_txtEmployeeDepartment");
 	}
 
 	public String EmploymentFromDate() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtFromDate_dateInput");
+		return getValue("ctl00_ContentPlaceHolder1_txtFromDate_dateInput");
 	}
 
 	public String EmploymentToDate() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtToDate_dateInput");
+		return getValue("ctl00_ContentPlaceHolder1_txtToDate_dateInput");
 	}
 
 	public String EmploymentLastCTC() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtLastSalaryDrawn");
+		return getValue("ctl00_ContentPlaceHolder1_txtLastSalaryDrawn");
 	}
 
 	public String EmploymentCurrency() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlCurrencyType_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlCurrencyType_Input");
 	}
 
 	public String EmploymentPeriod() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEmployeeSalaryType_Input");
 	}
 
 	public String EmploymentTypeOfEmployment() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEmploymentType_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEmploymentType_Input");
 	}
 
 	public String PersonName() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1Name");
+		return getValue("ctl00_ContentPlaceHolder1_txtContactPerson1Name");
 	}
 
 	public String PersonDesignation() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1Designation");
+		return getValue("ctl00_ContentPlaceHolder1_txtContactPerson1Designation");
 	}
 
 	public String PersonRelationship() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlRelationship1_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlRelationship1_Input");
 	}
 
 	public String PersonIfOther() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1IfOthers");
+		return getValue("ctl00_ContentPlaceHolder1_txtContactPerson1IfOthers");
 	}
 
 	public String PersonContactNo1() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo1");
+		return getValue("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo1");
 	}
 
 	public String PersonContactNo2() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo2");
+		return getValue("ctl00_ContentPlaceHolder1_txtContactPerson1ContactNo2");
 	}
 
 	public String PersonEmailID1() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1EmailID1");
+		return getValue("ctl00_ContentPlaceHolder1_txtContactPerson1EmailID1");
 	}
 
 	public String PersonEmailID2() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1EmailID2");
+		return getValue("ctl00_ContentPlaceHolder1_txtContactPerson1EmailID2");
 	}
 
 	public String PersonFaxNo() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtContactPerson1FaxNo1");
+		return getValue("ctl00_ContentPlaceHolder1_txtContactPerson1FaxNo1");
 	}
 
 	public String ReasonForLeaving() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtReasonOfLeaving");
+		return getValue("ctl00_ContentPlaceHolder1_txtReasonOfLeaving");
 	}
 
 	public String Reason() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtTerminatedOrLaidOffComments");
+		return getValue("ctl00_ContentPlaceHolder1_txtTerminatedOrLaidOffComments");
 	}
 
 	public String Comments() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtCommentsIfAny");
+		return getText("ctl00_ContentPlaceHolder1_txtCommentsIfAny");
 	}
 	public Map<String, String> CurrentEmp() throws Exception{
 		this.Component("Current/Latest Employment");
@@ -390,7 +218,7 @@ public class Employment extends DataEntryQCPage {
 	}
 	public Map<String, String> filedata(String component) throws Exception{
 		Map<String , String> map=new LinkedHashMap<String, String>();
-		Properties pro= pages.Utill().dedata("employment");
+		Properties pro= dedata("employment");
 		if(component.equals("Current/Latest Employment")) {
 		map.put("Component", "Current/Latest Employment");
 		map.put("cEmployerName", pro.getProperty("cEmployerName"));

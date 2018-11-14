@@ -59,18 +59,17 @@ import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.screentaker.ViewportPastingStrategy;
 
 public class Utill {
-	WebDriver driver;
-	ExtentTest logger;
-	protected final Pages pages;
+	public WebDriver driver;
+	public ExtentTest logger;
+//	protected final Pages pages;
 	/**
 	 * constructor to initiatize webdriver and logger
 	 * 
 	 * @param logger logger instance
 	 */
 	public Utill(WebDriver driver,ExtentTest logger) {
-		this.driver =driver;
+		this.driver=driver;
 		this.logger = logger;
-		pages = new Pages(driver,logger);
 	}
 	
 
@@ -261,7 +260,7 @@ public class Utill {
 	 * 
 	 * @return random number
 	 */
-	public int candidateid() {
+	public int getcandidateid() {
 		Random ran = new Random();
 		int num = ran.nextInt(9000000) + 1000000;
 		return num;
@@ -866,6 +865,7 @@ public class Utill {
 			// .ignoring(NoSuchElementException.class);
 			wait.until(new Function<WebDriver, WebElement>() {
 				public WebElement apply(WebDriver driver) {
+					Pages pages= new Pages(driver, logger);
 					WebElement ele = pages.Utill().find(id);
 //					StringBuffer res = new StringBuffer(ele.getCssValue("display"));
 					String res = ele.getCssValue("display");
@@ -896,6 +896,7 @@ public class Utill {
 					.pollingEvery(Duration.ofMillis(200)).ignoring(StaleElementReferenceException.class);
 			wait.until(new Function<WebDriver, WebElement>() {
 				public WebElement apply(WebDriver driver) {
+					Pages pages= new Pages(driver, logger);
 					WebElement ele = pages.Utill().find("loading-bar-spinner");
 					StringBuffer res = new StringBuffer(ele.getCssValue("display"));
 					// String res = ele.getCssValue("display");

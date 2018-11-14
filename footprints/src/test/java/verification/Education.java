@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-public class Education extends Verification {
+public class Education extends dataEntryQC.Education implements Verification {
 	/**
 	 * This is class for Education page in data entry
 	 * 
@@ -29,9 +29,9 @@ public class Education extends Verification {
 	 * Select Education tab and switch to Education frame
 	 */
 	public void educationcheck() {
-		pages.Utill().SwitchDefault();
-		pages.Utill().click("//*[@id='tabStrip']/div/ul/li//span[text()='Education']");
-		pages.Utill().SwitchFramebyIndex(1);
+		SwitchDefault();
+		click("//*[@id='tabStrip']/div/ul/li//span[text()='Education']");
+		SwitchFramebyIndex(1);
 	}
 
 	/**
@@ -39,8 +39,8 @@ public class Education extends Verification {
 	 */
 
 	public void document() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEducationAddDocuments_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_btnEducationAddDocuments_input");
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -49,14 +49,14 @@ public class Education extends Verification {
 	 * @param component sub component name
 	 */
 	public void Component(String component) {
-		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
+		String value = getValue("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
 		if (!value.trim().equals(component)) {
-			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
+			click("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
 			if (verifyddvalue(component)) {
-				pages.Utill().click(
+				click(
 						"//div[@id='ctl00_ContentPlaceHolder1_ddlEducationComponent_DropDown']/div/ul//li[text()='"
 								+ component + "']");
-				pages.Utill().waitUntilLoaderisInvisible(100);
+				waitUntilLoaderisInvisible(100);
 			} else {
 				throw new NotFoundException(component);
 			}
@@ -70,7 +70,7 @@ public class Education extends Verification {
 	 * @return true when component valid
 	 */
 	private boolean verifyddvalue(String component) {
-		pages.Utill().sleep(1000);
+		sleep(1000);
 		List<WebElement> list = driver.findElements(
 				By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_ddlEducationComponent_DropDown']/div/ul/li"));
 		if (list.size() > 0) {
@@ -95,12 +95,12 @@ public class Education extends Verification {
 	 * @param name name of institution
 	 */
 	public void InstituteName(String name) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlEducationInstitute_Input", name);
+		sendKeys("ctl00_ContentPlaceHolder1_ddlEducationInstitute_Input", name);
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstitute_DropDown']/div/ul/li[1]")));
-		pages.Utill().click("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstitute_DropDown']/div/ul//li[text()='"
+		click("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstitute_DropDown']/div/ul//li[text()='"
 				+ name + "']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -109,31 +109,31 @@ public class Education extends Verification {
 	 * @param address line 1
 	 */
 	public void InstituteAddressLine1(String address) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationInstituteDoorNoStreet", address);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationInstituteDoorNoStreet", address);
 	}
 
 	/**
 	 * select tamil nadu as Institute state
 	 */
 	public void InstituteState() {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlEducationInstituteState_Input", "tamil nadu");
+		sendKeys("ctl00_ContentPlaceHolder1_ddlEducationInstituteState_Input", "tamil nadu");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstituteState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstituteState_DropDown']/div/ul//li[text()='Tamil Nadu']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * select chennai as Institute city
 	 */
 	public void InstituteCity() {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlEducationInstituteCity_Input", "chennai");
+		sendKeys("ctl00_ContentPlaceHolder1_ddlEducationInstituteCity_Input", "chennai");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstituteCity_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationInstituteCity_DropDown']/div/ul//li[text()='Chennai']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -142,12 +142,12 @@ public class Education extends Verification {
 	 * @param name name of institution
 	 */
 	public void BoardName(String name) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlEducationBoard_Input", name);
+		sendKeys("ctl00_ContentPlaceHolder1_ddlEducationBoard_Input", name);
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoard_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoard_DropDown']/div/ul//li[text()='" + name + "']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -156,31 +156,31 @@ public class Education extends Verification {
 	 * @param address line 1
 	 */
 	public void BoardAddressLine1(String address) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationBoardDoorNoStreet", address);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationBoardDoorNoStreet", address);
 	}
 
 	/**
 	 * select tamil nadu as Board state
 	 */
 	public void BoardState() {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlEducationBoardState_Input", "tamil nadu");
+		sendKeys("ctl00_ContentPlaceHolder1_ddlEducationBoardState_Input", "tamil nadu");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoardState_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoardState_DropDown']/div/ul//li[text()='Tamil Nadu']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * select chennai as Board city
 	 */
 	public void BoardCity() {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_ddlEducationBoardCity_Input", "chennai");
+		sendKeys("ctl00_ContentPlaceHolder1_ddlEducationBoardCity_Input", "chennai");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoardCity_DropDown']/div/ul/li[1]")));
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationBoardCity_DropDown']/div/ul//li[text()='Chennai']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -189,7 +189,7 @@ public class Education extends Verification {
 	 * @param name Name Of Course
 	 */
 	public void NameOfCourse(String name) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationNameOfCourse", name);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationNameOfCourse", name);
 	}
 
 	/**
@@ -198,7 +198,7 @@ public class Education extends Verification {
 	 * @param subject Major Subject name
 	 */
 	public void MajorSubject(String subject) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationTypeOfMajor", subject);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationTypeOfMajor", subject);
 	}
 
 	/**
@@ -208,15 +208,15 @@ public class Education extends Verification {
 	 */
 	public void TypeOfProgram(String Program) {
 		// System.out.println(Program);
-		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input");
+		String value = getValue("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input");
 		if (!value.equals(Program.trim())) {
-			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input");
+			click("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_DropDown']/div/ul/li[1]")));
-			pages.Utill().click(
+			click(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_DropDown']/div/ul//li[text()='"
 							+ Program + "']");
-//		pages.Utill().waitUntilLoaderisInvisible(100);
+//		waitUntilLoaderisInvisible(100);
 		}
 	}
 
@@ -226,7 +226,7 @@ public class Education extends Verification {
 	 * @param name name of Candidate
 	 */
 	public void CandidateNameinCertificate(String name) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationCandidateNameInCertificate", name);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationCandidateNameInCertificate", name);
 	}
 
 	/**
@@ -235,7 +235,7 @@ public class Education extends Verification {
 	 * @param enrollment registration number
 	 */
 	public void Enrollment(String enrollment) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationEnrollmentRegisterNo", enrollment);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationEnrollmentRegisterNo", enrollment);
 	}
 
 	/**
@@ -244,7 +244,7 @@ public class Education extends Verification {
 	 * @param percentage percentage of marks
 	 */
 	public void Percentage(String percentage) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationCGPA", percentage);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationCGPA", percentage);
 	}
 
 	/**
@@ -253,7 +253,7 @@ public class Education extends Verification {
 	 * @param CommencementYear year of college joining
 	 */
 	public void CourseCommencementYear(String CommencementYear) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationCourseCommenceDate_dateInput", CommencementYear);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationCourseCommenceDate_dateInput", CommencementYear);
 	}
 
 	/**
@@ -262,7 +262,7 @@ public class Education extends Verification {
 	 * @param CompletionYear year of Course Completion
 	 */
 	public void CourseCompletionYear(String CompletionYear) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationCourseCompletionDate_dateInput", CompletionYear);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationCourseCompletionDate_dateInput", CompletionYear);
 	}
 
 	/**
@@ -271,9 +271,9 @@ public class Education extends Verification {
 	 * @param gapreason reason for gap
 	 */
 	public void Gap(String gapreason) {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_rbtnEducationGap_0");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationGapReasons", gapreason);
+		click("ctl00_ContentPlaceHolder1_rbtnEducationGap_0");
+		waitUntilLoaderisInvisible(100);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationGapReasons", gapreason);
 	}
 
 	/**
@@ -282,7 +282,7 @@ public class Education extends Verification {
 	 * @param comments additional comments
 	 */
 	public void Comments(String comments) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationAdditionalComments", comments);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationAdditionalComments", comments);
 	}
 
 	/**
@@ -292,28 +292,28 @@ public class Education extends Verification {
 	 */
 	public void submit() throws Exception {
 
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEducationSaveSubmit_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-		pages.Utill().SwitchDefault();
-		pages.Utill().confirmAlert();
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_btnEducationSaveSubmit_input");
+		waitUntilLoaderisInvisible(100);
+		SwitchDefault();
+		confirmAlert();
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
 	 * performs click action on save button
 	 */
 	public void save() throws Exception {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEducationSave_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-		pages.Utill().confirmAlert();
+		click("ctl00_ContentPlaceHolder1_btnEducationSave_input");
+		waitUntilLoaderisInvisible(100);
+		confirmAlert();
 	}
 
 	/**
 	 * Performs click action on add document button in document upload screen
 	 */
 	public void AddDocument() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_btnEducationAddDocument_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_btnEducationAddDocument_input");
+		waitUntilLoaderisInvisible(100);
 	}
 
 	/**
@@ -325,7 +325,7 @@ public class Education extends Verification {
 	 */
 	public boolean isvaliddoctype(String doctype) {
 		boolean re = false;
-		pages.Utill().waitUntilElementHasText(
+		waitUntilElementHasText(
 				"//*[@id='ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_gviewEducationDocument_ctl00__0']/td[2]",
 				10);
 		String path = "//*[@id='ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_gviewEducationDocument_ctl00']/tbody/tr/td[2]";
@@ -354,10 +354,10 @@ public class Education extends Verification {
 	 */
 	public void UploadDocument(String doctype, String file) {
 		if (this.isvaliddoctype(doctype)) {
-			pages.Utill().sendKeys("//*[text()='" + doctype + "']/../td[5]//span/input[2]", file);
+			sendKeys("//*[text()='" + doctype + "']/../td[5]//span/input[2]", file);
 			super.WaitforFileUpdate(doctype, file);
 			this.AddDocument();
-			pages.Utill().waitUntilLoaderisInvisible(100);
+			waitUntilLoaderisInvisible(100);
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -374,7 +374,7 @@ public class Education extends Verification {
 		String path = "//table[@id='ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_gviewEducationDocument_ctl00']//*[text()='"
 				+ doctype + "']/../td[5]//td[1]/span";
 		if (this.isvaliddoctype(doctype)) {
-			return pages.Utill().getText(path).trim().replaceAll("[0-9]", "");
+			return getText(path).trim().replaceAll("[0-9]", "");
 		} else {
 			throw new NotFoundException(doctype);
 		}
@@ -383,203 +383,203 @@ public class Education extends Verification {
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_btnEducationDocumentCancel_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_btnEducationDocumentCancel_input");
+		waitUntilLoaderisInvisible(100);
 	}
 
 	public String Component() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEducationComponent_Input");
 	}
 
 	public String InstituteName() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationInstitute_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEducationInstitute_Input");
 	}
 
 	public String InstituteAddressLine1() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationInstituteDoorNoStreet");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationInstituteDoorNoStreet");
 	}
 
 	public String InstituteCountry() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationInstituteCountry_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEducationInstituteCountry_Input");
 	}
 
 	public String getInstituteState() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationInstituteState_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEducationInstituteState_Input");
 	}
 
 	public String getInstituteCity() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationInstituteCity_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEducationInstituteCity_Input");
 	}
 
 	public String BoardName() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationBoard_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEducationBoard_Input");
 	}
 
 	public String BoardAddressLine1() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationBoardDoorNoStreet");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationBoardDoorNoStreet");
 	}
 
 	public String BoardCountry() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationBoardCountry_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEducationBoardCountry_Input");
 	}
 
 	public String getBoardState() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationBoardState_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEducationBoardState_Input");
 	}
 
 	public String getBoardCity() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationBoardCity_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEducationBoardCity_Input");
 	}
 
 	public String NameOfCourse() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationNameOfCourse");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationNameOfCourse");
 	}
 
 	public String MajorSubject() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationTypeOfMajor");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationTypeOfMajor");
 	}
 
 	public String TypeOfProgram() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEducationTypeOfProgramName_Input");
 	}
 
 	public String CandidateNameinCertificate() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationCandidateNameInCertificate");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationCandidateNameInCertificate");
 	}
 
 	public String Enrollment() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationEnrollmentRegisterNo");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationEnrollmentRegisterNo");
 	}
 
 	public String CGPA() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationCGPA");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationCGPA");
 	}
 
 	public String CourseCommencementYear() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationCourseCommenceDate_dateInput");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationCourseCommenceDate_dateInput");
 	}
 
 	public String CourseCompletionYear() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationCourseCompletionDate_dateInput");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationCourseCompletionDate_dateInput");
 	}
 
 	public String Comments() {
-		return pages.Utill().getText("ctl00_ContentPlaceHolder1_txtEducationAdditionalComments");
+		return getText("ctl00_ContentPlaceHolder1_txtEducationAdditionalComments");
 	}
 	public void RespondentName(String name) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationNameOftheRespondent", name);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationNameOftheRespondent", name);
 	}
 
 	public String RespondentName() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationNameOftheRespondent");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationNameOftheRespondent");
 	}
 
 	public void RespondentDesignation(String relationship) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationRespondentDesignation", relationship);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationRespondentDesignation", relationship);
 	}
 
 	public String RespondentDesignation() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationRespondentDesignation");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationRespondentDesignation");
 	}
 	public void RespondentContactNo(String relationship) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationRespondentContactNoEmailID", relationship);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationRespondentContactNoEmailID", relationship);
 	}
 
 	public String RespondentContactNo() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationRespondentContactNoEmailID");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationRespondentContactNoEmailID");
 	}
 	
 	public void Ver_Comments(String comments) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationVerifierRemarks", comments);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationVerifierRemarks", comments);
 	}
 
 	public String Ver_Comments() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationVerifierRemarks");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationVerifierRemarks");
 	}
 
 	public void ComponentStatus(String status) {
-		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationVerifierMark_Input");
+		String value = getValue("ctl00_ContentPlaceHolder1_ddlEducationVerifierMark_Input");
 		if (!value.equals(status.trim())) {
-			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlEducationVerifierMark_Input");
+			click("ctl00_ContentPlaceHolder1_ddlEducationVerifierMark_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 					"//div[@id='ctl00_ContentPlaceHolder1_ddlEducationVerifierMark_DropDown']/div/ul/li[1]")));
-			pages.Utill().click(
+			click(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationVerifierMark_DropDown']/div/ul//li[text()='"
 							+ status + "']");
 		}
 	}
 
 	public String ComponentStatus() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationVerifierMark_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEducationVerifierMark_Input");
 	}
 
 	public void ModeOfInitiation(String mode) {
-		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationModeOfInitiation_Input");
+		String value = getValue("ctl00_ContentPlaceHolder1_ddlEducationModeOfInitiation_Input");
 		if (!value.equals(mode.trim())) {
-			pages.Utill().sleep(300);
-			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlEducationModeOfInitiation_Input");
+			sleep(300);
+			click("ctl00_ContentPlaceHolder1_ddlEducationModeOfInitiation_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By
 					.xpath("//div[@id='ctl00_ContentPlaceHolder1_ddlEducationModeOfInitiation_DropDown']/div/ul/li[1]")));
-			pages.Utill().click(
+			click(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationModeOfInitiation_DropDown']/div/ul//li[text()='"
 							+ mode + "']");
 		}
 	}
 
 	public String ModeOfInitiation() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationModeOfInitiation_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEducationModeOfInitiation_Input");
 	}
 
 	public void DateOfInitiation(String date) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationDateOfInitiation", date);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationDateOfInitiation", date);
 	}
 
 	public String DateOfInitiation() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationDateOfInitiation");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationDateOfInitiation");
 	}
 
 	public void ModeOfVerification(String mode) {
-		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationModeOfVerification_Input");
+		String value = getValue("ctl00_ContentPlaceHolder1_ddlEducationModeOfVerification_Input");
 		if (!value.equals(mode.trim())) {
-			pages.Utill().sleep(300);
-			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlEducationModeOfVerification_Input");
+			sleep(300);
+			click("ctl00_ContentPlaceHolder1_ddlEducationModeOfVerification_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 					"//div[@id='ctl00_ContentPlaceHolder1_ddlEducationModeOfVerification_DropDown']/div/ul/li[1]")));
-			pages.Utill().click(
+			click(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlEducationModeOfVerification_DropDown']/div/ul//li[text()='"
 							+ mode + "']");
 		}
 	}
 
 	public String ModeOfVerification() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlEducationModeOfVerification_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlEducationModeOfVerification_Input");
 	}
 
 	public void DateOfVerification(String date) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_txtEducationDateOfVerification", date);
+		sendKeys("ctl00_ContentPlaceHolder1_txtEducationDateOfVerification", date);
 	}
 
 	public String DateOfVerification() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_txtEducationDateOfVerification");
+		return getValue("ctl00_ContentPlaceHolder1_txtEducationDateOfVerification");
 	}
 
 	public void ServiceProvider(String name) {
-		String value = pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
+		String value = getValue("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
 		if (!value.equals(name.trim())) {
-			pages.Utill().click("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
+			click("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
 			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
 					"//div[@id='ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_DropDown']/div/ul/li[1]")));
-			pages.Utill().click(
+			click(
 					"//*[@id='ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_DropDown']/div/ul//li[text()='"
 							+ name + "']");
 		}
 	}
 
 	public String ServiceProvider() {
-		return pages.Utill().getValue("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
+		return getValue("ctl00_ContentPlaceHolder1_ddlServiceProviderForVerification_Input");
 	}
 	public void Verification() throws Exception {
-		Properties pro = pages.Utill().veridata("education");
+		Properties pro = veridata("education");
 		this.educationcheck();
 		this.document();
 		String name = this.Component();
@@ -596,12 +596,12 @@ public class Education extends Verification {
 		this.Ver_Comments(pro.getProperty("verComments"));
 		this.ComponentStatus(pro.getProperty("ComponentStatus"));
 		this.ModeOfInitiation(pro.getProperty("ModeOfInitiation"));
-		this.DateOfInitiation(pages.Utill().getCurrentDate("dd/MM/yyyy"));
+		this.DateOfInitiation(getCurrentDate("dd/MM/yyyy"));
 		this.ModeOfVerification(pro.getProperty("ModeOfVerification"));
-		this.DateOfVerification(pages.Utill().getCurrentDate("dd/MM/yyyy"));
+		this.DateOfVerification(getCurrentDate("dd/MM/yyyy"));
 		this.submit();
 	}
-	public Map<String, String> twelveth() throws Exception{
+	public Map<String, String> gettwelveth() throws Exception{
 		this.educationcheck();
 		this.Component("12th");
 		Map<String , String> map=new LinkedHashMap<String, String>();
@@ -682,10 +682,10 @@ public class Education extends Verification {
 		return map;
 	}
 	public Map<String, String> filedata() throws Exception{
-		String date=pages.Utill().getCurrentDate("dd/MM/yyyy");
+		String date=getCurrentDate("dd/MM/yyyy");
 		String component=this.Component();
 		Map<String , String> map=new LinkedHashMap<String, String>();
-		Properties pro= pages.Utill().veridata("education");
+		Properties pro= veridata("education");
 		if(component.equals("12th")) {
 		map.put("Component", "12th");
 		map.put("InstituteName", pro.getProperty("InstituteName"));
@@ -762,24 +762,28 @@ public class Education extends Verification {
 		throw new NotFoundException();
 	}
 	public void ReportComments() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnEducationAddComments_input");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("ctl00_ContentPlaceHolder1_btnEducationAddComments_input");
+		waitUntilLoaderisInvisible(100);
 	}
 	public void CloseReportComments() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_ModalClose_input");
-		pages.Utill().sleep(500);
+		click("ctl00_ContentPlaceHolder1_ModalClose_input");
+		sleep(500);
 	}
+	@Override
 	public void UpdateReportComments() {
 		int count=driver.findElements(By.xpath("//*[@id='accordion']/div")).size();
 		
 		for (int i = 1; i < count-1; i++) {
 			if(i>1) {
-				pages.Utill().click("//*[@id='accordion']/div["+Integer.toString(i)+"]//b");	
+				click("//*[@id='accordion']/div["+Integer.toString(i)+"]//b");	
 			}		
-			String info=pages.Utill().getText("//*[@id='accordion']/div["+Integer.toString(i)+"]//td[1]/span");
-			pages.Utill().sendKeys("//*[@id='accordion']/div["+Integer.toString(i)+"]//td[2]//div[3]/div/p/..", info);
-			String info2=pages.Utill().getText("//*[@id='accordion']/div["+Integer.toString(i)+"]//td[3]/span");
-			pages.Utill().sendKeys("//*[@id='accordion']/div["+Integer.toString(i)+"]//td[4]//div[3]/div/p/..", info2);
+			String info=getText("//*[@id='accordion']/div["+Integer.toString(i)+"]//td[1]/span");
+			sendKeys("//*[@id='accordion']/div["+Integer.toString(i)+"]//td[2]//div[3]/div/p/..", info);
+			String info2=getText("//*[@id='accordion']/div["+Integer.toString(i)+"]//td[3]/span");
+			sendKeys("//*[@id='accordion']/div["+Integer.toString(i)+"]//td[4]//div[3]/div/p/..", info2);
 		}
 	}
+	
+
+	
 }

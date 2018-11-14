@@ -1,14 +1,11 @@
 package dashboard;
 
 import org.openqa.selenium.WebDriver;
-
 import com.aventstack.extentreports.ExtentTest;
-import environment.Pages;
+import environment.Utill;
 
-public class Verification {
-	WebDriver driver;
-	ExtentTest logger;
-	Pages pages;
+public class Verification extends Utill{
+	
 
 	/**
 	 * This is class for Data Entry Stage
@@ -17,66 +14,64 @@ public class Verification {
 	 */
 	public Verification(WebDriver driver, ExtentTest logger) {
 		
-		this.driver=driver;
-		this.logger = logger;
-		pages = new Pages(driver,logger);
+		super(driver,logger);
 	}
 
 	/**
 	 * select data entry from stages dropdown
 	 */
 	public void verification() {
-		String stage=pages.Utill().getValue("ddlAct");
+		String stage=getValue("ddlAct");
 		if(!stage.equals("6")) {
-			pages.Utill().selectByValue("ddlAct", "6");
-			pages.Utill().waitUntilLoaderisInvisible(50);
+			selectByValue("ddlAct", "6");
+			waitUntilLoaderisInvisible(50);
 		}	
 	}
 	public void CaseRefNo(String refno) {
-		pages.Utill().sendKeys("txtCaserefNo", refno);
+		sendKeys("txtCaserefNo", refno);
 	}
 	
 	public void ClientRefNo(String refno) {
-		pages.Utill().sendKeys("txtClientrefNo", refno);
+		sendKeys("txtClientrefNo", refno);
 	}
 	public void  FirstName(String name) {
-		pages.Utill().sendKeys("txtFirstName", name);
+		sendKeys("txtFirstName", name);
 	}
 	public void  LastName(String name) {
-		pages.Utill().sendKeys("txtLastName", name);
+		sendKeys("txtLastName", name);
 	}
 	public void Client(String clientName) {
-		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredClientModal']", clientName);
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredClientModal']", clientName);
+		waitUntilLoaderisInvisible(100);
 	}
 	public void Project(String project) {
-		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredprojectMadal']", project);
+		selectByLabel("//select[@ng-model='PanelHomePageModal.ddlFilteredprojectMadal']", project);
 	}
 	public void RegisteredBy(String registeredBy) {
-		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlWorkflowTypeModal']", registeredBy);
+		selectByLabel("//select[@ng-model='PanelHomePageModal.ddlWorkflowTypeModal']", registeredBy);
 	}
 	
 	public void Checks(String check) {
-		String value=pages.Utill().getSelectedValue("//select[@ng-model='PanelHomePageModal.ddlCheckTypeModal']");
+		String value=getSelectedValue("//select[@ng-model='PanelHomePageModal.ddlCheckTypeModal']");
 		if(!value.equals(check)) {
-			pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlCheckTypeModal']", check);
-			pages.Utill().waitUntilLoaderisInvisible(100);
+			selectByLabel("//select[@ng-model='PanelHomePageModal.ddlCheckTypeModal']", check);
+			waitUntilLoaderisInvisible(100);
 		}
 		
 	}
 	public void Components(String component) {
-		String value=pages.Utill().getSelectedValue("//select[@ng-model='PanelHomePageModal.ddlComponentModal']");
+		String value=getSelectedValue("//select[@ng-model='PanelHomePageModal.ddlComponentModal']");
 		if(!value.equals(component)) {
-		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlComponentModal']", component);
+		selectByLabel("//select[@ng-model='PanelHomePageModal.ddlComponentModal']", component);
 		}
 	}
 	public void Workflow(String flow) {
-		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlAssignmentModeModal']", flow);
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		selectByLabel("//select[@ng-model='PanelHomePageModal.ddlAssignmentModeModal']", flow);
+		waitUntilLoaderisInvisible(100);
 	}
 	public void Search() {
-		pages.Utill().click("Button3");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("Button3");
+		waitUntilLoaderisInvisible(100);
 	}
 	public void Search(String refno) {
 		this.CaseRefNo(refno);
@@ -89,21 +84,21 @@ public class Verification {
 		this.Search();
 	}
 	public void VRInitiateStatus(String status) {
-		String value=pages.Utill().getSelectedValue("//select[@ng-model='PanelHomePageModal.ddlInitiation']");
+		String value=getSelectedValue("//select[@ng-model='PanelHomePageModal.ddlInitiation']");
 		if(!value.equals(status)) {
-		pages.Utill().selectByLabel("//select[@ng-model='PanelHomePageModal.ddlInitiation']", status);
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		selectByLabel("//select[@ng-model='PanelHomePageModal.ddlInitiation']", status);
+		waitUntilLoaderisInvisible(100);
 		}
 	}
 	public void GetNext() {
-		pages.Utill().click("btnGetNext");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-		pages.Utill().click("imgHome");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("btnGetNext");
+		waitUntilLoaderisInvisible(100);
+		click("imgHome");
+		waitUntilLoaderisInvisible(100);
 	}
 	public void Select(String refno) {
-		pages.Utill().click("//span[text()='"+refno+"']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		click("//span[text()='"+refno+"']");
+		waitUntilLoaderisInvisible(100);
 	}
 	public void CurrentAddress(String refno) {
 		this.VRInitiateStatus("Verification Confirmation Pending");

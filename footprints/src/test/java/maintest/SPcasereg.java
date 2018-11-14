@@ -32,7 +32,7 @@ import environment.Pages;
 import environment.Utill;
 
 @Listeners(environment.Listener.class)
-public class SPcasereg extends Design {
+public class SPcasereg implements Design {
 	WebDriver driver;
 	ExtentHtmlReporter reporter;
 	ExtentTest logger;
@@ -234,7 +234,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_010() throws Exception {
 		// pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -298,7 +298,7 @@ public class SPcasereg extends Design {
 		refno = null;
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -374,7 +374,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_012() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -436,7 +436,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_013() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -497,7 +497,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_014() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -558,7 +558,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_015() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -619,7 +619,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_016() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -680,7 +680,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_017() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -741,7 +741,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_018() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -802,7 +802,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_019() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -863,7 +863,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_020() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -926,7 +926,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_021() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -989,7 +989,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_022() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -1023,7 +1023,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_023() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -1068,7 +1068,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_025() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -1103,7 +1103,7 @@ public class SPcasereg extends Design {
 	public void TC_SPCR_026() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -1135,7 +1135,7 @@ public class SPcasereg extends Design {
 		HashMap<String, String> data = pages.DbConnection().getLastCase(projectName);
 		pages.Home().clickRegister();
 		candidateName = data.get("firstname");
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = data.get("lastname");
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -1165,7 +1165,7 @@ public class SPcasereg extends Design {
 		CaseOwnerInsuffClear cs = pages.CaseOwnerInsuffClear();
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -1269,7 +1269,7 @@ public class SPcasereg extends Design {
 	public void TC_SPINF_006() throws Exception {
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -1384,7 +1384,7 @@ public class SPcasereg extends Design {
 				"Database" };
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -1587,7 +1587,7 @@ public class SPcasereg extends Design {
 	 */
 	@Test(priority = 51, enabled = true, dependsOnMethods = "TC_SPINF_012", groups = { "insuff" })
 	public void TC_SPINF_018() throws Exception {
-		pages.DeEmployment().employementcheck();
+		pages.DeEmployment().employmentcheck();
 		pages.DeEmployment().history();
 		SoftAssert sf = new SoftAssert();
 		try {
@@ -1771,7 +1771,7 @@ public class SPcasereg extends Design {
 //		Thread.sleep(3000);
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -1855,7 +1855,7 @@ public class SPcasereg extends Design {
 		String[] cep = { "Current/Latest Employment", "Previous Employment 2", "Reference 1", "Reference 2" };
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
@@ -1958,7 +1958,7 @@ public class SPcasereg extends Design {
 		pages.DataEntry().datanentry();
 		pages.DataEntry().search(refno);
 		pages.DataEntry().selectcase(refno);
-		pages.DeEmployment().employementcheck();
+		pages.DeEmployment().employmentcheck();
 		pages.DeEmployment().history();
 		pages.DeEmployment().Cep();
 		String actual = pages.DeEmployment().CepgetclearedComments();
@@ -1991,7 +1991,7 @@ public class SPcasereg extends Design {
 		pages.CaseRegistration().casereg();
 		pages.Home().clickRegister();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().candidateName();
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);

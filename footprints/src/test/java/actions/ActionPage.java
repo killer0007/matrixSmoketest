@@ -3,13 +3,9 @@ package actions;
 import org.openqa.selenium.InvalidSelectorException;
 import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
-import environment.Pages;
+import environment.Utill;
 
-abstract class ActionPage {
-	WebDriver driver;
-	ExtentTest logger;
-	Pages pages;
-
+abstract class ActionPage extends Utill{
 	/**
 	 * This is abstract class for Action pages in portal
 	 * 
@@ -17,9 +13,8 @@ abstract class ActionPage {
 	 * @param logger logger instance
 	 */
 	public ActionPage(WebDriver driver, ExtentTest logger) {
-		this.driver = driver;
-		this.logger = logger;
-		pages = new Pages(driver,logger);
+		super(driver,logger);
+
 	}
 
 	/**
@@ -29,30 +24,30 @@ abstract class ActionPage {
 	 * @throws Exception when given case source not found in dropwdown
 	 */
 	public void caseSource(String source) throws Exception {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_ddlWorkflowType_Input");
-		pages.Utill().waitUntilElementisVisible(
+		click("ctl00_ContentPlaceHolder1_ddlWorkflowType_Input");
+		waitUntilElementisVisible(
 				"//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[1]", 10);
 		Thread.sleep(1000);
 		switch (source.toLowerCase()) {
 		case "sp":
-			pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[1]");
+			click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[1]");
 			break;
 		case "candidate":
-			pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[2]");
+			click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[2]");
 			break;
 		case "client":
-			pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[3]");
+			click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[3]");
 			break;
 		case "bulk":
-			pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[4]");
+			click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[4]");
 			break;
 		case "iverify":
-			pages.Utill().click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[5]");
+			click("//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[5]");
 			break;
 		default:
 			throw new InvalidSelectorException(source + " not found in list");
 		}
-		pages.Utill().waitUntilLoaderisInvisible(10);
+		waitUntilLoaderisInvisible(10);
 	}
 
 	/**
@@ -61,8 +56,8 @@ abstract class ActionPage {
 	 * @param refno case reference number
 	 */
 	public void caserefno(String refno) {
-		pages.Utill().clearElementText("ctl00_ContentPlaceHolder1_TextBoxCaseReference");
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_TextBoxCaseReference", refno);
+		clearElementText("ctl00_ContentPlaceHolder1_TextBoxCaseReference");
+		sendKeys("ctl00_ContentPlaceHolder1_TextBoxCaseReference", refno);
 	}
 
 	/**
@@ -71,7 +66,7 @@ abstract class ActionPage {
 	 * @param firstname candidate first name
 	 */
 	public void firstName(String firstname) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_TextBoxFirstName", firstname);
+		sendKeys("ctl00_ContentPlaceHolder1_TextBoxFirstName", firstname);
 	}
 
 	/**
@@ -80,15 +75,15 @@ abstract class ActionPage {
 	 * @param lastname candidate last name
 	 */
 	public void lastName(String lastname) {
-		pages.Utill().sendKeys("ctl00_ContentPlaceHolder1_TextBoxLastName", lastname);
+		sendKeys("ctl00_ContentPlaceHolder1_TextBoxLastName", lastname);
 	}
 
 	/**
 	 * click on the search button and wait until loader is invisible
 	 */
 	public void search() {
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnSearch");
-		pages.Utill().waitUntilLoaderisInvisible(10);
+		click("ctl00_ContentPlaceHolder1_btnSearch");
+		waitUntilLoaderisInvisible(10);
 	}
 
 	/*

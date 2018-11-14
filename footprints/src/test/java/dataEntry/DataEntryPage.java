@@ -7,32 +7,27 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import environment.Pages;
+import environment.Utill;
 
-abstract class DataEntryPage {
-	protected WebDriver driver;
-	protected ExtentTest logger;
-	protected Pages pages;
+public abstract class DataEntryPage extends Utill {
 
-	public DataEntryPage(WebDriver driver,ExtentTest logger) {
-		this.driver=driver;
-		this.logger = logger;
-		pages = new Pages(driver,logger);
+	public DataEntryPage(WebDriver driver, ExtentTest logger) {
+		super(driver,logger);
+		
 	}
 	/**
 	 * Performs click action on History button
 	 */
 	public void history() {
-
-		pages.Utill().click("ctl00_ContentPlaceHolder1_btnHistoryPage_input");
-		pages.Utill().waitUntilLoaderisInvisible(50);
+		click("ctl00_ContentPlaceHolder1_btnHistoryPage_input");
+		waitUntilLoaderisInvisible(50);
 	}
 	/**
 	 * returns name who raised insuff
 	 * @return name employee name
 	 */
 	public String getraisedBy() {
-		return pages.Utill()
+		return super
 				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblRaisedBy")
 				.trim();
 	}
@@ -41,7 +36,7 @@ abstract class DataEntryPage {
 	 * @return stage name
 	 */
 	public String getraisedStage() {
-		return pages.Utill()
+		return super
 				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblRaiseState")
 				.trim();
 	}
@@ -50,7 +45,7 @@ abstract class DataEntryPage {
 	 * @return insuff raised comments
 	 */
 	public String getraisedComments() {
-		return pages.Utill()
+		return super
 				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblRaisedRemarks")
 				.trim();
 	}
@@ -59,7 +54,7 @@ abstract class DataEntryPage {
 	 * @return name employee name
 	 */
 	public String getclearedBy() {
-		return pages.Utill()
+		return super
 				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblClearedByName")
 				.trim();
 	}
@@ -68,7 +63,7 @@ abstract class DataEntryPage {
 	 * @return comments insuff clear
 	 */
 	public String getclearedComments() {
-		return pages.Utill()
+		return super
 				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblClearComments")
 				.trim();
 	}
@@ -76,14 +71,14 @@ abstract class DataEntryPage {
 	 * Performs click action on close button in document upload popup
 	 */
 	public void close() {
-		pages.Utill().click("//a[@class='rwCloseButton']");
+		click("//a[@class='rwCloseButton']");
 	}
 	/**
 	 * returns document name which uploaded for insuff clear
 	 * @return document name
 	 */
 	public String historyDocument() {
-		String dc = pages.Utill()
+		String dc = super
 				.getText("ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_grdInsuffHistory_ctl00_ctl04_lblDoc");
 		return dc.replaceAll("[0-9]", "");
 	}
@@ -91,17 +86,17 @@ abstract class DataEntryPage {
  * Performs click action on insuff tab in history popup
  */
 	public void Insuff() {
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_RadTabStripForHistory']/div//li[1]");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Performs click action on Redo tab in history popup
 	 */
 	public void Redo() {
-		pages.Utill().click(
+		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_RadTabStripForHistory']/div//li[2]");
-		pages.Utill().waitUntilLoaderisInvisible(100);
+		waitUntilLoaderisInvisible(100);
 	}
 	/**
 	 * Takes doctype and file name as input and waits for given document to upload
@@ -112,7 +107,7 @@ abstract class DataEntryPage {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		String file=new File(filepath).getName();
 		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//*[text()='"+doctype+"']/../td[5]//div/ul/li[1]/span/span"), file));
-		String name =pages.Utill().getText("//*[text()='"+doctype+"']/../td[5]//div/ul/li[1]/span/span");
+		String name =getText("//*[text()='"+doctype+"']/../td[5]//div/ul/li[1]/span/span");
 		logger.log(Status.INFO, name);
 //		try {
 //			logger.info(name, MediaEntityBuilder.createScreenCaptureFromPath(Utill.getScreenshot(driver)).build());

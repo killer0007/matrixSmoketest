@@ -34,7 +34,7 @@ import dashboard.ReportValidation;
 import environment.*;
 import verification.*;
 @Listeners(environment.Listener.class)
-public class ClientCaseReg extends Design {
+public class ClientCaseReg implements Design {
 
 	WebDriver driver;
 	ExtentHtmlReporter reporter;
@@ -108,11 +108,11 @@ public class ClientCaseReg extends Design {
 	 */
 	@Test(priority = 2, enabled = true, dependsOnMethods = "login")
 	public void caseregistration() throws Exception {
-		Casereg casereg= new Casereg(driver, logger);
+		Casereg casereg= new Casereg(driver,logger);
 		casereg.casereg();
 		casereg.Registercase();
 		candidateName = pages.Utill().candidateName();
-		candidateId = Integer.toString(pages.Utill().candidateid());
+		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = pages.Utill().lastName();
 		Map<String, String> datas= new HashMap<>();
 		datas.put("CandidateName", candidateName);
@@ -195,7 +195,7 @@ public class ClientCaseReg extends Design {
 	public void AddressDEQC() throws Exception {
 		dataEntryQC.Address add = new dataEntryQC.Address(driver,logger);
 		add.addresscheck();
-		Map<String, String> actual = add.CurrentAddress();
+		Map<String, String> actual = add.getCurrentAddress();
 		Map<String, String> expected = add.filedata("Current Address");
 		add.addresscheck();
 		Map<String, String> Peractual = add.PermanentAdress();
@@ -216,10 +216,10 @@ public class ClientCaseReg extends Design {
 	public void EducationDEQC() throws Exception {
 		dataEntryQC.Education edu = new dataEntryQC.Education(driver,logger);
 		edu.educationcheck();
-		Map<String, String> actual = edu.twelveth();
+		Map<String, String> actual = edu.gettwelveth();
 		Map<String, String> expected = edu.filedata("12th");
 		edu.educationcheck();
-		Map<String, String> Peractual = edu.ugone();
+		Map<String, String> Peractual = edu.getugone();
 		Map<String, String> Perexpected = edu.filedata("UG1");
 		pages.Utill().SwitchDefault();
 		if (actual.equals(expected) && Peractual.equals(Perexpected)) {
@@ -274,7 +274,7 @@ public class ClientCaseReg extends Design {
 	public void DataBaseDEQC() throws Exception {
 		dataEntryQC.Database db = new dataEntryQC.Database(driver,logger);
 		db.databasecheck();
-		Map<String, String> actual = db.database();
+		Map<String, String> actual = db.getdatabase();
 		Map<String, String> expected = db.filedata();
 		pages.Utill().SwitchDefault();
 		if (actual.equals(expected)) {
@@ -553,7 +553,7 @@ public class ClientCaseReg extends Design {
 		pages.ReportGeneration().Search(refno);
 		pages.ReportGeneration().Select(refno);
 		Address add = new Address(driver, logger);
-		Map<String, String> actual=add.CurrentAddress();
+		Map<String, String> actual=add.getCurrentAddress();
 		add.ReportComments();
 		add.UpdateReportComments();
 		add.CloseReportComments();
@@ -571,7 +571,7 @@ public class ClientCaseReg extends Design {
 	@Test(priority = 29, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
 	public void EducationReportGeneration() throws Exception {
 		Education edu = new Education(driver, logger);
-		Map<String, String> actual=edu.twelveth();
+		Map<String, String> actual=edu.gettwelveth();
 		edu.ReportComments();
 		edu.UpdateReportComments();
 		edu.CloseReportComments();
