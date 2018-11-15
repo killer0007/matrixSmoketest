@@ -75,6 +75,16 @@ public class Id extends dataEntry.Id{
 	public String comments() {
 		return getValue("ctl00_ContentPlaceHolder1_txtIdComments");
 	}
+	/**
+	 * click submit button on id data entry
+	 * @throws Exception WebDriverException
+	 */
+	public void submit() throws Exception{
+		click("ctl00_ContentPlaceHolder1_btnIdSaveSubmit_input");
+		waitUntilLoaderisInvisible(100);
+			SwitchDefault();	
+		confirmAlert();
+	}
 	public Map<String, String> Aadharcard() throws Exception{
 		this.Component("Aadhaar Card");
 		Map<String , String> map=new LinkedHashMap<String, String>();

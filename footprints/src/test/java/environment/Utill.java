@@ -979,7 +979,7 @@ public class Utill {
 	 */
 	public String confirmAlert() {
 		By loc = By.xpath("//span[text()='OK']");
-		WebDriverWait wait = new WebDriverWait(driver, 50);
+		WebDriverWait wait = new WebDriverWait(driver, 100);
 		wait.until(ExpectedConditions.presenceOfElementLocated(loc));
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(loc)));
 		String msg = this.getText("class:rwDialogText");

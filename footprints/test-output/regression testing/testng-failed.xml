@@ -3,39 +3,40 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [regression testing]">
   <test thread-count="5" name="FullFlow(failed)">
     <classes>
-      <class name="maintest.FullFlow">
+      <class name="maintest.ClientCaseReg">
         <methods>
-          <include name="CourtReportGeneration"/>
-          <include name="dataEntryQCAssign"/>
-          <include name="CreditReportGeneration"/>
           <include name="ReferenceReportGeneration"/>
+          <include name="IdReportGeneration"/>
+          <include name="DatabaseReportGeneration"/>
           <include name="ReportValidationSupervisor"/>
           <include name="teardown"/>
+          <include name="CourtReportGeneration"/>
+          <include name="CreditReportGeneration"/>
           <include name="EducationReportGeneration"/>
           <include name="VerificationSupervisor"/>
-          <include name="DrugReportGeneration"/>
-          <include name="IdReportGeneration"/>
-          <include name="beforeSuit"/>
           <include name="dataEntryAssign"/>
-          <include name="caseregistration"/>
+          <include name="DrugReportGeneration"/>
+          <include name="EmploymentVerification"/>
+          <include name="beforeSuit"/>
           <include name="dataEntry"/>
           <include name="login"/>
+          <include name="caseregistration"/>
           <include name="ReportGenerationSupervision"/>
-          <include name="DatabaseVerification"/>
-          <include name="setup"/>
-          <include name="afterSuite"/>
           <include name="ReportGenerationSubmit"/>
-          <include name="CriminalReportGeneration"/>
-          <include name="ReportValidation"/>
-          <include name="AddressReportGeneration"/>
-          <include name="VerificationIntiation"/>
+          <include name="afterSuite"/>
           <include name="IdDEQC"/>
+          <include name="ReportValidation"/>
+          <include name="VerificationIntiation"/>
+          <include name="AddressReportGeneration"/>
+          <include name="setup"/>
           <include name="EmploymentReportGeneration"/>
           <include name="DrugVerification"/>
+          <include name="CriminalReportGeneration"/>
+          <include name="dataEntryQCAssign"/>
           <include name="beforetest"/>
           <include name="tearDown"/>
         </methods>
-      </class> <!-- maintest.FullFlow -->
+      </class> <!-- maintest.ClientCaseReg -->
     </classes>
   </test> <!-- FullFlow(failed) -->
 </suite> <!-- Failed suite [regression testing] -->

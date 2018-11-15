@@ -640,6 +640,7 @@ public class CaseRegistration extends Utill {
 		this.addEditComponent();
 	}
 
+	
 	/**
 	 * Takes case registration details as input with hashmap format
 	 * 
@@ -653,6 +654,34 @@ public class CaseRegistration extends Utill {
 		this.FirstName(data.get("CandidateName"));
 		this.LastName(data.get("lastname"));
 		this.DOB(getDob());
+		this.gender("male");
+		this.Email(data.get("CandidateName") + "@ggmail.com");
+		this.FatherFirstName("fname");
+		this.FatherLastName("lname");
+		this.LinkedIn(data.get("CandidateName") + " linkedin");
+		this.maritalStatus("Single");
+		this.Nationality("Indian");
+		this.LandlineNumber(mobileno());
+		this.MobileNumber(mobileno());
+		this.EmergencyContactNumber(mobileno());
+		this.EmergencyContactPerson(data.get("CandidateName"));
+		this.CandidateID(data.get("CandidateId"));
+		this.clickfresher(false);
+		this.addEditComponent();
+	}
+	/**
+	 * Takes case registration details as input with hashmap format
+	 * 
+	 * @param data hash map contains registration details
+	 * @throws Exception element not found
+	 */
+	public void registercase(HashMap<String, String> data, String date) throws Exception {
+		
+		this.selectClient(data.get("ClientName"));
+		this.selectProject(data.get("ProjectName"));
+		this.FirstName(data.get("CandidateName"));
+		this.LastName(data.get("lastname"));
+		this.DOB(date);
 		this.gender("male");
 		this.Email(data.get("CandidateName") + "@ggmail.com");
 		this.FatherFirstName("fname");
@@ -686,7 +715,7 @@ public class CaseRegistration extends Utill {
 	 * @return boolean true = component selected , false = not selected
 	 */
 	public boolean isSelected(String componentname) {
-		return isSelected("//td[text()='" + componentname + "']/../td[2]//input");
+		return super.isSelected("//td[text()='" + componentname + "']/../td[2]//input");
 	}
 
 	/**
@@ -697,7 +726,7 @@ public class CaseRegistration extends Utill {
 	 * @return boolean true = component enabled , false = not enabled
 	 */
 	public boolean isEnabled(String componentname) {
-		return isEnabled("//td[text()='" + componentname + "']/../td[2]//input");
+		return super.isEnabled("//td[text()='" + componentname + "']/../td[2]//input");
 	}
 
 	/**

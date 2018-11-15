@@ -565,7 +565,7 @@ public class FullFlow implements Design {
 		edu.save();
 		Map<String, String> expected=edu.filedata();
 		assertEquals(actual, expected);
-		Map<String, String> peractual=edu.ugone();
+		Map<String, String> peractual=edu.getugone();
 		edu.ReportComments();
 		edu.UpdateReportComments();
 		edu.CloseReportComments();

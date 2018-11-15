@@ -111,7 +111,7 @@ public class Address extends DataEntryPage {
 	 * @return true when component valid
 	 */
 	private boolean verifyddvalue(String component) throws Exception {
-		Thread.sleep(2000);
+		sleep(800);
 		List<WebElement> list = driver
 				.findElements(By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_ddlComponent_DropDown']/div/ul/li"));
 //		System.out.println("lenght is :"+list.size());

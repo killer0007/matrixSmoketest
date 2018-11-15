@@ -102,138 +102,33 @@ public class Basic {
 	public void login() throws Exception {
 		uname = config.getProperty("uname");
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-		//pages.Verification().verification();
 	}
 
 	
-	@Test(priority = 2, enabled = false)
-	public void casereg() throws Exception {
-		refno="HDFC000739";
-		ViewCandidateFinalReport cr = new ViewCandidateFinalReport(driver,logger);
-		cr.viewcandidatefinalreport();
-		cr.clientrefno(refno);
-		if(cr.getSearchResult().equals(refno)) {
-			cr.ViewReport();
-			cr.deleteFiles(new File(config.getProperty("downloadFilepath")));
-			cr.Download();
-			cr.Cancel();
-		}
-		
-	}
-	@Test(priority = 2, enabled = true, dependsOnMethods = "login")
-	public void caseregistration() throws Exception {
+	@Test(priority = 28, enabled = true)
+	public void TC_SPCR_027() throws Exception {
+		HashMap<String, String> data = pages.DbConnection().getLastCase(projectName);
 		pages.Home().clickRegister();
-		candidateName = pages.Utill().candidateName();
+		candidateName = data.get("firstname");
 		candidateId = Integer.toString(pages.Utill().getcandidateid());
-		lastName = pages.Utill().lastName();
+		lastName = data.get("lastname");
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
 		datas.put("CandidateId", candidateId);
 		datas.put("ClientName", clientName);
 		datas.put("ProjectName", projectName);
 		datas.put("lastname", lastName);
-		pages.CaseRegistration().registercase(datas, false);
-		String[] components = pages.CaseRegistration().getcomponents();
-		for (int i = 0; i < components.length; i++) {
-			pages.CaseRegistration().selectcheck(components[i].toString());
-		}
-		pages.CaseRegistration().submit();
-		pages.Utill().confirmAlert();
+		pages.CaseRegistration().registercase(datas, pages.Utill().formatedob(data.get("DateofBirth")));
+		String msg = pages.Utill().confirmAlert();
 		pages.Home().homepage();
-	}
-
-	/**
-	 * data entry assign
-	 * 
-	 * @throws Exception WebDriverException
-	 */
-	@Test(priority = 3, enabled = true, dependsOnMethods = "caseregistration")
-	public void dataEntryAssign() throws Exception {
-		refno = pages.DbConnection().getLastrefno(projectName);
-		DataEntrySupervision des = pages.DataEntrySupervision();
-		des.datanentrysupervision();
-		//des.assigngetnext(refno);
-		des.assign(refno, "demoempl");
-	}
-
-
-	@Test(priority = 4, enabled = true, dependsOnMethods = "dataEntryAssign")
-	public void dataEntry() throws Exception {
-		pages.DataEntry().datanentry();
-		pages.Utill().click("//*[text()='" + refno + "']");
-		pages.Utill().waitUntilLoaderisInvisible(100);
-		HashMap<String, String> casedetails = pages.DbConnection().getLastCase(projectName);
-		logger.log(Status.INFO, casedetails.toString());
-		assertEquals(casedetails.get("firstname"), pages.CaseInformation().FirstName());
-		assertEquals(casedetails.get("lastname"), pages.CaseInformation().LastName());
-		pages.DeAddress().CurrentAddress();
-		pages.DeAddress().sameascurrent("Permanent", "Current Address");
-		pages.DeEducation().twelveth();
-		pages.DeEducation().UGone();
-		pages.DeEmployment().currentEmployment();
-		pages.DeEmployment().perviousoneEmployment();
-		pages.DeReference().referenceone();
-		pages.DeDatabase().database();
-		pages.DeCriminal().CurrentAddress("Address -Current Address");
-		pages.DeCriminal().PermanentAddress("Address -Permanent");
-		pages.DeCredit().Creditone();
-		pages.DeCourt().CurrentAddress("Address - Current Address");
-		pages.DeCourt().PermanentAddress("Address - Permanent");
-		pages.DeId().Passport();
-		pages.DeId().AadharCard();
-		pages.Utill().waitUntilLoaderisInvisible(100);
-
-	}
-	@Test(priority = 5, enabled = true, dependsOnMethods = "dataEntry")
-	public void dataEntryQCAssign() throws Exception {
-		pages.DataEntryQCSupervision().datanentryqcsupervision();
-//		pages.DataEntryQCSupervision().assigngetnext(refno);
-		pages.DataEntryQCSupervision().assign(refno, "demoempl");
-		pages.DataEntryQC().datanentryqc();
-		pages.DataEntryQC().selectcase(refno);
-
-	}
-
-	@Test(priority = 6, enabled = true, dependsOnMethods = "dataEntryQCAssign")
-	public void AddressDEQC() throws Exception {
-		dataEntryQC.Address add = new dataEntryQC.Address(driver,logger);
-		add.addresscheck();
-		Map<String, String> actual = add.getCurrentAddress();
-		Map<String, String> expected = add.filedata("Current Address");
-		add.addresscheck();
-		Map<String, String> Peractual = add.PermanentAdress();
-		Map<String, String> Perexpected = add.filedata("Permanent");
-		pages.Utill().SwitchDefault();
-		if (actual.equals(expected) && Peractual.equals(Perexpected)) {
-			logger.log(Status.PASS, actual.toString());
-			logger.log(Status.PASS, Peractual.toString());
-			assertTrue(true, actual.toString());
+		if (msg.equals("Case Already Exist!")) {
+			assertTrue(true);
 		} else {
-			logger.log(Status.FAIL, actual.toString());
-			logger.log(Status.FAIL, Peractual.toString());
-			assertTrue(false, actual.toString());
+			assertTrue(false);
 		}
+
 	}
-	@Test(priority = 13, enabled = true, dependsOnMethods = "dataEntryQCAssign")
-	public void CourtDEQC() throws Exception {
-		dataEntryQC.Court court = new dataEntryQC.Court(driver,logger);
-		court.courtcheck();
-		Map<String, String> actual = court.CurrentAddress();
-		Map<String, String> expected = court.filedata("Current Address Court Check");	
-		court.courtcheck();
-		Map<String, String> Peractual = court.PermanentAdress();
-		Map<String, String> Perexpected = court.filedata("Permanent Court Check");
-		pages.Utill().SwitchDefault();
-		if (actual.equals(expected) && Peractual.equals(Perexpected)) {
-			logger.log(Status.PASS, actual.toString());
-			logger.log(Status.PASS, Peractual.toString());
-			assertTrue(true, actual.toString());
-		} else {
-			logger.log(Status.FAIL, actual.toString());
-			logger.log(Status.FAIL, Peractual.toString());
-			assertTrue(false, actual.toString());
-		}
-	}
+
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {

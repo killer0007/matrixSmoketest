@@ -1137,14 +1137,14 @@ public class SPcasereg implements Design {
 		candidateName = data.get("firstname");
 		candidateId = Integer.toString(pages.Utill().getcandidateid());
 		lastName = data.get("lastname");
+		System.out.println(data);
 		HashMap<String, String> datas = new HashMap<String, String>();
 		datas.put("CandidateName", candidateName);
 		datas.put("CandidateId", candidateId);
 		datas.put("ClientName", clientName);
 		datas.put("ProjectName", projectName);
 		datas.put("lastname", lastName);
-		datas.put("DateofBirth", pages.Utill().formatedob(data.get("DateofBirth")));
-		pages.CaseRegistration().registercase(datas);
+		pages.CaseRegistration().registercase(datas, pages.Utill().formatedob(data.get("DateofBirth")));
 		String msg = pages.Utill().confirmAlert();
 		pages.Home().homepage();
 		if (msg.equals("Case Already Exist!")) {

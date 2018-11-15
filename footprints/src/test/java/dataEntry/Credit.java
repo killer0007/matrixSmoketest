@@ -124,7 +124,7 @@ public class Credit extends DataEntryPage{
 	 * @return true when component valid
 	 */
 	private boolean verifyddvalue(String component) {
-
+		sleep(800);
 		List<WebElement> list = driver
 				.findElements(By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_ddlcreditComponent_DropDown']/div/ul/li"));
 		if (list.size() > 0) {

@@ -5,19 +5,13 @@
     <classes>
       <class name="maintest2.Basic">
         <methods>
-          <include name="tearDown"/>
-          <include name="caseregistration"/>
-          <include name="AddressDEQC"/>
-          <include name="beforeSuit"/>
-          <include name="login"/>
-          <include name="dataEntryAssign"/>
-          <include name="beforetest"/>
           <include name="setup"/>
+          <include name="tearDown"/>
           <include name="teardown"/>
+          <include name="beforeSuit"/>
           <include name="afterSuite"/>
-          <include name="dataEntry"/>
-          <include name="CourtDEQC"/>
-          <include name="dataEntryQCAssign"/>
+          <include name="TC_SPCR_027"/>
+          <include name="beforetest"/>
         </methods>
       </class> <!-- maintest2.Basic -->
     </classes>

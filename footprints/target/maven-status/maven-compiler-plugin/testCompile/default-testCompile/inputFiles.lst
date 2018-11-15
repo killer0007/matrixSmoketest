@@ -10,6 +10,8 @@ D:\gopi\github\matrixSmoketest\footprints\src\test\java\dataEntryQC\Reference.ja
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\dashboard\DataEntryQC.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\dashboard\Verification.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\verification\Database.java
+D:\gopi\github\matrixSmoketest\footprints\src\test\java\client\ViewCandidateFinalReport.java
+D:\gopi\github\matrixSmoketest\footprints\src\test\java\maintest\ClientCaseReg.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\maintest\FullFlow.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\environment\BaseClass.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\verification\Id.java
@@ -25,7 +27,6 @@ D:\gopi\github\matrixSmoketest\footprints\src\test\java\maintest\Design.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\dataEntryQC\Database.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\dataEntryQC\Credit.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\actions\CaseOwnerInsuffClear.java
-D:\gopi\github\matrixSmoketest\footprints\src\test\java\client\Home.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\maintest2\Design.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\dataEntryQC\CaseInformation.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\client\Casereg.java
@@ -37,7 +38,6 @@ D:\gopi\github\matrixSmoketest\footprints\src\test\java\verification\CaseInforma
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\dataEntry\Id.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\dashboard\DataEntrySupervision.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\verification\Credit.java
-D:\gopi\github\matrixSmoketest\footprints\src\test\java\dataEntryQC\DataEntryQCPage.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\verification\Education.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\dataEntry\Database.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\dataEntryQC\Address.java
@@ -67,5 +67,4 @@ D:\gopi\github\matrixSmoketest\footprints\src\test\java\dataEntry\Criminal.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\pages\Home.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\dashboard\ReportValidationSupervision.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\environment\Utill.java
-D:\gopi\github\matrixSmoketest\footprints\src\test\java\dataEntryQC\temp.java
 D:\gopi\github\matrixSmoketest\footprints\src\test\java\dashboard\VerificationSupervisor.java

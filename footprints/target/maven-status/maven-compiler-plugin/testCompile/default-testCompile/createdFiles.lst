@@ -14,7 +14,6 @@ dashboard\DataEntrySupervision.class
 dataEntry\Credit.class
 environment\Listener.class
 environment\SaveImagesInPdf.class
-dataEntryQC\temp.class
 maintest\FullFlow.class
 verification\Database.class
 dashboard\DataEntryQC.class
@@ -22,7 +21,6 @@ dataEntry\CaseInformation.class
 dashboard\Verification.class
 environment\Utill$1.class
 verification\Verification.class
-dataEntryQC\DataEntryQCPage.class
 environment\BaseClass.class
 maintest2\Design.class
 dashboard\DataEntryQCSupervision.class
@@ -38,7 +36,6 @@ verification\Criminal.class
 dataEntryQC\Reference.class
 verification\Employment.class
 dataEntry\Reference.class
-client\Home.class
 maintest\SPcasereg.class
 dashboard\ReportValidation.class
 dataEntryQC\Court.class
@@ -71,6 +68,8 @@ dataEntry\Id.class
 dataEntry\Database.class
 environment\SendAttachmentInEmail.class
 dashboard\ReportGeneration.class
+maintest\ClientCaseReg.class
 verification\Credit.class
 dataEntryQC\Address.class
 verification\Reference.class
+client\ViewCandidateFinalReport.class

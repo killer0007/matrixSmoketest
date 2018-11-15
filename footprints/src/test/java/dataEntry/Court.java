@@ -63,7 +63,7 @@ public class Court extends DataEntryPage{
 	 * @return true when component valid
 	 */
 	private boolean verifyddvalue(String component) {
-//		sleep(1000);
+		sleep(800);
 		new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCourtComponent_DropDown']/div/ul/li[1]")));
 		List<WebElement> list = driver
 				.findElements(By.xpath(".//*[@id='ctl00_ContentPlaceHolder1_ddlCourtComponent_DropDown']/div/ul/li"));

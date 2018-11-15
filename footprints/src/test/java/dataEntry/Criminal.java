@@ -145,7 +145,7 @@ public class Criminal extends DataEntryPage {
 	public void City() {
 		sendKeys("ctl00_ContentPlaceHolder1_ddlCriminalCity_Input", "Chennai");
 		new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlAddressState_DropDown']/div/ul/li[1]")));
+				By.xpath("//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalCity_DropDown']/div/ul/li[1]")));
 		click(
 				"//*[@id='ctl00_ContentPlaceHolder1_ddlCriminalCity_DropDown']/div/ul//li[text()='Chennai']");
 		waitUntilLoaderisInvisible(100);

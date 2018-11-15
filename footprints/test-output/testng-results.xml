@@ -1,333 +1,1845 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="1" total="8" passed="7">
+<testng-results skipped="13" failed="2" ignored="1" total="41" passed="25">
   <reporter-output>
     <line>
-      <![CDATA[About to begin executing Test Default test]]>
+      <![CDATA[About to begin executing Test FullFlow]]>
     </line>
     <line>
-      <![CDATA[Test Method resides in maintest2.Basic]]>
-    </line>
-    <line>
-      <![CDATA[Test Status: Pass]]>
-    </line>
-    <line>
-      <![CDATA[Test Method resides in maintest2.Basic]]>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
     </line>
     <line>
       <![CDATA[Test Status: Pass]]>
     </line>
     <line>
-      <![CDATA[Test Method resides in maintest2.Basic]]>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
     </line>
     <line>
       <![CDATA[Test Status: Pass]]>
     </line>
     <line>
-      <![CDATA[Test Method resides in maintest2.Basic]]>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
     </line>
     <line>
       <![CDATA[Test Status: Pass]]>
     </line>
     <line>
-      <![CDATA[Test Method resides in maintest2.Basic]]>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
     </line>
     <line>
       <![CDATA[Test Status: Pass]]>
     </line>
     <line>
-      <![CDATA[Test Method resides in maintest2.Basic]]>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
     </line>
     <line>
       <![CDATA[Test Status: Pass]]>
     </line>
     <line>
-      <![CDATA[Test Method resides in maintest2.Basic]]>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
     </line>
     <line>
       <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Failed]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Pass]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Failed]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Skipped]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Skipped]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Skipped]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Skipped]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Skipped]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Skipped]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Skipped]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Skipped]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Skipped]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Skipped]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Skipped]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Skipped]]>
+    </line>
+    <line>
+      <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+    </line>
+    <line>
+      <![CDATA[Test Status: Skipped]]>
     </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="709427" started-at="2018-11-14T12:32:38Z" finished-at="2018-11-14T12:44:28Z">
+  <suite name="regression testing" duration-ms="2460075" started-at="2018-11-15T11:11:23Z" finished-at="2018-11-15T11:52:23Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="709427" started-at="2018-11-14T12:32:38Z" finished-at="2018-11-14T12:44:28Z">
-      <class name="maintest2.Basic">
-        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest2.Basic@1686d1f]" name="beforeSuit" is-config="true" duration-ms="140" started-at="2018-11-14T12:32:38Z" finished-at="2018-11-14T12:32:38Z">
+    <test name="FullFlow" duration-ms="2460075" started-at="2018-11-15T11:11:23Z" finished-at="2018-11-15T11:52:23Z">
+      <class name="maintest.ClientCaseReg">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="beforeSuit" is-config="true" duration-ms="141" started-at="2018-11-15T11:11:23Z" finished-at="2018-11-15T11:11:23Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuit -->
-        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest2.Basic@1686d1f]" name="beforetest" is-config="true" duration-ms="3079" started-at="2018-11-14T12:32:38Z" finished-at="2018-11-14T12:32:41Z">
+        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="beforetest" is-config="true" duration-ms="3239" started-at="2018-11-15T11:11:23Z" finished-at="2018-11-15T11:11:27Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforetest -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="setup" is-config="true" duration-ms="16" started-at="2018-11-14T12:32:41Z" finished-at="2018-11-14T12:32:41Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="11" started-at="2018-11-15T11:11:27Z" finished-at="2018-11-15T11:11:27Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest2.Basic.login() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.ClientCaseReg.login() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="login()[pri:1, instance:maintest2.Basic@1686d1f]" name="login" duration-ms="9655" started-at="2018-11-14T12:32:41Z" finished-at="2018-11-14T12:32:51Z">
+        <test-method status="PASS" signature="login()[pri:1, instance:maintest.ClientCaseReg@f777e8]" name="login" duration-ms="7309" started-at="2018-11-15T11:11:27Z" finished-at="2018-11-15T11:11:34Z">
           <reporter-output>
             <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
             </line>
             <line>
               <![CDATA[Test Status: Pass]]>
             </line>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-14T12:32:51Z" finished-at="2018-11-14T12:32:51Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-15T11:11:34Z" finished-at="2018-11-15T11:11:34Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest2.Basic.caseregistration() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-14T12:32:51Z" finished-at="2018-11-14T12:32:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=login status=SUCCESS method=Basic.login()[pri:1, instance:maintest2.Basic@1686d1f] output=Test Method resides in maintest2.Basic]]]>
+                <![CDATA[[TestResult name=login status=SUCCESS method=ClientCaseReg.login()[pri:1, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest2.Basic.login() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.ClientCaseReg.login() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="caseregistration()[pri:2, instance:maintest2.Basic@1686d1f]" name="caseregistration" duration-ms="37100" started-at="2018-11-14T12:32:51Z" depends-on-methods="maintest2.Basic.login" finished-at="2018-11-14T12:33:28Z">
+        <test-method status="PASS" signature="caseregistration()[pri:2, instance:maintest.ClientCaseReg@f777e8]" name="caseregistration" duration-ms="104668" started-at="2018-11-15T11:11:34Z" depends-on-methods="maintest.ClientCaseReg.login" finished-at="2018-11-15T11:13:19Z">
           <reporter-output>
             <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
             </line>
             <line>
               <![CDATA[Test Status: Pass]]>
             </line>
           </reporter-output>
         </test-method> <!-- caseregistration -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-14T12:33:28Z" finished-at="2018-11-14T12:33:28Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:11:34Z" finished-at="2018-11-15T11:11:34Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=caseregistration status=SUCCESS method=Basic.caseregistration()[pri:2, instance:maintest2.Basic@1686d1f] output=Test Method resides in maintest2.Basic]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void maintest2.Basic.caseregistration() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.ClientCaseReg.caseregistration() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="dataEntryAssign()[pri:3, instance:maintest2.Basic@1686d1f]" name="dataEntryAssign" duration-ms="64412" started-at="2018-11-14T12:33:28Z" depends-on-methods="maintest2.Basic.caseregistration" finished-at="2018-11-14T12:34:33Z">
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:13:19Z" finished-at="2018-11-15T11:13:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.dataEntryAssign() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="dataEntryAssign()[pri:3, instance:maintest.ClientCaseReg@f777e8]" name="dataEntryAssign" duration-ms="60109" started-at="2018-11-15T11:13:19Z" depends-on-methods="maintest.ClientCaseReg.caseregistration" finished-at="2018-11-15T11:14:19Z">
           <reporter-output>
             <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
             </line>
             <line>
               <![CDATA[Test Status: Pass]]>
             </line>
           </reporter-output>
         </test-method> <!-- dataEntryAssign -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-14T12:33:28Z" finished-at="2018-11-14T12:33:28Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-15T11:13:19Z" finished-at="2018-11-15T11:13:19Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest2.Basic.dataEntryAssign() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-14T12:34:33Z" finished-at="2018-11-14T12:34:33Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=dataEntryAssign status=SUCCESS method=Basic.dataEntryAssign()[pri:3, instance:maintest2.Basic@1686d1f] output=Test Method resides in maintest2.Basic]]]>
+                <![CDATA[[TestResult name=caseregistration status=SUCCESS method=ClientCaseReg.caseregistration()[pri:2, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest2.Basic.dataEntryAssign() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.ClientCaseReg.caseregistration() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="dataEntry()[pri:4, instance:maintest2.Basic@1686d1f]" name="dataEntry" duration-ms="476883" started-at="2018-11-14T12:34:33Z" depends-on-methods="maintest2.Basic.dataEntryAssign" finished-at="2018-11-14T12:42:30Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="16" started-at="2018-11-15T11:14:19Z" finished-at="2018-11-15T11:14:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=dataEntryAssign status=SUCCESS method=ClientCaseReg.dataEntryAssign()[pri:3, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.dataEntryAssign() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="dataEntry()[pri:4, instance:maintest.ClientCaseReg@f777e8]" name="dataEntry" duration-ms="483022" started-at="2018-11-15T11:14:19Z" depends-on-methods="maintest.ClientCaseReg.dataEntryAssign" finished-at="2018-11-15T11:22:22Z">
           <reporter-output>
             <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
             </line>
             <line>
               <![CDATA[Test Status: Pass]]>
             </line>
           </reporter-output>
         </test-method> <!-- dataEntry -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-14T12:34:33Z" finished-at="2018-11-14T12:34:33Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:14:19Z" finished-at="2018-11-15T11:14:19Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest2.Basic.dataEntry() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.ClientCaseReg.dataEntry() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-14T12:42:30Z" finished-at="2018-11-14T12:42:30Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:22:22Z" finished-at="2018-11-15T11:22:22Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=dataEntry status=SUCCESS method=Basic.dataEntry()[pri:4, instance:maintest2.Basic@1686d1f] output=Test Method resides in maintest2.Basic]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void maintest2.Basic.dataEntry() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-14T12:42:30Z" finished-at="2018-11-14T12:42:30Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void maintest2.Basic.dataEntryQCAssign() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.ClientCaseReg.dataEntryQCAssign() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="dataEntryQCAssign()[pri:5, instance:maintest2.Basic@1686d1f]" name="dataEntryQCAssign" duration-ms="51215" started-at="2018-11-14T12:42:30Z" depends-on-methods="maintest2.Basic.dataEntry" finished-at="2018-11-14T12:43:21Z">
+        <test-method status="PASS" signature="dataEntryQCAssign()[pri:5, instance:maintest.ClientCaseReg@f777e8]" name="dataEntryQCAssign" duration-ms="54426" started-at="2018-11-15T11:22:22Z" depends-on-methods="maintest.ClientCaseReg.dataEntry" finished-at="2018-11-15T11:23:16Z">
           <reporter-output>
             <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
             </line>
             <line>
               <![CDATA[Test Status: Pass]]>
             </line>
           </reporter-output>
         </test-method> <!-- dataEntryQCAssign -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-14T12:43:21Z" finished-at="2018-11-14T12:43:21Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-15T11:22:22Z" finished-at="2018-11-15T11:22:22Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=dataEntryQCAssign status=SUCCESS method=Basic.dataEntryQCAssign()[pri:5, instance:maintest2.Basic@1686d1f] output=Test Method resides in maintest2.Basic]]]>
+                <![CDATA[[TestResult name=dataEntry status=SUCCESS method=ClientCaseReg.dataEntry()[pri:4, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest2.Basic.dataEntryQCAssign() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.ClientCaseReg.dataEntry() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-14T12:43:21Z" finished-at="2018-11-14T12:43:21Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-15T11:23:16Z" finished-at="2018-11-15T11:23:16Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest2.Basic.AddressDEQC() throws java.lang.Exception]]>
+                <![CDATA[[TestResult name=dataEntryQCAssign status=SUCCESS method=ClientCaseReg.dataEntryQCAssign()[pri:5, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.dataEntryQCAssign() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="AddressDEQC()[pri:6, instance:maintest2.Basic@1686d1f]" name="AddressDEQC" duration-ms="35282" started-at="2018-11-14T12:43:21Z" depends-on-methods="maintest2.Basic.dataEntryQCAssign" finished-at="2018-11-14T12:43:56Z">
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="AddressDEQC()[pri:6, instance:maintest.ClientCaseReg@f777e8]" name="AddressDEQC" duration-ms="34430" started-at="2018-11-15T11:23:16Z" depends-on-methods="maintest.ClientCaseReg.dataEntryQCAssign" finished-at="2018-11-15T11:23:51Z">
           <reporter-output>
             <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
             </line>
             <line>
               <![CDATA[Test Status: Pass]]>
             </line>
           </reporter-output>
         </test-method> <!-- AddressDEQC -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-14T12:43:56Z" finished-at="2018-11-14T12:43:56Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:23:16Z" finished-at="2018-11-15T11:23:16Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=AddressDEQC status=SUCCESS method=Basic.AddressDEQC()[pri:6, instance:maintest2.Basic@1686d1f] output=Test Method resides in maintest2.Basic]]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[public void maintest2.Basic.AddressDEQC() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-14T12:43:56Z" finished-at="2018-11-14T12:43:56Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[public void maintest2.Basic.CourtDEQC() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.ClientCaseReg.AddressDEQC() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="CourtDEQC()[pri:13, instance:maintest2.Basic@1686d1f]" name="CourtDEQC" duration-ms="31687" started-at="2018-11-14T12:43:56Z" depends-on-methods="maintest2.Basic.dataEntryQCAssign" finished-at="2018-11-14T12:44:28Z">
-          <reporter-output>
-            <line>
-              <![CDATA[Test Method resides in maintest2.Basic]]>
-            </line>
-            <line>
-              <![CDATA[Test Status: Pass]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- CourtDEQC -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest2.Basic@1686d1f]" name="teardown" is-config="true" duration-ms="1" started-at="2018-11-14T12:44:28Z" finished-at="2018-11-14T12:44:28Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest2.Basic@1686d1f]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-14T12:44:28Z" finished-at="2018-11-14T12:44:28Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-15T11:23:51Z" finished-at="2018-11-15T11:23:51Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=CourtDEQC status=SUCCESS method=Basic.CourtDEQC()[pri:13, instance:maintest2.Basic@1686d1f] output=Test Method resides in maintest2.Basic]]]>
+                <![CDATA[[TestResult name=AddressDEQC status=SUCCESS method=ClientCaseReg.AddressDEQC()[pri:6, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[public void maintest2.Basic.CourtDEQC() throws java.lang.Exception]]>
+                <![CDATA[public void maintest.ClientCaseReg.AddressDEQC() throws java.lang.Exception]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest2.Basic@1686d1f]" name="afterSuite" is-config="true" duration-ms="339" started-at="2018-11-14T12:44:28Z" finished-at="2018-11-14T12:44:28Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="1" started-at="2018-11-15T11:23:51Z" finished-at="2018-11-15T11:23:51Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.EducationDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="EducationDEQC()[pri:7, instance:maintest.ClientCaseReg@f777e8]" name="EducationDEQC" duration-ms="28725" started-at="2018-11-15T11:23:51Z" depends-on-methods="maintest.ClientCaseReg.dataEntryQCAssign" finished-at="2018-11-15T11:24:19Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- EducationDEQC -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-15T11:24:19Z" finished-at="2018-11-15T11:24:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=EducationDEQC status=SUCCESS method=ClientCaseReg.EducationDEQC()[pri:7, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.EducationDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:24:19Z" finished-at="2018-11-15T11:24:19Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.EmploymentDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="EmploymentDEQC()[pri:8, instance:maintest.ClientCaseReg@f777e8]" name="EmploymentDEQC" duration-ms="27778" started-at="2018-11-15T11:24:19Z" depends-on-methods="maintest.ClientCaseReg.dataEntryQCAssign" finished-at="2018-11-15T11:24:47Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- EmploymentDEQC -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-15T11:24:47Z" finished-at="2018-11-15T11:24:47Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=EmploymentDEQC status=SUCCESS method=ClientCaseReg.EmploymentDEQC()[pri:8, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.EmploymentDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:24:47Z" finished-at="2018-11-15T11:24:47Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.ReferenceDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="ReferenceDEQC()[pri:9, instance:maintest.ClientCaseReg@f777e8]" name="ReferenceDEQC" duration-ms="13334" started-at="2018-11-15T11:24:47Z" depends-on-methods="maintest.ClientCaseReg.dataEntryQCAssign" finished-at="2018-11-15T11:25:01Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- ReferenceDEQC -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-15T11:25:01Z" finished-at="2018-11-15T11:25:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=ReferenceDEQC status=SUCCESS method=ClientCaseReg.ReferenceDEQC()[pri:9, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.ReferenceDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="1" started-at="2018-11-15T11:25:01Z" finished-at="2018-11-15T11:25:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.DataBaseDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="DataBaseDEQC()[pri:10, instance:maintest.ClientCaseReg@f777e8]" name="DataBaseDEQC" duration-ms="13320" started-at="2018-11-15T11:25:01Z" depends-on-methods="maintest.ClientCaseReg.dataEntryQCAssign" finished-at="2018-11-15T11:25:14Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- DataBaseDEQC -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-15T11:25:14Z" finished-at="2018-11-15T11:25:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=DataBaseDEQC status=SUCCESS method=ClientCaseReg.DataBaseDEQC()[pri:10, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.DataBaseDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="CriminalDEQC()[pri:11, instance:maintest.ClientCaseReg@f777e8]" name="CriminalDEQC" duration-ms="31586" started-at="2018-11-15T11:25:14Z" depends-on-methods="maintest.ClientCaseReg.dataEntryQCAssign" finished-at="2018-11-15T11:25:45Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- CriminalDEQC -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:25:14Z" finished-at="2018-11-15T11:25:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.CriminalDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-15T11:25:45Z" finished-at="2018-11-15T11:25:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CriminalDEQC status=SUCCESS method=ClientCaseReg.CriminalDEQC()[pri:11, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.CriminalDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="1" started-at="2018-11-15T11:25:45Z" finished-at="2018-11-15T11:25:45Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.CreditDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="CreditDEQC()[pri:12, instance:maintest.ClientCaseReg@f777e8]" name="CreditDEQC" duration-ms="11960" started-at="2018-11-15T11:25:45Z" depends-on-methods="maintest.ClientCaseReg.dataEntryQCAssign" finished-at="2018-11-15T11:25:57Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- CreditDEQC -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-15T11:25:57Z" finished-at="2018-11-15T11:25:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CreditDEQC status=SUCCESS method=ClientCaseReg.CreditDEQC()[pri:12, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.CreditDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:25:57Z" finished-at="2018-11-15T11:25:57Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.CourtDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="CourtDEQC()[pri:13, instance:maintest.ClientCaseReg@f777e8]" name="CourtDEQC" duration-ms="31420" started-at="2018-11-15T11:25:57Z" depends-on-methods="maintest.ClientCaseReg.dataEntryQCAssign" finished-at="2018-11-15T11:26:29Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- CourtDEQC -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-15T11:26:29Z" finished-at="2018-11-15T11:26:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CourtDEQC status=SUCCESS method=ClientCaseReg.CourtDEQC()[pri:13, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.CourtDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:26:29Z" finished-at="2018-11-15T11:26:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.IdDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="IdDEQC()[pri:14, instance:maintest.ClientCaseReg@f777e8]" name="IdDEQC" duration-ms="27257" started-at="2018-11-15T11:26:29Z" depends-on-methods="maintest.ClientCaseReg.dataEntryQCAssign" finished-at="2018-11-15T11:26:56Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- IdDEQC -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-15T11:26:56Z" finished-at="2018-11-15T11:26:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=IdDEQC status=SUCCESS method=ClientCaseReg.IdDEQC()[pri:14, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.IdDEQC() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="1" started-at="2018-11-15T11:26:56Z" finished-at="2018-11-15T11:26:56Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.VerificationSupervisor() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="VerificationSupervisor()[pri:15, instance:maintest.ClientCaseReg@f777e8]" name="VerificationSupervisor" duration-ms="34397" started-at="2018-11-15T11:26:56Z" depends-on-methods="maintest.ClientCaseReg.IdDEQC" finished-at="2018-11-15T11:27:30Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- VerificationSupervisor -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-15T11:27:31Z" finished-at="2018-11-15T11:27:31Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=VerificationSupervisor status=SUCCESS method=ClientCaseReg.VerificationSupervisor()[pri:15, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.VerificationSupervisor() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="VerificationIntiation()[pri:16, instance:maintest.ClientCaseReg@f777e8]" name="VerificationIntiation" duration-ms="502290" started-at="2018-11-15T11:27:31Z" depends-on-methods="maintest.ClientCaseReg.VerificationSupervisor" finished-at="2018-11-15T11:35:53Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- VerificationIntiation -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:27:31Z" finished-at="2018-11-15T11:27:31Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.VerificationIntiation() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-15T11:35:53Z" finished-at="2018-11-15T11:35:53Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=VerificationIntiation status=SUCCESS method=ClientCaseReg.VerificationIntiation()[pri:16, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.VerificationIntiation() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="AddressVerification()[pri:17, instance:maintest.ClientCaseReg@f777e8]" name="AddressVerification" duration-ms="165529" started-at="2018-11-15T11:35:53Z" depends-on-methods="maintest.ClientCaseReg.VerificationIntiation" finished-at="2018-11-15T11:38:38Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- AddressVerification -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:35:53Z" finished-at="2018-11-15T11:35:53Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.AddressVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-15T11:38:38Z" finished-at="2018-11-15T11:38:38Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=AddressVerification status=SUCCESS method=ClientCaseReg.AddressVerification()[pri:17, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.AddressVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="1" started-at="2018-11-15T11:38:38Z" finished-at="2018-11-15T11:38:38Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.EducationVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="EducationVerification()[pri:18, instance:maintest.ClientCaseReg@f777e8]" name="EducationVerification" duration-ms="107022" started-at="2018-11-15T11:38:38Z" depends-on-methods="maintest.ClientCaseReg.VerificationIntiation" finished-at="2018-11-15T11:40:25Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- EducationVerification -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-15T11:40:25Z" finished-at="2018-11-15T11:40:25Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=EducationVerification status=SUCCESS method=ClientCaseReg.EducationVerification()[pri:18, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.EducationVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:40:25Z" finished-at="2018-11-15T11:40:25Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.EmploymentVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="FAIL" signature="EmploymentVerification()[pri:19, instance:maintest.ClientCaseReg@f777e8]" name="EmploymentVerification" duration-ms="89016" started-at="2018-11-15T11:40:25Z" depends-on-methods="maintest.ClientCaseReg.VerificationIntiation" finished-at="2018-11-15T11:41:54Z">
+          <exception class="org.openqa.selenium.TimeoutException">
+            <message>
+              <![CDATA[Expected condition failed: waiting for presence of element located by: By.xpath: //span[text()='OK'] (tried for 50 second(s) with 500 milliseconds interval)]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for presence of element located by: By.xpath: //span[text()='OK'] (tried for 50 second(s) with 500 milliseconds interval)
+at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:113)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:283)
+at environment.Utill.confirmAlert(Utill.java:983)
+at verification.Employment.submit(Employment.java:34)
+at verification.Employment.Verification(Employment.java:171)
+at maintest.ClientCaseReg.EmploymentVerification(ClientCaseReg.java:438)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.NoSuchElementException: Cannot locate an element using By.xpath: //span[text()='OK']
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'KAD-I-032', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_191'
+Driver info: driver.version: unknown
+at org.openqa.selenium.support.ui.ExpectedConditions.lambda$findElement$0(ExpectedConditions.java:896)
+at java.util.Optional.orElseThrow(Unknown Source)
+at org.openqa.selenium.support.ui.ExpectedConditions.findElement(ExpectedConditions.java:895)
+at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:44)
+at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:183)
+at org.openqa.selenium.support.ui.ExpectedConditions$6.apply(ExpectedConditions.java:180)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:260)
+... 29 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Failed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- EmploymentVerification -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="14998" started-at="2018-11-15T11:41:54Z" finished-at="2018-11-15T11:42:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=EmploymentVerification status=FAILURE method=ClientCaseReg.EmploymentVerification()[pri:19, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.EmploymentVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:42:09Z" finished-at="2018-11-15T11:42:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.ReferenceVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="ReferenceVerification()[pri:20, instance:maintest.ClientCaseReg@f777e8]" name="ReferenceVerification" duration-ms="54426" started-at="2018-11-15T11:42:09Z" depends-on-methods="maintest.ClientCaseReg.VerificationIntiation" finished-at="2018-11-15T11:43:04Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- ReferenceVerification -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-15T11:43:04Z" finished-at="2018-11-15T11:43:04Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=ReferenceVerification status=SUCCESS method=ClientCaseReg.ReferenceVerification()[pri:20, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.ReferenceVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="DatabaseVerification()[pri:21, instance:maintest.ClientCaseReg@f777e8]" name="DatabaseVerification" duration-ms="69753" started-at="2018-11-15T11:43:04Z" depends-on-methods="maintest.ClientCaseReg.VerificationIntiation" finished-at="2018-11-15T11:44:14Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- DatabaseVerification -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:43:04Z" finished-at="2018-11-15T11:43:04Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.DatabaseVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-15T11:44:14Z" finished-at="2018-11-15T11:44:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=DatabaseVerification status=SUCCESS method=ClientCaseReg.DatabaseVerification()[pri:21, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.DatabaseVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:44:14Z" finished-at="2018-11-15T11:44:14Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.CriminalVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="CriminalVerification()[pri:22, instance:maintest.ClientCaseReg@f777e8]" name="CriminalVerification" duration-ms="96035" started-at="2018-11-15T11:44:14Z" depends-on-methods="maintest.ClientCaseReg.VerificationIntiation" finished-at="2018-11-15T11:45:50Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- CriminalVerification -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-15T11:45:50Z" finished-at="2018-11-15T11:45:50Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CriminalVerification status=SUCCESS method=ClientCaseReg.CriminalVerification()[pri:22, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.CriminalVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="CreditVerification()[pri:23, instance:maintest.ClientCaseReg@f777e8]" name="CreditVerification" duration-ms="52760" started-at="2018-11-15T11:45:50Z" depends-on-methods="maintest.ClientCaseReg.VerificationIntiation" finished-at="2018-11-15T11:46:42Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- CreditVerification -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:45:50Z" finished-at="2018-11-15T11:45:50Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.CreditVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-15T11:46:42Z" finished-at="2018-11-15T11:46:42Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CreditVerification status=SUCCESS method=ClientCaseReg.CreditVerification()[pri:23, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.CreditVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:46:42Z" finished-at="2018-11-15T11:46:42Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.CourtVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="CourtVerification()[pri:24, instance:maintest.ClientCaseReg@f777e8]" name="CourtVerification" duration-ms="106857" started-at="2018-11-15T11:46:42Z" depends-on-methods="maintest.ClientCaseReg.VerificationIntiation" finished-at="2018-11-15T11:48:29Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- CourtVerification -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-15T11:48:29Z" finished-at="2018-11-15T11:48:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CourtVerification status=SUCCESS method=ClientCaseReg.CourtVerification()[pri:24, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.CourtVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="IDVerification()[pri:25, instance:maintest.ClientCaseReg@f777e8]" name="IDVerification" duration-ms="89557" started-at="2018-11-15T11:48:29Z" depends-on-methods="maintest.ClientCaseReg.VerificationIntiation" finished-at="2018-11-15T11:49:59Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- IDVerification -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:48:29Z" finished-at="2018-11-15T11:48:29Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.IDVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-15T11:49:59Z" finished-at="2018-11-15T11:49:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=IDVerification status=SUCCESS method=ClientCaseReg.IDVerification()[pri:25, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.IDVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-15T11:49:59Z" finished-at="2018-11-15T11:49:59Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.DrugVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="DrugVerification()[pri:26, instance:maintest.ClientCaseReg@f777e8]" name="DrugVerification" duration-ms="66360" started-at="2018-11-15T11:49:59Z" depends-on-methods="maintest.ClientCaseReg.VerificationIntiation" finished-at="2018-11-15T11:51:05Z">
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Pass]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- DrugVerification -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-15T11:51:05Z" finished-at="2018-11-15T11:51:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=DrugVerification status=SUCCESS method=ClientCaseReg.DrugVerification()[pri:26, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.DrugVerification() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="setup" is-config="true" duration-ms="1" started-at="2018-11-15T11:51:05Z" finished-at="2018-11-15T11:51:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.ReportGenerationSupervision() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="FAIL" signature="ReportGenerationSupervision()[pri:27, instance:maintest.ClientCaseReg@f777e8]" name="ReportGenerationSupervision" duration-ms="63478" started-at="2018-11-15T11:51:05Z" depends-on-methods="maintest.ClientCaseReg.DrugVerification" finished-at="2018-11-15T11:52:09Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+expected [Report Generation Pending] but found [After Verification Initiation],
+expected [Report Generation Pending] but found [After Verification Initiation]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+expected [Report Generation Pending] but found [After Verification Initiation],
+expected [Report Generation Pending] but found [After Verification Initiation]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:43)
+at maintest.ClientCaseReg.ReportGenerationSupervision(ClientCaseReg.java:548)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:580)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:716)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:988)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Failed]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- ReportGenerationSupervision -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="tearDown" is-config="true" duration-ms="14138" started-at="2018-11-15T11:52:09Z" finished-at="2018-11-15T11:52:23Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=ReportGenerationSupervision status=FAILURE method=ClientCaseReg.ReportGenerationSupervision()[pri:27, instance:maintest.ClientCaseReg@f777e8] output=Test Method resides in maintest.ClientCaseReg]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.ClientCaseReg.ReportGenerationSupervision() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="SKIP" signature="EducationReportGeneration()[pri:29, instance:maintest.ClientCaseReg@f777e8]" name="EducationReportGeneration" duration-ms="0" started-at="2018-11-15T11:52:23Z" depends-on-methods="maintest.ClientCaseReg.ReportGenerationSupervision" finished-at="2018-11-15T11:52:23Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ClientCaseReg.EducationReportGeneration()[pri:29, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ClientCaseReg.EducationReportGeneration()[pri:29, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Skipped]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- EducationReportGeneration -->
+        <test-method status="SKIP" signature="ReferenceReportGeneration()[pri:31, instance:maintest.ClientCaseReg@f777e8]" name="ReferenceReportGeneration" duration-ms="0" started-at="2018-11-15T11:52:23Z" depends-on-methods="maintest.ClientCaseReg.ReportGenerationSupervision" finished-at="2018-11-15T11:52:23Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ClientCaseReg.ReferenceReportGeneration()[pri:31, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ClientCaseReg.ReferenceReportGeneration()[pri:31, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Skipped]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- ReferenceReportGeneration -->
+        <test-method status="SKIP" signature="AddressReportGeneration()[pri:28, instance:maintest.ClientCaseReg@f777e8]" name="AddressReportGeneration" duration-ms="0" started-at="2018-11-15T11:52:23Z" depends-on-methods="maintest.ClientCaseReg.ReportGenerationSupervision" finished-at="2018-11-15T11:52:23Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ClientCaseReg.AddressReportGeneration()[pri:28, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ClientCaseReg.AddressReportGeneration()[pri:28, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Skipped]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- AddressReportGeneration -->
+        <test-method status="SKIP" signature="EmploymentReportGeneration()[pri:30, instance:maintest.ClientCaseReg@f777e8]" name="EmploymentReportGeneration" duration-ms="0" started-at="2018-11-15T11:52:23Z" depends-on-methods="maintest.ClientCaseReg.ReportGenerationSupervision" finished-at="2018-11-15T11:52:23Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ClientCaseReg.EmploymentReportGeneration()[pri:30, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ClientCaseReg.EmploymentReportGeneration()[pri:30, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Skipped]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- EmploymentReportGeneration -->
+        <test-method status="SKIP" signature="DatabaseReportGeneration()[pri:32, instance:maintest.ClientCaseReg@f777e8]" name="DatabaseReportGeneration" duration-ms="0" started-at="2018-11-15T11:52:23Z" depends-on-methods="maintest.ClientCaseReg.ReportGenerationSupervision" finished-at="2018-11-15T11:52:23Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ClientCaseReg.DatabaseReportGeneration()[pri:32, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ClientCaseReg.DatabaseReportGeneration()[pri:32, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Skipped]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- DatabaseReportGeneration -->
+        <test-method status="SKIP" signature="CriminalReportGeneration()[pri:33, instance:maintest.ClientCaseReg@f777e8]" name="CriminalReportGeneration" duration-ms="0" started-at="2018-11-15T11:52:23Z" depends-on-methods="maintest.ClientCaseReg.ReportGenerationSupervision" finished-at="2018-11-15T11:52:23Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ClientCaseReg.CriminalReportGeneration()[pri:33, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ClientCaseReg.CriminalReportGeneration()[pri:33, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Skipped]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- CriminalReportGeneration -->
+        <test-method status="SKIP" signature="IdReportGeneration()[pri:37, instance:maintest.ClientCaseReg@f777e8]" name="IdReportGeneration" duration-ms="0" started-at="2018-11-15T11:52:23Z" depends-on-methods="maintest.ClientCaseReg.ReportGenerationSupervision" finished-at="2018-11-15T11:52:23Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ClientCaseReg.IdReportGeneration()[pri:37, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ClientCaseReg.IdReportGeneration()[pri:37, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Skipped]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- IdReportGeneration -->
+        <test-method status="SKIP" signature="ReportValidationSupervisor()[pri:38, instance:maintest.ClientCaseReg@f777e8]" name="ReportValidationSupervisor" duration-ms="0" started-at="2018-11-15T11:52:23Z" depends-on-methods="maintest.ClientCaseReg.ReportGenerationSubmit" finished-at="2018-11-15T11:52:23Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ClientCaseReg.ReportValidationSupervisor()[pri:38, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ClientCaseReg.ReportValidationSupervisor()[pri:38, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Skipped]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- ReportValidationSupervisor -->
+        <test-method status="SKIP" signature="ReportValidation()[pri:40, instance:maintest.ClientCaseReg@f777e8]" name="ReportValidation" duration-ms="0" started-at="2018-11-15T11:52:23Z" depends-on-methods="maintest.ClientCaseReg.ReportValidationSupervisor" finished-at="2018-11-15T11:52:23Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ClientCaseReg.ReportValidation()[pri:40, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ClientCaseReg.ReportValidation()[pri:40, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Skipped]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- ReportValidation -->
+        <test-method status="SKIP" signature="CourtReportGeneration()[pri:35, instance:maintest.ClientCaseReg@f777e8]" name="CourtReportGeneration" duration-ms="0" started-at="2018-11-15T11:52:23Z" depends-on-methods="maintest.ClientCaseReg.ReportGenerationSupervision" finished-at="2018-11-15T11:52:23Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ClientCaseReg.CourtReportGeneration()[pri:35, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ClientCaseReg.CourtReportGeneration()[pri:35, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Skipped]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- CourtReportGeneration -->
+        <test-method status="SKIP" signature="DrugReportGeneration()[pri:36, instance:maintest.ClientCaseReg@f777e8]" name="DrugReportGeneration" duration-ms="0" started-at="2018-11-15T11:52:23Z" depends-on-methods="maintest.ClientCaseReg.ReportGenerationSupervision" finished-at="2018-11-15T11:52:23Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ClientCaseReg.DrugReportGeneration()[pri:36, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ClientCaseReg.DrugReportGeneration()[pri:36, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Skipped]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- DrugReportGeneration -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="teardown" is-config="true" duration-ms="673" started-at="2018-11-15T11:52:23Z" finished-at="2018-11-15T11:52:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method status="SKIP" signature="ReportGenerationSubmit()[pri:38, instance:maintest.ClientCaseReg@f777e8]" name="ReportGenerationSubmit" duration-ms="0" started-at="2018-11-15T11:52:23Z" depends-on-methods="maintest.ClientCaseReg.IdReportGeneration" finished-at="2018-11-15T11:52:23Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ClientCaseReg.ReportGenerationSubmit()[pri:38, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ClientCaseReg.ReportGenerationSubmit()[pri:38, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Skipped]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- ReportGenerationSubmit -->
+        <test-method status="SKIP" signature="CreditReportGeneration()[pri:34, instance:maintest.ClientCaseReg@f777e8]" name="CreditReportGeneration" duration-ms="0" started-at="2018-11-15T11:52:23Z" depends-on-methods="maintest.ClientCaseReg.ReportGenerationSupervision" finished-at="2018-11-15T11:52:23Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method ClientCaseReg.CreditReportGeneration()[pri:34, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method ClientCaseReg.CreditReportGeneration()[pri:34, instance:maintest.ClientCaseReg@f777e8] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+            <line>
+              <![CDATA[Test Method resides in maintest.ClientCaseReg]]>
+            </line>
+            <line>
+              <![CDATA[Test Status: Skipped]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- CreditReportGeneration -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest.ClientCaseReg@f777e8]" name="afterSuite" is-config="true" duration-ms="374" started-at="2018-11-15T11:52:24Z" finished-at="2018-11-15T11:52:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->
-      </class> <!-- maintest2.Basic -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      </class> <!-- maintest.ClientCaseReg -->
+    </test> <!-- FullFlow -->
+  </suite> <!-- regression testing -->
 </testng-results>
