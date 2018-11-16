@@ -50,17 +50,17 @@ public class CaseRegistration extends Utill {
 	 * @param name Client name
 	 * @throws InterruptedException Time out interruption
 	 */
-	public void selectClient(String name) throws InterruptedException {
+	public void selectClient(String name){
 		click("ctl00_ContentPlaceHolder1_ddlClient_Input");
 		try {
 			click("//li[text()='" + name + "']");
 		} catch (ElementNotVisibleException e) {
 			logger.log(Status.WARNING, e.getMessage().toString());
-			Thread.sleep(2000);
+			super.sleep(2000);
 			click("//li[text()='" + name + "']");
 		} catch (ElementNotInteractableException e) {
 			logger.log(Status.WARNING, e.getMessage().toString());
-			Thread.sleep(2000);
+			super.sleep(2000);
 			click("//li[text()='" + name + "']");
 		}
 		waitUntilLoaderisInvisible(10);
@@ -72,13 +72,13 @@ public class CaseRegistration extends Utill {
 	 * @param name Project name
 	 * @throws InterruptedException Time out interruption
 	 */
-	public void selectProject(String name) throws InterruptedException {
+	public void selectProject(String name) {
 		click("ctl00_ContentPlaceHolder1_ddlProject_Input");
-		Thread.sleep(1000);
+		super.sleep(1000);
 		try {
 			click("//li[text()='" + name + "']");
 		} catch (ElementNotVisibleException e) {
-			Thread.sleep(1000);
+			super.sleep(1000);
 			click("//li[text()='" + name + "']");
 		}
 		waitUntilLoaderisInvisible(10);
@@ -549,9 +549,9 @@ public class CaseRegistration extends Utill {
 	 * @param gender male or female
 	 * @throws Exception except male and female any input given it throws
 	 */
-	public void gender(String gender) throws Exception {
+	public void gender(String gender) {
 		click("ctl00_ContentPlaceHolder1_ddlGender_Input");
-		Thread.sleep(1000);
+		super.sleep(1000);
 		if (gender.equalsIgnoreCase("male")) {
 			// click("//*[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']//text()='Male'");
 			click("//*[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']/div/ul/li[2]");
@@ -571,9 +571,9 @@ public class CaseRegistration extends Utill {
 	 * @throws Exception except Single , married and divorced any input given it
 	 *                   throws
 	 */
-	public void maritalStatus(String status) throws Exception {
+	public void maritalStatus(String status){
 		click("ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input");
-		Thread.sleep(2000);
+		super.sleep(2000);
 		if (status.equalsIgnoreCase("Single")) {
 			// click("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']//text()='Single'");
 			click("//*[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']/div/ul/li[2]");
@@ -617,7 +617,7 @@ public class CaseRegistration extends Utill {
 	 * @param fresher true for fresher yes
 	 * @throws Exception element not found
 	 */
-	public void registercase(HashMap<String, String> data, boolean fresher) throws Exception {
+	public void registercase(HashMap<String, String> data, boolean fresher) {
 		
 		this.selectClient(data.get("ClientName"));
 		this.selectProject(data.get("ProjectName"));

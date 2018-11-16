@@ -7,6 +7,8 @@ import environment.Utill;
 import pages.*;
 import dashboard.*;
 import actions.*;
+import candidate.Basic;
+import candidate.Register;
 
 public class Pages {
 
@@ -41,6 +43,8 @@ public class Pages {
 	private ReportValidationSupervision reportValidationSupervision;
 	private ReportValidation reportValidation;
 	private WebDriver driver;
+	private Register register;
+	private Basic basic;
 
 	public Pages(WebDriver driver, ExtentTest logger) {
 		this.driver=driver;
@@ -156,6 +160,12 @@ public class Pages {
 	}
 	public ReportValidation ReportValidation() {
 		return (reportValidation == null) ? reportValidation = new ReportValidation(driver, logger) : reportValidation;
+	}
+	public Register Register() {
+		return (register == null) ? register = new Register(driver, logger) : register;
+	}
+	public Basic Basic() {
+		return (basic == null) ? basic = new Basic(driver, logger) : basic;
 	}
 	
 }

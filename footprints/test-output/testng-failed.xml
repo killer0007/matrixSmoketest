@@ -1,42 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite guice-stage="DEVELOPMENT" name="Failed suite [regression testing]">
-  <test thread-count="5" name="FullFlow(failed)">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="maintest.ClientCaseReg">
+      <class name="maintest.CandidateCaseRegistration">
         <methods>
-          <include name="ReferenceReportGeneration"/>
-          <include name="IdReportGeneration"/>
-          <include name="DatabaseReportGeneration"/>
-          <include name="ReportValidationSupervisor"/>
-          <include name="teardown"/>
-          <include name="CourtReportGeneration"/>
-          <include name="CreditReportGeneration"/>
-          <include name="EducationReportGeneration"/>
-          <include name="VerificationSupervisor"/>
-          <include name="dataEntryAssign"/>
-          <include name="DrugReportGeneration"/>
-          <include name="EmploymentVerification"/>
-          <include name="beforeSuit"/>
-          <include name="dataEntry"/>
-          <include name="login"/>
-          <include name="caseregistration"/>
-          <include name="ReportGenerationSupervision"/>
-          <include name="ReportGenerationSubmit"/>
-          <include name="afterSuite"/>
-          <include name="IdDEQC"/>
-          <include name="ReportValidation"/>
-          <include name="VerificationIntiation"/>
-          <include name="AddressReportGeneration"/>
-          <include name="setup"/>
-          <include name="EmploymentReportGeneration"/>
-          <include name="DrugVerification"/>
-          <include name="CriminalReportGeneration"/>
-          <include name="dataEntryQCAssign"/>
-          <include name="beforetest"/>
           <include name="tearDown"/>
+          <include name="teardown"/>
+          <include name="afterSuite"/>
+          <include name="beforeSuit"/>
+          <include name="setup"/>
+          <include name="CandidateInitiate"/>
+          <include name="beforetest"/>
         </methods>
-      </class> <!-- maintest.ClientCaseReg -->
+      </class> <!-- maintest.CandidateCaseRegistration -->
     </classes>
-  </test> <!-- FullFlow(failed) -->
-</suite> <!-- Failed suite [regression testing] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

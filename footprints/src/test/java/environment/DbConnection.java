@@ -11,7 +11,7 @@ import java.util.List;
 public class DbConnection  { 
 	public static void main(String[] args) throws Exception{
 		DbConnection d = new DbConnection();
-		System.out.println(d.getLastCase("demo client1234"));
+		System.out.println(d.getCandidateUrl("demo client1234"));
 	}
 	/**
 	 * Takes contract name as input and return list if sub components in that
@@ -63,7 +63,21 @@ public class DbConnection  {
 		conn.close();
 		return result;
 	}
-
+	public  String getLastrefno(String fname, String lname) throws Exception {
+//		select top 1 refno from tblcasemaster where projectshortname='demo client1234' order by id desc
+			String result = null; 
+			final String url = "jdbc:sqlserver://192.168.2.17:1433;" + "databaseName=FP_Checks360_V2.1s_Testing" + "";
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+			Connection conn = DriverManager.getConnection(url, "Sa", "Sql@123");
+			String idquery = "select top 1 refno from tblcasemaster where firstname='"+fname+"' and lastname='"+lname+"' order by id desc";
+			Statement st = conn.createStatement();
+			ResultSet rs = st.executeQuery(idquery);
+			while (rs.next()) {
+				result = rs.getString("refno");
+			}
+			conn.close();
+			return result;
+		}
 	/**
 	 * Takes project name as input and return hashmap which contains most recent
 	 * case information like first name, last name and doc
@@ -115,5 +129,18 @@ public class DbConnection  {
 		return Integer.parseInt(re);
 
 	}
-
+public String getCandidateUrl(String projectName) throws Exception {
+	String result = null; 
+	final String url = "jdbc:sqlserver://192.168.2.17:1433;" + "databaseName=FP_Checks360_V2.1s_Testing" + "";
+	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
+	Connection conn = DriverManager.getConnection(url, "Sa", "Sql@123");
+	String idquery ="select UrlName from tblProjectMaster where shortname='"+projectName+"'";
+	Statement st = conn.createStatement();
+	ResultSet rs = st.executeQuery(idquery);
+	while (rs.next()) {
+		result = rs.getString("UrlName");
+	}
+	conn.close();
+	return result;
+}
 }

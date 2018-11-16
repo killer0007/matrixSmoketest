@@ -14,6 +14,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -1299,6 +1301,18 @@ public class Utill {
 		}
 		return pro;
 	}
+	public Properties candidatedata(String filename)  {
+		Properties pro = new Properties();
+		try {
+		FileInputStream fis = new FileInputStream(
+				new File("./src\\test\\resources\\testdata\\candidatecase\\" + filename + ".properties"));
+		pro.load(fis);
+		}
+		catch (Exception e) {
+			logger.log(Status.FAIL,e.toString());
+		}
+		return pro;
+	}
 
 	/**
 	 * Takes time in miilli second as input and pass hte thread
@@ -1327,5 +1341,11 @@ public class Utill {
 			}
 		}
 		return data;
+	}
+	public String getemail() throws IOException {
+		String file = "./log.txt";
+		List<String> lines = Files.readAllLines(Paths.get(file));
+		String re =lines.get(0).toString().trim();
+		return re;
 	}
 }

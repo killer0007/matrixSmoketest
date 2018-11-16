@@ -81,7 +81,7 @@ public class DataEntrySupervision extends Utill{
 	 * @param empname Employename
 	 * @throws Exception employe not found in list
 	 */
-	public void assign(String empname) throws Exception {
+	public void assign(String empname)  {
 		click("chkboxsingle");
 		this.assign();
 		//int count = pages.DbConnection().getAssignedCount(empname);
@@ -89,7 +89,7 @@ public class DataEntrySupervision extends Utill{
 		click("ddlFilteredTMforAllocation");
 		click(".//*[@id='ddlFilteredTMforAllocation']//option[contains(text(),'"+empname+"')]");
 		click("//div[@class='modal-dialog modal-lg']//button[text()='Ok']");
-		Thread.sleep(1000);
+		super.sleep(1000);
 		click("//div[@class='modal-content']//button[contains(text(),'Yes')]");
 		waitUntilLoaderisInvisible(100);
 	}
@@ -113,7 +113,7 @@ public class DataEntrySupervision extends Utill{
 	 * @param empname Employee Name
 	 * @throws Exception when Employee Name not found
 	 */
-	public void assign(String refno, String empname) throws Exception {
+	public void assign(String refno, String empname)  {
 		this.search(refno);
 		this.assign(empname);
 

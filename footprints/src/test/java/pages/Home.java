@@ -119,12 +119,12 @@ public class Home extends Utill{
  * Performs click action on Register New Case button
  * @throws Exception ElementNotVisibleException
  */
-	public void clickRegister() throws Exception {
+	public void clickRegister()  {
 		try {
 		click("btnNewCase_Click");
 		}
 		catch(ElementNotVisibleException e) {
-			Thread.sleep(3000);
+			super.sleep(3000);
 			click("btnNewCase_Click");	
 		}
 		
