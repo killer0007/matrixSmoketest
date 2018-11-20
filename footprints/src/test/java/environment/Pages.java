@@ -45,6 +45,11 @@ public class Pages {
 	private WebDriver driver;
 	private Register register;
 	private Basic basic;
+	private candidate.Address Caddress;
+	private candidate.Education Ceducation;
+	private candidate.Employment Cemployment;
+	private candidate.Id Cid;
+	private candidate.Reference Creference;
 
 	public Pages(WebDriver driver, ExtentTest logger) {
 		this.driver=driver;
@@ -167,5 +172,19 @@ public class Pages {
 	public Basic Basic() {
 		return (basic == null) ? basic = new Basic(driver, logger) : basic;
 	}
-	
+	public candidate.Address Address() {
+		return (Caddress == null) ? Caddress = new candidate.Address(driver,logger) : Caddress;
+	}
+	public candidate.Education Education() {
+		return (Ceducation == null) ? Ceducation = new candidate.Education(driver,logger) : Ceducation;
+	}
+	public candidate.Employment Employment() {
+		return (Cemployment == null) ? Cemployment = new candidate.Employment(driver,logger) : Cemployment;
+	}
+	public candidate.Reference Reference() {
+		return (Creference == null) ? Creference = new candidate.Reference(driver,logger) : Creference;
+	}
+	public candidate.Id Id() {
+		return (Cid == null) ? Cid = new candidate.Id(driver,logger) : Cid;
+	}
 }

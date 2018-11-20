@@ -62,7 +62,7 @@ public class Address extends DataEntryPage {
 	 * Perform close action on close button in document upload popup
 	 */
 	public void docclose() {
-		click("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnDocumentCancel_input");
+		click("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnDocumentCancel");
 		waitUntilLoaderisInvisible(100);
 	}
 
@@ -383,7 +383,7 @@ public class Address extends DataEntryPage {
 	 */
 	public void AddDocument() {
 		click("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnAddDocument_input");
-		waitUntilLoaderisInvisible(100);
+		super.waitUntilLoaderisInvisible(50);
 	}
 	
 	/**
@@ -422,7 +422,6 @@ public class Address extends DataEntryPage {
 		WaitforFileUpdate(doctype, file);
 		
 		this.AddDocument();
-		waitUntilLoaderisInvisible(100);
 		}
 		else {
 			throw new NotFoundException(doctype);

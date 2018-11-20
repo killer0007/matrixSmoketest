@@ -21,7 +21,7 @@ public class ViewCandidateFinalReport extends Utill {
 	}
 
 	public void viewcandidatefinalreport() {
-		String value = super.getText("ctl00_ContentPlaceHolder1_ddlAct_Input");
+		String value = super.getValue("ctl00_ContentPlaceHolder1_ddlAct_Input");
 		if (!value.equals("View Candidate Final Report")) {
 			this.Action();
 			super.sleep(700);

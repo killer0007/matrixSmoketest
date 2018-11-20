@@ -125,7 +125,7 @@ public class Utill {
 	public WebElement find(String path) {
 		// try {
 		if(!path.isEmpty() || !path.equals(null)) {
-		if (path.startsWith("./") || path.startsWith("/") || path.startsWith("(//")) {
+		if (path.startsWith("./") || path.startsWith("/") || path.startsWith("//")) {
 			// logger.info("performing actions on " + path);
 			return driver.findElement(By.xpath(path));
 		} else if (path.startsWith("xpath")) {

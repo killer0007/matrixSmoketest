@@ -46,7 +46,7 @@ public class Register extends Utill {
 		}
 	}
 
-	public void EmailID(String email) throws Exception {
+	public synchronized void EmailID(String email) throws Exception {
 		email=emailGererator(email);
 		super.sendKeys("ctl00_ContentPlaceHolder1_txtEmailID", email+"@ggmail.com");
 	}
@@ -88,7 +88,7 @@ public class Register extends Utill {
 		String[] date = sf.format(df).toString().split("/");
 		return date;
 	}
-	private void writelog(String log) throws Exception {
+	private synchronized void writelog(String log) throws Exception {
 		File file = new File("./log.txt");
 		FileWriter writer = new FileWriter(file);
 		writer.write(log);
@@ -102,7 +102,7 @@ public class Register extends Utill {
 		return re;
 	}
 
-	private String emailGererator(String email) throws Exception {
+	private synchronized String emailGererator(String email) throws Exception {
 		int value = Integer.parseInt(email.replaceAll("[^0-9]", ""));
 		String name = email.replaceAll("[0-9]", "");
 		writelog(name+Integer.toString(value+1));

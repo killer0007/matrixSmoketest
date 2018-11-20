@@ -1,9 +1,19 @@
 package candidate;
 
+import java.io.File;
+import java.util.List;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+
 import environment.Utill;
 
 public class Basic extends Utill {
@@ -46,6 +56,11 @@ public class Basic extends Utill {
 
 	public void Nationality(String nation) {
 		super.sendKeys("ctl00_ContentPlaceHolder1_txtNationality", nation);
+	}
+
+	public void Proceed() {
+		super.click("btnApplyChanges_input");
+		super.waitUntilLoaderisInvisible(50);
 	}
 
 	public void Gender(String gender) {
@@ -92,13 +107,15 @@ public class Basic extends Utill {
 	public void SaveNext() {
 		super.click("ctl00_ContentPlaceHolder1_btnSaveNext_input");
 		super.waitUntilLoaderisInvisible(100);
+		super.SwitchDefault();
 	}
+
 	/**
 	 * Tales data from file and completes data entry for basic details
 	 */
 	public void basic() {
 		Properties data = super.candidatedata("basic");
-		if(!this.getTitle().equals("Basic Details")) {
+		if (!this.getTitle().equals("Basic Details")) {
 			super.click("gvComponentList_ctl00_ctl05_lnkComponent");
 			super.waitUntilLoaderisInvisible(10);
 		}
@@ -115,7 +132,138 @@ public class Basic extends Utill {
 		this.EmplyeeID(data.getProperty("EmplyeeID"));
 		this.SaveNext();
 	}
+
 	public String getTitle() {
 		return super.getText("//*[@id='tabStrip']/div/ul/li/a/span/span/span");
+	}
+
+	public void LOA() {
+		if (!this.getTitle().equals("LOA")) {
+			super.click("linkText:Declaration");
+			super.waitUntilLoaderisInvisible(10);
+		}
+	}
+
+	public void Agree() {
+		super.click("chkAgree");
+		super.waitUntilLoaderisInvisible(50);
+	}
+
+	public void comments(String com) {
+		super.sendKeys("txtCandidateComment", com);
+	}
+
+	public void Upload() {
+		super.click("btnCaseDocument");
+		super.waitUntilLoaderisInvisible(100);
+	}
+
+	public void docclose() {
+		super.click("class:rwCloseButton");
+	}
+
+	public void saveNext() {
+		super.click("ctl00_ContentPlaceHolder1_btnRefSaveSubmit_input");
+		super.waitUntilLoaderisInvisible(100);
+		super.SwitchDefault();
+	}
+
+	public void AddDocument() {
+		click("rwCaseDocument_C_btnAddCaseDocument_input");
+		waitUntilLoaderisInvisible(30);
+	}
+
+	/**
+	 * Takes document type as input and checks for given document type available in
+	 * upload screen
+	 * 
+	 * @param doctype type of document
+	 * @return true when document ype was available
+	 */
+	public boolean isvaliddoctype(String doctype) {
+		waitUntilElementHasText("//*[@id='rwCaseDocument_C_grdCaseDocument_ctl00__0']/td[2]", 10);
+		boolean re = false;
+		String path = "//*[@id='rwCaseDocument_C_grdCaseDocument_ctl00']/tbody/tr/td[2]";
+		List<WebElement> list = driver.findElements(By.xpath(path));
+		if (list.size() > 0) {
+			for (int i = 0; i < list.size(); i++) {
+				String t = list.get(i).getText().trim();
+				logger.log(Status.INFO, t);
+				if (t.equals(doctype)) {
+					re = true;
+					break;
+				}
+			}
+		} else {
+			logger.log(Status.FAIL, "no element found");
+		}
+		return re;
+	}
+
+	/**
+	 * Takes document type and file as input and uploads the document
+	 * 
+	 * @param doctype type of document
+	 * @param file    file name
+	 */
+	public void UploadDocument(String doctype, String file) {
+		if (this.isvaliddoctype(doctype)) {
+			sendKeys("//*[text()='" + doctype + "']/../td[5]//span/input[2]", file);
+			this.WaitforFileUpdate(doctype, file);
+			this.AddDocument();
+		} else {
+			throw new NotFoundException(doctype);
+		}
+	}
+
+	public void WaitforFileUpdate(String doctype, String filepath) {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		String file = new File(filepath).getName();
+		wait.until(ExpectedConditions.textToBePresentInElementLocated(
+				By.xpath("//*[text()='" + doctype + "']/../td[5]//div/ul/li[1]/span/span"), file));
+		String name = getText("//*[text()='" + doctype + "']/../td[5]//div/ul/li[1]/span/span");
+		logger.log(Status.INFO, name);
+	}
+
+	public void submitCIF() {
+		super.click("btnSave");
+		super.waitUntilLoaderisInvisible(50);
+	}
+
+	public void Declaration() {
+		this.LOA();
+		this.Agree();
+		this.comments("completed");
+		this.Upload();
+		this.UploadDocument("Authorization Letter", "D:\\gopi\\checks360\\pdf\\Reference one.pdf");
+		this.docclose();
+		this.submitCIF();
+		String warning = this.confirmAlert();
+		System.out.println(warning);
+		logger.log(Status.INFO, warning);
+		super.waitUntilLoaderisInvisible(40);
+		String msg = this.confirmAlert();
+		logger.log(Status.INFO, msg);
+		System.out.println(msg);
+		super.waitUntilLoaderisInvisible(40);
+	}
+
+	public String confirmAlert() {
+		By loc = By.id("cnsubmit");
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.presenceOfElementLocated(loc));
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(loc)));
+		String msg = this.getText("//*[@id='ConfirmBoxNew']/div/div[1]");
+		driver.findElement(loc).click();
+		return msg.trim();
+
+	}
+
+	public String getStatusColor() {
+		return super.getCssValue("//a[text()='Basic Details']/../following-sibling::td/span", "color");
+	}
+
+	public String getStatus() {
+		return super.getText("//a[text()='Basic Details']/../following-sibling::td/span");
 	}
 }

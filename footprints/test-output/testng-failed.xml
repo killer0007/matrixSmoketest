@@ -6,12 +6,14 @@
       <class name="maintest.CandidateCaseRegistration">
         <methods>
           <include name="tearDown"/>
+          <include name="ClientSubmit"/>
           <include name="teardown"/>
           <include name="afterSuite"/>
           <include name="beforeSuit"/>
           <include name="setup"/>
           <include name="CandidateInitiate"/>
           <include name="beforetest"/>
+          <include name="CandidatedataEntry"/>
         </methods>
       </class> <!-- maintest.CandidateCaseRegistration -->
     </classes>

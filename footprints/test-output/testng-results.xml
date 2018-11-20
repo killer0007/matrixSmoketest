@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="8" passed="8">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="35937" started-at="2018-11-16T13:07:35Z" finished-at="2018-11-16T13:08:11Z">
+  <suite name="Default suite" duration-ms="249809" started-at="2018-11-20T12:26:55Z" finished-at="2018-11-20T12:31:05Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="35937" started-at="2018-11-16T13:07:35Z" finished-at="2018-11-16T13:08:11Z">
+    <test name="Default test" duration-ms="249809" started-at="2018-11-20T12:26:55Z" finished-at="2018-11-20T12:31:05Z">
       <class name="maintest.CandidateCaseRegistration">
-        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest.CandidateCaseRegistration@dafa95]" name="beforeSuit" is-config="true" duration-ms="157" started-at="2018-11-16T13:07:35Z" finished-at="2018-11-16T13:07:35Z">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="beforeSuit" is-config="true" duration-ms="140" started-at="2018-11-20T12:26:55Z" finished-at="2018-11-20T12:26:55Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuit -->
-        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest.CandidateCaseRegistration@dafa95]" name="beforetest" is-config="true" duration-ms="3649" started-at="2018-11-16T13:07:35Z" finished-at="2018-11-16T13:07:39Z">
+        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="beforetest" is-config="true" duration-ms="3488" started-at="2018-11-20T12:26:55Z" finished-at="2018-11-20T12:26:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforetest -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@dafa95]" name="setup" is-config="true" duration-ms="5" started-at="2018-11-16T13:07:39Z" finished-at="2018-11-16T13:07:39Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="setup" is-config="true" duration-ms="19" started-at="2018-11-20T12:26:58Z" finished-at="2018-11-20T12:26:58Z">
           <params>
             <param index="0">
               <value>
@@ -26,15 +26,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="CandidateInitiate()[pri:1, instance:maintest.CandidateCaseRegistration@dafa95]" name="CandidateInitiate" duration-ms="5888" started-at="2018-11-16T13:07:39Z" finished-at="2018-11-16T13:07:44Z">
+        <test-method status="PASS" signature="CandidateInitiate()[pri:1, instance:maintest.CandidateCaseRegistration@100df86]" name="CandidateInitiate" duration-ms="4132" started-at="2018-11-20T12:26:58Z" finished-at="2018-11-20T12:27:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CandidateInitiate -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@dafa95]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-16T13:07:44Z" finished-at="2018-11-16T13:07:44Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-20T12:27:02Z" finished-at="2018-11-20T12:27:02Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=CandidateInitiate status=SUCCESS method=CandidateCaseRegistration.CandidateInitiate()[pri:1, instance:maintest.CandidateCaseRegistration@dafa95] output={null}]]]>
+                <![CDATA[[TestResult name=CandidateInitiate status=SUCCESS method=CandidateCaseRegistration.CandidateInitiate()[pri:1, instance:maintest.CandidateCaseRegistration@100df86] output={null}]]]>
               </value>
             </param>
             <param index="1">
@@ -46,7 +46,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@dafa95]" name="setup" is-config="true" duration-ms="1" started-at="2018-11-16T13:07:44Z" finished-at="2018-11-16T13:07:44Z">
+        <test-method status="PASS" signature="CandidatedataEntry()[pri:2, instance:maintest.CandidateCaseRegistration@100df86]" name="CandidatedataEntry" duration-ms="161978" started-at="2018-11-20T12:27:02Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidateInitiate" finished-at="2018-11-20T12:29:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- CandidatedataEntry -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-20T12:27:02Z" finished-at="2018-11-20T12:27:02Z">
           <params>
             <param index="0">
               <value>
@@ -57,15 +61,22 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="CandidatedataEntry()[pri:2, instance:maintest.CandidateCaseRegistration@dafa95]" name="CandidatedataEntry" duration-ms="26364" started-at="2018-11-16T13:07:44Z" finished-at="2018-11-16T13:08:11Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- CandidatedataEntry -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@dafa95]" name="tearDown" is-config="true" duration-ms="1" started-at="2018-11-16T13:08:11Z" finished-at="2018-11-16T13:08:11Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-20T12:29:44Z" finished-at="2018-11-20T12:29:44Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=CandidatedataEntry status=SUCCESS method=CandidateCaseRegistration.CandidatedataEntry()[pri:2, instance:maintest.CandidateCaseRegistration@dafa95] output={null}]]]>
+                <![CDATA[public void maintest.CandidateCaseRegistration.Address() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-20T12:29:44Z" finished-at="2018-11-20T12:29:44Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=CandidatedataEntry status=SUCCESS method=CandidateCaseRegistration.CandidatedataEntry()[pri:2, instance:maintest.CandidateCaseRegistration@100df86] output={null}]]]>
               </value>
             </param>
             <param index="1">
@@ -77,11 +88,186 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest.CandidateCaseRegistration@dafa95]" name="teardown" is-config="true" duration-ms="0" started-at="2018-11-16T13:08:11Z" finished-at="2018-11-16T13:08:11Z">
+        <test-method status="PASS" signature="Address()[pri:3, instance:maintest.CandidateCaseRegistration@100df86]" name="Address" duration-ms="24019" started-at="2018-11-20T12:29:44Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-20T12:30:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Address -->
+        <test-method status="PASS" signature="Education()[pri:4, instance:maintest.CandidateCaseRegistration@100df86]" name="Education" duration-ms="7723" started-at="2018-11-20T12:30:08Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-20T12:30:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Education -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-20T12:30:08Z" finished-at="2018-11-20T12:30:08Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.CandidateCaseRegistration.Education() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-20T12:30:08Z" finished-at="2018-11-20T12:30:08Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Address status=SUCCESS method=CandidateCaseRegistration.Address()[pri:3, instance:maintest.CandidateCaseRegistration@100df86] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.CandidateCaseRegistration.Address() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-20T12:30:16Z" finished-at="2018-11-20T12:30:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Education status=SUCCESS method=CandidateCaseRegistration.Education()[pri:4, instance:maintest.CandidateCaseRegistration@100df86] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.CandidateCaseRegistration.Education() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="Employment()[pri:5, instance:maintest.CandidateCaseRegistration@100df86]" name="Employment" duration-ms="7494" started-at="2018-11-20T12:30:16Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-20T12:30:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Employment -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-20T12:30:16Z" finished-at="2018-11-20T12:30:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.CandidateCaseRegistration.Employment() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="VoterId()[pri:6, instance:maintest.CandidateCaseRegistration@100df86]" name="VoterId" duration-ms="7181" started-at="2018-11-20T12:30:24Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-20T12:30:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VoterId -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-20T12:30:24Z" finished-at="2018-11-20T12:30:24Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.CandidateCaseRegistration.VoterId() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-20T12:30:24Z" finished-at="2018-11-20T12:30:24Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Employment status=SUCCESS method=CandidateCaseRegistration.Employment()[pri:5, instance:maintest.CandidateCaseRegistration@100df86] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.CandidateCaseRegistration.Employment() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-20T12:30:31Z" finished-at="2018-11-20T12:30:31Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=VoterId status=SUCCESS method=CandidateCaseRegistration.VoterId()[pri:6, instance:maintest.CandidateCaseRegistration@100df86] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.CandidateCaseRegistration.VoterId() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-20T12:30:31Z" finished-at="2018-11-20T12:30:31Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.CandidateCaseRegistration.Reference() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="Reference()[pri:7, instance:maintest.CandidateCaseRegistration@100df86]" name="Reference" duration-ms="7435" started-at="2018-11-20T12:30:31Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-20T12:30:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Reference -->
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-20T12:30:38Z" finished-at="2018-11-20T12:30:38Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.CandidateCaseRegistration.ClientSubmit() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-20T12:30:38Z" finished-at="2018-11-20T12:30:38Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=Reference status=SUCCESS method=CandidateCaseRegistration.Reference()[pri:7, instance:maintest.CandidateCaseRegistration@100df86] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.CandidateCaseRegistration.Reference() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="ClientSubmit()[pri:8, instance:maintest.CandidateCaseRegistration@100df86]" name="ClientSubmit" duration-ms="26275" started-at="2018-11-20T12:30:38Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-20T12:31:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ClientSubmit -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-20T12:31:05Z" finished-at="2018-11-20T12:31:05Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=ClientSubmit status=SUCCESS method=CandidateCaseRegistration.ClientSubmit()[pri:8, instance:maintest.CandidateCaseRegistration@100df86] output={null}]]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[public void maintest.CandidateCaseRegistration.ClientSubmit() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="teardown" is-config="true" duration-ms="0" started-at="2018-11-20T12:31:05Z" finished-at="2018-11-20T12:31:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- teardown -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest.CandidateCaseRegistration@dafa95]" name="afterSuite" is-config="true" duration-ms="268" started-at="2018-11-16T13:08:11Z" finished-at="2018-11-16T13:08:11Z">
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest.CandidateCaseRegistration@100df86]" name="afterSuite" is-config="true" duration-ms="263" started-at="2018-11-20T12:31:05Z" finished-at="2018-11-20T12:31:05Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

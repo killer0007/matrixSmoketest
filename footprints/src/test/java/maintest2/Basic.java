@@ -11,9 +11,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
@@ -26,6 +28,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import client.Casereg;
+import client.VerifyCandidateDetails;
 import client.ViewCandidateFinalReport;
 import dashboard.DataEntrySupervision;
 import dashboard.ReportGeneration;
@@ -100,35 +103,35 @@ public class Basic {
 	 */
 	@Test(priority = 1, enabled = true)
 	public void login() throws Exception {
-		uname = config.getProperty("uname");
-		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+		refno="HDFC000826";
+		driver.get(config.getProperty("url")+"/clientLogin.aspx");
+		pages.Login().userLogin(config.getProperty("clientuname"), config.getProperty("clientpass"));
+		VerifyCandidateDetails details= new VerifyCandidateDetails(driver, logger);
+		details.verifyvandidatedetails();
+//		details.OpenCase(refno);
+//		Map<String, String> actual =pages.Address().getCurrentAddress();
+//		Map<String, String> expected =pages.Address().filedata();
+//		assertEquals(actual, expected);
+//		Map<String, String> eactual =pages.Education().getugone();
+//		Map<String, String> eexpected =pages.Education().filedata();
+//		assertEquals(eactual, eexpected);
+//		Map<String, String> eactual=pages.Employment().CurrentEmp();
+//		Map<String, String> eexpected=pages.Employment().filedata();
+//		assertEquals(eactual, eexpected);
+//		Map<String, String> eactual=pages.Id().VoterId();
+//		Map<String, String> eexpected=pages.Id().filedata();
+//		assertEquals(eactual, eexpected);
+//		Map<String, String> eactual=pages.Reference().Referenceone();
+//		Map<String, String> eexpected=pages.Reference().filedata();
+//		assertEquals(eactual, eexpected);
+		details.Search(refno);
+		details.QuickSubmit();
+		details.FilterComponents();
+		System.out.println(details.confirmAlert());
 	}
 
 	
-	@Test(priority = 28, enabled = true)
-	public void TC_SPCR_027() throws Exception {
-		HashMap<String, String> data = pages.DbConnection().getLastCase(projectName);
-		pages.Home().clickRegister();
-		candidateName = data.get("firstname");
-		candidateId = Integer.toString(pages.Utill().getcandidateid());
-		lastName = data.get("lastname");
-		HashMap<String, String> datas = new HashMap<String, String>();
-		datas.put("CandidateName", candidateName);
-		datas.put("CandidateId", candidateId);
-		datas.put("ClientName", clientName);
-		datas.put("ProjectName", projectName);
-		datas.put("lastname", lastName);
-		pages.CaseRegistration().registercase(datas, pages.Utill().formatedob(data.get("DateofBirth")));
-		String msg = pages.Utill().confirmAlert();
-		pages.Home().homepage();
-		if (msg.equals("Case Already Exist!")) {
-			assertTrue(true);
-		} else {
-			assertTrue(false);
-		}
-
-	}
-
+	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {
 		if (result.getStatus() == ITestResult.FAILURE) {
