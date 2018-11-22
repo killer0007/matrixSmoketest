@@ -7,13 +7,21 @@
         <methods>
           <include name="tearDown"/>
           <include name="ClientSubmit"/>
-          <include name="teardown"/>
-          <include name="afterSuite"/>
           <include name="beforeSuit"/>
-          <include name="setup"/>
+          <include name="Address"/>
+          <include name="Reference"/>
           <include name="CandidateInitiate"/>
           <include name="beforetest"/>
           <include name="CandidatedataEntry"/>
+          <include name="VerificationSupervisor"/>
+          <include name="DataEntryQC"/>
+          <include name="VerificationIntiation"/>
+          <include name="teardown"/>
+          <include name="afterSuite"/>
+          <include name="setup"/>
+          <include name="Education"/>
+          <include name="Employment"/>
+          <include name="VoterId"/>
         </methods>
       </class> <!-- maintest.CandidateCaseRegistration -->
     </classes>

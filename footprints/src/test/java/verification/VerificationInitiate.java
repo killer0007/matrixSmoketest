@@ -17,7 +17,24 @@ public class VerificationInitiate extends Utill {
 	}
 	public void InitiationMode(String mode) {
 		String value=getValue("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input");
-		if(!value.trim().equals(mode)) {
+		
+		if(!value.trim().equals(mode) && super.isEnabled("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input")) {
+		click("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input");
+		if (verifyddvalue(mode)) {
+			pages.Utill()
+					.click("//div[@id='ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_DropDown']/div/ul//li[text()='"
+							+ mode + "']");
+			waitUntilLoaderisInvisible(100);
+		} else {
+			throw new NotFoundException(mode);
+		}
+		}
+	}
+	public void InitiationMode() {
+		String mode="Email (Preferred)";
+		String value=getValue("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input");
+		
+		if(!value.trim().equals(mode) && super.isEnabled("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input")) {
 		click("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input");
 		if (verifyddvalue(mode)) {
 			pages.Utill()
@@ -150,14 +167,14 @@ public void Initiate(String refno, String component, String mode) {
 			pages.Verification().Search(refno, "Employment", "Current/Latest Employment");
 			pages.Verification().Select(refno);
 			this.employmentcheck();
-			this.InitiationMode(mode);
+			this.InitiationMode();
 			this.EmpInitiate();
 			break;
 		case "Previous Employment":
 			pages.Verification().Search(refno, "Employment", "Previous Employment");
 			pages.Verification().Select(refno);
 			this.employmentcheck();
-			this.InitiationMode(mode);
+			this.InitiationMode();
 			this.EmpInitiate();
 			break;
 		case "Reference 1":

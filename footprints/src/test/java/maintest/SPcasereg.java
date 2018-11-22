@@ -1002,9 +1002,9 @@ public class SPcasereg implements Design {
 		for (int i = 0; i < 4; i++) {
 			pages.CaseRegistration().selectcheck(contract.get(i).toString());
 		}
-		String before = pages.DbConnection().getLastrefno(projectName);
+		String before = pages.DbConnection().getLastrefno(candidateName, lastName);
 		pages.CaseRegistration().cancel();
-		String after = pages.DbConnection().getLastrefno(projectName);
+		String after = pages.DbConnection().getLastrefno(candidateName, lastName);
 		if (before.equals(after)) {
 			assertTrue(true);
 		} else {
@@ -1182,7 +1182,7 @@ public class SPcasereg implements Design {
 		pages.Home().homepage();
 		pages.Home().Actions();
 		cs.caseOwner();
-		refno = pages.DbConnection().getLastrefno(projectName);
+		refno = pages.DbConnection().getLastrefno(candidateName, lastName);
 		cs.search(refno, "sp");
 		String no = cs.getrefNo();
 		if (refno.equals(no)) {
@@ -1284,7 +1284,7 @@ public class SPcasereg implements Design {
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DbConnection().getLastrefno(projectName);
+		refno = pages.DbConnection().getLastrefno(candidateName, lastName);
 		pages.Home().CaseTracker();
 		assertEquals(pages.CaseTracker().getCurrentStage(refno, "Permanent"),
 				"Insuff Raised - Case Registration Pending");
@@ -1400,7 +1400,7 @@ public class SPcasereg implements Design {
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DbConnection().getLastrefno(projectName);
+		refno = pages.DbConnection().getLastrefno(candidateName, lastName);
 //			refno="HDFC000308";
 		pages.Home().Actions();
 		pages.CaseOwnerInsuffClear().search(refno, "sp");
@@ -1791,7 +1791,7 @@ public class SPcasereg implements Design {
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DbConnection().getLastrefno(projectName);
+		refno = pages.DbConnection().getLastrefno(candidateName, lastName);
 		pages.Home().CaseTracker();
 		pages.CaseTracker().search(refno);
 		pages.CaseTracker().clickcase(refno);
@@ -1874,7 +1874,7 @@ public class SPcasereg implements Design {
 		pages.CaseRegistration().submit();
 		pages.Utill().confirmAlert();
 		pages.Home().homepage();
-		refno = pages.DbConnection().getLastrefno(projectName);
+		refno = pages.DbConnection().getLastrefno(candidateName, lastName);
 		pages.Home().CaseTracker();
 		pages.CaseTracker().search(refno);
 		pages.CaseTracker().clickcase(refno);
@@ -2083,7 +2083,7 @@ public class SPcasereg implements Design {
 	@Test(priority = 67, enabled = true, dependsOnMethods = "TC_SPDOC_004")
 	public void TC_SPDOC_005() throws Exception {
 		pages.DataEntrySupervision().datanentrysupervision();
-		refno = pages.DbConnection().getLastrefno(projectName);
+		refno = pages.DbConnection().getLastrefno(candidateName, lastName);
 //		pages.DataEntrySupervision().assigngetnext(refno);
 		pages.DataEntrySupervision().assign(refno, uname);
 		pages.DataEntry().datanentry();

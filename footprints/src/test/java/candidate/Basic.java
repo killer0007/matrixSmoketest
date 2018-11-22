@@ -239,12 +239,12 @@ public class Basic extends Utill {
 		this.docclose();
 		this.submitCIF();
 		String warning = this.confirmAlert();
-		System.out.println(warning);
+		//System.out.println(warning);
 		logger.log(Status.INFO, warning);
 		super.waitUntilLoaderisInvisible(40);
 		String msg = this.confirmAlert();
 		logger.log(Status.INFO, msg);
-		System.out.println(msg);
+		//System.out.println(msg);
 		super.waitUntilLoaderisInvisible(40);
 	}
 

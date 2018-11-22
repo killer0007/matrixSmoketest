@@ -5,10 +5,12 @@ import static org.testng.Assert.assertEquals;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
@@ -20,7 +22,6 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -34,6 +35,7 @@ import environment.BaseClass;
 import environment.DbConnection;
 import environment.Pages;
 import environment.Utill;
+import verification.VerificationInitiate;
 
 public class CandidateCaseRegistration implements Design {
 
@@ -51,7 +53,8 @@ public class CandidateCaseRegistration implements Design {
 	protected String lastName = null;
 	protected String refno = null;
 	protected String uname = null;
-
+	private String [] component = {"Current Address","UG1","Current/Latest Employment","Voter ID","Reference 1",};
+	private List<String> components=new ArrayList<>(Arrays.asList(component));
 	/**
 	 * Initializing extent report objects
 	 */
@@ -114,7 +117,6 @@ public class CandidateCaseRegistration implements Design {
 		pages.Login().userLogin(pages.Utill().getemail()+"@ggmail.com", "Pass@123");
 //		pages.Login().userLogin("gopiAAA3@ggmail.com", "Pass@123");
 		register.unCheckAll();
-		String [] component = {"Current Address","UG1","Current/Latest Employment","Voter ID","Reference 1",};
 		register.selectCheck(component);
 		register.click("btnApplyChanges_input");
 		register.waitUntilLoaderisInvisible(100);
@@ -183,10 +185,92 @@ public class CandidateCaseRegistration implements Design {
 		details.QuickSubmit();
 		details.FilterComponents();
 		System.out.println(details.confirmAlert());
+		pages.Home().Logout();
+		
+	}
+	@Test(priority = 9, enabled = true, dependsOnMethods="ClientSubmit")
+	public void DataEntryQC() throws Exception {
+		driver.get(config.getProperty("url"));
+		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+		pages.DataEntryQCSupervision().datanentryqcsupervision();
+		pages.DataEntryQCSupervision().assign(refno, "demoempl");
+		pages.DataEntryQC().datanentryqc();
+		pages.DataEntryQC().selectcase(refno);
+		pages.DeAddress().addresscheck();
+		pages.DeAddress().submit();
+		pages.DeEducation().educationcheck();
+		pages.DeEducation().submit();
+		pages.DeEmployment().employmentcheck();
+		pages.DeEmployment().submit();
+		pages.DeReference().referencecheck();
+		pages.DeReference().submit();
+		pages.DeId().idcheck();
+		pages.DeId().submit();
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		List<HashMap<String, String>> details=pages.CaseTracker().getcasedata();
+		SoftAssert sf = new SoftAssert();
+		for (int i = 0; i < details.size(); i++) {
+			String name=details.get(i).get("ComponentName").toString().trim();
+			if(components.contains(name)) {
+				if(name.equals("Current Address")) 
+					sf.assertEquals(details.get(i).get("CurrentStage").toString().trim(), "Candidate Flow Before Verification Initiation");
+				else 
+					sf.assertEquals(details.get(i).get("CurrentStage").toString().trim(), "Verification Assignment Pending");
+			}
+		}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
+	}
+	@Test(priority = 9, enabled = true, dependsOnMethods="ClientSubmit")
+	public void VerificationSupervisor() throws Exception {
+		pages.VerificationSupervisor().verificationsupervisor();
+		pages.VerificationSupervisor().assign(refno, "demoempl");
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		List<HashMap<String, String>> details=pages.CaseTracker().getcasedata();
+		SoftAssert sf = new SoftAssert();
+		for (int i = 0; i < details.size(); i++) {
+			String name=details.get(i).get("ComponentName").toString().trim();
+			if(components.contains(name)) {
+				if(name.equals("Current Address")) 
+					sf.assertEquals(details.get(i).get("CurrentStage").toString().trim(), "Candidate Flow Before Verification Initiation");
+			}
+		}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
+	}
+	@Test(priority = 10, enabled = true, dependsOnMethods="VerificationSupervisor")
+	public void VerificationIntiation() throws Exception {
+		VerificationInitiate ver= new VerificationInitiate(driver,logger);
+		Map<String, String> data=mode();
+		pages.Verification().verification();
+		pages.Home().Logout();
+		pages.Login().userLogin("demov", "Paws@123");
+		pages.Verification().verification();
+		ver.Initiate(refno, "Current Address", data.get("Current Address"));
+		pages.Home().Logout();
+		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+		pages.Verification().verification();
+		ver.Initiate(refno, "UG1", data.get("UG1"));
+		ver.Initiate(refno, "Current/Latest Employment", data.get("Current/Latest Employment"));
+		ver.Initiate(refno, "Reference 1", data.get("Reference 1"));
+		ver.Initiate(refno, "Voter ID", data.get("Voter ID"));
+		List<HashMap<String, String>> details=pages.CaseTracker().getcasedata();
+		SoftAssert sf = new SoftAssert();
+		for (int i = 0; i < details.size(); i++) {
+			String name=details.get(i).get("ComponentName").toString().trim();
+			if(components.contains(name)) {
+				if(name.equals("Current Address")) 
+					sf.assertEquals(details.get(i).get("CurrentStage").toString().trim(), "Candidate Flow After Verification Initiation");
+			}
+		}
+		pages.CaseTracker().closeTab();
+		sf.assertAll();
 	}
 	
-	
-
 	/**
 	 * Takes test Result as input and Log the results into reports
 	 */
@@ -223,6 +307,25 @@ public class CandidateCaseRegistration implements Design {
 		extent.flush();
 	}
 
-	
+	private static Map<String, String> mode(){
+		Map<String, String> map = new HashMap<>();
+		map.put("Permanent", "In Person");
+		map.put("Current Address", "In Person");
+		map.put("12th", "Email (Preffered)");
+		map.put("UG1", "Email (Preffered)");
+		map.put("Current/Latest Employment", "Email");
+		map.put("Previous Employment", "Email");
+		map.put("Reference 1", "Phone");
+		map.put("Current Address Criminal Check", "In Person");
+		map.put("Permanent Criminal Check", "In Person");
+		map.put("Current Address Court Check", "In Person");
+		map.put("Permanent Court Check", "In Person");
+		map.put("Database", "Online");
+		map.put("Credit Check 1", "Online");
+		map.put("Passport", "Online");
+		map.put("Aadhaar Card", "Online");
+		map.put("Panel1", "In Person");
+		return map;
+	}
 
 }

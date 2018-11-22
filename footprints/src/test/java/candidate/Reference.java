@@ -37,6 +37,7 @@ public class Reference extends dataEntryQC.Reference {
 
 	public void docclose() {
 		super.click("ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_btnDocumentClose_Ref");
+		super.sleep(300);
 	}
 
 	public void saveNext() {
@@ -105,11 +106,14 @@ public class Reference extends dataEntryQC.Reference {
 			}
 		}
 	}
-	public void	RefContactNo(String contactno) {
+	public void	ReferrerContactNo(String contactno) {
 		sendKeys("ctl00_ContentPlaceHolder1_txtContactNo", contactno);
 	}
 	public void RefEmailId(String emailid) {
 		sendKeys("ctl00_ContentPlaceHolder1_txtRefEmailId1", emailid);
+	}
+	public void	RefContactNo(String contactno) {
+		sendKeys("ctl00_ContentPlaceHolder1_txtRefContactNo", contactno);
 	}
 	public void referenceone() throws Exception {
 		Properties pro = candidatedata("reference");
@@ -134,6 +138,9 @@ public class Reference extends dataEntryQC.Reference {
 	}
 	public String getStatus() {
 		return super.getText("//a[text()='Reference 1']/../following-sibling::td/span");
+	}
+	public String ReferrerContactNo() {
+		return getValue("ctl00_ContentPlaceHolder1_txtContactNo");
 	}
 	public String getDocumentName(String doctype) {
 

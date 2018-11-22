@@ -46,6 +46,7 @@ import verification.Education;
 import verification.Employment;
 import verification.Id;
 import verification.Reference;
+import verification.VerificationInitiate;
 
 @Listeners(environment.Listener.class)
 public class Basic {
@@ -64,7 +65,8 @@ public class Basic {
 	protected String lastName = null;
 	protected String refno = null;
 	protected String uname = null;
-
+	private String [] component = {"Current Address","UG1","Current/Latest Employment","Voter ID","Reference 1",};
+	private List<String> components=new ArrayList<>(Arrays.asList(component));
 	@BeforeSuite
 	public void beforeSuit() {
 		reporter = new ExtentHtmlReporter("./Reports/matrixflow.html");
@@ -103,31 +105,34 @@ public class Basic {
 	 */
 	@Test(priority = 1, enabled = true)
 	public void login() throws Exception {
-		refno="HDFC000826";
-		driver.get(config.getProperty("url")+"/clientLogin.aspx");
-		pages.Login().userLogin(config.getProperty("clientuname"), config.getProperty("clientpass"));
-		VerifyCandidateDetails details= new VerifyCandidateDetails(driver, logger);
-		details.verifyvandidatedetails();
-//		details.OpenCase(refno);
-//		Map<String, String> actual =pages.Address().getCurrentAddress();
-//		Map<String, String> expected =pages.Address().filedata();
-//		assertEquals(actual, expected);
-//		Map<String, String> eactual =pages.Education().getugone();
-//		Map<String, String> eexpected =pages.Education().filedata();
-//		assertEquals(eactual, eexpected);
-//		Map<String, String> eactual=pages.Employment().CurrentEmp();
-//		Map<String, String> eexpected=pages.Employment().filedata();
-//		assertEquals(eactual, eexpected);
-//		Map<String, String> eactual=pages.Id().VoterId();
-//		Map<String, String> eexpected=pages.Id().filedata();
-//		assertEquals(eactual, eexpected);
-//		Map<String, String> eactual=pages.Reference().Referenceone();
-//		Map<String, String> eexpected=pages.Reference().filedata();
-//		assertEquals(eactual, eexpected);
-		details.Search(refno);
-		details.QuickSubmit();
-		details.FilterComponents();
-		System.out.println(details.confirmAlert());
+		refno="HDFC000837";
+		driver.get(config.getProperty("url"));
+		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+		VerificationInitiate ver= new VerificationInitiate(driver,logger);
+		Map<String, String> data=mode();
+		pages.Verification().verification();
+//		pages.Home().Logout();
+//		pages.Login().userLogin("demov", "Paws@123");
+//		pages.Verification().verification();
+//		ver.Initiate(refno, "Current Address", data.get("Current Address"));
+//		pages.Home().Logout();
+//		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+//		pages.Verification().verification();
+//		ver.Initiate(refno, "UG1", data.get("UG1"));
+		ver.Initiate(refno, "Current/Latest Employment", data.get("Current/Latest Employment"));
+		ver.Initiate(refno, "Reference 1", data.get("Reference 1"));
+		ver.Initiate(refno, "Voter ID", data.get("Voter ID"));
+		List<HashMap<String, String>> details=pages.CaseTracker().getcasedata();
+		SoftAssert sf = new SoftAssert();
+		for (int i = 0; i < details.size(); i++) {
+			String name=details.get(i).get("ComponentName").toString().trim();
+			if(components.contains(name)) {
+				if(name.equals("Current Address")) 
+					sf.assertEquals(details.get(i).get("CurrentStage").toString().trim(), "Candidate Flow After Verification Initiation");
+			}
+		}
+		pages.CaseTracker().closeTab();
+		sf.assertAll();
 	}
 
 	
@@ -154,5 +159,25 @@ public class Basic {
 	public void afterSuite() {
 		extent.flush();
 	}
-	
+	private static Map<String, String> mode(){
+		Map<String, String> map = new HashMap<>();
+		map.put("Permanent", "In Person");
+		map.put("Current Address", "In Person");
+		map.put("12th", "Email (Preffered)");
+		map.put("UG1", "Email (Preffered)");
+		map.put("Current/Latest Employment", "Email");
+		map.put("Previous Employment", "Email");
+		map.put("Reference 1", "Phone");
+		map.put("Current Address Criminal Check", "In Person");
+		map.put("Permanent Criminal Check", "In Person");
+		map.put("Current Address Court Check", "In Person");
+		map.put("Permanent Court Check", "In Person");
+		map.put("Database", "Online");
+		map.put("Credit Check 1", "Online");
+		map.put("Passport", "Online");
+		map.put("Aadhaar Card", "Online");
+		map.put("Voter ID", "Online");
+		map.put("Panel1", "In Person");
+		return map;
+	}
 }

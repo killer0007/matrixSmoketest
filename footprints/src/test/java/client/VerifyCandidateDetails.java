@@ -1,6 +1,5 @@
 package client;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import com.aventstack.extentreports.ExtentTest;
@@ -98,7 +97,7 @@ public class VerifyCandidateDetails extends Utill {
 		super.waitUntilLoaderisInvisible(50);
 	}
 	public void FilterComponents() {
-		String [] components= {"Credit Check 1","Current Address Criminal Check","Database","Panel1","Medical Test"};
+		String [] components= {"Credit Check 1","Current Address Criminal Check","Current Address Court Check","Database","Panel1","Medical Test"};
 		for (int i = 0; i < components.length; i++) {
 		super.click("//span[text()='"+components[i]+"']/ancestor::td[2]/preceding-sibling::td[1]//input");
 //			driver.findElement(By.xpath("//span[text()='"+components[i]+"']/ancestor::td[2]/preceding-sibling::td[1]//input")).click();

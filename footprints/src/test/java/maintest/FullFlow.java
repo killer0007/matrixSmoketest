@@ -133,7 +133,7 @@ public class FullFlow implements Design {
 	 */
 	@Test(priority = 3, enabled = true, dependsOnMethods = "caseregistration")
 	public void dataEntryAssign() throws Exception {
-		refno = pages.DbConnection().getLastrefno(projectName);
+		refno = pages.DbConnection().getLastrefno(candidateName, lastName);
 		DataEntrySupervision des = pages.DataEntrySupervision();
 		des.datanentrysupervision();
 		//des.assigngetnext(refno);
@@ -369,7 +369,7 @@ public class FullFlow implements Design {
 		ver.Initiate(refno, "Current Address", data.get("Current Address"));
 		ver.Initiate(refno, "Permanent", data.get("Permanent"));
 		pages.Home().Logout();
-		pages.Login().userLogin("demoempl", "Pass$$123");
+		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
 		pages.Verification().verification();
 		ver.Initiate(refno, "12th", data.get("12th"));
 		ver.Initiate(refno, "UG1", data.get("UG1"));
@@ -770,7 +770,10 @@ public class FullFlow implements Design {
 			logger.fail(result.getThrowable().getMessage(),
 					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 			logger.log(Status.INFO, refno);
-			pages.Utill().GoTo("http://192.168.2.17:97/Web/dashboard.aspx");
+			if(!this.getmethods().contains(method.getName())) {
+				pages.Utill().GoTo("http://192.168.2.17:97/Web/dashboard.aspx");
+			}
+			
 		} else {
 			logger.pass(method.getName() + " completed");
 		}
@@ -814,5 +817,9 @@ public class FullFlow implements Design {
 		map.put("Aadhaar Card", "Online");
 		map.put("Panel1", "In Person");
 		return map;
+	}
+	private List<String> getmethods() {
+		String[] m= {"AddressDEQC","EducationDEQC","EducationDEQC","ReferenceDEQC","DataBaseDEQC","CriminalDEQC","CreditDEQC","CourtDEQC","AddressReportGeneration","EducationReportGeneration","EmploymentReportGeneration","ReferenceReportGeneration","DatabaseReportGeneration","CriminalReportGeneration","CreditReportGeneration","CourtReportGeneration","DrugReportGeneration"};
+		return new ArrayList<>(Arrays.asList(m));
 	}
 }

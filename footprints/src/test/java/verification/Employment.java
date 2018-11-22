@@ -208,7 +208,7 @@ public class Employment extends dataEntryQC.Employment implements Verification{
 		map.put("RespondentContactNo", this.RespondentContactNo());
 		map.put("Ver_Comments", this.Ver_Comments());
 		map.put("ComponentStatus", this.ComponentStatus());
-		map.put("ModeOfInitiation", this.ModeOfInitiation());
+		//map.put("ModeOfInitiation", this.ModeOfInitiation());
 		map.put("DateOfInitiation", this.DateOfInitiation());
 		map.put("ModeOfVerification", this.ModeOfVerification());
 		map.put("DateOfVerification", this.DateOfVerification());
@@ -255,7 +255,7 @@ public class Employment extends dataEntryQC.Employment implements Verification{
 		map.put("RespondentContactNo", this.RespondentContactNo());
 		map.put("Ver_Comments", this.Ver_Comments());
 		map.put("ComponentStatus", this.ComponentStatus());
-		map.put("ModeOfInitiation", this.ModeOfInitiation());
+	//	map.put("ModeOfInitiation", this.ModeOfInitiation());
 		map.put("DateOfInitiation", this.DateOfInitiation());
 		map.put("ModeOfVerification", this.ModeOfVerification());
 		map.put("DateOfVerification", this.DateOfVerification());
@@ -301,7 +301,7 @@ public class Employment extends dataEntryQC.Employment implements Verification{
 		map.put("RespondentContactNo", pro.getProperty("RespondentContactNo"));
 		map.put("Ver_Comments", pro.getProperty("verComments"));
 		map.put("ComponentStatus", pro.getProperty("ComponentStatus"));
-		map.put("ModeOfInitiation", pro.getProperty("ModeOfInitiation"));
+		//map.put("ModeOfInitiation", pro.getProperty("ModeOfInitiation"));
 		map.put("DateOfInitiation", date);
 		map.put("ModeOfVerification", pro.getProperty("ModeOfVerification"));
 		map.put("DateOfVerification", date);
@@ -344,7 +344,7 @@ public class Employment extends dataEntryQC.Employment implements Verification{
 		map.put("RespondentContactNo", pro.getProperty("RespondentContactNo"));
 		map.put("Ver_Comments", pro.getProperty("verComments"));
 		map.put("ComponentStatus", pro.getProperty("ComponentStatus"));
-		map.put("ModeOfInitiation", pro.getProperty("ModeOfInitiation"));
+		//map.put("ModeOfInitiation", pro.getProperty("ModeOfInitiation"));
 		map.put("DateOfInitiation", date);
 		map.put("ModeOfVerification", pro.getProperty("ModeOfVerification"));
 		map.put("DateOfVerification", date);

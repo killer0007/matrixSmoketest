@@ -40,7 +40,7 @@ public class BaseClass {
 //			chromoption.setHeadless(true);
 			chromoption.addArguments("start-maximized");
 			driver = new ChromeDriver(chromoption);
-//			Dimension d = new Dimension(1382, 744);
+			Dimension d = new Dimension(1382, 744);
 //			driver.manage().window().setSize(d);
 //			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
