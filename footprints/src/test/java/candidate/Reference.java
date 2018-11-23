@@ -106,14 +106,12 @@ public class Reference extends dataEntryQC.Reference {
 			}
 		}
 	}
-	public void	ReferrerContactNo(String contactno) {
-		sendKeys("ctl00_ContentPlaceHolder1_txtContactNo", contactno);
-	}
+	
 	public void RefEmailId(String emailid) {
 		sendKeys("ctl00_ContentPlaceHolder1_txtRefEmailId1", emailid);
 	}
 	public void	RefContactNo(String contactno) {
-		sendKeys("ctl00_ContentPlaceHolder1_txtRefContactNo", contactno);
+		sendKeys("ctl00_ContentPlaceHolder1_txtContactNo", contactno);
 	}
 	public void referenceone() throws Exception {
 		Properties pro = candidatedata("reference");

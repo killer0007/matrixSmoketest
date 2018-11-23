@@ -39,6 +39,7 @@ public class Id extends dataEntryQC.Id{
 
 	public void docclose() {
 		super.click("ctl00_ContentPlaceHolder1_rwmCaseIDDocuments_C_btnIdDocumentCancel");
+		super.sleep(400);
 	}
 
 	public void saveNext() {

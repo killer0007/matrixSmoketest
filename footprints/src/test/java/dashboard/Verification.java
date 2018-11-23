@@ -175,6 +175,11 @@ public class Verification extends Utill{
 		this.Search(refno, "ID", "Aadhaar Card");
 		this.Select(refno);
 	}
+	public void VoterID(String refno) {
+		this.VRInitiateStatus("Verification Confirmation Pending");
+		this.Search(refno, "ID", "Voter ID");
+		this.Select(refno);
+	}
 	public void Panel1(String refno) {
 		this.VRInitiateStatus("Verification Confirmation Pending");
 		this.Search(refno, "Drug & Medical", "Panel1");

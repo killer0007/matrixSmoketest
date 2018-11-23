@@ -103,25 +103,21 @@ public class Basic {
 	/**
 	 * Login action
 	 */
-	@Test(priority = 1, enabled = true)
-	public void login() throws Exception {
-		refno="HDFC000837";
-		driver.get(config.getProperty("url"));
+	@Test(priority = 10, enabled = true)
+	public void VerificationIntiation() throws Exception {
+		refno="HDFC000854";
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
+		
+	}
+	@Test(priority = 11, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void AddressVerification() throws Exception {
 		VerificationInitiate ver= new VerificationInitiate(driver,logger);
 		Map<String, String> data=mode();
 		pages.Verification().verification();
-//		pages.Home().Logout();
-//		pages.Login().userLogin("demov", "Paws@123");
-//		pages.Verification().verification();
-//		ver.Initiate(refno, "Current Address", data.get("Current Address"));
-//		pages.Home().Logout();
-//		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-//		pages.Verification().verification();
-//		ver.Initiate(refno, "UG1", data.get("UG1"));
-		ver.Initiate(refno, "Current/Latest Employment", data.get("Current/Latest Employment"));
-		ver.Initiate(refno, "Reference 1", data.get("Reference 1"));
 		ver.Initiate(refno, "Voter ID", data.get("Voter ID"));
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
 		List<HashMap<String, String>> details=pages.CaseTracker().getcasedata();
 		SoftAssert sf = new SoftAssert();
 		for (int i = 0; i < details.size(); i++) {
@@ -135,7 +131,7 @@ public class Basic {
 		sf.assertAll();
 	}
 
-	
+
 	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {

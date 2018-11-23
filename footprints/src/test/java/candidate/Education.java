@@ -40,6 +40,7 @@ public class Education extends dataEntryQC.Education {
 
 	public void docclose() {
 		super.click("ctl00_ContentPlaceHolder1_rwmCaseEducationDocuments_C_btnEducationDocumentCancel");
+		super.sleep(400);
 	}
 
 	public void saveNext() {

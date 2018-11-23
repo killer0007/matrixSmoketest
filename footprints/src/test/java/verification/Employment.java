@@ -164,7 +164,7 @@ public class Employment extends dataEntryQC.Employment implements Verification{
 		this.RespondentDesignation(pro.getProperty("RespondentDesignation"));
 		this.Ver_Comments(pro.getProperty("verComments"));
 		this.ComponentStatus(pro.getProperty("ComponentStatus"));
-		this.ModeOfInitiation(pro.getProperty("ModeOfInitiation"));
+		//this.ModeOfInitiation(pro.getProperty("ModeOfInitiation"));
 		this.DateOfInitiation(getCurrentDate("dd/MM/yyyy"));
 		this.ModeOfVerification(pro.getProperty("ModeOfVerification"));
 		this.DateOfVerification(getCurrentDate("dd/MM/yyyy"));

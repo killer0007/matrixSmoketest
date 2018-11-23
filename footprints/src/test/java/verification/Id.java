@@ -161,7 +161,7 @@ public class Id extends dataEntryQC.Id implements Verification {
 		this.idcheck();
 		this.document();
 		String name = this.Component();
-		if(name.equals("Passport")) {
+		if(name.equals("Passport") || name.equals("Voter ID") ) {
 			this.UploadDocument("Verification Report", pro.getProperty("passportdoc"));
 		}
 		this.docclose();

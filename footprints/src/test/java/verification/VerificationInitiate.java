@@ -36,6 +36,7 @@ public class VerificationInitiate extends Utill {
 		
 		if(!value.trim().equals(mode) && super.isEnabled("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input")) {
 		click("ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input");
+		super.sleep(300);
 		if (verifyddvalue(mode)) {
 			pages.Utill()
 					.click("//div[@id='ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_DropDown']/div/ul//li[text()='"
@@ -56,6 +57,7 @@ public class VerificationInitiate extends Utill {
 	public void EmpInitiate() {
 		click("ctl00_ContentPlaceHolder1_btnInitiate_input");
 		waitUntilLoaderisInvisible(100);
+		super.waitUntilElementHasText("ctl00_ContentPlaceHolder1_rw_VrInititiate_Preview_C_lbl_vr_recipentMailid", 10);
 		this.RecipientMailID("gopinath.n@kadambatechnologies.com");
 		SwitchDefault();
 		confirmAlert();
@@ -233,8 +235,15 @@ public void Initiate(String refno, String component, String mode) {
 			this.InitiationMode(mode);
 			this.Initiate();
 			break;
-		default:
+		case "Voter ID":
+			pages.Verification().Search(refno, "ID", "Voter ID");
+			pages.Verification().Select(refno);
+			this.idcheck();
+			this.InitiationMode(mode);
+			this.Initiate();
 			break;
+		default:
+			throw new NotFoundException(component);
 		}
 	}
 }

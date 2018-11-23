@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="9" failed="1" ignored="0" total="11" passed="1">
+<testng-results skipped="18" failed="1" ignored="0" total="20" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="37747" started-at="2018-11-22T10:34:13Z" finished-at="2018-11-22T10:34:51Z">
+  <suite name="Default suite" duration-ms="280547" started-at="2018-11-23T12:21:54Z" finished-at="2018-11-23T12:26:35Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="37747" started-at="2018-11-22T10:34:13Z" finished-at="2018-11-22T10:34:51Z">
+    <test name="Default test" duration-ms="280547" started-at="2018-11-23T12:21:54Z" finished-at="2018-11-23T12:26:35Z">
       <class name="maintest.CandidateCaseRegistration">
-        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest.CandidateCaseRegistration@1952a2d]" name="beforeSuit" is-config="true" duration-ms="125" started-at="2018-11-22T10:34:13Z" finished-at="2018-11-22T10:34:13Z">
+        <test-method status="PASS" signature="beforeSuit()[pri:0, instance:maintest.CandidateCaseRegistration@6cb480]" name="beforeSuit" is-config="true" duration-ms="263" started-at="2018-11-23T12:21:54Z" finished-at="2018-11-23T12:21:54Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeSuit -->
-        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest.CandidateCaseRegistration@1952a2d]" name="beforetest" is-config="true" duration-ms="3457" started-at="2018-11-22T10:34:13Z" finished-at="2018-11-22T10:34:17Z">
+        <test-method status="PASS" signature="beforetest()[pri:0, instance:maintest.CandidateCaseRegistration@6cb480]" name="beforetest" is-config="true" duration-ms="5978" started-at="2018-11-23T12:21:54Z" finished-at="2018-11-23T12:22:00Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforetest -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@1952a2d]" name="setup" is-config="true" duration-ms="21" started-at="2018-11-22T10:34:17Z" finished-at="2018-11-22T10:34:17Z">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@6cb480]" name="setup" is-config="true" duration-ms="22" started-at="2018-11-23T12:22:00Z" finished-at="2018-11-23T12:22:00Z">
           <params>
             <param index="0">
               <value>
@@ -26,15 +26,15 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="CandidateInitiate()[pri:1, instance:maintest.CandidateCaseRegistration@1952a2d]" name="CandidateInitiate" duration-ms="4833" started-at="2018-11-22T10:34:17Z" finished-at="2018-11-22T10:34:21Z">
+        <test-method status="PASS" signature="CandidateInitiate()[pri:1, instance:maintest.CandidateCaseRegistration@6cb480]" name="CandidateInitiate" duration-ms="39180" started-at="2018-11-23T12:22:00Z" finished-at="2018-11-23T12:22:39Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CandidateInitiate -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@1952a2d]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-22T10:34:21Z" finished-at="2018-11-22T10:34:21Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@6cb480]" name="tearDown" is-config="true" duration-ms="0" started-at="2018-11-23T12:22:39Z" finished-at="2018-11-23T12:22:39Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=CandidateInitiate status=SUCCESS method=CandidateCaseRegistration.CandidateInitiate()[pri:1, instance:maintest.CandidateCaseRegistration@1952a2d] output={null}]]]>
+                <![CDATA[[TestResult name=CandidateInitiate status=SUCCESS method=CandidateCaseRegistration.CandidateInitiate()[pri:1, instance:maintest.CandidateCaseRegistration@6cb480] output={null}]]]>
               </value>
             </param>
             <param index="1">
@@ -46,15 +46,58 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="FAIL" signature="CandidatedataEntry()[pri:2, instance:maintest.CandidateCaseRegistration@1952a2d]" name="CandidatedataEntry" duration-ms="26215" started-at="2018-11-22T10:34:21Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidateInitiate" finished-at="2018-11-22T10:34:48Z">
-          <exception class="java.lang.NoClassDefFoundError">
+        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@6cb480]" name="setup" is-config="true" duration-ms="1" started-at="2018-11-23T12:22:39Z" finished-at="2018-11-23T12:22:39Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void maintest.CandidateCaseRegistration.CandidatedataEntry() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="FAIL" signature="CandidatedataEntry()[pri:2, instance:maintest.CandidateCaseRegistration@6cb480]" name="CandidatedataEntry" duration-ms="233218" started-at="2018-11-23T12:22:39Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidateInitiate" finished-at="2018-11-23T12:26:33Z">
+          <exception class="org.openqa.selenium.WebDriverException">
             <message>
-              <![CDATA[candidate/Address]]>
+              <![CDATA[unknown error: Element <input class="rbDecorated" type="button" name="ctl00$ContentPlaceHolder1$btnAddressSubmit_input" id="ctl00_ContentPlaceHolder1_btnAddressSubmit_input" value="Save &amp; Next" tabindex="-1"> is not clickable at point (872, 530). Other element would receive the click: <div unselectable="on" class="TelerikModalOverlay" style="position: absolute; left: 0px; top: 0px; z-index: 3000; background-color: rgb(170, 170, 170); opacity: 0.5; width: 916px; height: 650px;"></div>
+  (Session info: chrome=70.0.3538.102)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'KAD-I-032', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:49249}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 70.0.3538.102, webStorageEnabled: true}
+Session ID: 5693116028f6b2912144fb2a219874e1]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.NoClassDefFoundError: candidate/Address
-at environment.Pages.Address(Pages.java:176)
-at maintest.CandidateCaseRegistration.CandidatedataEntry(CandidateCaseRegistration.java:127)
+              <![CDATA[org.openqa.selenium.WebDriverException: unknown error: Element <input class="rbDecorated" type="button" name="ctl00$ContentPlaceHolder1$btnAddressSubmit_input" id="ctl00_ContentPlaceHolder1_btnAddressSubmit_input" value="Save &amp; Next" tabindex="-1"> is not clickable at point (872, 530). Other element would receive the click: <div unselectable="on" class="TelerikModalOverlay" style="position: absolute; left: 0px; top: 0px; z-index: 3000; background-color: rgb(170, 170, 170); opacity: 0.5; width: 916px; height: 650px;"></div>
+  (Session info: chrome=70.0.3538.102)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'KAD-I-032', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:49249}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 70.0.3538.102, webStorageEnabled: true}
+Session ID: 5693116028f6b2912144fb2a219874e1
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+at java.lang.reflect.Constructor.newInstance(Unknown Source)
+at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
+at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+at environment.Utill.click(Utill.java:256)
+at candidate.Address.saveNext(Address.java:47)
+at candidate.Address.CurrentAddress(Address.java:124)
+at maintest.CandidateCaseRegistration.CandidatedataEntry(CandidateCaseRegistration.java:135)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -80,34 +123,17 @@ at org.testng.TestNG.run(TestNG.java:1017)
 at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: java.lang.ClassNotFoundException: candidate.Address
-at java.net.URLClassLoader.findClass(Unknown Source)
-at java.lang.ClassLoader.loadClass(Unknown Source)
-at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
-at java.lang.ClassLoader.loadClass(Unknown Source)
-... 27 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.NoClassDefFoundError -->
+          </exception> <!-- org.openqa.selenium.WebDriverException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CandidatedataEntry -->
-        <test-method status="PASS" signature="setup(java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@1952a2d]" name="setup" is-config="true" duration-ms="0" started-at="2018-11-22T10:34:21Z" finished-at="2018-11-22T10:34:21Z">
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@6cb480]" name="tearDown" is-config="true" duration-ms="2094" started-at="2018-11-23T12:26:33Z" finished-at="2018-11-23T12:26:35Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void maintest.CandidateCaseRegistration.CandidatedataEntry() throws java.lang.Exception]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult, java.lang.reflect.Method)[pri:0, instance:maintest.CandidateCaseRegistration@1952a2d]" name="tearDown" is-config="true" duration-ms="3166" started-at="2018-11-22T10:34:48Z" finished-at="2018-11-22T10:34:51Z">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=CandidatedataEntry status=FAILURE method=CandidateCaseRegistration.CandidatedataEntry()[pri:2, instance:maintest.CandidateCaseRegistration@1952a2d] output={null}]]]>
+                <![CDATA[[TestResult name=CandidatedataEntry status=FAILURE method=CandidateCaseRegistration.CandidatedataEntry()[pri:2, instance:maintest.CandidateCaseRegistration@6cb480] output={null}]]]>
               </value>
             </param>
             <param index="1">
@@ -119,199 +145,13 @@ at java.lang.ClassLoader.loadClass(Unknown Source)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-        <test-method status="SKIP" signature="VerificationSupervisor()[pri:9, instance:maintest.CandidateCaseRegistration@1952a2d]" name="VerificationSupervisor" duration-ms="0" started-at="2018-11-22T10:34:51Z" depends-on-methods="maintest.CandidateCaseRegistration.ClientSubmit" finished-at="2018-11-22T10:34:51Z">
+        <test-method status="SKIP" signature="VoterId()[pri:6, instance:maintest.CandidateCaseRegistration@6cb480]" name="VoterId" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-23T12:26:35Z">
           <exception class="java.lang.Throwable">
             <message>
-              <![CDATA[Method CandidateCaseRegistration.VerificationSupervisor()[pri:9, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods]]>
+              <![CDATA[Method CandidateCaseRegistration.VoterId()[pri:6, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.VerificationSupervisor()[pri:9, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- VerificationSupervisor -->
-        <test-method status="SKIP" signature="Employment()[pri:5, instance:maintest.CandidateCaseRegistration@1952a2d]" name="Employment" duration-ms="0" started-at="2018-11-22T10:34:51Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-22T10:34:51Z">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method CandidateCaseRegistration.Employment()[pri:5, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.Employment()[pri:5, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Employment -->
-        <test-method status="SKIP" signature="Reference()[pri:7, instance:maintest.CandidateCaseRegistration@1952a2d]" name="Reference" duration-ms="0" started-at="2018-11-22T10:34:51Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-22T10:34:51Z">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method CandidateCaseRegistration.Reference()[pri:7, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.Reference()[pri:7, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Reference -->
-        <test-method status="SKIP" signature="Address()[pri:3, instance:maintest.CandidateCaseRegistration@1952a2d]" name="Address" duration-ms="0" started-at="2018-11-22T10:34:51Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-22T10:34:51Z">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method CandidateCaseRegistration.Address()[pri:3, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.Address()[pri:3, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Address -->
-        <test-method status="SKIP" signature="ClientSubmit()[pri:8, instance:maintest.CandidateCaseRegistration@1952a2d]" name="ClientSubmit" duration-ms="0" started-at="2018-11-22T10:34:51Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-22T10:34:51Z">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method CandidateCaseRegistration.ClientSubmit()[pri:8, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.ClientSubmit()[pri:8, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- ClientSubmit -->
-        <test-method status="SKIP" signature="Education()[pri:4, instance:maintest.CandidateCaseRegistration@1952a2d]" name="Education" duration-ms="0" started-at="2018-11-22T10:34:51Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-22T10:34:51Z">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method CandidateCaseRegistration.Education()[pri:4, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.Education()[pri:4, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods
-at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
-at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
-at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
-at org.testng.TestRunner.privateRun(TestRunner.java:648)
-at org.testng.TestRunner.run(TestRunner.java:505)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
-at org.testng.SuiteRunner.run(SuiteRunner.java:364)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
-at org.testng.TestNG.runSuites(TestNG.java:1049)
-at org.testng.TestNG.run(TestNG.java:1017)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.Throwable -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Education -->
-        <test-method status="SKIP" signature="VoterId()[pri:6, instance:maintest.CandidateCaseRegistration@1952a2d]" name="VoterId" duration-ms="0" started-at="2018-11-22T10:34:51Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-22T10:34:51Z">
-          <exception class="java.lang.Throwable">
-            <message>
-              <![CDATA[Method CandidateCaseRegistration.VoterId()[pri:6, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.VoterId()[pri:6, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.VoterId()[pri:6, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
 at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
 at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
 at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
@@ -336,13 +176,261 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- VoterId -->
-        <test-method status="SKIP" signature="DataEntryQC()[pri:9, instance:maintest.CandidateCaseRegistration@1952a2d]" name="DataEntryQC" duration-ms="0" started-at="2018-11-22T10:34:51Z" depends-on-methods="maintest.CandidateCaseRegistration.ClientSubmit" finished-at="2018-11-22T10:34:51Z">
+        <test-method status="SKIP" signature="Education()[pri:4, instance:maintest.CandidateCaseRegistration@6cb480]" name="Education" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-23T12:26:35Z">
           <exception class="java.lang.Throwable">
             <message>
-              <![CDATA[Method CandidateCaseRegistration.DataEntryQC()[pri:9, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods]]>
+              <![CDATA[Method CandidateCaseRegistration.Education()[pri:4, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.DataEntryQC()[pri:9, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.Education()[pri:4, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Education -->
+        <test-method status="SKIP" signature="Address()[pri:3, instance:maintest.CandidateCaseRegistration@6cb480]" name="Address" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.Address()[pri:3, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.Address()[pri:3, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Address -->
+        <test-method status="SKIP" signature="Employment()[pri:5, instance:maintest.CandidateCaseRegistration@6cb480]" name="Employment" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.Employment()[pri:5, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.Employment()[pri:5, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Employment -->
+        <test-method status="SKIP" signature="Reference()[pri:7, instance:maintest.CandidateCaseRegistration@6cb480]" name="Reference" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.Reference()[pri:7, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.Reference()[pri:7, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Reference -->
+        <test-method status="SKIP" signature="ReferenceVerification()[pri:14, instance:maintest.CandidateCaseRegistration@6cb480]" name="ReferenceVerification" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.VerificationIntiation" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.ReferenceVerification()[pri:14, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.ReferenceVerification()[pri:14, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ReferenceVerification -->
+        <test-method status="SKIP" signature="VerificationSupervisor()[pri:9, instance:maintest.CandidateCaseRegistration@6cb480]" name="VerificationSupervisor" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.ClientSubmit" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.VerificationSupervisor()[pri:9, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.VerificationSupervisor()[pri:9, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- VerificationSupervisor -->
+        <test-method status="SKIP" signature="IDVerification()[pri:15, instance:maintest.CandidateCaseRegistration@6cb480]" name="IDVerification" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.VerificationIntiation" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.IDVerification()[pri:15, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.IDVerification()[pri:15, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- IDVerification -->
+        <test-method status="SKIP" signature="ReportGenerationSubmit()[pri:17, instance:maintest.CandidateCaseRegistration@6cb480]" name="ReportGenerationSubmit" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.ReportGenerationSupervision" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.ReportGenerationSubmit()[pri:17, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.ReportGenerationSubmit()[pri:17, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ReportGenerationSubmit -->
+        <test-method status="SKIP" signature="DataEntryQC()[pri:9, instance:maintest.CandidateCaseRegistration@6cb480]" name="DataEntryQC" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.ClientSubmit" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.DataEntryQC()[pri:9, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.DataEntryQC()[pri:9, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
 at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
 at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
 at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
@@ -367,17 +455,168 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- DataEntryQC -->
-        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest.CandidateCaseRegistration@1952a2d]" name="teardown" is-config="true" duration-ms="0" started-at="2018-11-22T10:34:51Z" finished-at="2018-11-22T10:34:51Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- teardown -->
-        <test-method status="SKIP" signature="VerificationIntiation()[pri:10, instance:maintest.CandidateCaseRegistration@1952a2d]" name="VerificationIntiation" duration-ms="0" started-at="2018-11-22T10:34:51Z" depends-on-methods="maintest.CandidateCaseRegistration.VerificationSupervisor" finished-at="2018-11-22T10:34:51Z">
+        <test-method status="SKIP" signature="ReportGenerationSupervision()[pri:16, instance:maintest.CandidateCaseRegistration@6cb480]" name="ReportGenerationSupervision" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.IDVerification" finished-at="2018-11-23T12:26:35Z">
           <exception class="java.lang.Throwable">
             <message>
-              <![CDATA[Method CandidateCaseRegistration.VerificationIntiation()[pri:10, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods]]>
+              <![CDATA[Method CandidateCaseRegistration.ReportGenerationSupervision()[pri:16, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.VerificationIntiation()[pri:10, instance:maintest.CandidateCaseRegistration@1952a2d] depends on not successfully finished methods
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.ReportGenerationSupervision()[pri:16, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ReportGenerationSupervision -->
+        <test-method status="SKIP" signature="ReportValidation()[pri:19, instance:maintest.CandidateCaseRegistration@6cb480]" name="ReportValidation" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.ReportValidationSupervisor" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.ReportValidation()[pri:19, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.ReportValidation()[pri:19, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ReportValidation -->
+        <test-method status="SKIP" signature="ReportValidationSupervisor()[pri:18, instance:maintest.CandidateCaseRegistration@6cb480]" name="ReportValidationSupervisor" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.ReportGenerationSubmit" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.ReportValidationSupervisor()[pri:18, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.ReportValidationSupervisor()[pri:18, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ReportValidationSupervisor -->
+        <test-method status="SKIP" signature="AddressVerification()[pri:11, instance:maintest.CandidateCaseRegistration@6cb480]" name="AddressVerification" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.VerificationIntiation" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.AddressVerification()[pri:11, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.AddressVerification()[pri:11, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AddressVerification -->
+        <test-method status="SKIP" signature="ClientSubmit()[pri:8, instance:maintest.CandidateCaseRegistration@6cb480]" name="ClientSubmit" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.CandidatedataEntry" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.ClientSubmit()[pri:8, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.ClientSubmit()[pri:8, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ClientSubmit -->
+        <test-method status="SKIP" signature="VerificationIntiation()[pri:10, instance:maintest.CandidateCaseRegistration@6cb480]" name="VerificationIntiation" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.VerificationSupervisor" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.VerificationIntiation()[pri:10, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.VerificationIntiation()[pri:10, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
 at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
 at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
 at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
@@ -402,7 +641,73 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- VerificationIntiation -->
-        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest.CandidateCaseRegistration@1952a2d]" name="afterSuite" is-config="true" duration-ms="267" started-at="2018-11-22T10:34:51Z" finished-at="2018-11-22T10:34:51Z">
+        <test-method status="PASS" signature="teardown()[pri:0, instance:maintest.CandidateCaseRegistration@6cb480]" name="teardown" is-config="true" duration-ms="0" started-at="2018-11-23T12:26:35Z" finished-at="2018-11-23T12:26:35Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teardown -->
+        <test-method status="SKIP" signature="EmploymentVerification()[pri:13, instance:maintest.CandidateCaseRegistration@6cb480]" name="EmploymentVerification" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.VerificationIntiation" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.EmploymentVerification()[pri:13, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.EmploymentVerification()[pri:13, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EmploymentVerification -->
+        <test-method status="SKIP" signature="EducationVerification()[pri:12, instance:maintest.CandidateCaseRegistration@6cb480]" name="EducationVerification" duration-ms="0" started-at="2018-11-23T12:26:35Z" depends-on-methods="maintest.CandidateCaseRegistration.VerificationIntiation" finished-at="2018-11-23T12:26:35Z">
+          <exception class="java.lang.Throwable">
+            <message>
+              <![CDATA[Method CandidateCaseRegistration.EducationVerification()[pri:12, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.Throwable: Method CandidateCaseRegistration.EducationVerification()[pri:12, instance:maintest.CandidateCaseRegistration@6cb480] depends on not successfully finished methods
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:887)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.Throwable -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EducationVerification -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:maintest.CandidateCaseRegistration@6cb480]" name="afterSuite" is-config="true" duration-ms="403" started-at="2018-11-23T12:26:35Z" finished-at="2018-11-23T12:26:35Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterSuite -->

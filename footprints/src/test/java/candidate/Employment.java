@@ -40,6 +40,7 @@ public class Employment extends dataEntryQC.Employment {
 
 	public void docclose() {
 		super.click("ctl00_ContentPlaceHolder1_rdwEmploymentAddDocument_C_btnEmploymentDocumentClose");
+		super.sleep(400);
 	}
 
 	public void saveNext() {

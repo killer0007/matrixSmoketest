@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,10 +32,17 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import candidate.Register;
 import client.VerifyCandidateDetails;
+import dashboard.ReportGeneration;
+import dashboard.ReportValidation;
 import environment.BaseClass;
 import environment.DbConnection;
 import environment.Pages;
 import environment.Utill;
+import verification.Address;
+import verification.Education;
+import verification.Employment;
+import verification.Id;
+import verification.Reference;
 import verification.VerificationInitiate;
 
 public class CandidateCaseRegistration implements Design {
@@ -206,6 +214,7 @@ public class CandidateCaseRegistration implements Design {
 		pages.DeReference().submit();
 		pages.DeId().idcheck();
 		pages.DeId().submit();
+		pages.Utill().waitUntilLoaderisInvisible(100);
 		pages.Home().CaseTracker();
 		pages.CaseTracker().search(refno);
 		pages.CaseTracker().clickcase(refno);
@@ -239,6 +248,7 @@ public class CandidateCaseRegistration implements Design {
 					sf.assertEquals(details.get(i).get("CurrentStage").toString().trim(), "Candidate Flow Before Verification Initiation");
 			}
 		}
+//		pages.Utill().sle
 		pages.CaseTracker().cancel();
 		sf.assertAll();
 	}
@@ -258,6 +268,9 @@ public class CandidateCaseRegistration implements Design {
 		ver.Initiate(refno, "Current/Latest Employment", data.get("Current/Latest Employment"));
 		ver.Initiate(refno, "Reference 1", data.get("Reference 1"));
 		ver.Initiate(refno, "Voter ID", data.get("Voter ID"));
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
 		List<HashMap<String, String>> details=pages.CaseTracker().getcasedata();
 		SoftAssert sf = new SoftAssert();
 		for (int i = 0; i < details.size(); i++) {
@@ -270,7 +283,143 @@ public class CandidateCaseRegistration implements Design {
 		pages.CaseTracker().closeTab();
 		sf.assertAll();
 	}
-	
+	@Test(priority = 11, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void AddressVerification() throws Exception {
+		pages.Home().Logout();
+		pages.Login().userLogin("demov", "Paws@123");
+		pages.Verification().verification();
+		pages.Verification().CurrentAddress(refno);	
+		Address add = new Address(driver,logger);
+		add.Verification();
+		pages.Home().Logout();
+		pages.Login().userLogin("demoempl", "Pass$$123");
+		pages.Verification().verification();
+		pages.Home().CaseTracker();
+		String stage=pages.CaseTracker().getCurrentStage(refno, "Current Address");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+	}
+
+	@Test(priority = 12, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void EducationVerification() throws Exception {
+		Education edu = new Education(driver,logger);
+		pages.Verification().verification();
+		pages.Verification().UGone(refno);
+		edu.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "UG1");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+	}
+	@Test(priority = 13, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void EmploymentVerification() throws Exception {
+		Employment emp = new Employment(driver,logger);
+		pages.Verification().verification();
+		pages.Verification().CurrentEmployment(refno);
+		emp.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "Current/Latest Employment");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+	}
+	@Test(priority = 14, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void ReferenceVerification() throws Exception {
+		Reference ref = new Reference(driver,logger);
+		pages.Verification().verification();
+		pages.Verification().Reference(refno);
+		ref.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "Reference 1");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+	}
+	@Test(priority = 15, enabled = true, dependsOnMethods = "VerificationIntiation")
+	public void IDVerification() throws Exception {
+		Id id = new Id(driver,logger);
+		pages.Verification().verification();
+		pages.Verification().VoterID(refno);
+		id.Verification();
+		pages.Home().CaseTracker();
+		String stage = pages.CaseTracker().getCurrentStage(refno, "Voter ID");
+		pages.CaseTracker().cancel();
+		assertEquals(stage, "Report Generation Assignment Pending");
+	}
+	@Test(priority = 16, enabled = true, dependsOnMethods = "IDVerification")
+	public void ReportGenerationSupervision() throws Exception {
+		pages.ReportGenerationSupervision().reportGenerationSupervision();
+		pages.ReportGenerationSupervision().assign(refno, "demoempl");
+		List<String> components= new ArrayList<String>(Arrays.asList(component));
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		SoftAssert sf = new SoftAssert();
+		List<HashMap<String, String>> data =pages.CaseTracker().getcasedata();
+		for (HashMap<String, String> d:data) {
+			if(components.contains(d.get("ComponentName"))) {
+				sf.assertEquals(d.get("CurrentStage"), "Report Generation Pending");
+			}
+		}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
+	}
+	@Test(priority = 17, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
+	public void ReportGenerationSubmit() throws Exception {
+		pages.ReportGeneration().Search(refno);
+		pages.ReportGeneration().Select(refno);
+		ReportGeneration reportgeneration=pages.ReportGeneration();
+		pages.Utill().SwitchDefault();
+		reportgeneration.GenerateReport();
+		List<String> op=reportgeneration.getReportComponents();
+		List<String> components = new ArrayList<>(Arrays.asList(component));
+		Collections.sort(op);
+		Collections.sort(components);
+		assertEquals(op, components);
+		reportgeneration.GenerateReportCheckbox();
+		reportgeneration.ReportComments("completed");
+		reportgeneration.ReportTemplate("New Standard Template");
+		reportgeneration.CaseStatus("Clear");
+		reportgeneration.submit();
+	}
+	@Test(priority = 18, enabled = true, dependsOnMethods = "ReportGenerationSubmit")
+	public void ReportValidationSupervisor() throws Exception {
+		pages.ReportValidationSupervision().reportValidationSupervision();
+		pages.ReportValidationSupervision().assign(refno, "demoempl");
+		List<String> components= new ArrayList<String>(Arrays.asList(component));
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		SoftAssert sf = new SoftAssert();
+		List<HashMap<String, String>> data =pages.CaseTracker().getcasedata();
+		for (HashMap<String, String> d:data) {
+			if(components.contains(d.get("ComponentName"))) {
+				sf.assertEquals(d.get("CurrentStage"), "Report Generation QC Pending");
+			}
+		}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
+	}
+	@Test(priority = 19, enabled = true, dependsOnMethods = "ReportValidationSupervisor")
+	public void ReportValidation() throws Exception {
+		List<String> components= new ArrayList<String>(Arrays.asList(component));
+		ReportValidation reportValidation=pages.ReportValidation();
+		reportValidation.reportValidation();
+		reportValidation.Search(refno);
+		reportValidation.Select(refno);
+		reportValidation.GenerateReport();
+		reportValidation.PublishReport();
+		pages.Home().CaseTracker();
+		pages.CaseTracker().search(refno);
+		pages.CaseTracker().clickcase(refno);
+		SoftAssert sf = new SoftAssert();
+		List<HashMap<String, String>> data =pages.CaseTracker().getcasedata();
+		for (HashMap<String, String> d:data) {
+			if(components.contains(d.get("ComponentName"))) {
+				sf.assertEquals(d.get("CurrentStage"), "Closed");
+			}
+		}
+		pages.CaseTracker().cancel();
+		sf.assertAll();
+	}
 	/**
 	 * Takes test Result as input and Log the results into reports
 	 */
@@ -324,6 +473,7 @@ public class CandidateCaseRegistration implements Design {
 		map.put("Credit Check 1", "Online");
 		map.put("Passport", "Online");
 		map.put("Aadhaar Card", "Online");
+		map.put("Voter ID", "Online");
 		map.put("Panel1", "In Person");
 		return map;
 	}

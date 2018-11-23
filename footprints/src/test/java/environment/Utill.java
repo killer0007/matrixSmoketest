@@ -1158,7 +1158,8 @@ public class Utill {
 			public Boolean apply(WebDriver d) {
 //				System.out.println("waiting for data");
 				logger.log(Status.INFO, "waiting for data");
-				return d.findElement(By.xpath(paths)).getText().length() != 0;
+				return getText(paths).length() != 0;
+//				return d.findElement(By.xpath(paths)).getText().length() != 0;
 			}
 		});
 	}

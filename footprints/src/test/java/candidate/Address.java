@@ -40,6 +40,7 @@ public class Address extends dataEntryQC.Address {
 
 	public void docclose() {
 		super.click("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnDocumentCancel");
+		super.sleep(400);
 	}
 
 	public void saveNext() {
