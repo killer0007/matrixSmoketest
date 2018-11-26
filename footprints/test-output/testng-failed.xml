@@ -3,36 +3,17 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="maintest.CandidateCaseRegistration">
+      <class name="maintest2.Basic">
         <methods>
-          <include name="ClientSubmit"/>
-          <include name="EmploymentVerification"/>
-          <include name="beforeSuit"/>
-          <include name="Address"/>
-          <include name="CandidateInitiate"/>
-          <include name="CandidatedataEntry"/>
-          <include name="VerificationSupervisor"/>
-          <include name="DataEntryQC"/>
-          <include name="ReportValidationSupervisor"/>
-          <include name="teardown"/>
-          <include name="Education"/>
-          <include name="Employment"/>
-          <include name="tearDown"/>
-          <include name="Reference"/>
-          <include name="beforetest"/>
-          <include name="AddressVerification"/>
-          <include name="VerificationIntiation"/>
-          <include name="afterSuite"/>
           <include name="setup"/>
-          <include name="ReportValidation"/>
-          <include name="ReportGenerationSupervision"/>
-          <include name="ReportGenerationSubmit"/>
-          <include name="EducationVerification"/>
-          <include name="IDVerification"/>
-          <include name="VoterId"/>
-          <include name="ReferenceVerification"/>
+          <include name="tearDown"/>
+          <include name="Login"/>
+          <include name="teardown"/>
+          <include name="beforeSuit"/>
+          <include name="afterSuite"/>
+          <include name="beforetest"/>
         </methods>
-      </class> <!-- maintest.CandidateCaseRegistration -->
+      </class> <!-- maintest2.Basic -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

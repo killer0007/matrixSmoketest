@@ -10,7 +10,7 @@ import org.testng.Reporter;
 public class Listener implements ITestListener { 
  
 	// This belongs to ISuiteListener and will execute before the Suite start
- 
+  
 	
 	// This belongs to ITestListener and will execute before starting of Test set/batch 
 

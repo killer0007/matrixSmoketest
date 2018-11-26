@@ -906,13 +906,14 @@ public class Utill {
 	}
 
 	public void waitUntilLoaderisInvisible(String id, int TimeOut) {
+		final String path =id; 
 		try {
 			FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
 					.pollingEvery(Duration.ofMillis(200)).ignoring(StaleElementReferenceException.class);
 			wait.until(new Function<WebDriver, WebElement>() {
 				public WebElement apply(WebDriver driver) {
 					Pages pages= new Pages(driver, logger);
-					WebElement ele = pages.Utill().find(id);
+					WebElement ele = pages.Utill().find(path);
 					StringBuffer res = new StringBuffer(ele.getCssValue("display"));
 					// String res = ele.getCssValue("display");
 					if (!res.toString().equals("block")) {

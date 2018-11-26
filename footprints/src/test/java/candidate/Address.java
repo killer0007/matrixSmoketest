@@ -16,11 +16,18 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
 public class Address extends dataEntryQC.Address {
-
+/**
+ * This is page design for Address sub check in candidate data entry screen
+ * Takes Webdriver and logger as input and initialize the constructor
+ * @param driver WebDriver
+ * @param logger Report logger
+ */
 	public Address(WebDriver driver, ExtentTest logger) {
 		super(driver, logger);
 	}
-
+/**
+ * Click on Current address hyper link on candidate data entry screen
+ */
 	public void addresscheck() {
 		super.SwitchDefault();
 		if (!this.getTitle().equals("Address")) {
@@ -29,21 +36,30 @@ public class Address extends dataEntryQC.Address {
 		}
 		super.SwitchFramebyIndex(0);
 	}
-
+/**
+ * returns the title of subcheck to be opened
+ * @return name subcheck name
+ */
 	public String getTitle() {
 		return super.getText("//*[@id='tabStrip']/div/ul/li/a/span/span/span");
 	}
-
+/**
+ * Performs click action on view upload button
+ */
 	public void viewUpload() {
 		super.click("ctl00_ContentPlaceHolder1_btnAddressDocument_input");
 		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1",100);
 	}
-
+/**
+ * Close document upload pop up
+ */
 	public void docclose() {
 		super.click("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnDocumentCancel");
 		super.sleep(400);
 	}
-
+/**
+ * Performs click action on savenext button
+ */
 	public void saveNext() {
 		try {
 			super.click("ctl00_ContentPlaceHolder1_btnAddressSubmit_input");
@@ -56,6 +72,9 @@ public class Address extends dataEntryQC.Address {
 		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1",100);
 		super.SwitchDefault();
 	}
+	/**
+	 * Performs click action on add document button in document upload screen
+	 */
 	public void AddDocument() {
 		click("ctl00_ContentPlaceHolder1_rwmAddressDocument_C_btnAddDocument_input");
 		super.sleep(100);
@@ -102,12 +121,39 @@ public class Address extends dataEntryQC.Address {
 		}
 		
 	}
+	/**
+	 * returns the color of Current address text
+	 * @return color of Current address text
+	 */
 	public String getStatusColor() {
 		return super.getCssValue("//a[text()='Current Address']/../following-sibling::td/span", "color");
 	}
+	/**
+	 * Takes the subcheck name as input and return the text color
+	 * @param subcheck subcomponent name
+	 * @return color of given subcheck
+	 */
+	public String getStatusColor(String subcheck) {
+		return super.getCssValue("//a[text()='"+subcheck+"']/../following-sibling::td/span", "color");
+	}
+	/**
+	 * Returns the Status of current address check in candidate data entry screen
+	 * @return status of current address
+	 */
 	public String getStatus() {
 		return super.getText("//a[text()='Current Address']/../following-sibling::td/span");
 	}
+	/**
+	 * Takes subcheck name as input and return the current status 
+	 * @param subcheck subcomponent name
+	 * @return status of given sub check
+	 */
+	public String getStatus(String subcheck) {
+		return super.getText("//a[text()='"+subcheck+"']/../following-sibling::td/span");
+	}
+	/**
+	 * Takes input data from address.property file and completes the data entry of current address check
+	 */
 	public void CurrentAddress() throws Exception {
 		Properties pro = candidatedata("address");
 		this.addresscheck();
@@ -131,6 +177,10 @@ public class Address extends dataEntryQC.Address {
 		this.docclose();
 		this.saveNext();
 	}
+	/**
+	 * collects the address check data and return as map
+	 * @return address data which given at the time of candidate data entry
+	 */
 	public Map<String, String> getCurrentAddress() throws Exception{
 		this.addresscheck();
 		Map<String , String> map=new LinkedHashMap<String, String>();
@@ -154,6 +204,11 @@ public class Address extends dataEntryQC.Address {
 		this.docclose();
 		return map;
 	}
+	/**
+	 * Takes the address.property file and convert it as map object and return
+	 * @return details of current address from file
+	 * @throws Exception File not found
+	 */
 	public Map<String, String> filedata() throws Exception{
 		Map<String , String> map=new LinkedHashMap<String, String>();
 		Properties pro= super.candidatedata("address");

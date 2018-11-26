@@ -18,19 +18,32 @@ import com.aventstack.extentreports.Status;
 import environment.Utill;
 
 public class Basic extends Utill {
-
+/**
+ * This is page design for basic details in candidate data entry
+ * @param driver WebDriver
+ * @param logger Report logger
+ */
 	public Basic(WebDriver driver, ExtentTest logger) {
 		super(driver, logger);
 	}
-
+/**
+ * Takes name as input and pass it to First name field
+ * @param firstName of candidate
+ */
 	public void FatherFirstName(String firstName) {
 		super.sendKeys("ctl00_ContentPlaceHolder1_txtFatherFirstName", firstName);
 	}
-
+/**
+ * Takes name as input and pass it to last name field
+ * @param lastName of candidate
+ */
 	public void FatherLastName(String lastName) {
 		super.sendKeys("ctl00_ContentPlaceHolder1_txtFatherLastName", lastName);
 	}
-
+/**
+ * Takes the boolean value true for fresher is yes
+ * @param value fresher or not
+ */
 	public void Fresher(boolean value) {
 		if (value) {
 			super.click("ctl00_ContentPlaceHolder1_rblFresher_0");
@@ -38,32 +51,52 @@ public class Basic extends Utill {
 			super.confirmAlert();
 		}
 	}
-
+/**
+ * Takes mobile number as input and pass it to Mobile no field
+ * @param mobno candidates mobile number
+ */
 	public void MobileNumber(String mobno) {
 		super.sendKeys("ctl00_ContentPlaceHolder1_txtMobileNumber1", mobno);
 	}
-
+/**
+ * Takes land line number as input and pass it to landline number field
+ * @param no land line number
+ */
 	public void LandlineNumber(String no) {
 		super.sendKeys("ctl00_ContentPlaceHolder1_txtLandLine", no);
 	}
-
+/**
+ * Takes contact number as input and pass it to Emergency contact number field
+ * @param no Emergency contact number
+ */
 	public void EmergencyContactNumber(String no) {
 		super.sendKeys("ctl00_ContentPlaceHolder1_txtEmergencyContact", no);
 	}
-
+/**
+ * Takes contact person name as input and pass it to Emergency contact person name field
+ * @param name contact person name
+ */
 	public void EmergencyContactPerson(String name) {
 		super.sendKeys("ctl00_ContentPlaceHolder1_txtContactPerson", name);
 	}
-
+/**
+ * Takes nationality as input and pass it to Nationality field
+ * @param nation Nationality
+ */
 	public void Nationality(String nation) {
 		super.sendKeys("ctl00_ContentPlaceHolder1_txtNationality", nation);
 	}
-
+/**
+ * Performs click action on Proceed button
+ */
 	public void Proceed() {
 		super.click("btnApplyChanges_input");
 		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 50);
 	}
-
+/**
+ * Takes Gender type as input and select the gender type
+ * @param gender type
+ */
 	public void Gender(String gender) {
 		String value = super.getValue("ctl00_ContentPlaceHolder1_ddlGender_Input");
 		if (!value.equals(gender)) {
@@ -73,7 +106,10 @@ public class Basic extends Utill {
 
 		}
 	}
-
+/**
+ * Takes marital status as input and select the status
+ * @param status maritial status
+ */
 	public void MaritalStatus(String status) {
 		String value = super.getValue("ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input");
 		if (!value.equals(status)) {
@@ -92,7 +128,10 @@ public class Basic extends Utill {
 
 	}
 	
-
+/**
+ * Takes Employee Id as input and pas it to Employee ID filed
+ * @param id Employee ID
+ */
 	public void EmplyeeID(String id) {
 		String value = super.getValue("ctl00_ContentPlaceHolder1_ddlIDType_Input");
 		if (!value.equals("Employee ID")) {
@@ -102,7 +141,10 @@ public class Basic extends Utill {
 		}
 		super.sendKeys("ctl00_ContentPlaceHolder1_txtClientCandidateID", id);
 	}
-
+/**
+ * Takes candidate Id as input and pass it to candidate Id field
+ * @param id candidate id
+ */
 	public void CandidateID(String id) {
 		String value = super.getText("ctl00_ContentPlaceHolder1_ddlIDType_Input");
 		if (!value.equals("Candidate ID")) {
@@ -113,7 +155,9 @@ public class Basic extends Utill {
 		}
 		super.sendKeys("ctl00_ContentPlaceHolder1_txtClientCandidateID", id);
 	}
-
+/**
+ * Performs click action on save next button
+ */
 	public void SaveNext() {
 		super.click("ctl00_ContentPlaceHolder1_btnSaveNext_input");
 		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 100);
@@ -142,36 +186,50 @@ public class Basic extends Utill {
 		this.EmplyeeID(data.getProperty("EmplyeeID"));
 		this.SaveNext();
 	}
-
+/**
+ * returns title of current sub check
+ */
 	public String getTitle() {
 		return super.getText("//*[@id='tabStrip']/div/ul/li/a/span/span/span");
 	}
-
+/**
+ * Performs click on declaration hyper link
+ */
 	public void LOA() {
 		if (!this.getTitle().equals("LOA")) {
 			super.click("linkText:Declaration");
 			super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 10);
 		}
 	}
-
+/**
+ * Performs click action in Agree button in declaration page
+ */
 	public void Agree() {
 		super.click("chkAgree");
 		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 50);
 	}
-
+	/**
+	 * Takes comments as input and pass it to comments field
+	 */
 	public void comments(String com) {
 		super.sendKeys("txtCandidateComment", com);
 	}
-
+/**
+ * Performs click action on case document upload button
+ */
 	public void Upload() {
 		super.click("btnCaseDocument");
 		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 100);
 	}
-
+/**
+ * close upload pop up
+ */
 	public void docclose() {
 		super.click("class:rwCloseButton");
 	}
-
+/**
+ * Performs click action on save next button
+ */
 	public void saveNext() {
 		try {
 			super.sleep(500);
@@ -185,7 +243,9 @@ public class Basic extends Utill {
 		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 100);
 		super.SwitchDefault();
 	}
-
+/**
+ * Perform click action on add document button on the document upload screen
+ */
 	public void AddDocument() {
 		click("rwCaseDocument_C_btnAddCaseDocument_input");
 		waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 30);
@@ -233,7 +293,11 @@ public class Basic extends Utill {
 			throw new NotFoundException(doctype);
 		}
 	}
-
+/**
+ * Takes file name name and file type as input and waits until file to be uploaded
+ * @param doctype document type name
+ * @param filepath uploaded file path
+ */
 	public void WaitforFileUpdate(String doctype, String filepath) {
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		String file = new File(filepath).getName();
@@ -242,7 +306,9 @@ public class Basic extends Utill {
 		String name = getText("//*[text()='" + doctype + "']/../td[5]//div/ul/li[1]/span/span");
 		logger.log(Status.INFO, name);
 	}
-
+/**
+ * Performs click action on submit cif button
+ */
 	public void submitCIF() {
 		try {
 			super.sleep(400);
@@ -256,7 +322,9 @@ public class Basic extends Utill {
 
 		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 50);
 	}
-
+/**
+ * compete the declaration page activities
+ */
 	public void Declaration() {
 		this.LOA();
 		this.Agree();
@@ -274,7 +342,9 @@ public class Basic extends Utill {
 		// System.out.println(msg);
 		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 40);
 	}
-
+/**
+ * click on confirmation alert pop up
+ */
 	public String confirmAlert() {
 		By loc = By.id("cnsubmit");
 		WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -285,11 +355,17 @@ public class Basic extends Utill {
 		return msg.trim();
 
 	}
-
+	/**
+	 * returns the color of Basic Details text
+	 * @return color of Basic Details text
+	 */
 	public String getStatusColor() {
 		return super.getCssValue("//a[text()='Basic Details']/../following-sibling::td/span", "color");
 	}
-
+	/**
+	 * Returns the Status of  Basic Details check in candidate data entry screen
+	 * @return status of  Basic Details
+	 */
 	public String getStatus() {
 		return super.getText("//a[text()='Basic Details']/../following-sibling::td/span");
 	}

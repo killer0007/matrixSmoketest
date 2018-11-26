@@ -1,34 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="regression testing">
-	<!-- smoketest,spcase registration, insuff -->
-	<!-- <listeners> -->
-	<!-- <listener class-name = "environment.CustomReporter" /> -->
-	<!-- </listeners> -->
+
 	<test name="FullFlow">
 		<classes>
-<!-- 			<class name="MAINTEST.SPCASEREG"/> -->
-<!-- 			<class name="maintest.CandidateCaseRegistration" /> -->
 			<class name="maintest.FullFlow" />
 		</classes>
 	</test>
-<!-- 	<test name="ServiceProviderCaseRegistration"> -->
-<!-- 		<classes> -->
-<!-- 			<class name="maintest.SPcasereg"> -->
-<!-- 				<methods> -->
-<!-- 					<exclude name="TC_SPCR_012" /> -->
-<!-- 					<exclude name="TC_SPCR_013" /> -->
-<!-- 					<exclude name="TC_SPCR_014" /> -->
-<!-- 					<exclude name="TC_SPCR_015" /> -->
-<!-- 					<exclude name="TC_SPCR_016" /> -->
-<!-- 					<exclude name="TC_SPCR_017" /> -->
-<!-- 					<exclude name="TC_SPCR_018" /> -->
-<!-- 					<exclude name="TC_SPCR_019" /> -->
-<!-- 					<exclude name="TC_SPCR_020" /> -->
-<!-- 					<exclude name="TC_SPCR_021" /> -->
-<!-- 				</methods> -->
-<!-- 			</class> -->
-<!-- 		</classes> -->
-<!-- 	</test> -->
-	
+	<test name="CLIENT CASE">
+		<classes>
+			<class name="maintest.ClientCaseReg" />
+		</classes>
+	</test>
+	<test name="CANDIDATE CASE">
+		<classes>
+			<class name="maintest.CandidateCaseRegistration" />
+		</classes>
+	</test>
+	<test name="ServiceProviderCaseRegistration">
+		<classes>
+			<class name="maintest.SPcasereg">
+				<methods>
+					<exclude name="TC_SPCR_012" />
+					<exclude name="TC_SPCR_013" />
+					<exclude name="TC_SPCR_014" />
+					<exclude name="TC_SPCR_015" />
+					<exclude name="TC_SPCR_016" />
+					<exclude name="TC_SPCR_017" />
+					<exclude name="TC_SPCR_018" />
+					<exclude name="TC_SPCR_019" />
+					<exclude name="TC_SPCR_020" />
+					<exclude name="TC_SPCR_021" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
 </suite> <!-- Suite -->

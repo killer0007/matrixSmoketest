@@ -30,7 +30,6 @@ import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-
 import candidate.Register;
 import client.VerifyCandidateDetails;
 import dashboard.ReportGeneration;

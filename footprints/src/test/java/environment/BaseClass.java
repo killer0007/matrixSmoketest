@@ -13,7 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class BaseClass {
-
+ 
 	public WebDriver driver;
 	static Properties loc;
 	static Properties val;
@@ -36,12 +36,12 @@ public class BaseClass {
 //					config.put("plugins.always_open_pdf_externally", true);
 			chromoption.setExperimentalOption("prefs", config);
 			chromoption.addArguments("--disable-notifications");
-//			chromoption.addArguments("--disable-gpu");
-//			chromoption.setHeadless(true);
-			chromoption.addArguments("start-maximized");
+			chromoption.addArguments("--disable-gpu");
+			chromoption.setHeadless(true);
+//			chromoption.addArguments("start-maximized");
 			driver = new ChromeDriver(chromoption);
 			Dimension d = new Dimension(1382, 744);
-//			driver.manage().window().setSize(d);
+			driver.manage().window().setSize(d);
 //			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(500, TimeUnit.MILLISECONDS);
 		}
