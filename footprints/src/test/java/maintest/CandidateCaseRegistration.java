@@ -21,6 +21,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import com.aventstack.extentreports.ExtentReports;
@@ -44,7 +45,7 @@ import verification.Employment;
 import verification.Id;
 import verification.Reference;
 import verification.VerificationInitiate;
-
+@Listeners(environment.Listener.class)
 public class CandidateCaseRegistration implements Design {
 
 	WebDriver driver;
@@ -127,7 +128,7 @@ public class CandidateCaseRegistration implements Design {
 		register.unCheckAll();
 		register.selectCheck(component);
 		register.click("btnApplyChanges_input");
-		register.waitUntilLoaderisInvisible(100);
+		register.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1",100);
 		SoftAssert sf = new SoftAssert();
 		pages.Basic().basic();
 		sf.assertEquals(pages.Basic().getStatusColor(), "rgba(0, 128, 0, 1)");
@@ -280,7 +281,7 @@ public class CandidateCaseRegistration implements Design {
 					sf.assertEquals(details.get(i).get("CurrentStage").toString().trim(), "Candidate Flow After Verification Initiation");
 			}
 		}
-		pages.CaseTracker().closeTab();
+		pages.CaseTracker().cancel();
 		sf.assertAll();
 	}
 	@Test(priority = 11, enabled = true, dependsOnMethods = "VerificationIntiation")
@@ -364,6 +365,7 @@ public class CandidateCaseRegistration implements Design {
 	}
 	@Test(priority = 17, enabled = true, dependsOnMethods = "ReportGenerationSupervision")
 	public void ReportGenerationSubmit() throws Exception {
+		pages.ReportGeneration().reportGeneration();
 		pages.ReportGeneration().Search(refno);
 		pages.ReportGeneration().Select(refno);
 		ReportGeneration reportgeneration=pages.ReportGeneration();
@@ -431,10 +433,14 @@ public class CandidateCaseRegistration implements Design {
 					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 			logger.log(Status.INFO, refno);
 			//pages.Utill().GoTo("http://192.168.2.17:97/Web/dashboard.aspx");
-		} else {
+		} 
+		else if(result.getStatus()==ITestResult.SKIP){
+			logger.log(Status.SKIP, "Test Case SKIPPED IS " + result.getName());
+		}
+		else {
 			logger.pass(method.getName() + " completed");
 		}
-
+		extent.flush();
 	}
 
 	/**
@@ -444,8 +450,8 @@ public class CandidateCaseRegistration implements Design {
 	public void teardown() throws Exception {
 		System.out.println("----------------------------------------------");
 		System.out.println(refno);
-//		if (driver != null)
-//			pages.Utill().closeAllBrowsers();
+		if (driver != null)
+			pages.Utill().closeAllBrowsers();
 	}
 
 	/**

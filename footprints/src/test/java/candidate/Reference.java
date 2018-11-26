@@ -8,6 +8,7 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
@@ -21,7 +22,7 @@ public class Reference extends dataEntryQC.Reference {
 		super.SwitchDefault();
 		if (!this.getTitle().equals("Reference")) {
 			super.click("linkText:Reference 1");
-			super.waitUntilLoaderisInvisible(10);
+			super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1",10);
 		}
 		super.SwitchFramebyIndex(0);
 	}
@@ -32,7 +33,7 @@ public class Reference extends dataEntryQC.Reference {
 
 	public void viewUpload() {
 		super.click("ctl00_ContentPlaceHolder1_btnRefDocument_input");
-		super.waitUntilLoaderisInvisible(100);
+		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1",100);
 	}
 
 	public void docclose() {
@@ -41,13 +42,20 @@ public class Reference extends dataEntryQC.Reference {
 	}
 
 	public void saveNext() {
-		super.click("ctl00_ContentPlaceHolder1_btnRefSaveSubmit_input");
-		super.waitUntilLoaderisInvisible(100);
+		try {
+			super.click("ctl00_ContentPlaceHolder1_btnRefSaveSubmit_input");
+		} catch (WebDriverException e) {
+			System.out.println(e.getMessage());
+			logger.log(Status.WARNING, e.getMessage().toString());
+			super.sleep(300);
+			super.click("ctl00_ContentPlaceHolder1_btnRefSaveSubmit_input");
+		}
+		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1",100);
 		super.SwitchDefault();
 	}
 	public void AddDocument() {
 		click("ctl00_ContentPlaceHolder1_rdwRefAddDocument_C_btnAddDocument_Ref_input");
-		waitUntilLoaderisInvisible(30);
+		waitUntilLoaderisInvisible("RadAjaxLoadingPanel1",30);
 	}
 	
 	/**
@@ -95,14 +103,14 @@ public class Reference extends dataEntryQC.Reference {
 			boolean re =super.isSelected("ctl00_ContentPlaceHolder1_rbtReferenceType_0");
 			if(!re) {
 				super.click("ctl00_ContentPlaceHolder1_rbtReferenceType_0");
-				super.waitUntilLoaderisInvisible(50);
+				super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1",50);
 			}
 		}
 		else if(type.equals("Professional")) {
 			boolean re =super.isSelected("ctl00_ContentPlaceHolder1_rbtReferenceType_1");
 			if(!re) {
 				super.click("ctl00_ContentPlaceHolder1_rbtReferenceType_1");
-				super.waitUntilLoaderisInvisible(50);
+				super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1",50);
 			}
 		}
 	}

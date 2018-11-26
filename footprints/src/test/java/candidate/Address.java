@@ -9,6 +9,7 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
 import com.aventstack.extentreports.ExtentTest;
@@ -24,7 +25,7 @@ public class Address extends dataEntryQC.Address {
 		super.SwitchDefault();
 		if (!this.getTitle().equals("Address")) {
 			super.click("linkText:Current Address");
-			super.waitUntilLoaderisInvisible(10);
+			super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1",10);
 		}
 		super.SwitchFramebyIndex(0);
 	}
@@ -35,7 +36,7 @@ public class Address extends dataEntryQC.Address {
 
 	public void viewUpload() {
 		super.click("ctl00_ContentPlaceHolder1_btnAddressDocument_input");
-		super.waitUntilLoaderisInvisible(100);
+		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1",100);
 	}
 
 	public void docclose() {
@@ -44,8 +45,15 @@ public class Address extends dataEntryQC.Address {
 	}
 
 	public void saveNext() {
-		super.click("ctl00_ContentPlaceHolder1_btnAddressSubmit_input");
-		super.waitUntilLoaderisInvisible(100);
+		try {
+			super.click("ctl00_ContentPlaceHolder1_btnAddressSubmit_input");
+		} catch (WebDriverException e) {
+			System.out.println(e.getMessage());
+			logger.log(Status.WARNING, e.getMessage().toString());
+			super.sleep(300);
+			super.click("ctl00_ContentPlaceHolder1_btnAddressSubmit_input");
+		}
+		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1",100);
 		super.SwitchDefault();
 	}
 	public void AddDocument() {

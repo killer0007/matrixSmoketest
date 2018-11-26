@@ -85,10 +85,11 @@ public class VerifyCandidateDetails extends Utill {
 		super.waitUntilLoaderisInvisible(50);
 	}
 	public void priority(String priority) {
+		super.scrollTo("ctl00_ContentPlaceHolder1_rwVerificationReadyComponent_C_ddlPriority_Input");
 	String value =super.getValue("ctl00_ContentPlaceHolder1_rwVerificationReadyComponent_C_ddlPriority_Input")	;
 	if(!value.equals(priority)) {
 		super.click("ctl00_ContentPlaceHolder1_rwVerificationReadyComponent_C_ddlPriority_Input");
-		super.sleep(300);
+		super.sleep(1000);
 		super.click("//div[@id='ctl00_ContentPlaceHolder1_rwVerificationReadyComponent_C_ddlPriority_DropDown']/div/ul/li[text()='"+priority+"']");
 	}
 	}

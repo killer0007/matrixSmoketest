@@ -49,6 +49,11 @@ public class Register extends Utill {
 	public synchronized void EmailID(String email) throws Exception {
 		email=emailGererator(email);
 		super.sendKeys("ctl00_ContentPlaceHolder1_txtEmailID", email+"@ggmail.com");
+		super.click("ctl00_ContentPlaceHolder1_txtPass");
+		super.sleep(200);
+		String alert = super.getText("emailID");
+		if(!alert.equals("Email ID is valid"))
+			throw new Exception(alert);
 	}
 
 	public void Password(String password) {

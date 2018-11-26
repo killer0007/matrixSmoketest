@@ -7,6 +7,7 @@ import java.util.Properties;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -33,7 +34,7 @@ public class Basic extends Utill {
 	public void Fresher(boolean value) {
 		if (value) {
 			super.click("ctl00_ContentPlaceHolder1_rblFresher_0");
-			super.waitUntilLoaderisInvisible(100);
+			super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 100);
 			super.confirmAlert();
 		}
 	}
@@ -60,31 +61,40 @@ public class Basic extends Utill {
 
 	public void Proceed() {
 		super.click("btnApplyChanges_input");
-		super.waitUntilLoaderisInvisible(50);
+		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 50);
 	}
 
 	public void Gender(String gender) {
-		String value = super.getText("ctl00_ContentPlaceHolder1_ddlGender_Input");
+		String value = super.getValue("ctl00_ContentPlaceHolder1_ddlGender_Input");
 		if (!value.equals(gender)) {
 			super.click("ctl00_ContentPlaceHolder1_ddlGender_Input");
 			super.sleep(500);
 			super.click("//div[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']/div/ul/li[text()='" + gender + "']");
+
 		}
 	}
 
 	public void MaritalStatus(String status) {
-		String value = super.getText("ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input");
+		String value = super.getValue("ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input");
 		if (!value.equals(status)) {
-			super.click("ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input");
+			try {
+				super.click("ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input");
+			} catch (WebDriverException e) {
+				System.out.println(e.getMessage());
+				logger.log(Status.WARNING, e.getMessage());
+				super.sleep(700);
+				super.click("ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input");
+			}
 			super.sleep(500);
 			super.click("//div[@id='ctl00_ContentPlaceHolder1_ddlMaritalStatus_DropDown']/div/ul/li[text()='" + status
 					+ "']");
 		}
 
 	}
+	
 
 	public void EmplyeeID(String id) {
-		String value = super.getText("ctl00_ContentPlaceHolder1_ddlIDType_Input");
+		String value = super.getValue("ctl00_ContentPlaceHolder1_ddlIDType_Input");
 		if (!value.equals("Employee ID")) {
 			super.click("ctl00_ContentPlaceHolder1_ddlIDType_Input");
 			super.sleep(500);
@@ -106,7 +116,7 @@ public class Basic extends Utill {
 
 	public void SaveNext() {
 		super.click("ctl00_ContentPlaceHolder1_btnSaveNext_input");
-		super.waitUntilLoaderisInvisible(100);
+		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 100);
 		super.SwitchDefault();
 	}
 
@@ -116,8 +126,8 @@ public class Basic extends Utill {
 	public void basic() {
 		Properties data = super.candidatedata("basic");
 		if (!this.getTitle().equals("Basic Details")) {
-			super.click("gvComponentList_ctl00_ctl05_lnkComponent");
-			super.waitUntilLoaderisInvisible(10);
+			super.click("linkText:Basic Details");
+			super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 10);
 		}
 		super.SwitchFramebyIndex(0);
 		this.FatherFirstName(data.getProperty("FatherFirstName"));
@@ -140,13 +150,13 @@ public class Basic extends Utill {
 	public void LOA() {
 		if (!this.getTitle().equals("LOA")) {
 			super.click("linkText:Declaration");
-			super.waitUntilLoaderisInvisible(10);
+			super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 10);
 		}
 	}
 
 	public void Agree() {
 		super.click("chkAgree");
-		super.waitUntilLoaderisInvisible(50);
+		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 50);
 	}
 
 	public void comments(String com) {
@@ -155,7 +165,7 @@ public class Basic extends Utill {
 
 	public void Upload() {
 		super.click("btnCaseDocument");
-		super.waitUntilLoaderisInvisible(100);
+		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 100);
 	}
 
 	public void docclose() {
@@ -163,14 +173,22 @@ public class Basic extends Utill {
 	}
 
 	public void saveNext() {
-		super.click("ctl00_ContentPlaceHolder1_btnRefSaveSubmit_input");
-		super.waitUntilLoaderisInvisible(100);
+		try {
+			super.sleep(500);
+			super.click("ctl00_ContentPlaceHolder1_btnRefSaveSubmit_input");
+		} catch (WebDriverException e) {
+			System.out.println(e.getMessage());
+			logger.log(Status.WARNING, e.getMessage().toString());
+			super.sleep(300);
+			super.click("ctl00_ContentPlaceHolder1_btnRefSaveSubmit_input");
+		}
+		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 100);
 		super.SwitchDefault();
 	}
 
 	public void AddDocument() {
 		click("rwCaseDocument_C_btnAddCaseDocument_input");
-		waitUntilLoaderisInvisible(30);
+		waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 30);
 	}
 
 	/**
@@ -226,8 +244,17 @@ public class Basic extends Utill {
 	}
 
 	public void submitCIF() {
-		super.click("btnSave");
-		super.waitUntilLoaderisInvisible(50);
+		try {
+			super.sleep(400);
+			super.click("btnSave");
+		} catch (WebDriverException e) {
+			System.out.println(e.getMessage());
+			logger.log(Status.WARNING, e.getMessage().toString());
+			super.sleep(300);
+			super.click("btnSave");
+		}
+
+		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 50);
 	}
 
 	public void Declaration() {
@@ -239,13 +266,13 @@ public class Basic extends Utill {
 		this.docclose();
 		this.submitCIF();
 		String warning = this.confirmAlert();
-		//System.out.println(warning);
+		// System.out.println(warning);
 		logger.log(Status.INFO, warning);
-		super.waitUntilLoaderisInvisible(40);
+		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 40);
 		String msg = this.confirmAlert();
 		logger.log(Status.INFO, msg);
-		//System.out.println(msg);
-		super.waitUntilLoaderisInvisible(40);
+		// System.out.println(msg);
+		super.waitUntilLoaderisInvisible("RadAjaxLoadingPanel1", 40);
 	}
 
 	public String confirmAlert() {

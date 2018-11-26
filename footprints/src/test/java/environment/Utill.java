@@ -22,17 +22,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Random;
-import java.util.Set;
-import java.util.StringTokenizer;
+import java.util.*;
 import java.util.function.Function;
 import org.openqa.selenium.JavascriptExecutor;
 import javax.imageio.ImageIO;
@@ -177,14 +167,11 @@ public class Utill {
 		String msg = this.find(path).getText();
 		int c = 0;
 		while (msg.equals(null) || msg.isEmpty()) {
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			this.sleep(200);
 			msg = this.find(path).getText();
 			c++;
 			logger.log(Status.INFO, "loop count is :" + c);
+//			System.out.println("loop count is :" + c);
 			if (c > 10) {
 				break;
 			}
@@ -918,6 +905,33 @@ public class Utill {
 		}
 	}
 
+	public void waitUntilLoaderisInvisible(String id, int TimeOut) {
+		try {
+			FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(TimeOut))
+					.pollingEvery(Duration.ofMillis(200)).ignoring(StaleElementReferenceException.class);
+			wait.until(new Function<WebDriver, WebElement>() {
+				public WebElement apply(WebDriver driver) {
+					Pages pages= new Pages(driver, logger);
+					WebElement ele = pages.Utill().find(id);
+					StringBuffer res = new StringBuffer(ele.getCssValue("display"));
+					// String res = ele.getCssValue("display");
+					if (!res.toString().equals("block")) {
+						// System.out.println("success " + res);
+						// res = null;
+						return ele;
+					} else {
+						// System.out.println("failed :" + res);
+						// res = null;
+						return null;
+					}
+				}
+			});
+		} catch (NoSuchElementException e) {
+			System.out.println("exception for ajax loader");
+			logger.log(Status.WARNING, e.getMessage());
+		}
+	}
+
 	/**
 	 * Takes element locator value and timeout as input and wait for element is
 	 * invisible
@@ -1349,4 +1363,5 @@ public class Utill {
 		String re =lines.get(0).toString().trim();
 		return re;
 	}
+	
 }

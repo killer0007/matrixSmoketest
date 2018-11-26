@@ -47,7 +47,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Nov 23, 2018 01:08:28 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Nov 26, 2018 03:23:18 PM</span>
 				</a>
 			</li>
 			<li>
@@ -73,6 +73,7 @@
 				</a>
 				<ul id='tests-toggle' class='dropdown-content'>
 											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -123,10 +124,10 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='100%'><span class='strong'>2</span> test(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -138,10 +139,10 @@
 					<canvas id='child-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='92.308%'><span class='strong'>24</span> step(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='84.615%'><span class='strong'>11</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='7.692%'>2</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='7.692%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='7.692%'>1</span> others
 				</div>
 			</div>
 		</div>
@@ -156,17 +157,17 @@
 			<ul id='test-collection' class='test-collection'>
 				
 				
-				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='1'>
 					<div class='test-heading'>
-						<span class='test-name'>VerificationIntiation</span>
-						<span class='test-time'>Nov 23, 2018 01:08:35 PM</span>
-						<span class='test-status right pass'>pass</span>
+						<span class='test-name'>Login</span>
+						<span class='test-time'>Nov 26, 2018 03:23:22 PM</span>
+						<span class='test-status right fail'>fail</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Nov 23, 2018 01:08:35 PM</span>
-	<span class='label end-time'>Nov 23, 2018 01:09:19 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 44s+66ms</span>
+	<span class='label start-time'>Nov 26, 2018 03:23:22 PM</span>
+	<span class='label end-time'>Nov 26, 2018 03:23:31 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 9s+502ms</span>
 </div>
 	<div class='test-attributes'>
 			<div class='author-list'>
@@ -185,167 +186,76 @@
 			<tbody>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:08:35 PM</td>
-					<td class='step-details'>VerificationIntiation Started</td>
+					<td class='timestamp'>3:23:22 PM</td>
+					<td class='step-details'>Login Started</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:08:35 PM</td>
-					<td class='step-details'>Typing text 'demoempl' into text field 'ctl00_ContentPlaceHolder1_txtUserName'.</td>
+					<td class='timestamp'>3:23:22 PM</td>
+					<td class='step-details'>Typing text 'gopiAAA40@ggmail.com' into text field 'ctl00_ContentPlaceHolder1_txtUserName'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:08:35 PM</td>
-					<td class='step-details'>Typing text 'Pass$$123' into text field 'ctl00_ContentPlaceHolder1_txtPassword'.</td>
+					<td class='timestamp'>3:23:22 PM</td>
+					<td class='step-details'>Typing text 'Pass@123' into text field 'ctl00_ContentPlaceHolder1_txtPassword'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:08:51 PM</td>
+					<td class='timestamp'>3:23:25 PM</td>
 					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnLogin'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:19 PM</td>
-					<td class='step-details'>VerificationIntiation completed</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-					</div>
-				</li>
-				
-				
-				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
-					<div class='test-heading'>
-						<span class='test-name'>AddressVerification</span>
-						<span class='test-time'>Nov 23, 2018 01:09:19 PM</span>
-						<span class='test-status right pass'>pass</span>
-					</div>
-					<div class='test-content hide'>
-<div class='test-time-info'>
-	<span class='label start-time'>Nov 23, 2018 01:09:19 PM</span>
-	<span class='label end-time'>Nov 23, 2018 01:10:09 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 50s+87ms</span>
-</div>
-	<div class='test-attributes'>
-			<div class='author-list'>
-				<span class='author label white-text'>Gopinath</span>
-			</div>
-	</div>
-	<div class='test-steps'>
-		<table class='bordered table-results'>
-			<thead>
-				<tr>
-					<th>Status</th>
-					<th>Timestamp</th>
-					<th>Details</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:19 PM</td>
-					<td class='step-details'>AddressVerification Started</td>
+					<td class='timestamp'>3:23:28 PM</td>
+					<td class='step-details'>msg = Address.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:19 PM</td>
-					<td class='step-details'>getting value from locator : ddlAct , 0</td>
+					<td class='timestamp'>3:23:28 PM</td>
+					<td class='step-details'>Clicking element 'linkText:Basic Details'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:19 PM</td>
-					<td class='step-details'>Selecting options from selection list 'ddlAct' by label 6.</td>
+					<td class='timestamp'>3:23:28 PM</td>
+					<td class='step-details'>switching frame by index 0</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:25 PM</td>
-					<td class='step-details'>Typing text 'HDFC000855' into text field 'txtCaserefNo'.</td>
+					<td class='timestamp'>3:23:28 PM</td>
+					<td class='step-details'>getting value from locator : ctl00_ContentPlaceHolder1_ddlGender_Input , Female</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:25 PM</td>
-					<td class='step-details'>Selecting options from selection list '//select[@ng-model='PanelHomePageModal.ddlCheckTypeModal']' by label ID.</td>
+					<td class='timestamp'>3:23:29 PM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ddlGender_Input'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:31 PM</td>
-					<td class='step-details'>Selecting options from selection list '//select[@ng-model='PanelHomePageModal.ddlComponentModal']' by label Voter ID.</td>
+					<td class='timestamp'>3:23:29 PM</td>
+					<td class='step-details'>Clicking element '//div[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']/div/ul/li[text()='Male']'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:31 PM</td>
-					<td class='step-details'>Clicking element 'Button3'</td>
+					<td class='timestamp'>3:23:29 PM</td>
+					<td class='step-details'>getting value from locator : ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input , Married</td>
 				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:35 PM</td>
-					<td class='step-details'>Clicking element '//span[text()='HDFC000855']'</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:41 PM</td>
-					<td class='step-details'>switching to default frame</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:41 PM</td>
-					<td class='step-details'>Clicking element '//*[@id='tabStrip']/div/ul/li//span[text()='ID']'</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:41 PM</td>
-					<td class='step-details'>switching frame by index 9</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:41 PM</td>
-					<td class='step-details'>getting value from locator : ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input , Select Initiation Mode</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:41 PM</td>
-					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_Input'</td>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>3:23:31 PM</td>
+					<td class='step-details'>unknown error: Element <input name="ctl00$ContentPlaceHolder1$ddlMaritalStatus" type="text" class="rcbInput radPreventDecorate" id="ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input" value="Married" readonly="readonly" tabindex="11" autocomplete="off"> is not clickable at point (530, 464). Other element would receive the click: <div class="rcbSlide" style="z-index: 6000; visibility: visible; display: block; overflow: hidden; margin-left: 0px; position: absolute; top: 436.5px; left: 437px; height: 62px; width: 204px;">...</div>
+  (Session info: chrome=70.0.3538.102)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'KAD-I-032', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:57818}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 70.0.3538.102, webStorageEnabled: true}
+Session ID: feb2a55fe1ac22151e3ad65b83e84f6e<img data-featherlight='D:\gopi\github\matrixSmoketest\footprints/Screenshot/1543226009992.png' width='10%' src='D:\gopi\github\matrixSmoketest\footprints/Screenshot/1543226009992.png' data-src='D:\gopi\github\matrixSmoketest\footprints/Screenshot/1543226009992.png'></td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>1:09:42 PM</td>
-					<td class='step-details'>waiting for data</td>
-				</tr>
-				<tr class='log' status='info'>
-					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>1:09:42 PM</td>
-					<td class='step-details'>loop count is :1</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:42 PM</td>
-					<td class='step-details'>msg = Courier.</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:42 PM</td>
-					<td class='step-details'>Clicking element '//div[@id='ctl00_ContentPlaceHolder1_ddlBeforeVerificationInitiationMode_DropDown']/div/ul//li[text()='Online']'</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:45 PM</td>
-					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnInitiate_input'</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:48 PM</td>
-					<td class='step-details'>switching to default frame</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:09:53 PM</td>
-					<td class='step-details'>msg = Data submitted successfully. Now page will be redirected to home page.</td>
-				</tr>
-				<tr class='log' status='pass'>
-					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>1:10:09 PM</td>
-					<td class='step-details'>AddressVerification completed</td>
+					<td class='timestamp'>3:23:31 PM</td>
+					<td class='step-details'></td>
 				</tr>
 			</tbody>
 		</table>
@@ -406,13 +316,13 @@
                             <div class='author-heading'>
                                 <span class='author-name'>Gopinath</span>
                                 <span class='author-status right'>
-                                        <span class='label pass'>2</span>
+                                        <span class='label fail'>1</span>
 						        </span>
                             </div>
                             <div class='author-content hide'>
                                 <div class='author-status-counts'>
-                                    <span class='label green accent-4 white-text'>Passed: 2</span>
                                     
+                                    <span class='label red lighten-1 white-text'>Failed: 1</span>
                                     
                                 </div>
 
@@ -427,14 +337,9 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Nov 23, 2018 01:08:35 PM</td>
-                                                <td class='linked' test-id='1'>VerificationIntiation</td>
-                                                <td><span class='test-status pass'>pass</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Nov 23, 2018 01:09:19 PM</td>
-                                                <td class='linked' test-id='2'>AddressVerification</td>
-                                                <td><span class='test-status pass'>pass</span></td>
+                                                <td>Nov 26, 2018 03:23:22 PM</td>
+                                                <td class='linked' test-id='1'>Login</td>
+                                                <td><span class='test-status fail'>fail</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -461,31 +366,31 @@
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Tests
-					<div class='panel-lead'>2</div>
+					<div class='panel-lead'>1</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>26</div>
+					<div class='panel-lead'>13</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Nov 23, 2018 01:08:28 PM</div>
+					<div class='panel-lead'>Nov 26, 2018 03:23:18 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Nov 23, 2018 01:10:09 PM</div>
+			 		<div class='panel-lead'>Nov 26, 2018 03:23:31 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 1m 41s+448ms</div>
+					<div class='panel-lead'>0h 0m 13s+50ms</div>
 				</div>
 			</div>
 		</div>
@@ -498,22 +403,22 @@
 
 		<script>
 			var statusGroup = {
-				passParent: 2,
-				failParent: 0,
+				passParent: 0,
+				failParent: 1,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				exceptionsParent: 0,
+				exceptionsParent: 1,
 				
-				passChild: 24,
-				failChild: 0,
+				passChild: 11,
+				failChild: 1,
 				fatalChild: 0,
 				errorChild: 0,
 				warningChild: 0,
 				skipChild: 0,
-				infoChild: 2,
-				exceptionsChild: 0,
+				infoChild: 1,
+				exceptionsChild: 1,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,

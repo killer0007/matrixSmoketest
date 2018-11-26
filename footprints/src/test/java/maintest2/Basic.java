@@ -17,6 +17,8 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -84,7 +86,7 @@ public class Basic {
 		config = BaseClass.getlocator();
 		driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 //		driver.get(config.getProperty("url")+"/clientLogin.aspx");
-		driver.get(config.getProperty("url"));
+		driver.get(config.getProperty("url")+"/hdfc");
 		contractName = config.getProperty("contractname");
 		clientName = config.getProperty("clientname");
 		projectName = config.getProperty("projectname");
@@ -103,35 +105,11 @@ public class Basic {
 	/**
 	 * Login action
 	 */
-	@Test(priority = 10, enabled = true)
-	public void VerificationIntiation() throws Exception {
-		refno="HDFC000854";
+	@Test(priority = 1, enabled = true)
+	public void Login() throws Exception {
 		pages.Login().userLogin(config.getProperty("uname"), config.getProperty("pass"));
-		
+			
 	}
-	@Test(priority = 11, enabled = true, dependsOnMethods = "VerificationIntiation")
-	public void AddressVerification() throws Exception {
-		VerificationInitiate ver= new VerificationInitiate(driver,logger);
-		Map<String, String> data=mode();
-		pages.Verification().verification();
-		ver.Initiate(refno, "Voter ID", data.get("Voter ID"));
-		pages.Home().CaseTracker();
-		pages.CaseTracker().search(refno);
-		pages.CaseTracker().clickcase(refno);
-		List<HashMap<String, String>> details=pages.CaseTracker().getcasedata();
-		SoftAssert sf = new SoftAssert();
-		for (int i = 0; i < details.size(); i++) {
-			String name=details.get(i).get("ComponentName").toString().trim();
-			if(components.contains(name)) {
-				if(name.equals("Current Address")) 
-					sf.assertEquals(details.get(i).get("CurrentStage").toString().trim(), "Candidate Flow After Verification Initiation");
-			}
-		}
-		pages.CaseTracker().closeTab();
-		sf.assertAll();
-	}
-
-
 	
 	@AfterMethod(alwaysRun = true)
 	public void tearDown(ITestResult result, Method method) throws IOException {
@@ -140,40 +118,22 @@ public class Basic {
 			logger.fail(result.getThrowable().getMessage(),
 					MediaEntityBuilder.createScreenCaptureFromPath(temp).build());
 			logger.log(Status.INFO, refno);
+		} else if (result.getStatus() == ITestResult.SKIP) {
+			logger.log(Status.SKIP, result.getName());
 		} else {
-			logger.pass(method.getName() + " completed");
+			logger.pass(result.getName() + " completed");
 		}
-
+	        extent.flush();
 	}
 
 	@AfterTest
 	public void teardown() throws Exception {
-//		driver.quit();
+		driver.quit();
 	}
 
 	@AfterSuite
 	public void afterSuite() {
 		extent.flush();
 	}
-	private static Map<String, String> mode(){
-		Map<String, String> map = new HashMap<>();
-		map.put("Permanent", "In Person");
-		map.put("Current Address", "In Person");
-		map.put("12th", "Email (Preffered)");
-		map.put("UG1", "Email (Preffered)");
-		map.put("Current/Latest Employment", "Email");
-		map.put("Previous Employment", "Email");
-		map.put("Reference 1", "Phone");
-		map.put("Current Address Criminal Check", "In Person");
-		map.put("Permanent Criminal Check", "In Person");
-		map.put("Current Address Court Check", "In Person");
-		map.put("Permanent Court Check", "In Person");
-		map.put("Database", "Online");
-		map.put("Credit Check 1", "Online");
-		map.put("Passport", "Online");
-		map.put("Aadhaar Card", "Online");
-		map.put("Voter ID", "Online");
-		map.put("Panel1", "In Person");
-		return map;
-	}
+	
 }
