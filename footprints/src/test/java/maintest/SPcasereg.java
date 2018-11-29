@@ -1002,15 +1002,10 @@ public class SPcasereg implements Design {
 		for (int i = 0; i < 4; i++) {
 			pages.CaseRegistration().selectcheck(contract.get(i).toString());
 		}
-		String before = pages.DbConnection().getLastrefno(candidateName, lastName);
+		String before = pages.DbConnection().getLastrefno(projectName);
 		pages.CaseRegistration().cancel();
-		String after = pages.DbConnection().getLastrefno(candidateName, lastName);
-		if (before.equals(after)) {
-			assertTrue(true);
-		} else {
-			assertTrue(false, after);
-			
-		}
+		String after = pages.DbConnection().getLastrefno(projectName);
+		assertEquals(before, after);
 
 	}
 

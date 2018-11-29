@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestSuite" time="5,718.843" tests="158" errors="0" skipped="37" failures="3">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_181\jre\bin"/>
+    <property name="java.vm.version" value="25.181-b13"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="d:\gopi\github\matrixSmoketest\footprints"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="d:\gopi\github\matrixSmoketest\footprints"/>
+    <property name="java.runtime.version" value="1.8.0_181-b13"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_181\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="C:\Users\admin\AppData\Local\Temp\"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="classworlds.conf" value="D:\gopi\maven\bin\..\bin\m2.conf"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_181\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Java\jdk1.8.0_181/bin;C:\Program Files\Java\jdk1.8.0_181/bin;C:\Program Files\Python37-32\Scripts\;C:\Program Files\Python37-32\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\110\DTS\Binn\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\ManagementStudio\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files\Java\jdk1.8.0_181\lib;C:\Program Files\Java\jdk1.8.0_181\jre;C:\Python27\DDLs;C:\Python27\Lib\lib-tk;C:\Python27\libs;C:\Python27;C:\Python27\Scripts;D:\gopi;C:\Program Files\Python37-32\DDLs;C:\Program Files\Python37-32\Lib\lib-tk;C:\Program Files\Python37-32\libs;C:\Program Files\Python37-32;C:\Program Files\Python37-32\Scripts;D:\gopi;D:\gopi\maven\bin;C:\Users\admin\Downloads\tessdata-master;C:\Program Files\Git\cmd;C:\Program Files\VisualSVN Server\bin;C:\Program Files\TortoiseSVN\bin;."/>
+    <property name="maven.conf" value="D:\gopi\maven\bin\../conf"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.1"/>
+    <property name="library.jansi.path" value="D:\gopi\maven\bin\..\lib\jansi-native"/>
+    <property name="user.home" value="C:\Users\admin"/>
+    <property name="user.timezone" value="Asia/Calcutta"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="user.name" value="admin"/>
+    <property name="java.class.path" value="D:\gopi\maven\bin\..\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_181\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean install"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_181"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_181\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_181\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_181\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_181\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="D:\gopi\maven\bin\.."/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase name="login" classname="maintest.SPcasereg" time="34.302"/>
+  <testcase name="TC_SPCR_001" classname="maintest.SPcasereg" time="3.991"/>
+  <testcase name="TC_SPCR_002" classname="maintest.SPcasereg" time="3.766"/>
+  <testcase name="TC_SPCR_003" classname="maintest.SPcasereg" time="0.056"/>
+  <testcase name="TC_SCPR_004" classname="maintest.SPcasereg" time="0.041"/>
+  <testcase name="TC_SPCR_005" classname="maintest.SPcasereg" time="0.041"/>
+  <testcase name="TC_SPCR_006" classname="maintest.SPcasereg" time="0.034"/>
+  <testcase name="TC_SPCR_007" classname="maintest.SPcasereg" time="0.035"/>
+  <testcase name="TC_SPCR_008" classname="maintest.SPcasereg" time="0.036"/>
+  <testcase name="TC_SPCR_009" classname="maintest.SPcasereg" time="0.034"/>
+  <testcase name="TC_SPCR_010" classname="maintest.SPcasereg" time="90.302"/>
+  <testcase name="TC_SPCR_011" classname="maintest.SPcasereg" time="92.868"/>
+  <testcase name="TC_SPCR_022" classname="maintest.SPcasereg" time="36.06">
+    <failure type="java.lang.NullPointerException:">java.lang.NullPointerException: null
+	at maintest.SPcasereg.TC_SPCR_022(SPcasereg.java:1008)
+</failure>
+    <system-out><![CDATA[The execution of the main test starts now---TC_SPCR_022
+Test Method resides in maintest.SPcasereg
+Test Status: Failed
+]]></system-out>
+  </testcase>
+  <testcase name="TC_SPCR_023" classname="maintest.SPcasereg" time="21.521"/>
+  <testcase name="TC_SPCR_024" classname="maintest.SPcasereg" time="10.601"/>
+  <testcase name="TC_SPCR_025" classname="maintest.SPcasereg" time="31.785"/>
+  <testcase name="TC_SPCR_026" classname="maintest.SPcasereg" time="34.202"/>
+  <testcase name="TC_SPCR_027" classname="maintest.SPcasereg" time="30.59"/>
+  <testcase name="TC_SPINF_001" classname="maintest.SPcasereg" time="56.495"/>
+  <testcase name="TC_SPINF_002" classname="maintest.SPcasereg" time="110.155"/>
+  <testcase name="TC_SPINF_003" classname="maintest.SPcasereg" time="0.1"/>
+  <testcase name="TC_SPINF_004" classname="maintest.SPcasereg" time="3.645"/>
+  <testcase name="TC_SPINF_005" classname="maintest.SPcasereg" time="36.397"/>
+  <testcase name="TC_SPINF_006" classname="maintest.SPcasereg" time="44.044"/>
+  <testcase name="TC_SPINF_007" classname="maintest.SPcasereg" time="43.34"/>
+  <testcase name="TC_SPINF_008" classname="maintest.SPcasereg" time="10.533"/>
+  <testcase name="TC_SPINF_009" classname="maintest.SPcasereg" time="3.64"/>
+  <testcase name="TC_SPINF_010" classname="maintest.SPcasereg" time="35.872"/>
+  <testcase name="TC_SPINF_011" classname="maintest.SPcasereg" time="54.654"/>
+  <testcase name="TC_SPINF_014" classname="maintest.SPcasereg" time="0.054"/>
+  <testcase name="TC_SPINF_017" classname="maintest.SPcasereg" time="0.044"/>
+  <testcase name="TC_SPINF_020" classname="maintest.SPcasereg" time="0.048"/>
+  <testcase name="TC_SPINF_023" classname="maintest.SPcasereg" time="0.058"/>
+  <testcase name="TC_SPINF_026" classname="maintest.SPcasereg" time="0.056"/>
+  <testcase name="TC_SPINF_029" classname="maintest.SPcasereg" time="0.061"/>
+  <testcase name="TC_SPINF_032" classname="maintest.SPcasereg" time="0.049"/>
+  <testcase name="TC_SPINF_035" classname="maintest.SPcasereg" time="0.048"/>
+  <testcase name="TC_SPINF_038" classname="maintest.SPcasereg" time="1.106"/>
+  <testcase name="TC_SPINF_012" classname="maintest.SPcasereg" time="224.674"/>
+  <testcase name="TC_SPINF_015" classname="maintest.SPcasereg" time="7.536"/>
+  <testcase name="TC_SPINF_018" classname="maintest.SPcasereg" time="6.442"/>
+  <testcase name="TC_SPINF_021" classname="maintest.SPcasereg" time="5.629"/>
+  <testcase name="TC_SPINF_039" classname="maintest.SPcasereg" time="6.161"/>
+  <testcase name="TC_SPINF_027" classname="maintest.SPcasereg" time="5.212"/>
+  <testcase name="TC_SPINF_033" classname="maintest.SPcasereg" time="5.746"/>
+  <testcase name="TC_SPINF_030" classname="maintest.SPcasereg" time="5.168"/>
+  <testcase name="TC_SPINF_024" classname="maintest.SPcasereg" time="15.221"/>
+  <testcase name="TC_SPNAPP_001" classname="maintest.SPcasereg" time="69.488"/>
+  <testcase name="TC_SPCEP_001" classname="maintest.SPcasereg" time="54.165"/>
+  <testcase name="TC_SPCEP_002" classname="maintest.SPcasereg" time="17.689"/>
+  <testcase name="TC_SPCEP_003" classname="maintest.SPcasereg" time="3.065">
+    <failure message="no such element: Unable to locate element: {&quot;method&quot;:&quot;id&quot;,&quot;selector&quot;:&quot;(//td[text()=&apos;HDFC000909&apos;])[2]&quot;}&#10;  (Session info: headless chrome=70.0.3538.102)&#10;  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)&#10;Command duration or timeout: 0 milliseconds&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: &apos;3.14.0&apos;, revision: &apos;aacccce0&apos;, time: &apos;2018-08-02T20:19:58.91Z&apos;&#10;System info: host: &apos;KAD-I-032&apos;, ip: &apos;192.168.2.67&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_181&apos;&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:52089}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 70.0.3538.102, webStorageEnabled: true}&#10;Session ID: a84ae4165dec981b65ebbc478995b196&#10;*** Element info: {Using=id, value=(//td[text()=&apos;HDFC000909&apos;])[2]}" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"id","selector":"(//td[text()='HDFC000909'])[2]"}
+  (Session info: headless chrome=70.0.3538.102)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'KAD-I-032', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:52089}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 70.0.3538.102, webStorageEnabled: true}
+Session ID: a84ae4165dec981b65ebbc478995b196
+*** Element info: {Using=id, value=(//td[text()='HDFC000909'])[2]}
+	at sun.reflect.GeneratedConstructorAccessor20.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:322)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:368)
+	at org.openqa.selenium.By$ById.findElement(By.java:188)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:314)
+	at environment.Utill.find(Utill.java:140)
+	at environment.Utill.click(Utill.java:243)
+	at actions.CEP.upload(CEP.java:132)
+	at maintest.SPcasereg.TC_SPCEP_003(SPcasereg.java:1952)
+</failure>
+    <system-out><![CDATA[The execution of the main test starts now---TC_SPCEP_003
+Test Method resides in maintest.SPcasereg
+Test Status: Failed
+]]></system-out>
+  </testcase>
+  <testcase name="TC_SPCEP_004" classname="maintest.SPcasereg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.SPcasereg
+Test Status: Skipped
+]]></system-out>
+    <system-err><![CDATA[Nov 26, 2018 7:13:04 PM org.openqa.selenium.remote.Augmenter extractRemoteWebDriver
+WARNING: Augmenter should be applied to the instances of @Augmentable classes or previously augmented instances only (instance class was: class org.openqa.selenium.chrome.ChromeDriver)
+Nov 26, 2018 7:13:06 PM org.openqa.selenium.remote.Augmenter extractRemoteWebDriver
+WARNING: Augmenter should be applied to the instances of @Augmentable classes or previously augmented instances only (instance class was: class org.openqa.selenium.chrome.ChromeDriver)
+]]></system-err>
+  </testcase>
+  <testcase name="TC_SPDOC_001" classname="maintest.SPcasereg" time="42.015"/>
+  <testcase name="TC_SPDOC_002" classname="maintest.SPcasereg" time="11.421"/>
+  <testcase name="TC_SPDOC_003" classname="maintest.SPcasereg" time="11.442"/>
+  <testcase name="TC_SPDOC_004" classname="maintest.SPcasereg" time="28.351"/>
+  <testcase name="TC_SPDOC_005" classname="maintest.SPcasereg" time="65.137"/>
+  <testcase name="TC_SPDOC_006" classname="maintest.SPcasereg" time="7.439"/>
+  <testcase name="login" classname="maintest.FullFlow" time="10"/>
+  <testcase name="caseregistration" classname="maintest.FullFlow" time="38.536"/>
+  <testcase name="dataEntryAssign" classname="maintest.FullFlow" time="47.208"/>
+  <testcase name="dataEntry" classname="maintest.FullFlow" time="452.8"/>
+  <testcase name="dataEntryQCAssign" classname="maintest.FullFlow" time="42.675"/>
+  <testcase name="AddressDEQC" classname="maintest.FullFlow" time="33.539"/>
+  <testcase name="EducationDEQC" classname="maintest.FullFlow" time="27.535"/>
+  <testcase name="EmploymentDEQC" classname="maintest.FullFlow" time="26.751"/>
+  <testcase name="ReferenceDEQC" classname="maintest.FullFlow" time="13.038"/>
+  <testcase name="DataBaseDEQC" classname="maintest.FullFlow" time="12.67"/>
+  <testcase name="CriminalDEQC" classname="maintest.FullFlow" time="30.86"/>
+  <testcase name="CreditDEQC" classname="maintest.FullFlow" time="11.577"/>
+  <testcase name="CourtDEQC" classname="maintest.FullFlow" time="30.129"/>
+  <testcase name="IdDEQC" classname="maintest.FullFlow" time="26.786"/>
+  <testcase name="VerificationSupervisor" classname="maintest.FullFlow" time="32.668"/>
+  <testcase name="VerificationIntiation" classname="maintest.FullFlow" time="503.01"/>
+  <testcase name="AddressVerification" classname="maintest.FullFlow" time="146.684"/>
+  <testcase name="EducationVerification" classname="maintest.FullFlow" time="105.62"/>
+  <testcase name="EmploymentVerification" classname="maintest.FullFlow" time="99.148"/>
+  <testcase name="ReferenceVerification" classname="maintest.FullFlow" time="51.959"/>
+  <testcase name="DatabaseVerification" classname="maintest.FullFlow" time="67.55"/>
+  <testcase name="CriminalVerification" classname="maintest.FullFlow" time="94.858"/>
+  <testcase name="CreditVerification" classname="maintest.FullFlow" time="51.612"/>
+  <testcase name="CourtVerification" classname="maintest.FullFlow" time="102.782"/>
+  <testcase name="IDVerification" classname="maintest.FullFlow" time="86.467"/>
+  <testcase name="DrugVerification" classname="maintest.FullFlow" time="63.475"/>
+  <testcase name="ReportGenerationSupervision" classname="maintest.FullFlow" time="72.19"/>
+  <testcase name="AddressReportGeneration" classname="maintest.FullFlow" time="84.418"/>
+  <testcase name="EducationReportGeneration" classname="maintest.FullFlow" time="59.629"/>
+  <testcase name="EmploymentReportGeneration" classname="maintest.FullFlow" time="76.249"/>
+  <testcase name="ReferenceReportGeneration" classname="maintest.FullFlow" time="9.936"/>
+  <testcase name="DatabaseReportGeneration" classname="maintest.FullFlow" time="1.788"/>
+  <testcase name="CriminalReportGeneration" classname="maintest.FullFlow" time="45.195"/>
+  <testcase name="CreditReportGeneration" classname="maintest.FullFlow" time="19.018"/>
+  <testcase name="CourtReportGeneration" classname="maintest.FullFlow" time="45.838"/>
+  <testcase name="DrugReportGeneration" classname="maintest.FullFlow" time="8.171"/>
+  <testcase name="IdReportGeneration" classname="maintest.FullFlow" time="37.417"/>
+  <testcase name="ReportGenerationSubmit" classname="maintest.FullFlow" time="33.071"/>
+  <testcase name="ReportValidationSupervisor" classname="maintest.FullFlow" time="38.035"/>
+  <testcase name="ReportValidation" classname="maintest.FullFlow" time="57.063"/>
+  <testcase name="login" classname="maintest.ClientCaseReg" time="7.729"/>
+  <testcase name="caseregistration" classname="maintest.ClientCaseReg" time="102.933"/>
+  <testcase name="dataEntryAssign" classname="maintest.ClientCaseReg" time="60.163"/>
+  <testcase name="dataEntry" classname="maintest.ClientCaseReg" time="264.537">
+    <failure message="unknown error: Element &lt;span class=&quot;rtsTxt&quot;&gt;...&lt;/span&gt; is not clickable at point (74, 479). Other element would receive the click: &lt;div class=&quot;raDiv&quot;&gt;...&lt;/div&gt;&#10;  (Session info: headless chrome=70.0.3538.102)&#10;  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)&#10;Command duration or timeout: 0 milliseconds&#10;Build info: version: &apos;3.14.0&apos;, revision: &apos;aacccce0&apos;, time: &apos;2018-08-02T20:19:58.91Z&apos;&#10;System info: host: &apos;KAD-I-032&apos;, ip: &apos;192.168.2.67&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_181&apos;&#10;Driver info: org.openqa.selenium.chrome.ChromeDriver&#10;Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:59037}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 70.0.3538.102, webStorageEnabled: true}&#10;Session ID: 87d4d616fda5ba98176d1bb06915d638" type="org.openqa.selenium.WebDriverException"><![CDATA[org.openqa.selenium.WebDriverException: unknown error: Element <span class="rtsTxt">...</span> is not clickable at point (74, 479). Other element would receive the click: <div class="raDiv">...</div>
+  (Session info: headless chrome=70.0.3538.102)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'KAD-I-032', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:59037}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 70.0.3538.102, webStorageEnabled: true}
+Session ID: 87d4d616fda5ba98176d1bb06915d638
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:548)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:276)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:83)
+	at environment.Utill.click(Utill.java:243)
+	at dataEntry.Criminal.criminalcheck(Criminal.java:32)
+	at dataEntry.Criminal.CurrentAddress(Criminal.java:335)
+	at maintest.ClientCaseReg.dataEntry(ClientCaseReg.java:173)
+]]></failure>
+    <system-out><![CDATA[The execution of the main test starts now---dataEntry
+Test Method resides in maintest.ClientCaseReg
+Test Status: Failed
+]]></system-out>
+  </testcase>
+  <testcase name="dataEntryQCAssign" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Checks 360
+Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+    <system-err><![CDATA[Nov 26, 2018 8:10:08 PM org.openqa.selenium.remote.Augmenter extractRemoteWebDriver
+WARNING: Augmenter should be applied to the instances of @Augmentable classes or previously augmented instances only (instance class was: class org.openqa.selenium.chrome.ChromeDriver)
+Nov 26, 2018 8:10:09 PM org.openqa.selenium.remote.Augmenter extractRemoteWebDriver
+WARNING: Augmenter should be applied to the instances of @Augmentable classes or previously augmented instances only (instance class was: class org.openqa.selenium.chrome.ChromeDriver)
+]]></system-err>
+  </testcase>
+  <testcase name="AddressDEQC" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="EducationDEQC" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="EmploymentDEQC" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="ReferenceDEQC" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="DataBaseDEQC" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="CriminalDEQC" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="CreditDEQC" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="CourtDEQC" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="IdDEQC" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="VerificationSupervisor" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="VerificationIntiation" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="AddressVerification" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="EducationVerification" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="EmploymentVerification" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="ReferenceVerification" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="DatabaseVerification" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="CriminalVerification" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="CreditVerification" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="CourtVerification" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="IDVerification" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="DrugVerification" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="ReportGenerationSupervision" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="AddressReportGeneration" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="EducationReportGeneration" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="EmploymentReportGeneration" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="ReferenceReportGeneration" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="DatabaseReportGeneration" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="CriminalReportGeneration" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="CreditReportGeneration" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="CourtReportGeneration" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="DrugReportGeneration" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="IdReportGeneration" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="ReportGenerationSubmit" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="ReportValidationSupervisor" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="ReportValidation" classname="maintest.ClientCaseReg" time="0">
+    <skipped/>
+    <system-out><![CDATA[Test Method resides in maintest.ClientCaseReg
+Test Status: Skipped
+]]></system-out>
+  </testcase>
+  <testcase name="CandidateInitiate" classname="maintest.CandidateCaseRegistration" time="4.499"/>
+  <testcase name="CandidatedataEntry" classname="maintest.CandidateCaseRegistration" time="116.195"/>
+  <testcase name="Address" classname="maintest.CandidateCaseRegistration" time="21.881"/>
+  <testcase name="Education" classname="maintest.CandidateCaseRegistration" time="5.122"/>
+  <testcase name="Employment" classname="maintest.CandidateCaseRegistration" time="5.18"/>
+  <testcase name="VoterId" classname="maintest.CandidateCaseRegistration" time="4.8"/>
+  <testcase name="Reference" classname="maintest.CandidateCaseRegistration" time="4.969"/>
+  <testcase name="ClientSubmit" classname="maintest.CandidateCaseRegistration" time="30.023"/>
+  <testcase name="DataEntryQC" classname="maintest.CandidateCaseRegistration" time="108.337"/>
+  <testcase name="VerificationSupervisor" classname="maintest.CandidateCaseRegistration" time="38.406"/>
+  <testcase name="VerificationIntiation" classname="maintest.CandidateCaseRegistration" time="229.759"/>
+  <testcase name="AddressVerification" classname="maintest.CandidateCaseRegistration" time="100.547"/>
+  <testcase name="EducationVerification" classname="maintest.CandidateCaseRegistration" time="58.786"/>
+  <testcase name="EmploymentVerification" classname="maintest.CandidateCaseRegistration" time="53.953"/>
+  <testcase name="ReferenceVerification" classname="maintest.CandidateCaseRegistration" time="51.347"/>
+  <testcase name="IDVerification" classname="maintest.CandidateCaseRegistration" time="50.183"/>
+  <testcase name="ReportGenerationSupervision" classname="maintest.CandidateCaseRegistration" time="71.278"/>
+  <testcase name="ReportGenerationSubmit" classname="maintest.CandidateCaseRegistration" time="60.543"/>
+  <testcase name="ReportValidationSupervisor" classname="maintest.CandidateCaseRegistration" time="36.624"/>
+  <testcase name="ReportValidation" classname="maintest.CandidateCaseRegistration" time="50.429"/>
+</testsuite>

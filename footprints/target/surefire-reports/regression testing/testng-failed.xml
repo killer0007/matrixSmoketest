@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" verbose="0" name="Failed suite [regression testing]">
+  <test thread-count="5" verbose="0" name="ServiceProviderCaseRegistration(failed)">
+    <classes>
+      <class name="maintest.SPcasereg">
+        <methods>
+          <include name="TC_SPCR_022"/>
+          <include name="TC_SPINF_006"/>
+          <include name="tearDown"/>
+          <include name="beforeSuit"/>
+          <include name="beforetest"/>
+          <include name="TC_SPNAPP_001"/>
+          <include name="TC_SPINF_001"/>
+          <include name="TC_SPINF_012"/>
+          <include name="teardown"/>
+          <include name="TC_SPINF_011"/>
+          <include name="TC_SPINF_010"/>
+          <include name="setup"/>
+          <include name="TC_SPINF_024"/>
+          <include name="TC_SPCEP_001"/>
+          <include name="afterSuite"/>
+          <include name="TC_SPINF_005"/>
+          <include name="TC_SPINF_038"/>
+          <include name="TC_SPCEP_004"/>
+          <include name="TC_SPCEP_003"/>
+          <include name="TC_SPCEP_002"/>
+        </methods>
+      </class> <!-- maintest.SPcasereg -->
+    </classes>
+  </test> <!-- ServiceProviderCaseRegistration(failed) -->
+  <test thread-count="5" verbose="0" name="CLIENT CASE(failed)">
+    <classes>
+      <class name="maintest.ClientCaseReg">
+        <methods>
+          <include name="ReferenceReportGeneration"/>
+          <include name="IdReportGeneration"/>
+          <include name="DatabaseReportGeneration"/>
+          <include name="ReportValidationSupervisor"/>
+          <include name="teardown"/>
+          <include name="CriminalVerification"/>
+          <include name="CourtReportGeneration"/>
+          <include name="CreditReportGeneration"/>
+          <include name="EducationReportGeneration"/>
+          <include name="VerificationSupervisor"/>
+          <include name="dataEntryAssign"/>
+          <include name="DrugReportGeneration"/>
+          <include name="EducationDEQC"/>
+          <include name="CourtVerification"/>
+          <include name="CreditDEQC"/>
+          <include name="EmploymentVerification"/>
+          <include name="IDVerification"/>
+          <include name="beforeSuit"/>
+          <include name="DataBaseDEQC"/>
+          <include name="dataEntry"/>
+          <include name="CourtDEQC"/>
+          <include name="login"/>
+          <include name="caseregistration"/>
+          <include name="DatabaseVerification"/>
+          <include name="EducationVerification"/>
+          <include name="ReportGenerationSupervision"/>
+          <include name="ReportGenerationSubmit"/>
+          <include name="afterSuite"/>
+          <include name="IdDEQC"/>
+          <include name="ReportValidation"/>
+          <include name="ReferenceDEQC"/>
+          <include name="VerificationIntiation"/>
+          <include name="EmploymentDEQC"/>
+          <include name="AddressReportGeneration"/>
+          <include name="setup"/>
+          <include name="EmploymentReportGeneration"/>
+          <include name="AddressVerification"/>
+          <include name="DrugVerification"/>
+          <include name="CriminalReportGeneration"/>
+          <include name="dataEntryQCAssign"/>
+          <include name="CreditVerification"/>
+          <include name="beforetest"/>
+          <include name="ReferenceVerification"/>
+          <include name="tearDown"/>
+          <include name="AddressDEQC"/>
+          <include name="CriminalDEQC"/>
+        </methods>
+      </class> <!-- maintest.ClientCaseReg -->
+    </classes>
+  </test> <!-- CLIENT CASE(failed) -->
+</suite> <!-- Failed suite [regression testing] -->

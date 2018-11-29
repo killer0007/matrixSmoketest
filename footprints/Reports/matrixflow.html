@@ -47,7 +47,7 @@
 		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
 			<li>
                 <a href='#!'>
-                    <span class='label suite-start-time blue darken-3'>Nov 26, 2018 03:23:18 PM</span>
+                    <span class='label suite-start-time blue darken-3'>Nov 29, 2018 06:26:47 PM</span>
 				</a>
 			</li>
 			<li>
@@ -74,6 +74,7 @@
 				<ul id='tests-toggle' class='dropdown-content'>
 											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
 						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+						<li status='warning'><a href='#!'>Warning <i class='material-icons orange-text'>warning</i></a></li>
 					<li class='divider'></li>
 					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
 				</ul>
@@ -124,10 +125,10 @@
 					<canvas id='parent-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='0%'><span class='strong'>0</span> test(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='50%'><span class='strong'>2</span> test(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='100%'>1</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='50%'>2</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> others
 				</div>
 			</div>
 		</div>
@@ -139,10 +140,10 @@
 					<canvas id='child-analysis' width='100' height='80'></canvas>
 				</div>
 				<div class='block text-small'>
-					<span class='tooltipped' data-position='top' data-tooltip='84.615%'><span class='strong'>11</span> step(s) passed</span>
+					<span class='tooltipped' data-position='top' data-tooltip='86.486%'><span class='strong'>32</span> step(s) passed</span>
 				</div>
 				<div class='block text-small'>
-					<span class='strong tooltipped' data-position='top' data-tooltip='7.692%'>1</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='7.692%'>1</span> others
+					<span class='strong tooltipped' data-position='top' data-tooltip='5.405%'>2</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='8.108%'>3</span> others
 				</div>
 			</div>
 		</div>
@@ -157,17 +158,17 @@
 			<ul id='test-collection' class='test-collection'>
 				
 				
-				<li class='test displayed active  fail' status='fail' bdd='false' test-id='1'>
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
 					<div class='test-heading'>
 						<span class='test-name'>Login</span>
-						<span class='test-time'>Nov 26, 2018 03:23:22 PM</span>
-						<span class='test-status right fail'>fail</span>
+						<span class='test-time'>Nov 29, 2018 06:26:51 PM</span>
+						<span class='test-status right pass'>pass</span>
 					</div>
 					<div class='test-content hide'>
 <div class='test-time-info'>
-	<span class='label start-time'>Nov 26, 2018 03:23:22 PM</span>
-	<span class='label end-time'>Nov 26, 2018 03:23:31 PM</span>
-	<span class='label time-taken grey lighten-1 white-text'>0h 0m 9s+502ms</span>
+	<span class='label start-time'>Nov 29, 2018 06:26:51 PM</span>
+	<span class='label end-time'>Nov 29, 2018 06:27:20 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 29s+156ms</span>
 </div>
 	<div class='test-attributes'>
 			<div class='author-list'>
@@ -186,76 +187,310 @@
 			<tbody>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:23:22 PM</td>
+					<td class='timestamp'>6:26:51 PM</td>
 					<td class='step-details'>Login Started</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:23:22 PM</td>
-					<td class='step-details'>Typing text 'gopiAAA40@ggmail.com' into text field 'ctl00_ContentPlaceHolder1_txtUserName'.</td>
+					<td class='timestamp'>6:26:51 PM</td>
+					<td class='step-details'>Typing text 'demoempl' into text field 'ctl00_ContentPlaceHolder1_txtUserName'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:23:22 PM</td>
-					<td class='step-details'>Typing text 'Pass@123' into text field 'ctl00_ContentPlaceHolder1_txtPassword'.</td>
+					<td class='timestamp'>6:26:51 PM</td>
+					<td class='step-details'>Typing text 'Pass$$123' into text field 'ctl00_ContentPlaceHolder1_txtPassword'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:23:25 PM</td>
+					<td class='timestamp'>6:26:55 PM</td>
 					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnLogin'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:23:28 PM</td>
-					<td class='step-details'>msg = Address.</td>
+					<td class='timestamp'>6:27:20 PM</td>
+					<td class='step-details'>Login completed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>TC_SPCEP_002</span>
+						<span class='test-time'>Nov 29, 2018 06:27:21 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Nov 29, 2018 06:27:21 PM</span>
+	<span class='label end-time'>Nov 29, 2018 06:27:40 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 19s+188ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='author-list'>
+				<span class='author label white-text'>Gopinath</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:21 PM</td>
+					<td class='step-details'>TC_SPCEP_002 Started</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:23:28 PM</td>
-					<td class='step-details'>Clicking element 'linkText:Basic Details'</td>
+					<td class='timestamp'>6:27:25 PM</td>
+					<td class='step-details'>Clicking element 'btnActions'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:23:28 PM</td>
-					<td class='step-details'>switching frame by index 0</td>
+					<td class='timestamp'>6:27:28 PM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ddlAct_Input'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:23:28 PM</td>
-					<td class='step-details'>getting value from locator : ctl00_ContentPlaceHolder1_ddlGender_Input , Female</td>
+					<td class='timestamp'>6:27:29 PM</td>
+					<td class='step-details'>Clicking element '//div[@id='ctl00_ContentPlaceHolder1_ddlAct_DropDown']//li[4]'</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:23:29 PM</td>
-					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ddlGender_Input'</td>
+					<td class='timestamp'>6:27:32 PM</td>
+					<td class='step-details'>text cleared for : ctl00_ContentPlaceHolder1_TextBoxCaseReference</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:23:29 PM</td>
-					<td class='step-details'>Clicking element '//div[@id='ctl00_ContentPlaceHolder1_ddlGender_DropDown']/div/ul/li[text()='Male']'</td>
+					<td class='timestamp'>6:27:32 PM</td>
+					<td class='step-details'>Typing text 'HDFC000951' into text field 'ctl00_ContentPlaceHolder1_TextBoxCaseReference'.</td>
 				</tr>
 				<tr class='log' status='pass'>
 					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
-					<td class='timestamp'>3:23:29 PM</td>
-					<td class='step-details'>getting value from locator : ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input , Married</td>
+					<td class='timestamp'>6:27:32 PM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_ddlWorkflowType_Input'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:34 PM</td>
+					<td class='step-details'>Clicking element '//div[@id='ctl00_ContentPlaceHolder1_ddlWorkflowType_DropDown']//li[1]'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:37 PM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnSearch'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:40 PM</td>
+					<td class='step-details'>msg = HDFC000951.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:40 PM</td>
+					<td class='step-details'>TC_SPCEP_002 completed</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>TC_SPCEP_003</span>
+						<span class='test-time'>Nov 29, 2018 06:27:40 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Nov 29, 2018 06:27:40 PM</span>
+	<span class='label end-time'>Nov 29, 2018 06:28:27 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 46s+803ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='author-list'>
+				<span class='author label white-text'>Gopinath</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:40 PM</td>
+					<td class='step-details'>TC_SPCEP_003 Started</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:40 PM</td>
+					<td class='step-details'>Clicking element 'xpath:(//td[text()='HDFC000951'])[2]'</td>
+				</tr>
+				<tr class='log' status='warning'>
+					<td class='status warning' title='warning' alt='warning'><i class='material-icons'>warning</i></td>
+					<td class='timestamp'>6:27:46 PM</td>
+					<td class='step-details'>StaleElementReferenceException</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:46 PM</td>
+					<td class='step-details'>Typing text 'comments cep' into text field 'ctl00_ContentPlaceHolder1_rdwClearCEP_C_txtClearedRemarks'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:46 PM</td>
+					<td class='step-details'>Typing text 'D:\gopi\github\matrixSmoketest\footprints\src\test\resources\images\insuff\address.pdf' into text field '//td[text()='Relieving Letter']/../td[6]//span/input[2]'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:47 PM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_rdwClearCEP_C_btnAddDocument'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:55 PM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_rdwClearCEP_C_ButtonSubmit_input'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:55 PM</td>
+					<td class='step-details'>msg = CEP cleared successfully.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:27:56 PM</td>
+					<td class='step-details'>Clicking element 'ctl00_ContentPlaceHolder1_btnStages_input'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:04 PM</td>
+					<td class='step-details'>Selecting options from selection list 'ddlAct' by label 1.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:12 PM</td>
+					<td class='step-details'>text cleared for : txtCaserefNo</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:12 PM</td>
+					<td class='step-details'>Typing text 'HDFC000951' into text field 'txtCaserefNo'.</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:12 PM</td>
+					<td class='step-details'>Clicking element 'btnsearch'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:16 PM</td>
+					<td class='step-details'>Clicking element 'chkboxsingle'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:17 PM</td>
+					<td class='step-details'>Clicking element 'btnBulkAllocation'</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:21 PM</td>
+					<td class='step-details'>Clicking element 'ddlFilteredTMforAllocation'</td>
 				</tr>
 				<tr class='log' status='fail'>
 					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
-					<td class='timestamp'>3:23:31 PM</td>
-					<td class='step-details'>unknown error: Element <input name="ctl00$ContentPlaceHolder1$ddlMaritalStatus" type="text" class="rcbInput radPreventDecorate" id="ctl00_ContentPlaceHolder1_ddlMaritalStatus_Input" value="Married" readonly="readonly" tabindex="11" autocomplete="off"> is not clickable at point (530, 464). Other element would receive the click: <div class="rcbSlide" style="z-index: 6000; visibility: visible; display: block; overflow: hidden; margin-left: 0px; position: absolute; top: 436.5px; left: 437px; height: 62px; width: 204px;">...</div>
-  (Session info: chrome=70.0.3538.102)
+					<td class='timestamp'>6:28:27 PM</td>
+					<td class='step-details'>no such element: Unable to locate element: {"method":"xpath","selector":".//*[@id='ddlFilteredTMforAllocation']//option[contains(text(),'null')]"}
+  (Session info: headless chrome=70.0.3538.110)
   (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
 Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
 System info: host: 'KAD-I-032', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_191'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:57818}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 70.0.3538.102, webStorageEnabled: true}
-Session ID: feb2a55fe1ac22151e3ad65b83e84f6e<img data-featherlight='D:\gopi\github\matrixSmoketest\footprints/Screenshot/1543226009992.png' width='10%' src='D:\gopi\github\matrixSmoketest\footprints/Screenshot/1543226009992.png' data-src='D:\gopi\github\matrixSmoketest\footprints/Screenshot/1543226009992.png'></td>
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:64911}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 70.0.3538.110, webStorageEnabled: true}
+Session ID: fade4991d6f9ac55516d942aac3fec32
+*** Element info: {Using=xpath, value=.//*[@id='ddlFilteredTMforAllocation']//option[contains(text(),'null')]}<img data-featherlight='D:\gopi\github\matrixSmoketest\footprints/Screenshot/1543496304073.png' width='10%' src='D:\gopi\github\matrixSmoketest\footprints/Screenshot/1543496304073.png' data-src='D:\gopi\github\matrixSmoketest\footprints/Screenshot/1543496304073.png'></td>
 				</tr>
 				<tr class='log' status='info'>
 					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
-					<td class='timestamp'>3:23:31 PM</td>
-					<td class='step-details'></td>
+					<td class='timestamp'>6:28:27 PM</td>
+					<td class='step-details'>HDFC000951</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>TC_SPCEP_004</span>
+						<span class='test-time'>Nov 29, 2018 06:28:27 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Nov 29, 2018 06:28:27 PM</span>
+	<span class='label end-time'>Nov 29, 2018 06:28:33 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 6s+39ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='author-list'>
+				<span class='author label white-text'>Gopinath</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>6:28:27 PM</td>
+					<td class='step-details'>TC_SPCEP_004 Started</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>6:28:33 PM</td>
+					<td class='step-details'>no such element: Unable to locate element: {"method":"id","selector":"ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_gviewEmploymentCEPClear_ctl00_ctl04_lblDoc"}
+  (Session info: headless chrome=70.0.3538.110)
+  (Driver info: chromedriver=2.42.591088 (7b2b2dca23cca0862f674758c9a3933e685c27d5),platform=Windows NT 6.1.7601 SP1 x86) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.14.0', revision: 'aacccce0', time: '2018-08-02T20:19:58.91Z'
+System info: host: 'KAD-I-032', ip: '192.168.2.67', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_191'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.42.591088 (7b2b2dca23cca0..., userDataDir: C:\Users\admin\AppData\Loca...}, cssSelectorsEnabled: true, databaseEnabled: false, goog:chromeOptions: {debuggerAddress: localhost:64911}, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 70.0.3538.110, webStorageEnabled: true}
+Session ID: fade4991d6f9ac55516d942aac3fec32
+*** Element info: {Using=id, value=ctl00_ContentPlaceHolder1_rdmHistoryPopup1_C_gviewEmploymentCEPClear_ctl00_ctl04_lblDoc}<img data-featherlight='D:\gopi\github\matrixSmoketest\footprints/Screenshot/1543496310248.png' width='10%' src='D:\gopi\github\matrixSmoketest\footprints/Screenshot/1543496310248.png' data-src='D:\gopi\github\matrixSmoketest\footprints/Screenshot/1543496310248.png'></td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>6:28:33 PM</td>
+					<td class='step-details'>HDFC000951</td>
 				</tr>
 			</tbody>
 		</table>
@@ -316,13 +551,14 @@ Session ID: feb2a55fe1ac22151e3ad65b83e84f6e<img data-featherlight='D:\gopi\gith
                             <div class='author-heading'>
                                 <span class='author-name'>Gopinath</span>
                                 <span class='author-status right'>
-                                        <span class='label fail'>1</span>
+                                        <span class='label pass'>2</span>
+                                        <span class='label fail'>2</span>
 						        </span>
                             </div>
                             <div class='author-content hide'>
                                 <div class='author-status-counts'>
-                                    
-                                    <span class='label red lighten-1 white-text'>Failed: 1</span>
+                                    <span class='label green accent-4 white-text'>Passed: 2</span>
+                                    <span class='label red lighten-1 white-text'>Failed: 2</span>
                                     
                                 </div>
 
@@ -337,8 +573,23 @@ Session ID: feb2a55fe1ac22151e3ad65b83e84f6e<img data-featherlight='D:\gopi\gith
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Nov 26, 2018 03:23:22 PM</td>
+                                                <td>Nov 29, 2018 06:26:51 PM</td>
                                                 <td class='linked' test-id='1'>Login</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nov 29, 2018 06:27:21 PM</td>
+                                                <td class='linked' test-id='2'>TC_SPCEP_002</td>
+                                                <td><span class='test-status pass'>pass</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nov 29, 2018 06:27:40 PM</td>
+                                                <td class='linked' test-id='3'>TC_SPCEP_003</td>
+                                                <td><span class='test-status fail'>fail</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Nov 29, 2018 06:28:27 PM</td>
+                                                <td class='linked' test-id='4'>TC_SPCEP_004</td>
                                                 <td><span class='test-status fail'>fail</span></td>
                                             </tr>
                                         </tbody>
@@ -366,31 +617,31 @@ Session ID: feb2a55fe1ac22151e3ad65b83e84f6e<img data-featherlight='D:\gopi\gith
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Tests
-					<div class='panel-lead'>1</div>
+					<div class='panel-lead'>4</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Steps
-					<div class='panel-lead'>13</div>
+					<div class='panel-lead'>37</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Start
-					<div class='panel-lead'>Nov 26, 2018 03:23:18 PM</div>
+					<div class='panel-lead'>Nov 29, 2018 06:26:47 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 			 		End
-			 		<div class='panel-lead'>Nov 26, 2018 03:23:31 PM</div>
+			 		<div class='panel-lead'>Nov 29, 2018 06:28:33 PM</div>
 				</div>
 			</div>
 			<div class='col s2'>
 				<div class='card-panel r'>
 					Time Taken
-					<div class='panel-lead'>0h 0m 13s+50ms</div>
+					<div class='panel-lead'>0h 1m 46s+524ms</div>
 				</div>
 			</div>
 		</div>
@@ -403,22 +654,22 @@ Session ID: feb2a55fe1ac22151e3ad65b83e84f6e<img data-featherlight='D:\gopi\gith
 
 		<script>
 			var statusGroup = {
-				passParent: 0,
-				failParent: 1,
+				passParent: 2,
+				failParent: 2,
 				fatalParent: 0,
 				errorParent: 0,
 				warningParent: 0,
 				skipParent: 0,
-				exceptionsParent: 1,
+				exceptionsParent: 2,
 				
-				passChild: 11,
-				failChild: 1,
+				passChild: 32,
+				failChild: 2,
 				fatalChild: 0,
 				errorChild: 0,
-				warningChild: 0,
+				warningChild: 1,
 				skipChild: 0,
-				infoChild: 1,
-				exceptionsChild: 1,
+				infoChild: 2,
+				exceptionsChild: 3,
 				
 				passGrandChild: 0,
 				failGrandChild: 0,

@@ -11,6 +11,8 @@
           <include name="teardown"/>
           <include name="beforeSuit"/>
           <include name="afterSuite"/>
+          <include name="TC_SPCEP_004"/>
+          <include name="TC_SPCEP_003"/>
           <include name="beforetest"/>
         </methods>
       </class> <!-- maintest2.Basic -->

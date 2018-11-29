@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="regression testing">
-
-	<test name="FullFlow">
-		<classes>
-			<class name="maintest.FullFlow" />
-		</classes>
-	</test>
-	<test name="CLIENT CASE">
-		<classes>
-			<class name="maintest.ClientCaseReg" />
-		</classes>
-	</test>
-	<test name="CANDIDATE CASE">
-		<classes>
-			<class name="maintest.CandidateCaseRegistration" />
-		</classes>
-	</test>
-	<test name="ServiceProviderCaseRegistration">
+<test name="ServiceProviderCaseRegistration">
 		<classes>
 			<class name="maintest.SPcasereg">
 				<methods>
@@ -35,5 +19,21 @@
 			</class>
 		</classes>
 	</test>
+	<test name="FullFlow">
+		<classes>
+			<class name="maintest.FullFlow" />
+		</classes>
+	</test>
+	<test name="CLIENT CASE">
+		<classes>
+			<class name="maintest.ClientCaseReg" />
+		</classes>
+	</test>
+	<test name="CANDIDATE CASE">
+		<classes>
+			<class name="maintest.CandidateCaseRegistration" />
+		</classes>
+	</test>
+	
 
 </suite> <!-- Suite -->

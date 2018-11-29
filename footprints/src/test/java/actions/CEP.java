@@ -129,7 +129,7 @@ public class CEP extends ActionPage {
 	 * @throws Exception when file not found
 	 */
 	public void upload(String refno, String comments, String doctype, String file) throws Exception {
-		click("(//td[text()='" + refno + "'])[2]");
+		super.click("xpath:(//td[text()='" + refno + "'])[2]");
 		waitUntilLoaderisInvisible(100);
 		try {
 			this.clearComments(comments);

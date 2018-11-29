@@ -2,13 +2,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="regression testing">
 	<!-- smoketest,spcase registration, insuff -->
-	<!-- <listeners> -->
-	<!-- <listener class-name = "environment.CustomReporter" /> -->
-	<!-- </listeners> -->
+	<listeners>
+	<listener class-name = "testNGlisteners.CustomReporter" />
+	</listeners>
 	<test name="FullFlow">
 		<classes>
 			<!-- <class name="MAINTEST.SPCASEREG"> -->
-			<class name="maintest.ClientCaseReg" />
+			<class name="maintest2.Basic" />
 		</classes>
 	</test> <!-- Test -->
 
